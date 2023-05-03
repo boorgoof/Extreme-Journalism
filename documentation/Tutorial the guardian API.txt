@@ -1,0 +1,27 @@
+Full tutorial:
+https://open-platform.theguardian.com/documentation/search
+
+QUERY:
+https://content.guardianapis.com/search?<..>
+
+ENDPOINTS OF THE QUERY:
+- nell'esempio prima era search, che ci da tutto
+- tags dà i tag
+- sections ritorna le sezioni
+- editions
+- single term (vado su theguardian.com, sostituisco guardianapis.com e ho quello che riguarda quell'articolo)
+
+OPTIONS OF THE QUERY (in mezzo ci vanno &):
+- q=debates -> filtra i risultati su solo quelli che usano quel termine.
+		Questa permette anche di mettere AND, AND NOT, OR (or è l'operatore di default). Per scriverli mettere %20AND%20 Si possono usare le parentesi.
+		Possiamo cercare frasi complete, sostituendo agli spazi il %20 e mettendole tra ""
+- api-key=test -> al posto di test devi mettere la tua chiave. ATTENZIONE: NON METTERE LA PROPRIA CHIAVE NEL CODICE, BISOGNERA' CHIEDERLA ALL'UTENTE
+- from-date=2014-01-01 -> a partire da quella data
+- to-date=... -> fino a che data
+- format=json -> in che formato
+- page-size=50 -> quante pagine gli posso chiedere alla volta. Il max e' 50
+- page=2 -> ti da il numero di pagina da cui partire
+- order-by=newest -> alternative sono oldest o relevance
+- show-fields= -> mostra solo quei campi. I valori utili sono bodyText ed headline. Usa la virgola per separarli
+
+- tag=environment/recycling -> li possiamo prendere da un articolo e usarli per cercare articoli simili
