@@ -19,8 +19,8 @@ OPTIONS OF THE QUERY (in mezzo ci vanno &):
 - from-date=2014-01-01 -> a partire da quella data
 - to-date=... -> fino a che data
 - format=json -> in che formato
-- page-size=50 -> quante pagine gli posso chiedere alla volta. Il max e' 50
-- page=2 -> ti da il numero di pagina da cui partire
+- page-size=50 -> quante pagine gli posso chiedere alla volta. Il max e' 200
+- page=2 -> ti da il numero di pagina da cui partire (nel senso divide il numero di ricerche in pagine di grandezza pagesize, e poi ti da i risultati della pagina numero page)
 - order-by=newest -> alternative sono oldest o relevance
 - show-fields= -> mostra solo quei campi. I valori utili sono bodyText ed headline. Usa la virgola per separarli
 
