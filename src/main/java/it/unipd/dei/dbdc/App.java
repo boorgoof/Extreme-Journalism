@@ -1,5 +1,4 @@
 package it.unipd.dei.dbdc;
-
 /**
  * Hello world!
  *
