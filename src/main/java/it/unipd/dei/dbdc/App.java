@@ -1,42 +1,99 @@
 package it.unipd.dei.dbdc;
 
-import com.google.gson.Gson;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * Hello world!
- *
- */
+import com.fasterxml.jackson.databind.SerializationFeature;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+import java.util.ArrayList;
+
 public class App 
 {
     public static void main( String[] args )
     {
+        List<Article> articles = new ArrayList<>();
+        String path_folder = "D:\\ingengeria software\\eis-final\\database\\the_guardian";
+        deserializazion_JSON_folder(path_folder,articles);
+        serializazion_JSON_file(path_folder, articles);
+    }
+    public static void deserializazion_JSON_file(File file, List<Article> articles){
 
-        // esempio serializzazione e deserializzazione con la libreria gson.
-        // non so se esiste per ogni formato per farla generale,
-        // dunque non credo che sia il metodo migliore era tanto per provare a serializzare e deserializzare
+        try {
 
-        final String jsonProva = "{\n" +
-                "    \"title\": \"nuclear effect\",\n" +
-                "    \"body\": \"ciccio gamer\"\n" +
-                "}";
-        final Gson gson= new Gson();
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonNode rootNode = objectMapper.readTree(file);
 
-        // deserializzazione
+            JsonNode responseNode = rootNode.path("response");
 
-        Article a1 = gson.fromJson(jsonProva, Article.class);
+            /* prova
+            if (!responseNode.isMissingNode()) {        // if "response" node is exist
+                System.out.println("status : " + responseNode.path("status").asText());
+            }
+            */
 
-        System.out.println("title: "+ a1.getTitle());
-        System.out.println("body: "+ a1.getBody());
+            JsonNode ResponseArray = responseNode.path("results");
 
-        // serializzazione
+            for (JsonNode root : ResponseArray) {
 
-        Article a2 = new Article("case in montagna", "sono belle ma costose");
+                JsonNode fieldsNode = root.path("fields");
+                if (!fieldsNode.isMissingNode()) {        // if "response" node is exist
+                    Article article = new Article(fieldsNode.path("headline").asText(), fieldsNode.path("bodyText").asText());
+                    articles.add(article);
+                }
 
-        String jsonSerializzato = gson.toJson(a2);
+            }
 
-        System.out.println(jsonSerializzato);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
+    }
+    public static void serializazion_JSON_file(String path, List<Article> articles){
+
+        // Serializzazione a partire dalla lista di Article
+        try{
+
+            // Creazione dell'ObjectMapper
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.enable(SerializationFeature.INDENT_OUTPUT); // serve per formattare tutto bene con gli spazi
+
+            // Serializzazione della lista di articoli in un file JSON
+            objectMapper.writeValue(new File("D:\\ingengeria software\\eis-final\\database\\fileSerializzato.json"), articles);
+
+            // Serializzazione della lista di articoli in una stringa JSON
+            String stringaJson = objectMapper.writeValueAsString(articles);
+            System.out.println(stringaJson);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+    public static void deserializazion_JSON_folder(String path, List<Article> articles){
+
+        File folder = new File(path);
+        File[] files = folder.listFiles();
+
+        if (files != null) {
+            for (File file : files) {
+                if (file.isFile() && file.getName().endsWith(".json")) {
+                    deserializazion_JSON_file(file, articles);
+                }
+            }
+        }
 
     }
 
 }
+
+
+
+
+
+
+
+
+
