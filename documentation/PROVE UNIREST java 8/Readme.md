@@ -1,4 +1,8 @@
-# HOW TO
+# COSA USARE
+* com.mashape.unirest, quello del client di github, è deprecato
+* kong.unirest invece e' abbastanza buono, sicuramente piu' aggiornato, userei quello a meno che non vogliamo fare i fighi con okhttp
+
+## HOW TO
 https://www.baeldung.com/jackson-object-mapper-tutorial
 - We're passing headers and parameters with the header() and fields() APIs.
 - And the request gets invoked on the asJson() method call; we also have other options here, such as asBinary(), asString() and asObject().
@@ -12,7 +16,7 @@ https://www.baeldung.com/jackson-object-mapper-tutorial
   jsonResponse.getBody();
   jsonResponse.getRawBody();
 - Unirest.shutdown();
-# Usare Object Mapper
+## Usare Object Mapper
 - In order to use the asObject() or body() in the request, we need to define our object mapper. For simplicity, we'll use the Jackson object mapper. 
 In pratica mappiamo la risposta in un oggetto. Now let's configure our mapper:
 ```java

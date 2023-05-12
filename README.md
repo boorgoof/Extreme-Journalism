@@ -11,6 +11,7 @@ Repository of the final project of "Elementi di Ingegneria del Software"
 ## TODO
 * Mappa perche' fa il null
 * Serializzazione di JSON e CSV
+* Guardare il maven site plugin https://maven.apache.org/plugins/maven-site-plugin/
 
 ## SPIEGAZIONE DI CLASSNOTFOUNDEXCEPTION
 Maven resolves dependencies when building your project, but doesn't put all the dependencies magically in your jar. 
@@ -50,6 +51,7 @@ Some plugins to solve the problem:
 </plugin>
 ```
 * maven dependency plugin: ci permette di mettere i jar delle dipendenze in un jar a parte, e di collegarlo a quello del nostro progetto tramite una configurazione del classpath:
+  Il problema consiste nel fatto che le dipendenze in questo modo sarebbero separate.
 ```xml
 <plugin>
     <groupId>org.apache.maven.plugins</groupId>
@@ -111,23 +113,3 @@ Some plugins to solve the problem:
   First, <shadedArtifactAttached> marks all dependencies to be packaged into the jar.
   Second, we need to specify the transformer implementation; we used the standard one in our example.
   Finally, we need to specify the main class of our application.
-* spring boot maven plugin: 
-```xml
-<plugin>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-maven-plugin</artifactId>
-    <executions>
-        <execution>
-            <goals>
-                <goal>repackage</goal>
-            </goals>
-            <configuration>
-                <classifier>spring-boot</classifier>
-                <mainClass>
-                  com.baeldung.executable.ExecutableMavenJar
-                </mainClass>
-            </configuration>
-        </execution>
-    </executions>
-</plugin>
-```

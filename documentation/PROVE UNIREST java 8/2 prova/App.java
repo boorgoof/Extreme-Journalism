@@ -15,7 +15,7 @@ public class App
 {
     public static void main( String[] args ) throws UnirestException, IOException {
         Map<String, Object> fields = new HashMap<>();
-        fields.put("api-key", "21b5c154-934c-4a4e-b2f5-64adbd68af5f");
+        fields.put("api-key", "............");
         fields.put("page-size", "4");
 
         // Si puo' usare queryString("apiKey", "afaqojfva") oppure fields(fields).
