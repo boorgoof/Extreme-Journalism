@@ -28,14 +28,7 @@ public class App
 
             JsonNode responseNode = rootNode.path("response");
 
-            /* prova
-            if (!responseNode.isMissingNode()) {        // if "response" node is exist
-                System.out.println("status : " + responseNode.path("status").asText());
-            }
-            */
-
             JsonNode ResponseArray = responseNode.path("results");
-
             for (JsonNode root : ResponseArray) {
 
                 JsonNode fieldsNode = root.path("fields");
@@ -51,9 +44,9 @@ public class App
         }
 
     }
+    // Serializzazione a partire dalla lista di Article
     public static void serializazion_JSON_file(String path, List<Article> articles){
 
-        // Serializzazione a partire dalla lista di Article
         try{
 
             // Creazione dell'ObjectMapper
