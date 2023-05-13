@@ -5,6 +5,9 @@ componente di elaborazione (filtro) sia discreto e svolga un particolare
 tipo di trasformazione dei dati. I dati fluiscono, come in un
 tubo (pipe), da un componente all’altro per essere elaborati.
 
+Bisogna vedere se bisogna fare tutti i diagrammi UML per tutti i modelli (contestuali, di interazione, strutturali, comportamentali).
+Guarda slide/libro per farli bene.
+
 ## SUDDIVISIONE DI BASE (vedere anche diagramma UML Schema_progetto)
 
 ### Richeste HTTP al theGuardian
@@ -18,12 +21,16 @@ L'output è un insieme di file JSON (5 come minimo per 1000 articoli, ma si poss
 Dopo averli scaricati dal theGuardian o presi da dei file in database, vengono convertiti in un file XML unico con questa struttura:
 ```xml
 <article>
-    <title>
-    </title>
-    <body>
-    </body>
+  <id></id>
+  <title></title>
+  <body></body>
 </article>
 ```
+Il prof ha detto di mettere dentro anche altre cose comuni, come:
+- url
+- data
+- sezione
+- testata
 
 ### Deserializzatore da formato comune e ricerca termini
 
