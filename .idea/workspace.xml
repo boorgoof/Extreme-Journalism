@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Ho risolto il problema con Java 8, quindi possiamo usare quello">
+    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Fixes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/documentation/PROVE UNIREST java 8/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/PROVE UNIREST java 8/Readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/Requisiti.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/Requisiti.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +41,7 @@
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;jsonprova&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev__visox&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/ingengeria software/eis-final&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
@@ -134,7 +135,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683832354386</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Fixes">
+      <created>1683900317062</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1683900317062</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -153,6 +161,7 @@
     <MESSAGE value="Aggiunta analisi dei requisiti" />
     <MESSAGE value="Fixed something" />
     <MESSAGE value="Messo qualche test" />
-    <option name="LAST_COMMIT_MESSAGE" value="Messo qualche test" />
+    <MESSAGE value="Fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixes" />
   </component>
 </project>
