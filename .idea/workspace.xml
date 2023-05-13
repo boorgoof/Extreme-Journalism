@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Fixes">
+    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Strutturato meglio">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/PROVE UNIREST java 8/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/PROVE UNIREST java 8/Readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/Progettazione architetturale.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/Progettazione architetturale.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/Progettazione.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/Progettazione.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/documentation/Requisiti.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/Requisiti.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,6 +24,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="jsonprova" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -55,7 +61,7 @@
       <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final" />
     </key>
   </component>
-  <component name="RunManager" selected="JAR Application.Extreme_journalism-1.0-SNAPSHOT-jar-with-dependencies.jar">
+  <component name="RunManager" selected="Application.App">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.App" />
       <module name="Extreme_journalism" />

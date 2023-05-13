@@ -28,7 +28,7 @@ al numero di articoli in cui appare. Se ci sono pareggi, viene usato l'ordine al
 ## Sorgenti
 - File CSV o JSON già scaricati
 - File del TheGuardianAPI (per vedere esempi usa Postman)
-- ALTRE SORGENTI
+- ALTRE SORGENTI (potremmo usare la riflessione in qualche modo)
 
 ## Database
 - File in formato comune (XML)
