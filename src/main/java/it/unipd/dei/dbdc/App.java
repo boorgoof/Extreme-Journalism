@@ -16,8 +16,9 @@ public class App
     {
         List<Article> articles = new ArrayList<>();
         String path_folder = ".\\database\\the_guardian";
+        String path_serialized_file = ".\\database\\fileSerializzato.json";
         deserializazion_JSON_folder(path_folder,articles);
-        serializazion_JSON_file(path_folder, articles);
+        serializazion_JSON_file(path_serialized_file, articles);
     }
     public static void deserializazion_JSON_file(File file, List<Article> articles){
 
@@ -54,7 +55,7 @@ public class App
             objectMapper.enable(SerializationFeature.INDENT_OUTPUT); // serve per formattare tutto bene con gli spazi
 
             // Serializzazione della lista di articoli in un file JSON
-            objectMapper.writeValue(new File(".\\database\\fileSerializzato.json"), articles);
+            objectMapper.writeValue(new File(path), articles);
 
             // Serializzazione della lista di articoli in una stringa JSON
             String stringaJson = objectMapper.writeValueAsString(articles);
