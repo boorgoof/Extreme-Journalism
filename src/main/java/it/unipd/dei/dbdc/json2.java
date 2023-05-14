@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-// da completare con i campi aggiuntivi. E' buono forse l'altro è più efficace.
+// da completare con i campi aggiuntivi (ossia id, date, source). E' buono ma forse json1 lo reputo migliore.
 public class json2 {
     public static void main(String[] args) {
 
