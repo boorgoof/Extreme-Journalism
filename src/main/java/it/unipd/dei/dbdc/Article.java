@@ -2,26 +2,36 @@ package it.unipd.dei.dbdc;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.opencsv.bean.CsvBindByName;
 
 
-// jsonProperties ora non servono piu con jsonNode. devo vedere quale è il modo migliore
-@JsonIgnoreProperties(ignoreUnknown = true) // oppure potevo fare quando creo il mio oggetto:   objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true); // è essenziale per ignorare i campi aggiuntivi
+// jsonProperties ora non servono piu con jsonNode ( perche uso jsonNode)
+// se voglamo usarle dobbiamo vedere come fare in modo efficacie.
 public class Article {
-
-    private String ID;
-    private String URL;
-    @JsonProperty("headLine")
+    @CsvBindByName(column = "Identifier")
+    //@CsvBindByPosition(position = 0)
+    private String id;
+    @CsvBindByName(column = "URL")
+    //@CsvBindByPosition(position = 1)
+    private String url;
+    @CsvBindByName(column = "Title")
+    //@CsvBindByPosition(position = 2)
     private String title;
-    @JsonProperty("bodyText")  // @JsonAlias({"bodyText", "main"}) sono due possibili tag che ci vanno bene , se ci sono entrambi prende il primo ignora il secondo. devo importare import com.fasterxml.jackson.annotation.JsonAlias;
+    @CsvBindByName(column = "Body")
+    //@CsvBindByPosition(position = 3)
     private String body;
+    @CsvBindByName(column = "Date")
+    //@CsvBindByPosition(position = 4)
     private String Date;
+    @CsvBindByName(column = "Source Set")
+    //@CsvBindByPosition(position = 5)
     private String Source;
 
-    public Article(String ID, String URL, String title, String body, String date, String source) {
-        this.ID = ID;
-        this.URL = URL;
-        this.title = title;
-        this.body = body;
+    public Article(String ID, String URL, String headline, String bodyText, String date, String source) {
+        id = ID;
+        url = URL;
+        title = headline;
+        body = bodyText;
         Date = date;
         Source = source;
     }
@@ -29,17 +39,17 @@ public class Article {
     public Article() {
     }
 
-    public Article(String title, String body) {
-        this.title = title;
-        this.body = body;
+    public Article(String headline, String bodyText) {
+        title = headline;
+        body = bodyText;
     }
 
     public String getID() {
-        return ID;
+        return id;
     }
 
     public String getURL() {
-        return URL;
+        return url;
     }
 
     public String getTitle() {
@@ -59,19 +69,19 @@ public class Article {
     }
 
     public void setID(String ID) {
-        this.ID = ID;
+        id = ID;
     }
 
     public void setURL(String URL) {
-        this.URL = URL;
+        url = URL;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTitle(String headline) {
+        title = headline;
     }
 
-    public void setBody(String body) {
-        this.body = body;
+    public void setBody(String bodyText) {
+        body = bodyText;
     }
 
     public void setDate(String date) {
@@ -85,8 +95,8 @@ public class Article {
     @Override
     public String toString() {
         return "Article{" +
-                "ID='" + ID + '\'' +
-                ", URL='" + URL + '\'' +
+                "ID='" + id + '\'' +
+                ", URL='" + url + '\'' +
                 ", title='" + title + '\'' +
                 ", body='" + body + '\'' +
                 ", Date='" + Date + '\'' +
@@ -94,3 +104,4 @@ public class Article {
                 '}';
     }
 }
+
