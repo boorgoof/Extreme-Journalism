@@ -1,11 +1,12 @@
-# COSA USARE
-* com.mashape.unirest, quello del client di github, è deprecato
-* kong.unirest invece e' abbastanza buono, sicuramente piu' aggiornato, userei quello a meno che non vogliamo fare i fighi con okhttp
-* okhttp
-* apache http components
-* retrofit
+# VALUTAZIONE TOTALE DELLE ALTERNATIVE
+1. **com.mashape.unirest**, quello presente anche in matarrese-github, non è aggiornato e su maven central repository
+   dicono abbia addirittura 51 vulnerabilità
+2. **kong.unirest** invece è abbastanza buono, sicuramente piu' aggiornato, e contiene un object mapper di default per JSON (basato su GSON)
+3. **Okhttp** non possiede un convertitore da JSON a object nativo e inoltre per convertire dovremmo prima trasformare in stringa
+   e poi usare un jackson object mapper (o altri simili)
+4. **Apache Http Components** (non l'ho ancora guardato, ma non ha molto senso)
 
-## JACKSONO OBJECT MAPPER (usabile per kong)
+## UNIREST KONG
 https://www.baeldung.com/jackson-object-mapper-tutorial
 - We're passing headers and parameters with the header() and fields() APIs.
 - And the request gets invoked on the asJson() method call; we also have other options here, such as asBinary(), asString() and asObject().
@@ -20,9 +21,10 @@ https://www.baeldung.com/jackson-object-mapper-tutorial
   jsonResponse.getRawBody();
 - Unirest.shutdown();
 
-## Usare Object Mapper (mashape e kong)
+## Usare Object Mapper (KONG con l'aiuto di Jackson object mapper)
 - In order to use the asObject() or body() in the request, we need to define our object mapper. For simplicity, we'll use the Jackson object mapper. 
-In pratica mappiamo la risposta in un oggetto. Now let's configure our mapper:
+  Note that setObjectMapper() should only be called once, for setting the mapper; once the mapper instance is set, it will be used for all request and responses.
+  Now let's configure our mapper:
 ```java
 Unirest.setObjectMapper(new ObjectMapper() 
 {
@@ -41,22 +43,20 @@ Unirest.setObjectMapper(new ObjectMapper()
 
   });
 ```
-Note that setObjectMapper() should only be called once, for setting the mapper; once the mapper instance is set, it will be used for all request and responses.
-
-- serializing a Java object into JSON using the writeValue method
+- serializing a Java object into JSON using the writeValue method.
+  The methods writeValueAsString and writeValueAsBytes of ObjectMapper class generate a JSON from a Java object and return the generated JSON as a string or as a byte array
 ```java
 ObjectMapper objectMapper = new ObjectMapper();
 Car car = new Car("yellow", "renault");
 objectMapper.writeValue(new File("target/car.json"), car);
 ```
-The methods writeValueAsString and writeValueAsBytes of ObjectMapper class generate a JSON from a Java object and return the generated JSON as a string or as a byte array
 
-- converting a JSON String to a Java object
+- converting a JSON String to a Java object.
+  The readValue() function also accepts other forms of input, such as a file containing JSON string (.json)
 ```java
 String json = "{ \"color\" : \"Black\", \"type\" : \"BMW\" }";
-        Car car = objectMapper.readValue(json, Car.class);
+Car car = objectMapper.readValue(json, Car.class);
 ```
-The readValue() function also accepts other forms of input, such as a file containing JSON string (.json)
 
 - Another essential feature of the ObjectMapper class is the ability to register a custom serializer and deserializer.
 Custom serializers and deserializers are very useful in situations where the input or the output JSON response is different in structure than the Java class into which it must be serialized or deserialized.
