@@ -7,9 +7,7 @@
     <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Messo qualche test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/fileSerializzato.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/fileSerializzato.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/fileSerializzato2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/database/fileSerializzato2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/fileSerializzato3.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/fileSerializzato3.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Article.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/xml0.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/xml0.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

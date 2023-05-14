@@ -55,7 +55,7 @@ public class xml0 {
     public static void main(String[] args) {
 
         //xml
-        List<Article> articles = deserializeFromXML("D:\\ingengeria software\\eis-final\\database\\fileSerializzato.xml");
+        List<Article> articles = deserializeFromXML(".\\database\\fileSerializzato2.xml");
 
         for(Article article : articles ){
 
