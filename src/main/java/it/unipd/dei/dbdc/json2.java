@@ -9,7 +9,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-// da completare con i campi aggiuntivi (ossia id, date, source). E' buono ma forse json1 lo reputo migliore.
+// Da completare con i campi aggiuntivi (ossia id, date, source).
+// E' buono ma forse json1 lo reputo migliore.
 public class json2 {
     public static void main(String[] args) {
 
@@ -20,7 +21,7 @@ public class json2 {
         String path_serialized_file = ".\\database\\fileSerializzato.json";
 
         deserialization_JSON_folder(path_folder,articles);
-        serializazion_JSON_file(path_serialized_file, articles);
+        serialization_JSON_file(path_serialized_file, articles);
 
     }
     public static void deserialization_JSON_folder(String path, List<Article> articles){
@@ -75,7 +76,7 @@ public class json2 {
             }
         }
     }
-    public static void serializazion_JSON_file(String path, List<Article> articles){
+    public static void serialization_JSON_file(String path, List<Article> articles){
 
         try{
 

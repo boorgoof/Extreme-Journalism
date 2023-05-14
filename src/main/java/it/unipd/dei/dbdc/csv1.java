@@ -10,15 +10,36 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-// deserializzazione csv
-// questa è con apache.commons per me non è male. Si puo specificare l'header Tutto tranquillo. unica cosa è che non si usa jackson, ma non credo bisogna fare tutto unico
+// Deserializzazione csv
+// Questa è con apache.commons per me non è male.
+// Si puo specificare l'header Tutto tranquillo. U
+// nica cosa è che non si usa jackson, ma non credo bisogna fare tutto unico.
 
-// metto sempre una funzione per serializzare per verificare il tutto
+// Metto sempre una funzione per serializzare per verificare il tutto
 
-//RICORDA: si puo fare anche in jakson a me non va non so il porchè.
-//ilnk che puo servire https://www.baeldung.com/java-converting-json-to-csv
+// RICORDA: si puo fare anche in jackson a me non va non so il perchè.
+// Link che puo servire https://www.baeldung.com/java-converting-json-to-csv
 public class csv1 {
 
+    // Example usage
+    public static void main(String[] args) {
+        String filename = ".\\database\\csv\\nytimes_articles_v2.csv";
+
+        try {
+
+            List<Article> articles = deserializeCSV(filename, CSVcustomHeaders);
+            for (Article article : articles) {
+                System.out.println(article);
+            }
+
+            serializeToXML(".\\database\\fileSerializzato2.xml", articles);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
     public final static String[] CSVcustomHeaders = {"Identifier","URL","Title","Body","Date","Source Set","Source"}; // Custom header names
     public static List<Article> deserializeCSV(String filename, String[] headers) throws IOException {
         List<Article> articles = new ArrayList<>();
@@ -55,25 +76,6 @@ public class csv1 {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-    // Example usage
-    public static void main(String[] args) {
-        String filename = ".\\database\\csv\\nytimes_articles_v2.csv";
-
-        try {
-
-            List<Article> articles = deserializeCSV(filename, CSVcustomHeaders);
-            for (Article article : articles) {
-                System.out.println(article);
-            }
-
-            serializeToXML(".\\database\\fileSerializzato2.xml", articles);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
     }
 
 }

@@ -12,13 +12,20 @@ import java.io.*;
 import java.util.List;
 
 
-// questa è con CSV open. unica cosa è che l'header lo specico nella classe. E' meglio? peggio? non saprei. forse ci sta specificarlo come costanti nel programma cosi la classe article è protetta? da vedere
-// questo sistema che si specifica sulla classe esiste anche per json ( ma funziona per json semplici) in caso da vedere.
+// Questa è con CSV open.
+// Unica cosa è che l'header lo specifico nella classe.
+// E' meglio? peggio? non saprei.
+// Forse ci sta specificarlo come costanti nel programma cosi la classe article è protetta? Da vedere
+// Questo sistema che si specifica sulla classe esiste anche per json (ma funziona per json semplici) in caso da vedere.
 
-// PEPLESSITA: l'header puo cambiare tra i file, come faccio a comprenderli entrambi. Ad esempio nella prima rica di nytimes_articles_v1.csv c'è come colloa "fullText", in nytimes_articles_v2.csv c'è invece body.
-// stessa roba in csv1, anche se è più gestibile con qualche controllo perche è piu semplice selezionare le parole dell'header.
+// PEPLESSITA: l'header puo cambiare tra i file, come faccio a comprenderli entrambi.
+// Ad esempio nella prima riga di nytimes_articles_v1.csv c'è come colonna "fullText", in nytimes_articles_v2.csv c'è invece body.
+// Stessa roba in csv1, anche se è più gestibile con qualche controllo perche' è piu semplice selezionare le parole dell'header.
 
-// manca il serializzatore csv ma non credo serva in caso bisogna farlo.
+// FRANCESCO: secondo me bisogna pensare a una cosa dove selezioniamo le parole dell'header (o le mettiamo come campi pubblici
+// bene in evidenza), in modo che sia facile passare da una cosa all'altra.
+
+// Manca il serializzatore csv ma non credo serva in caso bisogna farlo.
 public class csv0 {
     public static void main( String[] args ) {
 
@@ -28,6 +35,7 @@ public class csv0 {
         List<Article> articles;
         try {
 
+            // Ma basta questa riga per deserializzare?
             articles = new CsvToBeanBuilder(new FileReader(fileName)).withType(Article.class).build().parse();
 
             articles.forEach(System.out::println);
@@ -36,11 +44,11 @@ public class csv0 {
             throw new RuntimeException(e);
         }
 
-        serializazion_JSON_file(path_serialized_file, articles);
+        serialization_JSON_file(path_serialized_file, articles);
     }
 
 
-    public static void serializazion_JSON_file(String path, List<Article> articles){
+    public static void serialization_JSON_file(String path, List<Article> articles){
 
         try{
 

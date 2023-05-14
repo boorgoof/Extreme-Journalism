@@ -17,6 +17,18 @@ import java.util.List;
 
 public class xml0 {
 
+    public static void main(String[] args) {
+
+        //xml
+        List<Article> articles = deserializeFromXML(".\\database\\fileSerializzato2.xml");
+
+        for(Article article : articles ){
+
+            System.out.println(article.toString());
+        }
+
+    }
+
     // funziona perchè non è una merdina annidata ma sono articoli uno dopo l'altro (altrimenti devo vedere altre soluzioni più complesse)
     // questa è una soluzione che esiste anche per json ( sarebbe file json0)
     public static List<Article> deserializeFromXML(String path) {
@@ -50,18 +62,6 @@ public class xml0 {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public static void main(String[] args) {
-
-        //xml
-        List<Article> articles = deserializeFromXML(".\\database\\fileSerializzato2.xml");
-
-        for(Article article : articles ){
-
-            System.out.println(article.toString());
-        }
-
     }
 
 }

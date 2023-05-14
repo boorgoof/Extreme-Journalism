@@ -5,15 +5,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
 
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-// soluzione che preferisco. trovo i nodi genitori e poi prendo i campi che mi interessano con i nodi genitori
+// Soluzione che preferisco.
+// Trovo i nodi genitori e poi prendo i campi che mi interessano con i nodi genitori.
 
 
 public class json1 {
@@ -31,14 +29,13 @@ public class json1 {
 
         String path_folder = ".\\database\\prova_guardian";
         String path_serialized_json = ".\\database\\fileSerializzato.json";
-        String path_serialized_xml = ".\\database\\fileSerializzato.xml";
 
-        deserializazion_JSON_folder(path_folder,articles);
-        serializazion_JSON_file(path_serialized_json, articles);
+        deserialization_JSON_folder(path_folder,articles);
+        serialization_JSON_file(path_serialized_json, articles);
 
     }
 
-    public static void deserializazion_JSON_folder(String path, List<Article> articles){
+    public static void deserialization_JSON_folder(String path, List<Article> articles){
 
         File folder = new File(path);
         File[] files = folder.listFiles();
@@ -46,20 +43,21 @@ public class json1 {
         if (files != null) {
             for (File file : files) {
                 if (file.isFile() && file.getName().endsWith(".json")) {
-                    deserializazion_JSON_file(file, articles);
+                    deserialization_JSON_file(file, articles);
                 }
             }
         }
 
     }
-    public static void deserializazion_JSON_file(File jsonFile, List<Article> articles){
+    public static void deserialization_JSON_file(File jsonFile, List<Article> articles){
 
         try {
 
+            // TODO: spostarlo fuori da qui (vedi App.java)
             ObjectMapper mapper = new ObjectMapper();
             JsonNode jsonNode = mapper.readTree(jsonFile);
 
-
+            // Trova tutti i nodi che hanno ID dentro (come figlio, quindi sono gli articoli)
             List<JsonNode> ArticleParentNodes = jsonNode.findParents(ID);
 
             for (JsonNode ParentNode : ArticleParentNodes) {
@@ -76,7 +74,7 @@ public class json1 {
         }
     }
 
-    public static void serializazion_JSON_file(String path, List<Article> articles){
+    public static void serialization_JSON_file(String path, List<Article> articles){
 
         try{
 
@@ -100,30 +98,31 @@ public class json1 {
 }
 
 
-// modo di scrivere forse un pochino più sistetico, non saprei cosa è meglio.
+// Modo di scrivere forse un pochino più sintetico, non saprei cosa è meglio.
 // Sapete se esiste un modo per fare un costruttore con tutti i campi di un array?
 /*
     public static final String[] fields = {"id", "webUrl", "headline", "bodyText", "firstPublicationDate", "publication" };
 
-    public static void deserializazion_JSON_file(File jsonFile, List<Article> articles){
+    public static void deserialization_JSON_file(File jsonFile, List<Article> articles) {
 
         try {
 
             ObjectMapper mapper = new ObjectMapper();
             JsonNode jsonNode = mapper.readTree(jsonFile);
 
-
+            // Trovo ogni nodo che ha id come campo
             List<JsonNode> ArticleParentNodes = jsonNode.findParents(fields[0]);
 
             for (JsonNode ParentNode : ArticleParentNodes) {
 
                 String[] fieldsFound = new String[fields.length];
 
+                // Metto dentro a un vettore tutti quelli trovati.
                 for(int i = 0; i < fields.length; i++){
                     fieldsFound[i] = ParentNode.findValue(fields[i]).asText();
                 }
 
-                // per voi è meglio con le costanti o cosi con il vettore?
+                // Per voi è meglio con le costanti o cosi con il vettore?
 
                 Article article = new Article(fieldsFound[0], fieldsFound[1], fieldsFound[2], fieldsFound[3], fieldsFound[4], fieldsFound[5]);
                 articles.add(article);

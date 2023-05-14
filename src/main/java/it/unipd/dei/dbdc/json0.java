@@ -10,10 +10,19 @@ import java.util.List;
 
 // funziona solo per i json semplici, non annidati
 // l'ho messo solo a scopo didattico
-// attumelte xml0 è uguale a questo ma per gli xml
+// attualmente xml0 è uguale a questo ma per gli xml
 // json1 è quello migliore mio parere
 public class json0 {
+    public static void main(String[] args) {
 
+        // Deserializzo il file
+        List<Article> articles2 = deserializeFromJSON(".\\database\\fileSerializzato.json");
+
+        for(Article article : articles2 ){
+
+            System.out.println(article.toString());
+        }
+    }
     public static List<Article> deserializeFromJSON(String path) {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
@@ -26,14 +35,5 @@ public class json0 {
 
         return Collections.emptyList(); // In caso di errore, restituisce una lista vuota
     }
-    public static void main(String[] args) {
 
-        //json
-        List<Article> articles2 = deserializeFromJSON("D:\\ingengeria software\\eis-final\\database\\fileSerializzato.json");
-
-        for(Article article : articles2 ){
-
-            System.out.println(article.toString());
-        }
-    }
 }
