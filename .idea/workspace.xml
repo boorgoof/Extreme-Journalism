@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Commentato" />
+    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Commentato">
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/ALTERNATIVE_DI_COMPONENTI/PROVE_UNIREST_java8/UrlHTTPConnectionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/ALTERNATIVE_DI_COMPONENTI/PROVE_UNIREST_java8/OkHttp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/ALTERNATIVE_DI_COMPONENTI/PROVE_UNIREST_java8/OkHttp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/ALTERNATIVE_DI_COMPONENTI/PROVE_UNIREST_java8/Valutazione finale.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/ALTERNATIVE_DI_COMPONENTI/PROVE_UNIREST_java8/Valutazione finale.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,7 +42,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "jsonprova",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "D:/ingengeria software/eis-final",
     "project.structure.last.edited": "Project",
@@ -52,7 +57,7 @@
       <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.main">
+  <component name="RunManager">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.App" />
       <module name="Extreme_journalism" />

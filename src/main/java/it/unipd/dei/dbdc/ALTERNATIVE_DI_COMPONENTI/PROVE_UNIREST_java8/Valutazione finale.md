@@ -4,7 +4,8 @@
 2. **kong.unirest** invece è abbastanza buono, sicuramente piu' aggiornato, e contiene un object mapper di default per JSON (basato su GSON)
 3. **Okhttp** non possiede un convertitore da JSON a object nativo e inoltre per convertire dovremmo prima trasformare in stringa
    e poi usare un jackson object mapper (o altri simili)
-4. **Apache Http Components** (non l'ho ancora guardato, ma non ha molto senso)
+4. UrlHttpConnection: il vantaggio è che è tutto nativo, quindi in caso ci fossero buchi nelle librerie non sarebbe un problema. 
+   Allo stesso tempo però è molto a basso livello, e come okhttp non permette di mettere già tutto in un file.
 
 ## UNIREST KONG
 https://www.baeldung.com/jackson-object-mapper-tutorial

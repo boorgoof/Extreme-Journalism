@@ -104,7 +104,7 @@ public class OkHttp {
         // RISPOSTA:
         // we need to extract the JSON from the result of the service call. For this, we can access the body via the body() method of the Response object.
         // The ResponseBody class has several options for extracting this data:
-        //string(): returns the whole response body as a String; manages the encoding the same as charStream(), but if we need a different encoding, we can use source().readString(charset) instead
+        // string(): returns the whole response body as a String; manages the encoding the same as charStream(), but if we need a different encoding, we can use source().readString(charset) instead
 
         // A questo punto, avendo una stringa, possiamo usare Jackson, con readValue della stringa
 
