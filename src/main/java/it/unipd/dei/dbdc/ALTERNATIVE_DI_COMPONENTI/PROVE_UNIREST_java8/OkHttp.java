@@ -26,7 +26,7 @@ public class OkHttp {
         // To add query parameters to our GET request, we can take advantage of the HttpUrl.Builder, e crearlo prima per poi passarlo alla richiesta
         HttpUrl.Builder urlBuilder = HttpUrl.parse("https://content.guardianapis.com" + "/search").newBuilder();
         urlBuilder.addQueryParameter("page-size", "1");
-        urlBuilder.addQueryParameter("api-key", "21b5c154-934c-4a4e-b2f5-64adbd68af5f");
+        urlBuilder.addQueryParameter("api-key", ".............................");
 
         String url = urlBuilder.build().toString();
 

@@ -4,27 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Commentato">
-      <change afterPath="$PROJECT_DIR$/database/file_kong.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/ALTERNATIVE_DI_COMPONENTI/PROVE_MAPPE/main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/fileSerializzato.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/fileSerializzato.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/ALTERNATIVE DI COMPONENTI/PROVE HTTPCLIENT java 11/HttpClientTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/ALTERNATIVE_DI_COMPONENTI/PROVE_HTTPCLIENT_java11/HttpClientTester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/ALTERNATIVE DI COMPONENTI/PROVE MAPPE/MyMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/ALTERNATIVE_DI_COMPONENTI/PROVE_MAPPE/MyMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/ALTERNATIVE DI COMPONENTI/PROVE MAPPE/MyPriorityQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/ALTERNATIVE_DI_COMPONENTI/PROVE_MAPPE/MyPriorityQueue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/ALTERNATIVE DI COMPONENTI/PROVE MAPPE/main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/ALTERNATIVE DI COMPONENTI/PROVE UNIREST java 8/Kong.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/ALTERNATIVE_DI_COMPONENTI/PROVE_UNIREST_java8/Kong.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/ALTERNATIVE DI COMPONENTI/PROVE UNIREST java 8/Mashape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/ALTERNATIVE_DI_COMPONENTI/PROVE_UNIREST_java8/Mashape.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/ALTERNATIVE DI COMPONENTI/PROVE UNIREST java 8/Matarrese-github/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/ALTERNATIVE_DI_COMPONENTI/PROVE_UNIREST_java8/Matarrese-github/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/ALTERNATIVE DI COMPONENTI/PROVE UNIREST java 8/Matarrese-github/GuardianContentApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/ALTERNATIVE_DI_COMPONENTI/PROVE_UNIREST_java8/Matarrese-github/GuardianContentApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/ALTERNATIVE DI COMPONENTI/PROVE UNIREST java 8/Matarrese-github/bean/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/ALTERNATIVE_DI_COMPONENTI/PROVE_UNIREST_java8/Matarrese-github/bean/Article.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/ALTERNATIVE DI COMPONENTI/PROVE UNIREST java 8/Matarrese-github/bean/Response.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/ALTERNATIVE_DI_COMPONENTI/PROVE_UNIREST_java8/Matarrese-github/bean/Response.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/ALTERNATIVE DI COMPONENTI/PROVE UNIREST java 8/Matarrese-github/bean/ResponseWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/ALTERNATIVE_DI_COMPONENTI/PROVE_UNIREST_java8/Matarrese-github/bean/ResponseWrapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/ALTERNATIVE DI COMPONENTI/PROVE UNIREST java 8/OkHttp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/ALTERNATIVE_DI_COMPONENTI/PROVE_UNIREST_java8/OkHttp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/ALTERNATIVE DI COMPONENTI/PROVE UNIREST java 8/RetrofitTry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/ALTERNATIVE_DI_COMPONENTI/PROVE_UNIREST_java8/RetrofitTry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/ALTERNATIVE DI COMPONENTI/PROVE UNIREST java 8/Valutazione finale.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/ALTERNATIVE_DI_COMPONENTI/PROVE_UNIREST_java8/Valutazione finale.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-    </list>
+    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Commentato" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,21 +31,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/ingengeria software/eis-final&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "jsonprova",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "D:/ingengeria software/eis-final",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\src\main\java\it\unipd\dei\dbdc" />
