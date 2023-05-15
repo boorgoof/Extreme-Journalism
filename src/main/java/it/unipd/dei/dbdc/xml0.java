@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
-// vedere l'originalità perche comunuque sono presi mezzi online
+// Vedere l'originalità perché comunque sono presi mezzi online
 
 public class xml0 {
 
@@ -29,8 +29,8 @@ public class xml0 {
 
     }
 
-    // funziona perchè non è una merdina annidata ma sono articoli uno dopo l'altro (altrimenti devo vedere altre soluzioni più complesse)
-    // questa è una soluzione che esiste anche per json ( sarebbe file json0)
+    // Funziona perché non è una merdina annidata ma sono articoli uno dopo l'altro (altrimenti devo vedere altre soluzioni più complesse).
+    // Questa è una soluzione che esiste anche per json (sarebbe file json0)
     public static List<Article> deserializeFromXML(String path) {
         try {
             XmlMapper xmlMapper = new XmlMapper();

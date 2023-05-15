@@ -35,7 +35,6 @@ public class csv0 {
         List<Article> articles;
         try {
 
-            // Ma basta questa riga per deserializzare?
             articles = new CsvToBeanBuilder(new FileReader(fileName)).withType(Article.class).build().parse();
 
             articles.forEach(System.out::println);
