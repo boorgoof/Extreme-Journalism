@@ -24,13 +24,14 @@ public class MyPriorityQueue {
     public static ArrayList<MyOtherEntry> getTop(String[] text)
     {
         TreeMap<String, Integer> mappona = new TreeMap<>();
+
         for (int i = 0; i < text.length; i++) {
             TreeMap<String, Integer> map = new TreeMap<>();
             Scanner sc = new Scanner(text[i]);
 
             // Bisogna mettere ++ perché così rileva i casi come spazio seguito da " o altre cose non alfanumeriche
             // TODO: ci sono problemi con le lettere singole: non contano come parole, eppure s e t sono nel risultato finale. Inoltre i numeri contano?
-            sc.useDelimiter("[^’'\\-a-zA-Z]+");
+            sc.useDelimiter("[^’'\\-a-zA-Z0-9]+");
             while (sc.hasNext()) {
                 String s = sc.next();
                 map.put(s.toLowerCase(), (Integer) 1);
@@ -44,6 +45,7 @@ public class MyPriorityQueue {
             }
             sc.close();
         }
+
         ArrayList<MyOtherEntry> max = new ArrayList<MyOtherEntry>(50);
         for (Map.Entry<String, Integer> el : mappona.entrySet()) {
             addOrdered(max, el);

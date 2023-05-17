@@ -41,7 +41,7 @@ public class main {
         for (int i = 0; i < 50; i++) 
         {
             Map.Entry<String, Integer> el = max2.get(i);
-            System.out.println("Numeoro "+i+ " : "+el.getValue() + " " + el.getKey());
+            System.out.println("Numero "+i+ " : "+el.getValue() + " " + el.getKey());
         }
         System.out.println("\nTotal computing time: " + (end - start));
     }

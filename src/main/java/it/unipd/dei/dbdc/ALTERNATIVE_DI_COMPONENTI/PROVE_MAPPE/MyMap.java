@@ -29,8 +29,8 @@ public class MyMap {
             TreeMap<String, Integer> map = new TreeMap<>();
             Scanner sc = new Scanner(text[i]);
 
-            // Bisogna mettere ++ perché così rileva i casi come spazio seguito da " o altre cose non alfanumeriche
-            sc.useDelimiter("[^’'\\-a-zA-Z]+");
+            // Bisogna mettere + perché così rileva i casi come spazio seguito da " o altre cose non alfanumeriche
+            sc.useDelimiter("[^’'\\-a-zA-Z0-9]+");
             while (sc.hasNext()) {
                 String s = sc.next();
                 map.put(s.toLowerCase(), 1);

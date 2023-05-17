@@ -14,7 +14,7 @@ public class Kong {
 
         // 2. Settare URL di default, per non doverlo specificare poi
         Unirest.config().defaultBaseUrl("https://content.guardianapis.com");
-        //Unirest.get("/search").asString();
+        // Unirest.get("/search").asString();
 
         // 3. followRedirects(true) che permette di essere reindirizzati. E' settato di default.
 
@@ -62,6 +62,7 @@ public class Kong {
         // Response to Object
         HttpResponse<MyResponse> response = Unirest.get("/search").queryString("api-key", ".................................")
                 .asObject(MyResponse.class);
+        // TODO: prova con annidati
 
         // In caso ci fossero problemi con il parsing, l'oggetto HTTPResponse conterrà un'eccezione da cui possiamo estrarre il body originale
         //UnirestParsingException ex = response.getParsingError().get();
