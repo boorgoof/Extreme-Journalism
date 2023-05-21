@@ -1,5 +1,6 @@
 package it.unipd.dei.dbdc;
 
+import it.unipd.dei.dbdc.METODI_DESERIALIZZAZIONE_SERIALIZZAZIONE_PROVE.Article;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
