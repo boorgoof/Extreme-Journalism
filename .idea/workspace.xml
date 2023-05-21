@@ -4,18 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Provo a mettere un gitignore">
-      <change afterPath="$PROJECT_DIR$/database/the_guardian/request1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/the_guardian/request2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/ALTERNATIVE_DI_COMPONENTI/Properties.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/APIFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/APIAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/APIAdapter.java" afterDir="false" />
+    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Iniziato le properties">
+      <change afterPath="$PROJECT_DIR$/api-key.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/APICaller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/APICaller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/DownloadHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/DownloadHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/APIFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/APIFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/GuardianAPICaller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/GuardianAPICaller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/KongAPIAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/KongAPIAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/QueryParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/QueryParams.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/UserInterface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -62,8 +56,8 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\src\main\java\it\unipd\dei\dbdc" />
       <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final" />
+      <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\src\main\java\it\unipd\dei\dbdc" />
     </key>
   </component>
   <component name="RunManager" selected="Application.App">
@@ -223,7 +217,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684499645325</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Iniziato le properties">
+      <created>1684661110516</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1684661110516</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -247,7 +248,8 @@
     <MESSAGE value="Cose" />
     <MESSAGE value="Inizio API" />
     <MESSAGE value="Provo a mettere un gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="Provo a mettere un gitignore" />
+    <MESSAGE value="Iniziato le properties" />
+    <option name="LAST_COMMIT_MESSAGE" value="Iniziato le properties" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -1,10 +1,8 @@
 package it.unipd.dei.dbdc.DownloadAPI;
 
-import java.nio.file.Path;
-
 public class DownloadHandler
 {
-    // Rappresenta l'API che voglio chiamare
+    // Rappresenta l'API che voglio chiamare. E' una sola.
     private APICaller caller;
 
     public DownloadHandler(APICaller a)
@@ -12,12 +10,11 @@ public class DownloadHandler
         caller = a;
     }
 
-    public void download()
+    public String download() throws IllegalArgumentException
     {
         if (caller == null) {
-            throw new IllegalStateException();
+            throw new IllegalArgumentException();
         }
-        String path = caller.callAPI();
-        // Chiama il SerializationHandler passandogli il Path dei file downloadati, o restituisce al main il path
+        return caller.callAPI();
     }
 }
