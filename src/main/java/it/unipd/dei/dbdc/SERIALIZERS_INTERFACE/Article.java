@@ -6,15 +6,10 @@ import java.io.Serializable;
 public class Article implements Serializable {
 
     private String id;
-
     private String url;
-
     private String title;
-
     private String body;
-
     private String Date;
-
     private String Source;
 
     public Article(String ID, String URL, String headline, String bodyText, String date, String source) {
