@@ -24,14 +24,11 @@ public class SerializationHandler {
         Serializer serializer = serializers.get(format);
 
         if (serializer == null) {
-            throw new UnsupportedOperationException("No serializer found for the specified format: " + format);
+            throw new IOException("No serializer found for the specified format: " + format);
         }
 
-        try {
-            serializer.serialize(objects, filePath);
-        } catch (Exception e) {
-            throw new IOException("Serialization failed for format: " + format, e);
-        }
+        serializer.serialize(objects, filePath);
+
     }
 
 }

@@ -27,7 +27,7 @@ public class SerializationHandler {
 
         Method serializeMethod = serializerMethods.get(format);
         if (serializeMethod == null) {
-            throw new UnsupportedOperationException("No serializer found for the specified format: " + format);
+            throw new IOException("No serializer found for the specified format: " + format);
         }
 
         try {

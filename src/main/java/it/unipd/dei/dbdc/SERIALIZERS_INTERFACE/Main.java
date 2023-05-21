@@ -41,7 +41,7 @@ public class Main {
             System.out.println("Serialization completed successfully!");
 
         } catch (IOException e) {
-            System.err.println("Serialization failed: " + e.getMessage());
+            System.err.println("Serialization failed: " +  e.getMessage());
         }
 
     }
