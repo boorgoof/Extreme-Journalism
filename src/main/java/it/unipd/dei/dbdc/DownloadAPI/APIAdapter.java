@@ -5,5 +5,6 @@ import java.util.List;
 
 public interface APIAdapter {
     // Questi sono quelli che interagiscono con le librerie ed effettuano le chiamate
-    Path sendRequest(String url, String paramString);
+    void sendRequest(String url, String path);
+    void endRequests();
 }

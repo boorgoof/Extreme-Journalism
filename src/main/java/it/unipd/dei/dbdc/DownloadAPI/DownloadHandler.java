@@ -17,7 +17,7 @@ public class DownloadHandler
         if (caller == null) {
             throw new IllegalStateException();
         }
-        Path p = caller.callAPI();
-        // Chiama il SerializationHandler passandogli il Path dei file downloadati
+        String path = caller.callAPI();
+        // Chiama il SerializationHandler passandogli il Path dei file downloadati, o restituisce al main il path
     }
 }

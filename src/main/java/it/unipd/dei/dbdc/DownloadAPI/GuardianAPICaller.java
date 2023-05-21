@@ -6,46 +6,132 @@ import java.util.List;
 
 public class GuardianAPICaller implements APICaller {
     // Questo caller ha le informazioni per ogni chiamata fatta al TheGuardian.
-    // Non è tuttavia la classe che fa la chiamata
     // ATTENZIONE: utilizziamo il Builder design pattern per le queries
     public final static String defaultURI = "https://content.guardianapis.com/search";
-    public final static String showFields = "bodyText,headline";
-    public final static String format = "json";
 
-    private final String apiKey;
-    private final ArrayList<QueryParams> params;
-    private final APIAdapter adapt;
+    public final static String folder_path = "./database/the_guardian/";
 
-    public GuardianAPICaller(APIAdapter a, String k) {
+    private final static String[] fields = {"number-of-articles", "format", "order-by", "show-fields", "q", "from-date", "to-date"};
+    private final static String[] mandatoryFields = {"api-key"};
+    private ArrayList<QueryParams> params;
+
+    private String apiKey;
+    private int pageSize;
+    private int pages;
+    private APIAdapter adapt;
+
+    public GuardianAPICaller() {
+        params = new ArrayList<>(0);
+        adapt = null;
+        apiKey = null;
+        pages = 1;
+        pageSize = 200;
+    }
+    public GuardianAPICaller(APIAdapter a) {
         adapt = a;
-        apiKey = k;
-        params = new ArrayList<>();
+        params = new ArrayList<>(0);
+        apiKey = null;
+        pages = 1;
+        pageSize = 200;
     }
 
-    // TODO: migliora la logica di questa cosa: dovresti potergli passare solo alcuni argomenti, e in base a quelli ti crea tutto
     public void addParam(QueryParams q) {
-        params.add(q);
+        if (!checkImportantParams(q))
+        {
+            if (checkParams(q)) {
+                params.add(q);
+                return;
+            }
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private boolean checkParams(QueryParams q)
+    {
+        String key = q.getKey();
+        // I primi 2 sono gia' controllati
+        for (int i = 2; i< fields.length; i++)
+        {
+            if (key.equals(fields[i]))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean checkImportantParams(QueryParams q)
+    {
+        if (q.getKey().equals("api-key"))
+        {
+            apiKey = q.getValue();
+            return true;
+        }
+        else if (q.getKey().equals("number-of-articles"))
+        {
+            int n = Integer.parseInt(q.getValue());
+            if (n < pageSize)
+            {
+                pageSize = n;
+            }
+            while (n > pageSize)
+            {
+                pages++;
+                n -= pageSize;
+            }
+            return true;
+        }
+        return false;
     }
 
     public void addParams(List<QueryParams> l)
     {
-        params.addAll(l);
+        for (QueryParams q : l)
+        {
+            addParam(q);
+        }
     }
 
     @Override
-    public Path callAPI() {
-        String par = queryString(params, apiKey);
-        return adapt.sendRequest(defaultURI, par);
+    public String callAPI() {
+        String[] requests = queryStrings();
+        for (int i = 0; i<requests.length; i++) {
+            adapt.sendRequest(requests[i], folder_path+"request"+(i+1)+".json");
+        }
+        adapt.endRequests();
+        return folder_path;
     }
 
-    private static String queryString(List<QueryParams> l, String apiKey)
+    public String getInfo()
     {
-        String res = "?" + "api-key=" + apiKey;
-        for (QueryParams el : l)
+        return "TheGuardianAPI";
+    }
+
+    public String possibleParams()
+    {
+        String tot = "";
+        for (String s : mandatoryFields)
         {
-            // Potrei aggiungere un controllo per i parametri passati
-            res += "&"+el.getKey()+"="+el.getValue();
+            tot += s + " MANDATORY\n";
         }
-        return res;
+        for (String s : fields)
+        {
+            tot += s + "\n";
+        }
+        return tot;
+    }
+
+    private String[] queryStrings()
+    {
+        String res = defaultURI + "?" + "api-key=" + apiKey;
+        for (QueryParams el : params)
+        {
+            res += "&" + el.getKey() + "=" + el.getValue();
+        }
+        String[] results = new String[pages];
+        for (int i = 0; i<pages; i++) {
+                results[i] = res + "&page-size=" + pageSize + "&page=" + (i+1);
+        }
+        return results;
     }
 }

@@ -14,10 +14,13 @@ public class KongAPIAdapter implements APIAdapter {
     {
         Unirest.config().enableCookieManagement(false);
     }
-    public Path sendRequest(String url, String paramString)
+    public void sendRequest(String url, String path)
     {
-        Unirest.config().defaultBaseUrl(url);
-        File result = Unirest.get(paramString).asFile("./database/file_kong.json").getBody();
-        return result.toPath();
+        Unirest.get(url).asFile(path);
+    }
+
+    public void endRequests()
+    {
+        Unirest.shutDown();
     }
 }

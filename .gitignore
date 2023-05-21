@@ -38,4 +38,4 @@ build/
 .DS_Store
 
 ## For the project ##
-api-key.txt
+api-key.properties
