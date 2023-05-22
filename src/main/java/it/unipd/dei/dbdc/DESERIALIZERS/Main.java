@@ -3,19 +3,25 @@ package it.unipd.dei.dbdc.DESERIALIZERS;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class Main {
 
     public static final String[] formats = {"json", "xml", "csv"};
-    public static final String[] jsonFields = {"id", "webUrl", "headline", "bodyText", "firstPublicationDate", "publication" };
-    public final static String[] CSVcustomHeaders = {"Identifier","URL","Title","Body","Date","Source Set","Source"}; // Custom header names
-    public static final String folderPath = ".\\database\\the_guardian";
+
+    public static final String filePath = "D:\\ingengeria software\\eis-final\\database\\databaseProva\\Serialized.json";
+    public static final String folderPath = ".\\database\\databaseProva";
 
     public static void main(String[] args) {
 
-        List<Article> articles = new ArrayList<>();
 
-        DeserializationHandler handler = new DeserializationHandler();
+
+        String[] jsonFields = {"id", "webUrl", "headline", "bodyText", "firstPublicationDate", "publication" };
+        String[] jsonFields2 = {"id", "url", "title", "body", "date", "source" };
+
+        String[] CSVHeaders = {"Identifier","URL","Title","Body","Date","Source Set","Source"};
+
+        DeserializationHandler<Article> handler = new DeserializationHandler<>();
 
 
         /*
@@ -26,38 +32,60 @@ public class Main {
         *  in quanto lo considero come la versione più "nuova"
         *
         */
-        handler.registerDeserializer("csv", new CsvDeserializer());
-        handler.registerDeserializer("json", new JsonDeserializer());
+        handler.registerDeserializer(formats[0], new JsonDeserializer(jsonFields2));
+        handler.registerDeserializer(formats[1], new XmlDeserializer());
+        handler.registerDeserializer(formats[2], new CsvDeserializer(CSVHeaders));
+        // usando deserializeFile adesso posso deserilizzare file json, xml, e csv. Se voglio altri formati mi basata aggiunngere ("registrare") un altro Deserializzatore
 
-
+        // PROVA: 1
+        // Deserializzo un file
+        System.out.println("Serializzazione file:");
+        List<Article> articles = new ArrayList<>();
         try {
 
-            List<Object> objects = new ArrayList<>();
-
-            objects = handler.deserializeFolder(formats[0], jsonFields, folderPath, objects);
+            articles = handler.deserializeFile(formats[0], filePath ); // basta indicare il formato e il path del file
             System.out.println("Serialization completed successfully!");
-
-            articles = convertList(objects);
 
         } catch (IOException e) {
             System.err.println("Serialization failed: " + e.getMessage());
         }
 
-    }
+        // PROVA: 2
+        // Deserializzo una cartella
+        System.out.println("Serializzazione cartella:");
+        List<Article> articles2 = new ArrayList<>();
+        try {
 
-    public static List<Article> convertList(List<Object> objects){
+            handler.deserializeFolder(formats[0], folderPath, articles2); // é sufficiente indicare il formato e il path della cartella
+            System.out.println("Serialization completed successfully!");
 
-        List<Article> articles = new ArrayList<>();
-
-        for (Object obj : objects) {
-            if (obj instanceof Article) {
-                Article article = (Article) obj;
-                System.out.println(article);
-                System.out.println("\n");
-                articles.add(article);
-            }
+        } catch (IOException e) {
+            System.err.println("Serialization failed: " + e.getMessage());
+            // se ci sono errori probabilmente è stato inserito un header sbagliato. oppure sono stati specificati male i campi del file json
+            // bisogna segnalare all'utente e dire di reinserire i campi
         }
 
-        return articles;
+        // QUESTO é QUELLO CHE FAREI NEL MAIN
+        System.out.println("Sono stati forniti i deserializzatori per i seguenti formati:");
+        Set<String> formatsAvailable = handler.getFormats();
+        for (String format : formatsAvailable) {
+            System.out.println(format);
+        }
+
+        System.out.println("Nel caso in cui ci fossero file di formato differente da questi elencati non verranno presi in considerazione");
+        List<Article> articles3 = new ArrayList<>();
+        try {
+
+            for (String format : formatsAvailable) {
+                handler.deserializeFolder(format, folderPath, articles3);
+            }
+
+        } catch (IOException e) {
+            System.err.println("Serialization failed: " + e.getMessage());
+            // se ci sono errori probabilmente è stato inserito un header sbagliato. oppure sono stati specificati male i campi del file JSON
+            // bisogna segnalare all'utente e dire di reinserire i campi
+        }
+
     }
+
 }

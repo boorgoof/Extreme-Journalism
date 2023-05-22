@@ -10,12 +10,25 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CsvDeserializer implements Deserializer{
+public class CsvDeserializer implements Deserializer<Article>{
 
+    private String[] fields;
+
+    public CsvDeserializer(String[] fields) {
+        this.fields = fields;
+    }
+
+    public String[] getFields() {
+        return fields;
+    }
+
+    public void setFields(String[] fields) {
+        this.fields = fields;
+    }
 
     @Override
-    public List<Object> deserialize(String[] fields, String filePath) throws IOException {
-        List<Object> objects = new ArrayList<>();
+    public List<Article> deserialize(String filePath) throws IOException {
+        List<Article> articles = new ArrayList<>();
 
         try (Reader reader = new FileReader(filePath)) {
 
@@ -34,13 +47,13 @@ public class CsvDeserializer implements Deserializer{
                 String source = record.get(fields[5]);
 
                 Article article = new Article(id, url, title, body, date, source);
-                objects.add(article);
+                articles.add(article);
             }
 
             parser.close();
         }
 
-        return objects;
+        return articles;
     }
 }
 

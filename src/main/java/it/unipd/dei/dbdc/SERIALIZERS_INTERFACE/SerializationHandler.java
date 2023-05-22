@@ -8,7 +8,7 @@ import java.util.Map;
 
 
 public class SerializationHandler {
-    private Map<String, Serializer> serializers; // intellij mi dice che lo vuole final non so il perchè in realtà secondo me non va final
+    private final Map<String, Serializer> serializers; // intellij mi dice che lo vuole final non so il perchè in realtà secondo me non va final
 
     public SerializationHandler() {
         serializers = new HashMap<>();
