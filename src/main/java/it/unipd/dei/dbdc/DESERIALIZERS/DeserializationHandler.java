@@ -22,7 +22,6 @@ public class DeserializationHandler<T> {
         deserializers.put(format, deserializer);
     }
 
-
     public List<T> deserializeFile(String format, String filePath) throws IOException {
 
         Deserializer<T> deserializer = deserializers.get(format);
