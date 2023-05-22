@@ -16,8 +16,8 @@ public class App
     public static void main( String[] args )
     {
         List<Article> articles = new ArrayList<>();
-        String path_folder = ".\\database\\the_guardian";
-        String path_serialized_file = ".\\database\\fileSerializzato.json";
+        String path_folder = "./database/the_guardian";
+        String path_serialized_file = "./database/fileSerializzato.json";
         deserialization_JSON_folder(path_folder,articles);
         serialization_JSON_file(path_serialized_file, articles);
     }

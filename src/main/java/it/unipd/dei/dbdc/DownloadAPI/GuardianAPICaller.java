@@ -14,10 +14,15 @@ public class GuardianAPICaller implements APICaller {
     // Location to put all the downloaded file
     public final static String folder_path = "./database/the_guardian/";
 
-    // TODO: spiega anche il default value, e magari anche questi in un properties
     // Possible fields, that are not mandatory. Some of them have a default value
-    private final static String[] fields = {"number-of-articles", "format", "order-by", "show-fields", "q", "from-date", "to-date"};
+    private final static QueryParam[] fields = {
+            new QueryParam("number-of-articles","The total number of articles to download. Values: 1-200 or multiples of 200. Default = 1000"),
+            new QueryParam("q", "The topic of the articles to search for."),
+            new QueryParam("order-by","The way the articles should be ordered (we take the first n in that order). Default = newest"),
+            new QueryParam("from-date", "The date to search from"),
+            new QueryParam("to-date", "The date to search to")};
 
+    private final static String utilityFields = "show-fields=bodyText,headline&format=json";
     // Mandatory fields
     private final static String mandatoryField = "api-key";
 
@@ -35,7 +40,8 @@ public class GuardianAPICaller implements APICaller {
         adapt = a;
         params = new ArrayList<>(0);
         apiKey = null;
-        pages = 1;
+        // Il numero di default di articoli da scaricare è 1000
+        pages = 5;
         pageSize = 200;
     }
 
@@ -49,9 +55,9 @@ public class GuardianAPICaller implements APICaller {
     public String possibleParams()
     {
         String tot = mandatoryField+" MANDATORY\n";
-        for (String s : fields)
+        for (QueryParam par : fields)
         {
-            tot += s + "\n";
+            tot += par.getKey() + "  " + par.getValue() + "\n";
         }
         return tot;
     }
@@ -65,6 +71,7 @@ public class GuardianAPICaller implements APICaller {
         }
     }
 
+    // NumberFormatException is a subclass of IllegalArgumentException
     public void addParam(QueryParam q) throws IllegalArgumentException
     {
         if (q.getKey().equals(mandatoryField))
@@ -80,16 +87,16 @@ public class GuardianAPICaller implements APICaller {
     }
 
     // This checks the parameters that are not mandatory
-    private boolean checkParams(QueryParam q)
+    private boolean checkParams(QueryParam q) throws NumberFormatException
     {
         String key = q.getKey();
         for (int i = 0; i< fields.length; i++)
         {
-            if (key.equals(fields[i]))
+            if (key.equals(fields[i].getKey()))
             {
                 if (i == 0)
                 {
-                    // The first one is the number of articles. It can be less than 200 or a multiple of it
+                    // The first one is a special case.
                     addNumbers(q);
                 }
                 return true;
@@ -99,9 +106,10 @@ public class GuardianAPICaller implements APICaller {
     }
 
     // A function that permits to create the right query
-    private void addNumbers(QueryParam q)
+    private void addNumbers(QueryParam q) throws NumberFormatException
     {
         int n = Integer.parseInt(q.getValue());
+        pages = 1;
         if (n < pageSize)
         {
             pageSize = n;
@@ -134,7 +142,7 @@ public class GuardianAPICaller implements APICaller {
     // It's a function that determines the queries
     private String[] queryStrings()
     {
-        String res = defaultURI + "?" + "api-key=" + apiKey;
+        String res = defaultURI + "?" + "api-key=" + apiKey +"&"+utilityFields;
         for (QueryParam el : params)
         {
             res += "&" + el.getKey() + "=" + el.getValue();
