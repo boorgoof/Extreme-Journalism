@@ -13,7 +13,7 @@ import java.util.List;
 public class JsonDeserializer implements Deserializer<Article>{
 
     private String[] fields;
-
+    // preferisco usare un campo in più di supporto rispetto alle json properties. (in caso vediamo)
     public JsonDeserializer(String[] fields) {
         this.fields = fields;
     }
