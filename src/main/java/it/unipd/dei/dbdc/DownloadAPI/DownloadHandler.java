@@ -2,21 +2,35 @@ package it.unipd.dei.dbdc.DownloadAPI;
 
 import java.io.IOException;
 
-public class DownloadHandler
-{
-    // Rappresenta l'API che voglio chiamare. E' una sola.
-    private final APICaller caller;
+// L'unica classe che ha il main
+public class DownloadHandler {
+    public static String download() throws IOException {
 
-    public DownloadHandler(APICaller a)
-    {
-        caller = a;
-    }
+        // Crea una Factory che crea tutte le istanze delle APIManager.
+        APIProperties factory = new APIProperties(); // Lancia IOException
 
-    public String download() throws IllegalArgumentException, IOException
-    {
-        if (caller == null) {
-            throw new IllegalArgumentException();
+        APIManager manager = null;
+        // Controlla se è stato passato da riga di comando qualcosa
+        boolean rigaDiComando = false;
+        if (!rigaDiComando)
+        {
+            manager = InteractiveSelectAPI.askAPI(factory);
         }
-        return caller.callAPI();
+        else
+        {
+            // Prende gli oggetti della riga di comando e crea l'oggetto tramite la factory
+            // factory.getAPICaller();
+        }
+
+        // Cerca di chiamare la API
+        String path_folder = "./database";
+        try {
+            manager.callAPI(path_folder);
+        }
+        catch (IOException e)
+        {
+            throw new IOException("Errore nella chiamata alla API");
+        }
+        return path_folder;
     }
 }
