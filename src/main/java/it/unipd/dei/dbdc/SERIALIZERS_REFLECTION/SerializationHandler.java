@@ -33,9 +33,8 @@ public class SerializationHandler {
         try {
 
             serializeMethod.invoke(null, objects, filePath); // null indica che il metodo è statico.
-            // !!!!!
             // il più grande difetto è che i metodi devono avere tutti lo stesso numero di parametri.
-            // ALla fine è come il metodo delle interfacce non credo che sia migliore
+            // ALla fine è come il metodo delle interfacce, quindi preferisco il metodo con le interfacce (forse è pu intuitivo)
 
         } catch (Exception e) {
             throw new IOException("Serialization failed for format: " + format, e);

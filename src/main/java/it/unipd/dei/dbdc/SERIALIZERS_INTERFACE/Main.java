@@ -26,7 +26,7 @@ public class Main {
         handler.registerSerializer(formats[0],new JsonSerializer() );
         handler.registerSerializer(formats[1], new XmlSerializer() );
         handler.registerSerializer(formats[2], new CsvSerializer() );
-        // Nel fututo se avessi altre classi Serializer in grado di serializzare è suinserirli quì dento. Sto usando una Hashmap quindi se inserisco piu metodi che serializzano il programma utilizzera l'utltimo inserito
+        // Nel fututo se avessi altre classi Serializer in grado di serializzare basta inserirli quì. Sto usando una Hashmap quindi se inserisco piu metodi che serializzano per los stesso formato il programma utilizzera l'utltimo inserito
         // in quanto lo considero come la versione più "nuova"
 
 

@@ -16,7 +16,7 @@ public class json0 {
     public static void main(String[] args) {
 
         // Deserializzo il file
-        List<Article> articles2 = deserializeFromJSON(".\\database\\fileSerializzato.json");
+        List<Article> articles2 = deserializeFromJSON("D:\\ingengeria software\\eis-final\\database\\databaseProva\\Serialized2.json");
 
         for(Article article : articles2 ){
 
@@ -24,11 +24,13 @@ public class json0 {
         }
     }
     public static List<Article> deserializeFromJSON(String path) {
+
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             File jsonFile = new File(path);
 
             return objectMapper.readValue(jsonFile, new TypeReference<List<Article>>() {});
+
         } catch (IOException e) {
             e.printStackTrace();
         }

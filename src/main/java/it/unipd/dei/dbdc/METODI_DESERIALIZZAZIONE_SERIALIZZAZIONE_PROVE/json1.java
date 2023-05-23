@@ -1,5 +1,6 @@
 package it.unipd.dei.dbdc.METODI_DESERIALIZZAZIONE_SERIALIZZAZIONE_PROVE;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -8,6 +9,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 // Soluzione che preferisco.
@@ -27,11 +29,12 @@ public class json1 {
     {
         List<Article> articles = new ArrayList<>();
 
-        String path_folder = ".\\database\\prova_guardian";
-        String path_serialized_json = ".\\database\\fileSerializzato.json";
+        String path_folder = "D:\\ingengeria software\\eis-final\\database\\the_guardian";
+        String path_serialized_json = "D:\\ingengeria software\\eis-final\\database\\databaseProva\\Serialized.json";
 
-        deserialization_JSON_folder(path_folder,articles);
-        serialization_JSON_file(path_serialized_json, articles);
+        File file = new File(path_serialized_json);
+        deserialization_JSON_file(file, articles);
+        //serialization_JSON_file(path_serialized_json, articles);
 
     }
 
@@ -53,11 +56,9 @@ public class json1 {
 
         try {
 
-            // TODO: spostarlo fuori da qui (vedi App.java)
             ObjectMapper mapper = new ObjectMapper();
             JsonNode jsonNode = mapper.readTree(jsonFile);
 
-            // Trova tutti i nodi che hanno ID dentro (come figlio, quindi sono gli articoli)
             List<JsonNode> ArticleParentNodes = jsonNode.findParents(ID);
 
             for (JsonNode ParentNode : ArticleParentNodes) {
@@ -72,6 +73,18 @@ public class json1 {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static List<Article> deserializeJsonArray(ObjectMapper mapper, File jsonFile) {
+
+        try {
+            return mapper.readValue(jsonFile, new TypeReference<List<Article>>() {});
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return Collections.emptyList(); // In caso di errore, restituisce una lista vuota
     }
 
     public static void serialization_JSON_file(String path, List<Article> articles){

@@ -10,19 +10,18 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-
-public class XmlDeserializer implements Deserializer{
-    // é molto brutta cosi gli dovrei passare un array vuoto perchè non la usa.
-    // bisognerebbe farla complessa come json e csv che cerca solo i campi specificati
+// ricodati che questa funziona solo con xml costruiti da noi ( comunque xml semplici )
+public class XmlDeserializer implements Deserializer<Article>{
 
     @Override
-    public List<Object> deserialize(String[] fields, String filePath) throws IOException {
+    public List<Article> deserialize(String filePath) throws IOException {
+
         try {
             XmlMapper xmlMapper = new XmlMapper();
 
             File xmlFile = new File(filePath);
 
-            return new ArrayList<>(xmlMapper.readValue(xmlFile, new TypeReference<List<Article>>() {})); // devo migliorare la leggibilità
+            return xmlMapper.readValue(xmlFile, new TypeReference<List<Article>>() {});
 
         } catch (IOException e) {
             e.printStackTrace();
