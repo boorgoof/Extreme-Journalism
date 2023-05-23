@@ -1,0 +1,22 @@
+[ {
+  "id" : null,
+  "url" : null,
+  "title" : "Title 1",
+  "body" : "Content 1",
+  "date" : null,
+  "source" : null
+}, {
+  "id" : null,
+  "url" : null,
+  "title" : "Title 2",
+  "body" : "Content 2",
+  "date" : null,
+  "source" : null
+}, {
+  "id" : null,
+  "url" : null,
+  "title" : "Title 3",
+  "body" : "Content 3",
+  "date" : null,
+  "source" : null
+} ]

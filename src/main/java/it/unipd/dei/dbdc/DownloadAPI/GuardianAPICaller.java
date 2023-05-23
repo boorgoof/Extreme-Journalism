@@ -1,5 +1,6 @@
 package it.unipd.dei.dbdc.DownloadAPI;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class GuardianAPICaller implements APICaller {
             new QueryParam("to-date", "The date to search to")};
 
     private final static String utilityFields = "show-fields=bodyText,headline&format=json";
+
     // Mandatory fields
     private final static String mandatoryField = "api-key";
 
@@ -33,6 +35,8 @@ public class GuardianAPICaller implements APICaller {
     private String apiKey;
     private int pageSize;
     private int pages;
+
+    // The library to call the API
     private final APIAdapter adapt;
 
     // To create this object, you have to pass an Adapter to it
@@ -54,10 +58,10 @@ public class GuardianAPICaller implements APICaller {
     // Returns the possible fields
     public String possibleParams()
     {
-        String tot = mandatoryField+" MANDATORY\n";
+        String tot = mandatoryField+"\t\t\tMANDATORY\n";
         for (QueryParam par : fields)
         {
-            tot += par.getKey() + "  " + par.getValue() + "\n";
+            tot += par.getKey() + "\t\t\t" + par.getValue() + "\n";
         }
         return tot;
     }
@@ -65,6 +69,10 @@ public class GuardianAPICaller implements APICaller {
     // To add parameters
     public void addParams(List<QueryParam> l) throws IllegalArgumentException
     {
+        if (l == null)
+        {
+            throw new IllegalArgumentException();
+        }
         for (QueryParam q : l)
         {
             addParam(q);
@@ -74,9 +82,18 @@ public class GuardianAPICaller implements APICaller {
     // NumberFormatException is a subclass of IllegalArgumentException
     public void addParam(QueryParam q) throws IllegalArgumentException
     {
-        if (q.getKey().equals(mandatoryField))
+        if (q == null)
+        {
+            throw new IllegalArgumentException();
+        }
+        else if (q.getKey().equals(mandatoryField))
         {
             apiKey = q.getValue();
+        }
+        else if ((q.getKey().equals(fields[0].getKey())))
+        {
+            // Il primo field e' speciale
+            addNumbers(q);
         }
         else if (checkParams(q)) {
             params.add(q);
@@ -86,26 +103,7 @@ public class GuardianAPICaller implements APICaller {
         }
     }
 
-    // This checks the parameters that are not mandatory
-    private boolean checkParams(QueryParam q) throws NumberFormatException
-    {
-        String key = q.getKey();
-        for (int i = 0; i< fields.length; i++)
-        {
-            if (key.equals(fields[i].getKey()))
-            {
-                if (i == 0)
-                {
-                    // The first one is a special case.
-                    addNumbers(q);
-                }
-                return true;
-            }
-        }
-        return false;
-    }
-
-    // A function that permits to create the right query
+    // A function that permits to create the right query for the numbers
     private void addNumbers(QueryParam q) throws NumberFormatException
     {
         int n = Integer.parseInt(q.getValue());
@@ -121,8 +119,22 @@ public class GuardianAPICaller implements APICaller {
         }
     }
 
+    // This checks the parameters that are not mandatory
+    private boolean checkParams(QueryParam q)
+    {
+        String key = q.getKey();
+        for (int i = 1; i< fields.length; i++)
+        {
+            if (key.equals(fields[i].getKey()))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     // This calls the API
-    public String callAPI() throws IllegalArgumentException {
+    public String callAPI() throws IllegalArgumentException, IOException {
         if (adapt == null)
         {
             throw new IllegalArgumentException();
@@ -130,7 +142,8 @@ public class GuardianAPICaller implements APICaller {
         String[] requests = queryStrings();
         for (int i = 0; i<requests.length; i++)
         {
-            if (!adapt.sendRequest(requests[i], folder_path+"request"+(i+1)+".json"))
+            String path = folder_path+"request"+(i+1)+".json";
+            if (!adapt.sendRequest(requests[i], path))
             {
                 throw new IllegalArgumentException();
             }

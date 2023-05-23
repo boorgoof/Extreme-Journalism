@@ -4,10 +4,66 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Finito quasi la parte di API">
-      <change afterPath="$PROJECT_DIR$/api-key.properties" afterDir="false" />
+    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Merging">
+      <change afterPath="$PROJECT_DIR$/database/Serialized.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/Serialized.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/SerializedIterface.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/SerializedIterface.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/fileSerializzato33.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/nuovo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DESERIALIZERS/CsvDeserializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DESERIALIZERS/DeserializationHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DESERIALIZERS/Deserializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DESERIALIZERS/JsonDeserializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DESERIALIZERS/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DESERIALIZERS/XmlDeserializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/METODI_DESERIALIZZAZIONE_SERIALIZZAZIONE_PROVE/Article.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/SERIALIZERS_INTERFACE/Article.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/SERIALIZERS_INTERFACE/CsvSerializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/SERIALIZERS_INTERFACE/JsonSerializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/SERIALIZERS_INTERFACE/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/SERIALIZERS_INTERFACE/SerializationHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/SERIALIZERS_INTERFACE/Serializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/SERIALIZERS_INTERFACE/XmlSerializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/SERIALIZERS_REFLECTION/Article.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/SERIALIZERS_REFLECTION/CsvSerializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/SERIALIZERS_REFLECTION/JsonSerializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/SERIALIZERS_REFLECTION/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/SERIALIZERS_REFLECTION/SerializationHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/SERIALIZERS_REFLECTION/XmlSerializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Serializers/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Serializers/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Serializers/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/download.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/fileSerializzato.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/fileSerializzato.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/the_guardian/request1.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/the_guardian/request1.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/the_guardian/request2.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/the_guardian/request2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/the_guardian/response.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/the_guardian/theguardian_articles_v1_p01.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/the_guardian/theguardian_articles_v1_p03.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/the_guardian/theguardian_articles_v1_p04.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/the_guardian/theguardian_articles_v1_p05.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/the_guardian/theguardian_articles_v1_p06.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/the_guardian/theguardian_articles_v1_p07.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/the_guardian/theguardian_articles_v1_p08.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/the_guardian/theguardian_articles_v1_p09.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/the_guardian/theguardian_articles_v1_p10.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/ALTERNATIVE_DI_COMPONENTI/Properties.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/ALTERNATIVE_DI_COMPONENTI/Properties.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DESERIALIZERS/Article.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/APICaller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/APICaller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/APIFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/APIFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/DownloadHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/DownloadHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/GuardianAPICaller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/GuardianAPICaller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/KongAPIAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/KongAPIAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/UserInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/csv0.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/METODI_DESERIALIZZAZIONE_SERIALIZZAZIONE_PROVE/csv0.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/csv1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/METODI_DESERIALIZZAZIONE_SERIALIZZAZIONE_PROVE/csv1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/json0.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/METODI_DESERIALIZZAZIONE_SERIALIZZAZIONE_PROVE/json0.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/json1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/METODI_DESERIALIZZAZIONE_SERIALIZZAZIONE_PROVE/json1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/json2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/METODI_DESERIALIZZAZIONE_SERIALIZZAZIONE_PROVE/json2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/xml0.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/METODI_DESERIALIZZAZIONE_SERIALIZZAZIONE_PROVE/xml0.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,9 +98,9 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Merging main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/ingengeria software/eis-final&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/vison/OneDrive/Desktop/Programmi/JAVA/INGEGNERIA DEL SOFTWARE/demo-project/demo-project&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
@@ -53,11 +109,13 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\src\main\java\Resources" />
+      <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\src\main" />
       <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final" />
       <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\src\main\java\it\unipd\dei\dbdc" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.App">
+  <component name="RunManager">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.App" />
       <module name="Extreme_journalism" />
@@ -221,14 +279,7 @@
       <option name="project" value="LOCAL" />
       <updated>1684661110516</updated>
     </task>
-    <task id="LOCAL-00013" summary="Finito quasi la parte di API">
-      <created>1684664061251</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1684664061251</updated>
-    </task>
-    <option name="localTasksCounter" value="14" />
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -253,8 +304,7 @@
     <MESSAGE value="Inizio API" />
     <MESSAGE value="Provo a mettere un gitignore" />
     <MESSAGE value="Iniziato le properties" />
-    <MESSAGE value="Finito quasi la parte di API" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finito quasi la parte di API" />
+    <option name="LAST_COMMIT_MESSAGE" value="Iniziato le properties" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -263,6 +313,11 @@
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="1" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/UserInterface.java</url>
+          <line>36</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

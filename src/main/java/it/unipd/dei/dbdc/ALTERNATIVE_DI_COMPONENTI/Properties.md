@@ -10,6 +10,7 @@ And so the language has first class support for properties – the java.util.Pro
    Comment lines in .properties files are denoted by the number sign (#) or the exclamation mark (!) as the first non blank character, in which all remaining text on that line is ignored. 
    The backwards slash is used to escape a character. If you want to put the value on two lines,
    use a single \ character.
+3. ATTENZIONE: la risorsa deve essere nel package resources dentro a main
 3. How to load them in Properties objects:
 ```java
 String rootPath = Thread.currentThread().getContextClassLoader().getResource("").getPath();
