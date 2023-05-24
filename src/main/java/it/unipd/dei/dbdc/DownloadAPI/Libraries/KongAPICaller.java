@@ -1,4 +1,4 @@
-package it.unipd.dei.dbdc.DownloadAPI;
+package it.unipd.dei.dbdc.DownloadAPI.Libraries;
 
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
@@ -8,8 +8,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class KongAPIAdapter implements APIAdapter {
-    public KongAPIAdapter()
+public class KongAPICaller implements APICaller {
+    public KongAPICaller()
     {
         // This is needed as the cookies setting gives an error
         Unirest.config().enableCookieManagement(false);
