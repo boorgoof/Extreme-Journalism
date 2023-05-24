@@ -1,6 +1,6 @@
 package it.unipd.dei.dbdc;
 
-import it.unipd.dei.dbdc.METODI_DESERIALIZZAZIONE_SERIALIZZAZIONE_PROVE.Article;
+import it.unipd.dei.dbdc.UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU.METODI_DESERIALIZZAZIONE_SERIALIZZAZIONE_PROVE.Article;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 

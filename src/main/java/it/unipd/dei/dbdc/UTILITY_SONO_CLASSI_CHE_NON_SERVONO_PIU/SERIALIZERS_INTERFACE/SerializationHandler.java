@@ -1,0 +1,36 @@
+package it.unipd.dei.dbdc.UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU.SERIALIZERS_INTERFACE;
+
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+
+public class SerializationHandler {
+    private final Map<String, Serializer> serializers; // intellij mi dice che lo vuole final non so il perchè in realtà secondo me non va final
+
+    public SerializationHandler() {
+        serializers = new HashMap<>();
+    }
+
+    public void registerSerializer(String format, Serializer serializer) {
+
+        serializers.put(format, serializer);
+    }
+
+    public void serializeObjects(List<Serializable> objects, String format, String filePath) throws IOException {
+
+        Serializer serializer = serializers.get(format);
+
+        if (serializer == null) {
+            throw new IOException("No serializer found for the specified format: " + format);
+        }
+
+        serializer.serialize(objects, filePath);
+
+    }
+}
+
+
+
