@@ -1,4 +1,4 @@
-package it.unipd.dei.dbdc.DownloadAPI;
+package it.unipd.dei.dbdc.DownloadAPI.Libraries;
 
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
