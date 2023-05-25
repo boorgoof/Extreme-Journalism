@@ -1,17 +1,15 @@
 package it.unipd.dei.dbdc.SEARCH_TERMS;
 
-import it.unipd.dei.dbdc.DESERIALIZERS.Article;
+import it.unipd.dei.dbdc.DESERIALIZERS_FILE_PROPERTIES.Article;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
 class MyOtherEntry extends AbstractMap.SimpleEntry<String, Integer>
 {
     MyOtherEntry(String s, int a)
     {
-        super(s, (Integer) a);
+        super(s, a);
     }
 
     public boolean isMajorThan(it.unipd.dei.dbdc.SEARCH_TERMS.MyOtherEntry a)
@@ -56,57 +54,86 @@ public class MyPriorityQueue {
             sc.close();
         }
 
+        String bannedWords = "/Users/giovannidemaria/IdeaProjects/eis-final/src/main/java/it/unipd/dei/dbdc/SEARCH_TERMS/english_stoplist_v1.txt";
         ArrayList<it.unipd.dei.dbdc.SEARCH_TERMS.MyOtherEntry> max = new ArrayList<it.unipd.dei.dbdc.SEARCH_TERMS.MyOtherEntry>(50);
         for (Map.Entry<String, Integer> el : mappona.entrySet()) {
-            addOrdered(max, el);
+            addOrdered(max, el,bannedArray(bannedWords));
         }
         return max;
     }
 
-    private static void addOrdered(ArrayList<it.unipd.dei.dbdc.SEARCH_TERMS.MyOtherEntry> vec, Map.Entry<String, Integer> entry)
+    private static String[] bannedArray(String filePath){
+
+        String[] banned = new String[524];
+        try {
+            File file = new File(filePath);
+            Scanner scanner = new Scanner(file);
+            int i = 0;
+            while (scanner.hasNext()) {
+                String word = scanner.next();
+                banned[i] = word;
+                i++;
+            }
+
+            scanner.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("file non trovato");
+        }
+        return banned;
+    }
+    private static void addOrdered(ArrayList<it.unipd.dei.dbdc.SEARCH_TERMS.MyOtherEntry> vec, Map.Entry<String, Integer> entry, String[] bannedWords)
     {
         it.unipd.dei.dbdc.SEARCH_TERMS.MyOtherEntry el = new it.unipd.dei.dbdc.SEARCH_TERMS.MyOtherEntry(entry.getKey(), entry.getValue());
-        int mapsize = vec.size();
-        if (mapsize < 50)
-        {
-            // Devo aggiungerlo
-            int i = 1;
-            while(i < mapsize && vec.get(i-1).isMajorThan(el))
-            {
-                i++;
+        boolean isBanned = false;
+        for(int i = 0; i < bannedWords.length-1; i++){
+            if(el.getKey().equals(bannedWords[i])){
+                isBanned = true;
+                i = bannedWords.length;
             }
-            if (i >= mapsize)
-            {
-                vec.add(el);
-                return;
-            }
-            it.unipd.dei.dbdc.SEARCH_TERMS.MyOtherEntry old = vec.get(i - 1);
-            vec.set(i - 1, el);
-            i++;
-            while (i < mapsize)
-            {
-                it.unipd.dei.dbdc.SEARCH_TERMS.MyOtherEntry new_old = vec.get(i);
-                vec.set(i - 1, old);
-                old = new_old;
-                i++;
-            }
-            vec.add(old);
         }
-        else
-        {
-            int i = 49;
-            while (i >= 0 && el.isMajorThan(vec.get(i)))
+        if(!isBanned){
+            int mapsize = vec.size();
+            if (mapsize < 50)
             {
-                if (i == 49) {
-                    i--;
-                    continue;
+                // Devo aggiungerlo
+                int i = 1;
+                while(i < mapsize && vec.get(i-1).isMajorThan(el))
+                {
+                    i++;
                 }
-                vec.set(i + 1, vec.get(i));
-                i--;
+                if (i >= mapsize)
+                {
+                    vec.add(el);
+                    return;
+                }
+                it.unipd.dei.dbdc.SEARCH_TERMS.MyOtherEntry old = vec.get(i - 1);
+                vec.set(i - 1, el);
+                i++;
+                while (i < mapsize)
+                {
+                    it.unipd.dei.dbdc.SEARCH_TERMS.MyOtherEntry new_old = vec.get(i);
+                    vec.set(i - 1, old);
+                    old = new_old;
+                    i++;
+                }
+                vec.add(old);
             }
-            if (i != 49)
+            else
             {
-                vec.set(i + 1, el);
+                int i = 49;
+                while (i >= 0 && el.isMajorThan(vec.get(i)))
+                {
+                    if (i == 49) {
+                        i--;
+                        continue;
+                    }
+                    vec.set(i + 1, vec.get(i));
+                    i--;
+                }
+                if (i != 49)
+                {
+                    vec.set(i + 1, el);
+                }
             }
         }
     }
@@ -116,9 +143,14 @@ public class MyPriorityQueue {
             for (int i = 0; i < 50; i++)
             {
                 Map.Entry<String, Integer> el = max.get(i);
-                writer.write(el.getKey() + " " + el.getValue());
-                if (i < 49){
-                    writer.newLine();
+                if(el.getKey().equals("the")){
+
+                }
+                else {
+                    writer.write(el.getKey() + " " + el.getValue());
+                    if (i < 49){
+                        writer.newLine();
+                    }
                 }
             }
             System.out.println("Scrittura su file completata");
