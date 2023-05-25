@@ -39,7 +39,7 @@ public class DeserializationHandler<T> {
         try {
 
             Class<?> deserializerClass = Class.forName(serializerClassName);
-            Deserializer<T> deserializer = (Deserializer<T>) deserializerClass.getDeclaredConstructor().newInstance(); // come dovrei aggiustarla? in realta T non è necessaria
+            Deserializer<T> deserializer = (Deserializer<T>) deserializerClass.getDeclaredConstructor().newInstance();
             return deserializer.deserialize(filePath);
 
         } catch (Exception e) {
@@ -61,8 +61,4 @@ public class DeserializationHandler<T> {
             }
         }
     }
-
-
-
-
 }
