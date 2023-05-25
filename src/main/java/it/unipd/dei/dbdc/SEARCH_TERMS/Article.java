@@ -1,4 +1,4 @@
-package it.unipd.dei.dbdc.DESERIALIZERS;
+package it.unipd.dei.dbdc.SEARCH_TERMS;
 
 
 public class Article {

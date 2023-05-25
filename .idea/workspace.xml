@@ -5,7 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="serializers">
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DESERIALIZERS/JsonDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DESERIALIZERS/JsonDeserializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/SEARCH_TERMS/Article.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/SEARCH_TERMS/MyPriorityQueue.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/SEARCH_TERMS/main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/databaseProva/Serialized.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/databaseProva/Serialized.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/fileSerializzato.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/fileSerializzato.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DESERIALIZERS/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DESERIALIZERS/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,15 +47,16 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/ingengeria software/eis-final/database/databaseProva&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/giovannidemaria/IdeaProjects/eis-final/src/main/java/it/unipd/dei/dbdc/DESERIALIZERS&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;inlay.hints&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DESERIALIZERS" />
       <recent name="D:\ingengeria software\eis-final\database\databaseProva" />
       <recent name="D:\ingengeria software\eis-final\database\databaseProva\sottoCartella\sottoSottoCartella" />
       <recent name="D:\ingengeria software\eis-final\src\main\java\it\unipd\dei\dbdc" />
@@ -60,6 +67,9 @@
       <recent name="D:\ingengeria software\eis-final\database" />
       <recent name="D:\ingengeria software\eis-final\src\main\java\it\unipd\dei\dbdc" />
       <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\src\main\java\it\unipd\dei\dbdc" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="it.unipd.dei.dbdc.SEARCH_TERMS" />
     </key>
   </component>
   <component name="RunManager" selected="Application.App">
@@ -125,8 +135,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.App" />
         <item itemvalue="Application.main" />
+        <item itemvalue="Application.App" />
         <item itemvalue="Application.Parallelism" />
         <item itemvalue="JAR Application.Extreme_journalism-1.0-SNAPSHOT-jar-with-dependencies.jar" />
         <item itemvalue="JAR Application.Extreme_journalism-1.0-SNAPSHOT.jar" />
