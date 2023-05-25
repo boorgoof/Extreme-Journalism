@@ -1,19 +1,9 @@
 package it.unipd.dei.dbdc;
 
-import it.unipd.dei.dbdc.METODI_DESERIALIZZAZIONE_SERIALIZZAZIONE_PROVE.Article;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import com.fasterxml.jackson.databind.SerializationFeature;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
-import java.util.ArrayList;
 
 // primo approccio, funziona perchè seguo dei nodi predefiniti. Non è generale -> vedere json1
 public class App 
-{
+{   /*
     public static void main( String[] args )
     {
         List<Article> articles = new ArrayList<>();
@@ -96,7 +86,7 @@ public class App
         }
 
     }
-
+    */
 }
 
 

@@ -1,5 +1,8 @@
 # PROBLEMI PRINCIPALI E SOLUZIONI
 
+## Cosa significa List<?>
+Significa semplicemente che è una lista di un oggetto generico, che non si sa cosa sia. (<? extends Object>)
+
 ## SPIEGAZIONE DI CLASSNOTFOUNDEXCEPTION
 Maven resolves dependencies when building your project, but doesn't put all the dependencies magically in your jar.
 You're supposed to run your app with all its dependencies in the classpath:
