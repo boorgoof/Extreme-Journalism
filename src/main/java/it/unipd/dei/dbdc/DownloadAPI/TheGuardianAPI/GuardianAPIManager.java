@@ -1,6 +1,5 @@
 package it.unipd.dei.dbdc.DownloadAPI.TheGuardianAPI;
 
-import it.unipd.dei.dbdc.ConsoleColors;
 import it.unipd.dei.dbdc.DownloadAPI.Libraries.APICaller;
 import it.unipd.dei.dbdc.DownloadAPI.APIManager;
 import it.unipd.dei.dbdc.DownloadAPI.QueryParam;
@@ -59,7 +58,7 @@ public class GuardianAPIManager implements APIManager {
     }
 
     // This calls the API
-    public void callAPI(String path_folder) throws IllegalArgumentException, IOException
+    public String callAPI(String path_folder) throws IllegalArgumentException, IOException
     {
         if (caller == null)
         {
@@ -90,6 +89,7 @@ public class GuardianAPIManager implements APIManager {
             }
         }
         caller.endRequests();
+        return path_folder;
     }
 
     private boolean deleteFilesInDir(File dir)
