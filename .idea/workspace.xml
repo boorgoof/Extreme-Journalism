@@ -5,25 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/database/TheGuardianAPIrequest1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/APIContainer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/APIManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/DownloadProperties.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/InteractiveSelectAPI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/GuardianAPIInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/GuardianAPIManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/GuardianAPIRequests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Problems.md" beforeDir="false" afterPath="$PROJECT_DIR$/Problems.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/APIAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/Libraries/APICaller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/APICaller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/APIFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/DownloadHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/DownloadHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/GuardianAPICaller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/KongAPIAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/Libraries/KongAPICaller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/UserInterface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/download.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/download.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DESERIALIZERS_FILE_PROPERTIES/DeserializationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DESERIALIZERS_FILE_PROPERTIES/DeserializationHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DESERIALIZERS_FILE_PROPERTIES/Deserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DESERIALIZERS_FILE_PROPERTIES/Deserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DESERIALIZERS_FILE_PROPERTIES/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DESERIALIZERS_FILE_PROPERTIES/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/SEARCH_TERMS/MyPriorityQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/SEARCH_TERMS/MyPriorityQueue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/SEARCH_TERMS/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/SEARCH_TERMS/main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/DESERIALIZERS_INTERFACE/DeserializationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/DESERIALIZERS_INTERFACE/DeserializationHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/DESERIALIZERS_INTERFACE/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/DESERIALIZERS_INTERFACE/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,9 +47,9 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "Merging main",
+    "git-widget-placeholder": "dev__mene",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "D:/ingengeria software/eis-final/database/databaseProva",
+    "last_opened_file_path": "D:/ingengeria software/eis-final/src/main/java/it/unipd/dei/dbdc/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -68,16 +58,17 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\ingengeria software\eis-final\src\main\java\it\unipd\dei\dbdc\UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU" />
+      <recent name="D:\ingengeria software\eis-final\src\main\java\it\unipd\dei\dbdc" />
       <recent name="D:\ingengeria software\eis-final\database\databaseProva" />
       <recent name="D:\ingengeria software\eis-final\database\databaseProva\sottoCartella\sottoSottoCartella" />
-      <recent name="D:\ingengeria software\eis-final\src\main\java\it\unipd\dei\dbdc" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\ingengeria software\eis-final\src\main\java\it\unipd\dei\dbdc\UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU\DESERIALIZERS_FILE_PROPERTIES2" />
+      <recent name="D:\ingengeria software\eis-final\src\main\java\it\unipd\dei\dbdc\UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU" />
       <recent name="D:\ingengeria software\eis-final\database\databaseProva\sottoCartella" />
       <recent name="D:\ingengeria software\eis-final\database\databaseProva" />
       <recent name="D:\ingengeria software\eis-final\database" />
-      <recent name="D:\ingengeria software\eis-final\src\main\java\it\unipd\dei\dbdc" />
-      <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\src\main\java\it\unipd\dei\dbdc" />
     </key>
   </component>
   <component name="RunManager">
