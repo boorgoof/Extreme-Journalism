@@ -17,7 +17,7 @@ public class main {
 
 
 
-    public static final String outFilePath ="./SEARCH_TERMS/output.txt";
+    public static final String outFilePath ="/Users/giovannidemaria/IdeaProjects/eis-final/src/main/java/it/unipd/dei/dbdc/SEARCH_TERMS/output.txt";
     public static final String filePropertiesName = "deserializers.properties";
     public static void main(String[] args) {
 

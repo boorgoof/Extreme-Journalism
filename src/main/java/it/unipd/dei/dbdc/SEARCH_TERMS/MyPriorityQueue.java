@@ -85,7 +85,7 @@ public class MyPriorityQueue {
             //sc.close();
         }
 
-        String bannedWords = "./eis-final/src/main/java/it/unipd/dei/dbdc/SEARCH_TERMS/english_stoplist_v1.txt";
+        String bannedWords = "/Users/giovannidemaria/IdeaProjects/eis-final/src/main/java/it/unipd/dei/dbdc/SEARCH_TERMS/english_stoplist_v1.txt";
         ArrayList<it.unipd.dei.dbdc.SEARCH_TERMS.MyOtherEntry> max = new ArrayList<it.unipd.dei.dbdc.SEARCH_TERMS.MyOtherEntry>(50);
         for (Map.Entry<String, Integer> el : mappona.entrySet()) {
             addOrdered(max, el,bannedArray(bannedWords));
@@ -170,24 +170,21 @@ public class MyPriorityQueue {
         }
     }
 
-    public static void outFile(ArrayList<it.unipd.dei.dbdc.SEARCH_TERMS.MyOtherEntry> max, String outFilePath){
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(outFilePath))) {
-            for (int i = 0; i < 50; i++)
-            {
-                Map.Entry<String, Integer> el = max.get(i);
-                if(el.getKey().equals("the")){
-
-                }
-                else {
-                    writer.write(el.getKey() + " " + el.getValue());
-                    if (i < 49){
-                        writer.newLine();
-                    }
+    public static void outFile(ArrayList<it.unipd.dei.dbdc.SEARCH_TERMS.MyOtherEntry> max, String outFilePath) {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(outFilePath));
+            for (int i = 0; i < 50; i++) {
+                it.unipd.dei.dbdc.SEARCH_TERMS.MyOtherEntry entry = max.get(i);
+                writer.write(entry.getKey() + " " + entry.getValue());
+                if (i < 49) {
+                    writer.newLine();
                 }
             }
+            writer.close(); // Importante chiudere il writer dopo aver finito di scriverci
             System.out.println("Scrittura su file completata");
         } catch (IOException e) {
             System.out.println("Si è verificato un errore durante la scrittura del file.");
         }
     }
+
 }

@@ -176,7 +176,7 @@
       <artifactId>commons-csv</artifactId>
       <version>1.10.0</version>
     </dependency>
-<<<<<<< HEAD
+
     <!-- Da togliere -->
     <dependency>
       <groupId>com.squareup.okhttp3</groupId>
@@ -214,8 +214,11 @@
       <version>4.5.4</version>
       <classifier>models</classifier>
     </dependency>
-=======
+    <dependency>
+      <groupId>commons-cli</groupId>
+      <artifactId>commons-cli</artifactId>
+      <version>1.4</version>
+    </dependency>
 
->>>>>>> bb3c14e8b6842f10110a44e6f5b3a65145400b6e
   </dependencies>
 </project>
