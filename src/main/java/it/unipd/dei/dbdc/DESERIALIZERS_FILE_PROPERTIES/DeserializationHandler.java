@@ -1,6 +1,5 @@
 package it.unipd.dei.dbdc.DESERIALIZERS_FILE_PROPERTIES;
 
-
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -52,16 +51,59 @@ public class DeserializationHandler<T> {
         return deserializerMap;
     }
 
+    private String[] setSpecificDeserializer (Deserializer specificDeserializer){
+        String[] fields = new String[6];
+
+        return fields;
+    }
+
     public Set<String> getFormats() {
         return deserializers.keySet();
     }
 
     public List<T> deserializeFile(String format, String filePath) throws IOException {
+
         Deserializer<T> deserializer = deserializers.get(format);
         if (deserializer == null) {
             throw new IOException("No deserializer found for the specified format: " + format);
         }
         return deserializer.deserialize(filePath);
+    }
+
+
+    public void deserializationError(String format, Deserializer deserializer) {
+        System.out.println("E' fallita la deserializzazione per il formato" + format);
+
+        if(deserializer instanceof specificDeserializer){
+
+            specificDeserializer specDeserializer = (specificDeserializer) deserializer;
+
+            System.out.println("Sono attualmente deserializzati i seguenti campi: ");
+            System.out.println(specDeserializer.getFields());
+            System.out.println("Vuole per caso modificarli? ");
+            Scanner scanner = new Scanner(System.in);
+            String answer = scanner.nextLine();
+            setSpecificSerializer(specDeserializer);
+        }
+
+    }
+
+    public void setSpecificSerializer(specificDeserializer deserializer) {
+
+        // Crea uno scanner per leggere l'input dell'utente
+        Scanner scanner = new Scanner(System.in);
+
+        String risposta = scanner.nextLine();
+
+        System.out.println("Inserisci una parola alla volta per indicare i campi di interesse. Ricorda che sono sei parole in tutto");
+
+        String[] fields = new String[6];
+        for (int i = 0; i < fields.length; i++) {
+            System.out.print("Campo " + (i + 1) + ": ");
+            fields[i] = scanner.nextLine();
+        }
+
+        deserializer.setFields(fields);
     }
 
     public void deserializeFolder(String format, String folderPath, List<T> objects) throws IOException {

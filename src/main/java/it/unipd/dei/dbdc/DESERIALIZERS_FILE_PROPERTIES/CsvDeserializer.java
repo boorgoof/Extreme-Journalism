@@ -3,6 +3,7 @@ package it.unipd.dei.dbdc.DESERIALIZERS_FILE_PROPERTIES;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -10,7 +11,7 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CsvDeserializer implements Deserializer<Article> {
+public class CsvDeserializer implements specificDeserializer<Article> {
 
     private String[] fields = {"Identifier","URL","Title","Body","Date","Source Set","Source"};
 

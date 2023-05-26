@@ -27,7 +27,7 @@ public class Main {
 
 
             // PROVA: 1. DESERIALIZZO UN FILE
-            System.out.println("Serializzazione file:");
+            System.out.println("Deserializzazione file:");
             List<Article> articles = new ArrayList<>();
 
             articles = handler.deserializeFile(formats[0], filePath ); // basta indicare il formato e il path del file
@@ -51,7 +51,7 @@ public class Main {
                 }
 
             } catch (IOException e) {
-                System.err.println("Serialization failed: " + e.getMessage());
+                System.err.println("Deserializzazione fallita per il formato: " + e.getMessage());
                 // se ci sono errori probabilmente è stato inserito un header sbagliato. oppure sono stati specificati male i campi del file JSON
                 // bisogna segnalare all'utente e dire di reinserire i campi
             }

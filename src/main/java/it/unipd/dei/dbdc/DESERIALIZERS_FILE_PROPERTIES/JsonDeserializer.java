@@ -8,9 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JsonDeserializer implements Deserializer<Article> {
-
-
+public class JsonDeserializer implements specificDeserializer<Article> {
 
     private String[] fields = {"id", "url", "title", "body", "date", "source" };
     // preferisco usare un campo in più di supporto rispetto alle json properties. (in caso vediamo)
