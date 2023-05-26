@@ -9,5 +9,5 @@ public interface APIManager {
 
     void addParams(List<QueryParam> l) throws IllegalArgumentException;
 
-    void callAPI(String path_folder) throws IllegalArgumentException, IOException;
+    String callAPI(String path_folder) throws IllegalArgumentException, IOException;
 }

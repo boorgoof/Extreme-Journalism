@@ -58,7 +58,7 @@ public class GuardianAPIManager implements APIManager {
     }
 
     // This calls the API
-    public void callAPI(String path_folder) throws IllegalArgumentException, IOException
+    public String callAPI(String path_folder) throws IllegalArgumentException, IOException
     {
         if (caller == null)
         {
@@ -89,6 +89,7 @@ public class GuardianAPIManager implements APIManager {
             }
         }
         caller.endRequests();
+        return path_folder;
     }
 
     private boolean deleteFilesInDir(File dir)

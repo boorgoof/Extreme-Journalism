@@ -1,9 +1,11 @@
 package it.unipd.dei.dbdc;
 
 import it.unipd.dei.dbdc.DownloadAPI.DownloadHandler;
+import it.unipd.dei.dbdc.DownloadAPI.QueryParam;
 import org.apache.commons.cli.CommandLine;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class App
 {
@@ -39,10 +41,10 @@ public class App
         }
 
         if (download) {
-            //obtainDownloadOptions(cmd);
             // Se vuole download, passo a download handler
             System.out.println(ConsoleTextColors.BLUE + "Entering the download part..." + ConsoleTextColors.RESET);
-            DownloadHandler.download(true, database_path);
+            String name = CommandLineInterpreter.obtainDownloadOptions(cmd);
+            DownloadHandler.download(database_path, name);
             System.out.println(ConsoleTextColors.BLUE + "Exiting the download part..." + ConsoleTextColors.RESET);
         }
         if (search)

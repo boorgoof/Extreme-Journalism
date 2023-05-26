@@ -1,11 +1,38 @@
 package it.unipd.dei.dbdc;
 
+import it.unipd.dei.dbdc.DownloadAPI.QueryParam;
 import org.apache.commons.cli.*;
+
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class CommandLineInterpreter {
 
     private static final Options options = new Options();
     private final static HelpFormatter formatter = new HelpFormatter();
+
+    // The actions you can perform: these are mandatory.
+    private final static Option[] actions = {
+            new Option("h", "help", false, "Print help"),
+            new Option("d", "download-files", false, "Download files from the selected API"),
+            new Option("s", "search-terms", false, "Search the top 50 terms of the selected files"),
+            new Option("ds", "download-and-search", false, "Download files from the selected API and search the top 50 terms of those files")
+    };
+
+    // The download options
+    private final static Option[] download = {
+            new Option("api", "api-name", true, "Contains the name of the API to call"),
+            // Problema: non sappiamo quali siano i parametri delle altre api, quindi posso mettere solo quelle del the guardian o lasciare così e fare tutto in modo interattivo
+    };
+
+    // The search options
+    private final static Option[] search = {
+            new Option("path", "folder-path", true, "Contains the location of the place to take the files from"),
+            new Option("f", "fields", true, "Contains the fields that we need to search into to determine the most important words"),
+            new Option("n", "number", true, "Contains the number of terms you want to have in the final output")
+    };
+
+
     // There are three stages to command line processing.
     // They are the definition, parsing and interrogation stages.
 
@@ -13,7 +40,7 @@ public class CommandLineInterpreter {
     {
         defineOptions();
         CommandLine cmd = parse(args);
-        if (cmd.hasOption("h")) {
+        if (cmd == null || cmd.hasOption("h")) {
             formatter.printHelp("App -{et} [options]", options);
             return null;
         }
@@ -30,20 +57,26 @@ public class CommandLineInterpreter {
 
         // Add the possible actions to an OptionGroup
         OptionGroup actionGroup = new OptionGroup();
-
-        actionGroup.addOption(new Option("h", "help", false, "Print help"));
-        actionGroup.addOption(new Option("d", "download-files", true, "Download files from the selected API"));
-        actionGroup.addOption(new Option("s", "search-terms", true, "Search the top 50 terms of the selected files"));
-        actionGroup.addOption(new Option("ds", "download-and-search", true, "Download files from the selected API and search the top 50 terms of those files"));
+        for (Option op : actions)
+        {
+            actionGroup.addOption(op);
+        }
 
         // Set the options as required
         actionGroup.setRequired(true);
         options.addOptionGroup(actionGroup);
 
         // Download options
-        options.addOption("api", true, "Name of the api to download from");
-        options.addOption("key", true, "Api-key for the download, if required");
-        options.addOption("params", true, "Params for the query");
+        for (Option op : download)
+        {
+            options.addOption(op);
+        }
+
+        // Search options
+        for (Option op : search)
+        {
+            options.addOption(op);
+        }
     }
 
     /*
@@ -79,26 +112,24 @@ public class CommandLineInterpreter {
     The result of the interrogation stage is that the user code is fully informed of all the text that was supplied
     on the command line and processed according to the parser and Options rules.
      */
-    private static boolean[] interpret(CommandLine cmd)
+    public static String obtainDownloadOptions(CommandLine cmd)
     {
-        boolean[] ret = {false, false};
-        if (cmd.hasOption("h")) {
-            formatter.printHelp("App -{et} [options]", options);
+        return cmd.getOptionValue("api");
+    }
+
+    public static ArrayList<QueryParam> obtainSearchOptions(CommandLine cmd)
+    {
+        ArrayList<QueryParam> ret_array = new ArrayList<>(1);
+        String path = cmd.getOptionValue("path");
+        if (path == null)
+        {
             return null;
         }
-        else if (cmd.hasOption("d"))
-        {
-            ret[0] = true;
-        }
-        else if (cmd.hasOption("s"))
-        {
-            ret[1] = true;
-        }
-        else if (cmd.hasOption("ds"))
-        {
-            ret[0] = true;
-            ret[1] = true;
-        }
-        return ret;
+        ret_array.add(new QueryParam("path", path));
+
+        String number = cmd.getOptionValue("n");
+        ret_array.add(new QueryParam("number", number));
+
+        return ret_array;
     }
 }
