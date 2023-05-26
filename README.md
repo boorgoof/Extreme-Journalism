@@ -19,8 +19,10 @@ Repository of the final project of "Elementi di Ingegneria del Software".
   * Indicare le funzioni riusate da librerie esistenti, con versione delle librerie
 
 ## TODO
-* Alternative per serializzazione e richieste http
-* Mappa perché fa il null
 * Guardare il maven site plugin https://maven.apache.org/plugins/maven-site-plugin/
-* Come sostituire la mappa con una priority queue
-* Oltre a fare cose interattive, si possono mettere opzioni da riga di comando
+* Oltre a fare cose interattive, si possono mettere opzioni da riga di comando: apache commons cli per argomenti da linea di comando
+* junit
+* maven javadoc plugin
+* shade plugin al posto di assembly plugin
+* usare CoreNLP al posto di Scanner (no, ma si può fare più modificabile)
+* properties

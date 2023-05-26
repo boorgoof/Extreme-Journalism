@@ -4,9 +4,9 @@ import it.unipd.dei.dbdc.DownloadAPI.DownloadHandler;
 
 import java.io.IOException;
 
-
-public class App {
-    public static void main(String[] args) throws IOException {
+public class App
+{
+    public static void main( String[] args ) throws IOException {
         // L'utente puo' passare da riga di comando quello che vuole fare.
 
         // TODO: apache commons cli per argomenti da linea di comando
@@ -21,5 +21,17 @@ public class App {
         System.out.println(ConsoleColors.BLUE + "Entering the download part..." + ConsoleColors.RESET);
         DownloadHandler.download(true, "./database");
         System.out.println(ConsoleColors.BLUE + "Exiting the download part..." + ConsoleColors.RESET);
+
+
     }
+
 }
+
+
+
+
+
+
+
+
+
