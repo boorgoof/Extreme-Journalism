@@ -1,9 +1,13 @@
 package it.unipd.dei.dbdc.SEARCH_TERMS;
 
+import edu.stanford.nlp.ling.CoreAnnotations;
+import edu.stanford.nlp.ling.CoreLabel;
 import it.unipd.dei.dbdc.DESERIALIZERS_FILE_PROPERTIES.Article;
-
+import edu.stanford.nlp.pipeline.*;
+import edu.stanford.nlp.util.*;
 import java.io.*;
 import java.util.*;
+
 
 class MyOtherEntry extends AbstractMap.SimpleEntry<String, Integer>
 {
@@ -29,10 +33,37 @@ public class MyPriorityQueue {
 
         for (int i = 0; i < articles.size(); i++) {
             TreeMap<String, Integer> map = new TreeMap<>();
+
+            //creazione unica stringa contenente titolo e corpo dell'articolo
             Article art = articles.get(i);
             String articolo_completo = art.getTitle() + " " + art.getBody();
-            Scanner sc = new Scanner(articolo_completo);
 
+            // Creazione del pipeline di annotazione
+            /*Properties props = new Properties();
+            props.setProperty("annotators", "tokenize,ssplit,pos,lemma,ner,parse");
+            StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
+
+            // Creazione di un oggetto Annotation
+            Annotation document = new Annotation(articolo_completo);
+
+            // Esecuzione delle annotazioni
+            pipeline.annotate(document);
+
+            // Accesso alle annotazioni
+            List<CoreMap> sentences = document.get(CoreAnnotations.SentencesAnnotation.class);
+            for (CoreMap sentence : sentences) {
+
+                // Accesso alle parole e alle loro informazioni
+                for (CoreLabel token : sentence.get(CoreAnnotations.TokensAnnotation.class)) {
+                    String word = token.get(CoreAnnotations.TextAnnotation.class);
+                    String pos = token.get(CoreAnnotations.PartOfSpeechAnnotation.class);
+                    System.out.println("parola: "+ word+ "POS: "+ pos);
+                    if(!map.containsKey(word) && !pos.matches("^[,.:;!?()-]+$")){
+                        map.put(word.toLowerCase(), 1);
+                    }
+                }
+            }*/
+            Scanner sc = new Scanner(articolo_completo);
             sc.useDelimiter("[^’'\\-a-zA-Z0-9]+");
             while (sc.hasNext()) {
                 String s = sc.next();
@@ -51,7 +82,7 @@ public class MyPriorityQueue {
                     //System.out.println("il valore del termine " + el.getKey() + " è stato incrementato a " + mappona.get(el.getKey()) + "\n" + "\n");
                 }
             }
-            sc.close();
+            //sc.close();
         }
 
         String bannedWords = "/Users/giovannidemaria/IdeaProjects/eis-final/src/main/java/it/unipd/dei/dbdc/SEARCH_TERMS/english_stoplist_v1.txt";
@@ -64,7 +95,8 @@ public class MyPriorityQueue {
 
     private static String[] bannedArray(String filePath){
 
-        String[] banned = new String[524];
+        final int bannedDim = 524;
+        String[] banned = new String[bannedDim];
         try {
             File file = new File(filePath);
             Scanner scanner = new Scanner(file);

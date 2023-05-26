@@ -12,6 +12,7 @@ public class main {
     public static final String[] formats = {"json", "xml", "csv"};
 
     public static final String filePath = "/Users/giovannidemaria/IdeaProjects/eis-final/database/fileSerializzato.json";
+    public static final String filePath2 = "/Users/giovannidemaria/IdeaProjects/eis-final/src/main/java/it/unipd/dei/dbdc/SEARCH_TERMS/english_stoplist_v1.txt";
 
     public static final String outFilePath ="/Users/giovannidemaria/IdeaProjects/eis-final/src/main/java/it/unipd/dei/dbdc/SEARCH_TERMS/output.txt";
     public static final String filePropertiesName = "deserializers.properties";
@@ -33,6 +34,7 @@ public class main {
             }
 
             //creo un arraylist con tutti i termini come chiavi e numero di articoli in cui sono presenti come valori
+            System.out.println("scrittura primi 50 termini più presenti in corso..");
             ArrayList<it.unipd.dei.dbdc.SEARCH_TERMS.MyOtherEntry> max = MyPriorityQueue.mostPresent(articles);
 
             //stampo i primi 50 termini più presenti nei vari articoli
