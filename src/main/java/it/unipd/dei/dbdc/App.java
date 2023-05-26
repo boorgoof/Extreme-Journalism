@@ -1,27 +1,55 @@
 package it.unipd.dei.dbdc;
 
 import it.unipd.dei.dbdc.DownloadAPI.DownloadHandler;
+import org.apache.commons.cli.CommandLine;
 
 import java.io.IOException;
 
 public class App
 {
-    public static void main( String[] args ) throws IOException {
-        // L'utente puo' passare da riga di comando quello che vuole fare.
+    private final static String database_path = "./database";
 
-        // TODO: apache commons cli per argomenti da linea di comando
+    public static void main( String[] args ) throws IOException {
         // TODO: junit
         // TODO: maven site plugin
         // TODO: maven javadoc plugin
-        // TODO: shade plugin al posto di assembly plugin
-        // TODO: usare CoreNLP al posto di Scanner?
-        // TODO: properties
+        // TODO: bash o .bat
 
-        // Se vuole download, passo a download handler
-        System.out.println(ConsoleColors.BLUE + "Entering the download part..." + ConsoleColors.RESET);
-        DownloadHandler.download(true, "./database");
-        System.out.println(ConsoleColors.BLUE + "Exiting the download part..." + ConsoleColors.RESET);
+        // L'utente puo' passare da riga di comando quello che vuole fare.
+        CommandLine cmd = CommandLineInterpreter.parseCommandLine(args);
+        if (cmd == null)
+        {
+            return;
+        }
+        boolean download = false;
+        boolean search = false;
 
+        if (cmd.hasOption("d"))
+        {
+            download = true;
+        }
+        else if (cmd.hasOption("s"))
+        {
+            search = true;
+        }
+        else if (cmd.hasOption("ds"))
+        {
+            download = true;
+            search = true;
+        }
+
+        if (download) {
+            //obtainDownloadOptions(cmd);
+            // Se vuole download, passo a download handler
+            System.out.println(ConsoleTextColors.BLUE + "Entering the download part..." + ConsoleTextColors.RESET);
+            DownloadHandler.download(true, database_path);
+            System.out.println(ConsoleTextColors.BLUE + "Exiting the download part..." + ConsoleTextColors.RESET);
+        }
+        if (search)
+        {
+            // Serialization e search terms
+            //obtainSearchOptions(cmd);
+        }
 
     }
 

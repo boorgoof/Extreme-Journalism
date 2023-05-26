@@ -1,6 +1,6 @@
 package it.unipd.dei.dbdc.DownloadAPI;
 
-import it.unipd.dei.dbdc.ConsoleColors;
+import it.unipd.dei.dbdc.ConsoleTextColors;
 
 import java.io.IOException;
 
@@ -18,15 +18,15 @@ public class DownloadHandler {
         else
         {
             // Prende gli oggetti della riga di comando e crea l'oggetto
-            System.out.println(ConsoleColors.BLUE + "The API was selected from command line..." + ConsoleColors.RESET);
+            System.out.println(ConsoleTextColors.BLUE + "The API was selected from command line..." + ConsoleTextColors.RESET);
             // container.getAPIManager();
         }
 
-        System.out.println(ConsoleColors.BLUE + "API selected correctly..." + ConsoleColors.RESET);
+        System.out.println(ConsoleTextColors.BLUE + "API selected correctly..." + ConsoleTextColors.RESET);
 
         // Cerca di chiamare la API
         try {
-            System.out.println(ConsoleColors.BLUE + "Calling the API..." + ConsoleColors.RESET);
+            System.out.println(ConsoleTextColors.BLUE + "Calling the API..." + ConsoleTextColors.RESET);
             manager.callAPI(folder_path);
         }
         catch (IOException e)

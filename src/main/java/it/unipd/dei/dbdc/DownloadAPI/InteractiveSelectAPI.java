@@ -1,6 +1,6 @@
 package it.unipd.dei.dbdc.DownloadAPI;
 
-import it.unipd.dei.dbdc.ConsoleColors;
+import it.unipd.dei.dbdc.ConsoleTextColors;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class InteractiveSelectAPI {
     public static APIManager askAPI(APIContainer container)
     {
-        System.out.println(ConsoleColors.BLUE + "Selecting the API manually..." + ConsoleColors.RESET);
+        System.out.println(ConsoleTextColors.BLUE + "Selecting the API manually..." + ConsoleTextColors.RESET);
         Scanner sc = new Scanner(System.in);
 
         while (true)
@@ -62,7 +62,7 @@ public class InteractiveSelectAPI {
             }
 
             try {
-                System.out.println(ConsoleColors.BLUE + "Processing the request..." + ConsoleColors.RESET);
+                System.out.println(ConsoleTextColors.BLUE + "Processing the request..." + ConsoleTextColors.RESET);
                 return container.getAPIManager(name, queries);
             } catch (IllegalArgumentException e) {
                 System.out.println("Nome o parametri forniti errati, riprovare");

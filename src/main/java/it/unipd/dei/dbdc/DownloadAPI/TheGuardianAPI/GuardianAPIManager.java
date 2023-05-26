@@ -1,6 +1,5 @@
 package it.unipd.dei.dbdc.DownloadAPI.TheGuardianAPI;
 
-import it.unipd.dei.dbdc.ConsoleColors;
 import it.unipd.dei.dbdc.DownloadAPI.Libraries.APICaller;
 import it.unipd.dei.dbdc.DownloadAPI.APIManager;
 import it.unipd.dei.dbdc.DownloadAPI.QueryParam;
