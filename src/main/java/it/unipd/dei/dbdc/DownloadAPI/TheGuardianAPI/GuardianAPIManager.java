@@ -4,8 +4,13 @@ import it.unipd.dei.dbdc.DownloadAPI.Libraries.APICaller;
 import it.unipd.dei.dbdc.DownloadAPI.APIManager;
 import it.unipd.dei.dbdc.DownloadAPI.QueryParam;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 // Questo caller ha le informazioni per ogni chiamata fatta al TheGuardian.
 public class GuardianAPIManager implements APIManager {
@@ -14,12 +19,12 @@ public class GuardianAPIManager implements APIManager {
     private final APICaller caller;
 
     // Utilizza il meccanismo della delega
-    private final GuardianAPIRequests requests;
+    private final GuardianAPIParams params;
 
     // To create this object, you have to pass a Caller to it
     public GuardianAPIManager(APICaller a) {
         caller = a;
-        requests = new GuardianAPIRequests();
+        params = new GuardianAPIParams();
     }
 
     @Override
@@ -43,7 +48,7 @@ public class GuardianAPIManager implements APIManager {
         {
             if (GuardianAPIInfo.isPresent(q.getKey()))
             {
-                requests.addParam(q);
+                params.addParam(q);
             }
             else
             {
@@ -53,28 +58,60 @@ public class GuardianAPIManager implements APIManager {
     }
 
     // This calls the API
-    public void callAPI(String path_folder) throws IllegalArgumentException, IOException
+    public String callAPI(String path_folder) throws IllegalArgumentException, IOException
     {
         if (caller == null)
         {
             throw new IllegalArgumentException();
         }
 
-        // Crea le richieste
-        String[] req = requests.createRequests();
+        // Prende i parametri
+        ArrayList<Map<String, Object>> requests = params.getParams();
+
+        // Il nuovo folder
+        path_folder = path_folder +"/"+GuardianAPIInfo.getAPIName();
+
+        // Elimina il folder, se era gia' presente.
+        if (deleteFilesInDir(new File(path_folder))) {
+            // Se non era presente, lo crea
+            Files.createDirectories(Paths.get(path_folder));
+        }
 
         // Manda le richieste tramite la libreria e le salva in file
-        for (int i = 0; i<req.length; i++)
+        for (int i = 0; i<requests.size(); i++)
         {
-            String path = path_folder +"/"+GuardianAPIInfo.getAPIName()+"/request"+(i+1)+".json";
+            String path = path_folder+"/request"+(i+1)+".json";
 
             // Se qualcosa nel formato era errato, lancia l'errore
-            if (!caller.sendRequest(req[i], path))
+            if (!caller.sendRequest(GuardianAPIInfo.getDefaultURL(), requests.get(i), path))
             {
                 throw new IllegalArgumentException("Query parameters are not correct");
             }
         }
         caller.endRequests();
+        return path_folder;
+    }
+
+    private boolean deleteFilesInDir(File dir)
+    {
+        File[] contents = dir.listFiles();
+        if (contents == null) {
+            return true;
+        }
+        for (File f : contents) {
+            deleteDir(f);
+        }
+        return false;
+    }
+
+    private void deleteDir(File file) {
+        File[] contents = file.listFiles();
+        if (contents != null) {
+            for (File f : contents) {
+                deleteDir(f);
+            }
+        }
+        file.delete();
     }
 
 }

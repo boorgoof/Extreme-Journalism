@@ -10,7 +10,7 @@ public class Main {
 
     public static final String[] formats = {"json", "xml", "csv"};
 
-    public static final String filePath = "D:\\ingengeria software\\eis-final\\database\\databaseProva\\Serialized.json";
+    public static final String filePath = ".\\database\\databaseProva\\Serialized.json";
     public static final String folderPath = ".\\database\\databaseProva";
     public static final String filePropertiesName = "deserializers.properties";
 

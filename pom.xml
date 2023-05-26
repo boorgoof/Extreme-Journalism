@@ -19,7 +19,77 @@
   <build>
     <plugins>
 
+      <!-- Set the version of SDK used for the project -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.11.0</version>
+        <configuration>
+          <source>${maven.compiler.source}</source>
+          <target>${maven.compiler.target}</target>
+          <encoding>${project.build.sourceEncoding}</encoding>
+        </configuration>
+      </plugin>
+
+      <!-- Site lifecycle  TODO: guardarlo -->
+      <plugin>
+        <artifactId>maven-site-plugin</artifactId>
+        <version>3.7.1</version>
+      </plugin>
+
+      <!-- Javadoc lifecycle TODO: guardalo-->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>3.5.0</version>
+      </plugin>
+
+      <!-- Report dei test -->
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.22.1</version>
+      </plugin>
+
+      <!-- Build an uber JAR that contains all the dependencies. -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.4.1</version>
+        <configuration>
+          <shadedArtifactAttached>true</shadedArtifactAttached>
+          <shadedClassifierName>jar-with-dependencies</shadedClassifierName>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <shadedArtifactAttached>true</shadedArtifactAttached>
+              <transformers>
+                <transformer
+                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                  <mainClass>it.unipd.dei.dbdc.App</mainClass>
+                </transformer>
+              </transformers>
+              <filters>
+                <filter>
+                  <artifact>*:*</artifact>
+                  <excludes>
+                    <exclude>META-INF/*.SF</exclude>
+                    <exclude>META-INF/*.DSA</exclude>
+                    <exclude>META-INF/*.RSA</exclude>
+                  </excludes>
+                </filter>
+              </filters>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
       <!-- Build an executable JAR -->
+      <!--
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
@@ -32,19 +102,10 @@
           </archive>
         </configuration>
       </plugin>
+      -->
 
-      <!-- Set the version of SDK used for the project -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.11.0</version>
-        <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
-        </configuration>
-      </plugin>
-
-      <!-- Build an executable JAR that contains all the dependencies -->
+      <!-- Build an executable JAR that contains all the dependencies. -->
+      <!--
       <plugin>
         <artifactId>maven-assembly-plugin</artifactId>
         <version>2.2.1</version>
@@ -68,10 +129,14 @@
           </execution>
         </executions>
       </plugin>
+      -->
+
     </plugins>
   </build>
 
   <dependencies>
+
+    <!-- Utility per i test -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -79,31 +144,39 @@
       <scope>test</scope>
     </dependency>
 
+    <!-- Libreria per gestire le opzioni specificate da linea di comando -->
+    <dependency>
+      <groupId>commons-cli</groupId>
+      <artifactId>commons-cli</artifactId>
+      <version>1.5.0</version>
+    </dependency>
+
+    <!-- Libreria per le richieste http -->
     <dependency>
       <groupId>com.konghq</groupId>
       <artifactId>unirest-java</artifactId>
       <version>3.14.2</version>
     </dependency>
-        <dependency>
+
+    <!-- Librerie per serializzatori e deserializzatori -->
+    <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
       <version>2.15.0</version>
     </dependency>
+
     <dependency>
       <groupId>com.fasterxml.jackson.dataformat</groupId>
       <artifactId>jackson-dataformat-xml</artifactId>
-      <version>2.9.0</version>
+      <version>2.15.1</version>
     </dependency>
-    <dependency>
-      <groupId>com.opencsv</groupId>
-      <artifactId>opencsv</artifactId>
-      <version>5.3</version>
-    </dependency>
+
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-csv</artifactId>
       <version>1.10.0</version>
     </dependency>
+<<<<<<< HEAD
     <!-- Da togliere -->
     <dependency>
       <groupId>com.squareup.okhttp3</groupId>
@@ -141,5 +214,8 @@
       <version>4.5.4</version>
       <classifier>models</classifier>
     </dependency>
+=======
+
+>>>>>>> bb3c14e8b6842f10110a44e6f5b3a65145400b6e
   </dependencies>
 </project>

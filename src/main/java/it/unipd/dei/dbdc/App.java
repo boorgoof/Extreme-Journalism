@@ -1,92 +1,60 @@
 package it.unipd.dei.dbdc;
 
+import it.unipd.dei.dbdc.DownloadAPI.DownloadHandler;
+import it.unipd.dei.dbdc.DownloadAPI.QueryParam;
+import org.apache.commons.cli.CommandLine;
 
-// primo approccio, funziona perchè seguo dei nodi predefiniti. Non è generale -> vedere json1
-public class App 
-{   /*
-    public static void main( String[] args )
-    {
-        List<Article> articles = new ArrayList<>();
-        String path_folder = "./database/the_guardian";
-        String path_serialized_file = "./database/fileSerializzato.json";
-        deserialization_JSON_folder(path_folder,articles);
-        serialization_JSON_file(path_serialized_file, articles);
-    }
+import java.io.IOException;
+import java.util.ArrayList;
 
-    // Deserializzazione di tutti i file nel folder che terminano in JSON
-    public static void deserialization_JSON_folder(String path, List<Article> articles){
+public class App
+{
+    private final static String database_path = "./database";
 
-        File folder = new File(path);
-        File[] files = folder.listFiles();
+    public static void main( String[] args ) throws IOException {
+        // TODO: junit
+        // TODO: maven site plugin
+        // TODO: maven javadoc plugin
+        // TODO: bash o .bat
 
-        if (files != null) {
-            for (File file : files) {
-                if (file.isFile() && file.getName().endsWith(".json")) {
-                    deserialization_JSON_file(file, articles);
-                }
-            }
+        // L'utente puo' passare da riga di comando quello che vuole fare.
+        CommandLine cmd = CommandLineInterpreter.parseCommandLine(args);
+        if (cmd == null)
+        {
+            return;
+        }
+        boolean download = false;
+        boolean search = false;
+
+        if (cmd.hasOption("d"))
+        {
+            download = true;
+        }
+        else if (cmd.hasOption("s"))
+        {
+            search = true;
+        }
+        else if (cmd.hasOption("ds"))
+        {
+            download = true;
+            search = true;
+        }
+
+        if (download) {
+            // Se vuole download, passo a download handler
+            System.out.println(ConsoleTextColors.BLUE + "Entering the download part..." + ConsoleTextColors.RESET);
+            String name = CommandLineInterpreter.obtainDownloadOptions(cmd);
+            DownloadHandler.download(database_path, name);
+            System.out.println(ConsoleTextColors.BLUE + "Exiting the download part..." + ConsoleTextColors.RESET);
+        }
+        if (search)
+        {
+            // Serialization e search terms
+            //obtainSearchOptions(cmd);
         }
 
     }
 
-    // Deserialization: da file a oggetto (li mettiamo nella lista di article)
-    public static void deserialization_JSON_file(File file, List<Article> articles){
-
-        try {
-
-            // Since the creation of an ObjectMapper object is expensive, it's recommended that we reuse the same one for multiple operations.
-            // TODO: spostare l'ObjectMapper fuori da qui
-            ObjectMapper objectMapper = new ObjectMapper();
-
-            // Leggo il JSON come un tree
-            JsonNode rootNode = objectMapper.readTree(file);
-
-            // Prendo il nodo response
-            JsonNode responseNode = rootNode.path("response");
-
-            JsonNode ResponseArray = responseNode.path("results");
-
-            // Per ogni articolo:
-            for (JsonNode root : ResponseArray) {
-
-                // Cerco fields
-                JsonNode fieldsNode = root.path("fields");
-
-                if (!fieldsNode.isMissingNode()) {        // if "fields" node exists
-                    Article article = new Article(fieldsNode.path("headline").asText(), fieldsNode.path("bodyText").asText());
-                    articles.add(article);
-                }
-
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    // Serializzazione a partire dalla lista di Article
-    public static void serialization_JSON_file(String path, List<Article> articles){
-
-        try{
-
-            // Creazione dell'ObjectMapper
-            ObjectMapper objectMapper = new ObjectMapper();
-            objectMapper.enable(SerializationFeature.INDENT_OUTPUT); // serve per formattare tutto bene con gli spazi
-
-            // Serializzazione della lista di articoli in un file JSON
-            objectMapper.writeValue(new File(path), articles);
-
-            // Serializzazione della lista di articoli in una stringa JSON
-            String stringaJson = objectMapper.writeValueAsString(articles);
-            System.out.println(stringaJson);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
-    */
 }
 
 
