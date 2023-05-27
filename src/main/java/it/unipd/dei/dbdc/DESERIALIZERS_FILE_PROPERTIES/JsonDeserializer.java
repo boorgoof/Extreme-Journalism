@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,8 +18,11 @@ public class JsonDeserializer implements specificDeserializer<Article> {
         return fields;
     }
 
-    public void setFields(String[] fields) {
-        this.fields = fields;
+    public void setFields(String[] newFields) {
+        if( newFields.length == fields.length){
+            fields = newFields;
+        }
+        else throw new IllegalArgumentException("Deve essere fornito un array di dimensione " + fields.length);
     }
 
     @Override
@@ -51,3 +55,21 @@ public class JsonDeserializer implements specificDeserializer<Article> {
     }
 
 }
+
+// idee di miglioramento. deserializzare in modo dinamico
+/*
+  public void setFields(String[] fields) {
+        Constructor<?>[] constructors = Article.class.getConstructors();
+
+        for (Constructor<?> constructor : constructors) {
+            int numConstructorParams = constructor.getParameterCount();
+
+            if (fields.length == numConstructorParams) {
+                this.fields = fields;
+                return;
+            }
+        }
+
+        throw new IllegalArgumentException("Nessun costruttore di Article corrisponde al numero di campi specificato.");
+    }
+*/

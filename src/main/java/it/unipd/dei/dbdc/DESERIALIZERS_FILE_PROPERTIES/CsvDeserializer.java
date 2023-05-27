@@ -19,8 +19,11 @@ public class CsvDeserializer implements specificDeserializer<Article> {
         return fields;
     }
 
-    public void setFields(String[] fields) {
-        this.fields = fields;
+    public void setFields(String[] newFields) {
+        if( newFields.length == fields.length){
+            fields = newFields;
+        }
+        else throw new IllegalArgumentException("Deve essere fornito un array \"header\" di dimensione " + fields.length);
     }
 
     @Override
@@ -48,11 +51,10 @@ public class CsvDeserializer implements specificDeserializer<Article> {
                 articles.add(article);
 
             }
-
             parser.close();
         }
-
         return articles;
     }
+
 }
 

@@ -54,7 +54,7 @@ public class MyPriorityQueue {
             sc.close();
         }
 
-        String bannedWords = "./eis-final/src/main/java/it/unipd/dei/dbdc/SEARCH_TERMS/english_stoplist_v1.txt";
+        String bannedWords = "./src/main/java/it/unipd/dei/dbdc/SEARCH_TERMS/english_stoplist_v1.txt";
         ArrayList<it.unipd.dei.dbdc.SEARCH_TERMS.MyOtherEntry> max = new ArrayList<it.unipd.dei.dbdc.SEARCH_TERMS.MyOtherEntry>(50);
         for (Map.Entry<String, Integer> el : mappona.entrySet()) {
             addOrdered(max, el,bannedArray(bannedWords));

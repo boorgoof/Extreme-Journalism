@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Main {
 
-    public static final String[] formats = {"json", "xml", "csv"};
+    public static final String[] formats = {"json", "xml"};
     public static final String destinationFolderPath = ".\\database\\";
     public static final String filePropertiesName = "serializers.properties";
     public static void main(String[] args) {
@@ -18,9 +18,9 @@ public class Main {
             // Creazione della lista di oggetti Serializable a partire dalla lista di Article (Article implementa Serializzable)
             List<Serializable> objects = new ArrayList<>(articles);
 
-            String format = formats[0];
-            String filename = "SerializedIterface." ; // Percorso del file di output
-            String filePath = destinationFolderPath + filename + format;
+            String format = formats[1];
+            String filename = "Serialized" ; // Percorso del file di output
+            String filePath = destinationFolderPath + filename + "." + format;
 
             SerializationHandler handler = new SerializationHandler(filePropertiesName);
 
