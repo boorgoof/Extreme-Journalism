@@ -1,0 +1,26 @@
+<ArrayList>
+  <item>
+    <id/>
+    <url/>
+    <title>Title 111</title>
+    <body>Content 111</body>
+    <source/>
+    <date/>
+  </item>
+  <item>
+    <id/>
+    <url/>
+    <title>Title 222</title>
+    <body>Content 222</body>
+    <source/>
+    <date/>
+  </item>
+  <item>
+    <id/>
+    <url/>
+    <title>Title 322</title>
+    <body>Content 3333</body>
+    <source/>
+    <date/>
+  </item>
+</ArrayList>

@@ -3,6 +3,7 @@ package it.unipd.dei.dbdc.DESERIALIZERS_FILE_PROPERTIES;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -10,7 +11,7 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CsvDeserializer implements Deserializer<Article> {
+public class CsvDeserializer implements specificDeserializer<Article> {
 
     private String[] fields = {"Identifier","URL","Title","Body","Date","Source Set","Source"};
 
@@ -18,8 +19,11 @@ public class CsvDeserializer implements Deserializer<Article> {
         return fields;
     }
 
-    public void setFields(String[] fields) {
-        this.fields = fields;
+    public void setFields(String[] newFields) {
+        if( newFields.length == fields.length){
+            fields = newFields;
+        }
+        else throw new IllegalArgumentException("Deve essere fornito un array \"header\" di dimensione " + fields.length);
     }
 
     @Override
@@ -47,11 +51,10 @@ public class CsvDeserializer implements Deserializer<Article> {
                 articles.add(article);
 
             }
-
             parser.close();
         }
-
         return articles;
     }
+
 }
 

@@ -25,9 +25,8 @@ public class Main {
         try {
             DeserializationHandler<Article> handler = new DeserializationHandler<>(filePropertiesName);
 
-
             // PROVA: 1. DESERIALIZZO UN FILE
-            System.out.println("Serializzazione file:");
+            System.out.println("Deserializzazione file:");
             List<Article> articles = new ArrayList<>();
 
             articles = handler.deserializeFile(formats[0], filePath ); // basta indicare il formato e il path del file
@@ -51,7 +50,7 @@ public class Main {
                 }
 
             } catch (IOException e) {
-                System.err.println("Serialization failed: " + e.getMessage());
+                System.err.println("Deserializzazione fallita per il formato: " + e.getMessage());
                 // se ci sono errori probabilmente è stato inserito un header sbagliato. oppure sono stati specificati male i campi del file JSON
                 // bisogna segnalare all'utente e dire di reinserire i campi
             }
@@ -63,3 +62,38 @@ public class Main {
     }
 
 }
+
+
+/*
+    specificDeserializer deserializer;
+    // Crea uno scanner per leggere l'input dell'utente
+    Scanner scanner = new Scanner(System.in);
+
+    String risposta = scanner.nextLine();
+
+    System.out.println("Inserisci una parola alla volta per indicare i campi di interesse. Ricorda che sono sei parole in tutto");
+
+    String[] fields = new String[6];
+    for (int i = 0; i < fields.length; i++) {
+        System.out.print("Campo " + (i + 1) + ": ");
+        fields[i] = scanner.nextLine();
+    }
+
+    deserializer.setFields(fields);
+
+ */
+ /*
+    System.out.println("E' fallita la deserializzazione per il formato" + format);
+
+    if(deserializer instanceof specificDeserializer){
+
+        specificDeserializer specDeserializer = (specificDeserializer) deserializer;
+
+        System.out.println("Sono attualmente deserializzati i seguenti campi: ");
+        System.out.println(specDeserializer.getFields());
+        System.out.println("Vuole per caso modificarli? ");
+        Scanner scanner = new Scanner(System.in);
+        String answer = scanner.nextLine();
+        setSpecificSerializer(specDeserializer);
+    }
+*/

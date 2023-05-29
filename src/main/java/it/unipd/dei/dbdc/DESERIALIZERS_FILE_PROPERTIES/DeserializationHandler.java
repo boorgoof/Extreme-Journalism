@@ -1,6 +1,5 @@
 package it.unipd.dei.dbdc.DESERIALIZERS_FILE_PROPERTIES;
 
-
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,12 +8,13 @@ import java.util.*;
 
 public class DeserializationHandler<T> {
 
-    private final Map<String, Deserializer<T>> deserializers;
+    private Map<String, Deserializer<T>> deserializers;
 
     public DeserializationHandler(String filePropertiesName) throws IOException {
 
         Properties deserializersProperties = loadProperties(filePropertiesName); //cambiare nome
-        deserializers = instantiateDeserializers(deserializersProperties);
+        deserializers = setDeserializersMap(deserializersProperties);
+
     }
 
     private Properties loadProperties(String filePropertiesName) throws IOException {
@@ -27,23 +27,21 @@ public class DeserializationHandler<T> {
 
     }
 
-    private Map<String, Deserializer<T>> instantiateDeserializers(Properties deserializers) throws IOException {
+    private Map<String, Deserializer<T>> setDeserializersMap(Properties deserializersProperties) throws IOException {
 
         Map<String, Deserializer<T>> deserializerMap = new HashMap<>();
 
-        for (String format : deserializers.stringPropertyNames()) {
+        for (String format : deserializersProperties.stringPropertyNames()) {
 
-            String deserializerClassName = deserializers.getProperty(format);
+            String deserializerClassName = deserializersProperties.getProperty(format);
             if (deserializerClassName == null) {
                 throw new IOException("No deserializer found for the format: " + format);
             }
 
             try {
-
                 Class<?> deserializerClass = Class.forName(deserializerClassName);
                 Deserializer<T> deserializer = (Deserializer<T>) deserializerClass.getDeclaredConstructor().newInstance();
                 deserializerMap.put(format, deserializer);
-
             } catch (Exception e) {
                 throw new IOException("Failed to instantiate the deserializer for the format: " + format, e);
             }
@@ -55,14 +53,33 @@ public class DeserializationHandler<T> {
     public Set<String> getFormats() {
         return deserializers.keySet();
     }
+    public void setSpecificFields(String format, String[] fields) {
+
+        if(deserializers.get(format) instanceof specificDeserializer){
+            specificDeserializer deserializer = (specificDeserializer) deserializers.get(format);
+            deserializer.setFields(fields);
+        }
+
+    }
+
+    public String[] getSpecificFields(String format){
+
+        if(deserializers.get(format) instanceof specificDeserializer){
+            specificDeserializer deserializer = (specificDeserializer) deserializers.get(format);
+            return deserializer.getFields();
+        }
+        return null;
+    }
 
     public List<T> deserializeFile(String format, String filePath) throws IOException {
+
         Deserializer<T> deserializer = deserializers.get(format);
         if (deserializer == null) {
             throw new IOException("No deserializer found for the specified format: " + format);
         }
         return deserializer.deserialize(filePath);
     }
+
 
     public void deserializeFolder(String format, String folderPath, List<T> objects) throws IOException {
         File folder = new File(folderPath);
@@ -81,6 +98,8 @@ public class DeserializationHandler<T> {
 
 }
 
+
+// In questo tipologia instanziava un deserializers ogni volta che doveva deserializzare quel formato. Ho evitato questa cosa con la mappa
 /*
  private final Properties deserializers;
 
