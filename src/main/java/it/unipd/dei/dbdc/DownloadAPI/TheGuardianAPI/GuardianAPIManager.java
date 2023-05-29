@@ -1,5 +1,6 @@
 package it.unipd.dei.dbdc.DownloadAPI.TheGuardianAPI;
 
+import it.unipd.dei.dbdc.ConsoleTextColors;
 import it.unipd.dei.dbdc.DownloadAPI.Libraries.APICaller;
 import it.unipd.dei.dbdc.DownloadAPI.APIManager;
 import it.unipd.dei.dbdc.DownloadAPI.QueryParam;
@@ -69,27 +70,57 @@ public class GuardianAPIManager implements APIManager {
         ArrayList<Map<String, Object>> requests = params.getParams();
 
         // Il nuovo folder
-        path_folder = path_folder +"/"+GuardianAPIInfo.getAPIName();
+        String new_path_folder = path_folder +"/"+GuardianAPIInfo.getAPIName();
 
         // Elimina il folder, se era gia' presente.
-        if (deleteFilesInDir(new File(path_folder))) {
+        if (deleteFilesInDir(new File(new_path_folder))) {
             // Se non era presente, lo crea
-            Files.createDirectories(Paths.get(path_folder));
+            Files.createDirectories(Paths.get(new_path_folder));
         }
 
-        // Manda le richieste tramite la libreria e le salva in file
+        long start = System.currentTimeMillis();
         for (int i = 0; i<requests.size(); i++)
         {
-            String path = path_folder+"/request"+(i+1)+".json";
-
-            // Se qualcosa nel formato era errato, lancia l'errore
-            if (!caller.sendRequest(GuardianAPIInfo.getDefaultURL(), requests.get(i), path))
-            {
+            String path = new_path_folder+"/request"+(i+1)+".json";
+            if (!caller.sendRequest(GuardianAPIInfo.getDefaultURL(), requests.get(i), path)) {
                 throw new IllegalArgumentException("Query parameters are not correct");
             }
         }
+        long end = System.currentTimeMillis();
+
+        System.out.println(ConsoleTextColors.YELLOW + "Senza parallelismo: "+(end-start));
+
+        if (deleteFilesInDir(new File(new_path_folder))) {
+            // Se non era presente, lo crea
+            Files.createDirectories(Paths.get(new_path_folder));
+        }
+
+        // Manda le richieste tramite la libreria e le salva in file
+        start = System.currentTimeMillis();
+        // FIXME: da problemi ogni tanto
+        Thread[] ts = new Thread[requests.size()];
+        for (int i = 0; i<requests.size(); i++)
+        {
+            String path = new_path_folder+"/request"+(i+1)+".json";
+            ts[i] = new CallAPIThread(caller, GuardianAPIInfo.getDefaultURL(), path, requests.get(i));
+            ts[i].start();
+        }
+        for (int i = 0; i<requests.size(); i++)
+        {
+            try {
+                ts[i].join();
+            }
+            catch (InterruptedException e)
+            {
+                System.out.println("CAAAAA");
+            }
+        }
+        end = System.currentTimeMillis();
+
+        System.out.println("Con parallelismo: "+(end-start)+ ConsoleTextColors.RESET);
+
         caller.endRequests();
-        return path_folder;
+        return new_path_folder;
     }
 
     private boolean deleteFilesInDir(File dir)

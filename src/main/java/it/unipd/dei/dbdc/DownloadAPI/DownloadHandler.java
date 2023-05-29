@@ -15,9 +15,11 @@ public class DownloadHandler {
             if (api_name == null) {
                 api_name = InteractiveSelectAPI.askAPIName(in, container);
             }
+
             manager = InteractiveSelectAPI.askParams(in, container, api_name);
             if (manager == null)
             {
+                // Facciamo in modo che richieda il nome
                 api_name = null;
                 continue;
             }
@@ -34,6 +36,7 @@ public class DownloadHandler {
             {
                 System.out.println(ConsoleTextColors.RED + "Errore nella chiamata all'API"+ConsoleTextColors.RESET);
                 e.printStackTrace();
+                api_name = null;
                 continue;
             }
             in.close();

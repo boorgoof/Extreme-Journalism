@@ -4,7 +4,6 @@ import it.unipd.dei.dbdc.DownloadAPI.QueryParam;
 import org.apache.commons.cli.*;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class CommandLineInterpreter {
 
@@ -32,11 +31,19 @@ public class CommandLineInterpreter {
             new Option("n", "number", true, "Contains the number of terms you want to have in the final output")
     };
 
+    private final CommandLine cmd;
 
-    // There are three stages to command line processing.
-    // They are the definition, parsing and interrogation stages.
+    public CommandLineInterpreter(String[] args)
+    {
+        cmd = parseCommandLine(args);
+        // FIXME: forse non è bello lanciare eccezione
+        if (cmd == null)
+        {
+            throw new HelpException();
+        }
+    }
 
-    public static CommandLine parseCommandLine(String[] args)
+    private static CommandLine parseCommandLine(String[] args)
     {
         defineOptions();
         CommandLine cmd = parse(args);
@@ -46,6 +53,10 @@ public class CommandLineInterpreter {
         }
         return cmd;
     }
+
+    // There are three stages to command line processing.
+    // They are the definition, parsing and interrogation stages.
+
     /*
     1. DEFINITION:
     Each command line must define the set of options that will be used to define the interface to the application.
@@ -63,7 +74,7 @@ public class CommandLineInterpreter {
         }
 
         // Set the options as required
-        actionGroup.setRequired(true);
+        //actionGroup.setRequired(true);
         options.addOptionGroup(actionGroup);
 
         // Download options
@@ -99,7 +110,6 @@ public class CommandLineInterpreter {
         } catch (org.apache.commons.cli.ParseException ex) {
             System.err.println("ERROR - parsing command line:");
             System.err.println(ex.getMessage());
-            formatter.printHelp("App -{h,d,s,ds} [options]", options);
         }
         return cmd;
     }
@@ -112,13 +122,25 @@ public class CommandLineInterpreter {
     The result of the interrogation stage is that the user code is fully informed of all the text that was supplied
     on the command line and processed according to the parser and Options rules.
      */
-    public static String obtainDownloadOptions(CommandLine cmd)
+    public boolean downloadPhase()
+    {
+        return cmd.hasOption("d") || cmd.hasOption("ds");
+    }
+
+    public boolean searchPhase()
+    {
+        return cmd.hasOption("s") || cmd.hasOption("ds");
+    }
+
+
+    public String obtainDownloadOptions()
     {
         return cmd.getOptionValue("api");
     }
 
-    public static ArrayList<QueryParam> obtainSearchOptions(CommandLine cmd)
+    public ArrayList<QueryParam> obtainSearchOptions()
     {
+        // TODO: dipende da cosa deve avere
         ArrayList<QueryParam> ret_array = new ArrayList<>(1);
         String path = cmd.getOptionValue("path");
         if (path == null)
@@ -133,3 +155,5 @@ public class CommandLineInterpreter {
         return ret_array;
     }
 }
+
+class HelpException extends RuntimeException {}

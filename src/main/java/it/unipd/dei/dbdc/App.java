@@ -1,11 +1,8 @@
 package it.unipd.dei.dbdc;
 
 import it.unipd.dei.dbdc.DownloadAPI.DownloadHandler;
-import it.unipd.dei.dbdc.DownloadAPI.QueryParam;
-import org.apache.commons.cli.CommandLine;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class App
 {
@@ -18,40 +15,31 @@ public class App
         // TODO: bash o .bat
 
         // L'utente puo' passare da riga di comando quello che vuole fare.
-        CommandLine cmd = CommandLineInterpreter.parseCommandLine(args);
-        if (cmd == null)
+        /*
+        CommandLineInterpreter interpreter;
+        try {
+            interpreter = new CommandLineInterpreter(args);
+        }
+        catch (HelpException e)
         {
             return;
         }
-        boolean download = false;
-        boolean search = false;
 
-        if (cmd.hasOption("d"))
-        {
-            download = true;
-        }
-        else if (cmd.hasOption("s"))
-        {
-            search = true;
-        }
-        else if (cmd.hasOption("ds"))
-        {
-            download = true;
-            search = true;
-        }
+         */
 
-        if (download) {
+        //if (interpreter.downloadPhase()) {
             // Se vuole download, passo a download handler
             System.out.println(ConsoleTextColors.BLUE + "Entering the download part..." + ConsoleTextColors.RESET);
-            String name = CommandLineInterpreter.obtainDownloadOptions(cmd);
+            String name = null; //interpreter.obtainDownloadOptions();
             DownloadHandler.download(database_path, name);
             System.out.println(ConsoleTextColors.BLUE + "Exiting the download part..." + ConsoleTextColors.RESET);
-        }
-        if (search)
-        {
+        //}
+        //if (interpreter.searchPhase())
+        //{
             // Serialization e search terms
-            //obtainSearchOptions(cmd);
-        }
+            //interpreter.obtainSearchOptions();
+            //...
+        //}
 
     }
 

@@ -1,6 +1,5 @@
 package it.unipd.dei.dbdc.DownloadAPI.Libraries;
 
-import it.unipd.dei.dbdc.DownloadAPI.QueryParam;
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
 
@@ -14,7 +13,8 @@ public class KongAPICaller implements APICaller {
     public KongAPICaller()
     {
         // This is needed as the cookies setting gives an error
-        Unirest.config().enableCookieManagement(false);
+        //Unirest.config().enableCookieManagement(false);
+        Unirest.config().cookieSpec("ignoreCookies");
     }
     public boolean sendRequest(String base_url, Map<String, Object> params, String path) throws IOException {
         // To save the files in a path, we first have to make sure that there is
