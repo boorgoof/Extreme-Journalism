@@ -5,18 +5,110 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Parallelism">
+      <change afterPath="$PROJECT_DIR$/JavaDoc/allclasses-index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/allclasses.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/allpackages-index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/constant-values.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/deprecated-list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/element-list" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/help-doc.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-10.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-11.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-12.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-13.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-14.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-15.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-16.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-17.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-18.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-19.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-20.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-4.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-5.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-6.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-7.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-8.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-9.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/App.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/CommandLineInterpreter.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/ConsoleTextColors.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DESERIALIZERS_FILE_PROPERTIES/Article.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DESERIALIZERS_FILE_PROPERTIES/CsvDeserializer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DESERIALIZERS_FILE_PROPERTIES/DeserializationHandler.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DESERIALIZERS_FILE_PROPERTIES/JsonDeserializer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DESERIALIZERS_FILE_PROPERTIES/Main.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DESERIALIZERS_FILE_PROPERTIES/XmlDeserializer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DESERIALIZERS_FILE_PROPERTIES/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DESERIALIZERS_FILE_PROPERTIES/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/APIContainer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/APIManager.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/DownloadHandler.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/DownloadProperties.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/InteractiveSelectAPI.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/Libraries/APICaller.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/Libraries/KongAPICaller.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/Libraries/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/Libraries/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/QueryParam.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/GuardianAPIInfo.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/GuardianAPIManager.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/GuardianAPIParams.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/SEARCH_TERMS/Article.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/SEARCH_TERMS/MyPriorityQueue.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/SEARCH_TERMS/main.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/SEARCH_TERMS/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/SEARCH_TERMS/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/SERIALIZERS_FILE_PROPERTIES/Article.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/SERIALIZERS_FILE_PROPERTIES/CsvSerializer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/SERIALIZERS_FILE_PROPERTIES/JsonSerializer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/SERIALIZERS_FILE_PROPERTIES/Main.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/SERIALIZERS_FILE_PROPERTIES/SerializationHandler.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/SERIALIZERS_FILE_PROPERTIES/XmlSerializer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/SERIALIZERS_FILE_PROPERTIES/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/SERIALIZERS_FILE_PROPERTIES/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/xj/AppTest.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/xj/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/xj/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/jquery-ui.overrides.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/jquery/external/jquery/jquery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/jquery/jquery-3.6.1.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/jquery/jquery-ui.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/jquery/jquery-ui.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/jquery/jszip-utils/dist/jszip-utils-ie.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/jquery/jszip-utils/dist/jszip-utils-ie.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/jquery/jszip-utils/dist/jszip-utils.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/jquery/jszip-utils/dist/jszip-utils.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/jquery/jszip/dist/jszip.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/jquery/jszip/dist/jszip.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/member-search-index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/member-search-index.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/overview-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/overview-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/package-search-index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/package-search-index.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/resources/glass.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/resources/x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/search.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/serialized-form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/stylesheet.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/type-search-index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaDoc/type-search-index.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/Serialized.xml" beforeDir="false" afterPath="$PROJECT_DIR$/database/Serialized.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DESERIALIZERS_FILE_PROPERTIES/CsvDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DESERIALIZERS_FILE_PROPERTIES/CsvDeserializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DESERIALIZERS_FILE_PROPERTIES/DeserializationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DESERIALIZERS_FILE_PROPERTIES/DeserializationHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DESERIALIZERS_FILE_PROPERTIES/JsonDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DESERIALIZERS_FILE_PROPERTIES/JsonDeserializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DESERIALIZERS_FILE_PROPERTIES/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DESERIALIZERS_FILE_PROPERTIES/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/SEARCH_TERMS/MyPriorityQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/SEARCH_TERMS/MyPriorityQueue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/SEARCH_TERMS/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/SEARCH_TERMS/main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/SEARCH_TERMS/output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/SEARCH_TERMS/output.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/SERIALIZERS_FILE_PROPERTIES/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/SERIALIZERS_FILE_PROPERTIES/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/SERIALIZERS_FILE_PROPERTIES/JsonSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/SERIALIZERS_FILE_PROPERTIES/JsonSerializer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/SERIALIZERS_FILE_PROPERTIES/SerializationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/SERIALIZERS_FILE_PROPERTIES/SerializationHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/SERIALIZERS_FILE_PROPERTIES/XmlSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/SERIALIZERS_FILE_PROPERTIES/XmlSerializer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
