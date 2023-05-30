@@ -16,7 +16,7 @@ public class json0 {
     public static void main(String[] args) {
 
         // Deserializzo il file
-        List<Article> articles2 = deserializeFromJSON("D:\\ingengeria software\\eis-final\\database\\databaseProva\\Serialized2.json");
+        List<Article> articles2 = deserializeFromJSON("D:\\ingengeria software\\eis-final\\database\\databaseProva\\Article2.json");
 
         for(Article article : articles2 ){
 

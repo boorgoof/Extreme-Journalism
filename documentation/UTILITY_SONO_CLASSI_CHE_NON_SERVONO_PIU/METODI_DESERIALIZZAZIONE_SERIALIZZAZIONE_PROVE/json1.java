@@ -30,7 +30,7 @@ public class json1 {
         List<Article> articles = new ArrayList<>();
 
         String path_folder = "D:\\ingengeria software\\eis-final\\database\\the_guardian";
-        String path_serialized_json = "D:\\ingengeria software\\eis-final\\database\\databaseProva\\Serialized.json";
+        String path_serialized_json = "D:\\ingengeria software\\eis-final\\database\\databaseProva\\Articles012.json";
 
         File file = new File(path_serialized_json);
         deserialization_JSON_file(file, articles);

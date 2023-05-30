@@ -16,7 +16,7 @@ public class json3 {
         List<Article> articles = new ArrayList<>();
         try {
             // Read JSON file into JsonNode
-            JsonNode jsonNode = mapper.readTree(new File("D:\\ingengeria software\\eis-final\\database\\databaseProva\\Serialized.json"));
+            JsonNode jsonNode = mapper.readTree(new File("D:\\ingengeria software\\eis-final\\database\\databaseProva\\Articles012.json"));
 
             // Iterate over JSON array elements
             if (jsonNode.isArray()) {

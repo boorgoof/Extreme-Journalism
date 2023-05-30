@@ -12,7 +12,7 @@ import java.util.List;
 public class JsonDeserializer implements specificDeserializer<Article> {
 
     // TODO: mettere i campi giusti
-    private String[] fields = {"id", "webUrl", "headline", "bodyText", "webPublicationDate", "sectionId" };
+    private String[] fields = {"id", "webUrl", "headline", "bodyText", "webPublicationDate", "webUrl" };
     // preferisco usare un campo in più di supporto rispetto alle json properties. (in caso vediamo)
 
     public String[] getFields() {
