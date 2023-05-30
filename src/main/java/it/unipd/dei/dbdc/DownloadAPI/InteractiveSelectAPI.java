@@ -1,6 +1,6 @@
 package it.unipd.dei.dbdc.DownloadAPI;
 
-import it.unipd.dei.dbdc.ConsoleTextColors;
+import it.unipd.dei.dbdc.Interfaces.DownloadAPI.APIManager;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -9,8 +9,9 @@ public class InteractiveSelectAPI {
 
     public static String askAPIName(Scanner in, APIContainer container)
     {
-        System.out.println("Inserire il nome della API che si vuole avere. Lista delle possibili API:\n" + container.getAPINames());
-        return in.nextLine();
+        //System.out.println("Inserire il nome della API che si vuole avere. Lista delle possibili API:\n" + container.getAPINames());
+        //return in.nextLine();
+        return "TheGuardianAPI";
     }
 
     public static APIManager askParams(Scanner in, APIContainer container, String name)
@@ -29,7 +30,9 @@ public class InteractiveSelectAPI {
         System.out.println("Inserire i parametri per la query, uno per ogni riga (inserire quit per terminare):\n" + par);
 
         ArrayList<QueryParam> queries = new ArrayList<>();
+        queries.add(new QueryParam("api-key", "21b5c154-934c-4a4e-b2f5-64adbd68af5f"));
 
+        /*
         while (in.hasNextLine()) {
 
             String line = in.nextLine();
@@ -59,7 +62,10 @@ public class InteractiveSelectAPI {
                 queries.add(new QueryParam(key, value.toString()));
             }
             scan.close();
+
         }
+
+         */
 
         try {
             return container.getAPIManager(name, queries);

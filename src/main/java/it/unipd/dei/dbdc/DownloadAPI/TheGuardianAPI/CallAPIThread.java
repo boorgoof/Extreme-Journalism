@@ -1,6 +1,6 @@
 package it.unipd.dei.dbdc.DownloadAPI.TheGuardianAPI;
 
-import it.unipd.dei.dbdc.DownloadAPI.Libraries.APICaller;
+import it.unipd.dei.dbdc.Interfaces.DownloadAPI.APICaller;
 
 import java.io.IOException;
 import java.util.Map;
@@ -25,6 +25,7 @@ public class CallAPIThread extends Thread {
             if (!caller.sendRequest(url, params, path)) {
                 throw new IllegalArgumentException("Query parameters are not correct");
             }
+            // Ogni tanto da IllaegalArgument, probably perche' c'è il limite di una richiesta al secondo
         }
         catch(IOException e)
         {

@@ -21,30 +21,27 @@ public class CommandLineInterpreter {
     // The download options
     private final static Option[] download = {
             new Option("api", "api-name", true, "Contains the name of the API to call"),
+            new Option("key", "api-key", true, "The key for the API (if necessary)")
             // Problema: non sappiamo quali siano i parametri delle altre api, quindi posso mettere solo quelle del the guardian o lasciare così e fare tutto in modo interattivo
     };
 
     // The search options
     private final static Option[] search = {
             new Option("path", "folder-path", true, "Contains the location of the place to take the files from"),
-            new Option("f", "fields", true, "Contains the fields that we need to search into to determine the most important words"),
             new Option("n", "number", true, "Contains the number of terms you want to have in the final output")
     };
 
     private final CommandLine cmd;
 
-    public CommandLineInterpreter(String[] args)
-    {
+    public CommandLineInterpreter(String[] args) {
         cmd = parseCommandLine(args);
         // FIXME: forse non è bello lanciare eccezione
-        if (cmd == null)
-        {
+        if (cmd == null) {
             throw new HelpException();
         }
     }
 
-    private static CommandLine parseCommandLine(String[] args)
-    {
+    private static CommandLine parseCommandLine(String[] args) {
         defineOptions();
         CommandLine cmd = parse(args);
         if (cmd == null || cmd.hasOption("h")) {
@@ -68,24 +65,21 @@ public class CommandLineInterpreter {
 
         // Add the possible actions to an OptionGroup
         OptionGroup actionGroup = new OptionGroup();
-        for (Option op : actions)
-        {
+        for (Option op : actions) {
             actionGroup.addOption(op);
         }
 
         // Set the options as required
-        //actionGroup.setRequired(true);
+        // actionGroup.setRequired(true);
         options.addOptionGroup(actionGroup);
 
         // Download options
-        for (Option op : download)
-        {
+        for (Option op : download) {
             options.addOption(op);
         }
 
         // Search options
-        for (Option op : search)
-        {
+        for (Option op : search) {
             options.addOption(op);
         }
     }
@@ -98,8 +92,6 @@ public class CommandLineInterpreter {
     The result of the parsing stage is a CommandLine instance.
      */
     public static CommandLine parse(String[] args) {
-        // The HelpFormatter is to print help messages
-        HelpFormatter formatter = new HelpFormatter();
 
         // There may be several implementations of the CommandLineParser interface, the recommended one is the DefaultParser
         CommandLineParser parser = new DefaultParser();
@@ -122,29 +114,24 @@ public class CommandLineInterpreter {
     The result of the interrogation stage is that the user code is fully informed of all the text that was supplied
     on the command line and processed according to the parser and Options rules.
      */
-    public boolean downloadPhase()
-    {
+    public boolean downloadPhase() {
         return cmd.hasOption("d") || cmd.hasOption("ds");
     }
 
-    public boolean searchPhase()
-    {
+    public boolean searchPhase() {
         return cmd.hasOption("s") || cmd.hasOption("ds");
     }
 
 
-    public String obtainDownloadOptions()
-    {
+    public String obtainDownloadOptions() {
         return cmd.getOptionValue("api");
     }
 
-    public ArrayList<QueryParam> obtainSearchOptions()
-    {
+    public ArrayList<QueryParam> obtainSearchOptions() {
         // TODO: dipende da cosa deve avere
         ArrayList<QueryParam> ret_array = new ArrayList<>(1);
         String path = cmd.getOptionValue("path");
-        if (path == null)
-        {
+        if (path == null) {
             return null;
         }
         ret_array.add(new QueryParam("path", path));
@@ -155,5 +142,3 @@ public class CommandLineInterpreter {
         return ret_array;
     }
 }
-
-class HelpException extends RuntimeException {}

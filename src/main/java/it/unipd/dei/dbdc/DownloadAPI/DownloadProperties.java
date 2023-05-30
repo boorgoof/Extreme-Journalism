@@ -1,6 +1,7 @@
 package it.unipd.dei.dbdc.DownloadAPI;
 
-import it.unipd.dei.dbdc.DownloadAPI.Libraries.APICaller;
+import it.unipd.dei.dbdc.Interfaces.DownloadAPI.APICaller;
+import it.unipd.dei.dbdc.Interfaces.DownloadAPI.APIManager;
 
 import java.io.IOException;
 import java.io.InputStream;
