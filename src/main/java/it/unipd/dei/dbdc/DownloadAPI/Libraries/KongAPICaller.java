@@ -1,5 +1,6 @@
 package it.unipd.dei.dbdc.DownloadAPI.Libraries;
 
+import it.unipd.dei.dbdc.Interfaces.DownloadAPI.APICaller;
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
 

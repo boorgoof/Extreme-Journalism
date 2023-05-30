@@ -1,8 +1,8 @@
 package it.unipd.dei.dbdc.DownloadAPI.TheGuardianAPI;
 
 import it.unipd.dei.dbdc.ConsoleTextColors;
-import it.unipd.dei.dbdc.DownloadAPI.Libraries.APICaller;
-import it.unipd.dei.dbdc.DownloadAPI.APIManager;
+import it.unipd.dei.dbdc.Interfaces.DownloadAPI.APICaller;
+import it.unipd.dei.dbdc.Interfaces.DownloadAPI.APIManager;
 import it.unipd.dei.dbdc.DownloadAPI.QueryParam;
 
 import java.io.File;

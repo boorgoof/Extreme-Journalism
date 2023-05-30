@@ -1,5 +1,7 @@
 package it.unipd.dei.dbdc.DownloadAPI;
 
+import it.unipd.dei.dbdc.Interfaces.DownloadAPI.APIManager;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -7,7 +9,7 @@ public class InteractiveSelectAPI {
 
     public static String askAPIName(Scanner in, APIContainer container)
     {
-        System.out.println("Inserire il nome della API che si vuole avere. Lista delle possibili API:\n" + container.getAPINames());
+        //System.out.println("Inserire il nome della API che si vuole avere. Lista delle possibili API:\n" + container.getAPINames());
         //return in.nextLine();
         return "TheGuardianAPI";
     }

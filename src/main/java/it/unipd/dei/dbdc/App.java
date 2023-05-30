@@ -1,10 +1,11 @@
 package it.unipd.dei.dbdc;
 
 import it.unipd.dei.dbdc.Deserializers.Article;
-import it.unipd.dei.dbdc.Deserializers.DeserializationHandler;
-import it.unipd.dei.dbdc.DownloadAPI.DownloadHandler;
-import it.unipd.dei.dbdc.Search_terms.Analyze;
-import it.unipd.dei.dbdc.Serializers.SerializationHandler;
+import it.unipd.dei.dbdc.Handlers.DeserializationHandler;
+import it.unipd.dei.dbdc.Handlers.DownloadHandler;
+import it.unipd.dei.dbdc.Search_terms.Analyzer;
+import it.unipd.dei.dbdc.Search_terms.MapAnalyzer;
+import it.unipd.dei.dbdc.Handlers.SerializationHandler;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -22,7 +23,7 @@ public class App
         // TODO: junit
         // TODO: maven site plugin
         // TODO: maven javadoc plugin
-        // TODO: bash o .bat
+        // TODO: bash .sh o .bat
 
         // L'utente puo' passare da riga di comando quello che vuole fare.
         CommandLineInterpreter interpreter;
@@ -104,16 +105,16 @@ public class App
             // bisogna segnalare all'utente e dire di reinserire i campi
         }
 
-        System.out.println(ConsoleTextColors.GREEN+ "Tutto beneee");
 
         // MAPPA
         //creo un arraylist con tutti i termini come chiavi e numero di articoli in cui sono presenti come valori
         System.out.println("scrittura primi 50 termini più presenti in corso..");
-        ArrayList<it.unipd.dei.dbdc.Search_terms.MapEntry> max = Analyze.mostPresent(articles);
+        Analyzer<Article> anal = new MapAnalyzer();
+        ArrayList<it.unipd.dei.dbdc.Search_terms.MapEntry> max = anal.mostPresent(articles);
 
         String outFilePath = "./database/output.txt";
         //stampo i primi 50 termini più presenti nei vari articoli
-        Analyze.outFile(max, outFilePath);
+        MapAnalyzer.outFile(max, outFilePath);
 
     }
 

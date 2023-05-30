@@ -2,6 +2,7 @@ package it.unipd.dei.dbdc.Serializers;
 
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import it.unipd.dei.dbdc.Interfaces.Serializers.Serializer;
 
 import java.io.File;
 import java.io.FileWriter;

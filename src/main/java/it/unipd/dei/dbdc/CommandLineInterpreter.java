@@ -33,18 +33,15 @@ public class CommandLineInterpreter {
 
     private final CommandLine cmd;
 
-    public CommandLineInterpreter(String[] args)
-    {
+    public CommandLineInterpreter(String[] args) {
         cmd = parseCommandLine(args);
         // FIXME: forse non è bello lanciare eccezione
-        if (cmd == null)
-        {
+        if (cmd == null) {
             throw new HelpException();
         }
     }
 
-    private static CommandLine parseCommandLine(String[] args)
-    {
+    private static CommandLine parseCommandLine(String[] args) {
         defineOptions();
         CommandLine cmd = parse(args);
         if (cmd == null || cmd.hasOption("h")) {
@@ -68,8 +65,7 @@ public class CommandLineInterpreter {
 
         // Add the possible actions to an OptionGroup
         OptionGroup actionGroup = new OptionGroup();
-        for (Option op : actions)
-        {
+        for (Option op : actions) {
             actionGroup.addOption(op);
         }
 
@@ -78,14 +74,12 @@ public class CommandLineInterpreter {
         options.addOptionGroup(actionGroup);
 
         // Download options
-        for (Option op : download)
-        {
+        for (Option op : download) {
             options.addOption(op);
         }
 
         // Search options
-        for (Option op : search)
-        {
+        for (Option op : search) {
             options.addOption(op);
         }
     }
@@ -120,29 +114,24 @@ public class CommandLineInterpreter {
     The result of the interrogation stage is that the user code is fully informed of all the text that was supplied
     on the command line and processed according to the parser and Options rules.
      */
-    public boolean downloadPhase()
-    {
+    public boolean downloadPhase() {
         return cmd.hasOption("d") || cmd.hasOption("ds");
     }
 
-    public boolean searchPhase()
-    {
+    public boolean searchPhase() {
         return cmd.hasOption("s") || cmd.hasOption("ds");
     }
 
 
-    public String obtainDownloadOptions()
-    {
+    public String obtainDownloadOptions() {
         return cmd.getOptionValue("api");
     }
 
-    public ArrayList<QueryParam> obtainSearchOptions()
-    {
+    public ArrayList<QueryParam> obtainSearchOptions() {
         // TODO: dipende da cosa deve avere
         ArrayList<QueryParam> ret_array = new ArrayList<>(1);
         String path = cmd.getOptionValue("path");
-        if (path == null)
-        {
+        if (path == null) {
             return null;
         }
         ret_array.add(new QueryParam("path", path));
@@ -153,5 +142,3 @@ public class CommandLineInterpreter {
         return ret_array;
     }
 }
-
-class HelpException extends RuntimeException {}

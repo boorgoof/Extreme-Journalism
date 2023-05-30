@@ -3,6 +3,7 @@ package it.unipd.dei.dbdc.Deserializers;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import it.unipd.dei.dbdc.Interfaces.Deserializers.Deserializer;
 
 import java.io.File;
 import java.io.IOException;

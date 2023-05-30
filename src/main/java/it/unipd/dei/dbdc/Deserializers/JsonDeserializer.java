@@ -2,6 +2,7 @@ package it.unipd.dei.dbdc.Deserializers;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import it.unipd.dei.dbdc.Interfaces.Deserializers.specificDeserializer;
 
 import java.io.File;
 import java.io.IOException;

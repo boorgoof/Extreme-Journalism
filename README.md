@@ -17,12 +17,3 @@ Repository of the final project of "Elementi di Ingegneria del Software".
   * Panoramica del progetto
   * Istruzioni su come installare ed eseguire
   * Indicare le funzioni riusate da librerie esistenti, con versione delle librerie
-
-## TODO
-* Guardare il maven site plugin https://maven.apache.org/plugins/maven-site-plugin/
-* Oltre a fare cose interattive, si possono mettere opzioni da riga di comando: apache commons cli per argomenti da linea di comando
-* junit
-* maven javadoc plugin
-* shade plugin al posto di assembly plugin
-* usare CoreNLP al posto di Scanner (no, ma si può fare più modificabile)
-* properties

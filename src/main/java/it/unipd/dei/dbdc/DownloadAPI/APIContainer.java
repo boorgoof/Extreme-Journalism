@@ -1,5 +1,7 @@
 package it.unipd.dei.dbdc.DownloadAPI;
 
+import it.unipd.dei.dbdc.Interfaces.DownloadAPI.APIManager;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;

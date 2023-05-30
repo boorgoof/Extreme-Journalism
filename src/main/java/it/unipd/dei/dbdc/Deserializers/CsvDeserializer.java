@@ -1,5 +1,6 @@
 package it.unipd.dei.dbdc.Deserializers;
 
+import it.unipd.dei.dbdc.Interfaces.Deserializers.specificDeserializer;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
