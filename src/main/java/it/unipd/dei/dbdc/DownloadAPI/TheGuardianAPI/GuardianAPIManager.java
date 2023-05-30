@@ -73,7 +73,7 @@ public class GuardianAPIManager implements APIManager {
         String new_path_folder = path_folder +"/"+GuardianAPIInfo.getAPIName();
 
         // Elimina il folder, se era gia' presente.
-        if (deleteFilesInDir(new File(new_path_folder))) {
+        if (!deleteFilesInDir(new File(new_path_folder))) {
             // Se non era presente, lo crea
             Files.createDirectories(Paths.get(new_path_folder));
         }
@@ -90,7 +90,7 @@ public class GuardianAPIManager implements APIManager {
 
         System.out.println(ConsoleTextColors.YELLOW + "Senza parallelismo: "+(end-start));
 
-        if (deleteFilesInDir(new File(new_path_folder))) {
+        if (!deleteFilesInDir(new File(new_path_folder))) {
             // Se non era presente, lo crea
             Files.createDirectories(Paths.get(new_path_folder));
         }

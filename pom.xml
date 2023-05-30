@@ -182,7 +182,7 @@
       <version>1.10.0</version>
     </dependency>
 
-    <!-- Da togliere -->
+    <!-- Da togliere
     <dependency>
       <groupId>com.squareup.okhttp3</groupId>
       <artifactId>okhttp</artifactId>
@@ -224,6 +224,6 @@
       <artifactId>commons-cli</artifactId>
       <version>1.4</version>
     </dependency>
-
+-->
   </dependencies>
 </project>

@@ -28,6 +28,8 @@ public class MyPriorityQueue {
         TreeMap<String, Integer> mappona = new TreeMap<>();
 
         for (int i = 0; i < articles.size(); i++) {
+            // TODO: usa i thread
+            // TODO: usa split della classe String
             TreeMap<String, Integer> map = new TreeMap<>();
             Article art = articles.get(i);
             String articolo_completo = art.getTitle() + " " + art.getBody();

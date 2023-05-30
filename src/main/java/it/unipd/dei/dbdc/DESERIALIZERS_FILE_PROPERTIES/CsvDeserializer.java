@@ -3,7 +3,6 @@ package it.unipd.dei.dbdc.DESERIALIZERS_FILE_PROPERTIES;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
-import org.jetbrains.annotations.NotNull;
 
 import java.io.FileReader;
 import java.io.IOException;
