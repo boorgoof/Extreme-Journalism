@@ -1,7 +1,5 @@
 package it.unipd.dei.dbdc.DownloadAPI;
 
-import it.unipd.dei.dbdc.ConsoleTextColors;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 

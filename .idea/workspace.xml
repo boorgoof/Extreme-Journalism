@@ -4,15 +4,46 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Parallelism">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Merging">
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/SEARCH_TERMS/MapEntry.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/ConsoleTextColors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/ConsoleTextColors.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DESERIALIZERS_FILE_PROPERTIES/CsvDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DESERIALIZERS_FILE_PROPERTIES/CsvDeserializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/CallAPIThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/CallAPIThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/GuardianAPIManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/GuardianAPIManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/SEARCH_TERMS/MyPriorityQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/SEARCH_TERMS/MyPriorityQueue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request1.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request1.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request10.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request11.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request12.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request13.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request14.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request15.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request16.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request17.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request18.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request19.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request2.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request20.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request21.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request22.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request23.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request24.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request25.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request26.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request27.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request28.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request29.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request3.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request3.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request30.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request4.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request4.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request5.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request5.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request6.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request7.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request8.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request9.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/CommandLineInterpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/CommandLineInterpreter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DESERIALIZERS_FILE_PROPERTIES/JsonDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DESERIALIZERS_FILE_PROPERTIES/JsonDeserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/DownloadHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/DownloadHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/InteractiveSelectAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/InteractiveSelectAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/SEARCH_TERMS/MyPriorityQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/SEARCH_TERMS/Analyze.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/SEARCH_TERMS/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/SEARCH_TERMS/main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,13 +101,26 @@
       <recent name="D:\ingengeria software\eis-final\database" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.App">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.App" />
       <module name="Extreme_journalism" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="it.unipd.dei.dbdc.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.DESERIALIZERS_FILE_PROPERTIES.Main" />
+      <module name="Extreme_journalism" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.unipd.dei.dbdc.DESERIALIZERS_FILE_PROPERTIES.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -114,10 +158,6 @@
       <option name="JAR_PATH" value="$PROJECT_DIR$/target/Extreme_journalism-1.0-SNAPSHOT-jar-with-dependencies.jar" />
       <method v="2" />
     </configuration>
-    <configuration name="Extreme_journalism-1.0-SNAPSHOT.jar" type="JarApplication" temporary="true">
-      <option name="JAR_PATH" value="$PROJECT_DIR$/target/Extreme_journalism-1.0-SNAPSHOT.jar" />
-      <method v="2" />
-    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="eis-final" />
       <method v="2">
@@ -133,11 +173,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.App" />
         <item itemvalue="Application.main" />
         <item itemvalue="Application.Parallelism" />
         <item itemvalue="JAR Application.Extreme_journalism-1.0-SNAPSHOT-jar-with-dependencies.jar" />
-        <item itemvalue="JAR Application.Extreme_journalism-1.0-SNAPSHOT.jar" />
       </list>
     </recent_temporary>
   </component>
@@ -192,7 +232,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684306807525</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Merging">
+      <created>1685427573160</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1685427573160</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -213,7 +260,8 @@
     <MESSAGE value="Messo qualche test" />
     <MESSAGE value="Commentato" />
     <MESSAGE value="Parallelism" />
-    <option name="LAST_COMMIT_MESSAGE" value="Parallelism" />
+    <MESSAGE value="Merging" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merging" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -222,11 +270,6 @@
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="1" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/GuardianAPIManager.java</url>
-          <line>98</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/GuardianAPIManager.java</url>
           <line>69</line>

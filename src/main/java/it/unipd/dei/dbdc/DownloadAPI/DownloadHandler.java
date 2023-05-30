@@ -40,10 +40,8 @@ public class DownloadHandler {
                 continue;
             }
             in.close();
-            System.out.println(ConsoleTextColors.BLUE + "You can find the downloaded json in "+folder_path+ ConsoleTextColors.RESET);
+            System.out.println(ConsoleTextColors.BLUE + "You can find the downloaded json in "+file_path+ ConsoleTextColors.RESET);
             return file_path;
         }
-
-
     }
 }

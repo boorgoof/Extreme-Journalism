@@ -21,13 +21,13 @@ public class CommandLineInterpreter {
     // The download options
     private final static Option[] download = {
             new Option("api", "api-name", true, "Contains the name of the API to call"),
+            new Option("key", "api-key", true, "The key for the API (if necessary)")
             // Problema: non sappiamo quali siano i parametri delle altre api, quindi posso mettere solo quelle del the guardian o lasciare così e fare tutto in modo interattivo
     };
 
     // The search options
     private final static Option[] search = {
             new Option("path", "folder-path", true, "Contains the location of the place to take the files from"),
-            new Option("f", "fields", true, "Contains the fields that we need to search into to determine the most important words"),
             new Option("n", "number", true, "Contains the number of terms you want to have in the final output")
     };
 
@@ -74,7 +74,7 @@ public class CommandLineInterpreter {
         }
 
         // Set the options as required
-        //actionGroup.setRequired(true);
+        // actionGroup.setRequired(true);
         options.addOptionGroup(actionGroup);
 
         // Download options
@@ -98,8 +98,6 @@ public class CommandLineInterpreter {
     The result of the parsing stage is a CommandLine instance.
      */
     public static CommandLine parse(String[] args) {
-        // The HelpFormatter is to print help messages
-        HelpFormatter formatter = new HelpFormatter();
 
         // There may be several implementations of the CommandLineParser interface, the recommended one is the DefaultParser
         CommandLineParser parser = new DefaultParser();

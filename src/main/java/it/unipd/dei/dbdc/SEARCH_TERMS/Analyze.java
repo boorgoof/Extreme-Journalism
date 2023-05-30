@@ -5,25 +5,8 @@ import it.unipd.dei.dbdc.DESERIALIZERS_FILE_PROPERTIES.Article;
 import java.io.*;
 import java.util.*;
 
-class MyOtherEntry extends AbstractMap.SimpleEntry<String, Integer>
-{
-    MyOtherEntry(String s, int a)
-    {
-        super(s, a);
-    }
-
-    public boolean isMajorThan(it.unipd.dei.dbdc.SEARCH_TERMS.MyOtherEntry a)
-    {
-        if (this.getValue() > a.getValue())
-        {
-            return true;
-        }
-        else return this.getValue().equals(a.getValue()) && (this.getKey().compareToIgnoreCase(a.getKey()) < 0);
-    }
-}
-
-public class MyPriorityQueue {
-    public static ArrayList<it.unipd.dei.dbdc.SEARCH_TERMS.MyOtherEntry> mostPresent(List<Article> articles)
+public class Analyze {
+    public static ArrayList<MapEntry> mostPresent(List<Article> articles)
     {
         TreeMap<String, Integer> mappona = new TreeMap<>();
 
@@ -57,7 +40,7 @@ public class MyPriorityQueue {
         }
 
         String bannedWords = "./src/main/java/it/unipd/dei/dbdc/SEARCH_TERMS/english_stoplist_v1.txt";
-        ArrayList<it.unipd.dei.dbdc.SEARCH_TERMS.MyOtherEntry> max = new ArrayList<it.unipd.dei.dbdc.SEARCH_TERMS.MyOtherEntry>(50);
+        ArrayList<MapEntry> max = new ArrayList<MapEntry>(50);
         for (Map.Entry<String, Integer> el : mappona.entrySet()) {
             addOrdered(max, el,bannedArray(bannedWords));
         }
@@ -83,9 +66,9 @@ public class MyPriorityQueue {
         }
         return banned;
     }
-    private static void addOrdered(ArrayList<it.unipd.dei.dbdc.SEARCH_TERMS.MyOtherEntry> vec, Map.Entry<String, Integer> entry, String[] bannedWords)
+    private static void addOrdered(ArrayList<it.unipd.dei.dbdc.SEARCH_TERMS.MapEntry> vec, Map.Entry<String, Integer> entry, String[] bannedWords)
     {
-        it.unipd.dei.dbdc.SEARCH_TERMS.MyOtherEntry el = new it.unipd.dei.dbdc.SEARCH_TERMS.MyOtherEntry(entry.getKey(), entry.getValue());
+        it.unipd.dei.dbdc.SEARCH_TERMS.MapEntry el = new it.unipd.dei.dbdc.SEARCH_TERMS.MapEntry(entry.getKey(), entry.getValue());
         boolean isBanned = false;
         for(int i = 0; i < bannedWords.length-1; i++){
             if(el.getKey().equals(bannedWords[i])){
@@ -108,12 +91,12 @@ public class MyPriorityQueue {
                     vec.add(el);
                     return;
                 }
-                it.unipd.dei.dbdc.SEARCH_TERMS.MyOtherEntry old = vec.get(i - 1);
+                it.unipd.dei.dbdc.SEARCH_TERMS.MapEntry old = vec.get(i - 1);
                 vec.set(i - 1, el);
                 i++;
                 while (i < mapsize)
                 {
-                    it.unipd.dei.dbdc.SEARCH_TERMS.MyOtherEntry new_old = vec.get(i);
+                    it.unipd.dei.dbdc.SEARCH_TERMS.MapEntry new_old = vec.get(i);
                     vec.set(i - 1, old);
                     old = new_old;
                     i++;
@@ -140,7 +123,7 @@ public class MyPriorityQueue {
         }
     }
 
-    public static void outFile(ArrayList<it.unipd.dei.dbdc.SEARCH_TERMS.MyOtherEntry> max, String outFilePath){
+    public static void outFile(ArrayList<it.unipd.dei.dbdc.SEARCH_TERMS.MapEntry> max, String outFilePath){
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outFilePath))) {
             for (int i = 0; i < 50; i++)
             {

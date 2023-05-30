@@ -10,8 +10,8 @@ public class Main {
 
     public static final String[] formats = {"json", "xml", "csv"};
 
-    public static final String filePath = ".\\database\\databaseProva\\Serialized.json";
-    public static final String folderPath = ".\\database\\databaseProva";
+    public static final String filePath = ".\\database\\fileSerializzato50.json";
+    public static final String folderPath = ".\\database\\TheGuardianAPI";
     public static final String filePropertiesName = "deserializers.properties";
 
     public static void main(String[] args) {

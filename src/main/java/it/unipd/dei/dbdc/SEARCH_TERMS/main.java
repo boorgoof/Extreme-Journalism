@@ -38,10 +38,10 @@ public class main {
 
             //creo un arraylist con tutti i termini come chiavi e numero di articoli in cui sono presenti come valori
             System.out.println("scrittura primi 50 termini più presenti in corso..");
-            ArrayList<it.unipd.dei.dbdc.SEARCH_TERMS.MyOtherEntry> max = MyPriorityQueue.mostPresent(articles);
+            ArrayList<it.unipd.dei.dbdc.SEARCH_TERMS.MapEntry> max = Analyze.mostPresent(articles);
 
             //stampo i primi 50 termini più presenti nei vari articoli
-            MyPriorityQueue.outFile(max, outFilePath);
+            Analyze.outFile(max, outFilePath);
         } catch (IOException e) {
             throw new RuntimeException("Controlla di aver caricato i fields  di interesse corretti " + e);
         }
