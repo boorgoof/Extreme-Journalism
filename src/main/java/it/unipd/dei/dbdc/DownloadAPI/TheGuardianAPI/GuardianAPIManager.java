@@ -70,7 +70,9 @@ public class GuardianAPIManager implements APIManager {
         ArrayList<Map<String, Object>> requests = params.getParams();
 
         // Il nuovo folder
-        String new_path_folder = path_folder +"/"+GuardianAPIInfo.getAPIName();
+        String new_path_folder = path_folder + GuardianAPIInfo.getAPIName();
+
+        /* SENZA PARALLELISMO
 
         // Elimina il folder, se era gia' presente.
         if (!deleteFilesInDir(new File(new_path_folder))) {
@@ -90,14 +92,16 @@ public class GuardianAPIManager implements APIManager {
 
         System.out.println(ConsoleTextColors.YELLOW + "Senza parallelismo: "+(end-start));
 
+        */
+
         if (!deleteFilesInDir(new File(new_path_folder))) {
             // Se non era presente, lo crea
             Files.createDirectories(Paths.get(new_path_folder));
         }
 
         // Manda le richieste tramite la libreria e le salva in file
-        start = System.currentTimeMillis();
-        // FIXME: da problemi ogni tanto
+        // start = System.currentTimeMillis();
+
         Thread[] ts = new Thread[requests.size()];
         for (int i = 0; i<requests.size(); i++)
         {
@@ -112,27 +116,28 @@ public class GuardianAPIManager implements APIManager {
             }
             catch (InterruptedException e)
             {
-                System.out.println("CAAAAA");
+                // TODO: vedere come gestire questa eccezione
             }
         }
-        end = System.currentTimeMillis();
+        // long end = System.currentTimeMillis();
 
-        System.out.println("Con parallelismo: "+(end-start)+ ConsoleTextColors.RESET);
+        // System.out.println("Con parallelismo: "+(end-start)+ ConsoleTextColors.RESET);
 
         caller.endRequests();
         return new_path_folder;
     }
 
+    // TODO: dove metterle?
     private boolean deleteFilesInDir(File dir)
     {
         File[] contents = dir.listFiles();
         if (contents == null) {
-            return true;
+            return false;
         }
         for (File f : contents) {
             deleteDir(f);
         }
-        return false;
+        return true;
     }
 
     private void deleteDir(File file) {

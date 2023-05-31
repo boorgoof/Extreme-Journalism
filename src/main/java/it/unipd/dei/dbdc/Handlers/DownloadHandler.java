@@ -9,9 +9,9 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class DownloadHandler {
-    public static String download(String folder_path, String api_name) throws IOException {
+    public static String download(String folder_path, String api_name, String download_props) throws IOException {
 
-        APIContainer container = APIContainer.getInstance();
+        APIContainer container = APIContainer.getInstance(download_props);
         APIManager manager;
         Scanner in = new Scanner(System.in);
         while (true) {

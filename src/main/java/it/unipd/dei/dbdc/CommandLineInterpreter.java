@@ -1,7 +1,13 @@
 package it.unipd.dei.dbdc;
 
 import it.unipd.dei.dbdc.DownloadAPI.QueryParam;
-import org.apache.commons.cli.*;
+import org.apache.commons.cli.HelpFormatter;
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.Options;
+import org.apache.commons.cli.Option;
+import org.apache.commons.cli.OptionGroup;
+import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.DefaultParser;
 
 import java.util.ArrayList;
 
@@ -35,10 +41,6 @@ public class CommandLineInterpreter {
 
     public CommandLineInterpreter(String[] args) {
         cmd = parseCommandLine(args);
-        // FIXME: forse non è bello lanciare eccezione
-        if (cmd == null) {
-            throw new HelpException();
-        }
     }
 
     private static CommandLine parseCommandLine(String[] args) {
@@ -114,6 +116,9 @@ public class CommandLineInterpreter {
     The result of the interrogation stage is that the user code is fully informed of all the text that was supplied
     on the command line and processed according to the parser and Options rules.
      */
+    public boolean help() {
+        return cmd.hasOption("h");
+    }
     public boolean downloadPhase() {
         return cmd.hasOption("d") || cmd.hasOption("ds");
     }
@@ -128,7 +133,7 @@ public class CommandLineInterpreter {
     }
 
     public ArrayList<QueryParam> obtainSearchOptions() {
-        // TODO: dipende da cosa deve avere
+        // TODO: modifica in base a cosa passargli
         ArrayList<QueryParam> ret_array = new ArrayList<>(1);
         String path = cmd.getOptionValue("path");
         if (path == null) {

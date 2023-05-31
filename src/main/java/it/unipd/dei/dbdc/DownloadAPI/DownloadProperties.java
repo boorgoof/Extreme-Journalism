@@ -13,13 +13,11 @@ import java.util.Properties;
 
 public class DownloadProperties {
 
-    private final static String properties_file = "download.properties";
-
     private final static String caller_key = "library";
 
-    public static ArrayList<APIManager> readProperties() throws IOException {
+    public static ArrayList<APIManager> readProperties(String properties_file) throws IOException {
 
-        Properties appProps = getProperties();
+        Properties appProps = getProperties(properties_file);
 
         // 1. Cerco la property del caller, che è la classe che implementa APICaller
         String caller_name = appProps.getProperty(caller_key);
@@ -68,7 +66,7 @@ public class DownloadProperties {
         return managers;
     }
 
-    private static Properties getProperties() throws IOException
+    private static Properties getProperties(String properties_file) throws IOException
     {
         // 1. Prendo il nome del file
         InputStream propertiesFile = Thread.currentThread().getContextClassLoader().getResourceAsStream(properties_file);
@@ -80,7 +78,7 @@ public class DownloadProperties {
         }
         catch (IOException e)
         {
-            throw new IOException("There is no file named download.properties in src/main/resources");
+            throw new IOException("There is no file properties with this name: "+properties_file);
         }
         return appProps;
     }
