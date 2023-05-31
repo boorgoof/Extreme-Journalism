@@ -12,10 +12,12 @@ public class DownloadHandler {
     public static String download(String folder_path, String api_name, String download_props) throws IOException {
 
         APIContainer container = APIContainer.getInstance(download_props);
+
         APIManager manager;
         Scanner in = new Scanner(System.in);
         while (true) {
-            if (api_name == null) {
+            if (api_name == null)
+            {
                 api_name = InteractiveSelectAPI.askAPIName(in, container);
             }
 
@@ -30,6 +32,7 @@ public class DownloadHandler {
             System.out.println(ConsoleTextColors.BLUE + "API selected correctly..." + ConsoleTextColors.RESET);
 
             String file_path;
+
             // Cerca di chiamare la API
             try {
                 System.out.println(ConsoleTextColors.BLUE + "Calling the API..." + ConsoleTextColors.RESET);
@@ -43,6 +46,7 @@ public class DownloadHandler {
                 continue;
             }
             in.close();
+
             System.out.println(ConsoleTextColors.BLUE + "You can find the downloaded json in "+file_path+ ConsoleTextColors.RESET);
             return file_path;
         }

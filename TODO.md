@@ -1,6 +1,7 @@
 ## TODO
 * junit (TEST)
 * try-with-resources
+* ATTENZIONE: DATABASE E' IN TARGET, NON QUELLO CHE INTENDIAMO NOI
 * capire cosa cambia tra ? e T (nelle interfacce quale si mette?)
 * parallelizzare la ricerca termini
 * cambia la struttura delle cartelle

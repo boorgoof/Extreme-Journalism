@@ -5,4 +5,5 @@ import java.util.List;
 
 public interface Analyzer<T> {
     ArrayList<MapEntrySI> mostPresent(List<T> articles);
+    void outFile(ArrayList<MapEntrySI> max, String outFilePath);
 }
