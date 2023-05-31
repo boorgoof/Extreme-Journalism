@@ -128,7 +128,7 @@ public class MapArraySplitAnalyzer implements Analyzer<Article> {
         }
     }
 
-    public void outFile(ArrayList<MapEntrySI> max, String outFilePath) {
+    public void outFile(ArrayList<MapEntrySI> max, String outFilePath) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outFilePath))) {
             for (int i = 0; i < tot_words; i++) {
                 MapEntrySI el = max.get(i);
@@ -137,9 +137,6 @@ public class MapArraySplitAnalyzer implements Analyzer<Article> {
                     writer.newLine();
                 }
             }
-            System.out.println("Scrittura su file completata");
-        } catch (IOException e) {
-            System.out.println("Si è verificato un errore durante la scrittura del file.");
         }
     }
 }

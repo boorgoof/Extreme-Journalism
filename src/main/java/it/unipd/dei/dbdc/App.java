@@ -1,5 +1,6 @@
 package it.unipd.dei.dbdc;
 
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import it.unipd.dei.dbdc.Deserializers.Article;
 import it.unipd.dei.dbdc.Handlers.DeserializationHandler;
 import it.unipd.dei.dbdc.Handlers.DownloadHandler;
@@ -31,7 +32,7 @@ public class App
 
     private static int tot_count = 50;
 
-    public static void main( String[] args ) throws IOException {
+    public static void main( String[] args ) {
 
         // L'utente deve passare da riga di comando quello che vuole fare.
         CommandLineInterpreter interpreter = new CommandLineInterpreter(args); // Puo' lanciare IllegalStateException
@@ -49,8 +50,15 @@ public class App
             System.out.println(ConsoleTextColors.BLUE + "Entering the download part..." + ConsoleTextColors.RESET);
 
             String name = interpreter.obtainDownloadOptions();
-            folderPath = DownloadHandler.download(database_path, name, download_properties);
-
+            try {
+                folderPath = DownloadHandler.download(database_path, name, download_properties);
+            }
+            catch (IOException e)
+            {
+                System.err.println("Errore nella fase di download: ");
+                e.printStackTrace();
+                return;
+            }
             System.out.println(ConsoleTextColors.BLUE + "Exiting the download part..." + ConsoleTextColors.RESET);
         }
 
@@ -70,8 +78,16 @@ public class App
         }
 
         System.out.println(ConsoleTextColors.BLUE+"Inizio deserializzazione di "+folderPath+"..."+ConsoleTextColors.RESET);
-
-        DeserializationHandler<Article> deserializer = new DeserializationHandler<>(deserializers_properties);
+        DeserializationHandler<Article> deserializer;
+        try {
+             deserializer = new DeserializationHandler<>(deserializers_properties);
+        }
+        catch (IOException e)
+        {
+            System.err.println("Errore nella deserializzazione");
+            e.printStackTrace();
+            return;
+        }
 
         System.out.println("Sono stati forniti i deserializzatori per i seguenti formati:");
         Set<String> formatsAvailable = deserializer.getFormats();
@@ -150,7 +166,15 @@ public class App
             long end = System.currentTimeMillis();
             System.out.println(ConsoleTextColors.YELLOW + "Con split: "+(end-start)+ConsoleTextColors.RESET);
 
-            analyzer.outFile(max, "./database/split.txt");
+            try {
+                analyzer.outFile(max, "./database/split.txt");
+            }
+            catch (IOException e)
+            {
+                System.err.println("Errore nella scritture del file");
+                e.printStackTrace();
+                return;
+            }
 
             analyzer = new MapArrayScannerAnalyzer(tot_count);
 
@@ -160,8 +184,16 @@ public class App
 
             System.out.println(ConsoleTextColors.YELLOW + "Con scanner: "+(end-start+ConsoleTextColors.RESET));
 
-            //stampo i primi 50 termini più presenti nei vari articoli
-            analyzer.outFile(max, outFile);
+            try {
+                analyzer.outFile(max, outFile);
+            }
+            catch (IOException e)
+            {
+                System.err.println("Errore nella scritture del file");
+                e.printStackTrace();
+                return;
+            }
+
             System.out.println(ConsoleTextColors.BLUE+"Fine estrazione termini..."+ConsoleTextColors.RESET);
         }
     }

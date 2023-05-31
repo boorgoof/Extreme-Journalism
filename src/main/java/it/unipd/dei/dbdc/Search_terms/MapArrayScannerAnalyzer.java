@@ -130,7 +130,8 @@ public class MapArrayScannerAnalyzer implements Analyzer<Article> {
             }
     }
 
-    public void outFile(ArrayList<MapEntrySI> max, String outFilePath){
+    public void outFile(ArrayList<MapEntrySI> max, String outFilePath) throws IOException
+    {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outFilePath))) {
             for (int i = 0; i < tot_words; i++)
             {
@@ -146,8 +147,6 @@ public class MapArrayScannerAnalyzer implements Analyzer<Article> {
                 }
             }
             System.out.println("Scrittura su file completata");
-        } catch (IOException e) {
-            System.out.println("Si è verificato un errore durante la scrittura del file.");
         }
     }
 }
