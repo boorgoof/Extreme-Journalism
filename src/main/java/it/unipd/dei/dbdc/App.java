@@ -4,8 +4,10 @@ import it.unipd.dei.dbdc.Deserializers.Article;
 import it.unipd.dei.dbdc.Handlers.DeserializationHandler;
 import it.unipd.dei.dbdc.Handlers.DownloadHandler;
 import it.unipd.dei.dbdc.Search_terms.Analyzer;
-import it.unipd.dei.dbdc.Search_terms.MapAnalyzer;
+import it.unipd.dei.dbdc.Search_terms.MapArrayScannerAnalyzer;
 import it.unipd.dei.dbdc.Handlers.SerializationHandler;
+import it.unipd.dei.dbdc.Search_terms.MapArraySplitAnalyzer;
+import it.unipd.dei.dbdc.Search_terms.MapEntrySI;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -45,7 +47,7 @@ public class App
             // Se vuole download, passo a download handler
             System.out.println(ConsoleTextColors.BLUE + "Entering the download part..." + ConsoleTextColors.RESET);
             String name = null ; //interpreter.obtainDownloadOptions();
-            String folderPath = DownloadHandler.download(database_path, name);
+            String folderPath = DownloadHandler.download(database_path, name, download_properties);
             System.out.println(ConsoleTextColors.BLUE + "Exiting the download part..." + ConsoleTextColors.RESET);
         //}
         //if (interpreter.searchPhase())
@@ -113,11 +115,26 @@ public class App
             // ESTRAZIONE DEI TERMINI PIU' IMPORTANTI
             //creo un arraylist con tutti i termini come chiavi e numero di articoli in cui sono presenti come valori
             System.out.println(ConsoleTextColors.BLUE + "Scrittura primi 50 termini più presenti in corso.."+ConsoleTextColors.RESET);
-            Analyzer<Article> analyzer = new MapAnalyzer();
-            ArrayList<it.unipd.dei.dbdc.Search_terms.MapEntry> max = analyzer.mostPresent(articles);
+            Analyzer<Article> analyzer = new MapArraySplitAnalyzer();
+            ArrayList<MapEntrySI> max;
+
+            long start = System.currentTimeMillis();
+            max = analyzer.mostPresent(articles);
+            long end = System.currentTimeMillis();
+            System.out.println(ConsoleTextColors.YELLOW + "Con split: "+(end-start));
+
+            MapArraySplitAnalyzer.outFile(max, "./database/split.txt");
+
+            analyzer = new MapArrayScannerAnalyzer();
+
+            start = System.currentTimeMillis();
+            max = analyzer.mostPresent(articles);
+            end = System.currentTimeMillis();
+
+            System.out.println(ConsoleTextColors.YELLOW + "Con scanner: "+(end-start));
 
             //stampo i primi 50 termini più presenti nei vari articoli
-            MapAnalyzer.outFile(max, outFile);
+            MapArrayScannerAnalyzer.outFile(max, outFile);
         //}
     }
 
