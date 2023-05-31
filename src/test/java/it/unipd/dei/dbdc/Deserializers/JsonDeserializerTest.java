@@ -92,7 +92,7 @@ public class JsonDeserializerTest {
 
     }
 
-    // TEST FILE JSON CON CAMPI NULL. boh non mi va credo sia per l'equals in article.
+    // TEST FILE JSON CON CAMPI NULL. debuggando si vede che in un caso sono null e nell'altro sono "null" come se fossere stringhe anche se non sono riuscito a correggere
     private static List<Article> createTestArticles3() {
         List<Article> articles = new ArrayList<>();
         articles.add(new Article(null, null,null,null,null,null));
@@ -112,7 +112,8 @@ public class JsonDeserializerTest {
             assertNotNull(articles);
             assertFalse(articles.isEmpty());
             assertEquals(3, articles.size());
-            assertEquals(createTestArticles3(), articles);
+            List<Article> articles2 = createTestArticles3();
+            assertEquals(articles2, articles);
 
         } catch (IOException e) {
             fail("Errore durante la lettura del file JSON: " + e.getMessage());

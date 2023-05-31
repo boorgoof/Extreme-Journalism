@@ -49,8 +49,9 @@ public class JsonDeserializer implements specificDeserializer<Article> {
                 } else {
                     fieldsValues[i] = null;
                 }
-
             }
+
+
 
             Article article = new Article(fieldsValues[0], fieldsValues[1], fieldsValues[2], fieldsValues[3], fieldsValues[4], fieldsValues[5]);
 
