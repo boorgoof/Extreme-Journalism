@@ -64,7 +64,7 @@ public class JsonDeserializer implements specificDeserializer<Article> {
 
 }
 
-// cosi accetta campi non presenti. li mette a null
+// E' come prima non accetta campi mancanti manda errore c'e nullPointerexception
 /*
 @Override
     public List<Article> deserialize(String filePath) throws IOException {
@@ -78,20 +78,14 @@ public class JsonDeserializer implements specificDeserializer<Article> {
         List<JsonNode> articleParentNodes = jsonNode.findParents(fields[0]);
 
         for (JsonNode parentNode : articleParentNodes) {
-
-            String[] fieldsValues = new String[6];
-            // serve per accettare i casi in cui non esiste la chiave nel file json altrimenti avrei nullPointerException con asText()
-            for(int i=0; i < fields.length; i++){
-                // vedere se è meglio findValue() oppure get()
-                if(parentNode.findValue(fields[i]) != null){
-                    fieldsValues[i] = parentNode.findValue(fields[0]).asText();
-                } else {
-                    fieldsValues[i] = null;
-                }
-
-            }
-
-            Article article = new Article(fieldsValues[0], fieldsValues[1], fieldsValues[2], fieldsValues[3], fieldsValues[4], fieldsValues[5]);
+            Article article = new Article(
+                    parentNode.findValue(fields[0]).asText(),
+                    parentNode.findValue(fields[1]).asText(),
+                    parentNode.findValue(fields[2]).asText(),
+                    parentNode.findValue(fields[3]).asText(),
+                    parentNode.findValue(fields[4]).asText(),
+                    parentNode.findValue(fields[5]).asText()
+            );
 
             System.out.println(article);
             articles.add(article);
@@ -99,9 +93,8 @@ public class JsonDeserializer implements specificDeserializer<Article> {
         }
 
         return articles;
-    }
-
- */
+}
+*/
 
 
 

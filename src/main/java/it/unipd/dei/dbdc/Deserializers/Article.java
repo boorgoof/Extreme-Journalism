@@ -94,8 +94,38 @@ public class Article implements Serializable {
                 ", Source='" + source + '\'' +
                 '}';
     }
-
     @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+
+        Article article = (Article) obj;
+
+        return Objects.equals(id, article.id) &&
+                Objects.equals(url, article.url) &&
+                Objects.equals(title, article.title) &&
+                Objects.equals(body, article.body) &&
+                Objects.equals(date, article.date) &&
+                Objects.equals(source, article.source);
+    }
+
+
+}
+/*
+return id.equals(article.id) &&
+                url.equals(article.url) &&
+                title.equals(article.title) &&
+                body.equals(article.body) &&
+                date.equals(article.date) &&
+                source.equals(article.source);
+ */
+
+/*
+ @Override
     public boolean equals(Object obj) {
 
         if (this == obj) return true;
@@ -110,13 +140,4 @@ public class Article implements Serializable {
                 Objects.equals(date, article.date) &&
                 Objects.equals(source, article.source);
     }
-
-}
-/*
-return id.equals(article.id) &&
-                url.equals(article.url) &&
-                title.equals(article.title) &&
-                body.equals(article.body) &&
-                date.equals(article.date) &&
-                source.equals(article.source);
  */
