@@ -55,7 +55,7 @@ public class JsonDeserializer implements specificDeserializer<Article> {
 
             Article article = new Article(fieldsValues[0], fieldsValues[1], fieldsValues[2], fieldsValues[3], fieldsValues[4], fieldsValues[5]);
 
-            System.out.println(article);
+            //System.out.println(article);
             articles.add(article);
 
         }

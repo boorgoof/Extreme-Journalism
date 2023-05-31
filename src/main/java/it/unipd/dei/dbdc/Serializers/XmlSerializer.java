@@ -35,7 +35,7 @@ public class XmlSerializer implements Serializer {
             // Transform objects into XML
             String xmlString = xmlMapper.writeValueAsString(objects);
 
-            System.out.println(xmlString); // da togliere
+            //System.out.println(xmlString); // da togliere
 
 
             // Create a new XML file (if it doesn't already exist) and write the XML content to the file

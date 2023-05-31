@@ -47,7 +47,7 @@ public class CsvDeserializer implements specificDeserializer<Article> {
                 String source = record.get(fields[5]);
 
                 Article article = new Article(id, url, title, body, date, source);
-                System.out.println(article);
+                //System.out.println(article);
                 articles.add(article);
 
             }

@@ -1,5 +1,6 @@
 package it.unipd.dei.dbdc;
 
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import it.unipd.dei.dbdc.Deserializers.Article;
 import it.unipd.dei.dbdc.Handlers.DeserializationHandler;
 import it.unipd.dei.dbdc.Handlers.DownloadHandler;
@@ -17,7 +18,7 @@ import java.util.Set;
 
 public class App
 {
-    // TODO: prendi tutto da properties, e fai in modo che ti possano passare un properties diverso da CLI
+    // TODO: prendi tutto da properties, e fai in modo che ti possano passare un properties diverso da CLI. Oppure metti le properties fuori da src
     private static final String database_path = "./database/";
     private static final String deserializers_properties = "deserializers.properties";
 
@@ -29,113 +30,172 @@ public class App
 
     private static final String outFile = "./database/output.txt";
 
-    public static void main( String[] args ) throws IOException {
-        // TODO: interactive
-        // TODO: sistema il main
+    private static int tot_count = 50;
 
-        // L'utente puo' passare da riga di comando quello che vuole fare.
-        CommandLineInterpreter interpreter = new CommandLineInterpreter(args);
+    public static void main( String[] args ) {
+
+        // L'utente deve passare da riga di comando quello che vuole fare.
+        CommandLineInterpreter interpreter = new CommandLineInterpreter(args); // Puo' lanciare IllegalStateException
         if (interpreter.help())
         {
             return;
         }
 
-        // Se non passa da linea di comando, gli si chiede interattivamente
-        // TODO: interactive
+        // Folder to serialize to xml
+        String folderPath = null;
 
-        //if (interpreter.downloadPhase()) {
+        // FASE 1: download
+        if (interpreter.downloadPhase()) {
             // Se vuole download, passo a download handler
             System.out.println(ConsoleTextColors.BLUE + "Entering the download part..." + ConsoleTextColors.RESET);
-            String name = null ; //interpreter.obtainDownloadOptions();
-            String folderPath = DownloadHandler.download(database_path, name, download_properties);
-            System.out.println(ConsoleTextColors.BLUE + "Exiting the download part..." + ConsoleTextColors.RESET);
-        //}
-        //if (interpreter.searchPhase())
-        //{
-            // DESERIALIZZAZIONE formato fornito -> Article
-            DeserializationHandler<Article> deserializer = new DeserializationHandler<>(deserializers_properties);
 
-            System.out.println(ConsoleTextColors.BLUE + "Sono stati forniti i deserializzatori per i seguenti formati:"+ ConsoleTextColors.RESET);
-            Set<String> formatsAvailable = deserializer.getFormats();
-            for (String format : formatsAvailable) {
-                System.out.println(format);
-            }
-
-            System.out.println(ConsoleTextColors.BLUE +"Nel caso in cui ci fossero file di formato differente da questi elencati non verranno presi in considerazione"+ ConsoleTextColors.RESET);
-
-            List<Article> articles = new ArrayList<>();
+            String name = interpreter.obtainDownloadOptions();
             try {
-
-                for (String format : formatsAvailable) {
-                    deserializer.deserializeFolder(format, folderPath, articles);
-                }
-
-            } catch (IOException e) {
-                System.err.println(ConsoleTextColors.RED + "Deserializzazione fallita per il formato: " + e.getMessage() + ConsoleTextColors.RESET);
-                // se ci sono errori probabilmente è stato inserito un header sbagliato. oppure sono stati specificati male i campi del file JSON
-                // bisogna segnalare all'utente e dire di reinserire i campi
-                // TODO: return?
+                folderPath = DownloadHandler.download(database_path, name, download_properties);
             }
-
-            //SERIALIZZAZIONE Article -> formato comune
-            String filename = "Serialized" ; // Percorso del file di output. TODO: facciamo in modo che il nome cambi?
-            String filePath = database_path +"/"+ filename + "." + common_format;
-            try {
-
-                // Creazione della lista di oggetti Serializable a partire dalla lista di Article (Article implementa Serializable)
-                List<Serializable> objects = new ArrayList<>(articles);
-
-
-
-                SerializationHandler serializer = new SerializationHandler(serializers_properties);
-
-                serializer.serializeObjects(objects, common_format, filePath);
-
-            } catch (IOException e) {
+            catch (IOException e)
+            {
+                System.err.println("Errore nella fase di download: ");
                 e.printStackTrace();
-                // TODO: return?
+                return;
             }
+            System.out.println(ConsoleTextColors.BLUE + "Exiting the download part..." + ConsoleTextColors.RESET);
+        }
 
+        // FASE 2: avviene sempre, è la serializzazione in formato comune
+
+        // Percorso del file serializzato. TODO: facciamo in modo che il nome cambi?
+        String filePath = database_path + "/Serialized." + common_format;
+
+        // A. DESERIALIZZAZIONE formato fornito -> Article
+        String path_cli = interpreter.obtainPathOption();
+
+        if (path_cli != null && folderPath == null) {
+            System.out.println(ConsoleTextColors.RED + "Errore: nessun file da deserializzare"+ConsoleTextColors.RESET);
+            return;
+        } else if (path_cli != null) {
+            folderPath = path_cli;
+        }
+
+        System.out.println(ConsoleTextColors.BLUE+"Inizio deserializzazione di "+folderPath+"..."+ConsoleTextColors.RESET);
+        DeserializationHandler<Article> deserializer;
+        try {
+             deserializer = new DeserializationHandler<>(deserializers_properties);
+        }
+        catch (IOException e)
+        {
+            System.err.println("Errore nella deserializzazione");
+            e.printStackTrace();
+            return;
+        }
+
+        System.out.println("Sono stati forniti i deserializzatori per i seguenti formati:");
+        Set<String> formatsAvailable = deserializer.getFormats();
+        for (String format : formatsAvailable) {
+            System.out.println(format);
+        }
+        System.out.println("Nel caso in cui ci fossero file di formato differente da questi elencati non verranno presi in considerazione");
+
+        // Cerco di deserializzare l'intero folder, con tutti i formati possibili
+        List<Article> articles = new ArrayList<>();
+        try {
+            for (String format : formatsAvailable) {
+                deserializer.deserializeFolder(format, folderPath, articles);
+            }
+        } catch (IOException e) {
+            System.err.println(ConsoleTextColors.RED + "Deserializzazione fallita per il formato: " + e.getMessage() + ConsoleTextColors.RESET);
+            // se ci sono errori probabilmente è stato inserito un header sbagliato. oppure sono stati specificati male i campi del file JSON
+            // bisogna segnalare all'utente e dire di reinserire i campi
+            return;
+        }
+
+        System.out.println(ConsoleTextColors.BLUE+"Fine deserializzazione..."+ConsoleTextColors.RESET);
+
+        System.out.println(ConsoleTextColors.BLUE+"Inizio serializzazione..."+ConsoleTextColors.RESET);
+
+        // B. SERIALIZZAZIONE Article -> formato comune
+        try {
+
+            // Creazione della lista di oggetti Serializable a partire dalla lista di Article (Article implementa Serializable)
+            List<Serializable> objects = new ArrayList<>(articles);
+
+            SerializationHandler serializer = new SerializationHandler(serializers_properties);
+
+            serializer.serializeObjects(objects, common_format, filePath);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+        System.out.println(ConsoleTextColors.BLUE+"Fine serializzazione. Potrete trovare il file serializzato in "+filePath+ConsoleTextColors.RESET);
+
+        // FASE 3: Estrazione termini
+        if (interpreter.searchPhase())
+        {
             // DESERIALIZZAZIONE formato comune -> articles
-            List<Article> articles2 = new ArrayList<>();
+            System.out.println(ConsoleTextColors.BLUE+"Inizio deserializzazione..."+ConsoleTextColors.RESET);
+
             try {
-
-                for (String format : formatsAvailable) {
-                    articles2 = deserializer.deserializeFile(common_format, filePath);
-                }
-
-            } catch (IOException e) {
+                articles = deserializer.deserializeFile(common_format, filePath);
+            }
+            catch (IOException e) {
                 System.err.println(ConsoleTextColors.RED + "Deserializzazione fallita per il formato: " + e.getMessage() + ConsoleTextColors.RESET);
                 // se ci sono errori probabilmente è stato inserito un header sbagliato. oppure sono stati specificati male i campi del file JSON
                 // bisogna segnalare all'utente e dire di reinserire i campi
-                // TODO: return?
+                return;
             }
+            System.out.println(ConsoleTextColors.BLUE+"Fine deserializzazione..."+ConsoleTextColors.RESET);
 
+            System.out.println(ConsoleTextColors.BLUE+"Inizio estrazione termini..."+ConsoleTextColors.RESET);
 
             // ESTRAZIONE DEI TERMINI PIU' IMPORTANTI
-            //creo un arraylist con tutti i termini come chiavi e numero di articoli in cui sono presenti come valori
-            System.out.println(ConsoleTextColors.BLUE + "Scrittura primi 50 termini più presenti in corso.."+ConsoleTextColors.RESET);
-            Analyzer<Article> analyzer = new MapArraySplitAnalyzer();
+            int count_cli = interpreter.obtainNumberOption();
+            if (count_cli != -1)
+            {
+                tot_count = count_cli;
+            }
+
+            // Creo un arraylist con tutti i termini come chiavi e numero di articoli in cui sono presenti come valori
+            System.out.println(ConsoleTextColors.BLUE + "Scrittura dei primi "+tot_count+" termini più importanti in corso.."+ConsoleTextColors.RESET);
+
+            Analyzer<Article> analyzer = new MapArraySplitAnalyzer(tot_count);
             ArrayList<MapEntrySI> max;
 
             long start = System.currentTimeMillis();
             max = analyzer.mostPresent(articles);
             long end = System.currentTimeMillis();
-            System.out.println(ConsoleTextColors.YELLOW + "Con split: "+(end-start));
+            System.out.println(ConsoleTextColors.YELLOW + "Con split: "+(end-start)+ConsoleTextColors.RESET);
 
-            MapArraySplitAnalyzer.outFile(max, "./database/split.txt");
+            try {
+                analyzer.outFile(max, "./database/split.txt");
+            }
+            catch (IOException e)
+            {
+                System.err.println("Errore nella scritture del file");
+                e.printStackTrace();
+                return;
+            }
 
-            analyzer = new MapArrayScannerAnalyzer();
+            analyzer = new MapArrayScannerAnalyzer(tot_count);
 
             start = System.currentTimeMillis();
             max = analyzer.mostPresent(articles);
             end = System.currentTimeMillis();
 
-            System.out.println(ConsoleTextColors.YELLOW + "Con scanner: "+(end-start));
+            System.out.println(ConsoleTextColors.YELLOW + "Con scanner: "+(end-start+ConsoleTextColors.RESET));
 
-            //stampo i primi 50 termini più presenti nei vari articoli
-            MapArrayScannerAnalyzer.outFile(max, outFile);
-        //}
+            try {
+                analyzer.outFile(max, outFile);
+            }
+            catch (IOException e)
+            {
+                System.err.println("Errore nella scritture del file");
+                e.printStackTrace();
+                return;
+            }
+
+            System.out.println(ConsoleTextColors.BLUE+"Fine estrazione termini..."+ConsoleTextColors.RESET);
+        }
     }
 
 }

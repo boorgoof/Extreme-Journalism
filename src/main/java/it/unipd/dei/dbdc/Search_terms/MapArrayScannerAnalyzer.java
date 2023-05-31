@@ -10,6 +10,12 @@ import java.util.TreeMap;
 import java.util.Scanner;
 
 public class MapArrayScannerAnalyzer implements Analyzer<Article> {
+
+    private final int tot_words;
+    public MapArrayScannerAnalyzer(int count)
+    {
+        tot_words = count;
+    }
     public ArrayList<MapEntrySI> mostPresent(List<Article> articles)
     {
         TreeMap<String, Integer> mappona = new TreeMap<>();
@@ -44,7 +50,7 @@ public class MapArrayScannerAnalyzer implements Analyzer<Article> {
         }
 
         String bannedWords = "./src/main/resources/english_stoplist_v1.txt";
-        ArrayList<MapEntrySI> max = new ArrayList<MapEntrySI>(50);
+        ArrayList<MapEntrySI> max = new ArrayList<MapEntrySI>(tot_words);
         for (Map.Entry<String, Integer> el : mappona.entrySet()) {
             addOrdered(max, el,bannedArray(bannedWords));
         }
@@ -71,7 +77,7 @@ public class MapArrayScannerAnalyzer implements Analyzer<Article> {
         }
         return banned;
     }
-    private static void addOrdered(ArrayList<MapEntrySI> vec, Map.Entry<String, Integer> entry, String[] bannedWords)
+    private void addOrdered(ArrayList<MapEntrySI> vec, Map.Entry<String, Integer> entry, String[] bannedWords)
     {
         MapEntrySI el = new MapEntrySI(entry.getKey(), entry.getValue());
         for(int i = 0; i < bannedWords.length-1; i++){
@@ -80,7 +86,7 @@ public class MapArrayScannerAnalyzer implements Analyzer<Article> {
             }
         }
             int mapsize = vec.size();
-            if (mapsize < 50)
+            if (mapsize < tot_words)
             {
                 // Devo aggiungerlo
                 int i = 1;
@@ -107,26 +113,27 @@ public class MapArrayScannerAnalyzer implements Analyzer<Article> {
             }
             else
             {
-                int i = 49;
+                int i = tot_words-1;
                 while (i >= 0 && el.isMajorThan(vec.get(i)))
                 {
-                    if (i == 49) {
+                    if (i == tot_words-1) {
                         i--;
                         continue;
                     }
                     vec.set(i + 1, vec.get(i));
                     i--;
                 }
-                if (i != 49)
+                if (i != tot_words-1)
                 {
                     vec.set(i + 1, el);
                 }
             }
     }
 
-    public static void outFile(ArrayList<MapEntrySI> max, String outFilePath){
+    public void outFile(ArrayList<MapEntrySI> max, String outFilePath) throws IOException
+    {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outFilePath))) {
-            for (int i = 0; i < 50; i++)
+            for (int i = 0; i < tot_words; i++)
             {
                 Map.Entry<String, Integer> el = max.get(i);
                 if(el.getKey().equals("the")){
@@ -134,14 +141,12 @@ public class MapArrayScannerAnalyzer implements Analyzer<Article> {
                 }
                 else {
                     writer.write(el.getKey() + " " + el.getValue());
-                    if (i < 49){
+                    if (i < tot_words-1){
                         writer.newLine();
                     }
                 }
             }
             System.out.println("Scrittura su file completata");
-        } catch (IOException e) {
-            System.out.println("Si è verificato un errore durante la scrittura del file.");
         }
     }
 }

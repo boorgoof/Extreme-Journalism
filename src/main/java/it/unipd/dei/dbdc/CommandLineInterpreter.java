@@ -10,8 +10,12 @@ import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
 
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class CommandLineInterpreter {
+
+    // TODO: completa con altre query (ad esempio la key per il download, cose cosi)
 
     private static final Options options = new Options();
     private final static HelpFormatter formatter = new HelpFormatter();
@@ -27,7 +31,7 @@ public class CommandLineInterpreter {
     // The download options
     private final static Option[] download = {
             new Option("api", "api-name", true, "Contains the name of the API to call"),
-            new Option("key", "api-key", true, "The key for the API (if necessary)")
+            //new Option("key", "api-key", true, "The key for the API (if necessary)")
             // Problema: non sappiamo quali siano i parametri delle altre api, quindi posso mettere solo quelle del the guardian o lasciare così e fare tutto in modo interattivo
     };
 
@@ -41,6 +45,10 @@ public class CommandLineInterpreter {
 
     public CommandLineInterpreter(String[] args) {
         cmd = parseCommandLine(args);
+        /*if (cmd == null) FIXME
+        {
+            throw new IllegalStateException("Actions not specified");
+        }*/
     }
 
     private static CommandLine parseCommandLine(String[] args) {
@@ -48,7 +56,6 @@ public class CommandLineInterpreter {
         CommandLine cmd = parse(args);
         if (cmd == null || cmd.hasOption("h")) {
             formatter.printHelp("App -{et} [options]", options);
-            return null;
         }
         return cmd;
     }
@@ -72,7 +79,7 @@ public class CommandLineInterpreter {
         }
 
         // Set the options as required
-        // actionGroup.setRequired(true);
+        // actionGroup.setRequired(true); FIXME
         options.addOptionGroup(actionGroup);
 
         // Download options
@@ -117,33 +124,44 @@ public class CommandLineInterpreter {
     on the command line and processed according to the parser and Options rules.
      */
     public boolean help() {
-        return cmd.hasOption("h");
+        return false;
+        // return cmd.hasOption("h"); // FIXME
     }
     public boolean downloadPhase() {
-        return cmd.hasOption("d") || cmd.hasOption("ds");
+        return true;
+        // return cmd.hasOption("d") || cmd.hasOption("ds"); FIXME
     }
 
     public boolean searchPhase() {
-        return cmd.hasOption("s") || cmd.hasOption("ds");
+        return true;
+        //return cmd.hasOption("s") || cmd.hasOption("ds"); FIXME
     }
 
 
     public String obtainDownloadOptions() {
-        return cmd.getOptionValue("api");
+        return null;
+        //return cmd.getOptionValue("api"); FIXME
     }
 
-    public ArrayList<QueryParam> obtainSearchOptions() {
-        // TODO: modifica in base a cosa passargli
-        ArrayList<QueryParam> ret_array = new ArrayList<>(1);
-        String path = cmd.getOptionValue("path");
-        if (path == null) {
-            return null;
-        }
-        ret_array.add(new QueryParam("path", path));
+    public String obtainPathOption() {
+        /*
+        return cmd.getOptionValue("path"); FIXME
+         */
+        return null;
+    }
 
-        String number = cmd.getOptionValue("n");
-        ret_array.add(new QueryParam("number", number));
-
-        return ret_array;
+    public int obtainNumberOption()
+    {
+        return 50;
+        /*
+        try
+        {
+            return Integer.parseInt(cmd.getOptionValue("n")); FIXME
+         }
+         catch(...)
+         {
+            return -1;
+         }
+         */
     }
 }

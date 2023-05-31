@@ -36,7 +36,7 @@ public class JsonSerializer implements Serializer {
         objectMapper.writeValue(new File(filePath), objects);
 
         // Da togliere
-        String jsonString = objectMapper.writeValueAsString(objects);
-        System.out.println(jsonString);
+        //String jsonString = objectMapper.writeValueAsString(objects);
+        //System.out.println(jsonString);
     }
 }

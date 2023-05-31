@@ -9,7 +9,12 @@ public class MapArraySplitAnalyzer implements Analyzer<Article> {
     // TODO: passalo da sopra
     private static final String bannedWordsPath = "./src/main/resources/english_stoplist_v1.txt";
 
-    private static final int tot_words = 50;
+    private final int tot_words;
+
+    public MapArraySplitAnalyzer(int count)
+    {
+        tot_words = count;
+    }
     public ArrayList<MapEntrySI> mostPresent(List<Article> articles)
     {
         TreeMap<String, Integer> global_map = new TreeMap<>();
@@ -68,7 +73,7 @@ public class MapArraySplitAnalyzer implements Analyzer<Article> {
         return banned;
     }
 
-    private static void addOrdered(ArrayList<MapEntrySI> vec, Map.Entry<String, Integer> entry, HashMap<String, Integer> bannedWords) {
+    private void addOrdered(ArrayList<MapEntrySI> vec, Map.Entry<String, Integer> entry, HashMap<String, Integer> bannedWords) {
         if (bannedWords.get(entry.getKey()) != null)
         {
             return;
@@ -79,7 +84,7 @@ public class MapArraySplitAnalyzer implements Analyzer<Article> {
         MapEntrySI el = new MapEntrySI(entry.getKey(), entry.getValue());
 
         // Devo aggiungerlo per forza, si tratta solo di capire in che posizione
-        if (vector_size < 50) {
+        if (vector_size < tot_words) {
             int i = 1;
 
             // Finche' ci sono elementi e sono maggiori
@@ -108,33 +113,30 @@ public class MapArraySplitAnalyzer implements Analyzer<Article> {
         }
         else // Altrimenti non e' detto che io la debba aggiungere
         {
-            int i = 49;
+            int i = tot_words-1;
             while (i >= 0 && el.isMajorThan(vec.get(i))) {
-                if (i == 49) {
+                if (i == tot_words-1) {
                     i--;
                     continue;
                 }
                 vec.set(i + 1, vec.get(i));
                 i--;
             }
-            if (i != 49) {
+            if (i != tot_words-1) {
                 vec.set(i + 1, el);
             }
         }
     }
 
-    public static void outFile(ArrayList<MapEntrySI> max, String outFilePath) {
+    public void outFile(ArrayList<MapEntrySI> max, String outFilePath) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outFilePath))) {
-            for (int i = 0; i < 50; i++) {
+            for (int i = 0; i < tot_words; i++) {
                 MapEntrySI el = max.get(i);
                 writer.write(el.getKey() + " " + el.getValue());
-                if (i < 49) {
+                if (i < tot_words-1) {
                     writer.newLine();
                 }
             }
-            System.out.println("Scrittura su file completata");
-        } catch (IOException e) {
-            System.out.println("Si è verificato un errore durante la scrittura del file.");
         }
     }
 }
