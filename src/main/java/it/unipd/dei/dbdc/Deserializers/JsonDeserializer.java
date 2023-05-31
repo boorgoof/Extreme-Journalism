@@ -12,7 +12,7 @@ import java.util.List;
 public class JsonDeserializer implements specificDeserializer<Article> {
 
     // TODO: mettere i campi giusti
-    private String[] fields = {"id", "webUrl", "headline", "bodyText", "webPublicationDate", "sectionId" };
+    private String[] fields = {"id", "webUrl", "headline", "bodyText", "webPublicationDate", "webUrl" };
     // preferisco usare un campo in più di supporto rispetto alle json properties. (in caso vediamo)
 
     public String[] getFields() {
@@ -26,7 +26,47 @@ public class JsonDeserializer implements specificDeserializer<Article> {
         else throw new IllegalArgumentException("Deve essere fornito un array di dimensione " + fields.length);
     }
 
+    // Adesso accetto che non ci siano campi. Li mette a null
     @Override
+    public List<Article> deserialize(String filePath) throws IOException {
+
+        List<Article> articles = new ArrayList<>();
+
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode jsonNode = mapper.readTree(new File(filePath));
+
+        // Trova tutti i nodi che hanno ID dentro (come figlio, quindi sono gli articoli)
+        List<JsonNode> articleParentNodes = jsonNode.findParents(fields[0]);
+
+        for (JsonNode parentNode : articleParentNodes) {
+
+            String[] fieldsValues = new String[6];
+            // serve per accettare i casi in cui non esiste la chiave nel file json altrimenti avrei nullPointerException con asText()
+            for(int i=0; i < fields.length; i++){
+                // vedere se è meglio findValue() oppure get()
+                if(parentNode.findValue(fields[i]) != null){
+                    fieldsValues[i] = parentNode.findValue(fields[i]).asText();
+                } else {
+                    fieldsValues[i] = null;
+                }
+
+            }
+
+            Article article = new Article(fieldsValues[0], fieldsValues[1], fieldsValues[2], fieldsValues[3], fieldsValues[4], fieldsValues[5]);
+
+            System.out.println(article);
+            articles.add(article);
+
+        }
+
+        return articles;
+    }
+
+}
+
+// E' come prima non accetta campi mancanti manda errore c'e nullPointerexception
+/*
+@Override
     public List<Article> deserialize(String filePath) throws IOException {
 
         List<Article> articles = new ArrayList<>();
@@ -53,9 +93,11 @@ public class JsonDeserializer implements specificDeserializer<Article> {
         }
 
         return articles;
-    }
-
 }
+*/
+
+
+
 
 // idee di miglioramento. deserializzare in modo dinamico
 /*

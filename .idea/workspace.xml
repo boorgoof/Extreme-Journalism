@@ -4,23 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Il main funzia pt 2">
+    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Parallelism">
+      <change afterPath="$PROJECT_DIR$/src/test/deserializersTest/jsonTest/Articles2.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/Serialized.xml" beforeDir="false" afterPath="$PROJECT_DIR$/database/Serialized.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request1.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request2.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request2.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request3.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request3.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request4.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request4.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request5.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request5.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/database/output.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/databaseSerialized.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/databaseSerialized.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/CommandLineInterpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/CommandLineInterpreter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/APIContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/APIContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/DownloadProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/DownloadProperties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/GuardianAPIManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/GuardianAPIManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/HelpException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Deserializers/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Deserializers/Article.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Deserializers/JsonDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Deserializers/JsonDeserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/deserializersError/ArticlesError1.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/deserializersTest/jsonTest/Articles4.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/deserializersError/ArticlesError2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/deserializersTest/Articles1.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/deserializersTest/jsonTest/Articles1.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/deserializersTest/Articles2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/deserializersTest/Serialized3.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/deserializersTest/deserializerTest2/Serialized4.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/deserializersTest/deserializerTest2/Serialized5.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/deserializersTest/deserializerTest2/deserializersTest3/Serialized6.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/deserializersTest/deserializerTest2/deserializersTest3/deserializersTest4/Serialized7.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/deserializersTest/deserializerTest2/deserializersTest3/deserializersTest4/Serialized8.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/deserializersTest/jsonTest/Articles3.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/deserializersTest/nytimes_articles_v1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/Deserializers/JsonDeserializerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/Deserializers/JsonDeserializerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +31,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
-        <option value="Interface" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -49,99 +49,124 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/vison/OneDrive/Desktop/Programmi/JAVA/INGEGNERIA DEL SOFTWARE/Progetto/eis-final/database&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "D:/ingengeria software/eis-final/src/test",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\database" />
+      <recent name="D:\ingengeria software\eis-final\src\test" />
+      <recent name="D:\ingengeria software\eis-final\src\test\deserializersTest\deserializerTest2\deserializersTest3\deserializersTest4" />
+      <recent name="D:\ingengeria software\eis-final\src\test\deserializersError" />
+      <recent name="D:\ingengeria software\eis-final\src\test\databaseTest\databaseTest2\databaseTest3" />
       <recent name="D:\ingengeria software\eis-final\src\main\java\it\unipd\dei\dbdc\UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU" />
-      <recent name="D:\ingengeria software\eis-final\src\main\java\it\unipd\dei\dbdc" />
-      <recent name="D:\ingengeria software\eis-final\database\databaseProva" />
-      <recent name="D:\ingengeria software\eis-final\database\databaseProva\sottoCartella\sottoSottoCartella" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\src\main\resources" />
-      <recent name="D:\ingengeria software\eis-final\src\main\java\it\unipd\dei\dbdc\UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU\DESERIALIZERS_FILE_PROPERTIES2" />
-      <recent name="D:\ingengeria software\eis-final\src\main\java\it\unipd\dei\dbdc\UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU" />
-      <recent name="D:\ingengeria software\eis-final\database\databaseProva\sottoCartella" />
-      <recent name="D:\ingengeria software\eis-final\database\databaseProva" />
+      <recent name="D:\ingengeria software\eis-final\src\test\deserializersTest" />
+      <recent name="D:\ingengeria software\eis-final\src\test\deserializersTest\deserializerTest2\deserializersTest3\deserializersTest4" />
+      <recent name="D:\ingengeria software\eis-final\src\test\databaseTest\databaseTest2\databaseTest3\databaseTest4" />
+      <recent name="D:\ingengeria software\eis-final\src\test\databaseTest\databaseTest2\databaseTest3" />
+      <recent name="D:\ingengeria software\eis-final\src\test\databaseTest\databaseTest2" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="it.unipd.dei.dbdc.Handlers" />
+      <recent name="it.unipd.dei.dbdc.Deserializers" />
+      <recent name="it.unipd.dei.dbdc.Serializers" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.App">
-    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.App" />
+  <component name="RunManager" selected="JUnit.JsonDeserializerTest.deserialize_case3">
+    <configuration name="JsonDeserializerTest.deserialize_case1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Extreme_journalism" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="it.unipd.dei.dbdc.*" />
+          <option name="PATTERN" value="it.unipd.dei.dbdc.Deserializers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.Deserializers" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.Deserializers.JsonDeserializerTest" />
+      <option name="METHOD_NAME" value="deserialize_case1" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.Deserializers.Main" />
+    <configuration name="JsonDeserializerTest.deserialize_case2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Extreme_journalism" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="it.unipd.dei.dbdc.Handlers.*" />
+          <option name="PATTERN" value="it.unipd.dei.dbdc.Deserializers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.Deserializers" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.Deserializers.JsonDeserializerTest" />
+      <option name="METHOD_NAME" value="deserialize_case2" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Parallelism" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.ALTERNATIVE_DI_COMPONENTI.Parallelism" />
+    <configuration name="JsonDeserializerTest.deserialize_case3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Extreme_journalism" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="it.unipd.dei.dbdc.ALTERNATIVE_DI_COMPONENTI.*" />
+          <option name="PATTERN" value="it.unipd.dei.dbdc.Deserializers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.Deserializers" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.Deserializers.JsonDeserializerTest" />
+      <option name="METHOD_NAME" value="deserialize_case3" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="it.unipd.dei.dbdc.Serializers.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.Serializers.Main" />
+    <configuration name="JsonDeserializerTest.deserialize_case4" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Extreme_journalism" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="it.unipd.dei.dbdc.Handlers.*" />
+          <option name="PATTERN" value="it.unipd.dei.dbdc.Deserializers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.Deserializers" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.Deserializers.JsonDeserializerTest" />
+      <option name="METHOD_NAME" value="deserialize_case4" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.ALTERNATIVE_DI_COMPONENTI.PROVE_MAPPE.main" />
+    <configuration name="JsonDeserializerTest.setFields" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Extreme_journalism" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="it.unipd.dei.dbdc.ALTERNATIVE_DI_COMPONENTI.PROVE_MAPPE.*" />
+          <option name="PATTERN" value="it.unipd.dei.dbdc.Deserializers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.Deserializers" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.Deserializers.JsonDeserializerTest" />
+      <option name="METHOD_NAME" value="setFields" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -161,11 +186,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.App" />
-        <item itemvalue="Application.it.unipd.dei.dbdc.Serializers.Main" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Application.main" />
-        <item itemvalue="Application.Parallelism" />
+        <item itemvalue="JUnit.JsonDeserializerTest.deserialize_case3" />
+        <item itemvalue="JUnit.JsonDeserializerTest.deserialize_case4" />
+        <item itemvalue="JUnit.JsonDeserializerTest.deserialize_case2" />
+        <item itemvalue="JUnit.JsonDeserializerTest.deserialize_case1" />
+        <item itemvalue="JUnit.JsonDeserializerTest.setFields" />
       </list>
     </recent_temporary>
   </component>
@@ -220,28 +245,7 @@
       <option name="project" value="LOCAL" />
       <updated>1684306807525</updated>
     </task>
-    <task id="LOCAL-00007" summary="Merging">
-      <created>1685427573160</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1685427573160</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Il main funzia">
-      <created>1685433575811</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1685433575811</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Il main funzia pt 2">
-      <created>1685439493792</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1685439493792</updated>
-    </task>
-    <option name="localTasksCounter" value="10" />
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -262,10 +266,7 @@
     <MESSAGE value="Messo qualche test" />
     <MESSAGE value="Commentato" />
     <MESSAGE value="Parallelism" />
-    <MESSAGE value="Merging" />
-    <MESSAGE value="Il main funzia" />
-    <MESSAGE value="Il main funzia pt 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Il main funzia pt 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Parallelism" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -8,8 +8,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-
+/**
+ * Classe per la gestione della serializzazione.
+ *
+ */
 public class SerializationHandler {
+    /**
+     * Costruttore della classe SerializationHandler.
+     *
+     * @param filePropertiesName Nome del file delle proprietà per i serializer.
+     * @throws IOException Eccezione lanciata dato che sono stronzo
+     *
+     */
     private Map<String, Serializer> serializers;
 
     public SerializationHandler(String filePropertiesName) throws IOException {

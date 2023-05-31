@@ -2,6 +2,7 @@ package it.unipd.dei.dbdc.Deserializers;
 
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Article implements Serializable {
 
@@ -13,17 +14,17 @@ public class Article implements Serializable {
 
     private String body;
 
-    private String Date;
+    private String date;
 
-    private String Source;
+    private String source;
 
     public Article(String ID, String URL, String headline, String bodyText, String date, String source) {
         id = ID;
         url = URL;
         title = headline;
         body = bodyText;
-        Date = date;
-        Source = source;
+        this.date = date;
+        this.source = source;
     }
 
     public Article() {
@@ -51,11 +52,11 @@ public class Article implements Serializable {
     }
 
     public String getDate() {
-        return Date;
+        return date;
     }
 
     public String getSource() {
-        return Source;
+        return source;
     }
 
     public void setID(String ID) {
@@ -75,11 +76,11 @@ public class Article implements Serializable {
     }
 
     public void setDate(String date) {
-        Date = date;
+        date = date;
     }
 
     public void setSource(String source) {
-        Source = source;
+        source = source;
     }
 
     @Override
@@ -89,10 +90,54 @@ public class Article implements Serializable {
                 ", URL='" + url + '\'' +
                 ", title='" + title + '\'' +
                 ", body='" + body + '\'' +
-                ", Date='" + Date + '\'' +
-                ", Source='" + Source + '\'' +
+                ", Date='" + date + '\'' +
+                ", Source='" + source + '\'' +
                 '}';
+    }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+
+        Article article = (Article) obj;
+
+        return Objects.equals(id, article.id) &&
+                Objects.equals(url, article.url) &&
+                Objects.equals(title, article.title) &&
+                Objects.equals(body, article.body) &&
+                Objects.equals(date, article.date) &&
+                Objects.equals(source, article.source);
     }
 
 
 }
+/*
+return id.equals(article.id) &&
+                url.equals(article.url) &&
+                title.equals(article.title) &&
+                body.equals(article.body) &&
+                date.equals(article.date) &&
+                source.equals(article.source);
+ */
+
+/*
+ @Override
+    public boolean equals(Object obj) {
+
+        if (this == obj) return true;
+        if (getClass() != obj.getClass()) return false;
+
+        Article article = (Article) obj;
+
+        return  Objects.equals(id, article.id) &&
+                Objects.equals(url, article.url) &&
+                Objects.equals(title, article.title) &&
+                Objects.equals(body, article.body) &&
+                Objects.equals(date, article.date) &&
+                Objects.equals(source, article.source);
+    }
+ */

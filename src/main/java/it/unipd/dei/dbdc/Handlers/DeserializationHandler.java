@@ -9,6 +9,9 @@ import java.io.InputStream;
 
 import java.util.*;
 
+/**
+ * @param <T>
+ */
 public class DeserializationHandler<T> {
 
     private Map<String, Deserializer<T>> deserializers;
