@@ -15,107 +15,110 @@ import java.util.Set;
 
 public class App
 {
-    private final static String database_path = "./database";
-    public static final String filePropertiesName = "deserializers.properties";
+    // TODO: prendi tutto da properties, e fai in modo che ti possano passare un properties diverso da CLI
+    private static final String database_path = "./database/";
+    private static final String deserializers_properties = "deserializers.properties";
 
+    private static final String serializers_properties = "serializers.properties";
+
+    private static final String download_properties = "download.properties";
+
+    private static final String common_format = "xml";
+
+    private static final String outFile = "./database/output.txt";
 
     public static void main( String[] args ) throws IOException {
-        // TODO: junit
-        // TODO: maven site plugin
-        // TODO: maven javadoc plugin
-        // TODO: bash .sh o .bat
+        // TODO: interactive
+        // TODO: sistema il main
 
         // L'utente puo' passare da riga di comando quello che vuole fare.
-        CommandLineInterpreter interpreter;
-        try {
-            interpreter = new CommandLineInterpreter(args);
-        }
-        catch (HelpException e)
+        CommandLineInterpreter interpreter = new CommandLineInterpreter(args);
+        if (interpreter.help())
         {
             return;
         }
 
+        // Se non passa da linea di comando, gli si chiede interattivamente
+        // TODO: interactive
+
         //if (interpreter.downloadPhase()) {
             // Se vuole download, passo a download handler
             System.out.println(ConsoleTextColors.BLUE + "Entering the download part..." + ConsoleTextColors.RESET);
-            String name = null; //interpreter.obtainDownloadOptions();
+            String name = null ; //interpreter.obtainDownloadOptions();
             String folderPath = DownloadHandler.download(database_path, name);
             System.out.println(ConsoleTextColors.BLUE + "Exiting the download part..." + ConsoleTextColors.RESET);
         //}
         //if (interpreter.searchPhase())
         //{
-            // Serialization e search terms
-            //interpreter.obtainSearchOptions();
-            //...
+            // DESERIALIZZAZIONE formato fornito -> Article
+            DeserializationHandler<Article> deserializer = new DeserializationHandler<>(deserializers_properties);
+
+            System.out.println(ConsoleTextColors.BLUE + "Sono stati forniti i deserializzatori per i seguenti formati:"+ ConsoleTextColors.RESET);
+            Set<String> formatsAvailable = deserializer.getFormats();
+            for (String format : formatsAvailable) {
+                System.out.println(format);
+            }
+
+            System.out.println(ConsoleTextColors.BLUE +"Nel caso in cui ci fossero file di formato differente da questi elencati non verranno presi in considerazione"+ ConsoleTextColors.RESET);
+
+            List<Article> articles = new ArrayList<>();
+            try {
+
+                for (String format : formatsAvailable) {
+                    deserializer.deserializeFolder(format, folderPath, articles);
+                }
+
+            } catch (IOException e) {
+                System.err.println(ConsoleTextColors.RED + "Deserializzazione fallita per il formato: " + e.getMessage() + ConsoleTextColors.RESET);
+                // se ci sono errori probabilmente è stato inserito un header sbagliato. oppure sono stati specificati male i campi del file JSON
+                // bisogna segnalare all'utente e dire di reinserire i campi
+                // TODO: return?
+            }
+
+            //SERIALIZZAZIONE Article -> formato comune
+            String filename = "Serialized" ; // Percorso del file di output. TODO: facciamo in modo che il nome cambi?
+            String filePath = database_path +"/"+ filename + "." + common_format;
+            try {
+
+                // Creazione della lista di oggetti Serializable a partire dalla lista di Article (Article implementa Serializable)
+                List<Serializable> objects = new ArrayList<>(articles);
+
+
+
+                SerializationHandler serializer = new SerializationHandler(serializers_properties);
+
+                serializer.serializeObjects(objects, common_format, filePath);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                // TODO: return?
+            }
+
+            // DESERIALIZZAZIONE formato comune -> articles
+            List<Article> articles2 = new ArrayList<>();
+            try {
+
+                for (String format : formatsAvailable) {
+                    articles2 = deserializer.deserializeFile(common_format, filePath);
+                }
+
+            } catch (IOException e) {
+                System.err.println(ConsoleTextColors.RED + "Deserializzazione fallita per il formato: " + e.getMessage() + ConsoleTextColors.RESET);
+                // se ci sono errori probabilmente è stato inserito un header sbagliato. oppure sono stati specificati male i campi del file JSON
+                // bisogna segnalare all'utente e dire di reinserire i campi
+                // TODO: return?
+            }
+
+
+            // ESTRAZIONE DEI TERMINI PIU' IMPORTANTI
+            //creo un arraylist con tutti i termini come chiavi e numero di articoli in cui sono presenti come valori
+            System.out.println(ConsoleTextColors.BLUE + "Scrittura primi 50 termini più presenti in corso.."+ConsoleTextColors.RESET);
+            Analyzer<Article> analyzer = new MapAnalyzer();
+            ArrayList<it.unipd.dei.dbdc.Search_terms.MapEntry> max = analyzer.mostPresent(articles);
+
+            //stampo i primi 50 termini più presenti nei vari articoli
+            MapAnalyzer.outFile(max, outFile);
         //}
-
-        // DESERIALIZZAZIONE
-        DeserializationHandler<it.unipd.dei.dbdc.Deserializers.Article> handler = new DeserializationHandler<>(filePropertiesName);
-
-        System.out.println("Sono stati forniti i deserializzatori per i seguenti formati:");
-        Set<String> formatsAvailable = handler.getFormats();
-        for (String format : formatsAvailable) {
-            System.out.println(format);
-        }
-
-        System.out.println("Nel caso in cui ci fossero file di formato differente da questi elencati non verranno presi in considerazione");
-
-        List<Article> articles = new ArrayList<>();
-        try {
-
-            for (String format : formatsAvailable) {
-                handler.deserializeFolder(format, folderPath, articles);
-            }
-
-        } catch (IOException e) {
-            System.err.println("Deserializzazione fallita per il formato: " + e.getMessage());
-            // se ci sono errori probabilmente è stato inserito un header sbagliato. oppure sono stati specificati male i campi del file JSON
-            // bisogna segnalare all'utente e dire di reinserire i campi
-        }
-
-        //SERIALIZZAZIONE IN XML
-        try {
-
-            // Creazione della lista di oggetti Serializable a partire dalla lista di Article (Article implementa Serializzable)
-            List<Serializable> objects = new ArrayList<>(articles);
-
-            String format = "xml";
-            String filename = "Serialized" ; // Percorso del file di output
-            String filePath = database_path +"/"+ filename + "." + format;
-
-            SerializationHandler handler2 = new SerializationHandler("serializers.properties");
-
-            handler2.serializeObjects(objects, format, filePath);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // DESERIALIZZAZIONE DA XML
-        List<it.unipd.dei.dbdc.Deserializers.Article> articles2 = new ArrayList<>();
-        try {
-
-            for (String format : formatsAvailable) {
-                articles2 = handler.deserializeFile("xml", database_path+"/Serialized.xml");
-            }
-
-        } catch (IOException e) {
-            System.err.println("Deserializzazione fallita per il formato: " + e.getMessage());
-            // se ci sono errori probabilmente è stato inserito un header sbagliato. oppure sono stati specificati male i campi del file JSON
-            // bisogna segnalare all'utente e dire di reinserire i campi
-        }
-
-
-        // MAPPA
-        //creo un arraylist con tutti i termini come chiavi e numero di articoli in cui sono presenti come valori
-        System.out.println("scrittura primi 50 termini più presenti in corso..");
-        Analyzer<Article> anal = new MapAnalyzer();
-        ArrayList<it.unipd.dei.dbdc.Search_terms.MapEntry> max = anal.mostPresent(articles);
-
-        String outFilePath = "./database/output.txt";
-        //stampo i primi 50 termini più presenti nei vari articoli
-        MapAnalyzer.outFile(max, outFilePath);
-
     }
 
 }
