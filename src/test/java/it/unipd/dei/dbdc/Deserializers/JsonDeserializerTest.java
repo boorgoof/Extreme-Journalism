@@ -92,7 +92,7 @@ public class JsonDeserializerTest {
 
     }
 
-    // TEST FILE JSON CON CAMPI NULL. debuggando si vede che in un caso sono null e nell'altro sono "null" come se fossere stringhe anche se non sono riuscito a correggere
+    // TEST FILE JSON CON CAMPI NULL.
     private static List<Article> createTestArticles3() {
         List<Article> articles = new ArrayList<>();
         articles.add(new Article(null, null,null,null,null,null));
@@ -144,6 +144,39 @@ public class JsonDeserializerTest {
             assertFalse(articles.isEmpty());
             assertEquals(3, articles.size());
             assertEquals(createTestArticles4(), articles);
+
+        } catch (IOException e) {
+            fail("Errore durante la lettura del file JSON: " + e.getMessage());
+        }
+
+    }
+
+    private static List<Article> createTestArticles5() {
+        List<Article> articles = new ArrayList<>();
+        articles.add(new Article("ID 1", "URL 2", "Title 2", "Body 2", "Date 2","Source 2"));
+        articles.add(new Article("ID 2", "URL 2", "Title 2", "Body 2", "Date 2","Source 2"));
+        articles.add(new Article("ID 5", "URL 5", "Title 5", "Body 5", "Date 5","Source 5"));
+        return articles;
+    }
+
+
+    // TEST FILE JSON CON formattazione sbagliata.
+    // Di fatto seguono i campi successivi all' ID.
+    // se vengono posti due ID affiuncati il file json mi sta dicendo che ci sono due Articoli con due ID diversi ma con lo stesso contenuto.
+    // si tratta di un errore di formattazione fornito dall'utente. l'interpretazione del file però a mio avviso è pertinente.
+    @Test
+    public void deserialize_case5() {
+
+        JsonDeserializer deserializer = new JsonDeserializer();
+        String[] fileFields = {"id" , "url" , "title" , "body" , "date" , "source"};
+        deserializer.setFields(fileFields);
+
+        try {
+            List<Article> articles = deserializer.deserialize("src/test/deserializersTest/jsonTest/Articles5.json"); // mi funziona solo con path preciso
+            assertNotNull(articles);
+            assertFalse(articles.isEmpty());
+            assertEquals(3, articles.size());
+            assertEquals(createTestArticles5(), articles);
 
         } catch (IOException e) {
             fail("Errore durante la lettura del file JSON: " + e.getMessage());

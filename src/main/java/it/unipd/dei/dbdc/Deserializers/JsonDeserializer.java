@@ -44,7 +44,7 @@ public class JsonDeserializer implements specificDeserializer<Article> {
             // serve per accettare i casi in cui non esiste la chiave nel file json altrimenti avrei nullPointerException con asText()
             for(int i=0; i < fields.length; i++){
                 // vedere se è meglio findValue() oppure get()
-                if(parentNode.findValue(fields[i]) != null){
+                if(parentNode.findValue(fields[i]) != null && !parentNode.findValue(fields[i]).asText().equals("null")){
                     fieldsValues[i] = parentNode.findValue(fields[i]).asText();
                 } else {
                     fieldsValues[i] = null;
