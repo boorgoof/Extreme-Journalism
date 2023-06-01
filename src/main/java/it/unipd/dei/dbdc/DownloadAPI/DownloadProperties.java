@@ -2,6 +2,7 @@ package it.unipd.dei.dbdc.DownloadAPI;
 
 import it.unipd.dei.dbdc.Interfaces.DownloadAPI.APICaller;
 import it.unipd.dei.dbdc.Interfaces.DownloadAPI.APIManager;
+import it.unipd.dei.dbdc.PropertiesTools;
 
 import java.io.IOException;
 import java.lang.reflect.Constructor;

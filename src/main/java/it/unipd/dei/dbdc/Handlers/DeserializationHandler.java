@@ -2,10 +2,10 @@ package it.unipd.dei.dbdc.Handlers;
 
 import it.unipd.dei.dbdc.Interfaces.Deserializers.Deserializer;
 import it.unipd.dei.dbdc.Interfaces.Deserializers.specificDeserializer;
+import it.unipd.dei.dbdc.PropertiesTools;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 
 import java.util.*;
 
@@ -17,20 +17,8 @@ public class DeserializationHandler<T> {
     private Map<String, Deserializer<T>> deserializers;
 
     public DeserializationHandler(String filePropertiesName) throws IOException {
-
-        Properties deserializersProperties = loadProperties(filePropertiesName); //cambiare nome
+        Properties deserializersProperties = PropertiesTools.getProperties(filePropertiesName);
         deserializers = setDeserializersMap(deserializersProperties);
-
-    }
-
-    private Properties loadProperties(String filePropertiesName) throws IOException {
-
-        try (InputStream propertiesFile = Thread.currentThread().getContextClassLoader().getResourceAsStream(filePropertiesName)) {
-            Properties properties = new Properties();
-            properties.load(propertiesFile);
-            return properties;
-        }
-
     }
 
     private Map<String, Deserializer<T>> setDeserializersMap(Properties deserializersProperties) throws IOException {

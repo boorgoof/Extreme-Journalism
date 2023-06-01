@@ -121,9 +121,11 @@ public class App
 
         System.out.println(ConsoleTextColors.BLUE+"Fine deserializzazione..."+ConsoleTextColors.RESET);
 
-        System.out.println(ConsoleTextColors.BLUE+"Inizio serializzazione..."+ConsoleTextColors.RESET);
 
         // B. SERIALIZZAZIONE Article -> formato comune
+
+        System.out.println(ConsoleTextColors.BLUE+"Inizio serializzazione..."+ConsoleTextColors.RESET);
+
         try {
 
             // Creazione della lista di oggetti Serializable a partire dalla lista di Article (Article implementa Serializable)
