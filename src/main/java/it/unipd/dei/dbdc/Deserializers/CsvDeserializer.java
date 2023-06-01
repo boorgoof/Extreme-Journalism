@@ -11,6 +11,8 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
+import static it.unipd.dei.dbdc.Deserializers.Article.instanceArticle;
+
 public class CsvDeserializer implements specificDeserializer<Article> {
 
     private String[] fields = {"Identifier","URL","Title","Body","Date","Source Set","Source"};
@@ -31,20 +33,21 @@ public class CsvDeserializer implements specificDeserializer<Article> {
 
             CSVFormat csvFormat = CSVFormat.DEFAULT.builder()
                     .setHeader(fields)
+                    .setSkipHeaderRecord(true) // Salta l'intestazione
                     .build();
 
             CSVParser parser = new CSVParser(reader, csvFormat);
 
             for (CSVRecord record : parser) {
-                String id = record.get(fields[0]);
-                String url = record.get(fields[1]);
-                String title = record.get(fields[2]);
-                String body = record.get(fields[3]);
-                String date = record.get(fields[4]);
-                String sourceSet = record.get(fields[5]);
-                String source = record.get(fields[6]);
 
-                Article article = new Article(id, url, title, body, date, sourceSet, source);
+                Class<Article> myClass = Article.class;
+                String[] fieldsValues = new String[myClass.getDeclaredFields().length];
+
+                for(int i = 0; i < fields.length; i++) {
+                    fieldsValues[i] = record.get(fields[i]);
+                }
+
+                Article article = instanceArticle(fieldsValues);
                 //System.out.println(article);
                 articles.add(article);
 
@@ -56,3 +59,36 @@ public class CsvDeserializer implements specificDeserializer<Article> {
 
 }
 
+
+
+/*
+@Override
+public List<Article> deserialize(String filePath) throws IOException {
+        List<Article> articles = new ArrayList<>();
+
+        try (Reader reader = new FileReader(filePath)) {
+
+        CSVFormat csvFormat = CSVFormat.DEFAULT.builder()
+        .setHeader(fields)
+        .build();
+
+        CSVParser parser = new CSVParser(reader, csvFormat);
+
+        for (CSVRecord record : parser) {
+        String id = record.get(fields[0]);
+        String url = record.get(fields[1]);
+        String title = record.get(fields[2]);
+        String body = record.get(fields[3]);
+        String date = record.get(fields[4]);
+        String sourceSet = record.get(fields[5]);
+        String source = record.get(fields[6]);
+
+        Article article = new Article(id, url, title, body, date, sourceSet, source);
+        //System.out.println(article);
+        articles.add(article);
+
+        }
+        parser.close();
+        }
+        return articles;
+        }*/

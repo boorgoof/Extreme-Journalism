@@ -80,7 +80,7 @@ public class App
         // A. DESERIALIZZAZIONE formato fornito -> Article
         String path_cli = interpreter.obtainPathOption();
 
-        if (path_cli != null && folderPath == null) {
+        if (path_cli == null && folderPath == null) {
             System.out.println(ConsoleTextColors.RED + "Errore: nessun file da deserializzare"+ConsoleTextColors.RESET);
             return;
         } else if (path_cli != null) {
@@ -107,6 +107,7 @@ public class App
         System.out.println("Nel caso in cui ci fossero file di formato differente da questi elencati non verranno presi in considerazione");
 
         // Cerco di deserializzare l'intero folder, con tutti i formati possibili
+        long start = System.currentTimeMillis();
         List<Article> articles = new ArrayList<>();
         try {
             for (String format : formatsAvailable) {
@@ -118,6 +119,9 @@ public class App
             // bisogna segnalare all'utente e dire di reinserire i campi
             return;
         }
+        long end = System.currentTimeMillis();
+        System.out.println(ConsoleTextColors.YELLOW+"Tempo deserializzazione: "+(end-start)+ConsoleTextColors.RESET);
+
 
         System.out.println(ConsoleTextColors.BLUE+"Fine deserializzazione..."+ConsoleTextColors.RESET);
 
@@ -133,7 +137,11 @@ public class App
 
             SerializationHandler serializer = new SerializationHandler(serializers_properties);
 
+            start = System.currentTimeMillis();
             serializer.serializeObjects(objects, common_format, filePath);
+            end = System.currentTimeMillis();
+            System.out.println(ConsoleTextColors.YELLOW+"Tempo serializzazione: "+(end-start)+ConsoleTextColors.RESET);
+
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -148,7 +156,10 @@ public class App
             System.out.println(ConsoleTextColors.BLUE+"Inizio deserializzazione..."+ConsoleTextColors.RESET);
 
             try {
+                start = System.currentTimeMillis();
                 articles = deserializer.deserializeFile(common_format, filePath);
+                end = System.currentTimeMillis();
+                System.out.println(ConsoleTextColors.YELLOW+"Tempo deserializzazione: "+(end-start)+ConsoleTextColors.RESET);
             }
             catch (IOException e) {
                 System.err.println(ConsoleTextColors.RED + "Deserializzazione fallita per il formato: " + e.getMessage() + ConsoleTextColors.RESET);
@@ -170,16 +181,17 @@ public class App
             // Creo un arraylist con tutti i termini come chiavi e numero di articoli in cui sono presenti come valori
             System.out.println(ConsoleTextColors.BLUE + "Scrittura dei primi "+tot_count+" termini più importanti in corso.."+ConsoleTextColors.RESET);
 
+            // TODO: properties file
             Analyzer<Article> analyzer = new MapArraySplitAnalyzer(tot_count);
             ArrayList<MapEntrySI> max;
 
-            long start = System.currentTimeMillis();
+            start = System.currentTimeMillis();
             max = analyzer.mostPresent(articles);
-            long end = System.currentTimeMillis();
-            System.out.println(ConsoleTextColors.YELLOW + "Con split: "+(end-start)+ConsoleTextColors.RESET);
+            end = System.currentTimeMillis();
+            System.out.println(ConsoleTextColors.YELLOW + "Estrazione termini: "+(end-start)+ConsoleTextColors.RESET);
 
             try {
-                analyzer.outFile(max, "./database/split.txt");
+                analyzer.outFile(max, outFile);
             }
             catch (IOException e)
             {
@@ -188,6 +200,7 @@ public class App
                 return;
             }
 
+            /*
             analyzer = new MapArrayScannerAnalyzer(tot_count);
 
             start = System.currentTimeMillis();
@@ -205,6 +218,7 @@ public class App
                 e.printStackTrace();
                 return;
             }
+            */
 
             System.out.println(ConsoleTextColors.BLUE+"Fine estrazione termini..."+ConsoleTextColors.RESET);
         }

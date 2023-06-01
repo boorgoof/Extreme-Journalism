@@ -34,10 +34,9 @@ public class CsvDeserializerTest {
     }
     private static List<Article> createTestArticles1() {
         List<Article> articles = new ArrayList<>();
-        articles.add(new Article("Identifier", "URL", "Title", "Body", "Date",  "sourceSet ","Source"));
-        articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1","sourceSet 1","Source 1"));
-        articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1","sourceSet 1","Source 1"));
-        articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1","sourceSet 1","Source 1"));
+        articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1","SourceSet 1","Source 1"));
+        articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1","SourceSet 1","Source 1"));
+        articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1","SourceSet 1","Source 1"));
         return articles;
     }
 
@@ -53,8 +52,36 @@ public class CsvDeserializerTest {
             List<Article> articles = deserializer.deserialize(csvFileTest); // mi funziona solo con path preciso
             assertNotNull(articles);
             assertFalse(articles.isEmpty());
-            assertEquals(4, articles.size());
+            assertEquals(3, articles.size());
             assertEquals(createTestArticles1(), articles);
+
+        } catch (IOException e) {
+            fail("Errore durante la lettura del file CSV: " + e.getMessage());
+        }
+
+    }
+    private static List<Article> createTestArticles2() {
+        List<Article> articles = new ArrayList<>();
+        articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1","SourceSet 1",null));
+        articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1","SourceSet 1",null));
+        articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1","SourceSet 1",null));
+        return articles;
+    }
+
+    // TEST FILE SEMPLICE
+    @Test
+    public void deserialize_case2() {
+
+        String csvFileTest = "src/test/deserializersTest/csvTest/Articles2.csv";
+        CsvDeserializer deserializer = new CsvDeserializer();
+
+        try {
+
+            List<Article> articles = deserializer.deserialize(csvFileTest); // mi funziona solo con path preciso
+            assertNotNull(articles);
+            assertFalse(articles.isEmpty());
+            assertEquals(3, articles.size());
+            assertEquals(createTestArticles2(), articles);
 
         } catch (IOException e) {
             fail("Errore durante la lettura del file CSV: " + e.getMessage());

@@ -9,7 +9,7 @@ import it.unipd.dei.dbdc.DownloadAPI.InteractiveSelectAPI;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class DownloadHandler {
+public class  DownloadHandler {
     public static String download(String folder_path, String download_props, String api_props) throws IOException {
 
         APIContainer container = APIContainer.getInstance(download_props);
@@ -39,7 +39,11 @@ public class DownloadHandler {
             // Cerca di chiamare la API
             try {
                 System.out.println(ConsoleTextColors.BLUE + "Calling the API..." + ConsoleTextColors.RESET);
+                long start = System.currentTimeMillis();
                 file_path = manager.callAPI(folder_path);
+                long end = System.currentTimeMillis();
+                System.out.println(ConsoleTextColors.YELLOW + "Per download: "+(end-start)+ConsoleTextColors.RESET);
+
                 finished = true;
             }
             catch (IOException | IllegalArgumentException e) {
