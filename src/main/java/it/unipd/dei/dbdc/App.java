@@ -84,7 +84,7 @@ public class App
         }
         catch (IOException e)
         {
-            System.err.println("Errore nella deserializzazione");
+            System.err.println("Errore del programma: non sono stati caricati correttamente i deserilizzatori");
             e.printStackTrace();
             return;
         }
