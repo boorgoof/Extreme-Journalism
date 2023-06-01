@@ -24,9 +24,12 @@ public class DownloadHandler {
                 System.out.println(ConsoleTextColors.BLUE + "Selecting the API interactively..."+ConsoleTextColors.RESET);
             }
         }
-        boolean ok = false;
+
+        boolean finished = false;
         String file_path = "";
-        while(!ok) {
+
+        while(!finished) {
+
             if (manager == null) {
                 manager = selectInteractive(container);
             }
@@ -37,14 +40,16 @@ public class DownloadHandler {
             try {
                 System.out.println(ConsoleTextColors.BLUE + "Calling the API..." + ConsoleTextColors.RESET);
                 file_path = manager.callAPI(folder_path);
-                ok = true;
-            } catch (IOException | IllegalArgumentException e) {
+                finished = true;
+            }
+            catch (IOException | IllegalArgumentException e) {
                 System.out.println(ConsoleTextColors.RED + "Errore nella chiamata all'API" + ConsoleTextColors.RESET);
                 e.printStackTrace();
+                // To ask another time for the API interactively
                 manager = null;
             }
         }
-        System.out.println(ConsoleTextColors.BLUE + "You can find the downloaded files in "+file_path+ ConsoleTextColors.RESET);
+        System.out.println(ConsoleTextColors.BLUE + "You can find the downloaded files in the format in which they were download in "+file_path+ ConsoleTextColors.RESET);
         return file_path;
     }
 
@@ -58,6 +63,7 @@ public class DownloadHandler {
             APIManager manager = InteractiveSelectAPI.askParams(in, container, api_name);
             if (manager != null)
             {
+                in.close();
                 return manager;
             }
         }

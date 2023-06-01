@@ -13,7 +13,7 @@ public class APIProperties
     private static final String name = "name";
 
     public static APIManager readAPIProperties(String properties_file, APIContainer container) throws IOException, IllegalArgumentException {
-        Properties appProps = DownloadProperties.getProperties(properties_file);
+        Properties appProps = PropertiesTools.getProperties(properties_file);
 
         // 1. Cerco la property del caller, che è la classe che implementa APICaller
         String n = null;

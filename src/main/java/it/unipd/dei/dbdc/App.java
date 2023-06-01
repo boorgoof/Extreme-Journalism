@@ -20,35 +20,45 @@ public class App
 {
     // TODO: prendi tutto da properties, e fai in modo che ti possano passare un properties diverso da CLI. Oppure metti le properties fuori da src
     private static final String database_path = "./database/";
+
     private static final String deserializers_properties = "deserializers.properties";
-
     private static final String serializers_properties = "serializers.properties";
-
     private static final String download_properties = "download.properties";
 
     private static final String common_format = "xml";
 
     private static final String outFile = "./database/output.txt";
 
+    // TODO: remove from here
     private static int tot_count = 50;
 
     public static void main( String[] args ) {
 
-        // L'utente deve passare da riga di comando quello che vuole fare.
-        CommandLineInterpreter interpreter = new CommandLineInterpreter(args); // Puo' lanciare IllegalStateException
+        // L'utente deve passare da riga di comando l'azione che vuole fare.
+        CommandLineInterpreter interpreter;
+        try {
+            interpreter = new CommandLineInterpreter(args);
+        }
+        catch (IllegalStateException e)
+        {
+            System.err.println("Programma terminato perche' non e' stata fornita una azione da compiere.");
+            return;
+        }
+
         if (interpreter.help())
         {
             return;
         }
 
-        // Folder to serialize to xml
+        // Folder to serialize to common format.
         String folderPath = null;
 
         // FASE 1: download
         if (interpreter.downloadPhase()) {
-            // Se vuole download, passo a download handler
+
             System.out.println(ConsoleTextColors.BLUE + "Entering the download part..." + ConsoleTextColors.RESET);
 
+            // The only download option is the path of the properties file for the API to call.
             String props = interpreter.obtainAPIProps();
             try {
                 folderPath = DownloadHandler.download(database_path, download_properties, props);

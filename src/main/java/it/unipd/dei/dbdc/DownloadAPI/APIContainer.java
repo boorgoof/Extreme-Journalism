@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class APIContainer {
+
     // The list of the API that we can call
     private static ArrayList<APIManager> managers = new ArrayList<>();
 
@@ -17,15 +18,6 @@ public class APIContainer {
         if (instance == null)
         {
             instance = new APIContainer(download_properties);
-        }
-        return instance;
-    }
-
-    public static APIContainer getInstance() throws IOException
-    {
-        if (instance == null)
-        {
-            throw new IOException("Download properties file not present");
         }
         return instance;
     }

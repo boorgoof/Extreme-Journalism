@@ -11,12 +11,11 @@ public class InteractiveSelectAPI {
     {
         System.out.println("Inserire il nome della API che si vuole avere. Lista delle possibili API:\n" + container.getAPINames());
         return in.nextLine();
-        //return "TheGuardianAPI";
     }
 
     public static APIManager askParams(Scanner in, APIContainer container, String name)
     {
-        String par = "";
+        String par;
         try
         {
             par = container.getAPIPossibleParams(name);
@@ -30,7 +29,6 @@ public class InteractiveSelectAPI {
         System.out.println("Inserire i parametri per la query, uno per ogni riga (inserire quit per terminare):\n" + par);
 
         ArrayList<QueryParam> queries = new ArrayList<>();
-        //queries.add(new QueryParam("api-key", "21b5c154-934c-4a4e-b2f5-64adbd68af5f"));
 
         while (in.hasNextLine()) {
 
@@ -45,6 +43,7 @@ public class InteractiveSelectAPI {
                     break;
                 }
 
+                // TODO: migliora questa logica
                 StringBuilder value = new StringBuilder();
                 if (scan.hasNext())
                 {
