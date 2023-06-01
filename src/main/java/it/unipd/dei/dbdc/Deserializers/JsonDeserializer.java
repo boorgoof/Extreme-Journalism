@@ -9,21 +9,22 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static it.unipd.dei.dbdc.Deserializers.Article.instanceArticle;
+
+
 public class JsonDeserializer implements specificDeserializer<Article> {
 
     // TODO: mettere i campi giusti
-    private String[] fields = {"id", "webUrl", "headline", "bodyText", "webPublicationDate", "webUrl" };
+    private String[] fields = {"id", "webUrl", "headline", "bodyText", "webPublicationDate", "webUrl", "webUrl" };
     // preferisco usare un campo in più di supporto rispetto alle json properties. (in caso vediamo)
 
     public String[] getFields() {
         return fields;
     }
 
+
     public void setFields(String[] newFields) {
-        if( newFields.length == fields.length){
-            fields = newFields;
-        }
-        else throw new IllegalArgumentException("Deve essere fornito un array di dimensione " + fields.length);
+        fields = newFields;
     }
 
     // Adesso accetto che non ci siano campi. Li mette a null
@@ -40,7 +41,9 @@ public class JsonDeserializer implements specificDeserializer<Article> {
 
         for (JsonNode parentNode : articleParentNodes) {
 
-            String[] fieldsValues = new String[6];
+            Class<Article> myClass = Article.class;
+            String[] fieldsValues = new String[myClass.getDeclaredFields().length];
+
             // serve per accettare i casi in cui non esiste la chiave nel file json altrimenti avrei nullPointerException con asText()
             for(int i=0; i < fields.length; i++){
                 // vedere se è meglio findValue() oppure get()
@@ -51,9 +54,7 @@ public class JsonDeserializer implements specificDeserializer<Article> {
                 }
             }
 
-
-
-            Article article = new Article(fieldsValues[0], fieldsValues[1], fieldsValues[2], fieldsValues[3], fieldsValues[4], fieldsValues[5]);
+            Article article = instanceArticle(fieldsValues);
 
             //System.out.println(article);
             articles.add(article);
@@ -64,6 +65,14 @@ public class JsonDeserializer implements specificDeserializer<Article> {
     }
 
 }
+
+/*
+    public void setFields(String[] newFields) {
+        if( newFields.length == fields.length){
+            fields = newFields;
+        }
+        else throw new IllegalArgumentException("Deve essere fornito un array di dimensione " + fields.length);
+    }*/
 
 // E' come prima non accetta campi mancanti manda errore c'e nullPointerexception
 /*

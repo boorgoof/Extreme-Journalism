@@ -4,6 +4,7 @@
   "title": null,
   "body": null,
   "date": null,
+  "sourceSet" : null,
   "source": null
 }, {
   "id": null,
@@ -11,6 +12,7 @@
   "title": null,
   "body": null,
   "date": null,
+  "sourceSet" : null,
   "source": null
 }, {
   "id": null,
@@ -18,5 +20,6 @@
   "title": null,
   "body": null,
   "date": null,
+  "sourceSet" : null,
   "source": null
 } ]

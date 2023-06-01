@@ -5,34 +5,34 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class Article implements Serializable {
-
     private String id;
-
     private String url;
-
     private String title;
-
     private String body;
-
     private String date;
-
+    private String sourceSet;
     private String source;
 
-    public Article(String ID, String URL, String headline, String bodyText, String date, String source) {
+    public Article() {
+    }
+
+    public Article(String ID, String URL, String headline, String bodyText, String date, String sourceSet, String source) {
         id = ID;
         url = URL;
         title = headline;
         body = bodyText;
         this.date = date;
+        this.sourceSet = sourceSet;
         this.source = source;
     }
 
-    public Article() {
-    }
+    public static Article instanceArticle(String[] values) {
 
-    public Article(String headline, String bodyText) {
-        title = headline;
-        body = bodyText;
+        if (values.length != 7) {
+            throw new IllegalArgumentException("L'array deve contenere 7 valori.");
+        }
+        Article article =  new Article(values[0], values[1], values[2], values[3], values[4], values[5], values[6]);
+        return  article;
     }
 
     public String getID() {
@@ -91,6 +91,7 @@ public class Article implements Serializable {
                 ", title='" + title + '\'' +
                 ", body='" + body + '\'' +
                 ", Date='" + date + '\'' +
+                ", SourceSet='" + sourceSet + '\'' +
                 ", Source='" + source + '\'' +
                 '}';
     }
@@ -110,6 +111,7 @@ public class Article implements Serializable {
                 Objects.equals(title, article.title) &&
                 Objects.equals(body, article.body) &&
                 Objects.equals(date, article.date) &&
+                Objects.equals(sourceSet, article.sourceSet) &&
                 Objects.equals(source, article.source);
     }
 

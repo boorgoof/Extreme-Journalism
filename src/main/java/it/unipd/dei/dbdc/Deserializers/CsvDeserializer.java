@@ -20,10 +20,7 @@ public class CsvDeserializer implements specificDeserializer<Article> {
     }
 
     public void setFields(String[] newFields) {
-        if( newFields.length == fields.length){
-            fields = newFields;
-        }
-        else throw new IllegalArgumentException("Deve essere fornito un array \"header\" di dimensione " + fields.length);
+        fields = newFields;
     }
 
     @Override
@@ -44,9 +41,10 @@ public class CsvDeserializer implements specificDeserializer<Article> {
                 String title = record.get(fields[2]);
                 String body = record.get(fields[3]);
                 String date = record.get(fields[4]);
-                String source = record.get(fields[5]);
+                String sourceSet = record.get(fields[5]);
+                String source = record.get(fields[6]);
 
-                Article article = new Article(id, url, title, body, date, source);
+                Article article = new Article(id, url, title, body, date, sourceSet, source);
                 //System.out.println(article);
                 articles.add(article);
 
