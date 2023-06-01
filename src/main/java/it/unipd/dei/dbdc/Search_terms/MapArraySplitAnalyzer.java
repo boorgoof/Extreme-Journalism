@@ -27,7 +27,7 @@ public class MapArraySplitAnalyzer implements Analyzer<Article> {
             // Prendo l'articolo e faccio lo split
             Article art = articles.get(i);
             String articolo_completo = art.getTitle() + " " + art.getBody();
-            String[] tokens = articolo_completo.split("[^’'\\-a-zA-Z0-9]+");
+            String[] tokens = articolo_completo.split("[^’'\\-a-zA-Z]+");
 
             // Inserisco tutti i tokens in una mappa locale. TODO: in realtà mi interessa solo se esiste o meno, cosa potresti usare?
             for (String tok : tokens) {

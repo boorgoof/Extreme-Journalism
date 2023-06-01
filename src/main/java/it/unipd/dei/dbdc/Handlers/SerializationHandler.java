@@ -1,6 +1,7 @@
 package it.unipd.dei.dbdc.Handlers;
 
 import it.unipd.dei.dbdc.Interfaces.Serializers.Serializer;
+import it.unipd.dei.dbdc.PropertiesTools;
 
 import java.io.*;
 import java.util.HashMap;
@@ -24,7 +25,7 @@ public class SerializationHandler {
 
     public SerializationHandler(String filePropertiesName) throws IOException {
 
-        Properties serializersProperties = loadProperties(filePropertiesName); //cambiare nome
+        Properties serializersProperties = PropertiesTools.getProperties(filePropertiesName);
         serializers = setSerializersMap(serializersProperties);
 
     }
