@@ -49,9 +49,9 @@ public class App
             // Se vuole download, passo a download handler
             System.out.println(ConsoleTextColors.BLUE + "Entering the download part..." + ConsoleTextColors.RESET);
 
-            String name = interpreter.obtainDownloadOptions();
+            String props = interpreter.obtainAPIProps();
             try {
-                folderPath = DownloadHandler.download(database_path, name, download_properties);
+                folderPath = DownloadHandler.download(database_path, download_properties, props);
             }
             catch (IOException e)
             {

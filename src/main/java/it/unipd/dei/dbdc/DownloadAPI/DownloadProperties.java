@@ -15,7 +15,7 @@ public class DownloadProperties {
 
     private final static String caller_key = "library";
 
-    public static ArrayList<APIManager> readProperties(String properties_file) throws IOException {
+    public static ArrayList<APIManager> readAPIContainerProperties(String properties_file) throws IOException {
 
         Properties appProps = getProperties(properties_file);
 
@@ -66,7 +66,7 @@ public class DownloadProperties {
         return managers;
     }
 
-    private static Properties getProperties(String properties_file) throws IOException
+    public static Properties getProperties(String properties_file) throws IOException
     {
         // 1. Prendo il nome del file
         InputStream propertiesFile = Thread.currentThread().getContextClassLoader().getResourceAsStream(properties_file);

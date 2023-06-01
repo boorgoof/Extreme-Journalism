@@ -32,7 +32,7 @@ public class APIContainer {
 
     private APIContainer(String download_properties) throws IOException
     {
-        managers = DownloadProperties.readProperties(download_properties);
+        managers = DownloadProperties.readAPIContainerProperties(download_properties);
     }
 
     // Returns the info of every API caller
