@@ -80,7 +80,7 @@ public class App
         // A. DESERIALIZZAZIONE formato fornito -> Article
         String path_cli = interpreter.obtainPathOption();
 
-        if (path_cli != null && folderPath == null) {
+        if (path_cli == null && folderPath == null) {
             System.out.println(ConsoleTextColors.RED + "Errore: nessun file da deserializzare"+ConsoleTextColors.RESET);
             return;
         } else if (path_cli != null) {

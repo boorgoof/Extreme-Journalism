@@ -128,7 +128,7 @@ public class CommandLineInterpreter {
         // return cmd.hasOption("h"); // FIXME
     }
     public boolean downloadPhase() {
-        return true;
+        return false;
         // return cmd.hasOption("d") || cmd.hasOption("ds"); FIXME
     }
 
@@ -146,7 +146,7 @@ public class CommandLineInterpreter {
         /*
         return cmd.getOptionValue("path"); FIXME
          */
-        return null;
+        return "./database/nytimes_articles_v2";
     }
 
     public int obtainNumberOption()
