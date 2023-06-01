@@ -39,7 +39,11 @@ public class DownloadHandler {
             // Cerca di chiamare la API
             try {
                 System.out.println(ConsoleTextColors.BLUE + "Calling the API..." + ConsoleTextColors.RESET);
+                long start = System.currentTimeMillis();
                 file_path = manager.callAPI(folder_path);
+                long end = System.currentTimeMillis();
+                System.out.println(ConsoleTextColors.YELLOW + "Per download: "+(end-start)+ConsoleTextColors.RESET);
+
                 finished = true;
             }
             catch (IOException | IllegalArgumentException e) {

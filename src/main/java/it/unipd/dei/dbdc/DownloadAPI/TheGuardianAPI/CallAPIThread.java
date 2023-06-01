@@ -6,11 +6,11 @@ import java.io.IOException;
 import java.util.Map;
 
 public class CallAPIThread extends Thread {
-    private APICaller caller;
+    private final APICaller caller;
 
-    private String url;
-    private String path;
-    private Map<String, Object> params;
+    private final String url;
+    private final String path;
+    private final Map<String, Object> params;
     public CallAPIThread(APICaller c, String u, String p, Map<String, Object> par)
     {
         caller = c;
@@ -25,7 +25,7 @@ public class CallAPIThread extends Thread {
             if (!caller.sendRequest(url, params, path)) {
                 throw new IllegalArgumentException("Query parameters are not correct");
             }
-            // Ogni tanto da IllaegalArgument, probably perche' c'è il limite di una richiesta al secondo
+            // Ogni tanto da IllegalArgument, probably perche' c'è il limite di una richiesta al secondo
         }
         catch(IOException e)
         {
