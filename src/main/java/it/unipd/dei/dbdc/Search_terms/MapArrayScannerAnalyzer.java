@@ -28,7 +28,7 @@ public class MapArrayScannerAnalyzer implements Analyzer<Article> {
             String articolo_completo = art.getTitle() + " " + art.getBody();
             Scanner sc = new Scanner(articolo_completo);
 
-            sc.useDelimiter("[^’'\\-a-zA-Z0-9]+");
+            sc.useDelimiter("[^’'\\-a-zA-Z]+");
             while (sc.hasNext()) {
                 String s = sc.next();
                 if(!map.containsKey(s)){

@@ -100,7 +100,7 @@ public class GuardianAPIManager implements APIManager {
         }
 
         // Manda le richieste tramite la libreria e le salva in file
-        // start = System.currentTimeMillis();
+        // start = System.currentTimeMillis(); TODO: vedi se ha senso usare i thread cosi o fare un insieme di thread da chiamare continuamente (sempre gli stessi)
 
         Thread[] ts = new Thread[requests.size()];
         for (int i = 0; i<requests.size(); i++)

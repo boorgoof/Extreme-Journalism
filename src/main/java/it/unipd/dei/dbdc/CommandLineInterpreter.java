@@ -30,7 +30,7 @@ public class CommandLineInterpreter {
 
     // The download options
     private final static Option[] download = {
-            new Option("api", "api-name", true, "Contains the name of the API to call"),
+            new Option("apf", "api-properties-file", true, "Contains the path to the properties of the API to call"),
             //new Option("key", "api-key", true, "The key for the API (if necessary)")
             // Problema: non sappiamo quali siano i parametri delle altre api, quindi posso mettere solo quelle del the guardian o lasciare così e fare tutto in modo interattivo
     };
@@ -128,7 +128,7 @@ public class CommandLineInterpreter {
         // return cmd.hasOption("h"); // FIXME
     }
     public boolean downloadPhase() {
-        return true;
+        return false;
         // return cmd.hasOption("d") || cmd.hasOption("ds"); FIXME
     }
 
@@ -137,17 +137,16 @@ public class CommandLineInterpreter {
         //return cmd.hasOption("s") || cmd.hasOption("ds"); FIXME
     }
 
-
-    public String obtainDownloadOptions() {
-        return null;
-        //return cmd.getOptionValue("api"); FIXME
+    public String obtainAPIProps() {
+        return "api.properties";
+        //return cmd.getOptionValue("apf"); FIXME
     }
 
     public String obtainPathOption() {
         /*
         return cmd.getOptionValue("path"); FIXME
          */
-        return null;
+        return "./database/nytimes_articles_v2";
     }
 
     public int obtainNumberOption()

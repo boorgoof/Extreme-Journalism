@@ -3,14 +3,15 @@
   "url" : "URL 1",
   "title" : "Title 1",
   "body" : "Body 1",
-  "date" : "Date 1"
-
+  "date" : "Date 1",
+  "sourceSet" : "sourceSet 1"
 }, {
   "id" : "ID 1",
   "url" : "URL 1",
 
   "body" : "Body 1",
   "date" : "Date 1",
+  "sourceSet" : "sourceSet 1",
   "source" : "Source 1"
 }, {
   "id" : "ID 1",
@@ -18,5 +19,6 @@
   "title" : "Title 1",
   "body" : "Body 1",
 
+  "sourceSet" : "sourceSet 1",
   "source" : "Source 1"
 } ]

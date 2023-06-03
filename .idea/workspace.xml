@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Parallelism">
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Search_terms/PriorityQueueArraySplitAnalyzer.java" afterDir="false" />
+    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Deserializers/CsvDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Deserializers/CsvDeserializer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +17,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit4 Test Class" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -45,7 +46,7 @@
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/ingengeria software/eis-final/src/test&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/ingengeria software/eis-final/src/test/deserializersTest/csvTest&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
@@ -54,11 +55,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\ingengeria software\eis-final\src\test\deserializersTest\csvTest" />
+      <recent name="D:\ingengeria software\eis-final\src\test\deserializersTest\jsonTest" />
       <recent name="D:\ingengeria software\eis-final\src\test" />
       <recent name="D:\ingengeria software\eis-final\src\test\deserializersTest\deserializerTest2\deserializersTest3\deserializersTest4" />
       <recent name="D:\ingengeria software\eis-final\src\test\deserializersError" />
-      <recent name="D:\ingengeria software\eis-final\src\test\databaseTest\databaseTest2\databaseTest3" />
-      <recent name="D:\ingengeria software\eis-final\src\main\java\it\unipd\dei\dbdc\UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\ingengeria software\eis-final\src\test\deserializersTest" />
@@ -70,13 +71,64 @@
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="it.unipd.dei.dbdc" />
+    </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="it.unipd.dei.dbdc.Handlers" />
       <recent name="it.unipd.dei.dbdc.Deserializers" />
       <recent name="it.unipd.dei.dbdc.Serializers" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.JsonDeserializerTest.deserialize_case1">
+  <component name="RunManager" selected="JUnit.CsvDeserializerTest.deserialize_case1">
+    <configuration name="CsvDeserializerTest.deserialize_case1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Extreme_journalism" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.unipd.dei.dbdc.Deserializers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.Deserializers" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.Deserializers.CsvDeserializerTest" />
+      <option name="METHOD_NAME" value="deserialize_case1" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CsvDeserializerTest.deserialize_case2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Extreme_journalism" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.unipd.dei.dbdc.Deserializers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.Deserializers" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.Deserializers.CsvDeserializerTest" />
+      <option name="METHOD_NAME" value="deserialize_case2" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CsvDeserializerTest.setFields" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Extreme_journalism" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.unipd.dei.dbdc.Deserializers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.Deserializers" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.Deserializers.CsvDeserializerTest" />
+      <option name="METHOD_NAME" value="setFields" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="JsonDeserializerTest.deserialize_case1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Extreme_journalism" />
       <extension name="coverage">
@@ -93,7 +145,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="JsonDeserializerTest.deserialize_case2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="JsonDeserializerTest.deserialize_case5" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Extreme_journalism" />
       <extension name="coverage">
         <pattern>
@@ -103,55 +155,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.Deserializers" />
       <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.Deserializers.JsonDeserializerTest" />
-      <option name="METHOD_NAME" value="deserialize_case2" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="JsonDeserializerTest.deserialize_case3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Extreme_journalism" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.unipd.dei.dbdc.Deserializers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.Deserializers" />
-      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.Deserializers.JsonDeserializerTest" />
-      <option name="METHOD_NAME" value="deserialize_case3" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="JsonDeserializerTest.deserialize_case4" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Extreme_journalism" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.unipd.dei.dbdc.Deserializers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.Deserializers" />
-      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.Deserializers.JsonDeserializerTest" />
-      <option name="METHOD_NAME" value="deserialize_case4" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="JsonDeserializerTest.setFields" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Extreme_journalism" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.unipd.dei.dbdc.Deserializers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.Deserializers" />
-      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.Deserializers.JsonDeserializerTest" />
-      <option name="METHOD_NAME" value="setFields" />
+      <option name="METHOD_NAME" value="deserialize_case5" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -172,11 +176,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CsvDeserializerTest.deserialize_case1" />
+        <item itemvalue="JUnit.CsvDeserializerTest.deserialize_case2" />
+        <item itemvalue="JUnit.CsvDeserializerTest.setFields" />
         <item itemvalue="JUnit.JsonDeserializerTest.deserialize_case1" />
-        <item itemvalue="JUnit.JsonDeserializerTest.deserialize_case3" />
-        <item itemvalue="JUnit.JsonDeserializerTest.deserialize_case4" />
-        <item itemvalue="JUnit.JsonDeserializerTest.deserialize_case2" />
-        <item itemvalue="JUnit.JsonDeserializerTest.setFields" />
+        <item itemvalue="JUnit.JsonDeserializerTest.deserialize_case5" />
       </list>
     </recent_temporary>
   </component>
@@ -279,5 +283,21 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="java.lang.String" memberName="value" />
+        <PinnedItemInfo parentTag="it.unipd.dei.dbdc.Deserializers.Article" memberName="id" />
+      </pinned-members>
+    </pin-to-top-manager>
+    <watches-manager>
+      <configuration name="JUnit">
+        <watch expression="header[0]" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/eis_final$JsonDeserializerTest_deserialize_case3.ic" NAME="JsonDeserializerTest.deserialize_case3 Coverage Results" MODIFIED="1685518925355" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>it.unipd.dei.dbdc.Deserializers.*</FILTER>
+    </SUITE>
   </component>
 </project>
