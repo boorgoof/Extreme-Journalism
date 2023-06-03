@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Implemented the CLI and adjusted the main">
-      <change afterPath="$PROJECT_DIR$/database/nytimes_articles_v2/nytimes_articles_v2.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/Serialized.xml" beforeDir="false" afterPath="$PROJECT_DIR$/database/Serialized.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/database/output.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/split.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Search_terms/MapArraySplitAnalyzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Search_terms/MapArraySplitAnalyzer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Deserializers/CsvDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Deserializers/CsvDeserializer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +17,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit4 Test Class" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -85,7 +80,7 @@
       <recent name="it.unipd.dei.dbdc.Serializers" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.CsvDeserializerTest.deserialize_case1">
     <configuration name="CsvDeserializerTest.deserialize_case1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Extreme_journalism" />
       <extension name="coverage">
@@ -102,6 +97,38 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="CsvDeserializerTest.deserialize_case2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Extreme_journalism" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.unipd.dei.dbdc.Deserializers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.Deserializers" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.Deserializers.CsvDeserializerTest" />
+      <option name="METHOD_NAME" value="deserialize_case2" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CsvDeserializerTest.setFields" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Extreme_journalism" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.unipd.dei.dbdc.Deserializers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.Deserializers" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.Deserializers.CsvDeserializerTest" />
+      <option name="METHOD_NAME" value="setFields" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="JsonDeserializerTest.deserialize_case1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Extreme_journalism" />
       <extension name="coverage">
@@ -113,38 +140,6 @@
       <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.Deserializers" />
       <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.Deserializers.JsonDeserializerTest" />
       <option name="METHOD_NAME" value="deserialize_case1" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="JsonDeserializerTest.deserialize_case3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Extreme_journalism" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.unipd.dei.dbdc.Deserializers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.Deserializers" />
-      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.Deserializers.JsonDeserializerTest" />
-      <option name="METHOD_NAME" value="deserialize_case3" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="JsonDeserializerTest.deserialize_case4" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Extreme_journalism" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.unipd.dei.dbdc.Deserializers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.Deserializers" />
-      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.Deserializers.JsonDeserializerTest" />
-      <option name="METHOD_NAME" value="deserialize_case4" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -182,10 +177,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.CsvDeserializerTest.deserialize_case1" />
+        <item itemvalue="JUnit.CsvDeserializerTest.deserialize_case2" />
+        <item itemvalue="JUnit.CsvDeserializerTest.setFields" />
         <item itemvalue="JUnit.JsonDeserializerTest.deserialize_case1" />
         <item itemvalue="JUnit.JsonDeserializerTest.deserialize_case5" />
-        <item itemvalue="JUnit.JsonDeserializerTest.deserialize_case4" />
-        <item itemvalue="JUnit.JsonDeserializerTest.deserialize_case3" />
       </list>
     </recent_temporary>
   </component>
@@ -290,9 +285,15 @@
     </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
+        <PinnedItemInfo parentTag="java.lang.String" memberName="value" />
         <PinnedItemInfo parentTag="it.unipd.dei.dbdc.Deserializers.Article" memberName="id" />
       </pinned-members>
     </pin-to-top-manager>
+    <watches-manager>
+      <configuration name="JUnit">
+        <watch expression="header[0]" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/eis_final$JsonDeserializerTest_deserialize_case3.ic" NAME="JsonDeserializerTest.deserialize_case3 Coverage Results" MODIFIED="1685518925355" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

@@ -66,6 +66,8 @@ public class JsonDeserializer implements specificDeserializer<Article> {
 
 }
 
+
+
 /*
     public void setFields(String[] newFields) {
         if( newFields.length == fields.length){
