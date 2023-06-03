@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Deserializers/main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/deserializersTest/csvTest/articles_v1.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Deserializers/CsvDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Deserializers/CsvDeserializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Deserializers/JsonDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Deserializers/JsonDeserializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/deserializersTest/csvTest/Articles2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/deserializersTest/csvTest/Articles2.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/Deserializers/CsvDeserializerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/Deserializers/CsvDeserializerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +80,7 @@
       <recent name="it.unipd.dei.dbdc.Serializers" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CsvDeserializerTest.deserialize_case2">
+  <component name="RunManager" selected="JUnit.CsvDeserializerTest.deserialize_case1">
     <configuration name="CsvDeserializerTest.deserialize_case1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Extreme_journalism" />
       <extension name="coverage">
@@ -181,9 +176,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CsvDeserializerTest.deserialize_case1" />
         <item itemvalue="JUnit.CsvDeserializerTest.deserialize_case2" />
         <item itemvalue="JUnit.CsvDeserializerTest.setFields" />
-        <item itemvalue="JUnit.CsvDeserializerTest.deserialize_case1" />
         <item itemvalue="JUnit.JsonDeserializerTest.deserialize_case1" />
         <item itemvalue="JUnit.JsonDeserializerTest.deserialize_case5" />
       </list>
@@ -286,21 +281,6 @@
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="1" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Deserializers/CsvDeserializer.java</url>
-          <line>90</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Deserializers/CsvDeserializer.java</url>
-          <line>56</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Deserializers/CsvDeserializer.java</url>
-          <line>51</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>

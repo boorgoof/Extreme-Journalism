@@ -36,6 +36,38 @@ public class CsvDeserializer implements specificDeserializer<Article> {
     public List<Article> deserialize(String filePath) throws IOException {
         List<Article> articles = new ArrayList<>();
 
+        try (Reader reader = new FileReader(filePath)) {
+
+            CSVFormat csvFormat = CSVFormat.DEFAULT.builder()
+                    .setSkipHeaderRecord(true)
+                    .setHeader(fields)
+                    .build();
+
+            CSVParser parser = new CSVParser(reader, csvFormat);
+
+            for (CSVRecord record : parser) {
+                String id = record.get(fields[0]);
+                String url = record.get(fields[1]);
+                String title = record.get(fields[2]);
+                String body = record.get(fields[3]);
+                String date = record.get(fields[4]);
+                String sourceSet = record.get(fields[5]);
+                String source = record.get(fields[6]);
+
+                Article article = new Article(id, url, title, body, date, sourceSet, source);
+                //System.out.println(article);
+                articles.add(article);
+
+            }
+            parser.close();
+        }
+        return articles;
+    }
+    /*
+    @Override
+    public List<Article> deserialize(String filePath) throws IOException {
+        List<Article> articles = new ArrayList<>();
+
         String[] header = readHeader(filePath);
 
         try (Reader reader = new FileReader(filePath)) {
@@ -51,7 +83,6 @@ public class CsvDeserializer implements specificDeserializer<Article> {
                 Class<Article> myClass = Article.class;
                 String[] fieldsValues = new String[myClass.getDeclaredFields().length];
 
-                // serve per accettare i casi in cui non esiste la chiave nel file json altrimenti avrei nullPointerException con asText()
                 for(int i=0; i < fields.length; i++){
                     if(contains(header, fields[i])){
                         fieldsValues[i] = record.get(fields[i]);
@@ -91,12 +122,12 @@ public class CsvDeserializer implements specificDeserializer<Article> {
                 }
 
             }
-            header[0] = "Identifier";
-            /*
+            header[0] = "Identifier"; // SONO COSTRETTO A METTERLO MA NON HA SENSOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO MODDDDODODODODODODODODODODOOonnnnnnma
+
             for(String a : header){
                 System.out.println(a);
             }
-            */
+
             return header;
         }
     }
@@ -109,35 +140,35 @@ public class CsvDeserializer implements specificDeserializer<Article> {
         }
         return false;
     }
-    /*
-    private String[] readHeader(String filePath) throws IOException {
-        CSVFormat csvFormat = CSVFormat.DEFAULT;
-        try (Reader reader = new FileReader(filePath); CSVParser parser = new CSVParser(reader, csvFormat)) {
-
-            // Leggi la prima riga del file
-            CSVRecord headerRecord = parser.iterator().next();
-
-            // Salva gli header delle colonne in un array
-            String[] header = new String[headerRecord.size()];
-            for (int i = 0; i < headerRecord.size(); i++) {
-               header[i] = headerRecord.get(i);
-            }
-            /*
-            for(int i = 0; i < header.length; i++){
-                if(!contains(fields, header[i])){
-                    header[i] = null;
-                }
-            }
-
-            return header;
-        }
-    }
-    public static boolean contains(String[] array, String elemento) {
-        List<String> lista = Arrays.asList(array);
-        return lista.contains(elemento);
-    }
     */
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -198,3 +229,32 @@ public List<Article> deserialize(String filePath) throws IOException {
         }
     }
  */
+
+/*
+    private String[] readHeader(String filePath) throws IOException {
+        CSVFormat csvFormat = CSVFormat.DEFAULT;
+        try (Reader reader = new FileReader(filePath); CSVParser parser = new CSVParser(reader, csvFormat)) {
+
+            // Leggi la prima riga del file
+            CSVRecord headerRecord = parser.iterator().next();
+
+            // Salva gli header delle colonne in un array
+            String[] header = new String[headerRecord.size()];
+            for (int i = 0; i < headerRecord.size(); i++) {
+               header[i] = headerRecord.get(i);
+            }
+            /*
+            for(int i = 0; i < header.length; i++){
+                if(!contains(fields, header[i])){
+                    header[i] = null;
+                }
+            }
+
+            return header;
+        }
+    }
+    public static boolean contains(String[] array, String elemento) {
+        List<String> lista = Arrays.asList(array);
+        return lista.contains(elemento);
+    }
+    */
