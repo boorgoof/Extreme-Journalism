@@ -15,7 +15,7 @@ public class CsvDeserializerTest {
 
         CsvDeserializer deserializer = new CsvDeserializer();
 
-        String[] expectedFields = {"Identifier","URL","Title","Fulltext","Date","Source Set","Source"};
+        String[] expectedFields = {"Identifier","URL","Title","Body","Date","Source Set","Source"};
         String[] fields = deserializer.getFields();
 
         assertArrayEquals(expectedFields, fields);
@@ -89,5 +89,32 @@ public class CsvDeserializerTest {
         }
 
     }
+        /*
+    private static List<Article> createTestArticles3() {
+        List<Article> articles = new ArrayList<>();
+        articles.add(new Article(null, null,null,null,null,null, null));
+        articles.add(new Article(null, null,null,null,null,null,null));
+        articles.add(new Article(null, null,null,null,null,null,null));
+        return articles;
+    }
+    @Test
+    public void deserialize_case3() {
+
+        String csvFileTest = "src/test/deserializersTest/csvTest/Articles3.csv";
+        CsvDeserializer deserializer = new CsvDeserializer();
+
+        try {
+
+            List<Article> articles = deserializer.deserialize(csvFileTest); // mi funziona solo con path preciso
+            assertNotNull(articles);
+            assertFalse(articles.isEmpty());
+            assertEquals(3, articles.size());
+            assertEquals(createTestArticles2(), articles);
+
+        } catch (IOException e) {
+            fail("Errore durante la lettura del file CSV: " + e.getMessage());
+        }
+
+    }*/
 
 }

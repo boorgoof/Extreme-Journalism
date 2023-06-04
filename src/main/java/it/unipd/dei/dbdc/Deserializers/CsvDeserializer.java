@@ -22,7 +22,7 @@ public class CsvDeserializer implements specificDeserializer<Article> {
 
     public CsvDeserializer(){
 
-        fields = new String[]{"Identifier", "URL", "Title", "Fulltext", "Date", "Source Set", "Source"};
+        fields = new String[]{"Identifier", "URL", "Title", "Body", "Date", "Source Set", "Source"};
     }
     public String[] getFields() {
         return fields;
@@ -88,7 +88,7 @@ public class CsvDeserializer implements specificDeserializer<Article> {
                 String[] fieldsValues = new String[myClass.getDeclaredFields().length];
 
                 for(int i=0; i < fields.length; i++){
-                    if(contains(header, fields[i])){
+                    if(record.isSet(fields[i])){
                         fieldsValues[i] = record.get(fields[i]);
                     }
                 }
@@ -123,15 +123,17 @@ public class CsvDeserializer implements specificDeserializer<Article> {
             // Imposta a null i valori non presenti nell'array di riferimento (quelli da parsare)
             for (int i = 0; i < header.length; i++) {
                 if (!contains(fields, header[i])) {
-                    header[i] = "X"; // posso setterlo a qualsisi cosa
+                    header[i] = null; // posso setterlo a qualsisi cosa
                 }
 
             }
-            //header[0] = "Identifier"; // SONO COSTRETTO A METTERLO MA NON HA SENSOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO MODDDDODODODODODODODODODODOOonnnnnnma
 
+            header[0] = "Identifier"; // SONO COSTRETTO A METTERLO perche mi dice che non è presente in fields ma invece lo è
+            /*
             for(String a : header){
                 System.out.println(a);
             }
+            */
 
             return header;
         }
