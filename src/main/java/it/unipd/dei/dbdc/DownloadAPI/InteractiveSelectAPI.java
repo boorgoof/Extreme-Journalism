@@ -1,19 +1,30 @@
 package it.unipd.dei.dbdc.DownloadAPI;
 
+import it.unipd.dei.dbdc.ConsoleTextColors;
 import it.unipd.dei.dbdc.Interfaces.DownloadAPI.APIManager;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class InteractiveSelectAPI {
 
-    public static String askAPIName(Scanner in, APIContainer container)
+    private final APIContainer container;
+
+    private final Scanner in;
+
+    public InteractiveSelectAPI(String download_props, Scanner sc) throws IOException {
+        container = APIContainer.getInstance(download_props);
+        in = sc;
+    }
+
+    public String askAPIName()
     {
-        System.out.println("Inserire il nome della API che si vuole avere. Lista delle possibili API:\n" + container.getAPINames());
+        ConsoleTextColors.printlnInfo("Inserire il nome della API che si vuole avere. Lista delle possibili API:\n" + container.getAPINames());
         return in.nextLine();
     }
 
-    public static APIManager askParams(Scanner in, APIContainer container, String name)
+    public APIManager askParams(String name)
     {
         String par;
         try
@@ -22,11 +33,11 @@ public class InteractiveSelectAPI {
         }
         catch (IllegalArgumentException e)
         {
-            System.out.println("Il nome della API e' incorretto. Riprovare");
+            ConsoleTextColors.printlnInfo("Il nome della API e' incorretto. Riprovare");
             return null;
         }
 
-        System.out.println("Inserire i parametri per la query, uno per ogni riga (inserire quit per terminare):\n" + par);
+        ConsoleTextColors.printlnInfo("Inserire i parametri per la query, uno per ogni riga (inserire quit per terminare):\n" + par);
 
         ArrayList<QueryParam> queries = new ArrayList<>();
 
@@ -50,7 +61,7 @@ public class InteractiveSelectAPI {
                     value.append(scan.next());
                 }
                 else {
-                    System.out.println("Fornire un valore al parametro, riprovare");
+                    ConsoleTextColors.printlnInfo("Fornire un valore al parametro, riprovare");
                     continue;
                 }
                 while (scan.hasNext())
@@ -66,7 +77,7 @@ public class InteractiveSelectAPI {
         try {
             return container.getAPIManager(name, queries);
         } catch (IllegalArgumentException e) {
-            System.out.println("Nome o parametri forniti errati, riprovare");
+            ConsoleTextColors.printlnInfo("Nome o parametri forniti errati, riprovare");
         }
         return null;
     }

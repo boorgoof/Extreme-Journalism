@@ -10,18 +10,17 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class  DownloadHandler {
-    public static String download(String folder_path, String download_props, String api_props) throws IOException {
 
-        APIContainer container = APIContainer.getInstance(download_props);
+    public static String download(String folder_path, String download_props, String api_props) throws IOException {
 
         APIManager manager = null;
         if (api_props != null) {
             try {
-                manager = APIProperties.readAPIProperties(api_props, container);
+                manager = APIProperties.readAPIProperties(api_props, download_props);
             }
             catch (IOException | IllegalArgumentException e)
             {
-                System.out.println(ConsoleTextColors.BLUE + "Selecting the API interactively..."+ConsoleTextColors.RESET);
+                ConsoleTextColors.printlnInfo("Selecting the API interactively...");
             }
         }
 
@@ -31,14 +30,14 @@ public class  DownloadHandler {
         while(!finished) {
 
             if (manager == null) {
-                manager = selectInteractive(container);
+                manager = selectInteractive(download_props);
             }
 
-            System.out.println(ConsoleTextColors.BLUE + "API selected correctly..." + ConsoleTextColors.RESET);
+            ConsoleTextColors.printlnInfo("API selected correctly...");
 
             // Cerca di chiamare la API
             try {
-                System.out.println(ConsoleTextColors.BLUE + "Calling the API..." + ConsoleTextColors.RESET);
+                ConsoleTextColors.printlnProcess("Calling the API...");
                 long start = System.currentTimeMillis();
                 file_path = manager.callAPI(folder_path);
                 long end = System.currentTimeMillis();
@@ -47,28 +46,29 @@ public class  DownloadHandler {
                 finished = true;
             }
             catch (IOException | IllegalArgumentException e) {
-                System.out.println(ConsoleTextColors.RED + "Errore nella chiamata all'API" + ConsoleTextColors.RESET);
+                ConsoleTextColors.printlnError("Errore nella chiamata all'API");
                 e.printStackTrace();
                 // To ask another time for the API interactively
                 manager = null;
             }
         }
-        System.out.println(ConsoleTextColors.BLUE + "You can find the downloaded files in the format in which they were download in "+file_path+ ConsoleTextColors.RESET);
+        ConsoleTextColors.printlnProcess( "You can find the downloaded files in the format in which they were download in "+file_path);
         return file_path;
     }
 
-    private static APIManager selectInteractive(APIContainer container)
+    private static APIManager selectInteractive(String download_props) throws IOException
     {
-        Scanner in = new Scanner(System.in);
-        while (true) {
+        try(Scanner in = new Scanner(System.in)) {
+            InteractiveSelectAPI interact = new InteractiveSelectAPI(download_props, in);
+            while (true) {
 
-            String api_name = InteractiveSelectAPI.askAPIName(in, container);
+                String api_name = interact.askAPIName();
 
-            APIManager manager = InteractiveSelectAPI.askParams(in, container, api_name);
-            if (manager != null)
-            {
-                in.close();
-                return manager;
+                APIManager manager = interact.askParams(api_name);
+                if (manager != null) {
+                    in.close();
+                    return manager;
+                }
             }
         }
     }
