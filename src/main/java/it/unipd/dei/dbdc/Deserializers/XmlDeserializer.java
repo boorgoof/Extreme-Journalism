@@ -16,6 +16,16 @@ public class XmlDeserializer implements Deserializer<Article> {
     @Override
     public List<Article> deserialize(String filePath) throws IOException {
 
+        XmlMapper xmlMapper = new XmlMapper();
+        File xmlFile = new File(filePath);
+        return xmlMapper.readValue(xmlFile, new TypeReference<List<Article>>() {});
+
+    }
+    // IN QUESTA VERSIONE RESTITUISCE UNA LISTA VUOTA SE C'E un errore
+    /*
+    @Override
+    public List<Article> deserialize(String filePath) {
+
         try {
             XmlMapper xmlMapper = new XmlMapper();
 
@@ -24,9 +34,11 @@ public class XmlDeserializer implements Deserializer<Article> {
             return xmlMapper.readValue(xmlFile, new TypeReference<List<Article>>() {});
 
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Errore nel file. restituisco una lista vuota");
         }
 
         return Collections.emptyList(); // In caso di errore, restituisce una lista vuota
     }
+    */
+
 }

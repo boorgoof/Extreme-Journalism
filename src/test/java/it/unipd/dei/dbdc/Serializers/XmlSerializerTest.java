@@ -8,5 +8,7 @@ public class XmlSerializerTest {
 
     @Test
     public void serialize() {
+
+
     }
 }
