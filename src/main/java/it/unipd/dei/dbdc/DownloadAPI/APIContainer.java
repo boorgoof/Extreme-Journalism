@@ -27,7 +27,7 @@ public class APIContainer {
         managers = DownloadProperties.readAPIContainerProperties(download_properties);
     }
 
-    // Returns the info of every API caller
+    // Returns the info of every API manager
     public String getAPINames()
     {
         StringBuilder s = new StringBuilder();
@@ -41,20 +41,20 @@ public class APIContainer {
     // Returns the possible parameters of the API whose info are in the String info
     public String getAPIPossibleParams(String name) throws IllegalArgumentException
     {
-        APIManager a = searchCaller(name);
+        APIManager a = searchManager(name);
         return a.getParams();
     }
 
-    // Returns an instance of the API caller whose info are in the String info
+    // Returns an instance of the API manager whose info are in the String info
     public APIManager getAPIManager(String name, List<QueryParam> l) throws IllegalArgumentException
     {
-        APIManager a = searchCaller(name);
+        APIManager a = searchManager(name);
         a.addParams(l);
         return a;
     }
 
-    // Search for a caller whose name is in the String
-    private APIManager searchCaller(String name) throws IllegalArgumentException
+    // Search for a manager whose name is in the String
+    private APIManager searchManager(String name) throws IllegalArgumentException
     {
         for (APIManager a : managers)
         {

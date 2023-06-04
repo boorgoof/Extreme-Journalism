@@ -7,7 +7,6 @@ import java.util.Map;
 
 public class CallAPIThread extends Thread {
     private final APICaller caller;
-
     private final String url;
     private final String path;
     private final Map<String, Object> params;

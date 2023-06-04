@@ -31,8 +31,7 @@ public class Article implements Serializable {
         if (values.length != 7) {
             throw new IllegalArgumentException("L'array deve contenere 7 valori.");
         }
-        Article article =  new Article(values[0], values[1], values[2], values[3], values[4], values[5], values[6]);
-        return  article;
+        return new Article(values[0], values[1], values[2], values[3], values[4], values[5], values[6]);
     }
 
     public String getID() {

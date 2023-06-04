@@ -50,7 +50,7 @@ public class DeserializationHandler<T> {
     public void setSpecificFields(String format, String[] fields) {
 
         if(deserializers.get(format) instanceof specificDeserializer){
-            specificDeserializer deserializer = (specificDeserializer) deserializers.get(format);
+            specificDeserializer<T> deserializer = (specificDeserializer<T>) deserializers.get(format);
             deserializer.setFields(fields);
         }
 
@@ -59,7 +59,7 @@ public class DeserializationHandler<T> {
     public String[] getSpecificFields(String format){
 
         if(deserializers.get(format) instanceof specificDeserializer){
-            specificDeserializer deserializer = (specificDeserializer) deserializers.get(format);
+            specificDeserializer<T> deserializer = (specificDeserializer<T>) deserializers.get(format);
             return deserializer.getFields();
         }
         return null;
