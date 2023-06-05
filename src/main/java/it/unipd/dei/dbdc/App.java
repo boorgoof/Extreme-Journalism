@@ -2,13 +2,10 @@ package it.unipd.dei.dbdc;
 
 
 import it.unipd.dei.dbdc.Deserializers.Article;
+import it.unipd.dei.dbdc.Handlers.AnalyzerHandler;
 import it.unipd.dei.dbdc.Handlers.DeserializationHandler;
 import it.unipd.dei.dbdc.Handlers.DownloadHandler;
-import it.unipd.dei.dbdc.Search_terms.Analyzer;
-import it.unipd.dei.dbdc.Search_terms.MapArrayScannerAnalyzer;
 import it.unipd.dei.dbdc.Handlers.SerializationHandler;
-import it.unipd.dei.dbdc.Search_terms.MapArraySplitAnalyzer;
-import it.unipd.dei.dbdc.Search_terms.MapEntrySI;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -24,6 +21,7 @@ public class App
     private static final String deserializers_properties = "deserializers.properties";
     private static final String serializers_properties = "serializers.properties";
     private static final String download_properties = "download.properties";
+    private static final String analyze_properties = "analyze.properties";
 
     private static final String common_format = "xml";
 
@@ -175,24 +173,13 @@ public class App
                 tot_count = count_cli;
             }
 
-            // Creo un arraylist con tutti i termini come chiavi e numero di articoli in cui sono presenti come valori
             ConsoleTextColors.printlnProcess("Scrittura dei primi "+tot_count+" termini più importanti in corso..");
 
-            // TODO: properties file
-            Analyzer<Article> analyzer = new MapArraySplitAnalyzer(tot_count);
-            ArrayList<MapEntrySI> max;
-
-            start = System.currentTimeMillis();
-            max = analyzer.mostPresent(articles);
-            end = System.currentTimeMillis();
-            System.out.println(ConsoleTextColors.YELLOW + "Estrazione termini: "+(end-start)+ConsoleTextColors.RESET);
-
             try {
-                analyzer.outFile(max, outFile);
-            }
-            catch (IOException e)
-            {
-                ConsoleTextColors.printlnError("Errore nella scritture del file");
+                AnalyzerHandler<Article> analyzerHandler = new AnalyzerHandler<>(analyze_properties);
+                analyzerHandler.analyze(articles, outFile, tot_count);
+            } catch (IOException e) {
+                ConsoleTextColors.printlnError("Errore nell'apertura del file di properties di analyze");
                 e.printStackTrace();
                 return;
             }
