@@ -4,8 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Implemented the CLI and adjusted the main">
+    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="AnalyzerHandler">
+      <change afterPath="$PROJECT_DIR$/download.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ds.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/search.bat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/CommandLineInterpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/CommandLineInterpreter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/APIContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/APIContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/DownloadProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/DownloadProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/GuardianAPIInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/GuardianAPIInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/GuardianAPIManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/GuardianAPIManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Handlers/AnalyzerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Handlers/AnalyzerHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Interfaces/DownloadAPI/APIManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Interfaces/DownloadAPI/APIManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +89,7 @@
       <recent name="it.unipd.dei.dbdc.Serializers" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Batch.download">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.App" />
       <module name="Extreme_journalism" />
@@ -89,6 +99,17 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="download" type="BatchConfigurationType" factoryName="Batch" temporary="true">
+      <module name="Extreme_journalism" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SCRIPT_NAME" value="download.bat" />
+      <option name="PARAMETERS" value="" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -141,22 +162,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CsvDeserializerTest.setFields" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Extreme_journalism" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.unipd.dei.dbdc.Deserializers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.Deserializers" />
-      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.Deserializers.CsvDeserializerTest" />
-      <option name="METHOD_NAME" value="setFields" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="eis-final" />
       <method v="2">
@@ -172,11 +177,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CsvDeserializerTest.deserialize_case2" />
+        <item itemvalue="Batch.download" />
         <item itemvalue="Application.App" />
         <item itemvalue="JUnit.CsvDeserializerTest.deserialize_case1" />
         <item itemvalue="JUnit.CsvDeserializerTest.deserialize_case3" />
-        <item itemvalue="JUnit.CsvDeserializerTest.setFields" />
+        <item itemvalue="JUnit.CsvDeserializerTest.deserialize_case2" />
       </list>
     </recent_temporary>
   </component>
@@ -245,7 +250,21 @@
       <option name="project" value="LOCAL" />
       <updated>1685549936541</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="AnalyzerHandler">
+      <created>1685963674390</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1685963674390</updated>
+    </task>
+    <task id="LOCAL-00010" summary="AnalyzerHandler">
+      <created>1685968282112</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1685968282112</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -268,7 +287,8 @@
     <MESSAGE value="Parallelism" />
     <MESSAGE value="SplitAnalyzer" />
     <MESSAGE value="Implemented the CLI and adjusted the main" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented the CLI and adjusted the main" />
+    <MESSAGE value="AnalyzerHandler" />
+    <option name="LAST_COMMIT_MESSAGE" value="AnalyzerHandler" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

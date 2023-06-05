@@ -31,8 +31,6 @@ public class CommandLineInterpreter {
     // The download options
     private final static Option[] download = {
             new Option("apf", "api-properties-file", true, "Contains the path to the properties of the API to call"),
-            //new Option("key", "api-key", true, "The key for the API (if necessary)")
-            // Problema: non sappiamo quali siano i parametri delle altre api, quindi posso mettere solo quelle del the guardian o lasciare così e fare tutto in modo interattivo
     };
 
     // The search options

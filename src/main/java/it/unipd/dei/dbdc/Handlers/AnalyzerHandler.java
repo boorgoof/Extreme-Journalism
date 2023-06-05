@@ -1,10 +1,10 @@
 package it.unipd.dei.dbdc.Handlers;
 
 import it.unipd.dei.dbdc.ConsoleTextColors;
-import it.unipd.dei.dbdc.Interfaces.DownloadAPI.APICaller;
-import it.unipd.dei.dbdc.Interfaces.DownloadAPI.APIManager;
+import it.unipd.dei.dbdc.Deserializers.Article;
 import it.unipd.dei.dbdc.PropertiesTools;
 import it.unipd.dei.dbdc.Search_terms.Analyzer;
+import it.unipd.dei.dbdc.Search_terms.MapArraySplitAnalyzerParallel;
 import it.unipd.dei.dbdc.Search_terms.MapEntrySI;
 
 import java.util.*;
@@ -43,7 +43,13 @@ public class AnalyzerHandler<T> {
         long start = System.currentTimeMillis();
         max = analyzer.mostPresent(articles, tot_count, bannedArray());
         long end = System.currentTimeMillis();
-        System.out.println(ConsoleTextColors.YELLOW + "Estrazione termini: "+(end-start)+ConsoleTextColors.RESET);
+        System.out.println(ConsoleTextColors.YELLOW + "Estrazione termini senza parallelismo: "+(end-start)+ConsoleTextColors.RESET);
+
+        MapArraySplitAnalyzerParallel a = new MapArraySplitAnalyzerParallel();
+        start = System.currentTimeMillis();
+        max = a.mostPresent((List<Article>) articles, tot_count, bannedArray());
+        end = System.currentTimeMillis();
+        System.out.println(ConsoleTextColors.YELLOW + "Estrazione termini con parallelismo: "+(end-start)+ConsoleTextColors.RESET);
 
         try {
             outFile(max, file);

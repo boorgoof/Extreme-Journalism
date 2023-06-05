@@ -22,15 +22,13 @@ public class GuardianAPIManager implements APIManager {
     // Utilizza il meccanismo della delega
     private final GuardianAPIParams params;
 
+    private final String name;
+
     // To create this object, you have to pass a Caller to it
-    public GuardianAPIManager(APICaller a) {
+    public GuardianAPIManager(APICaller a, String n) {
         caller = a;
         params = new GuardianAPIParams();
-    }
-
-    @Override
-    public String getAPIName() {
-        return GuardianAPIInfo.getAPIName();
+        name = n;
     }
 
     @Override
@@ -70,7 +68,7 @@ public class GuardianAPIManager implements APIManager {
         ArrayList<Map<String, Object>> requests = params.getParams();
 
         // Il nuovo folder
-        String new_path_folder = path_folder + GuardianAPIInfo.getAPIName();
+        String new_path_folder = path_folder + name;
 
         /* SENZA PARALLELISMO
 

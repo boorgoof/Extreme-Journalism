@@ -7,16 +7,14 @@ import it.unipd.dei.dbdc.PropertiesTools;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.Properties;
+import java.util.*;
 
 
 public class DownloadProperties {
 
     private final static String caller_key = "library";
 
-    public static ArrayList<APIManager> readAPIContainerProperties(String properties_file) throws IOException {
+    public static HashMap<String, APIManager> readAPIContainerProperties(String properties_file) throws IOException {
 
         Properties appProps = PropertiesTools.getProperties(properties_file);
 
@@ -38,7 +36,7 @@ public class DownloadProperties {
                     "It should have a constructor with no parameters and it should implement APICaller interface");
         }
 
-        ArrayList<APIManager> managers = new ArrayList<>(1);
+        HashMap<String, APIManager> managers = new HashMap<>(1);
         // 3. Leggendo le properties, creo tutte le istanze degli APIManager di tutte le API specificate
         try {
             Enumeration<?> enumeration = appProps.propertyNames();
@@ -49,8 +47,8 @@ public class DownloadProperties {
                 }
                 String manager_name = appProps.getProperty(prop);
                 Class<?> manager_class = Class.forName(manager_name);
-                Constructor<?> constructor = manager_class.getConstructor(APICaller.class); // Lancia NoSuchMethodException
-                managers.add((APIManager) constructor.newInstance(caller)); // Lancia InvocationTargetException
+                Constructor<?> constructor = manager_class.getConstructor(APICaller.class, String.class); // Lancia NoSuchMethodException
+                managers.put(prop, (APIManager) constructor.newInstance(caller, prop)); // Lancia InvocationTargetException
             }
         } catch (InstantiationException | IllegalAccessException | ClassCastException | ClassNotFoundException |
                  NoSuchMethodException | InvocationTargetException ex) {
