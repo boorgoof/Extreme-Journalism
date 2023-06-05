@@ -4,14 +4,14 @@ import it.unipd.dei.dbdc.ConsoleTextColors;
 import it.unipd.dei.dbdc.Interfaces.DownloadAPI.APICaller;
 import it.unipd.dei.dbdc.Interfaces.DownloadAPI.APIManager;
 import it.unipd.dei.dbdc.DownloadAPI.QueryParam;
+import jdk.nashorn.internal.codegen.CompilerConstants;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.concurrent.*;
 
 // Questo caller ha le informazioni per ogni chiamata fatta al TheGuardian.
 public class GuardianAPIManager implements APIManager {
@@ -90,7 +90,7 @@ public class GuardianAPIManager implements APIManager {
 
         System.out.println(ConsoleTextColors.YELLOW + "Senza parallelismo: "+(end-start));
 
-        */
+         */
 
         if (!deleteFilesInDir(new File(new_path_folder))) {
             // Se non era presente, lo crea
@@ -98,7 +98,8 @@ public class GuardianAPIManager implements APIManager {
         }
 
         // Manda le richieste tramite la libreria e le salva in file
-        // start = System.currentTimeMillis(); TODO: vedi se ha senso usare i thread cosi o fare un insieme di thread da chiamare continuamente (sempre gli stessi)
+        long start = System.currentTimeMillis();
+        //TODO: vedi se ha senso usare i thread cosi o fare un insieme di thread da chiamare continuamente (sempre gli stessi)
 
         Thread[] ts = new Thread[requests.size()];
         for (int i = 0; i<requests.size(); i++)
@@ -117,9 +118,63 @@ public class GuardianAPIManager implements APIManager {
                 // TODO: vedere come gestire questa eccezione
             }
         }
-        // long end = System.currentTimeMillis();
+        long end = System.currentTimeMillis();
 
-        // System.out.println("Con parallelismo: "+(end-start)+ ConsoleTextColors.RESET);
+        System.out.println("Con parallelismo thread: "+(end-start)+ ConsoleTextColors.RESET);
+
+        // Manda le richieste tramite la libreria e le salva in file. FIXME: in teoria questo serve solo per cose ricorsive
+        /*if (!deleteFilesInDir(new File(new_path_folder))) {
+            // Se non era presente, lo crea
+            Files.createDirectories(Paths.get(new_path_folder));
+        }
+
+        start = System.currentTimeMillis();
+
+        ForkJoinPool commonPool = ForkJoinPool.commonPool();
+        for (int i = 0; i<requests.size(); i++)
+        {
+            String path = new_path_folder+"/request"+(i+1)+".json";
+            commonPool.invoke(new RecursiveCallAPIAction(caller, GuardianAPIInfo.getDefaultURL(), path, requests.get(i)));
+        }
+        end = System.currentTimeMillis();
+
+        System.out.println("Con parallelismo fork join: "+(end-start)+ ConsoleTextColors.RESET);
+
+         */
+
+        if (!deleteFilesInDir(new File(new_path_folder))) {
+            // Se non era presente, lo crea
+            Files.createDirectories(Paths.get(new_path_folder));
+        }
+
+        start = System.currentTimeMillis(); // TODO: guarda baeldung
+
+        List<Future> futures = new ArrayList<>();
+        System.out.println(Runtime.getRuntime().availableProcessors());
+        ExecutorService threadPool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+
+        // Send stuff to thread pool:
+        for (int i = 0; i < requests.size(); i++) {
+            String path = new_path_folder+"/request"+(i+1)+".json";
+            CallAPIThread task = new CallAPIThread(caller, GuardianAPIInfo.getDefaultURL(), path, requests.get(i));
+            Future f = threadPool.submit(task);
+            futures.add(f);
+        }
+
+        // Wait for all sent tasks to complete:
+        for (Future future : futures) {
+            try {
+                future.get();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            } catch (ExecutionException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        threadPool.shutdown();
+        end = System.currentTimeMillis();
+
+        System.out.println("Con parallelismo future: "+(end-start)+ ConsoleTextColors.RESET);
 
         caller.endRequests();
         return new_path_folder;
