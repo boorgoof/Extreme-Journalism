@@ -2,20 +2,11 @@ package it.unipd.dei.dbdc.Search_terms;
 
 import it.unipd.dei.dbdc.Deserializers.Article;
 
-import java.io.*;
 import java.util.*;
 
 public class MapArraySplitAnalyzer implements Analyzer<Article> {
     // TODO: passalo da sopra
-    private static final String bannedWordsPath = "./src/main/resources/english_stoplist_v1.txt";
-
-    private final int tot_words;
-
-    public MapArraySplitAnalyzer(int count)
-    {
-        tot_words = count;
-    }
-    public ArrayList<MapEntrySI> mostPresent(List<Article> articles)
+    public ArrayList<MapEntrySI> mostPresent(List<Article> articles, int tot_words, HashMap<String, Integer> banned)
     {
         TreeMap<String, Integer> global_map = new TreeMap<>();
         TreeMap<String, Integer> local_map;
@@ -50,31 +41,14 @@ public class MapArraySplitAnalyzer implements Analyzer<Article> {
         }
 
         ArrayList<MapEntrySI> max = new ArrayList<MapEntrySI>(tot_words);
-        HashMap<String, Integer> banned = bannedArray();
 
         for (Map.Entry<String, Integer> el : global_map.entrySet()) {
-            addOrdered(max, el, banned);
+            addOrdered(max, el, banned, tot_words);
         }
         return max;
     }
 
-    private static HashMap<String, Integer> bannedArray() {
-        // TODO: ci interessa solo che sia presente, cosa uso?
-
-        HashMap<String, Integer> banned = new HashMap<>(524);
-        File file = new File(bannedWordsPath);
-        try (Scanner scanner = new Scanner(file);)
-        {
-            while (scanner.hasNext()) {
-                banned.put(scanner.next(), Integer.valueOf(1));
-            }
-        } catch (FileNotFoundException e) {
-            System.out.println("File non trovato nel path: "+bannedWordsPath);
-        }
-        return banned;
-    }
-
-    private void addOrdered(ArrayList<MapEntrySI> vec, Map.Entry<String, Integer> entry, HashMap<String, Integer> bannedWords) {
+    private void addOrdered(ArrayList<MapEntrySI> vec, Map.Entry<String, Integer> entry, HashMap<String, Integer> bannedWords, int tot_words) {
         if (bannedWords.get(entry.getKey()) != null)
         {
             return;
@@ -125,19 +99,6 @@ public class MapArraySplitAnalyzer implements Analyzer<Article> {
             }
             if (i != tot_words-1) {
                 vec.set(i + 1, el);
-            }
-        }
-    }
-
-    public void outFile(ArrayList<MapEntrySI> max, String outFilePath) throws IOException {
-        // TODO: non è detto che ci siano così tante parole.
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(outFilePath))) {
-            for (int i = 0; i <max.size(); i++) {
-                MapEntrySI el = max.get(i);
-                writer.write(el.getKey() + " " + el.getValue());
-                if (i < tot_words-1) {
-                    writer.newLine();
-                }
             }
         }
     }
