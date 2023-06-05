@@ -126,7 +126,7 @@ public class CommandLineInterpreter {
         // return cmd.hasOption("h"); // FIXME
     }
     public boolean downloadPhase() {
-        return false;
+        return true;
         // return cmd.hasOption("d") || cmd.hasOption("ds"); FIXME
     }
 

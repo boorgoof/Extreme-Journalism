@@ -4,18 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="AnalyzerHandler">
-      <change afterPath="$PROJECT_DIR$/download.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ds.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/search.bat" afterDir="false" />
+    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Aggiunti i file .bat, bisognerà fare anche quelli di bash, ma fra un po'">
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/RecursiveCallAPIAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/CommandLineInterpreterTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/DownloadAPI/APIContainerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/DownloadAPI/APIPropertiesTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/DownloadAPI/DownloadPropertiesTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/DownloadAPI/InteractiveSelectAPITest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/DownloadAPI/Libraries/KongAPICallerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/CallAPIThreadTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/GuardianAPIInfoTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/GuardianAPIManagerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/GuardianAPIParamsTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/Handlers/DownloadHandlerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/PropertiesToolsTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request1.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request1.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request2.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request3.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request3.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request4.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request4.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request5.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request5.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request6.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request7.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request8.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request9.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/CommandLineInterpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/CommandLineInterpreter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/APIContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/APIContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/DownloadProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/DownloadProperties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/GuardianAPIInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/GuardianAPIInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/GuardianAPIManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/GuardianAPIManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Handlers/AnalyzerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Handlers/AnalyzerHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Interfaces/DownloadAPI/APIManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Interfaces/DownloadAPI/APIManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/api.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/api.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +105,7 @@
       <recent name="it.unipd.dei.dbdc.Serializers" />
     </key>
   </component>
-  <component name="RunManager" selected="Batch.download">
+  <component name="RunManager" selected="Application.App">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.App" />
       <module name="Extreme_journalism" />
@@ -177,8 +193,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Batch.download" />
         <item itemvalue="Application.App" />
+        <item itemvalue="Batch.download" />
         <item itemvalue="JUnit.CsvDeserializerTest.deserialize_case1" />
         <item itemvalue="JUnit.CsvDeserializerTest.deserialize_case3" />
         <item itemvalue="JUnit.CsvDeserializerTest.deserialize_case2" />
@@ -264,7 +280,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685968282112</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Aggiunti i file .bat, bisognerà fare anche quelli di bash, ma fra un po'">
+      <created>1685984693018</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1685984693018</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -288,7 +311,8 @@
     <MESSAGE value="SplitAnalyzer" />
     <MESSAGE value="Implemented the CLI and adjusted the main" />
     <MESSAGE value="AnalyzerHandler" />
-    <option name="LAST_COMMIT_MESSAGE" value="AnalyzerHandler" />
+    <MESSAGE value="Aggiunti i file .bat, bisognerà fare anche quelli di bash, ma fra un po'" />
+    <option name="LAST_COMMIT_MESSAGE" value="Aggiunti i file .bat, bisognerà fare anche quelli di bash, ma fra un po'" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
