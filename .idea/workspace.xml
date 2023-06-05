@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Implemented the CLI and adjusted the main">
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Handlers/AnalyzerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Handlers/AnalyzerHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Search_terms/Analyzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Search_terms/Analyzer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Search_terms/MapArrayScannerAnalyzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Search_terms/MapArrayScannerAnalyzer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Search_terms/MapArraySplitAnalyzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Search_terms/MapArraySplitAnalyzer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/analyze.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/analyze.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +79,7 @@
       <recent name="it.unipd.dei.dbdc.Serializers" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.App">
+  <component name="RunManager">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.App" />
       <module name="Extreme_journalism" />
@@ -177,10 +172,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CsvDeserializerTest.deserialize_case2" />
         <item itemvalue="Application.App" />
         <item itemvalue="JUnit.CsvDeserializerTest.deserialize_case1" />
         <item itemvalue="JUnit.CsvDeserializerTest.deserialize_case3" />
-        <item itemvalue="JUnit.CsvDeserializerTest.deserialize_case2" />
         <item itemvalue="JUnit.CsvDeserializerTest.setFields" />
       </list>
     </recent_temporary>
