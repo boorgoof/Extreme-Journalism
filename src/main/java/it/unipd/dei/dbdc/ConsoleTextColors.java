@@ -14,4 +14,18 @@ public class ConsoleTextColors {
     public static final String CYAN = "\033[0;36m";    // CYAN
     public static final String WHITE = "\033[0;37m";   // WHITE
 
+    public static void printlnProcess(String s)
+    {
+        System.out.println(BLUE+s+RESET);
+    }
+
+    public static void printlnInfo(String s)
+    {
+        System.out.println(s);
+    }
+
+    public static void printlnError(String s)
+    {
+        System.err.println(RED+s+RESET);
+    }
 }

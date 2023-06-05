@@ -27,7 +27,8 @@ public class MapArraySplitAnalyzer implements Analyzer<Article> {
             // Prendo l'articolo e faccio lo split
             Article art = articles.get(i);
             String articolo_completo = art.getTitle() + " " + art.getBody();
-            String[] tokens = articolo_completo.split("[^’'\\-a-zA-Z]+");
+            // FIXME: prende ancora il carattere null, non so perche'
+            String[] tokens = articolo_completo.split("[^a-zA-Z]+");
 
             // Inserisco tutti i tokens in una mappa locale. TODO: in realtà mi interessa solo se esiste o meno, cosa potresti usare?
             for (String tok : tokens) {
@@ -129,8 +130,9 @@ public class MapArraySplitAnalyzer implements Analyzer<Article> {
     }
 
     public void outFile(ArrayList<MapEntrySI> max, String outFilePath) throws IOException {
+        // TODO: non è detto che ci siano così tante parole.
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outFilePath))) {
-            for (int i = 0; i < tot_words; i++) {
+            for (int i = 0; i <max.size(); i++) {
                 MapEntrySI el = max.get(i);
                 writer.write(el.getKey() + " " + el.getValue());
                 if (i < tot_words-1) {

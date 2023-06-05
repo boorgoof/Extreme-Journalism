@@ -41,7 +41,7 @@ public class App
         }
         catch (IllegalStateException e)
         {
-            System.err.println("Programma terminato perche' non e' stata fornita una azione da compiere.");
+            ConsoleTextColors.printlnError("Programma terminato perche' non e' stata fornita una azione da compiere.");
             return;
         }
 
@@ -56,7 +56,7 @@ public class App
         // FASE 1: download
         if (interpreter.downloadPhase()) {
 
-            System.out.println(ConsoleTextColors.BLUE + "Entering the download part..." + ConsoleTextColors.RESET);
+            ConsoleTextColors.printlnProcess("Entering the download part...");
 
             // The only download option is the path of the properties file for the API to call.
             String props = interpreter.obtainAPIProps();
@@ -69,7 +69,7 @@ public class App
                 e.printStackTrace();
                 return;
             }
-            System.out.println(ConsoleTextColors.BLUE + "Exiting the download part..." + ConsoleTextColors.RESET);
+            ConsoleTextColors.printlnProcess("Exiting the download part...");
         }
 
         // FASE 2: avviene sempre, è la serializzazione in formato comune
@@ -81,30 +81,30 @@ public class App
         String path_cli = interpreter.obtainPathOption();
 
         if (path_cli == null && folderPath == null) {
-            System.out.println(ConsoleTextColors.RED + "Errore: nessun file da deserializzare"+ConsoleTextColors.RESET);
+            ConsoleTextColors.printlnError("Errore: nessun file da deserializzare");
             return;
         } else if (path_cli != null) {
             folderPath = path_cli;
         }
 
-        System.out.println(ConsoleTextColors.BLUE+"Inizio deserializzazione di "+folderPath+"..."+ConsoleTextColors.RESET);
+        ConsoleTextColors.printlnProcess("Inizio deserializzazione di "+folderPath+"...");
         DeserializationHandler<Article> deserializer;
         try {
              deserializer = new DeserializationHandler<>(deserializers_properties);
         }
         catch (IOException e)
         {
-            System.err.println("Errore del programma: non sono stati caricati correttamente i deserilizzatori");
+            ConsoleTextColors.printlnError("Errore del programma: non sono stati caricati correttamente i deserilizzatori");
             e.printStackTrace();
             return;
         }
 
-        System.out.println("Sono stati forniti i deserializzatori per i seguenti formati:");
+        ConsoleTextColors.printlnProcess("Sono stati forniti i deserializzatori per i seguenti formati:");
         Set<String> formatsAvailable = deserializer.getFormats();
         for (String format : formatsAvailable) {
-            System.out.println(format);
+            ConsoleTextColors.printlnInfo(format);
         }
-        System.out.println("Nel caso in cui ci fossero file di formato differente da questi elencati non verranno presi in considerazione");
+        ConsoleTextColors.printlnInfo("Nel caso in cui ci fossero file di formato differente da questi elencati non verranno presi in considerazione");
 
         // Cerco di deserializzare l'intero folder, con tutti i formati possibili
         long start = System.currentTimeMillis();
@@ -114,21 +114,19 @@ public class App
                 deserializer.deserializeFolder(format, folderPath, articles);
             }
         } catch (IOException e) {
-            System.err.println(ConsoleTextColors.RED + "Deserializzazione fallita per il formato: " + e.getMessage() + ConsoleTextColors.RESET);
-            // se ci sono errori probabilmente è stato inserito un header sbagliato. oppure sono stati specificati male i campi del file JSON
-            // bisogna segnalare all'utente e dire di reinserire i campi
+            ConsoleTextColors.printlnError("Deserializzazione fallita per il formato: " + e.getMessage());
             return;
         }
         long end = System.currentTimeMillis();
         System.out.println(ConsoleTextColors.YELLOW+"Tempo deserializzazione: "+(end-start)+ConsoleTextColors.RESET);
 
 
-        System.out.println(ConsoleTextColors.BLUE+"Fine deserializzazione..."+ConsoleTextColors.RESET);
+        ConsoleTextColors.printlnProcess("Fine deserializzazione...");
 
 
         // B. SERIALIZZAZIONE Article -> formato comune
 
-        System.out.println(ConsoleTextColors.BLUE+"Inizio serializzazione..."+ConsoleTextColors.RESET);
+        ConsoleTextColors.printlnInfo("Inizio serializzazione...");
 
         try {
 
@@ -144,16 +142,17 @@ public class App
 
 
         } catch (IOException e) {
+            ConsoleTextColors.printlnInfo("Errore nella serializzazione: ");
             e.printStackTrace();
             return;
         }
-        System.out.println(ConsoleTextColors.BLUE+"Fine serializzazione. Potrete trovare il file serializzato in "+filePath+ConsoleTextColors.RESET);
+        ConsoleTextColors.printlnProcess("Fine serializzazione. Potrete trovare il file serializzato in "+filePath);
 
         // FASE 3: Estrazione termini
         if (interpreter.searchPhase())
         {
             // DESERIALIZZAZIONE formato comune -> articles
-            System.out.println(ConsoleTextColors.BLUE+"Inizio deserializzazione..."+ConsoleTextColors.RESET);
+            ConsoleTextColors.printlnProcess("Inizio deserializzazione...");
 
             try {
                 start = System.currentTimeMillis();
@@ -162,14 +161,12 @@ public class App
                 System.out.println(ConsoleTextColors.YELLOW+"Tempo deserializzazione: "+(end-start)+ConsoleTextColors.RESET);
             }
             catch (IOException e) {
-                System.err.println(ConsoleTextColors.RED + "Deserializzazione fallita per il formato: " + e.getMessage() + ConsoleTextColors.RESET);
-                // se ci sono errori probabilmente è stato inserito un header sbagliato. oppure sono stati specificati male i campi del file JSON
-                // bisogna segnalare all'utente e dire di reinserire i campi
+                ConsoleTextColors.printlnError("Deserializzazione fallita per il formato: " + e.getMessage());
                 return;
             }
-            System.out.println(ConsoleTextColors.BLUE+"Fine deserializzazione..."+ConsoleTextColors.RESET);
+            ConsoleTextColors.printlnProcess("Fine deserializzazione...");
 
-            System.out.println(ConsoleTextColors.BLUE+"Inizio estrazione termini..."+ConsoleTextColors.RESET);
+            ConsoleTextColors.printlnProcess("Inizio estrazione termini...");
 
             // ESTRAZIONE DEI TERMINI PIU' IMPORTANTI
             int count_cli = interpreter.obtainNumberOption();
@@ -179,7 +176,7 @@ public class App
             }
 
             // Creo un arraylist con tutti i termini come chiavi e numero di articoli in cui sono presenti come valori
-            System.out.println(ConsoleTextColors.BLUE + "Scrittura dei primi "+tot_count+" termini più importanti in corso.."+ConsoleTextColors.RESET);
+            ConsoleTextColors.printlnProcess("Scrittura dei primi "+tot_count+" termini più importanti in corso..");
 
             // TODO: properties file
             Analyzer<Article> analyzer = new MapArraySplitAnalyzer(tot_count);
@@ -195,32 +192,12 @@ public class App
             }
             catch (IOException e)
             {
-                System.err.println("Errore nella scritture del file");
+                ConsoleTextColors.printlnError("Errore nella scritture del file");
                 e.printStackTrace();
                 return;
             }
 
-            /*
-            analyzer = new MapArrayScannerAnalyzer(tot_count);
-
-            start = System.currentTimeMillis();
-            max = analyzer.mostPresent(articles);
-            end = System.currentTimeMillis();
-
-            System.out.println(ConsoleTextColors.YELLOW + "Con scanner: "+(end-start+ConsoleTextColors.RESET));
-
-            try {
-                analyzer.outFile(max, outFile);
-            }
-            catch (IOException e)
-            {
-                System.err.println("Errore nella scritture del file");
-                e.printStackTrace();
-                return;
-            }
-            */
-
-            System.out.println(ConsoleTextColors.BLUE+"Fine estrazione termini..."+ConsoleTextColors.RESET);
+            ConsoleTextColors.printlnProcess("Fine estrazione termini...");
         }
     }
 

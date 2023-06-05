@@ -22,7 +22,7 @@ public class CsvDeserializer implements specificDeserializer<Article> {
 
     public CsvDeserializer(){
 
-        fields = new String[]{"Identifier", "URL", "Title", "Fulltext", "Date", "Source Set", "Source"};
+        fields = new String[]{"Identifier", "URL", "Title", "Body", "Date", "Source Set", "Source"};
     }
     public String[] getFields() {
         return fields;
@@ -32,6 +32,7 @@ public class CsvDeserializer implements specificDeserializer<Article> {
         fields = newFields;
     }
 
+    /*
     @Override
     public List<Article> deserialize(String filePath) throws IOException {
         List<Article> articles = new ArrayList<>();
@@ -45,6 +46,7 @@ public class CsvDeserializer implements specificDeserializer<Article> {
 
             CSVParser parser = new CSVParser(reader, csvFormat);
 
+            // Questo metodo utilizza l'header pensando che ci sia una corrispondenza con le colonne del csv
             for (CSVRecord record : parser) {
                 String id = record.get(fields[0]);
                 String url = record.get(fields[1]);
@@ -63,11 +65,13 @@ public class CsvDeserializer implements specificDeserializer<Article> {
         }
         return articles;
     }
-    /*
+    */
+
     @Override
     public List<Article> deserialize(String filePath) throws IOException {
         List<Article> articles = new ArrayList<>();
 
+        // Leggo gli header
         String[] header = readHeader(filePath);
 
         try (Reader reader = new FileReader(filePath)) {
@@ -84,7 +88,7 @@ public class CsvDeserializer implements specificDeserializer<Article> {
                 String[] fieldsValues = new String[myClass.getDeclaredFields().length];
 
                 for(int i=0; i < fields.length; i++){
-                    if(contains(header, fields[i])){
+                    if(record.isSet(fields[i])){
                         fieldsValues[i] = record.get(fields[i]);
                     }
                 }
@@ -114,19 +118,22 @@ public class CsvDeserializer implements specificDeserializer<Article> {
             }
 
             // IL PRIMO ELEMENTO DELL' HEDER NON SO PERCHE MA NON é UGUALE. NON RIESCO A CAPIRE IL PERCHE
+            // TODO: il problema è che per qualche motivo il parser va a prendere Identifier con un carattere nullo all'inizio
 
-            // Imposta a null i valori non presenti nell'array di riferimento //
+            // Imposta a null i valori non presenti nell'array di riferimento (quelli da parsare)
             for (int i = 0; i < header.length; i++) {
                 if (!contains(fields, header[i])) {
-                    header[i] = "X"; // posso setterlo a qualsisi cosa
+                    header[i] = null; // posso setterlo a qualsisi cosa
                 }
 
             }
-            header[0] = "Identifier"; // SONO COSTRETTO A METTERLO MA NON HA SENSOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO MODDDDODODODODODODODODODODOOonnnnnnma
 
+            header[0] = "Identifier"; // SONO COSTRETTO A METTERLO perche mi dice che non è presente in fields ma invece lo è
+            /*
             for(String a : header){
                 System.out.println(a);
             }
+            */
 
             return header;
         }
@@ -140,7 +147,6 @@ public class CsvDeserializer implements specificDeserializer<Article> {
         }
         return false;
     }
-    */
 
 }
 

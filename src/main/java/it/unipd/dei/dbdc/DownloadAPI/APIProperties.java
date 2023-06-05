@@ -13,7 +13,7 @@ public class APIProperties
 {
     private static final String name = "name";
 
-    public static APIManager readAPIProperties(String properties_file, APIContainer container) throws IOException, IllegalArgumentException {
+    public static APIManager readAPIProperties(String properties_file, String download_props) throws IOException, IllegalArgumentException {
         Properties appProps = PropertiesTools.getProperties(properties_file);
 
         // 1. Cerco la property del caller, che è la classe che implementa APICaller
@@ -33,6 +33,7 @@ public class APIProperties
                 params.add(new QueryParam(prop, appProps.getProperty(prop)));
             }
         }
+        APIContainer container = APIContainer.getInstance(download_props);
 
         return container.getAPIManager(n, params);
     }

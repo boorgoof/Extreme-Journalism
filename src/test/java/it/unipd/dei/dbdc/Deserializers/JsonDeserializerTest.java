@@ -1,11 +1,13 @@
 package it.unipd.dei.dbdc.Deserializers;
-
+import it.unipd.dei.dbdc.Serializers.XmlSerializer;
+import it.unipd.dei.dbdc.Interfaces.Serializers.Serializer;
 import junit.framework.AssertionFailedError;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,6 +68,7 @@ public class JsonDeserializerTest {
             assertFalse(articles.isEmpty());
             assertEquals(3, articles.size());
             assertEquals(createTestArticles1(), articles);
+
 
         } catch (IOException e) {
             fail("Errore durante la lettura del file JSON: " + e.getMessage());
@@ -154,6 +157,7 @@ public class JsonDeserializerTest {
             assertEquals(3, articles.size());
             assertEquals(createTestArticles4(), articles);
 
+
         } catch (IOException e) {
             fail("Errore durante la lettura del file JSON: " + e.getMessage());
         }
@@ -215,9 +219,16 @@ public class JsonDeserializerTest {
             List<Article> articles2 = createTestArticles6();
             assertEquals(createTestArticles6(), articles);
 
+
         } catch (IOException e) {
             fail("Errore durante la lettura del file JSON: " + e.getMessage());
         }
 
     }
 }
+
+/*
+    List<Serializable> objects = new ArrayList<>(articles);
+    XmlSerializer serializer = new XmlSerializer();
+    serializer.serialize(objects,"src/test/deserializersTest/xmlTest/Articles5.xml");
+ */
