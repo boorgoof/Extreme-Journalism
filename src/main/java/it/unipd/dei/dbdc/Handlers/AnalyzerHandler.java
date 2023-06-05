@@ -1,7 +1,7 @@
 package it.unipd.dei.dbdc.Handlers;
 
 import it.unipd.dei.dbdc.ConsoleTextColors;
-import it.unipd.dei.dbdc.Deserializers.Article;
+import it.unipd.dei.dbdc.Deserialization.Deserializers.Article;
 import it.unipd.dei.dbdc.PropertiesTools;
 import it.unipd.dei.dbdc.Search_terms.Analyzer;
 import it.unipd.dei.dbdc.Search_terms.MapArraySplitAnalyzerParallel;

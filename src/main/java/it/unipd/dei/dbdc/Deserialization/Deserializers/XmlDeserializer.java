@@ -1,4 +1,4 @@
-package it.unipd.dei.dbdc.Deserializers;
+package it.unipd.dei.dbdc.Deserialization.Deserializers;
 
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -7,7 +7,6 @@ import it.unipd.dei.dbdc.Interfaces.Deserializers.Deserializer;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Collections;
 import java.util.List;
 
 // ricodati che questa funziona solo con xml costruiti da noi ( comunque xml semplici )

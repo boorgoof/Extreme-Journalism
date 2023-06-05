@@ -1,4 +1,4 @@
-package it.unipd.dei.dbdc.Deserializers;
+package it.unipd.dei.dbdc.Deserialization.Deserializers;
 
 import it.unipd.dei.dbdc.Interfaces.Deserializers.specificDeserializer;
 import org.apache.commons.csv.CSVFormat;
@@ -6,15 +6,13 @@ import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import static it.unipd.dei.dbdc.Deserializers.Article.instanceArticle;
+import static it.unipd.dei.dbdc.Deserialization.Deserializers.Article.instanceArticle;
 
 public class CsvDeserializer implements specificDeserializer<Article> {
 

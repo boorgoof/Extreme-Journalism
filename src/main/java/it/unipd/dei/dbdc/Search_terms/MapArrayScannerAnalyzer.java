@@ -1,8 +1,7 @@
 package it.unipd.dei.dbdc.Search_terms;
 
-import it.unipd.dei.dbdc.Deserializers.Article;
+import it.unipd.dei.dbdc.Deserialization.Deserializers.Article;
 
-import java.io.*;
 import java.util.*;
 
 public class MapArrayScannerAnalyzer implements Analyzer<Article> {
