@@ -3,8 +3,6 @@ package it.unipd.dei.dbdc.DownloadAPI.TheGuardianAPI;
 import it.unipd.dei.dbdc.DownloadAPI.QueryParam;
 
 public class GuardianAPIInfo {
-    // The name of the API
-    private final static String name = "TheGuardianAPI";
 
     // Default URL to create the request.
     private final static String defaultURL = "https://content.guardianapis.com/search?";
@@ -21,12 +19,6 @@ public class GuardianAPIInfo {
     };
 
     private final static int max_key_length = 20;
-
-    // Returns the name of the API
-    public static String getAPIName()
-    {
-        return name;
-    }
 
     // Returns the possible fields, and the ones that are already initialized
     public static String getParams()

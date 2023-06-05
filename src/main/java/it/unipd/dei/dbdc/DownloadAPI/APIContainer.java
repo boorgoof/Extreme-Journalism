@@ -3,13 +3,12 @@ package it.unipd.dei.dbdc.DownloadAPI;
 import it.unipd.dei.dbdc.Interfaces.DownloadAPI.APIManager;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class APIContainer {
 
     // The list of the API that we can call
-    private static ArrayList<APIManager> managers = new ArrayList<>();
+    private static Map<String, APIManager> managers = new HashMap<>();
 
     // We use the singleton design pattern to read the properties file only one time
     private static APIContainer instance;
@@ -31,9 +30,9 @@ public class APIContainer {
     public String getAPINames()
     {
         StringBuilder s = new StringBuilder();
-        for (APIManager a : managers)
+        for (Map.Entry<String, APIManager> a : managers.entrySet())
         {
-            s.append(a.getAPIName()).append("\n");
+            s.append(a.getKey()).append("\n");
         }
         return s.toString();
     }
@@ -41,28 +40,14 @@ public class APIContainer {
     // Returns the possible parameters of the API whose info are in the String info
     public String getAPIPossibleParams(String name) throws IllegalArgumentException
     {
-        APIManager a = searchManager(name);
-        return a.getParams();
+        return managers.get(name).getParams();
     }
 
     // Returns an instance of the API manager whose info are in the String info
     public APIManager getAPIManager(String name, List<QueryParam> l) throws IllegalArgumentException
     {
-        APIManager a = searchManager(name);
+        APIManager a = managers.get(name);
         a.addParams(l);
         return a;
-    }
-
-    // Search for a manager whose name is in the String
-    private APIManager searchManager(String name) throws IllegalArgumentException
-    {
-        for (APIManager a : managers)
-        {
-            if (a.getAPIName().equals(name))
-            {
-                return a;
-            }
-        }
-        throw new IllegalArgumentException("The API name is not in the list of the available APIs");
     }
 }
