@@ -2,6 +2,7 @@ package it.unipd.dei.dbdc.Handlers;
 
 
 import it.unipd.dei.dbdc.Interfaces.Deserializers.Deserializer;
+import it.unipd.dei.dbdc.Deserializers.Serializable;
 import it.unipd.dei.dbdc.Interfaces.Deserializers.specificDeserializer;
 import it.unipd.dei.dbdc.PropertiesTools;
 
@@ -11,20 +12,20 @@ import java.io.IOException;
 import java.util.*;
 
 /**
- * @param <T>
+ *
  */
-public class DeserializationHandler<T> {
+public class DeserializationHandler {
 
-    private Map<String, Deserializer<T>> deserializers;
+    private Map<String, Deserializer> deserializers;
 
     public DeserializationHandler(String filePropertiesName) throws IOException {
         Properties deserializersProperties = PropertiesTools.getProperties(filePropertiesName);
         deserializers = setDeserializersMap(deserializersProperties);
     }
 
-    private Map<String, Deserializer<T>> setDeserializersMap(Properties deserializersProperties) throws IOException {
+    private Map<String, Deserializer> setDeserializersMap(Properties deserializersProperties) throws IOException {
 
-        Map<String, Deserializer<T>> deserializerMap = new HashMap<>();
+        Map<String, Deserializer> deserializerMap = new HashMap<>();
 
         for (String format : deserializersProperties.stringPropertyNames()) {
 
@@ -35,7 +36,7 @@ public class DeserializationHandler<T> {
 
             try {
                 Class<?> deserializerClass = Class.forName(deserializerClassName);
-                Deserializer<T> deserializer = (Deserializer<T>) deserializerClass.getDeclaredConstructor().newInstance();
+                Deserializer deserializer = (Deserializer) deserializerClass.getDeclaredConstructor().newInstance();
                 deserializerMap.put(format, deserializer);
             } catch (Exception e) {
                 throw new IOException("Failed to instantiate the deserializer for the format: " + format, e);
@@ -51,7 +52,7 @@ public class DeserializationHandler<T> {
     public void setSpecificFields(String format, String[] fields) {
 
         if(deserializers.get(format) instanceof specificDeserializer){
-            specificDeserializer<T> deserializer = (specificDeserializer<T>) deserializers.get(format);
+            specificDeserializer deserializer = (specificDeserializer) deserializers.get(format);
             deserializer.setFields(fields);
         }
 
@@ -60,15 +61,15 @@ public class DeserializationHandler<T> {
     public String[] getSpecificFields(String format){
 
         if(deserializers.get(format) instanceof specificDeserializer){
-            specificDeserializer<T> deserializer = (specificDeserializer<T>) deserializers.get(format);
+            specificDeserializer deserializer = (specificDeserializer) deserializers.get(format);
             return deserializer.getFields();
         }
         return null;
     }
 
-    public List<T> deserializeFile(String format, String filePath) throws IOException {
+    public List<Serializable> deserializeFile(String format, String filePath) throws IOException {
 
-        Deserializer<T> deserializer = deserializers.get(format);
+        Deserializer deserializer = deserializers.get(format);
         if (deserializer == null) {
             throw new IOException("No deserializer found for the specified format: " + format);
         }
@@ -76,7 +77,7 @@ public class DeserializationHandler<T> {
     }
 
 
-    public void deserializeFolder(String format, String folderPath, List<T> objects) throws IOException {
+    public void deserializeFolder(String format, String folderPath, List<Serializable> objects) throws IOException {
         File folder = new File(folderPath);
         File[] files = folder.listFiles();
 

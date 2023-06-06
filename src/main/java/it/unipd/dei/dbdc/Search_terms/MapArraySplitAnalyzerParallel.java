@@ -1,55 +1,64 @@
 package it.unipd.dei.dbdc.Search_terms;
 
-import it.unipd.dei.dbdc.Deserialization.Deserializers.Article;
+import it.unipd.dei.dbdc.Deserializers.Serializable;
 
 import java.util.*;
-import java.util.concurrent.Semaphore;
+import java.util.concurrent.*;
 
-public class MapArraySplitAnalyzerParallel implements Analyzer<Article> {
+public class MapArraySplitAnalyzerParallel implements Analyzer {
 
     @Override
-    public ArrayList<MapEntrySI> mostPresent(List<Article> articles, int tot_words, HashMap<String, Integer> banned)
+    public ArrayList<OrderedEntryStringInt> mostPresent(List<Serializable> articles, int tot_words, HashMap<String, Integer> banned)
     {
         TreeMap<String, Integer> global_map = new TreeMap<>();
+
+        // To access the global map, we need to guarantee mutual exclusion
         Semaphore mutex = new Semaphore(1);
-        AnalyzeArticleThread[] analyzers = new AnalyzeArticleThread[articles.size()];
-        for (int i = 0; i < articles.size(); i++)
-        {
-            analyzers[i] = new AnalyzeArticleThread(articles.get(i), global_map, mutex);
-            analyzers[i].start();
+
+        // Parallel part
+        ExecutorService threadPool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+        List<Future<?>> futures = new ArrayList<>(articles.size());
+
+        // Chiamiamo e mandiamo nella thread pool:
+        for (Serializable article : articles) {
+            Future<?> f = threadPool.submit(new AnalyzeArticleThread(article, global_map, mutex));
+            futures.add(f);
         }
-        for (AnalyzeArticleThread a:
-                analyzers) {
+
+        // Aspettiamo che queste task finiscano. In questo caso non possono mandare eccezioni, in teoria:
+        for (Future<?> future : futures) {
             try {
-                a.join();
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+                future.get();
+            } catch (InterruptedException | ExecutionException e) {
+                // Avviene se è stato interrotto mentre aspettava o ha lanciato un'eccezione
+                threadPool.shutdown();
+                throw new IllegalStateException("Error in parallelism");
             }
         }
+        threadPool.shutdown();
 
-        ArrayList<MapEntrySI> max = new ArrayList<MapEntrySI>(tot_words);
-
+        // To order the couples, we need to have an Order
+        ArrayList<OrderedEntryStringInt> max = new ArrayList<>(tot_words);
         for (Map.Entry<String, Integer> el : global_map.entrySet()) {
             addOrdered(max, el, banned, tot_words);
         }
         return max;
     }
 
-    private void addOrdered(ArrayList<MapEntrySI> vec, Map.Entry<String, Integer> entry, HashMap<String, Integer> bannedWords, int tot_words) {
+    private void addOrdered(ArrayList<OrderedEntryStringInt> vec, Map.Entry<String, Integer> entry, HashMap<String, Integer> bannedWords, int tot_words) {
         if (bannedWords.get(entry.getKey()) != null)
         {
             return;
         }
         int vector_size = vec.size();
 
-        // TODO: gestisci meglio queste entry
-        MapEntrySI el = new MapEntrySI(entry.getKey(), entry.getValue());
+        OrderedEntryStringInt el = new OrderedEntryStringInt(entry);
 
         // Devo aggiungerlo per forza, si tratta solo di capire in che posizione
         if (vector_size < tot_words) {
             int i = 1;
 
-            // Finche' ci sono elementi e sono maggiori
+            // Finché ci sono elementi e sono maggiori
             while (i < vector_size && vec.get(i - 1).isMajorThan(el)) {
                 i++;
             }
@@ -61,32 +70,30 @@ public class MapArraySplitAnalyzerParallel implements Analyzer<Article> {
             }
 
             // Altrimenti rimpiazzo uno alla volta, con InsertionSort
-            MapEntrySI old = vec.get(i - 1);
+            OrderedEntryStringInt old = vec.get(i - 1);
             vec.set(i - 1, el);
             i++;
             while (i < vector_size) {
-                MapEntrySI new_old = vec.get(i);
+                OrderedEntryStringInt new_old = vec.get(i);
                 vec.set(i - 1, old);
                 old = new_old;
                 i++;
             }
             vec.add(old);
-
+            return;
         }
-        else // Altrimenti non e' detto che io la debba aggiungere
-        {
-            int i = tot_words-1;
-            while (i >= 0 && el.isMajorThan(vec.get(i))) {
-                if (i == tot_words-1) {
-                    i--;
-                    continue;
-                }
-                vec.set(i + 1, vec.get(i));
+        // Se non devo aggiungerlo per forza
+        int i = tot_words-1;
+        while (i >= 0 && el.isMajorThan(vec.get(i))) {
+            if (i == tot_words-1) {
                 i--;
+                continue;
             }
-            if (i != tot_words-1) {
-                vec.set(i + 1, el);
-            }
+            vec.set(i + 1, vec.get(i));
+            i--;
+        }
+        if (i != tot_words-1) {
+            vec.set(i + 1, el);
         }
     }
 }
