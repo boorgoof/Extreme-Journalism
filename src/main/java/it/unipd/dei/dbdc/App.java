@@ -1,14 +1,12 @@
 package it.unipd.dei.dbdc;
 
-
-import it.unipd.dei.dbdc.Deserializers.Article;
+import it.unipd.dei.dbdc.Deserializers.Serializable;
 import it.unipd.dei.dbdc.Handlers.AnalyzerHandler;
 import it.unipd.dei.dbdc.Handlers.DeserializationHandler;
 import it.unipd.dei.dbdc.Handlers.DownloadHandler;
 import it.unipd.dei.dbdc.Handlers.SerializationHandler;
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -32,7 +30,7 @@ public class App
 
     // TODO: crea di default una pool di threads che viene utilizzata per tutte le cose
 
-    public static void main( String[] args ) {
+    public static void main(String[] args ) {
 
         // L'utente deve passare da riga di comando l'azione che vuole fare.
         CommandLineInterpreter interpreter;
@@ -88,9 +86,9 @@ public class App
         }
 
         ConsoleTextColors.printlnProcess("Inizio deserializzazione di "+folderPath+"...");
-        DeserializationHandler<Article> deserializer;
+        DeserializationHandler deserializer;
         try {
-             deserializer = new DeserializationHandler<>(deserializers_properties);
+             deserializer = new DeserializationHandler(deserializers_properties);
         }
         catch (IOException e)
         {
@@ -108,7 +106,7 @@ public class App
 
         // Cerco di deserializzare l'intero folder, con tutti i formati possibili
         long start = System.currentTimeMillis();
-        List<Article> articles = new ArrayList<>();
+        List<Serializable> articles = new ArrayList<>();
         try {
             for (String format : formatsAvailable) {
                 deserializer.deserializeFolder(format, folderPath, articles);
@@ -178,7 +176,7 @@ public class App
             ConsoleTextColors.printlnProcess("Scrittura dei primi "+tot_count+" termini più importanti in corso..");
 
             try {
-                AnalyzerHandler<Article> analyzerHandler = new AnalyzerHandler<>(analyze_properties);
+                AnalyzerHandler analyzerHandler = new AnalyzerHandler(analyze_properties);
                 analyzerHandler.analyze(articles, outFile, tot_count);
             } catch (IOException e) {
                 ConsoleTextColors.printlnError("Errore nell'apertura del file di properties di analyze");

@@ -56,7 +56,7 @@ public class GuardianAPIManager implements APIManager {
     }
 
     // This calls the API
-    public String callAPI(String path_folder) throws IllegalArgumentException, IOException
+    public void callAPI(String path_folder) throws IllegalArgumentException, IOException
     {
         if (caller == null)
         {
@@ -66,23 +66,13 @@ public class GuardianAPIManager implements APIManager {
         // Prende i parametri
         ArrayList<Map<String, Object>> requests = params.getParams();
 
-        // Il nuovo folder
-        String new_path_folder = path_folder + name;
-
-        // Elimina il folder, se era gia' presente.
-        if (!deleteFilesInDir(new File(new_path_folder))) {
-            // Se non era presente, lo crea
-            Files.createDirectories(Paths.get(new_path_folder));
-        }
-
         long start = System.currentTimeMillis();
-
         List<Future<Object>> futures = new ArrayList<>();
         ExecutorService threadPool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
 
         // Chiamiamo e mandiamo nella thread pool:
         for (int i = 0; i < requests.size(); i++) {
-            String path = new_path_folder+"/request"+(i+1)+".json";
+            String path = path_folder+"/request"+(i+1)+".json";
             CallAPIThread task = new CallAPIThread(caller, GuardianAPIInfo.getDefaultURL(), path, requests.get(i));
             Future<Object> f = threadPool.submit(task);
             futures.add(f);
@@ -95,6 +85,7 @@ public class GuardianAPIManager implements APIManager {
                 future.get();
             } catch (InterruptedException | ExecutionException e) {
                 // Avviene se e' stato interrotto mentre aspettava o ha lanciato un'eccezione
+                threadPool.shutdown();
                 throw new IOException("Parametri non esatti");
             }
         }
@@ -105,32 +96,7 @@ public class GuardianAPIManager implements APIManager {
         System.out.println(ConsoleTextColors.YELLOW+"Con parallelismo future: "+(end-start)+ ConsoleTextColors.RESET);
 
         caller.endRequests();
-        return new_path_folder;
     }
-
-    // TODO: dove metterle?
-    private boolean deleteFilesInDir(File dir)
-    {
-        File[] contents = dir.listFiles();
-        if (contents == null) {
-            return false;
-        }
-        for (File f : contents) {
-            deleteDir(f);
-        }
-        return true;
-    }
-
-    private void deleteDir(File file) {
-        File[] contents = file.listFiles();
-        if (contents != null) {
-            for (File f : contents) {
-                deleteDir(f);
-            }
-        }
-        file.delete();
-    }
-
 }
 
 

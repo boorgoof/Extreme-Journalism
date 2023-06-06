@@ -1,17 +1,14 @@
 package it.unipd.dei.dbdc.Search_terms;
 
-import it.unipd.dei.dbdc.Deserializers.Article;
-import it.unipd.dei.dbdc.DownloadAPI.TheGuardianAPI.CallAPIThread;
-import it.unipd.dei.dbdc.DownloadAPI.TheGuardianAPI.GuardianAPIInfo;
+import it.unipd.dei.dbdc.Deserializers.Serializable;
 
-import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.*;
 
-public class MapArraySplitAnalyzerParallel implements Analyzer<Article> {
+public class MapArraySplitAnalyzerParallel implements Analyzer {
 
     @Override
-    public ArrayList<MapEntrySI> mostPresent(List<Article> articles, int tot_words, HashMap<String, Integer> banned)
+    public ArrayList<MapEntrySI> mostPresent(List<Serializable> articles, int tot_words, HashMap<String, Integer> banned)
     {
         TreeMap<String, Integer> global_map = new TreeMap<>();
         Semaphore mutex = new Semaphore(1);
@@ -20,8 +17,8 @@ public class MapArraySplitAnalyzerParallel implements Analyzer<Article> {
         ExecutorService threadPool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
 
         // Chiamiamo e mandiamo nella thread pool:
-        for (int i = 0; i < articles.size(); i++) {
-            AnalyzeArticleThread task = new AnalyzeArticleThread(articles.get(i), global_map, mutex);
+        for (Serializable article : articles) {
+            AnalyzeArticleThread task = new AnalyzeArticleThread(article, global_map, mutex);
             Future<?> f = threadPool.submit(task);
             futures.add(f);
         }

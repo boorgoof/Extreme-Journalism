@@ -16,7 +16,7 @@ import java.util.List;
 
 import static it.unipd.dei.dbdc.Deserializers.Article.instanceArticle;
 
-public class CsvDeserializer implements specificDeserializer<Article> {
+public class CsvDeserializer implements specificDeserializer {
 
     private String[] fields;
 
@@ -68,8 +68,8 @@ public class CsvDeserializer implements specificDeserializer<Article> {
     */
 
     @Override
-    public List<Article> deserialize(String filePath) throws IOException {
-        List<Article> articles = new ArrayList<>();
+    public List<Serializable> deserialize(String filePath) throws IOException {
+        List<Serializable> articles = new ArrayList<>();
 
         // Leggo gli header
         String[] header = readHeader(filePath);

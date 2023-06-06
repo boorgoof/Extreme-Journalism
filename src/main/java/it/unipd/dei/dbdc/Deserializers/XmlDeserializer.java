@@ -7,19 +7,19 @@ import it.unipd.dei.dbdc.Interfaces.Deserializers.Deserializer;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 // ricodati che questa funziona solo con xml costruiti da noi ( comunque xml semplici )
-public class XmlDeserializer implements Deserializer<Article> {
+public class XmlDeserializer implements Deserializer {
 
     @Override
-    public List<Article> deserialize(String filePath) throws IOException {
+    public List<Serializable> deserialize(String filePath) throws IOException {
 
         XmlMapper xmlMapper = new XmlMapper();
         File xmlFile = new File(filePath);
-        return xmlMapper.readValue(xmlFile, new TypeReference<List<Article>>() {});
-
+        List<Article> a = xmlMapper.readValue(xmlFile, new TypeReference<List<Article>>() {}); // FIXME: funziona, ma non ha senso
+        return new ArrayList<Serializable>(a);
     }
     // IN QUESTA VERSIONE RESTITUISCE UNA LISTA VUOTA SE C'E un errore
     /*

@@ -1,12 +1,14 @@
 package it.unipd.dei.dbdc.Handlers;
 
 import it.unipd.dei.dbdc.ConsoleTextColors;
-import it.unipd.dei.dbdc.DownloadAPI.APIContainer;
 import it.unipd.dei.dbdc.DownloadAPI.APIProperties;
 import it.unipd.dei.dbdc.Interfaces.DownloadAPI.APIManager;
 import it.unipd.dei.dbdc.DownloadAPI.InteractiveSelectAPI;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class  DownloadHandler {
@@ -38,8 +40,16 @@ public class  DownloadHandler {
             // Cerca di chiamare la API
             try {
                 ConsoleTextColors.printlnProcess("Calling the API...");
+                // Il nuovo folder
+                String new_path_folder = folder_path + manager.getClass().toString();
+
+                // Elimina il folder, se era gia' presente.
+                if (!deleteFilesInDir(new File(new_path_folder))) {
+                    // Se non era presente, lo crea
+                    Files.createDirectories(Paths.get(new_path_folder));
+                }
                 long start = System.currentTimeMillis();
-                file_path = manager.callAPI(folder_path);
+                manager.callAPI(folder_path);
                 long end = System.currentTimeMillis();
                 System.out.println(ConsoleTextColors.YELLOW + "Per download: "+(end-start)+ConsoleTextColors.RESET);
 
@@ -72,4 +82,28 @@ public class  DownloadHandler {
             }
         }
     }
+
+    // TODO: giusto?
+    private static boolean deleteFilesInDir(File dir)
+    {
+        File[] contents = dir.listFiles();
+        if (contents == null) {
+            return false;
+        }
+        for (File f : contents) {
+            deleteDir(f);
+        }
+        return true;
+    }
+
+    private static void deleteDir(File file) {
+        File[] contents = file.listFiles();
+        if (contents != null) {
+            for (File f : contents) {
+                deleteDir(f);
+            }
+        }
+        file.delete();
+    }
+
 }

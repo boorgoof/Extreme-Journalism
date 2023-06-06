@@ -2,11 +2,11 @@ package it.unipd.dei.dbdc.Serializers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import it.unipd.dei.dbdc.Deserializers.Serializable;
 import it.unipd.dei.dbdc.Interfaces.Serializers.Serializer;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.List;
 
 

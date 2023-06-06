@@ -1,13 +1,12 @@
 package it.unipd.dei.dbdc.Search_terms;
 
-import it.unipd.dei.dbdc.Deserializers.Article;
+import it.unipd.dei.dbdc.Deserializers.Serializable;
 
-import java.io.*;
 import java.util.*;
 
-public class MapArrayScannerAnalyzer implements Analyzer<Article> {
+public class MapArrayScannerAnalyzer implements Analyzer {
 
-    public ArrayList<MapEntrySI> mostPresent(List<Article> articles, int tot_words, HashMap<String, Integer> banned)
+    public ArrayList<MapEntrySI> mostPresent(List<Serializable> articles, int tot_words, HashMap<String, Integer> banned)
     {
         TreeMap<String, Integer> mappona = new TreeMap<>();
 
@@ -15,8 +14,8 @@ public class MapArrayScannerAnalyzer implements Analyzer<Article> {
             // TODO: usa i thread
             // TODO: usa split della classe String
             TreeMap<String, Integer> map = new TreeMap<>();
-            Article art = articles.get(i);
-            String articolo_completo = art.getTitle() + " " + art.getBody();
+            Serializable art = articles.get(i);
+            String articolo_completo = art.toSerialize();
             Scanner sc = new Scanner(articolo_completo);
 
             sc.useDelimiter("[^’'\\-a-zA-Z]+");

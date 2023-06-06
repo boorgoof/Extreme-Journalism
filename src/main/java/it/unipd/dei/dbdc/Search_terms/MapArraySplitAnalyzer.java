@@ -1,12 +1,13 @@
 package it.unipd.dei.dbdc.Search_terms;
 
 import it.unipd.dei.dbdc.Deserializers.Article;
+import it.unipd.dei.dbdc.Deserializers.Serializable;
 
 import java.util.*;
 
-public class MapArraySplitAnalyzer implements Analyzer<Article> {
+public class MapArraySplitAnalyzer implements Analyzer {
     // TODO: passalo da sopra
-    public ArrayList<MapEntrySI> mostPresent(List<Article> articles, int tot_words, HashMap<String, Integer> banned)
+    public ArrayList<MapEntrySI> mostPresent(List<Serializable> articles, int tot_words, HashMap<String, Integer> banned)
     {
         TreeMap<String, Integer> global_map = new TreeMap<>();
         TreeMap<String, Integer> local_map;
@@ -16,8 +17,8 @@ public class MapArraySplitAnalyzer implements Analyzer<Article> {
             local_map = new TreeMap<>();
 
             // Prendo l'articolo e faccio lo split
-            Article art = articles.get(i);
-            String articolo_completo = art.getTitle() + " " + art.getBody();
+            Serializable art = articles.get(i);
+            String articolo_completo = art.toSerialize();
             // FIXME: prende ancora il carattere null, non so perche'
             String[] tokens = articolo_completo.split("[^a-zA-Z]+");
 

@@ -1,19 +1,17 @@
 package it.unipd.dei.dbdc.Search_terms;
 
 import it.unipd.dei.dbdc.Deserializers.Article;
-import it.unipd.dei.dbdc.Interfaces.DownloadAPI.APICaller;
+import it.unipd.dei.dbdc.Deserializers.Serializable;
 
-import java.io.IOException;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.concurrent.Callable;
 import java.util.concurrent.Semaphore;
 
 public class AnalyzeArticleThread implements Runnable {
     TreeMap<String, Integer> global_map;
-    Article article;
+    Serializable article;
     Semaphore mutex;
-    public AnalyzeArticleThread(Article art, TreeMap<String, Integer> map, Semaphore sem)
+    public AnalyzeArticleThread(Serializable art, TreeMap<String, Integer> map, Semaphore sem)
     {
         article = art;
         global_map = map;
@@ -23,7 +21,7 @@ public class AnalyzeArticleThread implements Runnable {
     {
         TreeMap<String, Integer> local_map = new TreeMap<>();
         // Prendo l'articolo e faccio lo split
-        String articolo_completo = article.getTitle() + " " + article.getBody();
+        String articolo_completo = article.toSerialize();
 
         // FIXME: prende ancora il carattere null, non so perche'
         String[] tokens = articolo_completo.split("[^a-zA-Z]+");
