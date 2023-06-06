@@ -1,11 +1,8 @@
 package it.unipd.dei.dbdc;
 
 
-import it.unipd.dei.dbdc.Deserializers.Article;
-import it.unipd.dei.dbdc.Handlers.AnalyzerHandler;
-import it.unipd.dei.dbdc.Handlers.DeserializationHandler;
-import it.unipd.dei.dbdc.Handlers.DownloadHandler;
-import it.unipd.dei.dbdc.Handlers.SerializationHandler;
+import it.unipd.dei.dbdc.Deserialization.Deserializers.Article;
+import it.unipd.dei.dbdc.Handlers.*;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -32,7 +29,7 @@ public class App
 
     // TODO: crea di default una pool di threads che viene utilizzata per tutte le cose
 
-    public static void main( String[] args ) {
+    public static void main( String[] args ) throws IOException {
 
         // L'utente deve passare da riga di comando l'azione che vuole fare.
         CommandLineInterpreter interpreter;
@@ -87,10 +84,12 @@ public class App
             folderPath = path_cli;
         }
 
+
+        // COSI IN TEORIA é LA NUOVA VERSIONE
         ConsoleTextColors.printlnProcess("Inizio deserializzazione di "+folderPath+"...");
-        DeserializationHandler<Article> deserializer;
+        DeserializationHandlerPROVA<Article> deserializerHandeler;
         try {
-             deserializer = new DeserializationHandler<>(deserializers_properties);
+             deserializerHandeler = new DeserializationHandlerPROVA<>(deserializers_properties);
         }
         catch (IOException e)
         {
@@ -99,34 +98,16 @@ public class App
             return;
         }
 
-        ConsoleTextColors.printlnProcess("Sono stati forniti i deserializzatori per i seguenti formati:");
-        Set<String> formatsAvailable = deserializer.getFormats();
-        for (String format : formatsAvailable) {
-            ConsoleTextColors.printlnInfo(format);
-        }
-        ConsoleTextColors.printlnInfo("Nel caso in cui ci fossero file di formato differente da questi elencati non verranno presi in considerazione");
+        // Deserializzazione cartella
 
-        // Cerco di deserializzare l'intero folder, con tutti i formati possibili
+        List<Article> articles = deserializerHandeler.deserializeALLFormatsFolder(folderPath);
         long start = System.currentTimeMillis();
-        List<Article> articles = new ArrayList<>();
-        try {
-            for (String format : formatsAvailable) {
-                deserializer.deserializeFolder(format, folderPath, articles);
-            }
-        } catch (IOException e) {
-            ConsoleTextColors.printlnError("Deserializzazione fallita per il formato: " + e.getMessage());
-            return;
-        }
         long end = System.currentTimeMillis();
-        System.out.println(ConsoleTextColors.YELLOW+"Tempo deserializzazione: "+(end-start)+ConsoleTextColors.RESET);
-
-
-        ConsoleTextColors.printlnProcess("Fine deserializzazione...");
-
 
         // B. SERIALIZZAZIONE Article -> formato comune
 
         ConsoleTextColors.printlnInfo("Inizio serializzazione...");
+
 
         try {
 
@@ -156,7 +137,7 @@ public class App
 
             try {
                 start = System.currentTimeMillis();
-                articles = deserializer.deserializeFile(common_format, filePath);
+                articles = deserializerHandeler.deserializeFile(common_format, filePath);
                 end = System.currentTimeMillis();
                 System.out.println(ConsoleTextColors.YELLOW+"Tempo deserializzazione: "+(end-start)+ConsoleTextColors.RESET);
             }

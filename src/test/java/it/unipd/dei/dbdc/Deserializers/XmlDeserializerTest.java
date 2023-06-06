@@ -1,11 +1,10 @@
 package it.unipd.dei.dbdc.Deserializers;
 
-import it.unipd.dei.dbdc.Serializers.XmlSerializer;
-import it.unipd.dei.dbdc.Serializers.XmlSerializerTest;
+import it.unipd.dei.dbdc.Deserialization.Deserializers.Article;
+import it.unipd.dei.dbdc.Deserialization.Deserializers.XmlDeserializer;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 

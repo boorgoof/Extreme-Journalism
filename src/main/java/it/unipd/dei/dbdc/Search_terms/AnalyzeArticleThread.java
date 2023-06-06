@@ -1,9 +1,7 @@
 package it.unipd.dei.dbdc.Search_terms;
 
-import it.unipd.dei.dbdc.Deserializers.Article;
-import it.unipd.dei.dbdc.Interfaces.DownloadAPI.APICaller;
+import it.unipd.dei.dbdc.Deserialization.Deserializers.Article;
 
-import java.io.IOException;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.concurrent.Semaphore;

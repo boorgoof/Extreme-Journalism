@@ -1,4 +1,4 @@
-package it.unipd.dei.dbdc.Deserializers;
+package it.unipd.dei.dbdc.Deserialization.Deserializers;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -8,8 +8,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import static it.unipd.dei.dbdc.Deserializers.Article.instanceArticle;
 
 
 public class JsonDeserializer implements specificDeserializer<Article> {
@@ -54,7 +52,7 @@ public class JsonDeserializer implements specificDeserializer<Article> {
                 }
             }
 
-            Article article = instanceArticle(fieldsValues);
+            Article article = Article.instanceArticle(fieldsValues);
 
             //System.out.println(article);
             articles.add(article);

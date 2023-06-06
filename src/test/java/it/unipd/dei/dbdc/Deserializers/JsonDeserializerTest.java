@@ -1,13 +1,11 @@
 package it.unipd.dei.dbdc.Deserializers;
-import it.unipd.dei.dbdc.Serializers.XmlSerializer;
-import it.unipd.dei.dbdc.Interfaces.Serializers.Serializer;
-import junit.framework.AssertionFailedError;
+import it.unipd.dei.dbdc.Deserialization.Deserializers.Article;
+import it.unipd.dei.dbdc.Deserialization.Deserializers.JsonDeserializer;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 

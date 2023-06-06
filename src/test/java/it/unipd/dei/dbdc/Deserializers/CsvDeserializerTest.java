@@ -1,5 +1,7 @@
 package it.unipd.dei.dbdc.Deserializers;
 
+import it.unipd.dei.dbdc.Deserialization.Deserializers.Article;
+import it.unipd.dei.dbdc.Deserialization.Deserializers.CsvDeserializer;
 import org.junit.Test;
 
 import java.io.IOException;
