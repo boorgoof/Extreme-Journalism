@@ -15,22 +15,17 @@ public class App
 {
     // TODO: prendi tutto da properties, e fai in modo che ti possano passare un properties diverso da CLI. Oppure metti le properties fuori da src
     private static final String database_path = "./database/";
-
     private static final String deserializers_properties = "deserializers.properties";
     private static final String serializers_properties = "serializers.properties";
     private static final String download_properties = "download.properties";
     private static final String analyze_properties = "analyze.properties";
-
     private static final String common_format = "xml";
-
     private static final String outFile = "./database/output.txt";
-
-    // TODO: remove from here
     private static int tot_count = 50;
 
     // TODO: crea di default una pool di threads che viene utilizzata per tutte le cose
 
-    public static void main(String[] args ) {
+    public static void main(String[] args) {
 
         // L'utente deve passare da riga di comando l'azione che vuole fare.
         CommandLineInterpreter interpreter;
@@ -85,32 +80,22 @@ public class App
             folderPath = path_cli;
         }
 
-
-        // COSI IN TEORIA é LA NUOVA VERSIONE
         ConsoleTextColors.printlnProcess("Inizio deserializzazione di "+folderPath+"...");
-        DeserializationHandlerPROVA deserializerHandeler;
+        DeserializationHandlerPROVA deserializerHandler;
         try {
-             deserializerHandeler = new DeserializationHandlerPROVA(deserializers_properties);
+             deserializerHandler = new DeserializationHandlerPROVA(deserializers_properties);
         }
         catch (IOException e)
         {
-            ConsoleTextColors.printlnError("Errore del programma: non sono stati caricati correttamente i deserilizzatori");
+            ConsoleTextColors.printlnError("Errore del programma: non sono stati caricati correttamente i deserializzatori del file "+deserializers_properties);
             e.printStackTrace();
             return;
         }
-
-        // Deserializzazione cartella
-
-        List<Serializable> articles = deserializerHandeler.deserializeALLFormatsFolder(folderPath);
-
+        List<Serializable> articles = deserializerHandler.deserializeALLFormatsFolder(folderPath);
         ConsoleTextColors.printlnProcess("Fine deserializzazione...");
 
-
         // B. SERIALIZZAZIONE Article -> formato comune
-
         ConsoleTextColors.printlnInfo("Inizio serializzazione...");
-
-
         try {
 
             // Creazione della lista di oggetti Serializable a partire dalla lista di Article (Article implementa Serializable)
@@ -138,10 +123,7 @@ public class App
             ConsoleTextColors.printlnProcess("Inizio deserializzazione...");
 
             try {
-                long start = System.currentTimeMillis();
-                articles = deserializerHandeler.deserializeFile(common_format, filePath);
-                long end = System.currentTimeMillis();
-                System.out.println(ConsoleTextColors.YELLOW+"Tempo deserializzazione: "+(end-start)+ConsoleTextColors.RESET);
+                articles = deserializerHandler.deserializeFile(common_format, filePath);
             }
             catch (IOException e) {
                 ConsoleTextColors.printlnError("Deserializzazione fallita per il formato: " + e.getMessage());
@@ -159,7 +141,6 @@ public class App
             }
 
             ConsoleTextColors.printlnProcess("Scrittura dei primi "+tot_count+" termini più importanti in corso..");
-
             try {
                 AnalyzerHandler analyzerHandler = new AnalyzerHandler(analyze_properties);
                 analyzerHandler.analyze(articles, outFile, tot_count);

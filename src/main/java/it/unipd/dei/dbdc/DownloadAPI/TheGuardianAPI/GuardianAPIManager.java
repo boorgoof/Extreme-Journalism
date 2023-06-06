@@ -5,10 +5,7 @@ import it.unipd.dei.dbdc.Interfaces.DownloadAPI.APICaller;
 import it.unipd.dei.dbdc.Interfaces.DownloadAPI.APIManager;
 import it.unipd.dei.dbdc.DownloadAPI.QueryParam;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
 import java.util.concurrent.*;
 
