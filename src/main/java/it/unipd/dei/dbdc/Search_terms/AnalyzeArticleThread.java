@@ -6,9 +6,10 @@ import it.unipd.dei.dbdc.Interfaces.DownloadAPI.APICaller;
 import java.io.IOException;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.concurrent.Callable;
 import java.util.concurrent.Semaphore;
 
-public class AnalyzeArticleThread extends Thread{
+public class AnalyzeArticleThread implements Runnable {
     TreeMap<String, Integer> global_map;
     Article article;
     Semaphore mutex;

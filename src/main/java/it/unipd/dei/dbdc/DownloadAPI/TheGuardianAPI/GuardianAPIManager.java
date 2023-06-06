@@ -4,7 +4,6 @@ import it.unipd.dei.dbdc.ConsoleTextColors;
 import it.unipd.dei.dbdc.Interfaces.DownloadAPI.APICaller;
 import it.unipd.dei.dbdc.Interfaces.DownloadAPI.APIManager;
 import it.unipd.dei.dbdc.DownloadAPI.QueryParam;
-import jdk.nashorn.internal.codegen.CompilerConstants;
 
 import java.io.File;
 import java.io.IOException;
@@ -70,8 +69,6 @@ public class GuardianAPIManager implements APIManager {
         // Il nuovo folder
         String new_path_folder = path_folder + name;
 
-        /* SENZA PARALLELISMO
-
         // Elimina il folder, se era gia' presente.
         if (!deleteFilesInDir(new File(new_path_folder))) {
             // Se non era presente, lo crea
@@ -79,102 +76,33 @@ public class GuardianAPIManager implements APIManager {
         }
 
         long start = System.currentTimeMillis();
-        for (int i = 0; i<requests.size(); i++)
-        {
-            String path = new_path_folder+"/request"+(i+1)+".json";
-            if (!caller.sendRequest(GuardianAPIInfo.getDefaultURL(), requests.get(i), path)) {
-                throw new IllegalArgumentException("Query parameters are not correct");
-            }
-        }
-        long end = System.currentTimeMillis();
 
-        System.out.println(ConsoleTextColors.YELLOW + "Senza parallelismo: "+(end-start));
-
-         */
-
-        if (!deleteFilesInDir(new File(new_path_folder))) {
-            // Se non era presente, lo crea
-            Files.createDirectories(Paths.get(new_path_folder));
-        }
-
-        // Manda le richieste tramite la libreria e le salva in file
-        long start = System.currentTimeMillis();
-        //TODO: vedi se ha senso usare i thread cosi o fare un insieme di thread da chiamare continuamente (sempre gli stessi)
-
-        Thread[] ts = new Thread[requests.size()];
-        for (int i = 0; i<requests.size(); i++)
-        {
-            String path = new_path_folder+"/request"+(i+1)+".json";
-            ts[i] = new CallAPIThread(caller, GuardianAPIInfo.getDefaultURL(), path, requests.get(i));
-            ts[i].start();
-        }
-        for (int i = 0; i<requests.size(); i++)
-        {
-            try {
-                ts[i].join();
-            }
-            catch (InterruptedException e)
-            {
-                // TODO: vedere come gestire questa eccezione
-            }
-        }
-        long end = System.currentTimeMillis();
-
-        System.out.println("Con parallelismo thread: "+(end-start)+ ConsoleTextColors.RESET);
-
-        // Manda le richieste tramite la libreria e le salva in file. FIXME: in teoria questo serve solo per cose ricorsive
-        /*if (!deleteFilesInDir(new File(new_path_folder))) {
-            // Se non era presente, lo crea
-            Files.createDirectories(Paths.get(new_path_folder));
-        }
-
-        start = System.currentTimeMillis();
-
-        ForkJoinPool commonPool = ForkJoinPool.commonPool();
-        for (int i = 0; i<requests.size(); i++)
-        {
-            String path = new_path_folder+"/request"+(i+1)+".json";
-            commonPool.invoke(new RecursiveCallAPIAction(caller, GuardianAPIInfo.getDefaultURL(), path, requests.get(i)));
-        }
-        end = System.currentTimeMillis();
-
-        System.out.println("Con parallelismo fork join: "+(end-start)+ ConsoleTextColors.RESET);
-
-         */
-
-        if (!deleteFilesInDir(new File(new_path_folder))) {
-            // Se non era presente, lo crea
-            Files.createDirectories(Paths.get(new_path_folder));
-        }
-
-        start = System.currentTimeMillis(); // TODO: guarda baeldung
-
-        List<Future> futures = new ArrayList<>();
-        System.out.println(Runtime.getRuntime().availableProcessors());
+        List<Future<Object>> futures = new ArrayList<>();
         ExecutorService threadPool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
 
-        // Send stuff to thread pool:
+        // Chiamiamo e mandiamo nella thread pool:
         for (int i = 0; i < requests.size(); i++) {
             String path = new_path_folder+"/request"+(i+1)+".json";
             CallAPIThread task = new CallAPIThread(caller, GuardianAPIInfo.getDefaultURL(), path, requests.get(i));
-            Future f = threadPool.submit(task);
+            Future<Object> f = threadPool.submit(task);
             futures.add(f);
         }
 
         // Wait for all sent tasks to complete:
-        for (Future future : futures) {
+        for (Future<Object> future : futures) {
             try {
+                // Get is
                 future.get();
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            } catch (ExecutionException e) {
-                throw new RuntimeException(e);
+            } catch (InterruptedException | ExecutionException e) {
+                // Avviene se e' stato interrotto mentre aspettava o ha lanciato un'eccezione
+                throw new IOException("Parametri non esatti");
             }
         }
-        threadPool.shutdown();
-        end = System.currentTimeMillis();
 
-        System.out.println("Con parallelismo future: "+(end-start)+ ConsoleTextColors.RESET);
+        threadPool.shutdown();
+        long end = System.currentTimeMillis();
+
+        System.out.println(ConsoleTextColors.YELLOW+"Con parallelismo future: "+(end-start)+ ConsoleTextColors.RESET);
 
         caller.endRequests();
         return new_path_folder;
@@ -204,3 +132,37 @@ public class GuardianAPIManager implements APIManager {
     }
 
 }
+
+
+
+
+/*if (!deleteFilesInDir(new File(new_path_folder))) {
+            // Se non era presente, lo crea
+            Files.createDirectories(Paths.get(new_path_folder));
+        }
+
+        // Manda le richieste tramite la libreria e le salva in file
+        long start = System.currentTimeMillis();
+
+        Thread[] ts = new Thread[requests.size()];
+        for (int i = 0; i<requests.size(); i++)
+        {
+            String path = new_path_folder+"/request"+(i+1)+".json";
+            ts[i] = new CallAPIThread(caller, GuardianAPIInfo.getDefaultURL(), path, requests.get(i));
+            ts[i].start();
+        }
+        for (int i = 0; i<requests.size(); i++)
+        {
+            try {
+                ts[i].join();
+            }
+            catch (InterruptedException e)
+            {
+                // Non dovrebbe succedere, è se il thread viene interrotto mentre aspetta
+            }
+        }
+        long end = System.currentTimeMillis();
+
+        System.out.println("Con parallelismo thread: "+(end-start)+ ConsoleTextColors.RESET);
+
+         */

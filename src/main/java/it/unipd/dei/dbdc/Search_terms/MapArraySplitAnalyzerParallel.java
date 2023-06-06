@@ -1,9 +1,12 @@
 package it.unipd.dei.dbdc.Search_terms;
 
 import it.unipd.dei.dbdc.Deserializers.Article;
+import it.unipd.dei.dbdc.DownloadAPI.TheGuardianAPI.CallAPIThread;
+import it.unipd.dei.dbdc.DownloadAPI.TheGuardianAPI.GuardianAPIInfo;
 
+import java.io.IOException;
 import java.util.*;
-import java.util.concurrent.Semaphore;
+import java.util.concurrent.*;
 
 public class MapArraySplitAnalyzerParallel implements Analyzer<Article> {
 
@@ -12,20 +15,29 @@ public class MapArraySplitAnalyzerParallel implements Analyzer<Article> {
     {
         TreeMap<String, Integer> global_map = new TreeMap<>();
         Semaphore mutex = new Semaphore(1);
-        AnalyzeArticleThread[] analyzers = new AnalyzeArticleThread[articles.size()];
-        for (int i = 0; i < articles.size(); i++)
-        {
-            analyzers[i] = new AnalyzeArticleThread(articles.get(i), global_map, mutex);
-            analyzers[i].start();
+
+        List<Future<?>> futures = new ArrayList<>(articles.size());
+        ExecutorService threadPool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+
+        // Chiamiamo e mandiamo nella thread pool:
+        for (int i = 0; i < articles.size(); i++) {
+            AnalyzeArticleThread task = new AnalyzeArticleThread(articles.get(i), global_map, mutex);
+            Future<?> f = threadPool.submit(task);
+            futures.add(f);
         }
-        for (AnalyzeArticleThread a:
-                analyzers) {
+
+        // Wait for all sent tasks to complete:
+        for (Future<?> future : futures) {
             try {
-                a.join();
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+                // Get is
+                future.get();
+            } catch (InterruptedException | ExecutionException e) {
+                // Avviene se e' stato interrotto mentre aspettava o ha lanciato un'eccezione
+                throw new IllegalArgumentException("Errore nel parallelismo");
             }
         }
+        threadPool.shutdown();
+
 
         ArrayList<MapEntrySI> max = new ArrayList<MapEntrySI>(tot_words);
 
