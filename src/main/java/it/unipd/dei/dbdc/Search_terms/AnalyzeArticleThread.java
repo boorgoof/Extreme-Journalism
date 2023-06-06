@@ -1,6 +1,5 @@
 package it.unipd.dei.dbdc.Search_terms;
 
-import it.unipd.dei.dbdc.Deserializers.Article;
 import it.unipd.dei.dbdc.Deserializers.Serializable;
 
 import java.util.Map;
@@ -17,6 +16,7 @@ public class AnalyzeArticleThread implements Runnable {
         global_map = map;
         mutex = sem;
     }
+
     public void run()
     {
         TreeMap<String, Integer> local_map = new TreeMap<>();
@@ -29,7 +29,7 @@ public class AnalyzeArticleThread implements Runnable {
         // Inserisco tutti i tokens in una mappa locale. TODO: in realtà mi interessa solo se esiste o meno, cosa potresti usare?
         for (String tok : tokens) {
             if (!local_map.containsKey(tok)) {
-                local_map.put(tok.toLowerCase(), Integer.valueOf(1));
+                local_map.put(tok.toLowerCase(), 1);
             }
         }
 
@@ -43,9 +43,9 @@ public class AnalyzeArticleThread implements Runnable {
         {
             Integer val = global_map.get(elem.getKey());
             if (val == null) {
-                global_map.put(elem.getKey(), Integer.valueOf(1));
+                global_map.put(elem.getKey(), 1);
             } else {
-                global_map.replace(elem.getKey(), Integer.valueOf(val + 1));
+                global_map.replace(elem.getKey(), val + 1);
             }
         }
         mutex.release();

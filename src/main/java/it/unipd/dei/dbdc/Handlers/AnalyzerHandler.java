@@ -4,8 +4,7 @@ import it.unipd.dei.dbdc.ConsoleTextColors;
 import it.unipd.dei.dbdc.Deserializers.Serializable;
 import it.unipd.dei.dbdc.PropertiesTools;
 import it.unipd.dei.dbdc.Search_terms.Analyzer;
-import it.unipd.dei.dbdc.Search_terms.MapArraySplitAnalyzerParallel;
-import it.unipd.dei.dbdc.Search_terms.MapEntrySI;
+import it.unipd.dei.dbdc.Search_terms.OrderedEntryStringInt;
 
 import java.util.*;
 
@@ -38,19 +37,7 @@ public class AnalyzerHandler {
 
     public void analyze(List<Serializable> articles, String file, int tot_count)
     {
-        ArrayList<MapEntrySI> max;
-
-        long start = System.currentTimeMillis();
-        max = analyzer.mostPresent(articles, tot_count, bannedArray());
-        long end = System.currentTimeMillis();
-        System.out.println(ConsoleTextColors.YELLOW + "Estrazione termini senza parallelismo: "+(end-start)+ConsoleTextColors.RESET);
-
-        MapArraySplitAnalyzerParallel a = new MapArraySplitAnalyzerParallel();
-        start = System.currentTimeMillis();
-        max = a.mostPresent(articles, tot_count, bannedArray());
-        end = System.currentTimeMillis();
-        System.out.println(ConsoleTextColors.YELLOW + "Estrazione termini con parallelismo: "+(end-start)+ConsoleTextColors.RESET);
-
+        ArrayList<OrderedEntryStringInt> max = analyzer.mostPresent(articles, tot_count, bannedArray());
         try {
             outFile(max, file);
         }
@@ -66,10 +53,10 @@ public class AnalyzerHandler {
 
         HashMap<String, Integer> banned = new HashMap<>(524);
         File file = new File(bannedWordsPath);
-        try (Scanner scanner = new Scanner(file);)
+        try (Scanner scanner = new Scanner(file))
         {
             while (scanner.hasNext()) {
-                banned.put(scanner.next(), Integer.valueOf(1));
+                banned.put(scanner.next(), 1);
             }
         } catch (FileNotFoundException e) {
             System.out.println("File non trovato nel path: "+bannedWordsPath);
@@ -77,10 +64,10 @@ public class AnalyzerHandler {
         return banned;
     }
 
-    public void outFile(ArrayList<MapEntrySI> max, String outFilePath) throws IOException {
+    public void outFile(ArrayList<OrderedEntryStringInt> max, String outFilePath) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outFilePath))) {
             for (int i = 0; i <max.size(); i++) {
-                MapEntrySI el = max.get(i);
+                OrderedEntryStringInt el = max.get(i);
                 writer.write(el.getKey() + " " + el.getValue());
                 if (i < max.size()-1) {
                     writer.newLine();

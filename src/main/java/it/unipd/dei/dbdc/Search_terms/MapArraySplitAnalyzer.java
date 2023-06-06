@@ -1,47 +1,42 @@
 package it.unipd.dei.dbdc.Search_terms;
 
-import it.unipd.dei.dbdc.Deserializers.Article;
 import it.unipd.dei.dbdc.Deserializers.Serializable;
 
 import java.util.*;
 
 public class MapArraySplitAnalyzer implements Analyzer {
-    // TODO: passalo da sopra
-    public ArrayList<MapEntrySI> mostPresent(List<Serializable> articles, int tot_words, HashMap<String, Integer> banned)
+    public ArrayList<OrderedEntryStringInt> mostPresent(List<Serializable> articles, int tot_words, HashMap<String, Integer> banned)
     {
         TreeMap<String, Integer> global_map = new TreeMap<>();
         TreeMap<String, Integer> local_map;
-        for (int i = 0; i < articles.size(); i++)
-        {
+        for (Serializable article : articles) {
             // TODO: usa i thread
             local_map = new TreeMap<>();
 
             // Prendo l'articolo e faccio lo split
-            Serializable art = articles.get(i);
-            String articolo_completo = art.toSerialize();
+            String articolo_completo = article.toSerialize();
             // FIXME: prende ancora il carattere null, non so perche'
             String[] tokens = articolo_completo.split("[^a-zA-Z]+");
 
             // Inserisco tutti i tokens in una mappa locale. TODO: in realtà mi interessa solo se esiste o meno, cosa potresti usare?
             for (String tok : tokens) {
                 if (!local_map.containsKey(tok)) {
-                    local_map.put(tok.toLowerCase(), Integer.valueOf(1));
+                    local_map.put(tok.toLowerCase(), 1);
                 }
             }
 
             // Inserisco i tokens di questo articolo nella mappa globale
-            for (Map.Entry<String, Integer> elem : local_map.entrySet())
-            {
+            for (Map.Entry<String, Integer> elem : local_map.entrySet()) {
                 Integer val = global_map.get(elem.getKey());
                 if (val == null) {
-                    global_map.put(elem.getKey(), Integer.valueOf(1));
+                    global_map.put(elem.getKey(), 1);
                 } else {
-                    global_map.replace(elem.getKey(), Integer.valueOf(val + 1));
+                    global_map.replace(elem.getKey(), val + 1);
                 }
             }
         }
 
-        ArrayList<MapEntrySI> max = new ArrayList<MapEntrySI>(tot_words);
+        ArrayList<OrderedEntryStringInt> max = new ArrayList<>(tot_words);
 
         for (Map.Entry<String, Integer> el : global_map.entrySet()) {
             addOrdered(max, el, banned, tot_words);
@@ -49,7 +44,7 @@ public class MapArraySplitAnalyzer implements Analyzer {
         return max;
     }
 
-    private void addOrdered(ArrayList<MapEntrySI> vec, Map.Entry<String, Integer> entry, HashMap<String, Integer> bannedWords, int tot_words) {
+    private void addOrdered(ArrayList<OrderedEntryStringInt> vec, Map.Entry<String, Integer> entry, HashMap<String, Integer> bannedWords, int tot_words) {
         if (bannedWords.get(entry.getKey()) != null)
         {
             return;
@@ -57,7 +52,7 @@ public class MapArraySplitAnalyzer implements Analyzer {
         int vector_size = vec.size();
 
         // TODO: gestisci meglio queste entry
-        MapEntrySI el = new MapEntrySI(entry.getKey(), entry.getValue());
+        OrderedEntryStringInt el = new OrderedEntryStringInt(entry);
 
         // Devo aggiungerlo per forza, si tratta solo di capire in che posizione
         if (vector_size < tot_words) {
@@ -75,11 +70,11 @@ public class MapArraySplitAnalyzer implements Analyzer {
             }
 
             // Altrimenti rimpiazzo uno alla volta, con InsertionSort
-            MapEntrySI old = vec.get(i - 1);
+            OrderedEntryStringInt old = vec.get(i - 1);
             vec.set(i - 1, el);
             i++;
             while (i < vector_size) {
-                MapEntrySI new_old = vec.get(i);
+                OrderedEntryStringInt new_old = vec.get(i);
                 vec.set(i - 1, old);
                 old = new_old;
                 i++;

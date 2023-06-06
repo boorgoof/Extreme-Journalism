@@ -1,16 +1,12 @@
 package it.unipd.dei.dbdc.Search_terms;
 
-import it.unipd.dei.dbdc.Deserializers.Article;
 import it.unipd.dei.dbdc.Deserializers.Serializable;
 
-import java.io.*;
 import java.util.*;
 
 public class PriorityQueueArraySplitAnalyzer implements Analyzer {
-    private static final String bannedWordsPath = "./src/main/resources/english_stoplist_v1.txt";
-
     @Override
-    public ArrayList<MapEntrySI> mostPresent(List<Serializable> articles, int tot_words, HashMap<String, Integer> banned)
+    public ArrayList<OrderedEntryStringInt> mostPresent(List<Serializable> articles, int tot_words, HashMap<String, Integer> banned)
     {
         TreeMap<String, Integer> global_map = new TreeMap<>();
 
@@ -31,7 +27,7 @@ public class PriorityQueueArraySplitAnalyzer implements Analyzer {
                 }
             }
 
-            ArrayList<MapEntrySI> max = new ArrayList<>(pq.size());
+            ArrayList<OrderedEntryStringInt> max = new ArrayList<>(pq.size());
 
             // Popoliamo l'array di output in ordine inverso (dal più frequente al meno frequente)
             while (!pq.isEmpty()) {
@@ -44,7 +40,7 @@ public class PriorityQueueArraySplitAnalyzer implements Analyzer {
         return null; // In caso di errori o nessun articolo presente
     }
 
-    private void addOrdered(ArrayList<MapEntrySI> vec, Map.Entry<String, Integer> entry, HashMap<String, Integer> bannedWords, int tot_words) {
+    private void addOrdered(ArrayList<OrderedEntryStringInt> vec, Map.Entry<String, Integer> entry, HashMap<String, Integer> bannedWords, int tot_words) {
         if (bannedWords.get(entry.getKey()) != null)
         {
             return;
@@ -52,7 +48,7 @@ public class PriorityQueueArraySplitAnalyzer implements Analyzer {
         int vector_size = vec.size();
 
         // TODO: gestisci meglio queste entry
-        MapEntrySI el = new MapEntrySI(entry.getKey(), entry.getValue());
+        OrderedEntryStringInt el = new OrderedEntryStringInt(entry.getKey(), entry.getValue());
 
         // Devo aggiungerlo per forza, si tratta solo di capire in che posizione
         if (vector_size < tot_words) {
@@ -70,11 +66,11 @@ public class PriorityQueueArraySplitAnalyzer implements Analyzer {
             }
 
             // Altrimenti rimpiazzo uno alla volta, con InsertionSort
-            MapEntrySI old = vec.get(i - 1);
+            OrderedEntryStringInt old = vec.get(i - 1);
             vec.set(i - 1, el);
             i++;
             while (i < vector_size) {
-                MapEntrySI new_old = vec.get(i);
+                OrderedEntryStringInt new_old = vec.get(i);
                 vec.set(i - 1, old);
                 old = new_old;
                 i++;

@@ -7,5 +7,5 @@ import java.util.HashMap;
 import java.util.List;
 
 public interface Analyzer {
-    ArrayList<MapEntrySI> mostPresent(List<Serializable> articles, int tot_count, HashMap<String, Integer> banned_words);
+    ArrayList<OrderedEntryStringInt> mostPresent(List<Serializable> articles, int tot_count, HashMap<String, Integer> banned_words);
 }
