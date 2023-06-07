@@ -1,19 +1,12 @@
 package it.unipd.dei.dbdc.Search_terms;
 
-import it.unipd.dei.dbdc.Deserialization.Deserializers.Article;
+import it.unipd.dei.dbdc.Deserializers.Serializable;
 
-import java.io.*;
 import java.util.*;
 
-public class PriorityQueueArraySplitAnalyzer {
-    private static final String bannedWordsPath = "./src/main/resources/english_stoplist_v1.txt";
-
-    private final int tot_words ;
-
-    public PriorityQueueArraySplitAnalyzer(int count){
-        tot_words = count;
-    }
-    public ArrayList<MapEntrySI> mostPresent(List<Article> articles)
+public class PriorityQueueArraySplitAnalyzer implements Analyzer {
+    @Override
+    public ArrayList<OrderedEntryStringInt> mostPresent(List<Serializable> articles, int tot_words, HashMap<String, Integer> banned)
     {
         TreeMap<String, Integer> global_map = new TreeMap<>();
 
@@ -34,13 +27,12 @@ public class PriorityQueueArraySplitAnalyzer {
                 }
             }
 
-            ArrayList<MapEntrySI> max = new ArrayList<>(pq.size());
-            HashMap<String, Integer> banned = bannedArray();
+            ArrayList<OrderedEntryStringInt> max = new ArrayList<>(pq.size());
 
             // Popoliamo l'array di output in ordine inverso (dal più frequente al meno frequente)
             while (!pq.isEmpty()) {
                 Map.Entry<String, Integer> entry = pq.poll();
-                addOrdered(max, entry, banned);
+                addOrdered(max, entry, banned, tot_words);
             }
             return max;
         }
@@ -48,23 +40,7 @@ public class PriorityQueueArraySplitAnalyzer {
         return null; // In caso di errori o nessun articolo presente
     }
 
-    private static HashMap<String, Integer> bannedArray() {
-        // TODO: ci interessa solo che sia presente, cosa uso?
-
-        HashMap<String, Integer> banned = new HashMap<>(524);
-        File file = new File(bannedWordsPath);
-        try (Scanner scanner = new Scanner(file);)
-        {
-            while (scanner.hasNext()) {
-                banned.put(scanner.next(), Integer.valueOf(1));
-            }
-        } catch (FileNotFoundException e) {
-            System.out.println("File non trovato nel path: "+bannedWordsPath);
-        }
-        return banned;
-    }
-
-    private void addOrdered(ArrayList<MapEntrySI> vec, Map.Entry<String, Integer> entry, HashMap<String, Integer> bannedWords) {
+    private void addOrdered(ArrayList<OrderedEntryStringInt> vec, Map.Entry<String, Integer> entry, HashMap<String, Integer> bannedWords, int tot_words) {
         if (bannedWords.get(entry.getKey()) != null)
         {
             return;
@@ -72,7 +48,7 @@ public class PriorityQueueArraySplitAnalyzer {
         int vector_size = vec.size();
 
         // TODO: gestisci meglio queste entry
-        MapEntrySI el = new MapEntrySI(entry.getKey(), entry.getValue());
+        OrderedEntryStringInt el = new OrderedEntryStringInt(entry.getKey(), entry.getValue());
 
         // Devo aggiungerlo per forza, si tratta solo di capire in che posizione
         if (vector_size < tot_words) {
@@ -90,11 +66,11 @@ public class PriorityQueueArraySplitAnalyzer {
             }
 
             // Altrimenti rimpiazzo uno alla volta, con InsertionSort
-            MapEntrySI old = vec.get(i - 1);
+            OrderedEntryStringInt old = vec.get(i - 1);
             vec.set(i - 1, el);
             i++;
             while (i < vector_size) {
-                MapEntrySI new_old = vec.get(i);
+                OrderedEntryStringInt new_old = vec.get(i);
                 vec.set(i - 1, old);
                 old = new_old;
                 i++;
@@ -115,18 +91,6 @@ public class PriorityQueueArraySplitAnalyzer {
             }
             if (i != tot_words-1) {
                 vec.set(i + 1, el);
-            }
-        }
-    }
-
-    public void outFile(ArrayList<MapEntrySI> max, String outFilePath) throws IOException {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(outFilePath))) {
-            for (int i = 0; i < tot_words; i++) {
-                MapEntrySI el = max.get(i);
-                writer.write(el.getKey() + " " + el.getValue());
-                if (i < tot_words-1) {
-                    writer.newLine();
-                }
             }
         }
     }

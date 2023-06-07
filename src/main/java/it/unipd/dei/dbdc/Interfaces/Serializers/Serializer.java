@@ -1,7 +1,8 @@
 package it.unipd.dei.dbdc.Interfaces.Serializers;
 
+import it.unipd.dei.dbdc.Deserializers.Serializable;
+
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.List;
 
 public interface Serializer {

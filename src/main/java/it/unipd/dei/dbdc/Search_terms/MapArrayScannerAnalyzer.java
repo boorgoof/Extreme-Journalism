@@ -1,12 +1,12 @@
 package it.unipd.dei.dbdc.Search_terms;
 
-import it.unipd.dei.dbdc.Deserialization.Deserializers.Article;
+import it.unipd.dei.dbdc.Deserializers.Serializable;
 
 import java.util.*;
 
-public class MapArrayScannerAnalyzer implements Analyzer<Article> {
+public class MapArrayScannerAnalyzer implements Analyzer {
 
-    public ArrayList<MapEntrySI> mostPresent(List<Article> articles, int tot_words, HashMap<String, Integer> banned)
+    public ArrayList<OrderedEntryStringInt> mostPresent(List<Serializable> articles, int tot_words, HashMap<String, Integer> banned)
     {
         TreeMap<String, Integer> mappona = new TreeMap<>();
 
@@ -14,8 +14,8 @@ public class MapArrayScannerAnalyzer implements Analyzer<Article> {
             // TODO: usa i thread
             // TODO: usa split della classe String
             TreeMap<String, Integer> map = new TreeMap<>();
-            Article art = articles.get(i);
-            String articolo_completo = art.getTitle() + " " + art.getBody();
+            Serializable art = articles.get(i);
+            String articolo_completo = art.toSerialize();
             Scanner sc = new Scanner(articolo_completo);
 
             sc.useDelimiter("[^’'\\-a-zA-Z]+");
@@ -39,16 +39,16 @@ public class MapArrayScannerAnalyzer implements Analyzer<Article> {
             sc.close();
         }
 
-        ArrayList<MapEntrySI> max = new ArrayList<MapEntrySI>(tot_words);
+        ArrayList<OrderedEntryStringInt> max = new ArrayList<OrderedEntryStringInt>(tot_words);
         for (Map.Entry<String, Integer> el : mappona.entrySet()) {
             addOrdered(max, el, banned, tot_words);
         }
         return max;
     }
 
-    private void addOrdered(ArrayList<MapEntrySI> vec, Map.Entry<String, Integer> entry, HashMap<String, Integer> bannedWords, int tot_words)
+    private void addOrdered(ArrayList<OrderedEntryStringInt> vec, Map.Entry<String, Integer> entry, HashMap<String, Integer> bannedWords, int tot_words)
     {
-        MapEntrySI el = new MapEntrySI(entry.getKey(), entry.getValue());
+        OrderedEntryStringInt el = new OrderedEntryStringInt(entry.getKey(), entry.getValue());
         for(int i = 0; i < bannedWords.size()-1; i++){
             if(bannedWords.containsKey(el.getKey())){
                 return;
@@ -68,12 +68,12 @@ public class MapArrayScannerAnalyzer implements Analyzer<Article> {
                     vec.add(el);
                     return;
                 }
-                MapEntrySI old = vec.get(i - 1);
+                OrderedEntryStringInt old = vec.get(i - 1);
                 vec.set(i - 1, el);
                 i++;
                 while (i < mapsize)
                 {
-                    MapEntrySI new_old = vec.get(i);
+                    OrderedEntryStringInt new_old = vec.get(i);
                     vec.set(i - 1, old);
                     old = new_old;
                     i++;

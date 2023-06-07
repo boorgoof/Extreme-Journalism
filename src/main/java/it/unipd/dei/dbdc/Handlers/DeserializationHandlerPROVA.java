@@ -2,8 +2,8 @@ package it.unipd.dei.dbdc.Handlers;
 
 // NON FINITO
 import it.unipd.dei.dbdc.ConsoleTextColors;
-import it.unipd.dei.dbdc.Deserialization.Deserializers.Article;
 import it.unipd.dei.dbdc.Deserialization.DeserializersContainer;
+import it.unipd.dei.dbdc.Deserializers.Serializable;
 import it.unipd.dei.dbdc.Interfaces.Deserializers.Deserializer;
 
 import java.io.File;
@@ -12,18 +12,18 @@ import java.io.IOException;
 import java.util.*;
 
 /**
- * @param <T>
+ *
  */
-public class DeserializationHandlerPROVA<T> {
+public class DeserializationHandlerPROVA {
 
-    DeserializersContainer<T> container;
+    private final DeserializersContainer container;
 
     public DeserializationHandlerPROVA(String fileProperties) throws IOException {
-        container = new DeserializersContainer<>(fileProperties);
+        container = new DeserializersContainer(fileProperties);
     }
-    public List<T> deserializeFile(String format, String filePath) throws IOException {
+    public List<Serializable> deserializeFile(String format, String filePath) throws IOException {
 
-        Deserializer<T> deserializer = container.getDeserializer(format);
+        Deserializer deserializer = container.getDeserializer(format);
         if (deserializer == null) {
             throw new IOException("No deserializer found for the specified format: " + format);
         }
@@ -31,7 +31,7 @@ public class DeserializationHandlerPROVA<T> {
     }
 
 
-    public void deserializeFolder(String format, String folderPath, List<T> objects) throws IOException {
+    public void deserializeFolder(String format, String folderPath, List<Serializable> objects) throws IOException {
         File folder = new File(folderPath);
         File[] files = folder.listFiles();
 
@@ -46,7 +46,7 @@ public class DeserializationHandlerPROVA<T> {
         }
     }
 
-    public List<T> deserializeALLFormatsFolder(String folderPath) {
+    public List<Serializable> deserializeALLFormatsFolder(String folderPath) {
 
         ConsoleTextColors.printlnProcess("Sono stati forniti i deserializzatori per i seguenti formati:");
         Set<String> formatsAvailable = container.getFormats();
@@ -58,7 +58,7 @@ public class DeserializationHandlerPROVA<T> {
         // Cerco di deserializzare l'intero folder, con tutti i formati possibili
         long start = System.currentTimeMillis();
 
-        List<T> objects = new ArrayList<>();
+        List<Serializable> objects = new ArrayList<>();
         try {
             for (String format : formatsAvailable) {
                 container.deserializeFolder(format, folderPath, objects);

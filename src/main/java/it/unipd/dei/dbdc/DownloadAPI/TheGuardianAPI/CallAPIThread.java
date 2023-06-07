@@ -4,8 +4,10 @@ import it.unipd.dei.dbdc.Interfaces.DownloadAPI.APICaller;
 
 import java.io.IOException;
 import java.util.Map;
+import java.util.concurrent.Callable;
 
-public class CallAPIThread extends Thread {
+// Utilizziamo callable per poter mandare eccezioni
+public class CallAPIThread implements Callable<Object> {
     private final APICaller caller;
     private final String url;
     private final String path;
@@ -17,18 +19,14 @@ public class CallAPIThread extends Thread {
         path = p;
         params = par;
     }
-    public void run()
-    {
+
+    @Override
+    public Object call() throws IOException {
         // Se qualcosa nel formato era errato, lancia l'errore
-        try {
-            if (!caller.sendRequest(url, params, path)) {
-                throw new IllegalArgumentException("Query parameters are not correct");
-            }
-            // Ogni tanto da IllegalArgument, probably perche' c'è il limite di una richiesta al secondo
+        if (!caller.sendRequest(url, params, path)) {
+            throw new IllegalArgumentException("Query parameters are not correct");
         }
-        catch(IOException e)
-        {
-            throw new IllegalArgumentException("Error in the call of the API");
-        }
+        // Ogni tanto da IllegalArgument, probably perche' c'è il limite di una richiesta al secondo
+        return null;
     }
 }

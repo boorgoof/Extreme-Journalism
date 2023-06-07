@@ -1,7 +1,7 @@
 package it.unipd.dei.dbdc.Deserialization.Deserializers;
 
+import it.unipd.dei.dbdc.Deserializers.Serializable;
 
-import java.io.Serializable;
 import java.util.Objects;
 
 public class Article implements Serializable {
@@ -87,7 +87,10 @@ public class Article implements Serializable {
         this.source = source;
     }
 
-
+    public String toSerialize()
+    {
+        return getTitle()+" "+getBody();
+    }
 
 
 

@@ -2,6 +2,7 @@ package it.unipd.dei.dbdc.Deserialization.Deserializers;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import it.unipd.dei.dbdc.Deserializers.Serializable;
 import it.unipd.dei.dbdc.Interfaces.Deserializers.specificDeserializer;
 
 import java.io.File;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class JsonDeserializer implements specificDeserializer<Article> {
+public class JsonDeserializer implements specificDeserializer {
 
     // TODO: mettere i campi giusti
     private String[] fields = {"id", "webUrl", "headline", "bodyText", "webPublicationDate", "webUrl", "webUrl" };
@@ -27,9 +28,9 @@ public class JsonDeserializer implements specificDeserializer<Article> {
 
     // Adesso accetto che non ci siano campi. Li mette a null
     @Override
-    public List<Article> deserialize(String filePath) throws IOException {
+    public List<Serializable> deserialize(String filePath) throws IOException {
 
-        List<Article> articles = new ArrayList<>();
+        List<Serializable> articles = new ArrayList<>();
 
         ObjectMapper mapper = new ObjectMapper();
         JsonNode jsonNode = mapper.readTree(new File(filePath));
