@@ -1,5 +1,6 @@
 package it.unipd.dei.dbdc.deserializers.src_deserializers;
 import it.unipd.dei.dbdc.deserialization.Article;
+import it.unipd.dei.dbdc.deserialization.interfaces.UnitOfSearch;
 import it.unipd.dei.dbdc.deserialization.src_deserializers.JsonDeserializer;
 import org.junit.Test;
 
@@ -61,7 +62,7 @@ public class JsonDeserializerTest {
 
         try {
 
-            List<Article> articles = deserializer.deserialize("src/test/deserializersTest/jsonTest/Articles1.json"); // mi funziona solo con path preciso
+            List<UnitOfSearch> articles = deserializer.deserialize("src/test/deserializersTest/jsonTest/Articles1.json"); // mi funziona solo con path preciso
             assertNotNull(articles);
             assertFalse(articles.isEmpty());
             assertEquals(3, articles.size());
@@ -90,7 +91,7 @@ public class JsonDeserializerTest {
         deserializer.setFields(fileFields);
 
         try {
-            List<Article> articles = deserializer.deserialize("src/test/deserializersTest/jsonTest/Articles2.json"); // mi funziona solo con path preciso
+            List<UnitOfSearch> articles = deserializer.deserialize("src/test/deserializersTest/jsonTest/Articles2.json"); // mi funziona solo con path preciso
             assertNotNull(articles);
             assertFalse(articles.isEmpty());
             assertEquals(3, articles.size());
@@ -118,7 +119,7 @@ public class JsonDeserializerTest {
         deserializer.setFields(fileFields);
 
         try {
-            List<Article> articles = deserializer.deserialize("src/test/deserializersTest/jsonTest/Articles3.json");
+            List<UnitOfSearch> articles = deserializer.deserialize("src/test/deserializersTest/jsonTest/Articles3.json");
             assertNotNull(articles);
             assertFalse(articles.isEmpty());
             assertEquals(3, articles.size());
@@ -149,7 +150,7 @@ public class JsonDeserializerTest {
         deserializer.setFields(fileFields);
 
         try {
-            List<Article> articles = deserializer.deserialize("src/test/deserializersTest/jsonTest/Articles4.json"); // mi funziona solo con path preciso
+            List<UnitOfSearch> articles = deserializer.deserialize("src/test/deserializersTest/jsonTest/Articles4.json"); // mi funziona solo con path preciso
             assertNotNull(articles);
             assertFalse(articles.isEmpty());
             assertEquals(3, articles.size());
@@ -183,7 +184,7 @@ public class JsonDeserializerTest {
         deserializer.setFields(fileFields);
 
         try {
-            List<Article> articles = deserializer.deserialize("src/test/deserializersTest/jsonTest/Articles5.json"); // mi funziona solo con path preciso
+            List<UnitOfSearch> articles = deserializer.deserialize("src/test/deserializersTest/jsonTest/Articles5.json"); // mi funziona solo con path preciso
             assertNotNull(articles);
             assertFalse(articles.isEmpty());
             assertEquals(3, articles.size());
@@ -210,7 +211,7 @@ public class JsonDeserializerTest {
         deserializer.setFields(fileFields);
 
         try {
-            List<Article> articles = deserializer.deserialize("src/test/deserializersTest/jsonTest/Articles6.json"); // mi funziona solo con path preciso
+            List<UnitOfSearch> articles = deserializer.deserialize("src/test/deserializersTest/jsonTest/Articles6.json"); // mi funziona solo con path preciso
             assertNotNull(articles);
             assertFalse(articles.isEmpty());
             assertEquals(3, articles.size());

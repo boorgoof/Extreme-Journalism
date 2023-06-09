@@ -1,6 +1,7 @@
 package it.unipd.dei.dbdc.deserializers.src_deserializers;
 
 import it.unipd.dei.dbdc.deserialization.Article;
+import it.unipd.dei.dbdc.deserialization.interfaces.UnitOfSearch;
 import it.unipd.dei.dbdc.deserialization.src_deserializers.XmlDeserializer;
 import org.junit.Test;
 
@@ -28,7 +29,7 @@ public class XmlDeserializerTest {
 
         try {
 
-            List<Article> articles = deserializer.deserialize("src/test/deserializersTest/xmlTest/Articles1.xml"); // mi funziona solo con path preciso
+            List<UnitOfSearch> articles = deserializer.deserialize("src/test/deserializersTest/xmlTest/Articles1.xml"); // mi funziona solo con path preciso
             assertNotNull(articles);
             assertFalse(articles.isEmpty());
             assertEquals(3, articles.size());
@@ -59,7 +60,7 @@ public class XmlDeserializerTest {
         XmlDeserializer deserializer = new XmlDeserializer();
 
         try {
-            List<Article> articles = deserializer.deserialize("src/test/deserializersTest/xmlTest/Articles2.xml");
+            List<UnitOfSearch> articles = deserializer.deserialize("src/test/deserializersTest/xmlTest/Articles2.xml");
             assertNotNull(articles);
             assertFalse(articles.isEmpty());
             assertEquals(3, articles.size());
@@ -89,7 +90,7 @@ public class XmlDeserializerTest {
 
         try {
 
-            List<Article> articles = deserializer.deserialize("src/test/deserializersTest/xmlTest/Articles3.xml"); // mi funziona solo con path preciso
+            List<UnitOfSearch> articles = deserializer.deserialize("src/test/deserializersTest/xmlTest/Articles3.xml"); // mi funziona solo con path preciso
             assertNotNull(articles);
             assertFalse(articles.isEmpty());
             assertEquals(3, articles.size());
@@ -114,7 +115,7 @@ public class XmlDeserializerTest {
 
         try {
 
-            List<Article> articles = deserializer.deserialize("src/test/deserializersTest/xmlTest/Articles4.xml"); // mi funziona solo con path preciso
+            List<UnitOfSearch> articles = deserializer.deserialize("src/test/deserializersTest/xmlTest/Articles4.xml"); // mi funziona solo con path preciso
             assertNotNull(articles);
             assertFalse(articles.isEmpty());
             assertEquals(3, articles.size());
@@ -140,7 +141,7 @@ public class XmlDeserializerTest {
 
         try {
 
-            List<Article> articles = deserializer.deserialize("src/test/deserializersTest/xmlTest/Articles5.xml"); // mi funziona solo con path preciso
+            List<UnitOfSearch> articles = deserializer.deserialize("src/test/deserializersTest/xmlTest/Articles5.xml"); // mi funziona solo con path preciso
             assertNotNull(articles);
             assertFalse(articles.isEmpty());
             assertEquals(3, articles.size());
