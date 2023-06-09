@@ -1,6 +1,6 @@
 package it.unipd.dei.dbdc.deserializers.src_deserializers;
-import it.unipd.dei.dbdc.deserialization.Article;
-import it.unipd.dei.dbdc.deserialization.interfaces.UnitOfSearch;
+import it.unipd.dei.dbdc.search.Article;
+import it.unipd.dei.dbdc.search.interfaces.UnitOfSearch;
 import it.unipd.dei.dbdc.deserialization.src_deserializers.JsonDeserializer;
 import org.junit.Test;
 

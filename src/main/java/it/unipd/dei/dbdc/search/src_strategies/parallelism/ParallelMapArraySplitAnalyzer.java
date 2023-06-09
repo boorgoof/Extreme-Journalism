@@ -1,6 +1,6 @@
 package it.unipd.dei.dbdc.search.src_strategies.parallelism;
 
-import it.unipd.dei.dbdc.deserialization.interfaces.UnitOfSearch;
+import it.unipd.dei.dbdc.search.interfaces.UnitOfSearch;
 import it.unipd.dei.dbdc.search.OrderedEntryStringInt;
 import it.unipd.dei.dbdc.search.interfaces.Analyzer;
 

@@ -1,6 +1,6 @@
-package it.unipd.dei.dbdc.deserialization;
+package it.unipd.dei.dbdc.search;
 
-import it.unipd.dei.dbdc.deserialization.interfaces.UnitOfSearch;
+import it.unipd.dei.dbdc.search.interfaces.UnitOfSearch;
 
 import java.util.Objects;
 

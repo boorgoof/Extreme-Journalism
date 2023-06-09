@@ -2,7 +2,7 @@ package it.unipd.dei.dbdc.serializers;
 
 import it.unipd.dei.dbdc.serializers.interfaces.Serializer;
 import it.unipd.dei.dbdc.PropertiesTools;
-import it.unipd.dei.dbdc.deserialization.interfaces.UnitOfSearch;
+import it.unipd.dei.dbdc.search.interfaces.UnitOfSearch;
 
 import java.io.*;
 import java.util.HashMap;

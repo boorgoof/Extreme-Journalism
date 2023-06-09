@@ -1,7 +1,7 @@
 package it.unipd.dei.dbdc.search;
 
 import it.unipd.dei.dbdc.Console;
-import it.unipd.dei.dbdc.deserialization.interfaces.UnitOfSearch;
+import it.unipd.dei.dbdc.search.interfaces.UnitOfSearch;
 import it.unipd.dei.dbdc.PropertiesTools;
 import it.unipd.dei.dbdc.search.interfaces.Analyzer;
 

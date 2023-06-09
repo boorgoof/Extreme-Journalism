@@ -1,6 +1,5 @@
 package it.unipd.dei.dbdc.search.interfaces;
 
-import it.unipd.dei.dbdc.deserialization.interfaces.UnitOfSearch;
 import it.unipd.dei.dbdc.search.OrderedEntryStringInt;
 
 import java.util.ArrayList;

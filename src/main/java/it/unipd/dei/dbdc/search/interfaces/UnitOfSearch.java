@@ -1,4 +1,4 @@
-package it.unipd.dei.dbdc.deserialization.interfaces;
+package it.unipd.dei.dbdc.search.interfaces;
 
 public interface UnitOfSearch {
     String obtainText();
