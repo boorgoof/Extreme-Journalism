@@ -9,14 +9,15 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
+import static it.unipd.dei.dbdc.deserialization.DeserializationProperties.readDeserializersProperties;
+
 public class DeserializersContainer {
     private Map<String, Deserializer> deserializers;
 
     public DeserializersContainer(String filePropertiesName) throws IOException {
 
         Properties deserializersProperties = PropertiesTools.getProperties(filePropertiesName);
-        DeserializationProperties reader = new DeserializationProperties();
-        deserializers = reader.readDeserializersProperties(deserializersProperties);
+        deserializers = readDeserializersProperties(deserializersProperties);
 
     }
     public Deserializer getDeserializer(String format){
@@ -44,6 +45,9 @@ public class DeserializersContainer {
         return null;
     }
 
+
+    /*
+    // E' UN errore che ci siano anche qui. dovrebbero essere solo sull'handler. AL momento ho commentato ma se funziona tutto bene si possono togliere
     public List<UnitOfSearch> deserializeFile(String format, String filePath) throws IOException {
 
         Deserializer deserializer = deserializers.get(format);
@@ -68,4 +72,6 @@ public class DeserializersContainer {
             }
         }
     }
+
+     */
 }

@@ -7,8 +7,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+
 public class DeserializationProperties {
-    public Map<String, Deserializer> readDeserializersProperties(Properties deserializersProperties) throws IOException {
+    public static Map<String, Deserializer> readDeserializersProperties(Properties deserializersProperties) throws IOException {
 
         Map<String, Deserializer> deserializerMap = new HashMap<>();
 

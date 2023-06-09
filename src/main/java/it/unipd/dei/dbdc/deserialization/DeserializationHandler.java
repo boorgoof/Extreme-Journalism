@@ -47,6 +47,8 @@ public class DeserializationHandler {
 
     public List<UnitOfSearch> deserializeALLFormatsFolder(String folderPath) {
 
+        // in futuro penso di fare una funzione che trovi i formati inseriti nel database e dice che per i seguenti file non è possibile fare la deserializzazione.
+
         Console.printlnInteractiveInfo("Sono stati forniti i deserializzatori per i seguenti formati:");
         Set<String> formatsAvailable = container.getFormats();
         for (String format : formatsAvailable) {
@@ -60,7 +62,7 @@ public class DeserializationHandler {
         List<UnitOfSearch> objects = new ArrayList<>();
         try {
             for (String format : formatsAvailable) {
-                container.deserializeFolder(format, folderPath, objects);
+                deserializeFolder(format, folderPath, objects);
             }
         } catch (IOException e) {
             Console.printlnError("Deserializzazione fallita per il formato: " + e.getMessage());
