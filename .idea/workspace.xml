@@ -5,7 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Merge al volo">
+      <change afterPath="$PROJECT_DIR$/database/request1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/request2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/request3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/request4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/request5.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/request6.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/request7.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/request8.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/request9.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Deserialization/Deserializers/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Deserialization/Deserializers/Article.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Handlers/DeserializationHandlerPROVA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Handlers/DeserializationHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -315,7 +327,7 @@
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/App.java</url>
           <line>156</line>
-          <option name="timeStamp" value="4" />
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

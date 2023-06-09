@@ -3,7 +3,7 @@ package it.unipd.dei.dbdc;
 
 import it.unipd.dei.dbdc.Deserializers.Serializable;
 import it.unipd.dei.dbdc.Handlers.AnalyzerHandler;
-import it.unipd.dei.dbdc.Handlers.DeserializationHandlerPROVA;
+import it.unipd.dei.dbdc.Handlers.DeserializationHandler;
 import it.unipd.dei.dbdc.Handlers.DownloadHandler;
 import it.unipd.dei.dbdc.Handlers.SerializationHandler;
 
@@ -81,9 +81,9 @@ public class App
         }
 
         ConsoleTextColors.printlnProcess("Inizio deserializzazione di "+folderPath+"...");
-        DeserializationHandlerPROVA deserializerHandler;
+        DeserializationHandler deserializerHandler;
         try {
-             deserializerHandler = new DeserializationHandlerPROVA(deserializers_properties);
+             deserializerHandler = new DeserializationHandler(deserializers_properties);
         }
         catch (IOException e)
         {

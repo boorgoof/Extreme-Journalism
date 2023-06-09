@@ -92,9 +92,6 @@ public class Article implements Serializable {
         return getTitle()+" "+getBody();
     }
 
-
-
-
     @Override
     public String toString() {
         return "Article{" +
@@ -130,6 +127,7 @@ public class Article implements Serializable {
 
 
 }
+
 /*
 return id.equals(article.id) &&
                 url.equals(article.url) &&

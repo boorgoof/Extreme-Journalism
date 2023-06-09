@@ -14,11 +14,11 @@ import java.util.*;
 /**
  *
  */
-public class DeserializationHandlerPROVA {
+public class DeserializationHandler {
 
     private final DeserializersContainer container;
 
-    public DeserializationHandlerPROVA(String fileProperties) throws IOException {
+    public DeserializationHandler(String fileProperties) throws IOException {
         container = new DeserializersContainer(fileProperties);
     }
     public List<Serializable> deserializeFile(String format, String filePath) throws IOException {
