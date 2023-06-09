@@ -2,7 +2,7 @@ package it.unipd.dei.dbdc.deserialization;
 
 // NON FINITO
 import it.unipd.dei.dbdc.Console;
-import it.unipd.dei.dbdc.deserialization.interfaces.UnitOfSearch;
+import it.unipd.dei.dbdc.search.interfaces.UnitOfSearch;
 import it.unipd.dei.dbdc.deserialization.interfaces.Deserializer;
 
 import java.io.File;
