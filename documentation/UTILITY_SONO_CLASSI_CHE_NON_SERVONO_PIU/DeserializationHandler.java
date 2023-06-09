@@ -2,7 +2,7 @@ package it.unipd.dei.dbdc.Handlers;
 
 
 import it.unipd.dei.dbdc.Interfaces.Deserializers.Deserializer;
-import it.unipd.dei.dbdc.Deserializers.Serializable;
+import it.unipd.dei.dbdc.deserializers.Serializable;
 import it.unipd.dei.dbdc.Interfaces.Deserializers.specificDeserializer;
 import it.unipd.dei.dbdc.PropertiesTools;
 

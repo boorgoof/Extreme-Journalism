@@ -42,7 +42,7 @@ public class App1
 
     }
 
-    // Deserialization: da file a oggetto (li mettiamo nella lista di article)
+    // deserialization: da file a oggetto (li mettiamo nella lista di article)
     public static void deserialization_JSON_file(File file, List<Article> articles){
 
         try {

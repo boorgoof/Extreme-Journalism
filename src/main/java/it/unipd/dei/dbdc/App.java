@@ -1,11 +1,11 @@
 package it.unipd.dei.dbdc;
 
 
-import it.unipd.dei.dbdc.Deserializers.Serializable;
-import it.unipd.dei.dbdc.Handlers.AnalyzerHandler;
-import it.unipd.dei.dbdc.Handlers.DeserializationHandler;
-import it.unipd.dei.dbdc.Handlers.DownloadHandler;
-import it.unipd.dei.dbdc.Handlers.SerializationHandler;
+import it.unipd.dei.dbdc.deserialization.interfaces.UnitOfSearch;
+import it.unipd.dei.dbdc.search.AnalyzerHandler;
+import it.unipd.dei.dbdc.deserialization.DeserializationHandlerPROVA;
+import it.unipd.dei.dbdc.download.DownloadHandler;
+import it.unipd.dei.dbdc.serializers.SerializationHandler;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -34,7 +34,7 @@ public class App
         }
         catch (IllegalStateException e)
         {
-            ConsoleTextColors.printlnError("Programma terminato perche' non e' stata fornita una azione da compiere.");
+            Console.printlnError("Programma terminato perche' non e' stata fornita una azione da compiere.");
             return;
         }
 
@@ -49,7 +49,7 @@ public class App
         // FASE 1: download
         if (interpreter.downloadPhase()) {
 
-            ConsoleTextColors.printlnProcess("Entering the download part...");
+            Console.printlnProcessInfo("Entering the download part...");
 
             // The only download option is the path of the properties file for the API to call.
             String props = interpreter.obtainAPIProps();
@@ -62,7 +62,7 @@ public class App
                 e.printStackTrace();
                 return;
             }
-            ConsoleTextColors.printlnProcess("Exiting the download part...");
+            Console.printlnProcessInfo("Exiting the download part...");
         }
 
         // FASE 2: avviene sempre, è la serializzazione in formato comune
@@ -74,64 +74,64 @@ public class App
         String path_cli = interpreter.obtainPathOption();
 
         if (path_cli == null && folderPath == null) {
-            ConsoleTextColors.printlnError("Errore: nessun file da deserializzare");
+            Console.printlnError("Errore: nessun file da deserializzare");
             return;
         } else if (path_cli != null) {
             folderPath = path_cli;
         }
 
-        ConsoleTextColors.printlnProcess("Inizio deserializzazione di "+folderPath+"...");
-        DeserializationHandler deserializerHandler;
+        Console.printlnProcessInfo("Inizio deserializzazione di "+folderPath+"...");
+        DeserializationHandlerPROVA deserializerHandler;
         try {
-             deserializerHandler = new DeserializationHandler(deserializers_properties);
+             deserializerHandler = new DeserializationHandlerPROVA(deserializers_properties);
         }
         catch (IOException e)
         {
-            ConsoleTextColors.printlnError("Errore del programma: non sono stati caricati correttamente i deserializzatori del file "+deserializers_properties);
+            Console.printlnError("Errore del programma: non sono stati caricati correttamente i deserializzatori del file "+deserializers_properties);
             e.printStackTrace();
             return;
         }
-        List<Serializable> articles = deserializerHandler.deserializeALLFormatsFolder(folderPath);
-        ConsoleTextColors.printlnProcess("Fine deserializzazione...");
+        List<UnitOfSearch> articles = deserializerHandler.deserializeALLFormatsFolder(folderPath);
+        Console.printlnProcessInfo("Fine deserializzazione...");
 
         // B. SERIALIZZAZIONE Article -> formato comune
-        ConsoleTextColors.printlnInfo("Inizio serializzazione...");
+        Console.printlnInteractiveInfo("Inizio serializzazione...");
         try {
 
-            // Creazione della lista di oggetti Serializable a partire dalla lista di Article (Article implementa Serializable)
-            List<Serializable> objects = new ArrayList<>(articles);
+            // Creazione della lista di oggetti UnitOfSearch a partire dalla lista di Article (Article implementa UnitOfSearch)
+            List<UnitOfSearch> objects = new ArrayList<>(articles);
 
             SerializationHandler serializer = new SerializationHandler(serializers_properties);
 
             long start = System.currentTimeMillis();
             serializer.serializeObjects(objects, common_format, filePath);
             long end = System.currentTimeMillis();
-            System.out.println(ConsoleTextColors.YELLOW+"Tempo serializzazione: "+(end-start)+ConsoleTextColors.RESET);
+            System.out.println(Console.YELLOW+"Tempo serializzazione: "+(end-start)+ Console.RESET);
 
 
         } catch (IOException e) {
-            ConsoleTextColors.printlnInfo("Errore nella serializzazione: ");
+            Console.printlnError("Errore nella serializzazione: ");
             e.printStackTrace();
             return;
         }
-        ConsoleTextColors.printlnProcess("Fine serializzazione. Potrete trovare il file serializzato in "+filePath);
+        Console.printlnProcessInfo("Fine serializzazione. Potrete trovare il file serializzato in "+filePath);
 
         // FASE 3: Estrazione termini
         if (interpreter.searchPhase())
         {
             // DESERIALIZZAZIONE formato comune -> articles
-            ConsoleTextColors.printlnProcess("Inizio deserializzazione...");
+            Console.printlnProcessInfo("Inizio deserializzazione...");
 
             try {
                 articles = deserializerHandler.deserializeFile(common_format, filePath);
             }
             catch (IOException e) {
-                ConsoleTextColors.printlnError("Deserializzazione fallita per il formato: " + e.getMessage());
+                Console.printlnError("Deserializzazione fallita per il formato: " + e.getMessage());
                 return;
             }
-            ConsoleTextColors.printlnProcess("Fine deserializzazione...");
+            Console.printlnProcessInfo("Fine deserializzazione...");
 
-            ConsoleTextColors.printlnProcess("Inizio estrazione termini...");
+            Console.printlnProcessInfo("Inizio estrazione termini...");
 
             // ESTRAZIONE DEI TERMINI PIU' IMPORTANTI
             int count_cli = interpreter.obtainNumberOption();
@@ -140,17 +140,17 @@ public class App
                 tot_count = count_cli;
             }
 
-            ConsoleTextColors.printlnProcess("Scrittura dei primi "+tot_count+" termini più importanti in corso..");
+            Console.printlnProcessInfo("Scrittura dei primi "+tot_count+" termini più importanti in corso..");
             try {
                 AnalyzerHandler analyzerHandler = new AnalyzerHandler(analyze_properties);
                 analyzerHandler.analyze(articles, outFile, tot_count);
             } catch (IOException e) {
-                ConsoleTextColors.printlnError("Errore nell'apertura del file di properties di analyze");
+                Console.printlnError("Errore nell'apertura del file di properties di analyze");
                 e.printStackTrace();
                 return;
             }
 
-            ConsoleTextColors.printlnProcess("Fine estrazione termini...");
+            Console.printlnProcessInfo("Fine estrazione termini...");
         }
     }
 
