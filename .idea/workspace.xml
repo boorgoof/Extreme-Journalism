@@ -5,15 +5,103 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Ho iniziato il file di Exceptions.md">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/ConsoleTextColors.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/ConsoleTextColors.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/allclasses-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/allclasses-index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/allclasses.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/allclasses.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/allpackages-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/allpackages-index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/element-list" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/element-list" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-10.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-10.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-14.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-14.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-15.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-15.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-16.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-16.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-4.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-4.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-5.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-5.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-7.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-7.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-8.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-8.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/CommandLineInterpreter.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/CommandLineInterpreter.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/APIContainer.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/APIContainer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/APIManager.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/APIManager.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/DownloadHandler.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/DownloadHandler.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/DownloadProperties.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/DownloadProperties.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/InteractiveSelectAPI.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/InteractiveSelectAPI.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/Libraries/APICaller.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/Libraries/APICaller.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/Libraries/KongAPICaller.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/Libraries/KongAPICaller.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/Libraries/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/Libraries/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/Libraries/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/Libraries/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/QueryParam.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/QueryParam.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/GuardianAPIInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/GuardianAPIInfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/GuardianAPIManager.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/GuardianAPIManager.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/GuardianAPIParams.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/GuardianAPIParams.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/overview-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/serialized-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/serialized-form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/DESERIALIZERS_INTERFACE/DeserializationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/DESERIALIZERS_INTERFACE/DeserializationHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/DeserializationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/DeserializationHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/METODI_DESERIALIZZAZIONE_SERIALIZZAZIONE_PROVE/App1.java" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/METODI_DESERIALIZZAZIONE_SERIALIZZAZIONE_PROVE/App1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/METODI_DESERIALIZZAZIONE_SERIALIZZAZIONE_PROVE/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/METODI_DESERIALIZZAZIONE_SERIALIZZAZIONE_PROVE/Article.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/SERIALIZERS_INTERFACE/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/SERIALIZERS_INTERFACE/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/ConsoleTextColors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Console.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/InteractiveSelectAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/InteractiveSelectAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/GuardianAPIManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/GuardianAPIManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Handlers/AnalyzerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Handlers/AnalyzerHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Handlers/DeserializationHandlerPROVA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Handlers/DeserializationHandlerPROVA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Handlers/DownloadHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Handlers/DownloadHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/CommandLineInterpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/CommandLineInterpreter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Deserialization/DeserializationProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/DeserializationProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Deserialization/Deserializers/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/Article.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Deserialization/Deserializers/CsvDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/src_deserializers/CsvDeserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Deserialization/Deserializers/JsonDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/src_deserializers/JsonDeserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Deserialization/Deserializers/Serializable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/interfaces/UnitOfSearch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Deserialization/Deserializers/XmlDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/src_deserializers/XmlDeserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Deserialization/Deserializers/main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Deserialization/DeserializersContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/DeserializersContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/APIContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/APIContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/APIProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/APIProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/DownloadProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/DownloadProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/InteractiveSelectAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/InteractiveSelectAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/Libraries/KongAPICaller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/src_callers/KongAPICaller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/QueryParam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/QueryParam.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/CallAPIThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/CallAPIThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/GuardianAPIInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/GuardianAPIManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/GuardianAPIParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIParams.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Handlers/AnalyzerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/search/AnalyzerHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Handlers/DeserializationHandlerPROVA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/DeserializationHandlerPROVA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Handlers/DownloadHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/DownloadHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Handlers/SerializationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/serializers/SerializationHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Interfaces/Deserializers/Deserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/interfaces/Deserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Interfaces/Deserializers/specificDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/interfaces/DeserializerWithFields.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Interfaces/DownloadAPI/APICaller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/interfaces/APICaller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Interfaces/DownloadAPI/APIManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/interfaces/APIManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Interfaces/Serializers/Serializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/serializers/interfaces/Serializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Search_terms/AnalyzeArticleThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/search/src_strategies/parallelism/AnalyzeArticleThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Search_terms/Analyzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/search/interfaces/Analyzer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Search_terms/MapArrayScannerAnalyzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/search/src_strategies/MapArrayScannerAnalyzer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Search_terms/MapArraySplitAnalyzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/search/src_strategies/MapArraySplitAnalyzer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Search_terms/MapArraySplitAnalyzerParallel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/search/src_strategies/parallelism/MapArraySplitAnalyzerParallel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Search_terms/OrderedEntryStringInt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/search/OrderedEntryStringInt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Search_terms/PriorityQueueArraySplitAnalyzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/search/src_strategies/PriorityQueueArraySplitAnalyzer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Serializers/CsvSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/serializers/src_serializers/CsvSerializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Serializers/JsonSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/serializers/src_serializers/JsonSerializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/Serializers/XmlSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/serializers/src_serializers/XmlSerializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/Deserializers/CsvDeserializerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserializers/src_deserializers/CsvDeserializerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/Deserializers/JsonDeserializerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserializers/src_deserializers/JsonDeserializerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/Deserializers/XmlDeserializerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserializers/src_deserializers/XmlDeserializerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/DownloadAPI/APIContainerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/APIContainerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/DownloadAPI/APIPropertiesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/APIPropertiesTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/DownloadAPI/DownloadPropertiesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/DownloadPropertiesTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/DownloadAPI/InteractiveSelectAPITest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/InteractiveSelectAPITest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/DownloadAPI/Libraries/KongAPICallerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_callers/KongAPICallerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/CallAPIThreadTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/CallAPIThreadTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/GuardianAPIInfoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIInfoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/GuardianAPIManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/GuardianAPIParamsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIParamsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/Handlers/DeserializationHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserializers/DeserializationHandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/Handlers/DownloadHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/DownloadHandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/Handlers/SerializationHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/serializers/SerializationHandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/Serializers/CsvSerializerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/serializers/src_serializers/CsvSerializerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/Serializers/JsonSerializerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/serializers/src_serializers/JsonSerializerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/Serializers/XmlSerializerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/serializers/src_serializers/XmlSerializerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +172,11 @@
       <recent name="" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="it.unipd.dei.dbdc" />
+      <recent name="it.unipd.dei.dbdc.serializers.src_serializers" />
+      <recent name="it.unipd.dei.dbdc.serializers" />
+      <recent name="it.unipd.dei.dbdc.download" />
+      <recent name="it.unipd.dei.dbdc.Serializers" />
+      <recent name="it.unipd.dei.dbdc.Download" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="it.unipd.dei.dbdc.Handlers" />
@@ -121,12 +213,12 @@
       <module name="Extreme_journalism" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="it.unipd.dei.dbdc.Deserializers.*" />
+          <option name="PATTERN" value="it.unipd.dei.dbdc.deserialization.interfaces.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.Deserializers" />
-      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.Deserializers.CsvDeserializerTest" />
+      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.deserializers.src_deserializers" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.deserializers.src_deserializers.CsvDeserializerTest" />
       <option name="METHOD_NAME" value="deserialize_case1" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -137,12 +229,12 @@
       <module name="Extreme_journalism" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="it.unipd.dei.dbdc.Deserializers.*" />
+          <option name="PATTERN" value="it.unipd.dei.dbdc.deserialization.interfaces.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.Deserializers" />
-      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.Deserializers.CsvDeserializerTest" />
+      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.deserializers.src_deserializers" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.deserializers.src_deserializers.CsvDeserializerTest" />
       <option name="METHOD_NAME" value="deserialize_case2" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -153,12 +245,12 @@
       <module name="Extreme_journalism" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="it.unipd.dei.dbdc.Deserializers.*" />
+          <option name="PATTERN" value="it.unipd.dei.dbdc.deserialization.interfaces.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.Deserializers" />
-      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.Deserializers.CsvDeserializerTest" />
+      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.deserializers.src_deserializers" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.deserializers.src_deserializers.CsvDeserializerTest" />
       <option name="METHOD_NAME" value="deserialize_case3" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">

@@ -33,7 +33,7 @@ public class DeserializationHandler<T> {
             return deserializer.deserialize(filePath);
 
         } catch (Exception e) {
-            throw new IOException("Deserialization failed for format: " + format, e);
+            throw new IOException("deserialization failed for format: " + format, e);
         }
     }
 

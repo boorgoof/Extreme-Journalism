@@ -9,11 +9,11 @@ import java.io.Serializable;
 
 /*
     E' possibile utilizzare librerie di terze parti che consentono la serializzazione senza l'implementazione
-    dell'interfaccia Serializable di Java. Queste librerie spesso offrono meccanismi di serializzazione
+    dell'interfaccia UnitOfSearch di Java. Queste librerie spesso offrono meccanismi di serializzazione
     alternativi che possono essere utilizzati per oggetti non serializzabili in modo nativo.
 
     Ad esempio, in Java, puoi utilizzare librerie come Jackson, Gson o XStream per serializzare oggetti in formato
-    JSON o XML senza dover implementare l'interfaccia Serializable. Queste librerie utilizzano metodi di riflessione
+    JSON o XML senza dover implementare l'interfaccia UnitOfSearch. Queste librerie utilizzano metodi di riflessione
     o altre strategie per ottenere i dati dell'oggetto e convertirli in una rappresentazione serializzabile.
 
     Tuttavia, è importante notare che l'utilizzo di queste librerie può richiedere configurazioni aggiuntive
@@ -21,15 +21,15 @@ import java.io.Serializable;
      di attributi transienti o riferimenti circolari. Inoltre, la portabilità dei dati serializzati tra diverse
      piattaforme o linguaggi potrebbe non essere garantita.
 
-    L'interfaccia Serializable di Java, d'altra parte, è il meccanismo di serializzazione nativo offerto dal linguaggio e
+    L'interfaccia UnitOfSearch di Java, d'altra parte, è il meccanismo di serializzazione nativo offerto dal linguaggio e
     viene supportata in modo nativo dal motore di serializzazione di Java. Se possibile, è consigliabile utilizzare
-    l'implementazione Serializable di Java per garantire la compatibilità e la facilità d'uso tra le diverse parti del
+    l'implementazione UnitOfSearch di Java per garantire la compatibilità e la facilità d'uso tra le diverse parti del
     tuo sistema Java. Tuttavia, se hai requisiti specifici o preferenze per l'uso di librerie di terze parti per la
     serializzazione, puoi esplorare e utilizzare le alternative disponibili.
 
     l'interfaccia serializzable è cosi:
 
-    public interface Serializable {
+    public interface UnitOfSearch {
         // Nessun metodo dichiarato esplicitamente
     }
 

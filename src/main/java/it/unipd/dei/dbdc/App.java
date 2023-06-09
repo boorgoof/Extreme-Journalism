@@ -1,11 +1,11 @@
 package it.unipd.dei.dbdc;
 
 
-import it.unipd.dei.dbdc.Deserializers.Serializable;
-import it.unipd.dei.dbdc.Handlers.AnalyzerHandler;
-import it.unipd.dei.dbdc.Handlers.DeserializationHandlerPROVA;
-import it.unipd.dei.dbdc.Handlers.DownloadHandler;
-import it.unipd.dei.dbdc.Handlers.SerializationHandler;
+import it.unipd.dei.dbdc.deserialization.interfaces.UnitOfSearch;
+import it.unipd.dei.dbdc.search.AnalyzerHandler;
+import it.unipd.dei.dbdc.deserialization.DeserializationHandlerPROVA;
+import it.unipd.dei.dbdc.download.DownloadHandler;
+import it.unipd.dei.dbdc.serializers.SerializationHandler;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -91,15 +91,15 @@ public class App
             e.printStackTrace();
             return;
         }
-        List<Serializable> articles = deserializerHandler.deserializeALLFormatsFolder(folderPath);
+        List<UnitOfSearch> articles = deserializerHandler.deserializeALLFormatsFolder(folderPath);
         Console.printlnProcessInfo("Fine deserializzazione...");
 
         // B. SERIALIZZAZIONE Article -> formato comune
         Console.printlnInteractiveInfo("Inizio serializzazione...");
         try {
 
-            // Creazione della lista di oggetti Serializable a partire dalla lista di Article (Article implementa Serializable)
-            List<Serializable> objects = new ArrayList<>(articles);
+            // Creazione della lista di oggetti UnitOfSearch a partire dalla lista di Article (Article implementa UnitOfSearch)
+            List<UnitOfSearch> objects = new ArrayList<>(articles);
 
             SerializationHandler serializer = new SerializationHandler(serializers_properties);
 

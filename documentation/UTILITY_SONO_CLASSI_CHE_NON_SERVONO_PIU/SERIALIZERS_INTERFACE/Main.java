@@ -13,7 +13,7 @@ public class Main {
 
         List<Article> articles = createDummyArticles();
 
-        // Creazione della lista di oggetti Serializable a partire dalla lista di Article (Article implementa Serializzable)
+        // Creazione della lista di oggetti UnitOfSearch a partire dalla lista di Article (Article implementa Serializzable)
         List<Serializable> objects = new ArrayList<>(articles);
 
         // Creazione dell'istanza di SerializationHandler

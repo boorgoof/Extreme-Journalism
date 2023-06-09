@@ -1,6 +1,5 @@
 package it.unipd.dei.dbdc;
 
-import it.unipd.dei.dbdc.DownloadAPI.QueryParam;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.Options;
@@ -8,10 +7,6 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.OptionGroup;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
-
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.TreeMap;
 
 public class CommandLineInterpreter {
 
@@ -23,9 +18,9 @@ public class CommandLineInterpreter {
     // The actions you can perform: these are mandatory.
     private final static Option[] actions = {
             new Option("h", "help", false, "Print help"),
-            new Option("d", "download-files", false, "Download files from the selected API"),
+            new Option("d", "download-files", false, "download files from the selected API"),
             new Option("s", "search-terms", false, "Search the top 50 terms of the selected files"),
-            new Option("ds", "download-and-search", false, "Download files from the selected API and search the top 50 terms of those files")
+            new Option("ds", "download-and-search", false, "download files from the selected API and search the top 50 terms of those files")
     };
 
     // The download options
@@ -80,7 +75,7 @@ public class CommandLineInterpreter {
         // actionGroup.setRequired(true); FIXME
         options.addOptionGroup(actionGroup);
 
-        // Download options
+        // download options
         for (Option op : download) {
             options.addOption(op);
         }
