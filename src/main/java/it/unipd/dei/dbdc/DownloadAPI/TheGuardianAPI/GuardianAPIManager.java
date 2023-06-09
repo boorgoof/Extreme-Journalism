@@ -1,6 +1,6 @@
 package it.unipd.dei.dbdc.DownloadAPI.TheGuardianAPI;
 
-import it.unipd.dei.dbdc.ConsoleTextColors;
+import it.unipd.dei.dbdc.Console;
 import it.unipd.dei.dbdc.Interfaces.DownloadAPI.APICaller;
 import it.unipd.dei.dbdc.Interfaces.DownloadAPI.APIManager;
 import it.unipd.dei.dbdc.DownloadAPI.QueryParam;
@@ -90,7 +90,7 @@ public class GuardianAPIManager implements APIManager {
         threadPool.shutdown();
         long end = System.currentTimeMillis();
 
-        System.out.println(ConsoleTextColors.YELLOW+"Con parallelismo future: "+(end-start)+ ConsoleTextColors.RESET);
+        System.out.println(Console.YELLOW+"Con parallelismo future: "+(end-start)+ Console.RESET);
 
         caller.endRequests();
     }
@@ -126,6 +126,6 @@ public class GuardianAPIManager implements APIManager {
         }
         long end = System.currentTimeMillis();
 
-        System.out.println("Con parallelismo thread: "+(end-start)+ ConsoleTextColors.RESET);
+        System.out.println("Con parallelismo thread: "+(end-start)+ Console.RESET);
 
          */

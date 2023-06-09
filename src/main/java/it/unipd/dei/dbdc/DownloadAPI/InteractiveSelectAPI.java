@@ -1,6 +1,6 @@
 package it.unipd.dei.dbdc.DownloadAPI;
 
-import it.unipd.dei.dbdc.ConsoleTextColors;
+import it.unipd.dei.dbdc.Console;
 import it.unipd.dei.dbdc.Interfaces.DownloadAPI.APIManager;
 
 import java.io.IOException;
@@ -20,7 +20,7 @@ public class InteractiveSelectAPI {
 
     public String askAPIName()
     {
-        ConsoleTextColors.printlnInfo("Inserire il nome della API che si vuole avere. Lista delle possibili API:\n" + container.getAPINames());
+        Console.printlnInteractiveInfo("Inserire il nome della API che si vuole avere. Lista delle possibili API:\n" + container.getAPINames());
         return in.nextLine();
     }
 
@@ -33,11 +33,11 @@ public class InteractiveSelectAPI {
         }
         catch (IllegalArgumentException e)
         {
-            ConsoleTextColors.printlnInfo("Il nome della API e' incorretto. Riprovare");
+            Console.printlnInteractiveInfo("Il nome della API e' incorretto. Riprovare");
             return null;
         }
 
-        ConsoleTextColors.printlnInfo("Inserire i parametri per la query, uno per ogni riga (inserire quit per terminare):\n" + par);
+        Console.printlnInteractiveInfo("Inserire i parametri per la query, uno per ogni riga (inserire quit per terminare):\n" + par);
 
         ArrayList<QueryParam> queries = new ArrayList<>();
 
@@ -61,7 +61,7 @@ public class InteractiveSelectAPI {
                     value.append(scan.next());
                 }
                 else {
-                    ConsoleTextColors.printlnInfo("Fornire un valore al parametro, riprovare");
+                    Console.printlnInteractiveInfo("Fornire un valore al parametro, riprovare");
                     continue;
                 }
                 while (scan.hasNext())
@@ -77,7 +77,7 @@ public class InteractiveSelectAPI {
         try {
             return container.getAPIManager(name, queries);
         } catch (IllegalArgumentException e) {
-            ConsoleTextColors.printlnInfo("Nome o parametri forniti errati, riprovare");
+            Console.printlnInteractiveInfo("Nome o parametri forniti errati, riprovare");
         }
         return null;
     }

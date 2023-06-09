@@ -1,6 +1,6 @@
 package it.unipd.dei.dbdc.Handlers;
 
-import it.unipd.dei.dbdc.ConsoleTextColors;
+import it.unipd.dei.dbdc.Console;
 import it.unipd.dei.dbdc.DownloadAPI.APIProperties;
 import it.unipd.dei.dbdc.Interfaces.DownloadAPI.APIManager;
 import it.unipd.dei.dbdc.DownloadAPI.InteractiveSelectAPI;
@@ -22,7 +22,7 @@ public class  DownloadHandler {
             }
             catch (IOException | IllegalArgumentException e)
             {
-                ConsoleTextColors.printlnInfo("Selecting the API interactively...");
+                Console.printlnInteractiveInfo("Selecting the API interactively...");
             }
         }
 
@@ -35,11 +35,11 @@ public class  DownloadHandler {
                 manager = selectInteractive(download_props);
             }
 
-            ConsoleTextColors.printlnInfo("API selected correctly...");
+            Console.printlnInteractiveInfo("API selected correctly...");
 
             // Cerca di chiamare la API
             try {
-                ConsoleTextColors.printlnProcess("Calling the API...");
+                Console.printlnProcessInfo("Calling the API...");
                 // Il nuovo folder
                 String new_path_folder = folder_path + manager.getClass().toString();
 
@@ -51,18 +51,18 @@ public class  DownloadHandler {
                 long start = System.currentTimeMillis();
                 manager.callAPI(folder_path);
                 long end = System.currentTimeMillis();
-                System.out.println(ConsoleTextColors.YELLOW + "Per download: "+(end-start)+ConsoleTextColors.RESET);
+                System.out.println(Console.YELLOW + "Per download: "+(end-start)+ Console.RESET);
 
                 finished = true;
             }
             catch (IOException | IllegalArgumentException e) {
-                ConsoleTextColors.printlnError("Errore nella chiamata all'API");
+                Console.printlnError("Errore nella chiamata all'API");
                 e.printStackTrace();
                 // To ask another time for the API interactively
                 manager = null;
             }
         }
-        ConsoleTextColors.printlnProcess( "You can find the downloaded files in the format in which they were download in "+file_path);
+        Console.printlnProcessInfo( "You can find the downloaded files in the format in which they were download in "+file_path);
         return file_path;
     }
 

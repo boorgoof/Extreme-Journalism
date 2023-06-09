@@ -1,10 +1,10 @@
 package it.unipd.dei.dbdc;
 
-public class ConsoleTextColors {
+public class Console {
     // Reset
     public static final String RESET = "\033[0m";  // Text Reset
 
-    // Regular Colors TODO: renderli con altri nomi
+    // Regular Colors
     public static final String BLACK = "\033[0;30m";   // BLACK
     public static final String RED = "\033[0;31m";     // RED
     public static final String GREEN = "\033[0;32m";   // GREEN
@@ -14,12 +14,12 @@ public class ConsoleTextColors {
     public static final String CYAN = "\033[0;36m";    // CYAN
     public static final String WHITE = "\033[0;37m";   // WHITE
 
-    public static void printlnProcess(String s)
+    public static void printlnProcessInfo(String s)
     {
         System.out.println(BLUE+s+RESET);
     }
 
-    public static void printlnInfo(String s)
+    public static void printlnInteractiveInfo(String s)
     {
         System.out.println(s);
     }

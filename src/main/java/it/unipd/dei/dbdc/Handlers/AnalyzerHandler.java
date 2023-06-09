@@ -1,6 +1,6 @@
 package it.unipd.dei.dbdc.Handlers;
 
-import it.unipd.dei.dbdc.ConsoleTextColors;
+import it.unipd.dei.dbdc.Console;
 import it.unipd.dei.dbdc.Deserializers.Serializable;
 import it.unipd.dei.dbdc.PropertiesTools;
 import it.unipd.dei.dbdc.Search_terms.Analyzer;
@@ -43,7 +43,7 @@ public class AnalyzerHandler {
         }
         catch (IOException e)
         {
-            ConsoleTextColors.printlnError("Errore nella scritture del file");
+            Console.printlnError("Errore nella scritture del file");
             e.printStackTrace();
         }
     }

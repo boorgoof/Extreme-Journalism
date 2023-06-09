@@ -1,7 +1,7 @@
 package it.unipd.dei.dbdc.Handlers;
 
 // NON FINITO
-import it.unipd.dei.dbdc.ConsoleTextColors;
+import it.unipd.dei.dbdc.Console;
 import it.unipd.dei.dbdc.Deserialization.DeserializersContainer;
 import it.unipd.dei.dbdc.Deserializers.Serializable;
 import it.unipd.dei.dbdc.Interfaces.Deserializers.Deserializer;
@@ -48,12 +48,12 @@ public class DeserializationHandlerPROVA {
 
     public List<Serializable> deserializeALLFormatsFolder(String folderPath) {
 
-        ConsoleTextColors.printlnProcess("Sono stati forniti i deserializzatori per i seguenti formati:");
+        Console.printlnInteractiveInfo("Sono stati forniti i deserializzatori per i seguenti formati:");
         Set<String> formatsAvailable = container.getFormats();
         for (String format : formatsAvailable) {
-            ConsoleTextColors.printlnInfo(format);
+            Console.printlnInteractiveInfo(format);
         }
-        ConsoleTextColors.printlnInfo("Nel caso in cui ci fossero file di formato differente da questi elencati non verranno presi in considerazione");
+        Console.printlnInteractiveInfo("Nel caso in cui ci fossero file di formato differente da questi elencati non verranno presi in considerazione");
 
         // Cerco di deserializzare l'intero folder, con tutti i formati possibili
         long start = System.currentTimeMillis();
@@ -64,12 +64,12 @@ public class DeserializationHandlerPROVA {
                 container.deserializeFolder(format, folderPath, objects);
             }
         } catch (IOException e) {
-            ConsoleTextColors.printlnError("Deserializzazione fallita per il formato: " + e.getMessage());
+            Console.printlnError("Deserializzazione fallita per il formato: " + e.getMessage());
 
         }
 
         long end = System.currentTimeMillis();
-        System.out.println(ConsoleTextColors.YELLOW+"Tempo deserializzazione: "+(end-start)+ConsoleTextColors.RESET);
+        System.out.println(Console.YELLOW+"Tempo deserializzazione: "+(end-start)+ Console.RESET);
         return objects;
     }
 
