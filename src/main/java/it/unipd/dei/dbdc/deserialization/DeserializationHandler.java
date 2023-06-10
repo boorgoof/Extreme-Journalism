@@ -15,13 +15,16 @@ import java.util.*;
 public class DeserializationHandler {
 
     private final DeserializersContainer container;
-
-
+    // il mio dubbio piu grande è dove mettere la gestione dell'errore della deserializzaione. cosa vogliamo specificare? il file che non è andato bene?
+    // Solo la cartella? solo il formato?
     public DeserializationHandler(String fileProperties) throws IOException {
         container = new DeserializersContainer(fileProperties);
     }
 
-    // SI POTREBBE FARE SENZA IL FORMATO. ossia che dal path troviamo tutto noi.
+    // SI POTREBBE FARE SENZA IL FORMATO. ossia che dal path troviamo tutto noi. ANCHE se non ha molto senso la ricerca dovrebbe farla chi lo chiama.
+    // diventerebbe pesante per ninete.
+
+
     public List<UnitOfSearch> deserializeFile(String format, String filePath) throws IOException {
 
         Deserializer deserializer = container.getDeserializer(format);
@@ -62,7 +65,6 @@ public class DeserializationHandler {
         return null;
     }
 
-    // Come gestire le eccezzioni?
     public void deserializeFolder(String format, String folderPath, List<UnitOfSearch> objects) throws IOException {
 
         File folder = new File(folderPath);
@@ -80,7 +82,7 @@ public class DeserializationHandler {
         }
     }
 
-    // DA Verificare se funziona perche è migliore (non chiedo il formato).
+    // DA Verificare se funziona perche è migliore (non chiedo il formato). in realta non per forza è una cosa migliore ( da vedere )
     public void deserializeFolder(String folderPath, List<UnitOfSearch> objects) throws IOException {
 
         File folder = new File(folderPath);
