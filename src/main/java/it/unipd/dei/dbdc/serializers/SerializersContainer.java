@@ -1,8 +1,6 @@
 package it.unipd.dei.dbdc.serializers;
 
 import it.unipd.dei.dbdc.PropertiesTools;
-import it.unipd.dei.dbdc.deserialization.DeserializationProperties;
-import it.unipd.dei.dbdc.deserialization.interfaces.Deserializer;
 import it.unipd.dei.dbdc.serializers.interfaces.Serializer;
 
 import java.io.IOException;

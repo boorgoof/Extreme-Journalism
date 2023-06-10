@@ -1,4 +1,4 @@
-package it.unipd.dei.dbdc.deserializers.src_deserializers;
+package it.unipd.dei.dbdc.deserialization.src_deserializers;
 
 import it.unipd.dei.dbdc.search.Article;
 import it.unipd.dei.dbdc.search.interfaces.UnitOfSearch;

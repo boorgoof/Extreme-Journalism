@@ -25,7 +25,22 @@ public class Article implements UnitOfSearch {
         this.sourceSet = sourceSet;
         this.source = source;
     }
+    public Article(String[] values){
 
+        if (values.length != 7) {
+            throw new IllegalArgumentException("L'array deve contenere 7 valori.");
+        }
+
+        id = values[0];
+        url =  values[1];
+        title =  values[2];
+        body = values[3];
+        date = values[4];
+        sourceSet = values[5];
+        source = values[6];
+    }
+
+    // da togliere non serve
     public static Article instanceArticle(String[] values) {
 
         if (values.length != 7) {

@@ -5,21 +5,54 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Rinominato tutte le cartelle">
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/serializers/SerializationProperties.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/serializers/SerializersContainer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/DeserializationTest/handlerTest/Database/Articles1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/DeserializationTest/handlerTest/Database/Articles1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/DeserializationTest/handlerTest/Database/Articles1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/DeserializationTest/handlerTest/Database/Articles1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/DeserializationHandlerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/DeserializationPropertiesTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/DeserializersContainerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/serializers/SerializationPropertiesTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/serializers/SerializersContainerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/request1.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/request1.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/request2.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/request2.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/request3.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/request3.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/request4.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/request4.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/request5.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/request5.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/request6.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/request6.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/request7.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/request7.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/request8.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/request8.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/request9.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/request9.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/DeserializationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/DeserializationHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/DeserializationProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/DeserializationProperties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/DeserializersContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/DeserializersContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/serializers/SerializationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/serializers/SerializationHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/src_deserializers/CsvDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/src_deserializers/CsvDeserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/src_deserializers/JsonDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/src_deserializers/JsonDeserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/search/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/search/Article.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/serializers/SerializersContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/serializers/SerializersContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/deserializersTest/csvTest/Articles1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/DeserializationTest/deserializersTest/csvTest/Articles1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/deserializersTest/csvTest/Articles2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/DeserializationTest/deserializersTest/csvTest/Articles2.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/deserializersTest/csvTest/Articles3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/DeserializationTest/deserializersTest/csvTest/Articles3.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/deserializersTest/csvTest/Articles4.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/DeserializationTest/deserializersTest/csvTest/Articles4.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/deserializersTest/csvTest/Articles5.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/DeserializationTest/deserializersTest/csvTest/Articles5.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/deserializersTest/csvTest/articles_v1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/DeserializationTest/deserializersTest/csvTest/articles_v1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/deserializersTest/csvTest/nytimes_articles_v1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/DeserializationTest/deserializersTest/csvTest/nytimes_articles_v1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/deserializersTest/jsonTest/Articles1.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/DeserializationTest/deserializersTest/jsonTest/Articles1.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/deserializersTest/jsonTest/Articles2.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/DeserializationTest/deserializersTest/jsonTest/Articles2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/deserializersTest/jsonTest/Articles3.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/DeserializationTest/deserializersTest/jsonTest/Articles3.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/deserializersTest/jsonTest/Articles4.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/DeserializationTest/deserializersTest/jsonTest/Articles4.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/deserializersTest/jsonTest/Articles5.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/DeserializationTest/deserializersTest/jsonTest/Articles5.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/deserializersTest/jsonTest/Articles6.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/DeserializationTest/deserializersTest/jsonTest/Articles6.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/deserializersTest/xmlTest/Articles1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/DeserializationTest/deserializersTest/xmlTest/Articles1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/deserializersTest/xmlTest/Articles2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/DeserializationTest/deserializersTest/xmlTest/Articles2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/deserializersTest/xmlTest/Articles3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/DeserializationTest/deserializersTest/xmlTest/Articles3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/deserializersTest/xmlTest/Articles4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/DeserializationTest/deserializersTest/xmlTest/Articles4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/deserializersTest/xmlTest/Articles5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/DeserializationTest/deserializersTest/xmlTest/Articles5.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserializers/DeserializationHandlerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserializers/src_deserializers/CsvDeserializerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/src_deserializers/CsvDeserializerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserializers/src_deserializers/JsonDeserializerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/src_deserializers/JsonDeserializerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserializers/src_deserializers/XmlDeserializerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/src_deserializers/XmlDeserializerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/serializers/src_serializers/CsvSerializerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/serializers/src_serializers/CsvSerializerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/serializers/src_serializers/JsonSerializerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/serializers/src_serializers/JsonSerializerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/serializers/src_serializers/XmlSerializerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/serializers/src_serializers/XmlSerializerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,9 +62,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit4 Test Class" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -64,7 +97,7 @@
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
     &quot;git-widget-placeholder&quot;: &quot;newBranch&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/ingengeria software/eis-final/src/test/deserializersTest/csvTest&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/ingengeria software/eis-final/src/test/DeserializationTest/handlerTest/Database&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
@@ -73,36 +106,38 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\ingengeria software\eis-final\src\test\DeserializationTest\handlerTest\Database" />
       <recent name="D:\ingengeria software\eis-final\src\test\deserializersTest\csvTest" />
       <recent name="D:\ingengeria software\eis-final\src\test\deserializersTest\jsonTest" />
       <recent name="D:\ingengeria software\eis-final\src\test" />
       <recent name="D:\ingengeria software\eis-final\src\test\deserializersTest\deserializerTest2\deserializersTest3\deserializersTest4" />
-      <recent name="D:\ingengeria software\eis-final\src\test\deserializersError" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\ingengeria software\eis-final\src\test\DeserializationTest" />
       <recent name="D:\ingengeria software\eis-final\src\test\deserializersTest" />
       <recent name="D:\ingengeria software\eis-final\src\test\deserializersTest\deserializerTest2\deserializersTest3\deserializersTest4" />
       <recent name="D:\ingengeria software\eis-final\src\test\databaseTest\databaseTest2\databaseTest3\databaseTest4" />
       <recent name="D:\ingengeria software\eis-final\src\test\databaseTest\databaseTest2\databaseTest3" />
-      <recent name="D:\ingengeria software\eis-final\src\test\databaseTest\databaseTest2" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="it.unipd.dei.dbdc.deserialization.src_deserializers" />
       <recent name="it.unipd.dei.dbdc.serializers.src_serializers" />
       <recent name="it.unipd.dei.dbdc.serializers" />
       <recent name="it.unipd.dei.dbdc.download" />
       <recent name="it.unipd.dei.dbdc.Serializers" />
-      <recent name="it.unipd.dei.dbdc.Download" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="it.unipd.dei.dbdc.serializers" />
+      <recent name="it.unipd.dei.dbdc.serializers.src_serializers" />
+      <recent name="it.unipd.dei.dbdc.deserialization" />
+      <recent name="it.unipd.dei.dbdc.deserialization.src_deserializers" />
       <recent name="it.unipd.dei.dbdc.Handlers" />
-      <recent name="it.unipd.dei.dbdc.Deserializers" />
-      <recent name="it.unipd.dei.dbdc.Serializers" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.App">
+  <component name="RunManager" selected="JUnit.CsvDeserializerTest.deserialize_case2">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.App" />
       <module name="Extreme_journalism" />
@@ -135,8 +170,8 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.deserializers.src_deserializers" />
-      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.deserializers.src_deserializers.CsvDeserializerTest" />
+      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.deserialization.src_deserializers" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.deserialization.src_deserializers.CsvDeserializerTest" />
       <option name="METHOD_NAME" value="deserialize_case1" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -151,8 +186,8 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.deserializers.src_deserializers" />
-      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.deserializers.src_deserializers.CsvDeserializerTest" />
+      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.deserialization.src_deserializers" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.deserialization.src_deserializers.CsvDeserializerTest" />
       <option name="METHOD_NAME" value="deserialize_case2" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -167,8 +202,8 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.deserializers.src_deserializers" />
-      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.deserializers.src_deserializers.CsvDeserializerTest" />
+      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.deserialization.src_deserializers" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.deserialization.src_deserializers.CsvDeserializerTest" />
       <option name="METHOD_NAME" value="deserialize_case3" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -190,11 +225,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CsvDeserializerTest.deserialize_case2" />
         <item itemvalue="Application.App" />
         <item itemvalue="Batch.download" />
         <item itemvalue="JUnit.CsvDeserializerTest.deserialize_case1" />
         <item itemvalue="JUnit.CsvDeserializerTest.deserialize_case3" />
-        <item itemvalue="JUnit.CsvDeserializerTest.deserialize_case2" />
       </list>
     </recent_temporary>
   </component>

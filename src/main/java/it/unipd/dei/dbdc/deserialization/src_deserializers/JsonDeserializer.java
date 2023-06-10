@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 public class JsonDeserializer implements DeserializerWithFields {
 
     // TODO: mettere i campi giusti
@@ -41,27 +42,31 @@ public class JsonDeserializer implements DeserializerWithFields {
 
         for (JsonNode parentNode : articleParentNodes) {
 
-            Class<Article> myClass = Article.class;
-            String[] fieldsValues = new String[myClass.getDeclaredFields().length];
-
-            // serve per accettare i casi in cui non esiste la chiave nel file json altrimenti avrei nullPointerException con asText()
-            for(int i=0; i < fields.length; i++){
-                // vedere se è meglio findValue() oppure get()
-                if(parentNode.findValue(fields[i]) != null && !parentNode.findValue(fields[i]).asText().equals("null")){
-                    fieldsValues[i] = parentNode.findValue(fields[i]).asText();
-                } else {
-                    fieldsValues[i] = null;
-                }
-            }
-
-            Article article = Article.instanceArticle(fieldsValues);
-
+            Article article = parseNode(parentNode);
             //System.out.println(article);
             articles.add(article);
 
         }
 
         return articles;
+    }
+
+    private Article parseNode(JsonNode node) {
+
+        Class<Article> myClass = Article.class;
+        String[] fieldsValues = new String[myClass.getDeclaredFields().length];
+
+        // serve per accettare i casi in cui non esiste la chiave nel file json altrimenti avrei nullPointerException con asText()
+        for(int i=0; i < fields.length; i++){
+            // vedere se è meglio findValue() oppure get()
+            if(node.findValue(fields[i]) != null && !node.findValue(fields[i]).asText().equals("null")){
+                fieldsValues[i] = node.findValue(fields[i]).asText();
+            } else {
+                fieldsValues[i] = null;
+            }
+        }
+
+        return new Article(fieldsValues);
     }
 
 }

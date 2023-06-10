@@ -31,6 +31,8 @@ public class DeserializationHandler {
 
 
     public void deserializeFolder(String format, String folderPath, List<UnitOfSearch> objects) throws IOException {
+
+        // Come gestire le eccezzioni. Facciamo qui? non saprei.
         File folder = new File(folderPath);
         File[] files = folder.listFiles();
 
@@ -45,16 +47,19 @@ public class DeserializationHandler {
         }
     }
 
+
     public List<UnitOfSearch> deserializeALLFormatsFolder(String folderPath) {
 
         // in futuro penso di fare una funzione che trovi i formati inseriti nel database e dice che per i seguenti file non è possibile fare la deserializzazione.
 
         Console.printlnInteractiveInfo("Sono stati forniti i deserializzatori per i seguenti formati:");
         Set<String> formatsAvailable = container.getFormats();
+
         for (String format : formatsAvailable) {
             Console.printlnInteractiveInfo(format);
         }
         Console.printlnInteractiveInfo("Nel caso in cui ci fossero file di formato differente da questi elencati non verranno presi in considerazione");
+
 
         // Cerco di deserializzare l'intero folder, con tutti i formati possibili
         long start = System.currentTimeMillis();
@@ -73,8 +78,6 @@ public class DeserializationHandler {
         System.out.println(Console.YELLOW+"Tempo deserializzazione: "+(end-start)+ Console.RESET);
         return objects;
     }
-
-
 
 }
 

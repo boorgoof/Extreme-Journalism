@@ -69,8 +69,8 @@ public class CsvDeserializer implements DeserializerWithFields {
 
     @Override
     public List<UnitOfSearch> deserialize(String filePath) throws IOException {
-        List<UnitOfSearch> articles = new ArrayList<>();
 
+        List<UnitOfSearch> articles = new ArrayList<>();
         // Leggo gli header
         String[] header = readHeader(filePath);
 
@@ -84,17 +84,8 @@ public class CsvDeserializer implements DeserializerWithFields {
             CSVParser parser = new CSVParser(reader, csvFormat);
 
             for (CSVRecord record : parser) {
-                Class<Article> myClass = Article.class;
-                String[] fieldsValues = new String[myClass.getDeclaredFields().length];
 
-                for(int i=0; i < fields.length; i++){
-                    if(record.isSet(fields[i])){
-                        fieldsValues[i] = record.get(fields[i]);
-                    }
-                }
-
-                Article article = instanceArticle(fieldsValues);
-
+                Article article = parseArticleRecord(record);
                 //System.out.println(article);
                 articles.add(article);
 
@@ -102,6 +93,20 @@ public class CsvDeserializer implements DeserializerWithFields {
             parser.close();
         }
         return articles;
+    }
+
+    private Article parseArticleRecord(CSVRecord record){
+
+        Class<Article> myClass = Article.class;
+        String[] fieldsValues = new String[myClass.getDeclaredFields().length];
+
+        for(int i=0; i < fields.length; i++){
+            if(record.isSet(fields[i])){
+                fieldsValues[i] = record.get(fields[i]);
+            }
+        }
+
+        return new Article(fieldsValues);
     }
 
     private String[] readHeader(String filePath) throws IOException {
