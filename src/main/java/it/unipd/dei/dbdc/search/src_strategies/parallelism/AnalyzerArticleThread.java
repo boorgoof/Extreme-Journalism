@@ -2,15 +2,15 @@ package it.unipd.dei.dbdc.search.src_strategies.parallelism;
 
 import it.unipd.dei.dbdc.search.interfaces.UnitOfSearch;
 
-import java.util.Map;
+import java.util.HashSet;
 import java.util.TreeMap;
 import java.util.concurrent.Semaphore;
 
-public class AnalyzeArticleThread implements Runnable {
+public class AnalyzerArticleThread implements Runnable {
     TreeMap<String, Integer> global_map;
     UnitOfSearch article;
     Semaphore mutex;
-    public AnalyzeArticleThread(UnitOfSearch art, TreeMap<String, Integer> map, Semaphore sem)
+    public AnalyzerArticleThread(UnitOfSearch art, TreeMap<String, Integer> map, Semaphore sem)
     {
         article = art;
         global_map = map;
@@ -19,17 +19,17 @@ public class AnalyzeArticleThread implements Runnable {
 
     public void run()
     {
-        TreeMap<String, Integer> local_map = new TreeMap<>();
+        HashSet<String> local_map = new HashSet<>();
         // Prendo l'articolo e faccio lo split
         String articolo_completo = article.obtainText();
 
-        // FIXME: prende ancora il carattere null, non so perche'
+        // TODO: prende ancora il carattere null, non so perche'
         String[] tokens = articolo_completo.split("[^a-zA-Z]+");
 
-        // Inserisco tutti i tokens in una mappa locale. TODO: in realtà mi interessa solo se esiste o meno, cosa potresti usare?
+        // Inserisco tutti i tokens in una mappa locale.
         for (String tok : tokens) {
-            if (!local_map.containsKey(tok)) {
-                local_map.put(tok.toLowerCase(), 1);
+            if (!local_map.contains(tok)) {
+                local_map.add(tok.toLowerCase());
             }
         }
 
@@ -39,13 +39,13 @@ public class AnalyzeArticleThread implements Runnable {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        for (Map.Entry<String, Integer> elem : local_map.entrySet())
+        for (String elem : local_map)
         {
-            Integer val = global_map.get(elem.getKey());
+            Integer val = global_map.get(elem);
             if (val == null) {
-                global_map.put(elem.getKey(), 1);
+                global_map.put(elem, 1);
             } else {
-                global_map.replace(elem.getKey(), val + 1);
+                global_map.replace(elem, val + 1);
             }
         }
         mutex.release();

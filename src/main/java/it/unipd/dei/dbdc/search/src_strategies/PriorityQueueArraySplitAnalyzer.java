@@ -8,7 +8,7 @@ import java.util.*;
 
 public class PriorityQueueArraySplitAnalyzer implements Analyzer {
     @Override
-    public ArrayList<OrderedEntryStringInt> mostPresent(List<UnitOfSearch> articles, int tot_words, HashMap<String, Integer> banned)
+    public ArrayList<OrderedEntryStringInt> mostPresent(List<UnitOfSearch> articles, int tot_words, Set<String> banned)
     {
         TreeMap<String, Integer> global_map = new TreeMap<>();
 
@@ -42,8 +42,8 @@ public class PriorityQueueArraySplitAnalyzer implements Analyzer {
         return null; // In caso di errori o nessun articolo presente
     }
 
-    private void addOrdered(ArrayList<OrderedEntryStringInt> vec, Map.Entry<String, Integer> entry, HashMap<String, Integer> bannedWords, int tot_words) {
-        if (bannedWords.get(entry.getKey()) != null)
+    private void addOrdered(ArrayList<OrderedEntryStringInt> vec, Map.Entry<String, Integer> entry, Set<String> bannedWords, int tot_words) {
+        if (bannedWords.contains(entry.getKey()))
         {
             return;
         }

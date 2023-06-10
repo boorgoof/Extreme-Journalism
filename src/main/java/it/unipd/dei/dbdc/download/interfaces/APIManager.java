@@ -8,6 +8,8 @@ import java.util.List;
 public interface APIManager {
     String getParams();
 
+    String getName();
+
     void addParams(List<QueryParam> l) throws IllegalArgumentException;
 
     void callAPI(String path_folder) throws IllegalArgumentException, IOException;

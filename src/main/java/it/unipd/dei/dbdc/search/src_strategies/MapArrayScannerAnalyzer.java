@@ -8,19 +8,18 @@ import java.util.*;
 
 public class MapArrayScannerAnalyzer implements Analyzer {
 
-    public ArrayList<OrderedEntryStringInt> mostPresent(List<UnitOfSearch> articles, int tot_words, HashMap<String, Integer> banned)
+    public ArrayList<OrderedEntryStringInt> mostPresent(List<UnitOfSearch> articles, int tot_words, Set<String> banned)
     {
         TreeMap<String, Integer> mappona = new TreeMap<>();
 
         for (int i = 0; i < articles.size(); i++) {
-            // TODO: usa i thread
-            // TODO: usa split della classe String
+
             TreeMap<String, Integer> map = new TreeMap<>();
             UnitOfSearch art = articles.get(i);
             String articolo_completo = art.obtainText();
             Scanner sc = new Scanner(articolo_completo);
 
-            sc.useDelimiter("[^’'\\-a-zA-Z]+");
+            sc.useDelimiter("[^a-zA-Z]+");
             while (sc.hasNext()) {
                 String s = sc.next();
                 if(!map.containsKey(s)){
@@ -42,17 +41,18 @@ public class MapArrayScannerAnalyzer implements Analyzer {
         }
 
         ArrayList<OrderedEntryStringInt> max = new ArrayList<OrderedEntryStringInt>(tot_words);
+
         for (Map.Entry<String, Integer> el : mappona.entrySet()) {
             addOrdered(max, el, banned, tot_words);
         }
         return max;
     }
 
-    private void addOrdered(ArrayList<OrderedEntryStringInt> vec, Map.Entry<String, Integer> entry, HashMap<String, Integer> bannedWords, int tot_words)
+    private void addOrdered(ArrayList<OrderedEntryStringInt> vec, Map.Entry<String, Integer> entry, Set<String> bannedWords, int tot_words)
     {
         OrderedEntryStringInt el = new OrderedEntryStringInt(entry.getKey(), entry.getValue());
         for(int i = 0; i < bannedWords.size()-1; i++){
-            if(bannedWords.containsKey(el.getKey())){
+            if(bannedWords.contains(el.getKey())){
                 return;
             }
         }
