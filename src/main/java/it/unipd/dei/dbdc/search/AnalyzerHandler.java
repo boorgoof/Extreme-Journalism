@@ -4,6 +4,7 @@ import it.unipd.dei.dbdc.Console;
 import it.unipd.dei.dbdc.search.interfaces.UnitOfSearch;
 import it.unipd.dei.dbdc.PropertiesTools;
 import it.unipd.dei.dbdc.search.interfaces.Analyzer;
+import it.unipd.dei.dbdc.search.src_strategies.parallelism.ParallelMapArraySplitAnalyzer;
 
 import java.util.*;
 
@@ -36,7 +37,12 @@ public class AnalyzerHandler {
 
     public void analyze(List<UnitOfSearch> articles, String file, int tot_count)
     {
-        ArrayList<OrderedEntryStringInt> max = analyzer.mostPresent(articles, tot_count, bannedArray());
+        Set<String> banned = bannedArray();
+        long start = System.currentTimeMillis();
+        ArrayList<OrderedEntryStringInt> max = analyzer.mostPresent(articles, tot_count, banned);
+        long end = System.currentTimeMillis();
+        System.out.println(Console.YELLOW + "Tempo con set: "+(end-start)+Console.RESET);
+
         try {
             outFile(max, file);
         }
@@ -47,15 +53,15 @@ public class AnalyzerHandler {
         }
     }
 
-    private static HashMap<String, Integer> bannedArray() {
-        // TODO: ci interessa solo che sia presente, cosa uso?
+    private static Set<String> bannedArray() {
+        // TODO: ci interessa solo che sia presente, cosa uso? UN HASH SET
 
-        HashMap<String, Integer> banned = new HashMap<>(524);
+        HashSet<String> banned = new HashSet<>(524);
         File file = new File(bannedWordsPath);
         try (Scanner scanner = new Scanner(file))
         {
             while (scanner.hasNext()) {
-                banned.put(scanner.next(), 1);
+                banned.add(scanner.next());
             }
         } catch (FileNotFoundException e) {
             System.out.println("File non trovato nel path: "+bannedWordsPath);

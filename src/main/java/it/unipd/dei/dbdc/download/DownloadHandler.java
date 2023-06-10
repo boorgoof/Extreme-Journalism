@@ -38,16 +38,18 @@ public class  DownloadHandler {
             // Cerca di chiamare la API
             try {
                 Console.printlnProcessInfo("Calling the API...");
+
                 // Il nuovo folder
-                String new_path_folder = folder_path + manager.getClass().toString();
+                file_path = folder_path + manager.getName();
 
                 // Elimina il folder, se era gia' presente.
-                if (!deleteFilesInDir(new File(new_path_folder))) {
+                if (!deleteFilesInDir(new File(file_path))) {
                     // Se non era presente, lo crea
-                    Files.createDirectories(Paths.get(new_path_folder));
+                    Files.createDirectories(Paths.get(file_path));
                 }
+
                 long start = System.currentTimeMillis();
-                manager.callAPI(folder_path);
+                manager.callAPI(file_path);
                 long end = System.currentTimeMillis();
                 System.out.println(Console.YELLOW + "Per download: "+(end-start)+ Console.RESET);
 
@@ -81,7 +83,6 @@ public class  DownloadHandler {
         }
     }
 
-    // TODO: giusto?
     private static boolean deleteFilesInDir(File dir)
     {
         File[] contents = dir.listFiles();

@@ -45,33 +45,25 @@ public class InteractiveSelectAPI {
 
             String line = in.nextLine();
 
-            Scanner scan = new Scanner(line);
-            if (scan.hasNext())
+            String[] tokens = line.split("\\s+");
+
+            if (tokens.length <= 1)
             {
-                String key = scan.next();
-                if (key.equalsIgnoreCase("quit"))
+                if (tokens.length == 1 && tokens[0].equalsIgnoreCase("quit"))
                 {
                     break;
                 }
-
-                // TODO: migliora questa logica
-                StringBuilder value = new StringBuilder();
-                if (scan.hasNext())
-                {
-                    value.append(scan.next());
-                }
-                else {
-                    Console.printlnInteractiveInfo("Fornire un valore al parametro, riprovare");
-                    continue;
-                }
-                while (scan.hasNext())
-                {
-                    value.append(" ").append(scan.next());
-                }
-                queries.add(new QueryParam(key, value.toString()));
+                Console.printlnInteractiveInfo("Fornire un valore al parametro, riprovare");
+                continue;
             }
-            scan.close();
 
+            String key = tokens[0];
+            StringBuilder value = new StringBuilder(tokens[1]);
+            for (int i = 2; i < tokens.length; i++)
+            {
+                value.append(" ").append(tokens[i]);
+            }
+            queries.add(new QueryParam(key, value.toString()));
         }
 
         try {

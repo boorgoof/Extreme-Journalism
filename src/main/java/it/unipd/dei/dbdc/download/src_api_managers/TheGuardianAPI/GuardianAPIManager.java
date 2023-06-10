@@ -28,6 +28,11 @@ public class GuardianAPIManager implements APIManager {
     }
 
     @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
     public String getParams() {
         return GuardianAPIInfo.getParams();
     }

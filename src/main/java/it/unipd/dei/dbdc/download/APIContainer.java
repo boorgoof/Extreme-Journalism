@@ -40,14 +40,24 @@ public class APIContainer {
     // Returns the possible parameters of the API whose info are in the String info
     public String getAPIPossibleParams(String name) throws IllegalArgumentException
     {
-        return managers.get(name).getParams();
+        return getManager(name).getParams();
     }
 
     // Returns an instance of the API manager whose info are in the String info
     public APIManager getAPIManager(String name, List<QueryParam> l) throws IllegalArgumentException
     {
-        APIManager a = managers.get(name);
+        APIManager a = getManager(name);
         a.addParams(l);
+        return a;
+    }
+
+    private APIManager getManager(String name) throws IllegalArgumentException
+    {
+        APIManager a = managers.get(name);
+        if (a == null)
+        {
+            throw new IllegalArgumentException();
+        }
         return a;
     }
 }

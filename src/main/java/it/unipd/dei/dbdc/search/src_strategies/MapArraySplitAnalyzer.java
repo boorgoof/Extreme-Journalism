@@ -7,7 +7,7 @@ import it.unipd.dei.dbdc.search.interfaces.Analyzer;
 import java.util.*;
 
 public class MapArraySplitAnalyzer implements Analyzer {
-    public ArrayList<OrderedEntryStringInt> mostPresent(List<UnitOfSearch> articles, int tot_words, HashMap<String, Integer> banned)
+    public ArrayList<OrderedEntryStringInt> mostPresent(List<UnitOfSearch> articles, int tot_words, Set<String> banned)
     {
         TreeMap<String, Integer> global_map = new TreeMap<>();
         TreeMap<String, Integer> local_map;
@@ -46,8 +46,9 @@ public class MapArraySplitAnalyzer implements Analyzer {
         return max;
     }
 
-    private void addOrdered(ArrayList<OrderedEntryStringInt> vec, Map.Entry<String, Integer> entry, HashMap<String, Integer> bannedWords, int tot_words) {
-        if (bannedWords.get(entry.getKey()) != null)
+    private void addOrdered(ArrayList<OrderedEntryStringInt> vec, Map.Entry<String, Integer> entry, Set<String> bannedWords, int tot_words) {
+
+        if (bannedWords.contains(entry.getKey()))
         {
             return;
         }

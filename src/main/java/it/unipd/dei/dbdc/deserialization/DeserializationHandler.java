@@ -1,6 +1,5 @@
 package it.unipd.dei.dbdc.deserialization;
 
-// NON FINITO
 import it.unipd.dei.dbdc.Console;
 import it.unipd.dei.dbdc.search.interfaces.UnitOfSearch;
 import it.unipd.dei.dbdc.deserialization.interfaces.Deserializer;
@@ -20,6 +19,7 @@ public class DeserializationHandler {
     public DeserializationHandler(String fileProperties) throws IOException {
         container = new DeserializersContainer(fileProperties);
     }
+
     public List<UnitOfSearch> deserializeFile(String format, String filePath) throws IOException {
 
         Deserializer deserializer = container.getDeserializer(format);
