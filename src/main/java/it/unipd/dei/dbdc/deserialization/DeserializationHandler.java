@@ -32,11 +32,23 @@ public class DeserializationHandler {
             throw new IOException("No deserializer found for the specified format: " + format);
         }
         return deserializer.deserialize(filePath);
+        // todo mettere una eccezione.
+        // comunque deserialize puo lanciare una eccezione. IO direi che a questo livello viene buttato in output il path del file (o il nome del file) con cui ho avuto problemi.
+        // tutti gli altri livelli sucessivi basta che riportano questa eccezione in caso.
     }
+
+
 
     // NON SAPREI SI POTREBBE UNIRE QUESTA COSA CON LA DESERIALIZZAZIONE DELLA CARTELLA
     // SE UNIAMO SI SCORRE TUTTA LA CATELLA UNA SOLA VOLTA
     // COSI PERO SI POTREBBE CHIEDERE SE CONTINUARE O MENO CON LA DESERIALIZZAZIONE
+
+    // IMPORRATANTE
+    /*
+    // todo cambaire tutto ( prendere tutti i file -> metterli un lista  -> togliere quelli sbagliati -> deserializzare i file della lista rimanenti.
+    OK ci ho pensato e non voglio fare cosi. vorrei prendere tutti i file del folder path. poi eliminare quelli cattivi (metterli in output per avvisare l'utente)
+    poi tratto con una lista di file da deserializzare.
+     */
     public void rejectedFilesInFolder(String folderPath, List<String> rejectedFiles) {
 
         File folder = new File(folderPath);
@@ -109,7 +121,7 @@ public class DeserializationHandler {
         for (String format : formatsAvailable) {
             Console.printlnInteractiveInfo("- " + format);
         }
-        System.out.println(Console.YELLOW + "Dunque i seguenti formati inseriti non verranno deserializzati: " + Console.RESET);
+        System.out.println(Console.YELLOW + "Dunque i seguenti file inseriti non verranno deserializzati: " + Console.RESET);
         for (String file : rejectFiles){
             System.out.println(Console.RED + file + Console.RESET);
         }
