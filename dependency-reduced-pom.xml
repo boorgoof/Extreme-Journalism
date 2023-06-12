@@ -25,11 +25,9 @@
             <phase>generate-sources</phase>
             <goals>
               <goal>copy-resources</goal>
-              <goal>resources</goal>
             </goals>
             <configuration>
               <outputDirectory>${basedir}/target/database</outputDirectory>
-              <addDefaultExcludes>false</addDefaultExcludes>
               <resources>
                 <resource>
                   <directory>database</directory>

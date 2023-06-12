@@ -4,7 +4,6 @@ import it.unipd.dei.dbdc.Console;
 import it.unipd.dei.dbdc.search.interfaces.UnitOfSearch;
 import it.unipd.dei.dbdc.PropertiesTools;
 import it.unipd.dei.dbdc.search.interfaces.Analyzer;
-import it.unipd.dei.dbdc.search.src_strategies.parallelism.ParallelMapArraySplitAnalyzer;
 
 import java.util.*;
 
@@ -13,7 +12,7 @@ public class AnalyzerHandler {
 
     private final Analyzer analyzer;
     private final static String analyzer_key = "analyzer";
-    private static final String bannedWordsPath = "./database/stoplist-folder/english_stoplist_v1.txt";
+    private static final String bannedWordsName = "english_stoplist_v1.txt";
 
     public AnalyzerHandler(String filePropertiesName) throws IOException {
         Properties analyzersProperties = PropertiesTools.getProperties(filePropertiesName);
@@ -54,17 +53,22 @@ public class AnalyzerHandler {
     }
 
     private static Set<String> bannedArray() {
-        // TODO: ci interessa solo che sia presente, cosa uso? UN HASH SET
 
         HashSet<String> banned = new HashSet<>(524);
-        File file = new File(bannedWordsPath);
-        try (Scanner scanner = new Scanner(file))
+
+        try (InputStream file = Thread.currentThread().getContextClassLoader().getResourceAsStream(bannedWordsName))
         {
+            if (file == null)
+            {
+                throw new IOException();
+            }
+            Scanner scanner = new Scanner(file);
             while (scanner.hasNext()) {
                 banned.add(scanner.next());
             }
-        } catch (FileNotFoundException e) {
-            System.out.println("File non trovato nel path: "+bannedWordsPath);
+        }
+        catch (IOException e) {
+            System.out.println("File "+bannedWordsName+" non trovato nel path di sistema. Non verranno usate le stopwords.");
         }
         return banned;
     }
