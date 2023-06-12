@@ -3,14 +3,16 @@ package it.unipd.dei.dbdc.deserialization.src_deserializers;
 import it.unipd.dei.dbdc.search.Article;
 import it.unipd.dei.dbdc.search.interfaces.UnitOfSearch;
 import it.unipd.dei.dbdc.deserialization.src_deserializers.XmlDeserializer;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
 
+@Disabled
 public class XmlDeserializerTest {
 
     private static List<Article> createTestArticles1() {

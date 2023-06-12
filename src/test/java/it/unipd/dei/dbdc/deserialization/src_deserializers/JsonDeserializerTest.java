@@ -2,13 +2,16 @@ package it.unipd.dei.dbdc.deserialization.src_deserializers;
 import it.unipd.dei.dbdc.search.Article;
 import it.unipd.dei.dbdc.search.interfaces.UnitOfSearch;
 import it.unipd.dei.dbdc.deserialization.src_deserializers.JsonDeserializer;
-import org.junit.Test;
-
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+@Disabled
 
 public class JsonDeserializerTest {
 

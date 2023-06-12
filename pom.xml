@@ -17,7 +17,49 @@
   </properties>
 
   <build>
+
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.2.0</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
     <plugins>
+
+      <!-- TODO: ha senso? Il punto è la flessibilità -->
+      <!-- Maven resource plugin: copia la stoplist in un folder dentro a target. -->
+      <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>3.0.2</version>
+        <executions>
+          <execution>
+            <id>copy-resource-one</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <!-- Output -->
+              <outputDirectory>${basedir}/target/database</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>database</directory>
+                  <!-- Aggiungendolo copia solo i file selezionati della directory -->
+                  <!--
+                  <includes>
+                    <include>english_stoplist_v1.txt</include>
+                  </includes>
+                  -->
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
 
       <!-- Set the version of SDK used for the project -->
       <plugin>
@@ -137,17 +179,19 @@
       -->
 
     </plugins>
+
   </build>
 
   <dependencies>
 
-    <!-- Utility per i test -->
+    <!-- NUOVA VERSIONE DI JUNIT 5 -->
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.13.2</version>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>5.10.0-M1</version>
       <scope>test</scope>
     </dependency>
+
 
     <!-- Libreria per gestire le opzioni specificate da linea di comando -->
     <dependency>

@@ -13,7 +13,7 @@ public class AnalyzerHandler {
 
     private final Analyzer analyzer;
     private final static String analyzer_key = "analyzer";
-    private static final String bannedWordsPath = "./src/main/resources/english_stoplist_v1.txt";
+    private static final String bannedWordsPath = "./database/stoplist-folder/english_stoplist_v1.txt";
 
     public AnalyzerHandler(String filePropertiesName) throws IOException {
         Properties analyzersProperties = PropertiesTools.getProperties(filePropertiesName);
