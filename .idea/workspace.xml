@@ -4,8 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Rinominato tutte le cartelle">
+    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Vedete se vi piace come arrivare a english_stoplist_v1.txt. Non mi piace perche' è trattato in modo rispetto ai .properties">
+      <change afterPath="$PROJECT_DIR$/database/Serialized.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request5.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request6.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request7.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request8.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request9.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/output.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/stoplist-folder/english_stoplist_v1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TODO.md" beforeDir="false" afterPath="$PROJECT_DIR$/TODO.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/search/AnalyzerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/search/AnalyzerHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,37 +58,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;newBranch&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/ingengeria software/eis-final/src/test/DeserializationTest/handlerTest/Database&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
+    "git-widget-placeholder": "newBranch",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/vison/OneDrive/Desktop/Programmi/JAVA/INGEGNERIA DEL SOFTWARE/Progetto/eis-final/src/main/resources",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.grazie"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\resources" />
       <recent name="D:\ingengeria software\eis-final\src\test\DeserializationTest\handlerTest\Database" />
       <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\src\main\java\it\unipd\dei\dbdc\search\src_strategies\parallelism" />
       <recent name="D:\ingengeria software\eis-final\src\test\deserializersTest\csvTest" />
       <recent name="D:\ingengeria software\eis-final\src\test\deserializersTest\jsonTest" />
-      <recent name="D:\ingengeria software\eis-final\src\test" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\database" />
       <recent name="D:\ingengeria software\eis-final\database\TheGuardianAPI" />
       <recent name="D:\ingengeria software\eis-final\src\test\deserializersTest" />
       <recent name="D:\ingengeria software\eis-final\src\test\deserializersTest\deserializerTest2\deserializersTest3\deserializersTest4" />
       <recent name="D:\ingengeria software\eis-final\src\test\databaseTest\databaseTest2\databaseTest3\databaseTest4" />
-      <recent name="D:\ingengeria software\eis-final\src\test\databaseTest\databaseTest2\databaseTest3" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -92,7 +107,7 @@
       <recent name="it.unipd.dei.dbdc.Serializers" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.DeserializationHandlerTest.rejectedFilesInFolder">
+  <component name="RunManager" selected="Batch.download">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.App" />
       <module name="Extreme_journalism" />
@@ -133,22 +148,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CsvDeserializerTest.deserialize_case3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Extreme_journalism" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.unipd.dei.dbdc.search.interfaces.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.deserializers.src_deserializers" />
-      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.deserializers.src_deserializers.CsvDeserializerTest" />
-      <option name="METHOD_NAME" value="deserialize_case3" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="DeserializationHandlerTest.rejectedFilesInFolder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Extreme_journalism" />
       <extension name="coverage">
@@ -165,6 +164,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Extreme_journalism-1.0-SNAPSHOT-jar-with-dependencies.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/target/Extreme_journalism-1.0-SNAPSHOT-jar-with-dependencies.jar" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="eis-final" />
       <method v="2">
@@ -180,11 +185,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.DeserializationHandlerTest.rejectedFilesInFolder" />
-        <item itemvalue="Application.App" />
         <item itemvalue="Batch.download" />
+        <item itemvalue="Application.App" />
+        <item itemvalue="JAR Application.Extreme_journalism-1.0-SNAPSHOT-jar-with-dependencies.jar" />
+        <item itemvalue="JUnit.DeserializationHandlerTest.rejectedFilesInFolder" />
         <item itemvalue="JUnit.CsvDeserializerTest.deserialize_case1" />
-        <item itemvalue="JUnit.CsvDeserializerTest.deserialize_case3" />
       </list>
     </recent_temporary>
   </component>
@@ -295,7 +300,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686082772786</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Vedete se vi piace come arrivare a english_stoplist_v1.txt. Non mi piace perche' è trattato in modo rispetto ai .properties">
+      <created>1686603654798</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1686603654798</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -335,15 +347,29 @@
     <MESSAGE value="Parallelismo nel search" />
     <MESSAGE value="Merge al volo" />
     <MESSAGE value="Ho iniziato il file di Exceptions.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ho iniziato il file di Exceptions.md" />
+    <MESSAGE value="Vedete se vi piace come arrivare a english_stoplist_v1.txt. Non mi piace perche' è trattato in modo rispetto ai .properties" />
+    <option name="LAST_COMMIT_MESSAGE" value="Vedete se vi piace come arrivare a english_stoplist_v1.txt. Non mi piace perche' è trattato in modo rispetto ai .properties" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/App.java</url>
+          <line>70</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="java.lang.String" memberName="value" />
         <PinnedItemInfo parentTag="it.unipd.dei.dbdc.Deserializers.Article" memberName="id" />
       </pinned-members>
     </pin-to-top-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/eis_final$JsonDeserializerTest_deserialize_case3.ic" NAME="JsonDeserializerTest.deserialize_case3 Coverage Results" MODIFIED="1685518925355" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

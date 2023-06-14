@@ -1,10 +1,7 @@
 ## TODO
 * sistema entry delle mappe
+* interfaccia unitofsearch
 * junit (TEST)
-* try-with-resources
-* ATTENZIONE: DATABASE E' IN TARGET, NON QUELLO CHE INTENDIAMO NOI
-* parallelizzare la ricerca termini
-* cambia la struttura delle cartelle
 * come gestire le eccezioni
 * maven javadoc plugin
 * bash o bat

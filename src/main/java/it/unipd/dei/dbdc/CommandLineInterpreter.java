@@ -139,7 +139,8 @@ public class CommandLineInterpreter {
         /*
         return cmd.getOptionValue("path"); FIXME
          */
-        return "./database/nytimes_articles_v2";
+        //return "./database/nytimes_articles_v2";
+        return null;
     }
 
     public int obtainNumberOption()

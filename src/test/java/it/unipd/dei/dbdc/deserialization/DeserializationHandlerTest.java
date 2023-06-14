@@ -1,16 +1,14 @@
 package it.unipd.dei.dbdc.deserialization;
 
 import it.unipd.dei.dbdc.Console;
-import it.unipd.dei.dbdc.search.Article;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.Assert.*;
-
+import static org.junit.jupiter.api.Assertions.*;
 public class DeserializationHandlerTest {
     private static final String deserializers_properties = "deserializers.properties";
     @Test
