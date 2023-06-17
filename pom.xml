@@ -14,6 +14,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+    <filesToSerialize.folder>database</filesToSerialize.folder>
   </properties>
 
   <build>
@@ -30,12 +31,12 @@
 
     <plugins>
 
-      <!-- TODO: ha senso? Il punto è la flessibilità -->
-      <!-- Maven resource plugin: copia la stoplist in un folder dentro a target. -->
+      <!-- Maven resource plugin: copia il folder dei file da serializzare in un folder (chiamato database) dentro a target. -->
       <plugin>
         <artifactId>maven-resources-plugin</artifactId>
         <version>3.0.2</version>
         <executions>
+          <!-- Copia la directory fornita come database in alto nel pom nella directory database di target -->
           <execution>
             <id>copy-resource-one</id>
             <phase>generate-sources</phase>
@@ -43,17 +44,12 @@
               <goal>copy-resources</goal>
             </goals>
             <configuration>
-              <!-- Output -->
+              <!-- Output directory -->
               <outputDirectory>${basedir}/target/database</outputDirectory>
               <resources>
                 <resource>
-                  <directory>database</directory>
-                  <!-- Aggiungendolo copia solo i file selezionati della directory -->
-                  <!--
-                  <includes>
-                    <include>english_stoplist_v1.txt</include>
-                  </includes>
-                  -->
+                  <!-- Input directory -->
+                  <directory>${filesToSerialize.folder}</directory>
                 </resource>
               </resources>
             </configuration>
@@ -94,7 +90,6 @@
 
       <!-- SHADE PLUGIN: Builds an uber JAR that contains all the dependencies. -->
       <plugin>
-
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
         <version>3.4.1</version>
@@ -146,11 +141,9 @@
             </configuration>
           </execution>
         </executions>
-
       </plugin>
 
       <!-- To set the main class of the original jar without the dependencies
-
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
@@ -163,7 +156,6 @@
           </archive>
         </configuration>
       </plugin>
-
       -->
 
     </plugins>

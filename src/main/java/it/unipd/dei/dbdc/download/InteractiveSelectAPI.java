@@ -1,6 +1,5 @@
 package it.unipd.dei.dbdc.download;
 
-import it.unipd.dei.dbdc.Console;
 import it.unipd.dei.dbdc.download.interfaces.APIManager;
 
 import java.io.IOException;
@@ -13,14 +12,14 @@ public class InteractiveSelectAPI {
 
     private final Scanner in;
 
-    public InteractiveSelectAPI(String download_props, Scanner sc) throws IOException {
-        container = APIContainer.getInstance(download_props);
+    public InteractiveSelectAPI(Scanner sc) throws IOException {
+        container = APIContainer.getInstance();
         in = sc;
     }
 
     public String askAPIName()
     {
-        Console.printlnInteractiveInfo("Inserire il nome della API che si vuole avere. Lista delle possibili API:\n" + container.getAPINames());
+        System.out.println("Inserire il nome della API che si vuole avere. Lista delle possibili API:\n" + container.getAPINames());
         return in.nextLine();
     }
 
@@ -33,11 +32,11 @@ public class InteractiveSelectAPI {
         }
         catch (IllegalArgumentException e)
         {
-            Console.printlnInteractiveInfo("Il nome della API e' incorretto. Riprovare");
+            System.out.println("Il nome della API e' incorretto. Riprovare");
             return null;
         }
 
-        Console.printlnInteractiveInfo("Inserire i parametri per la query, uno per ogni riga (inserire quit per terminare):\n" + par);
+        System.out.println("Inserire i parametri per la query, uno per ogni riga (inserire quit per terminare):\n" + par);
 
         ArrayList<QueryParam> queries = new ArrayList<>();
 
@@ -53,7 +52,7 @@ public class InteractiveSelectAPI {
                 {
                     break;
                 }
-                Console.printlnInteractiveInfo("Fornire un valore al parametro, riprovare");
+                System.out.println("Fornire un valore al parametro, riprovare");
                 continue;
             }
 
@@ -69,7 +68,7 @@ public class InteractiveSelectAPI {
         try {
             return container.getAPIManager(name, queries);
         } catch (IllegalArgumentException e) {
-            Console.printlnInteractiveInfo("Nome o parametri forniti errati, riprovare");
+            System.out.println("Nome o parametri forniti errati, riprovare");
         }
         return null;
     }

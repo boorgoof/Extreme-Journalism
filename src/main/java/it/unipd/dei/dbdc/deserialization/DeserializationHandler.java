@@ -1,6 +1,5 @@
 package it.unipd.dei.dbdc.deserialization;
 
-import it.unipd.dei.dbdc.Console;
 import it.unipd.dei.dbdc.search.interfaces.UnitOfSearch;
 import it.unipd.dei.dbdc.deserialization.interfaces.Deserializer;
 
@@ -116,14 +115,14 @@ public class DeserializationHandler {
     }
     private static void rejectFilesInfo(List<String> rejectFiles, Set<String> formatsAvailable){
 
-        Console.printlnInteractiveInfo("Il programma, al momento, è in grado di trattare con i seguenti formati: ");
+        System.out.println("Il programma, al momento, è in grado di trattare con i seguenti formati: ");
 
         for (String format : formatsAvailable) {
-            Console.printlnInteractiveInfo("- " + format);
+            System.out.println("- " + format);
         }
-        System.out.println(Console.YELLOW + "Dunque i seguenti file inseriti non verranno deserializzati: " + Console.RESET);
+        System.out.println("Dunque i seguenti file inseriti non verranno deserializzati: ");
         for (String file : rejectFiles){
-            System.out.println(Console.RED + file + Console.RESET);
+            System.out.println(file);
         }
 
     }
@@ -140,7 +139,6 @@ public class DeserializationHandler {
         }
 
         // Cerco di deserializzare l'intero folder, con tutti i formati possibili
-        long start = System.currentTimeMillis();
 
         List<UnitOfSearch> objects = new ArrayList<>();
         try {
@@ -148,11 +146,9 @@ public class DeserializationHandler {
                 deserializeFolder(format, folderPath, objects);
             }
         } catch (IOException e) {
-            Console.printlnError("Deserializzazione fallita per il formato: " + e.getMessage());
+            System.err.println("Deserializzazione fallita per il formato: " + e.getMessage());
         }
 
-        long end = System.currentTimeMillis();
-        System.out.println(Console.YELLOW+"Tempo deserializzazione: "+(end-start)+ Console.RESET);
         return objects;
     }
 

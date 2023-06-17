@@ -1,7 +1,7 @@
 package it.unipd.dei.dbdc.download;
 
-import it.unipd.dei.dbdc.Console;
 import it.unipd.dei.dbdc.download.interfaces.APIManager;
+import it.unipd.dei.dbdc.resources.PathManager;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,65 +11,61 @@ import java.util.Scanner;
 
 public class  DownloadHandler {
 
-    public static String download(String folder_path, String download_props, String api_props) throws IOException {
+    public static String download(String download_props, String api_props) throws IOException {
+
+        if (download_props != null)
+        {
+            // Inizializza il container con le props, in modo che chi poi lo invoca trovi l'istanza corretta
+            APIContainer.getInstance(download_props);
+        }
 
         APIManager manager = null;
         if (api_props != null) {
             try {
-                manager = APIProperties.readAPIProperties(api_props, download_props);
+                manager = APIProperties.readAPIProperties(api_props);
             }
             catch (IOException | IllegalArgumentException e)
             {
-                Console.printlnInteractiveInfo("Selecting the API interactively...");
+                System.out.println("Selecting the API interactively...");
             }
         }
 
-        boolean finished = false;
-        String file_path = "";
+        String file_path;
 
-        while(!finished) {
+        while(true) {
 
             if (manager == null) {
-                manager = selectInteractive(download_props);
+                manager = selectInteractive();
             }
 
-            Console.printlnInteractiveInfo("API selected correctly...");
+            System.out.println("API selected correctly...");
 
             // Cerca di chiamare la API
             try {
-                Console.printlnProcessInfo("Calling the API...");
+                System.out.println("Calling the API...");
 
                 // Il nuovo folder
-                file_path = folder_path + manager.getName();
+                file_path = PathManager.getDatabaseFolder() + manager.getName();
 
-                // Elimina il folder, se era gia' presente.
-                if (!deleteFilesInDir(new File(file_path))) {
-                    // Se non era presente, lo crea
-                    Files.createDirectories(Paths.get(file_path));
-                }
-
-                long start = System.currentTimeMillis();
+                PathManager.clearFolder(file_path);
                 manager.callAPI(file_path);
-                long end = System.currentTimeMillis();
-                System.out.println(Console.YELLOW + "Per download: "+(end-start)+ Console.RESET);
-
-                finished = true;
+                break;
             }
             catch (IOException | IllegalArgumentException e) {
-                Console.printlnError("Errore nella chiamata all'API");
+                System.err.println("Errore nella chiamata all'API");
                 e.printStackTrace();
                 // To ask another time for the API interactively
                 manager = null;
             }
         }
-        Console.printlnProcessInfo( "You can find the downloaded files in the format in which they were download in "+file_path);
+        System.out.println( "You can find the downloaded files in the format in which they were download in "+file_path);
         return file_path;
     }
 
-    private static APIManager selectInteractive(String download_props) throws IOException
+    private static APIManager selectInteractive() throws IOException
     {
         try(Scanner in = new Scanner(System.in)) {
-            InteractiveSelectAPI interact = new InteractiveSelectAPI(download_props, in);
+            InteractiveSelectAPI interact = new InteractiveSelectAPI(in);
             while (true) {
 
                 String api_name = interact.askAPIName();
@@ -81,28 +77,6 @@ public class  DownloadHandler {
                 }
             }
         }
-    }
-
-    private static boolean deleteFilesInDir(File dir)
-    {
-        File[] contents = dir.listFiles();
-        if (contents == null) {
-            return false;
-        }
-        for (File f : contents) {
-            deleteDir(f);
-        }
-        return true;
-    }
-
-    private static void deleteDir(File file) {
-        File[] contents = file.listFiles();
-        if (contents != null) {
-            for (File f : contents) {
-                deleteDir(f);
-            }
-        }
-        file.delete();
     }
 
 }

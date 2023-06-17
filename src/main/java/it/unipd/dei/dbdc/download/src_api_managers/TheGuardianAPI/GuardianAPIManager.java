@@ -1,6 +1,5 @@
 package it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI;
 
-import it.unipd.dei.dbdc.Console;
 import it.unipd.dei.dbdc.download.interfaces.APICaller;
 import it.unipd.dei.dbdc.download.interfaces.APIManager;
 import it.unipd.dei.dbdc.download.QueryParam;
@@ -68,7 +67,6 @@ public class GuardianAPIManager implements APIManager {
         // Prende i parametri
         ArrayList<Map<String, Object>> requests = params.getParams();
 
-        long start = System.currentTimeMillis();
         List<Future<Object>> futures = new ArrayList<>();
         ExecutorService threadPool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
 
@@ -93,44 +91,7 @@ public class GuardianAPIManager implements APIManager {
         }
 
         threadPool.shutdown();
-        long end = System.currentTimeMillis();
-
-        System.out.println(Console.YELLOW+"Con parallelismo future: "+(end-start)+ Console.RESET);
 
         caller.endRequests();
     }
 }
-
-
-
-
-/*if (!deleteFilesInDir(new File(new_path_folder))) {
-            // Se non era presente, lo crea
-            Files.createDirectories(Paths.get(new_path_folder));
-        }
-
-        // Manda le richieste tramite la libreria e le salva in file
-        long start = System.currentTimeMillis();
-
-        Thread[] ts = new Thread[requests.size()];
-        for (int i = 0; i<requests.size(); i++)
-        {
-            String path = new_path_folder+"/request"+(i+1)+".json";
-            ts[i] = new CallAPIThread(caller, GuardianAPIInfo.getDefaultURL(), path, requests.get(i));
-            ts[i].start();
-        }
-        for (int i = 0; i<requests.size(); i++)
-        {
-            try {
-                ts[i].join();
-            }
-            catch (InterruptedException e)
-            {
-                // Non dovrebbe succedere, è se il thread viene interrotto mentre aspetta
-            }
-        }
-        long end = System.currentTimeMillis();
-
-        System.out.println("Con parallelismo thread: "+(end-start)+ Console.RESET);
-
-         */

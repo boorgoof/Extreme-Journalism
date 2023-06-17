@@ -1,5 +1,5 @@
 package it.unipd.dei.dbdc;
-
+/* TODO: elimina completely
 public class Console {
     // Reset
     public static final String RESET = "\033[0m";  // Text Reset
@@ -29,3 +29,4 @@ public class Console {
         System.err.println(RED+s+RESET);
     }
 }
+*/
