@@ -18,8 +18,6 @@ public class App
     private static final String common_format = "xml";
     private static int tot_count = 50;
 
-    // TODO: crea di default una pool di threads che viene utilizzata per tutte le cose
-
     public static void main(String[] args) {
 
         // L'utente deve passare da riga di comando l'azione che vuole fare.

@@ -3,6 +3,7 @@ package it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI;
 import it.unipd.dei.dbdc.download.interfaces.APICaller;
 import it.unipd.dei.dbdc.download.interfaces.APIManager;
 import it.unipd.dei.dbdc.download.QueryParam;
+import it.unipd.dei.dbdc.resources.ThreadPool;
 
 import java.io.IOException;
 import java.util.*;
@@ -68,7 +69,7 @@ public class GuardianAPIManager implements APIManager {
         ArrayList<Map<String, Object>> requests = params.getParams();
 
         List<Future<Object>> futures = new ArrayList<>();
-        ExecutorService threadPool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+        ExecutorService threadPool = ThreadPool.getExecutor();
 
         // Chiamiamo e mandiamo nella thread pool:
         for (int i = 0; i < requests.size(); i++) {
@@ -90,6 +91,7 @@ public class GuardianAPIManager implements APIManager {
             }
         }
 
+        //TODO: fare shutdown ogni volta o fare in modo di farlo solo alla fine? Problema: se finisco prima per eccezioni
         threadPool.shutdown();
 
         caller.endRequests();

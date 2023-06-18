@@ -18,7 +18,7 @@ public class PathManager {
     }
 
     public static String getOutFile() throws IOException {
-        if ((new File(output_folder)).listFiles() == null)
+        if (new File(output_folder).listFiles() == null)
         {
             Files.createDirectories(Paths.get(output_folder));
         }
@@ -28,7 +28,10 @@ public class PathManager {
     // TODO: migliora logica di output_folder
 
     public static String getSerializedFile(String common_format) throws IOException {
-        clearFolder(output_folder);
+        if (new File(output_folder).listFiles() == null)
+        {
+            Files.createDirectories(Paths.get(output_folder));
+        }
         return output_folder+"serialized."+common_format;
     }
 
