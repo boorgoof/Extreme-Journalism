@@ -14,9 +14,6 @@ import java.util.List;
 
 public class App
 {
-    // DEFAULT VALUES: todo prendili da un altro properties
-    private static final String common_format = "xml";
-    private static int tot_count = 50;
 
     public static void main(String[] args) {
 
@@ -33,6 +30,16 @@ public class App
 
         if (interpreter.help())
         {
+            return;
+        }
+
+        TotalProperties properties;
+        try {
+            properties = new TotalProperties();
+        }
+        catch (IOException e)
+        {
+            System.out.println("Programma terminato perche' non e' stato trovato il file total.properties.");
             return;
         }
 
@@ -91,7 +98,7 @@ public class App
         // Percorso del file serializzato.
         String filePath;
         try {
-            filePath = PathManager.getSerializedFile(common_format);
+            filePath = PathManager.getSerializedFile(properties.getCommonFormat());
         }
         catch (IOException e)
         {
@@ -107,7 +114,7 @@ public class App
 
             SerializationHandler serializersHandler = new SerializationHandler(interpreter.obtainSerProps());
 
-            serializersHandler.serializeObjects(objects, common_format, filePath);
+            serializersHandler.serializeObjects(objects, properties.getCommonFormat(), filePath);
 
         } catch (IOException e) {
             System.out.println("Errore nella serializzazione: ");
@@ -123,7 +130,7 @@ public class App
             System.out.println("\nInizio deserializzazione...");
 
             try {
-                articles = deserializersHandler.deserializeFile(common_format, filePath);
+                articles = deserializersHandler.deserializeFile(properties.getCommonFormat(), filePath);
             }
             catch (IOException e) {
                 System.out.println("Deserializzazione fallita per il formato: " + e.getMessage());
@@ -134,15 +141,15 @@ public class App
             System.out.println("\nInizio estrazione termini...");
 
             // ESTRAZIONE DEI TERMINI PIU' IMPORTANTI
-            int count_cli = interpreter.obtainNumberOption();
-            if (count_cli != -1)
+            int count = interpreter.obtainNumberOption();
+            if (count == -1)
             {
-                tot_count = count_cli;
+                count = properties.getWordsCount();
             }
 
             String analyzeProps = interpreter.obtainAnalyzeProps();
             try {
-                AnalyzerHandler.analyze(analyzeProps, articles, tot_count);
+                AnalyzerHandler.analyze(analyzeProps, articles, count);
             } catch (IOException e) {
                 System.out.println("Errore nell'apertura del file di properties di analyze");
                 e.printStackTrace();

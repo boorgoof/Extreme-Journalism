@@ -1,6 +1,5 @@
 package it.unipd.dei.dbdc.deserialization;
 
-import it.unipd.dei.dbdc.Console;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -56,7 +55,7 @@ public class DeserializationHandlerTest {
 
         }catch (IOException e)
         {
-            Console.printlnError("Errore del programma: non sono stati caricati correttamente i deserializzatori del file "+deserializers_properties);
+            System.err.println("Errore del programma: non sono stati caricati correttamente i deserializzatori del file "+deserializers_properties);
             e.printStackTrace();
         }
 

@@ -30,7 +30,7 @@
               <outputDirectory>${basedir}/target/database</outputDirectory>
               <resources>
                 <resource>
-                  <directory>database</directory>
+                  <directory>${filesToSerialize.folder}</directory>
                 </resource>
               </resources>
             </configuration>
@@ -141,5 +141,6 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.target>1.8</maven.compiler.target>
+    <filesToSerialize.folder>database</filesToSerialize.folder>
   </properties>
 </project>
