@@ -12,8 +12,11 @@ public class PathManager {
     private static final String outFile = "output.txt";
     private static final String bannedWordsFile = "english_stoplist_v1.txt";
 
-    public static String getDatabaseFolder()
-    {
+    public static String getDatabaseFolder() throws IOException {
+        if (new File(database_folder).listFiles() == null)
+        {
+            Files.createDirectories(Paths.get(database_folder));
+        }
         return database_folder;
     }
 
