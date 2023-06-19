@@ -34,7 +34,7 @@ public class GuardianAPIManager implements APIManager {
 
     @Override
     public String getParams() {
-        return GuardianAPIInfo.getParams();
+        return GuardianAPIInfo.getFormattedParams();
     }
 
     // To add parameters

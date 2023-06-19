@@ -43,7 +43,7 @@ public class DeserializationHandlerTest {
         try {
 
             DeserializationHandler handler = new DeserializationHandler(deserializers_properties);
-            handler.rejectedFilesInFolder("src/test/DeserializationTest/handlerTest", rejectFiles);
+            handler.rejectedFilesInFolder("src/test/resources/DeserializationTest/handlerTest", rejectFiles);
 
             assertNotNull(rejectFiles);
             assertFalse(rejectFiles.isEmpty());

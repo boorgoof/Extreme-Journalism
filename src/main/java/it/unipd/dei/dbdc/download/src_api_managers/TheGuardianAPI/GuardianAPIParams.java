@@ -48,6 +48,7 @@ public class GuardianAPIParams {
                 return;
         }
         specified_params.put(param.getKey(), param.getValue());
+        //TODO: come funziona la data?
     }
 
     public ArrayList<Map<String, Object>> getParams() throws IllegalArgumentException
