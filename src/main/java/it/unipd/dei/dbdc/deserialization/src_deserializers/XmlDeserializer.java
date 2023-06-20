@@ -15,13 +15,15 @@ import it.unipd.dei.dbdc.search.interfaces.UnitOfSearch;
 public class XmlDeserializer implements Deserializer {
 
     @Override
-    public List<UnitOfSearch> deserialize(String filePath) throws IOException {
+    public List<UnitOfSearch> deserialize(File xmlFile) throws IOException {
 
         XmlMapper xmlMapper = new XmlMapper();
-        File xmlFile = new File(filePath);
         List<Article> a = xmlMapper.readValue(xmlFile, new TypeReference<List<Article>>() {}); // FIXME: funziona, ma non ha senso
         return new ArrayList<>(a);
     }
+
+
+
     // IN QUESTA VERSIONE RESTITUISCE UNA LISTA VUOTA SE C'E un errore
     /*
     @Override

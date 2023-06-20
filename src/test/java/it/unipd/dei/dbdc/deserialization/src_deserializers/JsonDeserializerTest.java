@@ -5,6 +5,7 @@ import it.unipd.dei.dbdc.deserialization.src_deserializers.JsonDeserializer;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -64,8 +65,8 @@ public class JsonDeserializerTest {
         deserializer.setFields(fileFields);
 
         try {
-
-            List<UnitOfSearch> articles = deserializer.deserialize("src/test/resources/DeserializationTest/deserializersTest/jsonTest/Articles1.json"); // mi funziona solo con path preciso
+            File file = new File ("src/test/resources/DeserializationTest/deserializersTest/jsonTest/Articles1.json");
+            List<UnitOfSearch> articles = deserializer.deserialize(file); // mi funziona solo con path preciso
             assertNotNull(articles);
             assertFalse(articles.isEmpty());
             assertEquals(3, articles.size());
@@ -94,7 +95,8 @@ public class JsonDeserializerTest {
         deserializer.setFields(fileFields);
 
         try {
-            List<UnitOfSearch> articles = deserializer.deserialize("src/test/resources/DeserializationTest/deserializersTest/jsonTest/Articles2.json"); // mi funziona solo con path preciso
+            File file = new File ("src/test/resources/DeserializationTest/deserializersTest/jsonTest/Articles2.json");
+            List<UnitOfSearch> articles = deserializer.deserialize(file); // mi funziona solo con path preciso
             assertNotNull(articles);
             assertFalse(articles.isEmpty());
             assertEquals(3, articles.size());
@@ -122,7 +124,9 @@ public class JsonDeserializerTest {
         deserializer.setFields(fileFields);
 
         try {
-            List<UnitOfSearch> articles = deserializer.deserialize("src/test/resources/DeserializationTest/deserializersTest/jsonTest/Articles3.json");
+            File file = new File ("src/test/resources/DeserializationTest/deserializersTest/jsonTest/Articles3.json");
+            List<UnitOfSearch> articles = deserializer.deserialize(file);
+
             assertNotNull(articles);
             assertFalse(articles.isEmpty());
             assertEquals(3, articles.size());
@@ -153,7 +157,9 @@ public class JsonDeserializerTest {
         deserializer.setFields(fileFields);
 
         try {
-            List<UnitOfSearch> articles = deserializer.deserialize("src/test/resources/DeserializationTest/deserializersTest/jsonTest/Articles4.json"); // mi funziona solo con path preciso
+            File file = new File ("src/test/resources/DeserializationTest/deserializersTest/jsonTest/Articles4.json");
+            List<UnitOfSearch> articles = deserializer.deserialize(file);
+
             assertNotNull(articles);
             assertFalse(articles.isEmpty());
             assertEquals(3, articles.size());
@@ -187,7 +193,8 @@ public class JsonDeserializerTest {
         deserializer.setFields(fileFields);
 
         try {
-            List<UnitOfSearch> articles = deserializer.deserialize("src/test/resources/DeserializationTest/deserializersTest/jsonTest/Articles5.json"); // mi funziona solo con path preciso
+            File file = new File ("src/test/resources/DeserializationTest/deserializersTest/jsonTest/Articles5.json");
+            List<UnitOfSearch> articles = deserializer.deserialize(file);
             assertNotNull(articles);
             assertFalse(articles.isEmpty());
             assertEquals(3, articles.size());
@@ -214,7 +221,8 @@ public class JsonDeserializerTest {
         deserializer.setFields(fileFields);
 
         try {
-            List<UnitOfSearch> articles = deserializer.deserialize("src/test/resources/DeserializationTest/deserializersTest/jsonTest/Articles6.json"); // mi funziona solo con path preciso
+            File file = new File ("src/test/resources/DeserializationTest/deserializersTest/jsonTest/Articles6.json");
+            List<UnitOfSearch> articles = deserializer.deserialize(file);
             assertNotNull(articles);
             assertFalse(articles.isEmpty());
             assertEquals(3, articles.size());

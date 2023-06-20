@@ -8,6 +8,7 @@ import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
@@ -68,13 +69,13 @@ public class CsvDeserializer implements DeserializerWithFields {
     */
 
     @Override
-    public List<UnitOfSearch> deserialize(String filePath) throws IOException {
+    public List<UnitOfSearch> deserialize(File csvFile) throws IOException {
 
         List<UnitOfSearch> articles = new ArrayList<>();
         // Leggo gli header
-        String[] header = readHeader(filePath);
+        String[] header = readHeader(csvFile);
 
-        try (Reader reader = new FileReader(filePath)) {
+        try (Reader reader = new FileReader(csvFile)) {
 
             CSVFormat csvFormat = CSVFormat.DEFAULT.builder()
                     .setHeader(header)
@@ -109,9 +110,9 @@ public class CsvDeserializer implements DeserializerWithFields {
         return new Article(fieldsValues);
     }
 
-    private String[] readHeader(String filePath) throws IOException {
+    private String[] readHeader(File csvFile) throws IOException {
         CSVFormat csvFormat = CSVFormat.DEFAULT;
-        try (Reader reader = new FileReader(filePath); CSVParser parser = new CSVParser(reader, csvFormat)) {
+        try (Reader reader = new FileReader(csvFile); CSVParser parser = new CSVParser(reader, csvFormat)) {
 
             // Leggi la prima riga del file
             CSVRecord headerRecord = parser.iterator().next();

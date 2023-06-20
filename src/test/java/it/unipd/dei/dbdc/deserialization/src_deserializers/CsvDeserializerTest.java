@@ -5,6 +5,7 @@ import it.unipd.dei.dbdc.search.interfaces.UnitOfSearch;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,11 +52,12 @@ public class CsvDeserializerTest {
     public void deserialize_case1() {
 
         String csvFileTest = "src/test/resources/DeserializationTest/deserializersTest/csvTest/Articles1.csv";
+        File file = new File (csvFileTest);
         CsvDeserializer deserializer = new CsvDeserializer();
 
         try {
 
-            List<UnitOfSearch> articles = deserializer.deserialize(csvFileTest); // mi funziona solo con path preciso
+            List<UnitOfSearch> articles = deserializer.deserialize(file); // mi funziona solo con path preciso
             assertNotNull(articles);
             assertFalse(articles.isEmpty());
             assertEquals(3, articles.size());
@@ -79,11 +81,12 @@ public class CsvDeserializerTest {
     public void deserialize_case2() {
 
         String csvFileTest = "src/test/resources/DeserializationTest/deserializersTest/csvTest/Articles2.csv";
+        File file = new File (csvFileTest);
         CsvDeserializer deserializer = new CsvDeserializer();
 
         try {
 
-            List<UnitOfSearch> articles = deserializer.deserialize(csvFileTest); // mi funziona solo con path preciso
+            List<UnitOfSearch> articles = deserializer.deserialize(file); // mi funziona solo con path preciso
             assertNotNull(articles);
             assertFalse(articles.isEmpty());
             assertEquals(3, articles.size());

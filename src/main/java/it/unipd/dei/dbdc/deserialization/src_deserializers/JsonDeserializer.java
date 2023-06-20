@@ -30,12 +30,12 @@ public class JsonDeserializer implements DeserializerWithFields {
 
     // Adesso accetto che non ci siano campi. Li mette a null
     @Override
-    public List<UnitOfSearch> deserialize(String filePath) throws IOException {
+    public List<UnitOfSearch> deserialize(File jsonFile) throws IOException {
 
         List<UnitOfSearch> articles = new ArrayList<>();
 
         ObjectMapper mapper = new ObjectMapper();
-        JsonNode jsonNode = mapper.readTree(new File(filePath));
+        JsonNode jsonNode = mapper.readTree(jsonFile);
 
         // Trova tutti i nodi che hanno ID dentro (come figlio, quindi sono gli articoli)
         List<JsonNode> articleParentNodes = jsonNode.findParents(fields[0]);

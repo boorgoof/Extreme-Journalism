@@ -8,6 +8,7 @@ import it.unipd.dei.dbdc.deserialization.DeserializationHandler;
 import it.unipd.dei.dbdc.download.DownloadHandler;
 import it.unipd.dei.dbdc.serializers.SerializationHandler;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -90,7 +91,14 @@ public class App
             e.printStackTrace();
             return;
         }
-        List<UnitOfSearch> articles = deserializersHandler.deserializeALLFormatsFolder(folderPath);
+        List<UnitOfSearch> articles;
+        try{
+             articles = deserializersHandler.deserializeFolder(folderPath);
+        } catch (IOException e){
+            System.err.println(e); // SISTEMA LE ECCEZIONI
+            return;
+        }
+
         System.out.println("Fine deserializzazione...\n");
 
         // B. SERIALIZZAZIONE Article -> formato comune
@@ -130,10 +138,12 @@ public class App
             System.out.println("\nInizio deserializzazione...");
 
             try {
-                articles = deserializersHandler.deserializeFile(properties.getCommonFormat(), filePath);
+                // AL MOMENTO USA LA SECONDA VERSIONE DI DESERIALIZER. DA CAMBIARE?
+                File commonFormatFile = new File(filePath);
+                articles = deserializersHandler.deserializeFile(commonFormatFile);
             }
             catch (IOException e) {
-                System.out.println("Deserializzazione fallita per il formato: " + e.getMessage());
+                System.out.println(e.getMessage());
                 return;
             }
             System.out.println("Fine deserializzazione...\n");
