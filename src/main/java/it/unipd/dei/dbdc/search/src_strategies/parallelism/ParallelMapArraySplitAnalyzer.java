@@ -1,5 +1,6 @@
 package it.unipd.dei.dbdc.search.src_strategies.parallelism;
 
+import it.unipd.dei.dbdc.resources.ThreadPool;
 import it.unipd.dei.dbdc.search.interfaces.UnitOfSearch;
 import it.unipd.dei.dbdc.search.OrderedEntryStringInt;
 import it.unipd.dei.dbdc.search.interfaces.Analyzer;
@@ -18,7 +19,7 @@ public class ParallelMapArraySplitAnalyzer implements Analyzer {
         Semaphore mutex = new Semaphore(1);
 
         // Parallel part
-        ExecutorService threadPool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+        ExecutorService threadPool = ThreadPool.getExecutor();
         List<Future<?>> futures = new ArrayList<>(articles.size());
 
         // Chiamiamo e mandiamo nella thread pool:
@@ -34,7 +35,7 @@ public class ParallelMapArraySplitAnalyzer implements Analyzer {
             } catch (InterruptedException | ExecutionException e) {
                 // Avviene se è stato interrotto mentre aspettava o ha lanciato un'eccezione
                 threadPool.shutdown();
-                throw new IllegalStateException("Error in parallelism");
+                throw new IllegalStateException("Errore nel parallelismo");
             }
         }
         threadPool.shutdown();

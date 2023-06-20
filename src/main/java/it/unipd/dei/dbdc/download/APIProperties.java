@@ -1,7 +1,7 @@
 package it.unipd.dei.dbdc.download;
 
 import it.unipd.dei.dbdc.download.interfaces.APIManager;
-import it.unipd.dei.dbdc.PropertiesTools;
+import it.unipd.dei.dbdc.resources.ResourcesTools;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,8 +13,8 @@ public class APIProperties
 {
     private static final String name = "name";
 
-    public static APIManager readAPIProperties(String properties_file, String download_props) throws IOException, IllegalArgumentException {
-        Properties appProps = PropertiesTools.getProperties(properties_file);
+    public static APIManager readAPIProperties(String properties_file) throws IOException, IllegalArgumentException {
+        Properties appProps = ResourcesTools.getProperties(properties_file);
 
         // 1. Cerco la property del caller, che è la classe che implementa APICaller
         String n = null;
@@ -33,7 +33,7 @@ public class APIProperties
                 params.add(new QueryParam(prop, appProps.getProperty(prop)));
             }
         }
-        APIContainer container = APIContainer.getInstance(download_props);
+        APIContainer container = APIContainer.getInstance();
 
         return container.getAPIManager(n, params);
     }

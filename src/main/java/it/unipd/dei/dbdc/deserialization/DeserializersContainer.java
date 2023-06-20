@@ -1,11 +1,9 @@
 package it.unipd.dei.dbdc.deserialization;
 
-import it.unipd.dei.dbdc.search.interfaces.UnitOfSearch;
+import it.unipd.dei.dbdc.resources.ResourcesTools;
 import it.unipd.dei.dbdc.deserialization.interfaces.Deserializer;
 import it.unipd.dei.dbdc.deserialization.interfaces.DeserializerWithFields;
-import it.unipd.dei.dbdc.PropertiesTools;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
@@ -15,10 +13,7 @@ public class DeserializersContainer {
     private Map<String, Deserializer> deserializers;
 
     public DeserializersContainer(String filePropertiesName) throws IOException {
-
-        Properties deserializersProperties = PropertiesTools.getProperties(filePropertiesName);
-        deserializers = readDeserializersProperties(deserializersProperties);
-
+        deserializers = readDeserializersProperties(filePropertiesName);
     }
     public Deserializer getDeserializer(String format){
         return deserializers.get(format);

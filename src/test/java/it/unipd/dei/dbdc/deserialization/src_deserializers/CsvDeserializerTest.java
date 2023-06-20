@@ -2,7 +2,6 @@ package it.unipd.dei.dbdc.deserialization.src_deserializers;
 
 import it.unipd.dei.dbdc.search.Article;
 import it.unipd.dei.dbdc.search.interfaces.UnitOfSearch;
-import it.unipd.dei.dbdc.deserialization.src_deserializers.CsvDeserializer;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -51,7 +50,7 @@ public class CsvDeserializerTest {
     @Test
     public void deserialize_case1() {
 
-        String csvFileTest = "src/test/deserializationTest/deserializersTest/csvTest/Articles1.csv";
+        String csvFileTest = "src/test/resources/DeserializationTest/deserializersTest/csvTest/Articles1.csv";
         CsvDeserializer deserializer = new CsvDeserializer();
 
         try {
@@ -79,7 +78,7 @@ public class CsvDeserializerTest {
     @Test
     public void deserialize_case2() {
 
-        String csvFileTest = "src/test/deserializationTest/deserializersTest/csvTest/Articles2.csv";
+        String csvFileTest = "src/test/resources/DeserializationTest/deserializersTest/csvTest/Articles2.csv";
         CsvDeserializer deserializer = new CsvDeserializer();
 
         try {
@@ -106,7 +105,7 @@ public class CsvDeserializerTest {
     @Test
     public void deserialize_case3() {
 
-        String csvFileTest = "src/test/deserializersTest/csvTest/Articles3.csv";
+        String csvFileTest = "src/test/resources/DeserializationTest/deserializersTest/csvTest/Articles3.csv";
         CsvDeserializer deserializer = new CsvDeserializer();
 
         try {

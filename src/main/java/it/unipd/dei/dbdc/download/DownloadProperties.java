@@ -2,7 +2,7 @@ package it.unipd.dei.dbdc.download;
 
 import it.unipd.dei.dbdc.download.interfaces.APICaller;
 import it.unipd.dei.dbdc.download.interfaces.APIManager;
-import it.unipd.dei.dbdc.PropertiesTools;
+import it.unipd.dei.dbdc.resources.ResourcesTools;
 
 import java.io.IOException;
 import java.lang.reflect.Constructor;
@@ -13,10 +13,15 @@ import java.util.*;
 public class DownloadProperties {
 
     private final static String caller_key = "library";
+    private static String download_properties = "download.properties";
 
     public static HashMap<String, APIManager> readAPIContainerProperties(String properties_file) throws IOException {
 
-        Properties appProps = PropertiesTools.getProperties(properties_file);
+        if (properties_file != null)
+        {
+            download_properties = properties_file;
+        }
+        Properties appProps = ResourcesTools.getProperties(download_properties);
 
         // 1. Cerco la property del caller, che è la classe che implementa APICaller
         String caller_name = appProps.getProperty(caller_key);

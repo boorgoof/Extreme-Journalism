@@ -4,16 +4,54 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Vedete se vi piace come arrivare a english_stoplist_v1.txt. Non mi piace perche' è trattato in modo rispetto ai .properties">
-      <change afterPath="$PROJECT_DIR$/database/Serialized.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request4.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request5.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/output.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Messo quasi tutto in properties o file a parte, in modo che il main sia snello">
+      <change afterPath="$PROJECT_DIR$/src/test/resources/download/falseApi.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/download/falseApi2.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/download/trueApi.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request1.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request3.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request4.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request5.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIParams.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/DeserializationTest/deserializersTest/csvTest/Articles1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/csvTest/Articles1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/DeserializationTest/deserializersTest/csvTest/Articles2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/csvTest/Articles2.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/DeserializationTest/deserializersTest/csvTest/Articles3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/csvTest/Articles3.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/DeserializationTest/deserializersTest/csvTest/Articles4.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/csvTest/Articles4.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/DeserializationTest/deserializersTest/csvTest/Articles5.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/csvTest/Articles5.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/DeserializationTest/deserializersTest/csvTest/articles_v1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/csvTest/articles_v1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/DeserializationTest/deserializersTest/csvTest/nytimes_articles_v1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/csvTest/nytimes_articles_v1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/DeserializationTest/deserializersTest/jsonTest/Articles1.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/jsonTest/Articles1.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/DeserializationTest/deserializersTest/jsonTest/Articles2.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/jsonTest/Articles2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/DeserializationTest/deserializersTest/jsonTest/Articles3.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/jsonTest/Articles3.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/DeserializationTest/deserializersTest/jsonTest/Articles4.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/jsonTest/Articles4.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/DeserializationTest/deserializersTest/jsonTest/Articles5.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/jsonTest/Articles5.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/DeserializationTest/deserializersTest/jsonTest/Articles6.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/jsonTest/Articles6.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/DeserializationTest/deserializersTest/xmlTest/Articles1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/DeserializationTest/deserializersTest/xmlTest/Articles2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/DeserializationTest/deserializersTest/xmlTest/Articles3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/DeserializationTest/deserializersTest/xmlTest/Articles4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/DeserializationTest/deserializersTest/xmlTest/Articles5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles5.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/DeserializationTest/handlerTest/Database/Articles1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/DeserializationTest/handlerTest/Database/Articles1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/DeserializationTest/handlerTest/Database/Articles1.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/DeserializationTest/handlerTest/Database/Articles1.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/DeserializationTest/handlerTest/Database/Articles1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/DeserializationTest/handlerTest/Database/Articles1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/DeserializationTest/handlerTest/Database/Articles1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/DeserializationTest/handlerTest/Database/Articles1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/DeserializationTest/handlerTest/Database/Articles2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/DeserializationTest/handlerTest/Database/Articles2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/DeserializationTest/handlerTest/Database/Database2/Articles1.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/DeserializationTest/handlerTest/Database/Database2/Articles1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/DeserializationTest/handlerTest/Database/Database2/Articles1.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/DeserializationTest/handlerTest/Database/Database2/Articles1.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/DeserializationHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/DeserializationHandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/src_deserializers/CsvDeserializerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/src_deserializers/CsvDeserializerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/src_deserializers/JsonDeserializerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/src_deserializers/JsonDeserializerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/src_deserializers/XmlDeserializerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/src_deserializers/XmlDeserializerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/APIPropertiesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/APIPropertiesTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/CallAPIThreadTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/CallAPIThreadTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIInfoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIInfoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIParamsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIParamsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_callers/KongAPICallerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_callers/KongAPICallerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +100,7 @@
     &quot;git-widget-placeholder&quot;: &quot;newBranch&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/vison/OneDrive/Desktop/Programmi/JAVA/INGEGNERIA DEL SOFTWARE/Progetto/eis-final/src/main/resources&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.grazie&quot;
@@ -70,18 +108,18 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\src\main\resources" />
       <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\resources" />
       <recent name="D:\ingengeria software\eis-final\src\test\DeserializationTest\handlerTest\Database" />
       <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\src\main\java\it\unipd\dei\dbdc\search\src_strategies\parallelism" />
       <recent name="D:\ingengeria software\eis-final\src\test\deserializersTest\csvTest" />
-      <recent name="D:\ingengeria software\eis-final\src\test\deserializersTest\jsonTest" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\database" />
-      <recent name="D:\ingengeria software\eis-final\database\TheGuardianAPI" />
-      <recent name="D:\ingengeria software\eis-final\src\test\deserializersTest" />
-      <recent name="D:\ingengeria software\eis-final\src\test\deserializersTest\deserializerTest2\deserializersTest3\deserializersTest4" />
-      <recent name="D:\ingengeria software\eis-final\src\test\databaseTest\databaseTest2\databaseTest3\databaseTest4" />
+      <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\src\test\resources" />
+      <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final" />
+      <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\documentation" />
+      <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\src\main\java\it\unipd\dei\dbdc\resources" />
+      <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\src\main\java\it\unipd\dei\dbdc" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -100,68 +138,84 @@
       <recent name="it.unipd.dei.dbdc.Serializers" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.App">
-    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.App" />
+  <component name="RunManager" selected="JUnit.APIPropertiesTest.readAPIProperties">
+    <configuration name="APIPropertiesTest.readAPIProperties" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Extreme_journalism" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="it.unipd.dei.dbdc.*" />
+          <option name="PATTERN" value="it.unipd.dei.dbdc.download.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="download" type="BatchConfigurationType" factoryName="Batch" temporary="true">
-      <module name="Extreme_journalism" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SCRIPT_NAME" value="download.bat" />
-      <option name="PARAMETERS" value="" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CsvDeserializerTest.deserialize_case1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Extreme_journalism" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.unipd.dei.dbdc.search.interfaces.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.deserializers.src_deserializers" />
-      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.deserializers.src_deserializers.CsvDeserializerTest" />
-      <option name="METHOD_NAME" value="deserialize_case1" />
+      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.download" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.download.APIPropertiesTest" />
+      <option name="METHOD_NAME" value="readAPIProperties" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DeserializationHandlerTest.rejectedFilesInFolder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CallAPIThreadTest.call" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Extreme_journalism" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="it.unipd.dei.dbdc.deserialization.*" />
+          <option name="PATTERN" value="it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.deserialization" />
-      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.deserialization.DeserializationHandlerTest" />
-      <option name="METHOD_NAME" value="rejectedFilesInFolder" />
+      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.CallAPIThreadTest" />
+      <option name="METHOD_NAME" value="call" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Extreme_journalism-1.0-SNAPSHOT-jar-with-dependencies.jar" type="JarApplication" temporary="true">
-      <option name="JAR_PATH" value="$PROJECT_DIR$/target/Extreme_journalism-1.0-SNAPSHOT-jar-with-dependencies.jar" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
-      <method v="2" />
+    <configuration name="GuardianAPIManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Extreme_journalism" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIManagerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GuardianAPIManagerTest.callAPI" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Extreme_journalism" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIManagerTest" />
+      <option name="METHOD_NAME" value="callAPI" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GuardianAPIParamsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Extreme_journalism" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIParamsTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="eis-final" />
@@ -178,11 +232,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.App" />
-        <item itemvalue="Batch.download" />
-        <item itemvalue="JAR Application.Extreme_journalism-1.0-SNAPSHOT-jar-with-dependencies.jar" />
-        <item itemvalue="JUnit.DeserializationHandlerTest.rejectedFilesInFolder" />
-        <item itemvalue="JUnit.CsvDeserializerTest.deserialize_case1" />
+        <item itemvalue="JUnit.APIPropertiesTest.readAPIProperties" />
+        <item itemvalue="JUnit.GuardianAPIManagerTest" />
+        <item itemvalue="JUnit.GuardianAPIManagerTest.callAPI" />
+        <item itemvalue="JUnit.CallAPIThreadTest.call" />
+        <item itemvalue="JUnit.GuardianAPIParamsTest" />
       </list>
     </recent_temporary>
   </component>
@@ -300,7 +354,49 @@
       <option name="project" value="LOCAL" />
       <updated>1686603654798</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Fatto funzionare la stoplist.txt">
+      <created>1686605119206</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1686605119206</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Pom changes">
+      <created>1686845835824</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1686845835824</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Creato PathManager e modificata la posizione di un po' di cose">
+      <created>1687010670592</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1687010670592</updated>
+    </task>
+    <task id="LOCAL-00019" summary="PathManager e ThreadPool">
+      <created>1687100981694</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1687100981694</updated>
+    </task>
+    <task id="LOCAL-00020" summary="PathManager e ThreadPool">
+      <created>1687101030272</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1687101030272</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Messo quasi tutto in properties o file a parte, in modo che il main sia snello">
+      <created>1687102125077</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1687102125077</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -341,7 +437,12 @@
     <MESSAGE value="Merge al volo" />
     <MESSAGE value="Ho iniziato il file di Exceptions.md" />
     <MESSAGE value="Vedete se vi piace come arrivare a english_stoplist_v1.txt. Non mi piace perche' è trattato in modo rispetto ai .properties" />
-    <option name="LAST_COMMIT_MESSAGE" value="Vedete se vi piace come arrivare a english_stoplist_v1.txt. Non mi piace perche' è trattato in modo rispetto ai .properties" />
+    <MESSAGE value="Fatto funzionare la stoplist.txt" />
+    <MESSAGE value="Pom changes" />
+    <MESSAGE value="Creato PathManager e modificata la posizione di un po' di cose" />
+    <MESSAGE value="PathManager e ThreadPool" />
+    <MESSAGE value="Messo quasi tutto in properties o file a parte, in modo che il main sia snello" />
+    <option name="LAST_COMMIT_MESSAGE" value="Messo quasi tutto in properties o file a parte, in modo che il main sia snello" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

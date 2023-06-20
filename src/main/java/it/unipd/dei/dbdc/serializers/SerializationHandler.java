@@ -1,15 +1,10 @@
 package it.unipd.dei.dbdc.serializers;
 
-import it.unipd.dei.dbdc.deserialization.DeserializersContainer;
 import it.unipd.dei.dbdc.serializers.interfaces.Serializer;
-import it.unipd.dei.dbdc.PropertiesTools;
 import it.unipd.dei.dbdc.search.interfaces.UnitOfSearch;
 
 import java.io.*;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Properties;
 
 /**
  * Classe per la gestione della serializzazione.

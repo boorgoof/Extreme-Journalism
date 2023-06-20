@@ -1,8 +1,7 @@
 package it.unipd.dei.dbdc.search;
 
-import it.unipd.dei.dbdc.Console;
+import it.unipd.dei.dbdc.resources.PathManager;
 import it.unipd.dei.dbdc.search.interfaces.UnitOfSearch;
-import it.unipd.dei.dbdc.PropertiesTools;
 import it.unipd.dei.dbdc.search.interfaces.Analyzer;
 
 import java.util.*;
@@ -10,53 +9,27 @@ import java.util.*;
 import java.io.*;
 public class AnalyzerHandler {
 
-    private final Analyzer analyzer;
-    private final static String analyzer_key = "analyzer";
-    private static final String bannedWordsName = "english_stoplist_v1.txt";
+    public static void analyze(String filePropertiesName, List<UnitOfSearch> articles, int tot_count) throws IOException {
 
-    public AnalyzerHandler(String filePropertiesName) throws IOException {
-        Properties analyzersProperties = PropertiesTools.getProperties(filePropertiesName);
-        analyzer = setAnalyzer(analyzersProperties);
-    }
-
-    private Analyzer setAnalyzer(Properties analyzersProperties) throws IOException{
-        String analyzer_class_name = analyzersProperties.getProperty(analyzer_key);
-        Class<?> analyzer_class;
-        try {
-            analyzer_class = Class.forName(analyzer_class_name);
-        } catch (ClassNotFoundException e) {
-            throw new IOException("There is no component analyzer in the properties file");
-        }
-        try {
-            return (Analyzer) analyzer_class.newInstance();
-        } catch (InstantiationException | IllegalAccessException | ClassCastException e) {
-            throw new IOException("File properties is not right, or the class is not available");
-        }
-    }
-
-    public void analyze(List<UnitOfSearch> articles, String file, int tot_count)
-    {
-        Set<String> banned = bannedArray();
-        long start = System.currentTimeMillis();
-        ArrayList<OrderedEntryStringInt> max = analyzer.mostPresent(articles, tot_count, banned);
-        long end = System.currentTimeMillis();
-        System.out.println(Console.YELLOW + "Tempo con set: "+(end-start)+Console.RESET);
+        Analyzer analyzer = AnalyzeProperties.readProperties(filePropertiesName);
+        ArrayList<OrderedEntryStringInt> max = analyzer.mostPresent(articles, tot_count, bannedArray());
 
         try {
-            outFile(max, file);
+            outFile(max, PathManager.getOutFile());
         }
         catch (IOException e)
         {
-            Console.printlnError("Errore nella scritture del file");
+            System.err.println("Errore nella scritture del file");
             e.printStackTrace();
         }
     }
 
-    private static Set<String> bannedArray() {
+    private static Set<String> bannedArray() //TODO: permettere di non usare le stopwords
+    {
 
         HashSet<String> banned = new HashSet<>(524);
 
-        try (InputStream file = Thread.currentThread().getContextClassLoader().getResourceAsStream(bannedWordsName))
+        try (InputStream file = Thread.currentThread().getContextClassLoader().getResourceAsStream(PathManager.getBannedWordsFile()))
         {
             if (file == null)
             {
@@ -68,12 +41,12 @@ public class AnalyzerHandler {
             }
         }
         catch (IOException e) {
-            System.out.println("File "+bannedWordsName+" non trovato nel path di sistema. Non verranno usate le stopwords.");
+            System.out.println("Non verranno usate le stopwords.");
         }
         return banned;
     }
 
-    public void outFile(ArrayList<OrderedEntryStringInt> max, String outFilePath) throws IOException {
+    public static void outFile(ArrayList<OrderedEntryStringInt> max, String outFilePath) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outFilePath))) {
             for (int i = 0; i <max.size(); i++) {
                 OrderedEntryStringInt el = max.get(i);

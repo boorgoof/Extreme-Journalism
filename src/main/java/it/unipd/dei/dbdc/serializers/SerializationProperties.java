@@ -1,5 +1,6 @@
 package it.unipd.dei.dbdc.serializers;
 
+import it.unipd.dei.dbdc.resources.ResourcesTools;
 import it.unipd.dei.dbdc.serializers.interfaces.Serializer;
 
 import java.io.IOException;
@@ -9,7 +10,15 @@ import java.util.Properties;
 
 public class SerializationProperties {
 
-    public static Map<String, Serializer> readSerializersProperties(Properties serializersProperties) throws IOException {
+    private static String serializers_properties = "serializers.properties";
+
+    public static Map<String, Serializer> readSerializersProperties(String filePropertiesName) throws IOException {
+
+        if (filePropertiesName != null)
+        {
+            serializers_properties = filePropertiesName;
+        }
+        Properties serializersProperties = ResourcesTools.getProperties(serializers_properties);
 
         Map<String, Serializer> serializerMap = new HashMap<>();
 

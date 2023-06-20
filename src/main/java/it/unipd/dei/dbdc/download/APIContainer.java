@@ -12,6 +12,15 @@ public class APIContainer {
 
     // We use the singleton design pattern to read the properties file only one time
     private static APIContainer instance;
+
+    public static APIContainer getInstance() throws IOException
+    {
+        if (instance == null)
+        {
+            instance = new APIContainer(null);
+        }
+        return instance;
+    }
     public static APIContainer getInstance(String download_properties) throws IOException
     {
         if (instance == null)

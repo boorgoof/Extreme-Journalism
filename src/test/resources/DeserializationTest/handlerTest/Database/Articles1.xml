@@ -1,0 +1,29 @@
+<ArrayList>
+  <item>
+    <id>ID 1</id>
+    <url>URL 1</url>
+    <title>Title 1</title>
+    <body>Body 1</body>
+    <date>Date 1</date>
+    <sourceSet>sourceSet 1</sourceSet>
+    <source>Source 1</source>
+  </item>
+  <item>
+    <id>ID 1</id>
+    <url>URL 1</url>
+    <title>Title 1</title>
+    <body>Body 1</body>
+    <date>Date 1</date>
+    <sourceSet>sourceSet 1</sourceSet>
+    <source>Source 1</source>
+  </item>
+  <item>
+    <id>ID 1</id>
+    <url>URL 1</url>
+    <title>Title 1</title>
+    <body>Body 1</body>
+    <date>Date 1</date>
+    <sourceSet>sourceSet 1</sourceSet>
+    <source>Source 1</source>
+  </item>
+</ArrayList>

@@ -1,6 +1,6 @@
 package it.unipd.dei.dbdc.serializers;
 
-import it.unipd.dei.dbdc.PropertiesTools;
+import it.unipd.dei.dbdc.resources.ResourcesTools;
 import it.unipd.dei.dbdc.serializers.interfaces.Serializer;
 
 import java.io.IOException;
@@ -16,8 +16,7 @@ public class SerializersContainer {
 
     public SerializersContainer(String filePropertiesName) throws IOException {
 
-        Properties serializersProperties = PropertiesTools.getProperties(filePropertiesName);
-        serializers = readSerializersProperties(serializersProperties);
+        serializers = readSerializersProperties(filePropertiesName);
 
     }
     public Serializer getSerializer(String format){
