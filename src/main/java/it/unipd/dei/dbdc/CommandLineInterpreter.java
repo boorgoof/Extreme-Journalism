@@ -27,6 +27,7 @@ public class CommandLineInterpreter {
     private final static Option[] download = {
             new Option("apf", "api-properties-file", true, "Contains the path to the properties of the API to call"),
             new Option("dpf", "download-properties-file", true, "Contains the path to the properties file that contains the managers that is possible to call"),
+            new Option("totpf", "total-properties-file", true, "Contains the path to the properties file that contains the common format and the number of terms to extract"),
     };
 
     // The search options
@@ -135,7 +136,7 @@ public class CommandLineInterpreter {
     }
 
     public String obtainAPIProps() {
-        return "api.properties";
+        return null;
         //return cmd.getOptionValue("apf"); FIXME
     }
     public String obtainDeserProps() {
@@ -149,6 +150,10 @@ public class CommandLineInterpreter {
     public String obtainDownProps() {
         return null;
         //return cmd.getOptionValue("dpf"); FIXME
+    }
+    public String obtainTotProps() {
+        return null;
+        //return cmd.getOptionValue("totpf"); FIXME
     }
 
     public String obtainAnalyzeProps() {

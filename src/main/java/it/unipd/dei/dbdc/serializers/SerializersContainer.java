@@ -1,11 +1,9 @@
 package it.unipd.dei.dbdc.serializers;
 
-import it.unipd.dei.dbdc.resources.ResourcesTools;
 import it.unipd.dei.dbdc.serializers.interfaces.Serializer;
 
 import java.io.IOException;
 import java.util.Map;
-import java.util.Properties;
 import java.util.Set;
 
 import static it.unipd.dei.dbdc.serializers.SerializationProperties.readSerializersProperties;

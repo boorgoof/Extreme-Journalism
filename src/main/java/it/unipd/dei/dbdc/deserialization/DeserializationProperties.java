@@ -1,7 +1,7 @@
 package it.unipd.dei.dbdc.deserialization;
 
 import it.unipd.dei.dbdc.deserialization.interfaces.Deserializer;
-import it.unipd.dei.dbdc.resources.ResourcesTools;
+import it.unipd.dei.dbdc.resources.PropertiesTools;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -11,15 +11,11 @@ import java.util.Properties;
 
 public class DeserializationProperties {
 
-    private static String deserializers_properties = "deserializers.properties";
+    private final static String default_properties = "deserializers.properties";
 
-    public static Map<String, Deserializer> readDeserializersProperties(String filePropertiesName) throws IOException {
+    public static Map<String, Deserializer> readDeserializersProperties(String out_properties) throws IOException {
 
-        if (filePropertiesName != null)
-        {
-            deserializers_properties = filePropertiesName;
-        }
-        Properties deserializersProperties = ResourcesTools.getProperties(deserializers_properties);
+        Properties deserializersProperties = PropertiesTools.getProperties(default_properties, out_properties);
 
         Map<String, Deserializer> deserializerMap = new HashMap<>();
 
