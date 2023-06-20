@@ -2,7 +2,7 @@ package it.unipd.dei.dbdc.download;
 
 import it.unipd.dei.dbdc.download.interfaces.APICaller;
 import it.unipd.dei.dbdc.download.interfaces.APIManager;
-import it.unipd.dei.dbdc.resources.ResourcesTools;
+import it.unipd.dei.dbdc.resources.PropertiesTools;
 
 import java.io.IOException;
 import java.lang.reflect.Constructor;
@@ -13,23 +13,19 @@ import java.util.*;
 public class DownloadProperties {
 
     private final static String caller_key = "library";
-    private static String download_properties = "download.properties";
+    private final static String default_properties = "download.properties";
 
-    public static HashMap<String, APIManager> readAPIContainerProperties(String properties_file) throws IOException {
+    public static HashMap<String, APIManager> readAPIContainerProperties(String out_properties) throws IOException {
 
-        if (properties_file != null)
-        {
-            download_properties = properties_file;
-        }
-        Properties appProps = ResourcesTools.getProperties(download_properties);
+        Properties downProps = PropertiesTools.getProperties(default_properties, out_properties);
 
         // 1. Cerco la property del caller, che è la classe che implementa APICaller
-        String caller_name = appProps.getProperty(caller_key);
+        String caller_name = downProps.getProperty(caller_key);
         Class<?> caller_class;
         try {
             caller_class = Class.forName(caller_name);
         } catch (ClassNotFoundException e) {
-            throw new IOException("There is no " + caller_key + " property in the file " + properties_file + " or the value is not correct");
+            throw new IOException("There is no " + caller_key + " property in the file of the download properties, or the value is not correct");
         }
 
         // 2. Creo un'istanza di questa classe che implementa APICaller
@@ -44,13 +40,13 @@ public class DownloadProperties {
         HashMap<String, APIManager> managers = new HashMap<>(1);
         // 3. Leggendo le properties, creo tutte le istanze degli APIManager di tutte le API specificate
         try {
-            Enumeration<?> enumeration = appProps.propertyNames();
+            Enumeration<?> enumeration = downProps.propertyNames();
             while (enumeration.hasMoreElements()) {
                 String prop = (String) enumeration.nextElement();
                 if (prop.equals(caller_key)) {
                     continue;
                 }
-                String manager_name = appProps.getProperty(prop);
+                String manager_name = downProps.getProperty(prop);
                 Class<?> manager_class = Class.forName(manager_name);
                 Constructor<?> constructor = manager_class.getConstructor(APICaller.class, String.class); // Lancia NoSuchMethodException
                 managers.put(prop, (APIManager) constructor.newInstance(caller, prop)); // Lancia InvocationTargetException

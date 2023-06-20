@@ -35,7 +35,7 @@ public class App
 
         TotalProperties properties;
         try {
-            properties = new TotalProperties();
+            properties = new TotalProperties(interpreter.obtainTotProps());
         }
         catch (IOException e)
         {

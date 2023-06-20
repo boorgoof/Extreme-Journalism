@@ -13,21 +13,16 @@ public class  DownloadHandler {
 
     public static String download(String download_props, String api_props) throws IOException {
 
-        if (download_props != null)
-        {
-            // Inizializza il container con le props, in modo che chi poi lo invoca trovi l'istanza corretta
-            APIContainer.getInstance(download_props);
-        }
+        // Inizializza il container con le props, in modo che chi poi lo invoca trovi l'istanza corretta
+        APIContainer.getInstance(download_props);
 
         APIManager manager = null;
-        if (api_props != null) {
-            try {
-                manager = APIProperties.readAPIProperties(api_props);
-            }
-            catch (IOException | IllegalArgumentException e)
-            {
-                System.out.println("Selecting the API interactively...");
-            }
+        try {
+            manager = APIProperties.readAPIProperties(api_props);
+        }
+        catch (IOException | IllegalArgumentException e)
+        {
+            System.out.println("Selecting the API interactively...");
         }
 
         String file_path;
