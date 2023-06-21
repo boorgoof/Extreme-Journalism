@@ -2,7 +2,7 @@ package it.unipd.dei.dbdc.serializers.src_serializers;
 
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import it.unipd.dei.dbdc.search.interfaces.UnitOfSearch;
+import it.unipd.dei.dbdc.analyze.interfaces.UnitOfSearch;
 import it.unipd.dei.dbdc.serializers.interfaces.Serializer;
 
 import java.io.File;

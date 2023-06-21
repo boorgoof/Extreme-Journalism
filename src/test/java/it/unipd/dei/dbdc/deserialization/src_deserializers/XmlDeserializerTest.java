@@ -1,8 +1,8 @@
 package it.unipd.dei.dbdc.deserialization.src_deserializers;
 
-import it.unipd.dei.dbdc.search.Article;
-import it.unipd.dei.dbdc.search.interfaces.UnitOfSearch;
-import it.unipd.dei.dbdc.deserialization.src_deserializers.XmlDeserializer;
+import it.unipd.dei.dbdc.analyze.Article;
+import it.unipd.dei.dbdc.analyze.interfaces.UnitOfSearch;
+
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;

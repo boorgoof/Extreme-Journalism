@@ -12,7 +12,7 @@ public class TotalProperties {
 
     private final static String common_format_name = "common_format";
     private final static String words_count_name = "words_count";
-    private final static String file = "total.properties";
+    public final static String default_properties = "total.properties";
 
     public TotalProperties(String tot_properties) throws IOException {
         Properties properties;
@@ -21,7 +21,7 @@ public class TotalProperties {
             properties = PropertiesTools.getOutProperties(tot_properties);
         }
         else {
-            properties = PropertiesTools.getDefaultProperties(file);
+            properties = PropertiesTools.getDefaultProperties(default_properties);
         }
         common_format = properties.getProperty(common_format_name);
         words_count = Integer.parseInt(properties.getProperty(words_count_name));

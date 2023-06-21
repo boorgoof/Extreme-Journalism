@@ -11,7 +11,7 @@ import java.util.Properties;
 
 public class DeserializationProperties {
 
-    private final static String default_properties = "deserializers.properties";
+    public final static String default_properties = "deserializers.properties";
 
     public static Map<String, Deserializer> readDeserializersProperties(String out_properties) throws IOException {
 

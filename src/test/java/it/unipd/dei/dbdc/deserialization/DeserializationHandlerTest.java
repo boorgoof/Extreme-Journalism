@@ -1,7 +1,7 @@
 package it.unipd.dei.dbdc.deserialization;
 
-import it.unipd.dei.dbdc.search.Article;
-import it.unipd.dei.dbdc.search.interfaces.UnitOfSearch;
+import it.unipd.dei.dbdc.analyze.Article;
+import it.unipd.dei.dbdc.analyze.interfaces.UnitOfSearch;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;

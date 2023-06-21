@@ -2,12 +2,9 @@ package it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI;
 
 import it.unipd.dei.dbdc.download.interfaces.APICaller;
 
-import java.io.IOException;
 import java.util.Map;
-import java.util.concurrent.Callable;
 
-// Utilizziamo callable per poter mandare eccezioni
-public class CallAPIThread implements Callable<Object> {
+public class CallAPIThread implements Runnable {
     private final APICaller caller;
     private final String url;
     private final String path;
@@ -20,17 +17,16 @@ public class CallAPIThread implements Callable<Object> {
         params = par;
     }
     @Override
-    public Object call() throws IllegalArgumentException {
+    public void run() throws IllegalArgumentException {
         try
         {
             if (!caller.sendRequest(url, params, path)) {
                 throw new IllegalArgumentException("The request made is not correct");
             }
         }
-        catch(Exception e)
+        catch(Exception e) //This is required as we don't know what are the exceptions that the library could throw
         {
             throw new IllegalArgumentException("The request made is not correct: "+e.getMessage());
         }
-        return null;
     }
 }

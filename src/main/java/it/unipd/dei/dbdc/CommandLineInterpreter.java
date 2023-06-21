@@ -18,25 +18,26 @@ public class CommandLineInterpreter {
     // The actions you can perform: these are mandatory.
     private final static Option[] actions = {
             new Option("h", "help", false, "Print help"),
-            new Option("d", "download-files", false, "download files from the selected API"),
-            new Option("s", "search-terms", false, "Search the top 50 terms of the selected files"),
-            new Option("ds", "download-and-search", false, "download files from the selected API and search the top 50 terms of those files")
+            new Option("d", "download-files", false, "Download files from the selected API"),
+            new Option("a", "analyze-terms", false, "Analyze the top 50 terms of the selected files"),
+            new Option("da", "download-and-analyze", false, "Download files from the selected API and analyze the top 50 terms of those files")
     };
 
     // The download options
     private final static Option[] download = {
             new Option("apf", "api-properties-file", true, "Contains the path to the properties of the API to call"),
-            new Option("dpf", "download-properties-file", true, "Contains the path to the properties file that contains the managers that is possible to call"),
+            new Option("dowpf", "download-properties-file", true, "Contains the path to the properties file that contains the managers that is possible to call"),
             new Option("totpf", "total-properties-file", true, "Contains the path to the properties file that contains the common format and the number of terms to extract"),
     };
 
-    // The search options
-    private final static Option[] search = {
-            new Option("path", "folder-path", true, "Contains the location of the place to take the files from"),
-            new Option("spf", "search-properties-file", true, "Contains the path to the properties file that contains the analyzer to use for the extraction"),
+    // The analyze options
+    private final static Option[] analyze = {
+            new Option("anapf", "analyze-properties-file", true, "Contains the path to the properties file that contains the analyzer to use for the extraction"),
             new Option("despf", "deserializers-properties-file", true, "Contains the path to the properties file that contains the deserializers to use"),
             new Option("serpf", "serializers-properties-file", true, "Contains the path to the properties file that contains the serializers to use"),
-            new Option("n", "number", true, "Contains the number of terms you want to have in the final output")
+            new Option("path", "folder-path", true, "Contains the location of the place to take the files from"),
+            new Option("n", "number", true, "Contains the number of terms you want to have in the final output"),
+            new Option("stop", "enable-stop-words", true, "True if you want to enable the stop-words in the analysis")
     };
 
     private final CommandLine cmd;
@@ -86,7 +87,7 @@ public class CommandLineInterpreter {
         }
 
         // Search options
-        for (Option op : search) {
+        for (Option op : analyze) {
             options.addOption(op);
         }
     }
@@ -130,7 +131,7 @@ public class CommandLineInterpreter {
         // return cmd.hasOption("d") || cmd.hasOption("ds"); FIXME
     }
 
-    public boolean searchPhase() {
+    public boolean analyzePhase() {
         return true;
         //return cmd.hasOption("s") || cmd.hasOption("ds"); FIXME
     }
@@ -141,15 +142,15 @@ public class CommandLineInterpreter {
     }
     public String obtainDeserProps() {
         return null;
-        //return cmd.getOptionValue("apf"); FIXME
+        //return cmd.getOptionValue("despf"); FIXME
     }
     public String obtainSerProps() {
         return null;
-        //return cmd.getOptionValue("apf"); FIXME
+        //return cmd.getOptionValue("serpf"); FIXME
     }
     public String obtainDownProps() {
         return null;
-        //return cmd.getOptionValue("dpf"); FIXME
+        //return cmd.getOptionValue("dowpf"); FIXME
     }
     public String obtainTotProps() {
         return null;
@@ -158,15 +159,15 @@ public class CommandLineInterpreter {
 
     public String obtainAnalyzeProps() {
         return null;
-        //return cmd.getOptionValue("spf"); FIXME
+        //return cmd.getOptionValue("anapf"); FIXME
     }
 
     public String obtainPathOption() {
         /*
         return cmd.getOptionValue("path"); FIXME
          */
-        //return "./database/nytimes_articles_v2";
-        return null;
+        return "./database/nytimes_articles_v2";
+        //return null;
     }
 
     public int obtainNumberOption()
@@ -182,5 +183,16 @@ public class CommandLineInterpreter {
             return -1;
          }
          */
+    }
+
+    public boolean obtainStopWords()
+    {
+        /*
+        if (cmd.getOptionValue("stop").equalsIgnoreCase("false"))
+        {
+            return false;
+        }
+         */
+        return true;
     }
 }

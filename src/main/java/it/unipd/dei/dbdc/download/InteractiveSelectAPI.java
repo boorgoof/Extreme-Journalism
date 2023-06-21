@@ -18,7 +18,7 @@ public class InteractiveSelectAPI {
 
     public String askAPIName()
     {
-        System.out.println("Inserire il nome della API che si vuole avere. Lista delle possibili API:\n" + container.getAPINames());
+        System.out.println("Insert the name of the API to call. List of possible APIs:\n" + container.getAPINames());
         return in.nextLine();
     }
 
@@ -31,11 +31,11 @@ public class InteractiveSelectAPI {
         }
         catch (IllegalArgumentException e)
         {
-            System.out.println("Il nome della API e' incorretto. Riprovare");
+            System.out.println("The name of the API is incorrect. Retry");
             return null;
         }
 
-        System.out.println("Inserire i parametri per la query, uno per ogni riga (inserire quit per terminare):\n" + par);
+        System.out.println("Insert the parameters for the query, one for line (insert quit to end the insertion):\n" + par);
 
         ArrayList<QueryParam> queries = new ArrayList<>();
 
@@ -51,7 +51,7 @@ public class InteractiveSelectAPI {
                 {
                     break;
                 }
-                System.out.println("Fornire un valore al parametro, riprovare");
+                System.out.println("Insert a value with the parameter. Retry");
                 continue;
             }
 
@@ -67,7 +67,7 @@ public class InteractiveSelectAPI {
         try {
             return container.getAPIManager(name, queries);
         } catch (IllegalArgumentException e) {
-            System.out.println("Nome o parametri forniti errati, riprovare");
+            System.out.println("The name or the parameters were not correct. Retry.");
         }
         return null;
     }

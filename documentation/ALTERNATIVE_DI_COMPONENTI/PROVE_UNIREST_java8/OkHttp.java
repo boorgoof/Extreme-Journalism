@@ -16,7 +16,7 @@ public class OkHttp {
         // After its execution, we'll get an instance of Response back:
         /*
         Request request = new Request.Builder()
-                .url("https://content.guardianapis.com" + "/search")
+                .url("https://content.guardianapis.com" + "/analyze")
                 .build();
 
         Call call = client.newCall(request);
@@ -24,7 +24,7 @@ public class OkHttp {
          */
 
         // To add query parameters to our GET request, we can take advantage of the HttpUrl.Builder, e crearlo prima per poi passarlo alla richiesta
-        HttpUrl.Builder urlBuilder = HttpUrl.parse("https://content.guardianapis.com" + "/search").newBuilder();
+        HttpUrl.Builder urlBuilder = HttpUrl.parse("https://content.guardianapis.com" + "/analyze").newBuilder();
         urlBuilder.addQueryParameter("page-size", "1");
         urlBuilder.addQueryParameter("api-key", ".............................");
 

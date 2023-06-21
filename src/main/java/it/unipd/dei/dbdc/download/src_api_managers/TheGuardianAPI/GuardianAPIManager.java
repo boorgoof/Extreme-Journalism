@@ -69,19 +69,18 @@ public class GuardianAPIManager implements APIManager {
         // Prende i parametri
         ArrayList<Map<String, Object>> requests = params.getParams();
 
-        List<Future<Object>> futures = new ArrayList<>();
+        List<Future<?>> futures = new ArrayList<>();
         ExecutorService threadPool = ThreadPool.getExecutor();
 
         // Chiamiamo e mandiamo nella thread pool:
         for (int i = 0; i < requests.size(); i++) {
             String path = path_folder+"/request"+(i+1)+".json";
-            CallAPIThread task = new CallAPIThread(caller, GuardianAPIInfo.getDefaultURL(), path, requests.get(i));
-            Future<Object> f = threadPool.submit(task);
+            Future<?> f = threadPool.submit(new CallAPIThread(caller, GuardianAPIInfo.getDefaultURL(), path, requests.get(i)));
             futures.add(f);
         }
 
         // Wait for all sent tasks to complete:
-        for (Future<Object> future : futures) {
+        for (Future<?> future : futures) {
             try {
                 future.get();
             } catch (InterruptedException | ExecutionException e) {

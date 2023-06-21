@@ -38,11 +38,12 @@ public class  DownloadHandler {
                 PathManager.clearFolder(file_path);
 
                 manager.callAPI(file_path);
-                System.out.println( "You can find the downloaded files in the format in which they were download in "+file_path);
+                System.out.println( "You can find the downloaded files in the format in which they were downloaded in "+file_path);
                 return file_path;
             }
             catch (IllegalArgumentException e) {
-                System.err.println("Errore nella chiamata all'API: "+e.getMessage());
+                System.err.println("Error in the calling of the API: "+e.getMessage());
+                System.err.println("Retry");
                 // To ask another time for the API interactively
                 selected = false;
             }
