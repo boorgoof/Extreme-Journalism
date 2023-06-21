@@ -51,7 +51,7 @@ public class APIPropertiesTest {
         }
 
         try {
-            manager = APIProperties.readAPIProperties(resources_url+"trueApi.properties");
+            manager = APIProperties.readAPIProperties(resources_url+"trueApi.properties", null);
             GuardianAPIParams par = (GuardianAPIParams) params.get(manager);
             ArrayList<Map<String, Object>> parameters = par.getParams();
             assertEquals(parameters, expected);
@@ -62,7 +62,7 @@ public class APIPropertiesTest {
         }
 
         try {
-            APIProperties.readAPIProperties(resources_url+"falseApi.properties");
+            APIProperties.readAPIProperties(resources_url+"falseApi.properties", null);
             fail("Properties non corrette lette come se fossero corrette");
 
         }
@@ -75,7 +75,7 @@ public class APIPropertiesTest {
         }
 
         try {
-            APIProperties.readAPIProperties(resources_url+"falseApi2.properties");
+            APIProperties.readAPIProperties(resources_url+"falseApi2.properties", null);
             fail("Properties non corrette lette come se fossero corrette");
         } catch (IllegalArgumentException e) {
             //Intentionally left blank
@@ -86,7 +86,7 @@ public class APIPropertiesTest {
         }
 
         try {
-            APIProperties.readAPIProperties(resources_url+"nonesisto.properties");
+            APIProperties.readAPIProperties(resources_url+"nonesisto.properties", null);
         } catch (IllegalArgumentException | IOException e) {
             fail("Properties di default non lette correttamente");
         }

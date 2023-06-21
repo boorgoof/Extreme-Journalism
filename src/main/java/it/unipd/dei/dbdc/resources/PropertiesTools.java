@@ -8,7 +8,6 @@ import java.util.Properties;
 
 public class PropertiesTools {
 
-    // Gestisce tutte le properties.
     public static Properties getProperties(String default_properties, String out_properties) throws IOException {
         if (out_properties != null)
         {
@@ -18,7 +17,7 @@ public class PropertiesTools {
                 //Intentionally left blank
             }
         }
-        return getDefaultProperties(default_properties);
+        return getDefaultProperties(default_properties); //Lancia IO solo se non ci sono quelle di default
     }
 
     public static Properties getDefaultProperties(String properties_file) throws IOException

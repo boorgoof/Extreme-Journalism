@@ -19,7 +19,6 @@ public class CallAPIThreadTest {
 
         CallAPIThread c = new CallAPIThread(new KongAPICaller(), GuardianAPIInfo.getDefaultURL(), "thread.json", specified_fields);
 
-        try {
             try {
                 c.call();
                 fail("La call ha avuto successo anche senza parametri");
@@ -116,10 +115,5 @@ public class CallAPIThreadTest {
             } catch (IllegalArgumentException e) {
                 fail("La call non ha avuto successo, cioè non ha ignorato i parametri errati");
             }
-        }
-        catch (IOException e)
-        {
-            fail("Errore nell'apertura del file");
-        }
     }
 }

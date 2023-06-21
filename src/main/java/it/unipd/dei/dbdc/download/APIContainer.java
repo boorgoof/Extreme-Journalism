@@ -13,14 +13,7 @@ public class APIContainer {
     // We use the singleton design pattern to read the properties file only one time
     private static APIContainer instance;
 
-    public static APIContainer getInstance() throws IOException
-    {
-        if (instance == null)
-        {
-            instance = new APIContainer(null);
-        }
-        return instance;
-    }
+    //Lancia IOException se non ci sono le properties di default o se le properties di default o passate sono fatte male
     public static APIContainer getInstance(String download_properties) throws IOException
     {
         if (instance == null)
@@ -46,10 +39,12 @@ public class APIContainer {
         return s.toString();
     }
 
+    //Lanciano IllegalArgument se non c'è la API con quel nome
+
     // Returns the possible parameters of the API whose info are in the String info
     public String getAPIPossibleParams(String name) throws IllegalArgumentException
     {
-        return getManager(name).getParams();
+        return getManager(name).getFormattedParams();
     }
 
     // Returns an instance of the API manager whose info are in the String info

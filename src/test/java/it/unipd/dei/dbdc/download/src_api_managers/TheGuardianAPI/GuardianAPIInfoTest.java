@@ -23,7 +23,7 @@ public class GuardianAPIInfoTest {
         for (QueryParam q : possible_fields)
         {
             StringBuilder this_field = new StringBuilder(q.getKey());
-            while (this_field.length() < GuardianAPIInfo.max_key_length)
+            while (this_field.length() < GuardianAPIInfo.formatted_key_length)
             {
                 this_field.append(" ");
             }

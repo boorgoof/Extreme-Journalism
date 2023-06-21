@@ -3,68 +3,59 @@ package it.unipd.dei.dbdc.download;
 import it.unipd.dei.dbdc.download.interfaces.APIManager;
 import it.unipd.dei.dbdc.resources.PathManager;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class  DownloadHandler {
 
+    //Lancia IOException se le properties di download non sono corrette
     public static String download(String download_props, String api_props) throws IOException {
 
-        // Inizializza il container con le props, in modo che chi poi lo invoca trovi l'istanza corretta
-        APIContainer.getInstance(download_props);
-
         APIManager manager = null;
+        boolean selected = false;
         try {
-            manager = APIProperties.readAPIProperties(api_props);
+            manager = APIProperties.readAPIProperties(api_props, download_props);
+            selected = true;
         }
         catch (IOException | IllegalArgumentException e)
         {
+            //If the IOException was caused by the download properties, the exception will be launched in the following cycle
             System.out.println("Selecting the API interactively...");
         }
 
         String file_path;
-
         while(true) {
 
-            if (manager == null) {
-                manager = selectInteractive();
+            if (!selected) {
+                manager = selectInteractive(download_props);
             }
 
             System.out.println("API selected correctly...");
 
-            // Cerca di chiamare la API
             try {
-                System.out.println("Calling the API...");
-
-                // Il nuovo folder
+                //Create the folder to put the responses
                 file_path = PathManager.getDatabaseFolder() + manager.getName();
-
                 PathManager.clearFolder(file_path);
+
                 manager.callAPI(file_path);
-                break;
+                System.out.println( "You can find the downloaded files in the format in which they were download in "+file_path);
+                return file_path;
             }
-            catch (IOException | IllegalArgumentException e) {
-                System.err.println("Errore nella chiamata all'API");
-                e.printStackTrace();
+            catch (IllegalArgumentException e) {
+                System.err.println("Errore nella chiamata all'API: "+e.getMessage());
                 // To ask another time for the API interactively
-                manager = null;
+                selected = false;
             }
         }
-        System.out.println( "You can find the downloaded files in the format in which they were download in "+file_path);
-        return file_path;
     }
 
-    private static APIManager selectInteractive() throws IOException
+    //Lancia IOException se non c'è download_props di default
+    private static APIManager selectInteractive(String download_props) throws IOException
     {
         try(Scanner in = new Scanner(System.in)) {
-            InteractiveSelectAPI interact = new InteractiveSelectAPI(in);
+            InteractiveSelectAPI interact = new InteractiveSelectAPI(in, download_props);
             while (true) {
-
                 String api_name = interact.askAPIName();
-
                 APIManager manager = interact.askParams(api_name);
                 if (manager != null) {
                     in.close();

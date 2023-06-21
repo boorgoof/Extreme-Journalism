@@ -11,7 +11,7 @@ import java.util.*;
 
 public class DeserializationHandler {
 
-    public final DeserializersContainer container; // Dovrei metterlo public se voglio modificare i fields
+    private final DeserializersContainer container; // Dovrei metterlo public se voglio modificare i fields
 
     public DeserializationHandler(String fileProperties) throws IOException {
         container = new DeserializersContainer(fileProperties);

@@ -18,7 +18,7 @@ public class GuardianAPIInfo {
             new QueryParam("to-date", "The date to search to")
     };
 
-    public final static int max_key_length = 20;
+    public final static int formatted_key_length = 20;
 
     // Returns the possible fields, and the ones that are already initialized
     public static String getFormattedParams()
@@ -27,7 +27,7 @@ public class GuardianAPIInfo {
         for (QueryParam q : possible_fields)
         {
             StringBuilder this_field = new StringBuilder(q.getKey());
-            while (this_field.length() < max_key_length)
+            while (this_field.length() < formatted_key_length)
             {
                 this_field.append(" ");
             }

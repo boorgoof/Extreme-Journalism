@@ -40,7 +40,8 @@ public class App
         }
         catch (IOException e)
         {
-            System.out.println("Programma terminato perche' non e' stato trovato il file total.properties.");
+            //TODO: stampa cose più significative, e vedi bene dove vanno le varie eccezioni
+            System.err.println("Programma terminato perche' non e' stato trovato il file total.properties: "+e.getMessage());
             return;
         }
 
@@ -60,8 +61,7 @@ public class App
             }
             catch (IOException e)
             {
-                System.err.println("Errore nella fase di download: ");
-                e.printStackTrace();
+                System.err.println("Errore nella fase di download. Non e' stato trovato il file download.properties: "+e.getMessage());
                 return;
             }
 

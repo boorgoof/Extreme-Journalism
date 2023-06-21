@@ -3,7 +3,6 @@ package it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI;
 import it.unipd.dei.dbdc.download.QueryParam;
 import it.unipd.dei.dbdc.download.src_callers.KongAPICaller;
 import it.unipd.dei.dbdc.download.src_callers.KongAPICallerTest;
-import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -24,7 +23,7 @@ public class GuardianAPIManagerTest {
 
     @Test
     public void getParams() {
-        assertEquals(GuardianAPIInfo.getFormattedParams(), manager.getParams());
+        assertEquals(GuardianAPIInfo.getFormattedParams(), manager.getFormattedParams());
     }
 
     @Test
@@ -90,7 +89,7 @@ public class GuardianAPIManagerTest {
         try {
             man.callAPI("./database/");
         }
-        catch (IOException | IllegalArgumentException e)
+        catch (IllegalArgumentException e)
         {
             fail();
         }
@@ -105,10 +104,6 @@ public class GuardianAPIManagerTest {
         {
             //Intentionally left blank
         }
-        catch (IOException e)
-        {
-            fail();
-        }
 
         try {
             man.callAPI("./nonesiste/");
@@ -117,10 +112,6 @@ public class GuardianAPIManagerTest {
         catch (IllegalArgumentException e)
         {
             fail();
-        }
-        catch (IOException e)
-        {
-            //Intentionally left blank
         }
 
         //TODO: test con altri parametri
