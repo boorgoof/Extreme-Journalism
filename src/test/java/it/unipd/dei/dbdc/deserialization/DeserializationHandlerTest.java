@@ -2,16 +2,36 @@ package it.unipd.dei.dbdc.deserialization;
 
 import it.unipd.dei.dbdc.search.Article;
 import it.unipd.dei.dbdc.search.interfaces.UnitOfSearch;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 // HANDLER per mdoificare i fields devo mettere container public
 public class DeserializationHandlerTest {
     private static final String deserializers_properties = "deserializers.properties";
+    private static Field cont_field;
+    @BeforeAll
+    public static void initialize()
+    {
+        try {
+            cont_field = DeserializationHandler.class.getDeclaredField("container");
+        } catch (NoSuchFieldException e) {
+            fail("Errore nella reflection");
+        }
+        cont_field.setAccessible(true);
+    }
+
+    @AfterAll
+    public static void terminate()
+    {
+        cont_field.setAccessible(true);
+    }
     private static Set<File> expectedAllFiles() {
         Set<File> files = new HashSet<>();
         files.add(new File("src/test/resources/DeserializationTest/handlerTest/Database/Articles1.csv"));
@@ -100,17 +120,17 @@ public class DeserializationHandlerTest {
 
     @Test
     void testDeserializeFile() {
-
         try {
             String[] fileFields = {"id" , "url" , "title" , "body" , "date" , "sourceSet", "source"};
             Set<File> files = new HashSet<>();
             DeserializationHandler handler = new DeserializationHandler("deserializers.properties");
-            handler.container.setSpecificFields("json", fileFields);
+            DeserializersContainer container = (DeserializersContainer) cont_field.get(handler);
+            container.setSpecificFields("json", fileFields);
             List<UnitOfSearch> deserializationFiles = handler.deserializeFile(new File("src/test/resources/DeserializationTest/handlerTest/Database/Articles1.json"));
 
             assertEquals(expectedDeserializeFile(), deserializationFiles);
 
-        } catch (IOException e) {
+        } catch (IOException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
     }
@@ -132,13 +152,14 @@ public class DeserializationHandlerTest {
             String[] fileFields = {"id" , "url" , "title" , "body" , "date" , "sourceSet", "source"};
             DeserializationHandler handler = new DeserializationHandler(deserializers_properties);
 
-            handler.container.setSpecificFields("json", fileFields);
+            DeserializersContainer container = (DeserializersContainer) cont_field.get(handler);
+            container.setSpecificFields("json", fileFields);
             List<UnitOfSearch> deserializationFolder = handler.deserializeFolder("src/test/resources/DeserializationTest/handlerTest/Database");
 
 
             assertEquals(expectedDeserializeFolder(), deserializationFolder);
 
-        } catch (IOException e) {
+        } catch (IOException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
     }
