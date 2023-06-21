@@ -7,7 +7,7 @@ import java.util.Map;
 public interface APICaller {
 
     // Return the status of the request
-    boolean sendRequest(String url, Map<String, Object> param, String path) throws IOException;
+    boolean sendRequest(String url, Map<String, Object> param, String path);
 
     // Shuts down the communication
     void endRequests();

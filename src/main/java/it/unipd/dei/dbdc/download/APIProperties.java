@@ -14,7 +14,8 @@ public class APIProperties
 
     private static final String default_properties = "api.properties";
 
-    public static APIManager readAPIProperties(String out_properties) throws IOException, IllegalArgumentException {
+    //IOExc se non ci sono le properties o se quelle di download sono errate, Illegal se il nome o i parametri sono sbagliati
+    public static APIManager readAPIProperties(String out_properties, String download_properties) throws IOException, IllegalArgumentException {
         Properties apiProps = PropertiesTools.getProperties(default_properties, out_properties);
 
         // 1. Cerco la property del caller, che è la classe che implementa APICaller
@@ -34,7 +35,7 @@ public class APIProperties
                 params.add(new QueryParam(prop, apiProps.getProperty(prop)));
             }
         }
-        APIContainer container = APIContainer.getInstance();
+        APIContainer container = APIContainer.getInstance(download_properties);
 
         return container.getAPIManager(n, params);
     }

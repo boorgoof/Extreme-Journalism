@@ -57,16 +57,20 @@ public class PathManager {
             return false;
         }
         for (File f : contents) {
-            deleteDir(f);
+            deleteDirOrFile(f);
         }
         return true;
     }
 
-    public static void deleteDir(File file) {
+    public static void deleteDirOrFile(File file) {
+        if (file == null)
+        {
+            return;
+        }
         File[] contents = file.listFiles();
         if (contents != null) {
             for (File f : contents) {
-                deleteDir(f);
+                deleteDirOrFile(f);
             }
         }
         file.delete();
