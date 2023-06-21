@@ -5,7 +5,6 @@ import it.unipd.dei.dbdc.download.interfaces.APIManager;
 import it.unipd.dei.dbdc.download.QueryParam;
 import it.unipd.dei.dbdc.resources.ThreadPool;
 
-import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.*;
 
@@ -33,11 +32,12 @@ public class GuardianAPIManager implements APIManager {
     }
 
     @Override
-    public String getParams() {
+    public String getFormattedParams() {
         return GuardianAPIInfo.getFormattedParams();
     }
 
     // To add parameters
+    @Override
     public void addParams(List<QueryParam> l) throws IllegalArgumentException
     {
         if (l == null)
@@ -58,11 +58,12 @@ public class GuardianAPIManager implements APIManager {
     }
 
     // This calls the API
-    public void callAPI(String path_folder) throws IllegalArgumentException, IOException
+    @Override
+    public void callAPI(String path_folder) throws IllegalArgumentException
     {
         if (caller == null)
         {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Caller non inizializzato");
         }
 
         // Prende i parametri
@@ -82,18 +83,14 @@ public class GuardianAPIManager implements APIManager {
         // Wait for all sent tasks to complete:
         for (Future<Object> future : futures) {
             try {
-                // Get is
                 future.get();
             } catch (InterruptedException | ExecutionException e) {
-                // Avviene se e' stato interrotto mentre aspettava o ha lanciato un'eccezione
                 threadPool.shutdown();
-                throw new IOException("Parametri non esatti");
+                throw new IllegalArgumentException(e.getMessage());
             }
         }
 
-        //TODO: fare shutdown ogni volta o fare in modo di farlo solo alla fine? Problema: se finisco prima per eccezioni
         threadPool.shutdown();
-
         caller.endRequests();
     }
 }

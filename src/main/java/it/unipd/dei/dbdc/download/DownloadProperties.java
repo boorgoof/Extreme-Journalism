@@ -15,6 +15,7 @@ public class DownloadProperties {
     private final static String caller_key = "library";
     private final static String default_properties = "download.properties";
 
+    //Lancia IOException se non ci sono le properties di default o se le properties di default o passate sono fatte male
     public static HashMap<String, APIManager> readAPIContainerProperties(String out_properties) throws IOException {
 
         Properties downProps = PropertiesTools.getProperties(default_properties, out_properties);

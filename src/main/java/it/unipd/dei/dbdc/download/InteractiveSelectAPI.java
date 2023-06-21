@@ -9,11 +9,10 @@ import java.util.Scanner;
 public class InteractiveSelectAPI {
 
     private final APIContainer container;
-
     private final Scanner in;
 
-    public InteractiveSelectAPI(Scanner sc) throws IOException {
-        container = APIContainer.getInstance();
+    public InteractiveSelectAPI(Scanner sc, String download_props) throws IOException {
+        container = APIContainer.getInstance(download_props);
         in = sc;
     }
 

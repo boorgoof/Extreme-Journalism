@@ -51,6 +51,107 @@ public class GuardianAPIParamsTest {
             fail("Non e' stato reso accessibile il field");
         }
 
+        try
+        {
+            tester.addParam(new QueryParam("from-date", "1987-12-23"));
+            tester.addParam(new QueryParam("to-date", "1987-12-23"));
+            tester.addParam(new QueryParam("from-date", "2001-01-31"));
+            tester.addParam(new QueryParam("to-date", "2001-01-31"));
+            tester.addParam(new QueryParam("from-date", "2021-02-27"));
+            tester.addParam(new QueryParam("to-date", "2021-02-27"));
+            tester.addParam(new QueryParam("from-date", "1200-01-31"));
+            tester.addParam(new QueryParam("to-date", "1200-01-31"));
+            tester.addParam(new QueryParam("from-date", "1111-01-31"));
+            tester.addParam(new QueryParam("to-date", "1111-01-31"));
+            tester.addParam(new QueryParam("from-date", "2001-08-01"));
+            tester.addParam(new QueryParam("to-date", "2001-08-01"));
+            tester.addParam(new QueryParam("to-date", "2000-02-29"));
+        }
+        catch (IllegalArgumentException e)
+        {
+            fail("Data non messa in maniera corretta");
+        }
+
+        try
+        {
+            tester.addParam(new QueryParam("to-date", "1987/10/30"));
+            fail("Data non messa in maniera corretta");
+        }
+        catch (IllegalArgumentException e)
+        {
+            //Intentionally left blank
+        }
+
+        try
+        {
+            tester.addParam(new QueryParam("to-date", "1987.10.30"));
+            fail("Data non messa in maniera corretta");
+        }
+        catch (IllegalArgumentException e)
+        {
+            //Intentionally left blank
+        }
+
+        try
+        {
+            tester.addParam(new QueryParam("to-date", "19871030"));
+            fail("Data non messa in maniera corretta");
+        }
+        catch (IllegalArgumentException e)
+        {
+            //Intentionally left blank
+        }
+
+        try
+        {
+            tester.addParam(new QueryParam("to-date", "10-1987-30"));
+            fail("Data non messa in maniera corretta");
+        }
+        catch (IllegalArgumentException e)
+        {
+            //Intentionally left blank
+        }
+
+        try
+        {
+            tester.addParam(new QueryParam("to-date", "30-10-1987"));
+            fail("Data non messa in maniera corretta");
+        }
+        catch (IllegalArgumentException e)
+        {
+            //Intentionally left blank
+        }
+
+        try
+        {
+            tester.addParam(new QueryParam("from-date", "1987-02-36"));
+            fail("Data non messa in maniera corretta");
+        }
+        catch (IllegalArgumentException e)
+        {
+            //Intentionally left blank
+        }
+
+        try
+        {
+            tester.addParam(new QueryParam("to-date", "2001-02-29"));
+            fail("Data non messa in maniera corretta");
+        }
+        catch (IllegalArgumentException e)
+        {
+            //Intentionally left blank
+        }
+
+        try
+        {
+            tester.addParam(new QueryParam("from-date", "1987-09-31"));
+            fail("Data non messa in maniera corretta");
+        }
+        catch (IllegalArgumentException e)
+        {
+            //Intentionally left blank
+        }
+
         specified_fields = new HashMap<>();
         tester = new GuardianAPIParams();
         try {
