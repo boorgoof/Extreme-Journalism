@@ -8,9 +8,7 @@ import java.io.IOException;
 
 import java.util.*;
 
-/**
- *
- */
+
 public class DeserializationHandler {
 
     public final DeserializersContainer container; // Dovrei metterlo public se voglio modificare i fields
@@ -55,13 +53,13 @@ public class DeserializationHandler {
         rejectedFiles = deleteUnavailableFiles(files);
 
         if(!rejectedFiles.isEmpty()){
-            rejectFilesInfo(rejectedFiles);
+            rejectedFilesInfo(rejectedFiles);
         }
 
         return files;
     }
 
-    private void rejectFilesInfo(Set<File> rejectedFiles){
+    private void rejectedFilesInfo(Set<File> rejectedFiles){
 
         System.out.println("Il programma, al momento, è in grado di deserializzare solo i seguenti formati: ");
         Set<String> formatsAvailable = container.getFormats();
