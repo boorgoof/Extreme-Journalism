@@ -2,38 +2,76 @@ package it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI;
 
 import it.unipd.dei.dbdc.download.QueryParam;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * This is a class which contains all the parameters specified by the user to call the theGuardian API.
+ * It is used by the {@link GuardianAPIManager} class, and also has a set of default parameters, the same
+ * specified in the {@link GuardianAPIInfo} class.
+ *
+ * @see GuardianAPIManager
+ * @see GuardianAPIInfo
+ */
 public class GuardianAPIParams {
 
-    // Default fields to put in the request
+    /**
+     * A map that contains the parameters specified by the user.
+     *
+     */
+    private final Map<String, Object> specified_params;
+
+    /**
+     * Default fields to put in the request
+     *
+     */
     private final static QueryParam[] default_fields =
             {
                     new QueryParam("show-fields", "bodyText,headline"),
                     new QueryParam("format", "json")
             };
 
-    // Important parameter that must be specified
+    /**
+     * The api-key necessary for the call.
+     *
+     */
     private String api_key;
 
-    // Parameters that have a default value
+    /**
+     * Pages of the call, it has a default value
+     *
+     */
     private int pages = 5;
+
+    /**
+     * Page size of the call, it has a default value.
+     *
+     */
     private int page_size = 200;
+
+    /**
+     * Query of the call, it has a default value.
+     *
+     */
     private String query = "\"nuclear power\"";
 
-    private final Map<String, Object> specified_params;
-
+    /**
+     * Default constructor: it only initializes the map of the specified params.
+     *
+     */
     public GuardianAPIParams()
     {
         specified_params = new HashMap<>();
     }
 
+    /**
+     * Function to add a param to the specified params for the call.
+     * If it's a date, the format should be yyyy-mm-dd
+     *
+     * @param param The param to add to the specified params
+     * @throws IllegalArgumentException If the date specified is not in the correct format or is invalid
+     */
     public void addParam(QueryParam param) throws IllegalArgumentException
     {
         String elem = param.getValue();
@@ -61,6 +99,15 @@ public class GuardianAPIParams {
         specified_params.put(key, elem);
     }
 
+    /**
+     * Function to get the specified params for the call.
+     * It returns a {@link ArrayList} of a number of {@link Map} equal to the number of pages of the request,
+     * and every map contains all the specified params, plus the default params.
+     *
+     * @throws IllegalArgumentException If the api-key was not specified
+     * @return A {@link ArrayList} of a number of {@link Map} equal to the number of pages of the request
+     * and every map contains all the specified params, plus the default params.
+     */
     public ArrayList<Map<String, Object>> getParams() throws IllegalArgumentException
     {
         if (api_key == null)
@@ -83,10 +130,13 @@ public class GuardianAPIParams {
         return ret;
     }
 
-    private boolean format(String date)
+    /**
+     * Utility function to check the correctness of the date passed as a parameter.
+     *
+     * @return True if the format is correct and the date is valid (the year is valid if it's positive)
+     */
+    private static boolean format(String date)
     {
-        // E' l'unico modo in cui accetta la data. Puo' anche essere dell'anno 1
-        //TODO: semplifica
         if (!date.matches("[0-9]{4}-[0-9]{2}-[0-9]{2}"))
         {
             return false;
@@ -102,7 +152,6 @@ public class GuardianAPIParams {
         {
             return false;
         }
-        //Un anno divisibile per 100 (ad esempio il 1900) è un anno bisestile solo se è anche divisibile per 400
         return day != 29 || month != 2 || year % 4 == 0 && !((year % 100 == 0) && (year % 400 != 0));
     }
 }

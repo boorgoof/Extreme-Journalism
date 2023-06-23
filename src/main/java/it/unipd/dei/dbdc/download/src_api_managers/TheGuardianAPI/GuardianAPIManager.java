@@ -8,35 +8,73 @@ import it.unipd.dei.dbdc.resources.ThreadPool;
 import java.util.*;
 import java.util.concurrent.*;
 
-// Questo caller ha le informazioni per ogni chiamata fatta al TheGuardian.
+/**
+ * This is the {@link APIManager} of the theGuardian API. It uses the {@link GuardianAPIInfo} and {@link GuardianAPIParams}
+ * as proxies to get information about the API and to contain the specified params.
+ *
+ * @see GuardianAPIInfo
+ * @see GuardianAPIManager
+ * @see APIManager
+ */
 public class GuardianAPIManager implements APIManager {
 
-    // The library to call the API
+    /**
+     * The {@link APICaller} to pass the requests to. It should be declared during the initialization.
+     *
+     */
     private final APICaller caller;
 
-    // Utilizza il meccanismo della delega
+    /**
+     * The {@link GuardianAPIParams} object that contains all the specified or default parameters
+     * for the requests.
+     *
+     */
     private final GuardianAPIParams params;
 
+    /**
+     * The name of the API, as it is presented to the user. It should be declared during initialization.
+     *
+     */
     private final String name;
 
-    // To create this object, you have to pass a Caller to it
+    /**
+     * The only constructor of the class, it should pass an {@link APICaller} to pass the requests to
+     * and the name of the API, as it is presented to the user.
+     *
+     */
     public GuardianAPIManager(APICaller a, String n) {
         caller = a;
         params = new GuardianAPIParams();
         name = n;
     }
 
+    /**
+     * The function which returns the name of the API.
+     *
+     * @return A {@link String} which contains name of the API.
+     */
     @Override
     public String getName() {
         return name;
     }
 
+    /**
+     * The function which returns the possible parameters, formatted as specified in the
+     * {@link GuardianAPIInfo} class.
+     *
+     * @return A {@link String} which contains the formatted parameters.
+     */
     @Override
     public String getFormattedParams() {
         return GuardianAPIInfo.getFormattedParams();
     }
 
-    // To add parameters
+    /**
+     * The function which permits to add parameters to the request to the API.
+     *
+     * @param l The list of the {@link QueryParam} parameters to pass to the API.
+     * @throws IllegalArgumentException If one of those parameters is not a possible parameter (or is invalid if it's a date) or if the list is null.
+     */
     @Override
     public void addParams(List<QueryParam> l) throws IllegalArgumentException
     {
@@ -57,7 +95,13 @@ public class GuardianAPIManager implements APIManager {
         }
     }
 
-    // This calls the API
+    /**
+     * The function calls the API with all the parameters specified before.
+     * It uses the {@link CallAPIThread} to send the requests to the {@link APICaller}
+     *
+     * @param path_folder The path of the folder where the files of the requests should be saved.
+     * @throws IllegalArgumentException If the {@link APICaller} was not initialized, the api-key was not given or there was an exception in the calling of the API.
+     */
     @Override
     public void callAPI(String path_folder) throws IllegalArgumentException
     {
@@ -66,13 +110,12 @@ public class GuardianAPIManager implements APIManager {
             throw new IllegalArgumentException("Caller non inizializzato");
         }
 
-        // Prende i parametri
         ArrayList<Map<String, Object>> requests = params.getParams();
 
+        // Create a thread pool and send requests
         List<Future<?>> futures = new ArrayList<>();
         ExecutorService threadPool = ThreadPool.getExecutor();
 
-        // Chiamiamo e mandiamo nella thread pool:
         for (int i = 0; i < requests.size(); i++) {
             String path = path_folder+"/request"+(i+1)+".json";
             Future<?> f = threadPool.submit(new CallAPIThread(caller, GuardianAPIInfo.getDefaultURL(), path, requests.get(i)));

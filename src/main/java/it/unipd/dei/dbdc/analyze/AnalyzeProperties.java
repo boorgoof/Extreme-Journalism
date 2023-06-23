@@ -7,14 +7,22 @@ import java.io.IOException;
 import java.util.Properties;
 
 /**
- * This class analyzes the properties files that are relative to the analyze part.
+ * This class analyzes the properties file that are relative to the analysis part.
  *
  * @see Properties
  * @see PropertiesTools
  */
-
 public class AnalyzeProperties {
+    /**
+     * The name of the default properties file. It is present in the folder resources.
+     *
+     */
     public final static String default_properties = "analyze.properties";
+
+    /**
+     * The key of the parameter of the properties file that specifies the {@link Analyzer} to use
+     *
+     */
     private final static String analyzer_key = "analyzer";
 
     /**

@@ -3,6 +3,8 @@ package it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI;
 import it.unipd.dei.dbdc.download.QueryParam;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Field;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class GuardianAPIInfoTest {
@@ -19,12 +21,25 @@ public class GuardianAPIInfoTest {
     @Test
     public void getFormattedParams()
     {
+        //TODO: come accedere a membro privato statico di una classe?
+        Field length = null;
+        try {
+            length = GuardianAPIInfo.class.getDeclaredField("formatted_key_length");
+        } catch (NoSuchFieldException e) {
+            fail("Error in the reflection");
+        }
+        length.setAccessible(true);
         StringBuilder par = new StringBuilder();
         for (QueryParam q : possible_fields)
         {
             StringBuilder this_field = new StringBuilder(q.getKey());
-            while (this_field.length() < GuardianAPIInfo.formatted_key_length)
+            while (true)
             {
+                try {
+                    if (!(this_field.length() < (Integer) length.get(new GuardianAPIInfo()))) break;
+                } catch (IllegalAccessException e) {
+                    fail("Error in the reflection");
+                }
                 this_field.append(" ");
             }
             this_field.append(q.getValue()).append("\n");
@@ -32,6 +47,7 @@ public class GuardianAPIInfoTest {
         }
         String params = par.toString();
         assertEquals(params, GuardianAPIInfo.getFormattedParams());
+        length.setAccessible(false);
     }
 
     @Test

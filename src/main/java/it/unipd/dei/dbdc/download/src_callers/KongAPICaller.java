@@ -2,18 +2,16 @@ package it.unipd.dei.dbdc.download.src_callers;
 
 import it.unipd.dei.dbdc.download.interfaces.APICaller;
 import it.unipd.dei.dbdc.resources.PathManager;
-import javafx.scene.shape.Path;
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Map;
 
 /**
  * This class is an adapter which provides a simple way to call any API.
  * It implements the {@link APICaller} interface and uses the {@link Unirest} library.
- * It saves the downloaded files in the path specified.
+ * It saves the downloaded file in the path specified.
  * At the end of the calls, the method {@link KongAPICaller#endRequests()} should be called to end the connection.
  *
  */
@@ -35,10 +33,10 @@ public class KongAPICaller implements APICaller {
      * and saves the result of the call as a file at the specified path.
      *
      * @param base_url The base url of the API to call.
-     * @param params The parameters of the API.
+     * @param params The parameters of the API call.
      * @param path The path of the file where the response should be saved.
      * @return A boolean representing the success of the call
-     * @throws IOException If the specified path to the file does not exist, or the parameters are not correct.
+     * @see APICaller#sendRequest(String, Map, String)
      */
     @Override
     public boolean sendRequest(String base_url, Map<String, Object> params, String path) {
@@ -50,8 +48,9 @@ public class KongAPICaller implements APICaller {
     }
 
     /**
-     * This method ends the connection with the server. It should be called after the end of the requests to the server.
-     *
+     * This method ends the connection with the server.
+     * It should be called after the end of the requests to the server.
+     * @see APICaller#endRequests()
      */
     @Override
     public void endRequests()

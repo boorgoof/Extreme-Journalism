@@ -13,14 +13,14 @@ import static org.junit.jupiter.api.Assertions.fail;
 public class CallAPIThreadTest {
 
     @Test
-    public void call()
+    public void run()
     {
         Map<String, Object> specified_fields = new HashMap<>();
 
         CallAPIThread c = new CallAPIThread(new KongAPICaller(), GuardianAPIInfo.getDefaultURL(), "thread.json", specified_fields);
 
             try {
-                c.call();
+                c.run();
                 fail("La call ha avuto successo anche senza parametri");
             } catch (IllegalArgumentException e) {
                 //Intentionally left blank
@@ -30,7 +30,7 @@ public class CallAPIThreadTest {
             c = new CallAPIThread(new KongAPICaller(), GuardianAPIInfo.getDefaultURL(), "thread.json", specified_fields);
 
             try {
-                c.call();
+                c.run();
             } catch (IllegalArgumentException e) {
                 fail("La call non ha avuto successo");
             }
@@ -39,7 +39,7 @@ public class CallAPIThreadTest {
             c = new CallAPIThread(new KongAPICaller(), GuardianAPIInfo.getDefaultURL(), "thread.json", specified_fields);
 
             try {
-                c.call();
+                c.run();
             } catch (IllegalArgumentException e) {
                 fail("La call non ha avuto successo");
             }
@@ -48,7 +48,7 @@ public class CallAPIThreadTest {
             c = new CallAPIThread(new KongAPICaller(), GuardianAPIInfo.getDefaultURL(), "thread.json", specified_fields);
 
             try {
-                c.call();
+                c.run();
             } catch (IllegalArgumentException e) {
                 fail("La call non ha avuto successo");
             }
@@ -57,7 +57,7 @@ public class CallAPIThreadTest {
             c = new CallAPIThread(new KongAPICaller(), GuardianAPIInfo.getDefaultURL(), "thread.json", specified_fields);
 
             try {
-                c.call();
+                c.run();
             } catch (IllegalArgumentException e) {
                 fail("La call non ha avuto successo");
             }
@@ -66,7 +66,7 @@ public class CallAPIThreadTest {
             c = new CallAPIThread(new KongAPICaller(), GuardianAPIInfo.getDefaultURL(), "thread.json", specified_fields);
 
             try {
-                c.call();
+                c.run();
             } catch (IllegalArgumentException e) {
                 fail("La call non ha avuto successo");
             }
@@ -75,7 +75,7 @@ public class CallAPIThreadTest {
             c = new CallAPIThread(new KongAPICaller(), GuardianAPIInfo.getDefaultURL(), "thread.json", specified_fields);
 
             try {
-                c.call();
+                c.run();
             } catch (IllegalArgumentException e) {
                 fail("La call non ha avuto successo");
             }
@@ -84,7 +84,7 @@ public class CallAPIThreadTest {
             c = new CallAPIThread(new KongAPICaller(), GuardianAPIInfo.getDefaultURL(), "thread.json", specified_fields);
 
             try {
-                c.call();
+                c.run();
             } catch (IllegalArgumentException e) {
                 fail("La call non ha avuto successo");
             }
@@ -93,7 +93,7 @@ public class CallAPIThreadTest {
             c = new CallAPIThread(new KongAPICaller(), GuardianAPIInfo.getDefaultURL(), "thread.json", specified_fields);
 
             try {
-                c.call();
+                c.run();
             } catch (IllegalArgumentException e) {
                 fail("La call non ha avuto successo");
             }
@@ -102,7 +102,7 @@ public class CallAPIThreadTest {
             c = new CallAPIThread(new KongAPICaller(), GuardianAPIInfo.getDefaultURL(), "thread.json", specified_fields);
 
             try {
-                c.call();
+                c.run();
             } catch (IllegalArgumentException e) {
                 fail("La call non ha avuto successo");
             }
@@ -111,7 +111,7 @@ public class CallAPIThreadTest {
             c = new CallAPIThread(new KongAPICaller(), GuardianAPIInfo.getDefaultURL(), "thread.json", specified_fields);
 
             try {
-                c.call();
+                c.run();
             } catch (IllegalArgumentException e) {
                 fail("La call non ha avuto successo, cioè non ha ignorato i parametri errati");
             }

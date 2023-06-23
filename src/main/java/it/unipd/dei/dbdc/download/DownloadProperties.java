@@ -9,18 +9,39 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
-
+/**
+ * This utility class analyzes the properties file that specifies what are the possible {@link APIManager} that the user can call.
+ *
+ * @see Properties
+ * @see PropertiesTools
+ */
 public class DownloadProperties {
 
-    private final static String caller_key = "library";
+    /**
+     * The name of the default properties file. It is present in the folder resources.
+     *
+     */
     public final static String default_properties = "download.properties";
 
-    //Lancia IOException se non ci sono le properties di default o se le properties di default o passate sono fatte male
+    /**
+     * The key of the parameter of the properties file that specifies the {@link APICaller} to use
+     *
+     */
+    private final static String caller_key = "library";
+
+    /**
+     * The function that reads the properties file and returns an {@link HashMap} of {@link APIManager} and their names
+     * specified in the properties file.
+     *
+     * @param out_properties The name of the properties file specified by the user. If null, the default properties file will be used.
+     * @return An {@link HashMap} of {@link APIManager} and their names specified in the properties file.
+     * @throws IOException If both the default properties file and the user specified are not present, or if the properties specified are not correct.
+     */
     public static HashMap<String, APIManager> readAPIContainerProperties(String out_properties) throws IOException {
 
         Properties downProps = PropertiesTools.getProperties(default_properties, out_properties);
 
-        // 1. Cerco la property del caller, che è la classe che implementa APICaller
+        //Search the APICaller
         String caller_name = downProps.getProperty(caller_key);
         Class<?> caller_class;
         try {
@@ -29,17 +50,16 @@ public class DownloadProperties {
             throw new IOException("There is no " + caller_key + " property in the file of the download properties, or the value is not correct");
         }
 
-        // 2. Creo un'istanza di questa classe che implementa APICaller
         APICaller caller;
         try {
-            caller = (APICaller) caller_class.newInstance(); // Lancia ClassCastException o InstantiationException o IllegalAccessException
+            caller = (APICaller) caller_class.newInstance();
         } catch (InstantiationException | IllegalAccessException | ClassCastException e) {
             throw new IOException("The class " + caller_name + " is not in the correct format.\n" +
                     "It should have a constructor with no parameters and it should implement APICaller interface");
         }
 
+        //Creates the HashMap with all the APIManagers and their names
         HashMap<String, APIManager> managers = new HashMap<>(1);
-        // 3. Leggendo le properties, creo tutte le istanze degli APIManager di tutte le API specificate
         try {
             Enumeration<?> enumeration = downProps.propertyNames();
             while (enumeration.hasMoreElements()) {
@@ -49,8 +69,8 @@ public class DownloadProperties {
                 }
                 String manager_name = downProps.getProperty(prop);
                 Class<?> manager_class = Class.forName(manager_name);
-                Constructor<?> constructor = manager_class.getConstructor(APICaller.class, String.class); // Lancia NoSuchMethodException
-                managers.put(prop, (APIManager) constructor.newInstance(caller, prop)); // Lancia InvocationTargetException
+                Constructor<?> constructor = manager_class.getConstructor(APICaller.class, String.class);
+                managers.put(prop, (APIManager) constructor.newInstance(caller, prop));
             }
         } catch (InstantiationException | IllegalAccessException | ClassCastException | ClassNotFoundException |
                  NoSuchMethodException | InvocationTargetException ex) {

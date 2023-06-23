@@ -1,7 +1,6 @@
 package it.unipd.dei.dbdc;
 
 
-import it.unipd.dei.dbdc.analyze.AnalyzeProperties;
 import it.unipd.dei.dbdc.deserialization.DeserializationProperties;
 import it.unipd.dei.dbdc.download.DownloadProperties;
 import it.unipd.dei.dbdc.resources.PathManager;
@@ -13,7 +12,6 @@ import it.unipd.dei.dbdc.serializers.SerializationHandler;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class App
