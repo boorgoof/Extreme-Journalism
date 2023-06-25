@@ -1,4 +1,4 @@
-package it.unipd.dei.dbdc;
+package it.unipd.dei.dbdc.tools;
 
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.CommandLine;

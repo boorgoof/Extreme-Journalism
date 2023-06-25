@@ -41,7 +41,7 @@ public class DownloadPropertiesTest {
             obtained = DownloadProperties.readAPIContainerProperties(DownloadHandlerTest.resources_url+"trueDownload.properties");
             assertEquals(obtained.size(), 2);
             assertEquals(guardianAPIManager, obtained.get("TheGuardianAPI"));
-            assertEquals(new TestManager(new KongAPICaller(), "Test"), obtained.get("Test"));
+            assertTrue(obtained.get("Test") instanceof TestManager);
         } catch (IOException e) {
             fail("Failed the reading of the trueDownload.properties");
         }

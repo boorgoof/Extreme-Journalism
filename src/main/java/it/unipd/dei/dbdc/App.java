@@ -1,14 +1,15 @@
 package it.unipd.dei.dbdc;
 
-
 import it.unipd.dei.dbdc.deserialization.DeserializationProperties;
 import it.unipd.dei.dbdc.download.DownloadProperties;
+import it.unipd.dei.dbdc.tools.CommandLineInterpreter;
 import it.unipd.dei.dbdc.tools.PathTools;
 import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
 import it.unipd.dei.dbdc.analysis.AnalyzerHandler;
 import it.unipd.dei.dbdc.deserialization.DeserializationHandler;
 import it.unipd.dei.dbdc.download.DownloadHandler;
 import it.unipd.dei.dbdc.serializers.SerializationHandler;
+import it.unipd.dei.dbdc.tools.TotalProperties;
 
 import java.io.File;
 import java.io.IOException;

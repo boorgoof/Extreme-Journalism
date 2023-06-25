@@ -1,4 +1,4 @@
-package it.unipd.dei.dbdc;
+package it.unipd.dei.dbdc.tools;
 
 import it.unipd.dei.dbdc.tools.PropertiesTools;
 
