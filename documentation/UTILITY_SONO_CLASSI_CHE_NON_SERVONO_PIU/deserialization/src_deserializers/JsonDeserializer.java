@@ -2,8 +2,8 @@ package it.unipd.dei.dbdc.deserialization.src_deserializers;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import it.unipd.dei.dbdc.analyze.Article;
-import it.unipd.dei.dbdc.analyze.interfaces.UnitOfSearch;
+import it.unipd.dei.dbdc.analysis.Article;
+import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
 import it.unipd.dei.dbdc.deserialization.interfaces.DeserializerWithFields;
 
 import java.io.File;

@@ -1,8 +1,8 @@
-package it.unipd.dei.dbdc.resources;
+package it.unipd.dei.dbdc.tools;
 
 import java.util.concurrent.*;
 
-public class ThreadPool {
+public class ThreadPoolTools {
 
     private static ExecutorService threadPool;
 

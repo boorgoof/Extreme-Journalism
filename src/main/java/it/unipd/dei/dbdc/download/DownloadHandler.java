@@ -1,7 +1,7 @@
 package it.unipd.dei.dbdc.download;
 
 import it.unipd.dei.dbdc.download.interfaces.APIManager;
-import it.unipd.dei.dbdc.resources.PathManager;
+import it.unipd.dei.dbdc.tools.PathTools;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -44,8 +44,8 @@ public class DownloadHandler {
 
             try {
                 //Creates the folder to put the responses
-                file_path = PathManager.getDatabaseFolder() + manager.getName();
-                PathManager.clearFolder(file_path);
+                file_path = PathTools.getDatabaseFolder() + manager.getName();
+                PathTools.clearFolder(file_path);
 
                 manager.callAPI(file_path);
                 System.out.println( "You can find the downloaded files in the format in which they were downloaded in "+file_path);

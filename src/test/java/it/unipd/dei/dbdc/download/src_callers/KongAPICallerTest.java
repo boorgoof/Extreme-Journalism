@@ -1,10 +1,9 @@
 package it.unipd.dei.dbdc.download.src_callers;
 
+import it.unipd.dei.dbdc.download.DownloadHandlerTest;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -15,9 +14,8 @@ public class KongAPICallerTest {
     private static KongAPICaller caller;
 
     public static String key = "21b5c154-934c-4a4e-b2f5-64adbd68af5f"; //todo: prendila da altro posto comune
-
     private final static String defaultURL = "https://content.guardianapis.com/search?";
-    private final static String outputFolder = "./src/test/resources/download/kong/";
+    private final static String outputFolder = DownloadHandlerTest.resources_url+"kong/";
     private final static Map<String, Object> fields1 = new TreeMap<>();
 
     @BeforeAll
@@ -27,17 +25,16 @@ public class KongAPICallerTest {
         assertNotNull(caller);
     }
 
-    @Order(1)
     @Test
-    public void sendRequest() throws IOException {
-        //Di volta in volta cambiamo solo un parametro alla volta. Usiamo theGuardianApi per fare i test per comodità
+    public void sendRequest() {
+        //Changes one parameter at time:
 
         //TRUE TESTS
         int i = 0;
         //FALSE TESTS
         int j = 0;
 
-        // CAMBIO PAGE-SIZE
+        //PAGE-SIZE
 
         fields1.put( "api-key", key);
         fields1.put( "page-size", "200");
@@ -86,7 +83,7 @@ public class KongAPICallerTest {
 
         assertFalse(caller.sendRequest(defaultURL, fields1, outputFolder+"false"+j+".json"));
 
-        //CAMBIO PAGE
+        //PAGE
         i++;
         fields1.clear();
         fields1.put( "api-key", key);
@@ -111,7 +108,7 @@ public class KongAPICallerTest {
         fields1.clear();
         fields1.put( "api-key", key);
         fields1.put( "page-size", "100");
-        fields1.put( "page", "2"); //With these parameters, page 2 i not present
+        fields1.put( "page", "2"); //With these parameters, page 2 is not present
         fields1.put( "q", "\"solar energy\"");
         fields1.put( "order-by", "newest");
         fields1.put( "from-date", "2001-12-23");
@@ -119,7 +116,7 @@ public class KongAPICallerTest {
 
         assertFalse(caller.sendRequest(defaultURL, fields1, outputFolder+"false"+j+".json"));
 
-        //CAMBIO Q
+        //Q
         i++;
         fields1.clear();
         fields1.put( "api-key", key);
@@ -144,7 +141,7 @@ public class KongAPICallerTest {
         fields1.put( "api-key", key);
         fields1.put( "page-size", "100");
         fields1.put( "page", "5");
-        fields1.put( "q", "properties of the kingdom"); // It does not contains the "
+        fields1.put( "q", "properties of the kingdom"); // It does not contain the "
         fields1.put( "order-by", "newest");
 
         assertTrue(caller.sendRequest(defaultURL, fields1, outputFolder+"true"+i+".json"));
@@ -154,12 +151,12 @@ public class KongAPICallerTest {
         fields1.put( "api-key", key);
         fields1.put( "page-size", "100");
         fields1.put( "page", "5");
-        fields1.put( "q", "tistestisnotfalse");
+        fields1.put( "q", "thistestisnotfalse");
         fields1.put( "order-by", "newest");
 
         assertTrue(caller.sendRequest(defaultURL, fields1, outputFolder+"false"+j+".json"));
 
-        //CAMBIO ORDER-BY
+        //ORDER-BY
         i++;
         fields1.clear();
         fields1.put( "api-key", key);
@@ -196,7 +193,7 @@ public class KongAPICallerTest {
 
         assertFalse(caller.sendRequest(defaultURL, fields1, outputFolder+"false"+j+".json"));
 
-        //CAMBIO DATE
+        //DATE
         i++;
         fields1.clear();
         fields1.put( "api-key", key);
@@ -233,39 +230,39 @@ public class KongAPICallerTest {
 
         assertTrue(caller.sendRequest(defaultURL, fields1, outputFolder+"false"+j+".json"));
 
-        //CHIAMATA CON PATH NON CORRETTO
+        //Path that is not correct
         j++;
         fields1.clear();
         fields1.put( "api-key", key);
 
-        assertFalse(caller.sendRequest(defaultURL, fields1, "./non esisto/false"+j+".json"));
+        assertFalse(caller.sendRequest(defaultURL, fields1, "./notexists/false"+j+".json"));
 
         j++;
-        assertFalse(caller.sendRequest(defaultURL, fields1, "./nonesisto/false"+j+".json"));
+        assertFalse(caller.sendRequest(defaultURL, fields1, "./not exists/false"+j+".json"));
 
 
-        // Vediamo se sostituisce il file se gia' presente
+        //Try to put in the same file
         assertTrue(caller.sendRequest(defaultURL, fields1, outputFolder+"true"+i+".json"));
         assertTrue(caller.sendRequest(defaultURL, fields1, outputFolder+"true"+i+".json"));
 
-        //Un altra api a caso
+        //Another API
         i++;
         fields1.clear();
         assertTrue(caller.sendRequest("https://api.publicapis.org/entries", fields1, outputFolder+"true"+i+".json"));
 
     }
 
-    @Order(2)
     @Test
-    public void endRequest() throws IOException {
-
-        fields1.put( "api-key", key);
-        assertTrue(caller.sendRequest(defaultURL, fields1, "myrequest.json"));
-
+    public void endRequest() {
+        //There is nothing to test
         caller.endRequests();
-        assertFalse(caller.sendRequest(defaultURL, fields1, "myrequest.json"));
+    }
 
-        caller = new KongAPICaller();
-        assertTrue(caller.sendRequest(defaultURL, fields1, "myrequest.json"));
+    @Test
+    public void equals()
+    {
+        KongAPICaller c = new KongAPICaller();
+        assertTrue(c.equals(caller));
+        assertFalse(c.equals(123));
     }
 }

@@ -4,7 +4,6 @@ import it.unipd.dei.dbdc.download.interfaces.APIManager;
 import it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIManager;
 import it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIParams;
 import it.unipd.dei.dbdc.download.src_callers.KongAPICallerTest;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -15,28 +14,28 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@Disabled
 public class APIPropertiesTest {
 
-    private final static String resources_url = "./src/test/resources/download/";
     @Test
     public void readAPIProperties()
     {
         APIManager manager;
 
+        //Set accessible the params of the GuardianAPIManager
         Field params = null;
         try {
             params = GuardianAPIManager.class.getDeclaredField("params");
             params.setAccessible(true);
         } catch (NoSuchFieldException e) {
-            fail("Reflection non avvenuta in maniera corretta");
+            fail("Error during the reflection: check the source code");
         }
 
+        //Test with everything right
         Map<String, Object> list = new HashMap<>();
         list.put("api-key", KongAPICallerTest.key);
         list.put("from-date", "1904-12-12");
         list.put("to-date", "2001-12-04");
-        list.put("page-size", 134);
+        list.put("page-size", 11);
         list.put("q", "\"solar energy\"");
         list.put("order-by", "newest");
         list.put("format", "json");
@@ -50,46 +49,32 @@ public class APIPropertiesTest {
             expected.add(a);
         }
 
+        //Takes the manager returned and reads its parameters
         try {
-            manager = APIProperties.readAPIProperties(resources_url+"trueApi.properties", null);
+            manager = APIProperties.readAPIProperties(DownloadHandlerTest.resources_url+"trueApi.properties", null);
             GuardianAPIParams par = (GuardianAPIParams) params.get(manager);
             ArrayList<Map<String, Object>> parameters = par.getParams();
-            assertEquals(parameters, expected);
+            assertEquals(expected, parameters);
         } catch (IOException e) {
-            fail("Properties corrette non lette in maniera corretta");
+            fail("Error in the reading of the properties");
         } catch (IllegalAccessException e) {
-            fail("Reflection non eseguita in maniera corretta");
+            fail("Error during the reflection: check the source code");
         }
 
         try {
-            APIProperties.readAPIProperties(resources_url+"falseApi.properties", null);
-            fail("Properties non corrette lette come se fossero corrette");
+            //Tests with false api properties
+            assertThrows(IllegalArgumentException.class, () -> APIProperties.readAPIProperties(DownloadHandlerTest.resources_url + "falseApi.properties", null));
+            assertThrows(IllegalArgumentException.class, () -> APIProperties.readAPIProperties(DownloadHandlerTest.resources_url + "falseApi2.properties", null));
 
-        }
-        catch (IllegalArgumentException e)
-        {
-            //Intentionally left blank
+            //Test with not existent api properties
+            APIProperties.readAPIProperties(DownloadHandlerTest.resources_url + "NotExistent.properties", null);
         }
         catch (IOException e) {
-            fail("Properties file non trovato");
+            fail("Error in the reading of the properties");
         }
 
-        try {
-            APIProperties.readAPIProperties(resources_url+"falseApi2.properties", null);
-            fail("Properties non corrette lette come se fossero corrette");
-        } catch (IllegalArgumentException e) {
-            //Intentionally left blank
-        }
-        catch (IOException e)
-        {
-            fail("Properties file non trovato");
-        }
+        //TODO: altri test?
 
-        try {
-            APIProperties.readAPIProperties(resources_url+"nonesisto.properties", null);
-        } catch (IllegalArgumentException | IOException e) {
-            fail("Properties di default non lette correttamente");
-        }
-
+        params.setAccessible(false);
     }
 }

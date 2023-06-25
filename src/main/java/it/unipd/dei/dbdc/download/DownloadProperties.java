@@ -2,7 +2,7 @@ package it.unipd.dei.dbdc.download;
 
 import it.unipd.dei.dbdc.download.interfaces.APICaller;
 import it.unipd.dei.dbdc.download.interfaces.APIManager;
-import it.unipd.dei.dbdc.resources.PropertiesTools;
+import it.unipd.dei.dbdc.tools.PropertiesTools;
 
 import java.io.IOException;
 import java.lang.reflect.Constructor;
@@ -18,7 +18,7 @@ import java.util.*;
 public class DownloadProperties {
 
     /**
-     * The name of the default properties file. It is present in the folder resources.
+     * The name of the default properties file. It is present in the folder tools.
      *
      */
     public final static String default_properties = "download.properties";
@@ -46,7 +46,7 @@ public class DownloadProperties {
         Class<?> caller_class;
         try {
             caller_class = Class.forName(caller_name);
-        } catch (ClassNotFoundException e) {
+        } catch (ClassNotFoundException | NullPointerException e) {
             throw new IOException("There is no " + caller_key + " property in the file of the download properties, or the value is not correct");
         }
 
@@ -73,7 +73,7 @@ public class DownloadProperties {
                 managers.put(prop, (APIManager) constructor.newInstance(caller, prop));
             }
         } catch (InstantiationException | IllegalAccessException | ClassCastException | ClassNotFoundException |
-                 NoSuchMethodException | InvocationTargetException ex) {
+                 NoSuchMethodException | InvocationTargetException | NullPointerException ex) {
             throw new IOException("The format of the file is not correct.\n" +
                     "It should have a key string representing the name of the API and " +
                     "as a value the class that implements the manager of that API.\n" +

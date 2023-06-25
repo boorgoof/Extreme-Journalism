@@ -3,9 +3,9 @@ package it.unipd.dei.dbdc;
 
 import it.unipd.dei.dbdc.deserialization.DeserializationProperties;
 import it.unipd.dei.dbdc.download.DownloadProperties;
-import it.unipd.dei.dbdc.resources.PathManager;
-import it.unipd.dei.dbdc.analyze.interfaces.UnitOfSearch;
-import it.unipd.dei.dbdc.analyze.AnalyzerHandler;
+import it.unipd.dei.dbdc.tools.PathTools;
+import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
+import it.unipd.dei.dbdc.analysis.AnalyzerHandler;
 import it.unipd.dei.dbdc.deserialization.DeserializationHandler;
 import it.unipd.dei.dbdc.download.DownloadHandler;
 import it.unipd.dei.dbdc.serializers.SerializationHandler;
@@ -111,7 +111,7 @@ public class App
         //Path of the serialized file
         String filePath;
         try {
-            filePath = PathManager.getSerializedFile(totalProperties.getCommonFormat());
+            filePath = PathTools.getSerializedFile(totalProperties.getCommonFormat());
         }
         catch (IOException e)
         {
@@ -129,7 +129,7 @@ public class App
         }
         System.out.println("Exiting the serialization part. You can find the serialized file in "+filePath+"...\n");
 
-        // THIRD PHASE: analyze
+        // THIRD PHASE: analysis
         if (interpreter.analyzePhase())
         {
             // A. DESERIALIZATION from common_format to a list of Objects
@@ -148,7 +148,7 @@ public class App
 
             // B. ANALYZE the Objects to obtain the most important words
 
-            System.out.println("\nEntering the analyze part...");
+            System.out.println("\nEntering the analysis part...");
 
             //Obtains the properties from the command line, if specified.
             int count = interpreter.obtainNumberOption();
@@ -165,7 +165,7 @@ public class App
                 System.err.println("The program has been terminated: "+e.getMessage());
                 return;
             }
-            System.out.println("Exiting the analyze part. You can find the resulting file in"+out_file+"...\n");
+            System.out.println("Exiting the analysis part. You can find the resulting file in"+out_file+"...\n");
 
         }
         System.out.println("Everything went correctly.\nThank you for choosing our application.");

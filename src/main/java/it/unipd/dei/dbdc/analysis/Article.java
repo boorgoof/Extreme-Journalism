@@ -1,6 +1,6 @@
-package it.unipd.dei.dbdc.analyze;
+package it.unipd.dei.dbdc.analysis;
 
-import it.unipd.dei.dbdc.analyze.interfaces.UnitOfSearch;
+import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
 
 import java.util.Objects;
 
@@ -14,6 +14,13 @@ public class Article implements UnitOfSearch {
     private String source;
 
     public Article() {
+        id = null;
+        url = null;
+        title = null;
+        body = null;
+        date = null;
+        sourceSet = null;
+        source = null;
     }
 
     public Article(String ID, String URL, String headline, String bodyText, String date, String sourceSet, String source) {

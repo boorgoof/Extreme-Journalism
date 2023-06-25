@@ -1,7 +1,7 @@
-package it.unipd.dei.dbdc.analyze;
+package it.unipd.dei.dbdc.analysis;
 
-import it.unipd.dei.dbdc.resources.PropertiesTools;
-import it.unipd.dei.dbdc.analyze.interfaces.Analyzer;
+import it.unipd.dei.dbdc.tools.PropertiesTools;
+import it.unipd.dei.dbdc.analysis.interfaces.Analyzer;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -14,7 +14,7 @@ import java.util.Properties;
  */
 public class AnalyzeProperties {
     /**
-     * The name of the default properties file. It is present in the folder resources.
+     * The name of the default properties file. It is present in the folder tools.
      *
      */
     public final static String default_properties = "analyze.properties";
@@ -31,7 +31,7 @@ public class AnalyzeProperties {
      *
      * @param filePropertiesName The name of the properties file specified by the user. If it's null, the default properties file is analyzed.
      * @return An analyzer whose class is written in the properties file.
-     * @throws IOException If the default analyze properties file is absent or incorrect.
+     * @throws IOException If the default analysis properties file is absent or incorrect.
      * @see PropertiesTools
      */
     public static Analyzer readProperties(String filePropertiesName) throws IOException {
@@ -41,7 +41,7 @@ public class AnalyzeProperties {
         Class<?> analyzer_class;
         try {
             analyzer_class = Class.forName(analyzer_class_name);
-        } catch (ClassNotFoundException e) {
+        } catch (ClassNotFoundException | NullPointerException e) {
             throw new IOException("There is no class with the name "+analyzer_class_name);
         }
 

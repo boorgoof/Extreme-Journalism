@@ -10,8 +10,6 @@ import org.apache.commons.cli.DefaultParser;
 
 public class CommandLineInterpreter {
 
-    // TODO: completa con altre query (ad esempio la key per il download, cose cosi)
-
     private static final Options options = new Options();
     private final static HelpFormatter formatter = new HelpFormatter();
 
@@ -19,8 +17,8 @@ public class CommandLineInterpreter {
     private final static Option[] actions = {
             new Option("h", "help", false, "Print help"),
             new Option("d", "download-files", false, "Download files from the selected API"),
-            new Option("a", "analyze-terms", false, "Analyze the top 50 terms of the selected files"),
-            new Option("da", "download-and-analyze", false, "Download files from the selected API and analyze the top 50 terms of those files")
+            new Option("a", "analysis-terms", false, "Analyze the top 50 terms of the selected files"),
+            new Option("da", "download-and-analysis", false, "Download files from the selected API and analysis the top 50 terms of those files")
     };
 
     // The download options
@@ -30,9 +28,9 @@ public class CommandLineInterpreter {
             new Option("totpf", "total-properties-file", true, "Contains the path to the properties file that contains the common format and the number of terms to extract"),
     };
 
-    // The analyze options
+    // The analysis options
     private final static Option[] analyze = {
-            new Option("anapf", "analyze-properties-file", true, "Contains the path to the properties file that contains the analyzer to use for the extraction"),
+            new Option("anapf", "analysis-properties-file", true, "Contains the path to the properties file that contains the analyzer to use for the extraction"),
             new Option("despf", "deserializers-properties-file", true, "Contains the path to the properties file that contains the deserializers to use"),
             new Option("serpf", "serializers-properties-file", true, "Contains the path to the properties file that contains the serializers to use"),
             new Option("path", "folder-path", true, "Contains the location of the place to take the files from"),

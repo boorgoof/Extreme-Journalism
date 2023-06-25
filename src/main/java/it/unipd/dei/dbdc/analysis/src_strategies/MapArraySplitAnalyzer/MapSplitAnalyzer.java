@@ -1,28 +1,28 @@
-package it.unipd.dei.dbdc.analyze.src_strategies.parallelism;
+package it.unipd.dei.dbdc.analysis.src_strategies.MapArraySplitAnalyzer;
 
-import it.unipd.dei.dbdc.resources.ThreadPool;
-import it.unipd.dei.dbdc.analyze.interfaces.UnitOfSearch;
-import it.unipd.dei.dbdc.analyze.OrderedEntryStringInt;
-import it.unipd.dei.dbdc.analyze.interfaces.Analyzer;
+import it.unipd.dei.dbdc.tools.ThreadPoolTools;
+import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
+import it.unipd.dei.dbdc.analysis.OrderedEntryStringInt;
+import it.unipd.dei.dbdc.analysis.interfaces.Analyzer;
 
 import java.util.*;
 import java.util.concurrent.*;
 
-public class MapArraySplitAnalyzer implements Analyzer {
+public class MapSplitAnalyzer implements Analyzer {
 
     @Override
     public ArrayList<OrderedEntryStringInt> mostPresent(List<UnitOfSearch> articles, int tot_words, Set<String> banned) throws IllegalArgumentException
     {
         if (articles == null)
         {
-            throw new IllegalArgumentException("There are no article to analyze");
+            throw new IllegalArgumentException("There are no article to analysis");
         }
         TreeMap<String, Integer> global_map = new TreeMap<>();
 
         //To access the global map, we need to guarantee mutual exclusion
         Semaphore mutex = new Semaphore(1);
 
-        ExecutorService threadPool = ThreadPool.getExecutor();
+        ExecutorService threadPool = ThreadPoolTools.getExecutor();
         List<Future<?>> futures = new ArrayList<>(articles.size());
         for (UnitOfSearch article : articles) {
             Future<?> f = threadPool.submit(new AnalyzerArticleThread(article, global_map, mutex));

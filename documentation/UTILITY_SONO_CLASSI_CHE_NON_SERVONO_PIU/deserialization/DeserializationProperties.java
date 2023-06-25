@@ -1,7 +1,7 @@
 package it.unipd.dei.dbdc.deserialization;
 
 import it.unipd.dei.dbdc.deserialization.interfaces.Deserializer;
-import it.unipd.dei.dbdc.resources.ResourcesTools;
+import it.unipd.dei.dbdc.tools.ResourcesTools;
 
 import java.io.IOException;
 import java.util.HashMap;

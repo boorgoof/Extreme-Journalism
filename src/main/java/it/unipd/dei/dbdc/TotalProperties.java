@@ -1,6 +1,6 @@
 package it.unipd.dei.dbdc;
 
-import it.unipd.dei.dbdc.resources.PropertiesTools;
+import it.unipd.dei.dbdc.tools.PropertiesTools;
 
 import java.io.IOException;
 import java.util.Properties;

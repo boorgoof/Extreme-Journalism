@@ -19,7 +19,7 @@
  *
  * @author: Specifies the author or authors of the class.
  * @version: Specifies the version of the class.
- * @see: Provides references to related classes, methods, or documentation resources.
+ * @see: Provides references to related classes, methods, or documentation tools.
  * @since: Specifies the version of the software in which the class was introduced.
  * @deprecated: Indicates that the class is deprecated and should not be used.
  */

@@ -1,6 +1,6 @@
-package it.unipd.dei.dbdc.analyze.src_strategies.parallelism;
+package it.unipd.dei.dbdc.analysis.src_strategies.MapArraySplitAnalyzer;
 
-import it.unipd.dei.dbdc.analyze.interfaces.UnitOfSearch;
+import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
 
 import java.util.HashSet;
 import java.util.TreeMap;

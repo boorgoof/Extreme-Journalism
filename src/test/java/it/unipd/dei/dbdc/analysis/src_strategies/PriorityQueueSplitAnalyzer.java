@@ -1,19 +1,20 @@
-package it.unipd.dei.dbdc.analyze.src_strategies;
+package it.unipd.dei.dbdc.analysis.src_strategies;
 
-import it.unipd.dei.dbdc.analyze.interfaces.UnitOfSearch;
-import it.unipd.dei.dbdc.analyze.OrderedEntryStringInt;
-import it.unipd.dei.dbdc.analyze.interfaces.Analyzer;
+import it.unipd.dei.dbdc.analysis.OrderedEntryStringInt;
+import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
+import it.unipd.dei.dbdc.analysis.interfaces.Analyzer;
 
 import java.util.*;
 
-//FIXME: questa serve solo per testare che l'output sia giusto, andrebbe poi eliminata
-public class PriorityQueueArraySplitAnalyzer implements Analyzer {
+//This is only a utility class that is used for the tests. It is not efficient
+public class PriorityQueueSplitAnalyzer implements Analyzer {
+
     @Override
     public ArrayList<OrderedEntryStringInt> mostPresent(List<UnitOfSearch> articles, int tot_words, Set<String> banned) throws IllegalArgumentException
     {
         if (articles == null)
         {
-            throw new IllegalArgumentException("There are no article to analyze");
+            throw new IllegalArgumentException("There are no article to analysis");
         }
         TreeMap<String, Integer> global_map = new TreeMap<>();
 
@@ -36,22 +37,26 @@ public class PriorityQueueArraySplitAnalyzer implements Analyzer {
                 }
             }
         }
-        PriorityQueue<OrderedEntryStringInt> pq = new PriorityQueue<>();
+
+        //This part can be optimized
+        PriorityQueue<OrderedEntryComparable> pq = new PriorityQueue<>();
 
         for (Map.Entry<String, Integer> entry : global_map.entrySet()) {
             if (banned == null || !banned.contains(entry.getKey()))
             {
-                pq.offer(new OrderedEntryStringInt(entry));
+                pq.offer(new OrderedEntryComparable(entry));
             }
-            if (pq.size() > tot_words) { // Numero massimo di token più frequenti da mantenere
+            if (pq.size() > tot_words) {
                 pq.poll();
             }
         }
+
         ArrayList<OrderedEntryStringInt> max = new ArrayList<>(pq.size());
         while (!pq.isEmpty()) {
             max.add(pq.poll());
         }
 
+        //Reverse the ArrayList
         ArrayList<OrderedEntryStringInt> real = new ArrayList<>(max.size());
         for (int i = 0; i<max.size(); i++)
         {

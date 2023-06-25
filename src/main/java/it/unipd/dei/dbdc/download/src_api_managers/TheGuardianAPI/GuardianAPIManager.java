@@ -3,7 +3,7 @@ package it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI;
 import it.unipd.dei.dbdc.download.interfaces.APICaller;
 import it.unipd.dei.dbdc.download.interfaces.APIManager;
 import it.unipd.dei.dbdc.download.QueryParam;
-import it.unipd.dei.dbdc.resources.ThreadPool;
+import it.unipd.dei.dbdc.tools.ThreadPoolTools;
 
 import java.util.*;
 import java.util.concurrent.*;
@@ -38,14 +38,28 @@ public class GuardianAPIManager implements APIManager {
     private final String name;
 
     /**
-     * The only constructor of the class, it should pass an {@link APICaller} to pass the requests to
+     * The constructor of the class that requires an {@link APICaller} to pass the requests to
      * and the name of the API, as it is presented to the user.
      *
+     * @param a The {@link APICaller} to pass the request to.
+     * @param n The name of the API as it is presented to the user.
      */
     public GuardianAPIManager(APICaller a, String n) {
         caller = a;
         params = new GuardianAPIParams();
         name = n;
+    }
+
+    /**
+     * The copy constructor of the class, which requires another {@link GuardianAPIManager}
+     * as a parameter.
+     *
+     * @param g The {@link GuardianAPIManager} to copy from.
+     */
+    public GuardianAPIManager(GuardianAPIManager g) {
+        caller = g.caller;
+        params = new GuardianAPIParams(g.params);
+        name = g.name;
     }
 
     /**
@@ -114,7 +128,7 @@ public class GuardianAPIManager implements APIManager {
 
         // Create a thread pool and send requests
         List<Future<?>> futures = new ArrayList<>();
-        ExecutorService threadPool = ThreadPool.getExecutor();
+        ExecutorService threadPool = ThreadPoolTools.getExecutor();
 
         for (int i = 0; i < requests.size(); i++) {
             String path = path_folder+"/request"+(i+1)+".json";
@@ -134,5 +148,34 @@ public class GuardianAPIManager implements APIManager {
 
         threadPool.shutdown();
         caller.endRequests();
+    }
+
+    /**
+     * The function copies this object and gives another object that is identical to it.
+     * It is a stub to the copy constructor.
+     *
+     */
+    @Override
+    public APIManager copy()
+    {
+        return new GuardianAPIManager(this);
+    }
+
+    /**
+     * This function overrides the function of Object. It returns true if the Object passed
+     * is of the same class and has the same parameters of this Object.
+     *
+     * @param o The Object to compare to
+     * @return True if the two objects are equals
+     */
+    @Override
+    public boolean equals(Object o)
+    {
+        if (!(o instanceof GuardianAPIManager))
+        {
+            return false;
+        }
+        GuardianAPIManager obj = (GuardianAPIManager) o;
+        return (Objects.equals(caller, obj.caller) && params.equals(obj.params) && Objects.equals(name, obj.name));
     }
 }

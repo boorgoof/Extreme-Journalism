@@ -1,4 +1,4 @@
-package it.unipd.dei.dbdc.analyze;
+package it.unipd.dei.dbdc.analysis;
 
 import java.util.*;
 
@@ -9,7 +9,7 @@ import java.util.*;
  * @see Map.Entry
  * @see AbstractMap.SimpleEntry
  */
-public class OrderedEntryStringInt extends AbstractMap.SimpleEntry<String, Integer> implements Comparable<OrderedEntryStringInt>
+public class OrderedEntryStringInt extends AbstractMap.SimpleEntry<String, Integer>
 {
     /**
      * Constructor with a String and an Integer
@@ -47,27 +47,5 @@ public class OrderedEntryStringInt extends AbstractMap.SimpleEntry<String, Integ
             return true;
         }
         else return this.getValue().equals(a.getValue()) && (this.getKey().compareToIgnoreCase(a.getKey()) < 0);
-    }
-
-    @Override
-    public int compareTo(OrderedEntryStringInt o) {
-        if (this.isMajorThan(o))
-        {
-            return 1;
-        } else if (this.equals(o)) {
-            return 0;
-        }
-        return -1;
-    }
-
-    @Override
-    public boolean equals(Object o)
-    {
-        if (!(o instanceof OrderedEntryStringInt))
-        {
-            return false;
-        }
-        OrderedEntryStringInt other = (OrderedEntryStringInt) o;
-        return this.getValue().equals(other.getValue()) && this.getKey().equals(other.getKey());
     }
 }

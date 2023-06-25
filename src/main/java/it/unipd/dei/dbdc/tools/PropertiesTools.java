@@ -1,4 +1,4 @@
-package it.unipd.dei.dbdc.resources;
+package it.unipd.dei.dbdc.tools;
 
 import java.io.IOException;
 import java.io.InputStream;

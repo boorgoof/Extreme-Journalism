@@ -1,6 +1,6 @@
-package it.unipd.dei.dbdc.analyze.interfaces;
+package it.unipd.dei.dbdc.analysis.interfaces;
 
-import it.unipd.dei.dbdc.analyze.OrderedEntryStringInt;
+import it.unipd.dei.dbdc.analysis.OrderedEntryStringInt;
 
 import java.util.ArrayList;
 import java.util.List;

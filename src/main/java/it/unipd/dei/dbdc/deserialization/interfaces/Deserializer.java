@@ -1,6 +1,6 @@
 package it.unipd.dei.dbdc.deserialization.interfaces;
 
-import it.unipd.dei.dbdc.analyze.interfaces.UnitOfSearch;
+import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
 
 import java.io.File;
 import java.io.IOException;

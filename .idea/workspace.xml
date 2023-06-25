@@ -4,23 +4,108 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Exceptions in analyze">
+    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Javadoc di download">
+      <change afterPath="$PROJECT_DIR$/database/Test/request1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/Test/request2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/Test/request3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/analysis/OrderedEntryStringInt.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/analysis/src_strategies/MapArraySplitAnalyzer/MapSplitAnalyzer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/analysis/AnalyzePropertiesTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/analysis/AnalyzerHandlerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/analysis/ArticleTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/analysis/src_strategies/MapArraySplitAnalyzer/AnalyzerArticleThread.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/analysis/src_strategies/OrderedEntryComparable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_api_managers/TestManager/TestManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/tools/PathManagerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/analysis/default.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/analysis/false.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/analysis/false2.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/analysis/priority.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/download/defaultDownload.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/download/falseDownload.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/download/falseDownload2.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/download/thread.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/download/trueApiTest.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/download/trueDownload.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/analyze/AnalyzeProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/analyze/AnalyzeProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request1.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request1.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request2.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request3.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request3.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request4.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request4.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request5.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request5.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/ALTERNATIVE_DI_COMPONENTI/PROVE_MAPPE/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/ALTERNATIVE_DI_COMPONENTI/PROVE_MAPPE/main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/ALTERNATIVE_DI_COMPONENTI/PROVE_UNIREST_java8/Kong.java" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/ALTERNATIVE_DI_COMPONENTI/PROVE_UNIREST_java8/Kong.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/ALTERNATIVE_DI_COMPONENTI/PROVE_UNIREST_java8/OkHttp.java" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/ALTERNATIVE_DI_COMPONENTI/PROVE_UNIREST_java8/OkHttp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/deserialization/DeserializationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/deserialization/DeserializationHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/deserialization/DeserializationProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/deserialization/DeserializationProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/deserialization/DeserializersContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/deserialization/DeserializersContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/deserialization/interfaces/Deserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/deserialization/interfaces/Deserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/deserialization/src_deserializers/CsvDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/deserialization/src_deserializers/CsvDeserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/deserialization/src_deserializers/JsonDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/deserialization/src_deserializers/JsonDeserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/deserialization/src_deserializers/XmlDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/deserialization/src_deserializers/XmlDeserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadocexample.java" beforeDir="false" afterPath="$PROJECT_DIR$/javadocexample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/CommandLineInterpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/CommandLineInterpreter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/TotalProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/TotalProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/analyze/AnalyzeProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/analysis/AnalyzeProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/analyze/AnalyzerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/analysis/AnalyzerHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/analyze/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/analysis/Article.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/analyze/OrderedEntryStringInt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/analysis/OrderedEntryStringIntTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/analyze/interfaces/Analyzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/analysis/interfaces/Analyzer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/analyze/interfaces/UnitOfSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/analysis/interfaces/UnitOfSearch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/analyze/src_strategies/PriorityQueueArraySplitAnalyzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/analysis/src_strategies/PriorityQueueSplitAnalyzer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/analyze/src_strategies/parallelism/AnalyzerArticleThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/analysis/src_strategies/MapArraySplitAnalyzer/AnalyzerArticleThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/analyze/src_strategies/parallelism/MapArraySplitAnalyzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/analysis/src_strategies/MapArraySplitAnalyzer/MapArraySplitAnalyzer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/DeserializationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/DeserializationHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/DeserializationProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/DeserializationProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/interfaces/Deserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/interfaces/Deserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/src_deserializers/CsvDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/src_deserializers/CsvDeserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/src_deserializers/JsonDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/src_deserializers/JsonDeserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/src_deserializers/XmlDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/src_deserializers/XmlDeserializer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/APIContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/APIContainer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/APIProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/APIProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/DownloadHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/DownloadHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/DownloadProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/DownloadProperties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/InteractiveSelectAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/InteractiveSelectAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/QueryParam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/QueryParam.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/interfaces/APICaller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/interfaces/APICaller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/interfaces/APIManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/interfaces/APIManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/CallAPIThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/CallAPIThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIParams.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/src_callers/KongAPICaller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/src_callers/KongAPICaller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/resources/PathManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/tools/PathTools.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/resources/PropertiesTools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/tools/PropertiesTools.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/resources/ThreadPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/tools/ThreadPoolTools.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/serializers/SerializationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/serializers/SerializationHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/serializers/SerializationProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/serializers/SerializationProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/serializers/interfaces/Serializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/serializers/interfaces/Serializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/serializers/src_serializers/CsvSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/serializers/src_serializers/CsvSerializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/serializers/src_serializers/JsonSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/serializers/src_serializers/JsonSerializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/serializers/src_serializers/XmlSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/serializers/src_serializers/XmlSerializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/analyze.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/analyze.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/PropertiesToolsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/tools/PropertiesToolsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/DeserializationHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/DeserializationHandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/src_deserializers/CsvDeserializerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/src_deserializers/CsvDeserializerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/src_deserializers/JsonDeserializerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/src_deserializers/JsonDeserializerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/src_deserializers/XmlDeserializerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/src_deserializers/XmlDeserializerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/APIContainerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/APIContainerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/APIPropertiesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/APIPropertiesTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/DownloadHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/DownloadHandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/DownloadPropertiesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/DownloadPropertiesTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/InteractiveSelectAPITest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/InteractiveSelectAPITest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/CallAPIThreadTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/CallAPIThreadTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIInfoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIInfoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIParamsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIParamsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_callers/KongAPICallerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_callers/KongAPICallerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/false5.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/kong/false5.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/true1.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true1.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/true10.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true10.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/true11.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true11.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/true3.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true3.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/true5.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true5.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/true6.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true6.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/true7.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true7.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/true8.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true8.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/trueApi.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/trueApi.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,31 +143,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/vison/OneDrive/Desktop/Programmi/JAVA/INGEGNERIA DEL SOFTWARE/Progetto/eis-final&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.grazie&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "jdk.selected.JAVA_MODULE": "1.8",
+    "last_opened_file_path": "C:/Users/vison/OneDrive/Desktop/Programmi/JAVA/INGEGNERIA DEL SOFTWARE/Progetto/eis-final/src/test/resources/analysis",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.grazie"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\src\test\resources\analysis" />
+      <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\src\test\java\it\unipd\dei\dbdc\analysis" />
+      <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\src\test\resources\download" />
       <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final" />
       <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\src\main\resources" />
-      <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\resources" />
-      <recent name="D:\ingengeria software\eis-final\src\test\DeserializationTest\handlerTest\Database" />
-      <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\src\main\java\it\unipd\dei\dbdc\search\src_strategies\parallelism" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\bash" />
@@ -95,11 +180,11 @@
       <recent name="" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="it.unipd.dei.dbdc.analysis.src_strategies" />
+      <recent name="it.unipd.dei.dbdc.resources" />
       <recent name="it.unipd.dei.dbdc.serializers.src_serializers" />
       <recent name="it.unipd.dei.dbdc.serializers" />
       <recent name="it.unipd.dei.dbdc.download" />
-      <recent name="it.unipd.dei.dbdc.Serializers" />
-      <recent name="it.unipd.dei.dbdc.Download" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="it.unipd.dei.dbdc.deserialization" />
@@ -107,8 +192,12 @@
       <recent name="it.unipd.dei.dbdc.Deserializers" />
       <recent name="it.unipd.dei.dbdc.Serializers" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="it.unipd.dei.dbdc.analysis.src_strategies" />
+      <recent name="it.unipd.dei.dbdc.download.src_api_managers.TestManager" />
+    </key>
   </component>
-  <component name="RunManager" selected="JUnit.GuardianAPIInfoTest.getFormattedParams">
+  <component name="RunManager" selected="Application.App">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.App" />
       <module name="Extreme_journalism" />
@@ -122,38 +211,53 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DeserializationHandlerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AnalyzePropertiesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Extreme_journalism" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="it.unipd.dei.dbdc.deserialization.*" />
+          <option name="PATTERN" value="it.unipd.dei.dbdc.analysis.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.deserialization" />
-      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.deserialization.DeserializationHandlerTest" />
+      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.analysis" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.analysis.AnalyzePropertiesTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DeserializationHandlerTest.testDeserializeFolder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ArticleTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Extreme_journalism" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="it.unipd.dei.dbdc.deserialization.*" />
+          <option name="PATTERN" value="it.unipd.dei.dbdc.analysis.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.deserialization" />
-      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.deserialization.DeserializationHandlerTest" />
-      <option name="METHOD_NAME" value="testDeserializeFolder" />
+      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.analysis" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.analysis.ArticleTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ArticleTest.equals" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Extreme_journalism" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.unipd.dei.dbdc.analysis.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.analysis" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.analysis.ArticleTest" />
+      <option name="METHOD_NAME" value="equals" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GuardianAPIInfoTest.getFormattedParams" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GuardianAPIInfoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Extreme_journalism" />
       <extension name="coverage">
         <pattern>
@@ -163,22 +267,6 @@
       </extension>
       <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI" />
       <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIInfoTest" />
-      <option name="METHOD_NAME" value="getFormattedParams" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GuardianAPIParamsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Extreme_journalism" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI" />
-      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIParamsTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -199,11 +287,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.GuardianAPIInfoTest.getFormattedParams" />
         <item itemvalue="Application.App" />
-        <item itemvalue="JUnit.DeserializationHandlerTest" />
-        <item itemvalue="JUnit.GuardianAPIParamsTest" />
-        <item itemvalue="JUnit.DeserializationHandlerTest.testDeserializeFolder" />
+        <item itemvalue="JUnit.AnalyzePropertiesTest" />
+        <item itemvalue="JUnit.ArticleTest" />
+        <item itemvalue="JUnit.ArticleTest.equals" />
+        <item itemvalue="JUnit.GuardianAPIInfoTest" />
       </list>
     </recent_temporary>
   </component>
@@ -384,7 +472,15 @@
       <option name="project" value="LOCAL" />
       <updated>1687362185564</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Javadoc di download">
+      <option name="closed" value="true" />
+      <created>1687540761249</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1687540761249</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -433,7 +529,8 @@
     <MESSAGE value="Fixato properties, iniziato javadoc (c'è un esempio al livello del readme)" />
     <MESSAGE value="Fixato il container public" />
     <MESSAGE value="Exceptions in analyze" />
-    <option name="LAST_COMMIT_MESSAGE" value="Exceptions in analyze" />
+    <MESSAGE value="Javadoc di download" />
+    <option name="LAST_COMMIT_MESSAGE" value="Javadoc di download" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

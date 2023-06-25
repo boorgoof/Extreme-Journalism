@@ -1,7 +1,7 @@
 package it.unipd.dei.dbdc.deserialization.src_deserializers;
 
-import it.unipd.dei.dbdc.analyze.Article;
-import it.unipd.dei.dbdc.analyze.interfaces.UnitOfSearch;
+import it.unipd.dei.dbdc.analysis.Article;
+import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Disabled;
@@ -32,7 +32,7 @@ public class XmlDeserializerTest {
 
         try {
 
-            File file = new File("src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles1.xml");
+            File file = new File("src/test/tools/DeserializationTest/deserializersTest/xmlTest/Articles1.xml");
             List<UnitOfSearch> articles = deserializer.deserialize(file);
             assertNotNull(articles);
             assertFalse(articles.isEmpty());
@@ -64,7 +64,7 @@ public class XmlDeserializerTest {
         XmlDeserializer deserializer = new XmlDeserializer();
 
         try {
-            File file = new File("src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles2.xml");
+            File file = new File("src/test/tools/DeserializationTest/deserializersTest/xmlTest/Articles2.xml");
             List<UnitOfSearch> articles = deserializer.deserialize(file);
             assertNotNull(articles);
             assertFalse(articles.isEmpty());
@@ -94,7 +94,7 @@ public class XmlDeserializerTest {
         XmlDeserializer deserializer = new XmlDeserializer();
 
         try {
-            File file = new File("src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles3.xml");
+            File file = new File("src/test/tools/DeserializationTest/deserializersTest/xmlTest/Articles3.xml");
             List<UnitOfSearch> articles = deserializer.deserialize(file); // mi funziona solo con path preciso
             assertNotNull(articles);
             assertFalse(articles.isEmpty());
@@ -119,7 +119,7 @@ public class XmlDeserializerTest {
         XmlDeserializer deserializer = new XmlDeserializer();
 
         try {
-            File file = new File("src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles4.xml");
+            File file = new File("src/test/tools/DeserializationTest/deserializersTest/xmlTest/Articles4.xml");
             List<UnitOfSearch> articles = deserializer.deserialize(file); // mi funziona solo con path preciso
             assertNotNull(articles);
             assertFalse(articles.isEmpty());
@@ -145,7 +145,7 @@ public class XmlDeserializerTest {
         XmlDeserializer deserializer = new XmlDeserializer();
 
         try {
-            File file = new File("src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles5.xml");
+            File file = new File("src/test/tools/DeserializationTest/deserializersTest/xmlTest/Articles5.xml");
             List<UnitOfSearch> articles = deserializer.deserialize(file); // mi funziona solo con path preciso
             assertNotNull(articles);
             assertFalse(articles.isEmpty());

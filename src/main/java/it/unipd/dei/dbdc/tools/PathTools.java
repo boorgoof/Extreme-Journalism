@@ -1,11 +1,11 @@
-package it.unipd.dei.dbdc.resources;
+package it.unipd.dei.dbdc.tools;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class PathManager {
+public class PathTools {
 
     private static final String database_folder = "./database/";
     private static final String output_folder = "./output/";
@@ -44,7 +44,7 @@ public class PathManager {
     }
 
     public static void clearFolder(String folder_path) throws IOException {
-        if (!PathManager.deleteFilesInDir(new File(folder_path))) {
+        if (!PathTools.deleteFilesInDir(new File(folder_path))) {
             // Se non era presente, lo crea
             Files.createDirectories(Paths.get(folder_path));
         }

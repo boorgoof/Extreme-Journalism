@@ -1,8 +1,7 @@
 package it.unipd.dei.dbdc.download;
 
-import it.unipd.dei.dbdc.analyze.interfaces.Analyzer;
 import it.unipd.dei.dbdc.download.interfaces.APIManager;
-import it.unipd.dei.dbdc.resources.PropertiesTools;
+import it.unipd.dei.dbdc.tools.PropertiesTools;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,7 +17,7 @@ import java.util.Properties;
 public class APIProperties
 {
     /**
-     * The name of the default properties file. It is present in the folder resources.
+     * The name of the default properties file. It is present in the folder tools.
      *
      */
     private static final String default_properties = "api.properties";

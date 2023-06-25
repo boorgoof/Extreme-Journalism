@@ -39,4 +39,10 @@ public interface APIManager {
      * @throws IllegalArgumentException If there was an error in the calling of the API.
      */
     void callAPI(String path_folder) throws IllegalArgumentException;
+
+    /**
+     * The function copies this object and gives another object that is identical to it.
+     *
+     */
+    APIManager copy();
 }

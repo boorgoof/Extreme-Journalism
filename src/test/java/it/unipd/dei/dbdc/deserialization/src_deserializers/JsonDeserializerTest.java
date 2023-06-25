@@ -1,6 +1,6 @@
 package it.unipd.dei.dbdc.deserialization.src_deserializers;
-import it.unipd.dei.dbdc.analyze.Article;
-import it.unipd.dei.dbdc.analyze.interfaces.UnitOfSearch;
+import it.unipd.dei.dbdc.analysis.Article;
+import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -64,7 +64,7 @@ public class JsonDeserializerTest {
         deserializer.setFields(fileFields);
 
         try {
-            File file = new File ("src/test/resources/DeserializationTest/deserializersTest/jsonTest/Articles1.json");
+            File file = new File ("src/test/tools/DeserializationTest/deserializersTest/jsonTest/Articles1.json");
             List<UnitOfSearch> articles = deserializer.deserialize(file); // mi funziona solo con path preciso
             assertNotNull(articles);
             assertFalse(articles.isEmpty());
@@ -94,7 +94,7 @@ public class JsonDeserializerTest {
         deserializer.setFields(fileFields);
 
         try {
-            File file = new File ("src/test/resources/DeserializationTest/deserializersTest/jsonTest/Articles2.json");
+            File file = new File ("src/test/tools/DeserializationTest/deserializersTest/jsonTest/Articles2.json");
             List<UnitOfSearch> articles = deserializer.deserialize(file); // mi funziona solo con path preciso
             assertNotNull(articles);
             assertFalse(articles.isEmpty());
@@ -123,7 +123,7 @@ public class JsonDeserializerTest {
         deserializer.setFields(fileFields);
 
         try {
-            File file = new File ("src/test/resources/DeserializationTest/deserializersTest/jsonTest/Articles3.json");
+            File file = new File ("src/test/tools/DeserializationTest/deserializersTest/jsonTest/Articles3.json");
             List<UnitOfSearch> articles = deserializer.deserialize(file);
 
             assertNotNull(articles);
@@ -156,7 +156,7 @@ public class JsonDeserializerTest {
         deserializer.setFields(fileFields);
 
         try {
-            File file = new File ("src/test/resources/DeserializationTest/deserializersTest/jsonTest/Articles4.json");
+            File file = new File ("src/test/tools/DeserializationTest/deserializersTest/jsonTest/Articles4.json");
             List<UnitOfSearch> articles = deserializer.deserialize(file);
 
             assertNotNull(articles);
@@ -192,7 +192,7 @@ public class JsonDeserializerTest {
         deserializer.setFields(fileFields);
 
         try {
-            File file = new File ("src/test/resources/DeserializationTest/deserializersTest/jsonTest/Articles5.json");
+            File file = new File ("src/test/tools/DeserializationTest/deserializersTest/jsonTest/Articles5.json");
             List<UnitOfSearch> articles = deserializer.deserialize(file);
             assertNotNull(articles);
             assertFalse(articles.isEmpty());
@@ -220,7 +220,7 @@ public class JsonDeserializerTest {
         deserializer.setFields(fileFields);
 
         try {
-            File file = new File ("src/test/resources/DeserializationTest/deserializersTest/jsonTest/Articles6.json");
+            File file = new File ("src/test/tools/DeserializationTest/deserializersTest/jsonTest/Articles6.json");
             List<UnitOfSearch> articles = deserializer.deserialize(file);
             assertNotNull(articles);
             assertFalse(articles.isEmpty());
@@ -239,5 +239,5 @@ public class JsonDeserializerTest {
 /*
     List<UnitOfSearch> objects = new ArrayList<>(articles);
     XmlSerializer serializer = new XmlSerializer();
-    serializer.serialize(objects,"src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles5.xml");
+    serializer.serialize(objects,"src/test/tools/DeserializationTest/deserializersTest/xmlTest/Articles5.xml");
  */

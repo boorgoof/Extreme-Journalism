@@ -5,6 +5,7 @@ import it.unipd.dei.dbdc.download.QueryParam;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * This is a class which contains all the parameters specified by the user to call the theGuardian API.
@@ -63,6 +64,21 @@ public class GuardianAPIParams {
     public GuardianAPIParams()
     {
         specified_params = new HashMap<>();
+    }
+
+    /**
+     * Copy constructor: It initializes the map to be identical to the one of the object
+     * passed as a parameter.
+     *
+     * @param par The object to copy from
+     */
+    public GuardianAPIParams(GuardianAPIParams par)
+    {
+        specified_params = new HashMap<>(par.specified_params);
+        api_key = par.api_key;
+        pages = par.pages;
+        page_size = par.page_size;
+        query = par.query;
     }
 
     /**
@@ -128,6 +144,24 @@ public class GuardianAPIParams {
             ret.add(i, others);
         }
         return ret;
+    }
+
+    /**
+     * This function overrides the function of Object. It returns true if the Object passed
+     * is of the same class and has the same parameters of this Object.
+     *
+     * @param o The Object to compare to
+     * @return True if the two objects are equals
+     */
+    @Override
+    public boolean equals(Object o)
+    {
+        if (!(o instanceof GuardianAPIParams))
+        {
+            return false;
+        }
+        GuardianAPIParams obj = (GuardianAPIParams) o;
+        return (Objects.equals(api_key, obj.api_key) && specified_params.equals(obj.specified_params) && page_size == obj.page_size && pages == obj.pages && query.equals(obj.query));
     }
 
     /**

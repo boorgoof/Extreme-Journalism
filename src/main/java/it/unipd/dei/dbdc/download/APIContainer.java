@@ -27,6 +27,7 @@ public class APIContainer {
 
     /**
      * This returns the only instance of this class, and initializes it if it is not.
+     * Once initialized without exceptions, this function returns always the same Container.
      *
      * @param download_properties The properties specified by the user where are specified all the possible {@link APIManager}.
      *                            If it is null, the default properties file will be used.
@@ -79,13 +80,14 @@ public class APIContainer {
 
     /**
      * The function which return an instance of the {@link APIManager} whose name is passed as a parameter
+     * which has the parameters that are also passed to the function.
      *
      * @param name The name of the {@link APIManager}.
      * @throws IllegalArgumentException If there is no {@link APIManager} with that name.
      */
     public APIManager getAPIManager(String name, List<QueryParam> l) throws IllegalArgumentException
     {
-        APIManager a = getManager(name);
+        APIManager a = getManager(name).copy();
         a.addParams(l);
         return a;
     }

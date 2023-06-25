@@ -13,15 +13,15 @@ public class GuardianAPIInfoTest {
             new QueryParam("api-key", "MANDATORY: the key to access the API"),
             new QueryParam("page-size","The number of articles to have in a single file .json. Values: 1-200. Default = 200"),
             new QueryParam("pages", "The number of pages to download from the API. Default is 5, which means that by default are downloaded 1000 articles"),
-            new QueryParam("q", "The topic of the articles to analyze for. Default is \"nuclear power\""),
+            new QueryParam("q", "The topic of the articles to analysis for. Default is \"nuclear power\""),
             new QueryParam("order-by","The way the articles should be ordered (we take the first n in that order). Default = relevance"),
-            new QueryParam("from-date", "The date to analyze from"),
-            new QueryParam("to-date", "The date to analyze to")
+            new QueryParam("from-date", "The date to analysis from, in the format yyyy-mm-dd"),
+            new QueryParam("to-date", "The date to analysis to, in the format yyyy-mm-dd")
     };
     @Test
     public void getFormattedParams()
     {
-        //TODO: come accedere a membro privato statico di una classe?
+        //Access the private static field
         Field length = null;
         try {
             length = GuardianAPIInfo.class.getDeclaredField("formatted_key_length");
@@ -29,17 +29,20 @@ public class GuardianAPIInfoTest {
             fail("Error in the reflection");
         }
         length.setAccessible(true);
+        int max_length = 0;
+        try {
+            max_length = (Integer) length.get(null);
+        } catch (IllegalAccessException e) {
+            fail("Error in the reflection");
+        }
+        
+        //Create the String in the same way it should be done inside the class
         StringBuilder par = new StringBuilder();
         for (QueryParam q : possible_fields)
         {
             StringBuilder this_field = new StringBuilder(q.getKey());
-            while (true)
+            while (this_field.length() < max_length)
             {
-                try {
-                    if (!(this_field.length() < (Integer) length.get(new GuardianAPIInfo()))) break;
-                } catch (IllegalAccessException e) {
-                    fail("Error in the reflection");
-                }
                 this_field.append(" ");
             }
             this_field.append(q.getValue()).append("\n");
