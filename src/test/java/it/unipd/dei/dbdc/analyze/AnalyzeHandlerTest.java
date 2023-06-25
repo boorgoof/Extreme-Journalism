@@ -1,4 +1,4 @@
-package it.unipd.dei.dbdc.Analyze;
+package it.unipd.dei.dbdc.analyze;
 
 public class AnalyzeHandlerTest {
 }

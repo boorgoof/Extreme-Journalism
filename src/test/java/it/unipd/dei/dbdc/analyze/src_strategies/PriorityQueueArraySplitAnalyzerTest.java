@@ -1,4 +1,4 @@
-package it.unipd.dei.dbdc.Analyze.src_strategies;
+package it.unipd.dei.dbdc.analyze.src_strategies;
 
 public class PriorityQueueArraySplitAnalyzerTest {
 }
