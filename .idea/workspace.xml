@@ -5,10 +5,55 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Merge fede-io">
+      <change afterPath="$PROJECT_DIR$/database/request1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/request2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/request3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/request4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/request5.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/deserializationtest/DeserializationHandlerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/deserializationtest/DeserializationPropertiesTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/deserializationtest/DeserializersContainerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/deserializationtest/src_deserializers/CsvDeserializerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/deserializationtest/src_deserializers/JsonDeserializerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/deserializationtest/src_deserializers/XmlDeserializerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myrequest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/xmlTest/ArticlesError.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thread.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/DeserializationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/DeserializationHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/DeserializationHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/DeserializationHandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request1.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request1.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request2.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request3.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request3.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request4.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request4.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request5.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request5.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/output/output.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/serialized.xml" beforeDir="false" afterPath="$PROJECT_DIR$/output/serialized.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/DeserializersContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/DeserializersContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/src_deserializers/CsvDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/src_deserializers/CsvDeserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/src_callers/KongAPICaller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/src_callers/KongAPICaller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/src_deserializers/CsvDeserializerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/src_deserializers/CsvDeserializerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/src_deserializers/JsonDeserializerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/src_deserializers/JsonDeserializerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/src_deserializers/XmlDeserializerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/src_deserializers/XmlDeserializerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/csvTest/Articles3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/csvTest/Articles3.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/csvTest/Articles4.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/csvTest/Articles4.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/csvTest/Articles5.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/csvTest/Articles5.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/jsonTest/Articles6.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/jsonTest/Articles6.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/false5.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/kong/false5.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/true0.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true0.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/true1.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/true10.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true10.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/true11.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true11.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/true2.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/true3.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true3.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/true5.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true5.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/true6.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true6.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/true7.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true7.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/true8.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true8.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +102,7 @@
     "git-widget-placeholder": "newBranch",
     "ignore.virus.scanning.warn.message": "true",
     "jdk.selected.JAVA_MODULE": "1.8",
-    "last_opened_file_path": "C:/Users/vison/OneDrive/Desktop/Programmi/JAVA/INGEGNERIA DEL SOFTWARE/Progetto/eis-final",
+    "last_opened_file_path": "D:/ingengeria software/eis-final/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -66,11 +111,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\ingengeria software\eis-final\documentation\UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU" />
       <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final" />
       <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\src\main\resources" />
       <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\resources" />
       <recent name="D:\ingengeria software\eis-final\src\test\DeserializationTest\handlerTest\Database" />
-      <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\src\main\java\it\unipd\dei\dbdc\search\src_strategies\parallelism" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\bash" />
@@ -96,7 +141,7 @@
       <recent name="it.unipd.dei.dbdc.Serializers" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.DeserializationHandlerTest">
+  <component name="RunManager" selected="JUnit.deserialization in Extreme_journalism">
     <configuration name="DeserializationHandlerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Extreme_journalism" />
       <extension name="coverage">
@@ -108,38 +153,6 @@
       <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.deserialization" />
       <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.deserialization.DeserializationHandlerTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DeserializationHandlerTest.getDeserializationFiles" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Extreme_journalism" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.unipd.dei.dbdc.deserialization.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.deserialization" />
-      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.deserialization.DeserializationHandlerTest" />
-      <option name="METHOD_NAME" value="getDeserializationFiles" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DeserializationHandlerTest.testDeserializeFile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Extreme_journalism" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.unipd.dei.dbdc.deserialization.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.deserialization" />
-      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.deserialization.DeserializationHandlerTest" />
-      <option name="METHOD_NAME" value="testDeserializeFile" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -175,6 +188,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="deserialization in Extreme_journalism" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Extreme_journalism" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="download in Extreme_journalism" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Extreme_journalism" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="eis-final" />
       <method v="2">
@@ -190,11 +219,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.deserialization in Extreme_journalism" />
+        <item itemvalue="JUnit.download in Extreme_journalism" />
+        <item itemvalue="JUnit.DeserializationHandlerTest.testDeserializeFolder" />
         <item itemvalue="JUnit.DeserializationHandlerTest" />
         <item itemvalue="JUnit.GuardianAPIParamsTest" />
-        <item itemvalue="JUnit.DeserializationHandlerTest.testDeserializeFolder" />
-        <item itemvalue="JUnit.DeserializationHandlerTest.testDeserializeFile" />
-        <item itemvalue="JUnit.DeserializationHandlerTest.getDeserializationFiles" />
       </list>
     </recent_temporary>
   </component>
