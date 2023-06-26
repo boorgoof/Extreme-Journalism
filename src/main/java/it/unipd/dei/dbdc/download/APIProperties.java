@@ -16,11 +16,12 @@ import java.util.Properties;
  */
 public class APIProperties
 {
+    /* TODO: ha senso avere delle properties di default in questo caso?
     /**
      * The name of the default properties file. It is present in the folder tools.
      *
-     */
     private static final String default_properties = "api.properties";
+    */
 
     /**
      * The key of the parameter of the properties file that specifies the {@link APIManager} to use
@@ -39,7 +40,8 @@ public class APIProperties
      * @throws IllegalArgumentException If the name or the parameters of the {@link APIManager} specified aren't correct.
      */
     public static APIManager readAPIProperties(String out_properties, String download_properties) throws IOException, IllegalArgumentException {
-        Properties apiProps = PropertiesTools.getProperties(default_properties, out_properties);
+        //Properties apiProps = PropertiesTools.getProperties(default_properties, out_properties);
+        Properties apiProps = PropertiesTools.getOutProperties(out_properties);
 
         String n = null;
         ArrayList<QueryParam> params = new ArrayList<>();

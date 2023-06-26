@@ -23,7 +23,6 @@ public class AnalyzePropertiesTest {
             analyzer = AnalyzeProperties.readProperties(null);
             assertTrue(analyzer instanceof MapSplitAnalyzer);
 
-            //TODO: da errore, probably perche' cerco di accedere a cose al di la'
             analyzer = AnalyzeProperties.readProperties(AnalyzerHandlerTest.resources_url+"priority.properties");
             assertTrue(analyzer instanceof PriorityQueueSplitAnalyzer);
         } catch (IOException e) {

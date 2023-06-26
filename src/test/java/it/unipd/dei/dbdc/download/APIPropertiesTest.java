@@ -61,17 +61,12 @@ public class APIPropertiesTest {
             fail("Error during the reflection: check the source code");
         }
 
-        try {
-            //Tests with false api properties
-            assertThrows(IllegalArgumentException.class, () -> APIProperties.readAPIProperties(DownloadHandlerTest.resources_url + "falseApi.properties", null));
-            assertThrows(IllegalArgumentException.class, () -> APIProperties.readAPIProperties(DownloadHandlerTest.resources_url + "falseApi2.properties", null));
 
-            //Test with not existent api properties
-            APIProperties.readAPIProperties(DownloadHandlerTest.resources_url + "NotExistent.properties", null);
-        }
-        catch (IOException e) {
-            fail("Error in the reading of the properties");
-        }
+        //Tests with false api properties
+        assertThrows(IllegalArgumentException.class, () -> APIProperties.readAPIProperties(DownloadHandlerTest.resources_url + "falseApi.properties", null));
+        assertThrows(IllegalArgumentException.class, () -> APIProperties.readAPIProperties(DownloadHandlerTest.resources_url + "falseApi2.properties", null));
+        //Test with not existent api properties
+        assertThrows(IOException.class, () -> APIProperties.readAPIProperties(DownloadHandlerTest.resources_url + "NotExistent.properties", null));
 
         //TODO: altri test?
 

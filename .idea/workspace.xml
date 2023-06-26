@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="inizio anal handler" />
+    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Continuo test, spero di non aver rotto nulla">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bash/download.bat" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/download.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bash/ds.bat" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/ds.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bash/search.bat" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/search.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/APIProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/APIProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/api.properties" beforeDir="false" afterPath="$PROJECT_DIR$/out_properties/api.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/APIPropertiesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/APIPropertiesTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -68,21 +76,21 @@
       <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\src\main\java\it\unipd\dei\dbdc\search\src_strategies\parallelism" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\out_properties" />
       <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\bash" />
       <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\src\test\resources" />
       <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final" />
       <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\documentation" />
-      <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\src\main\java\it\unipd\dei\dbdc\resources" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="it.unipd.dei.dbdc.tools" />
       <recent name="it.unipd.dei.dbdc.serializers.src_serializers" />
       <recent name="it.unipd.dei.dbdc.serializers" />
       <recent name="it.unipd.dei.dbdc.download" />
       <recent name="it.unipd.dei.dbdc.Serializers" />
-      <recent name="it.unipd.dei.dbdc.Download" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="it.unipd.dei.dbdc.deserialization" />
@@ -91,13 +99,13 @@
       <recent name="it.unipd.dei.dbdc.Serializers" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.DownloadPropertiesTest">
+  <component name="RunManager" selected="JUnit.AnalyzePropertiesTest.readProperties">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.App" />
       <module name="Extreme_journalism" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="it.unipd.dei.dbdc.*" />
+          <option name="PATTERN" value="it.unipd.dei.dbdc.tools.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -105,17 +113,45 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DeserializationHandlerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="download" type="BatchConfigurationType" factoryName="Batch" temporary="true">
+      <module name="Extreme_journalism" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\cmd" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SCRIPT_NAME" value="download.bat" />
+      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="APIPropertiesTest.readAPIProperties" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Extreme_journalism" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="it.unipd.dei.dbdc.deserialization.*" />
+          <option name="PATTERN" value="it.unipd.dei.dbdc.download.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.deserialization" />
-      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.deserialization.DeserializationHandlerTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.download" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.download.APIPropertiesTest" />
+      <option name="METHOD_NAME" value="readAPIProperties" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AnalyzePropertiesTest.readProperties" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Extreme_journalism" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.unipd.dei.dbdc.analysis.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.analysis" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.analysis.AnalyzePropertiesTest" />
+      <option name="METHOD_NAME" value="readProperties" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -130,37 +166,6 @@
       </extension>
       <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.download" />
       <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.download.DownloadPropertiesTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GuardianAPIInfoTest.getFormattedParams" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Extreme_journalism" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI" />
-      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIInfoTest" />
-      <option name="METHOD_NAME" value="getFormattedParams" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GuardianAPIParamsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Extreme_journalism" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI" />
-      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIParamsTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -181,11 +186,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AnalyzePropertiesTest.readProperties" />
+        <item itemvalue="JUnit.APIPropertiesTest.readAPIProperties" />
+        <item itemvalue="Batch.download" />
         <item itemvalue="JUnit.DownloadPropertiesTest" />
         <item itemvalue="Application.App" />
-        <item itemvalue="JUnit.GuardianAPIInfoTest.getFormattedParams" />
-        <item itemvalue="JUnit.DeserializationHandlerTest" />
-        <item itemvalue="JUnit.GuardianAPIParamsTest" />
       </list>
     </recent_temporary>
   </component>
@@ -374,7 +379,15 @@
       <option name="project" value="LOCAL" />
       <updated>1687724881329</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Continuo test, spero di non aver rotto nulla">
+      <option name="closed" value="true" />
+      <created>1687725124409</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1687725124409</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -424,9 +437,19 @@
     <MESSAGE value="Fixato il container public" />
     <MESSAGE value="Exceptions in analyze" />
     <MESSAGE value="inizio anal handler" />
-    <option name="LAST_COMMIT_MESSAGE" value="inizio anal handler" />
+    <MESSAGE value="Continuo test, spero di non aver rotto nulla" />
+    <option name="LAST_COMMIT_MESSAGE" value="Continuo test, spero di non aver rotto nulla" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/APIPropertiesTest.java</url>
+          <line>53</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="java.lang.String" memberName="value" />
