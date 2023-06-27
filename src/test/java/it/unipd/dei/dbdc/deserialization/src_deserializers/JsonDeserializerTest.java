@@ -139,7 +139,7 @@ public class JsonDeserializerTest {
 
 
 
-    // TEST FILE JSON CON CHIAVI MANCANTI. ATTENZIONE L'ID NON PUO ESSERE MANCANTE altrimenti errore. non viene caricato articolo
+    // TEST FILE JSON CON CHIAVI MANCANTI. ATTENZIONE L'ID NON PUO ESSERE MANCANTE altrimenti  non viene caricato articolo
     private static List<Article> createTestArticles6() {
         List<Article> articles = new ArrayList<>();
         articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1",null,null));
