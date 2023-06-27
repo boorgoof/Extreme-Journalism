@@ -8,7 +8,6 @@
  * @return Describes the return value of a method.
  * @throws Documents the exceptions that a method can throw.
  * @see: Provides a reference to another related class, method, or documentation resource.
- * @deprecated This method is deprecated. Use {@link Math#pow(double, double)} instead.
  */
 
 //CLASS e INTERFACE
@@ -21,6 +20,5 @@
  * @version: Specifies the version of the class.
  * @see: Provides references to related classes, methods, or documentation tools.
  * @since: Specifies the version of the software in which the class was introduced.
- * @deprecated: Indicates that the class is deprecated and should not be used.
  */
 

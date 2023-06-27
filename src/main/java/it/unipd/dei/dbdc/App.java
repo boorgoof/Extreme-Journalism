@@ -169,7 +169,7 @@ public class App
             System.out.println("Exiting the analysis part. You can find the resulting file in"+out_file+"...\n");
 
         }
-        System.out.println("Everything went correctly.\nThank you for choosing our application.");
+        System.out.println("Everything went correctly.\nThank you for choosing our application, we hope to see you soon.");
     }
 
 }
