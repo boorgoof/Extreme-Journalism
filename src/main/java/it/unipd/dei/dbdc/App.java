@@ -1,47 +1,33 @@
 package it.unipd.dei.dbdc;
 
+import it.unipd.dei.dbdc.deserialization.DeserializationProperties;
+import it.unipd.dei.dbdc.download.DownloadProperties;
+import it.unipd.dei.dbdc.tools.CommandLineInterpreter;
+import it.unipd.dei.dbdc.tools.PathTools;
+import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
+import it.unipd.dei.dbdc.analysis.AnalyzerHandler;
+import it.unipd.dei.dbdc.deserialization.DeserializationHandler;
+import it.unipd.dei.dbdc.download.DownloadHandler;
+import it.unipd.dei.dbdc.serializers.SerializationHandler;
+import it.unipd.dei.dbdc.tools.TotalProperties;
 
-import it.unipd.dei.dbdc.Deserializers.Article;
-import it.unipd.dei.dbdc.Handlers.AnalyzerHandler;
-import it.unipd.dei.dbdc.Handlers.DeserializationHandler;
-import it.unipd.dei.dbdc.Handlers.DownloadHandler;
-import it.unipd.dei.dbdc.Handlers.SerializationHandler;
-
+import java.io.File;
 import java.io.IOException;
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class App
 {
-    // TODO: prendi tutto da properties, e fai in modo che ti possano passare un properties diverso da CLI. Oppure metti le properties fuori da src
-    private static final String database_path = "./database/";
+    //TODO: stampa cose più significative, e vedi bene dove vanno le varie eccezioni
 
-    private static final String deserializers_properties = "deserializers.properties";
-    private static final String serializers_properties = "serializers.properties";
-    private static final String download_properties = "download.properties";
-    private static final String analyze_properties = "analyze.properties";
+    public static void main(String[] args) {
 
-    private static final String common_format = "xml";
-
-    private static final String outFile = "./database/output.txt";
-
-    // TODO: remove from here
-    private static int tot_count = 50;
-
-    // TODO: crea di default una pool di threads che viene utilizzata per tutte le cose
-
-    public static void main( String[] args ) {
-
-        // L'utente deve passare da riga di comando l'azione che vuole fare.
         CommandLineInterpreter interpreter;
         try {
             interpreter = new CommandLineInterpreter(args);
         }
         catch (IllegalStateException e)
         {
-            ConsoleTextColors.printlnError("Programma terminato perche' non e' stata fornita una azione da compiere.");
+            System.err.println("The program has been terminated because there was no action to perform specified.");
             return;
         }
 
@@ -50,144 +36,140 @@ public class App
             return;
         }
 
-        // Folder to serialize to common format.
+        TotalProperties totalProperties;
+        try {
+            totalProperties = new TotalProperties(interpreter.obtainTotProps());
+        }
+        catch (IOException e)
+        {
+            System.err.println("The program has been terminated because the file "+TotalProperties.default_properties+" was not found: "+e.getMessage());
+            return;
+        }
+
+        // Folder to serialize.
         String folderPath = null;
 
-        // FASE 1: download
+        // FIRST PHASE: download
         if (interpreter.downloadPhase()) {
-
-            ConsoleTextColors.printlnProcess("Entering the download part...");
-
-            // The only download option is the path of the properties file for the API to call.
-            String props = interpreter.obtainAPIProps();
+            System.out.println("Entering the download part...");
             try {
-                folderPath = DownloadHandler.download(database_path, download_properties, props);
+                //Obtains the properties from the command line, if specified, and calls the handler.
+                folderPath = DownloadHandler.download(interpreter.obtainDownProps(), interpreter.obtainAPIProps());
             }
             catch (IOException e)
             {
-                System.err.println("Errore nella fase di download: ");
-                e.printStackTrace();
+                System.err.println("The program has been terminated because the file "+ DownloadProperties.default_properties+" was not found: "+e.getMessage());
                 return;
             }
-            ConsoleTextColors.printlnProcess("Exiting the download part...");
+
+            System.out.println("Exiting the download part...\n");
         }
 
-        // FASE 2: avviene sempre, è la serializzazione in formato comune
+        // SECOND PHASE: it always happens, as the serialization is always necessary.
 
-        // Percorso del file serializzato. TODO: facciamo in modo che il nome cambi?
-        String filePath = database_path + "/Serialized." + common_format;
+        // A. DESERIALIZATION from the given format to a List of Objects
 
-        // A. DESERIALIZZAZIONE formato fornito -> Article
+        //Obtains the properties from the command line, if specified
         String path_cli = interpreter.obtainPathOption();
 
         if (path_cli == null && folderPath == null) {
-            ConsoleTextColors.printlnError("Errore: nessun file da deserializzare");
+            System.err.println("Error: there is no file to serialize.");
             return;
         } else if (path_cli != null) {
             folderPath = path_cli;
         }
 
-        ConsoleTextColors.printlnProcess("Inizio deserializzazione di "+folderPath+"...");
-        DeserializationHandler<Article> deserializer;
+        System.out.println("\nEntering the deserialization of "+folderPath+"...");
+
+        //Initializes the handler.
+        DeserializationHandler deserializersHandler;
         try {
-             deserializer = new DeserializationHandler<>(deserializers_properties);
+            //Obtains the properties from the command line, if specified, and calls the handler.
+            deserializersHandler = new DeserializationHandler(interpreter.obtainDeserProps());
         }
         catch (IOException e)
         {
-            ConsoleTextColors.printlnError("Errore del programma: non sono stati caricati correttamente i deserilizzatori");
-            e.printStackTrace();
+            System.err.println("The program has been terminated because the file "+ DeserializationProperties.default_properties+" was not found: "+e.getMessage());
             return;
         }
 
-        ConsoleTextColors.printlnProcess("Sono stati forniti i deserializzatori per i seguenti formati:");
-        Set<String> formatsAvailable = deserializer.getFormats();
-        for (String format : formatsAvailable) {
-            ConsoleTextColors.printlnInfo(format);
+        //Tries to deserialize the specified folder.
+        List<UnitOfSearch> articles;
+        try{
+             articles = deserializersHandler.deserializeFolder(folderPath);
+        } catch (IOException e){
+            System.err.println(e.getMessage()); //TODO: eccezioni
+            return;
         }
-        ConsoleTextColors.printlnInfo("Nel caso in cui ci fossero file di formato differente da questi elencati non verranno presi in considerazione");
 
-        // Cerco di deserializzare l'intero folder, con tutti i formati possibili
-        long start = System.currentTimeMillis();
-        List<Article> articles = new ArrayList<>();
+        System.out.println("Exiting the deserialization part...\n");
+
+
+        // B. SERIALIZATION to the List of Objects to the common format
+
+        System.out.println("\nEntering the serialization part...");
+
+        //Path of the serialized file
+        String filePath;
         try {
-            for (String format : formatsAvailable) {
-                deserializer.deserializeFolder(format, folderPath, articles);
-            }
-        } catch (IOException e) {
-            ConsoleTextColors.printlnError("Deserializzazione fallita per il formato: " + e.getMessage());
-            return;
+            filePath = PathTools.getSerializedFile(totalProperties.getCommonFormat());
         }
-        long end = System.currentTimeMillis();
-        System.out.println(ConsoleTextColors.YELLOW+"Tempo deserializzazione: "+(end-start)+ConsoleTextColors.RESET);
-
-
-        ConsoleTextColors.printlnProcess("Fine deserializzazione...");
-
-
-        // B. SERIALIZZAZIONE Article -> formato comune
-
-        ConsoleTextColors.printlnInfo("Inizio serializzazione...");
-
-        try {
-
-            // Creazione della lista di oggetti Serializable a partire dalla lista di Article (Article implementa Serializable)
-            List<Serializable> objects = new ArrayList<>(articles);
-
-            SerializationHandler serializer = new SerializationHandler(serializers_properties);
-
-            start = System.currentTimeMillis();
-            serializer.serializeObjects(objects, common_format, filePath);
-            end = System.currentTimeMillis();
-            System.out.println(ConsoleTextColors.YELLOW+"Tempo serializzazione: "+(end-start)+ConsoleTextColors.RESET);
-
-
-        } catch (IOException e) {
-            ConsoleTextColors.printlnInfo("Errore nella serializzazione: ");
-            e.printStackTrace();
-            return;
-        }
-        ConsoleTextColors.printlnProcess("Fine serializzazione. Potrete trovare il file serializzato in "+filePath);
-
-        // FASE 3: Estrazione termini
-        if (interpreter.searchPhase())
+        catch (IOException e)
         {
-            // DESERIALIZZAZIONE formato comune -> articles
-            ConsoleTextColors.printlnProcess("Inizio deserializzazione...");
+            System.err.println("Error: it was not possible to create the serialized file.");
+            return;
+        }
+
+        try {
+            //Obtains the properties from the command line, if specified, and calls the handler.
+            SerializationHandler serializersHandler = new SerializationHandler(interpreter.obtainSerProps());
+            serializersHandler.serializeObjects(articles, totalProperties.getCommonFormat(), filePath);
+        } catch (IOException e) {
+            System.err.println("Error during the serialization: "+e.getMessage());
+            return;
+        }
+        System.out.println("Exiting the serialization part. You can find the serialized file in "+filePath+"...\n");
+
+        // THIRD PHASE: analysis
+        if (interpreter.analyzePhase())
+        {
+            // A. DESERIALIZATION from common_format to a list of Objects
+            System.out.println("\nEntering the deserialization of "+filePath+"...");
 
             try {
-                start = System.currentTimeMillis();
-                articles = deserializer.deserializeFile(common_format, filePath);
-                end = System.currentTimeMillis();
-                System.out.println(ConsoleTextColors.YELLOW+"Tempo deserializzazione: "+(end-start)+ConsoleTextColors.RESET);
+                //TODO: AL MOMENTO USA LA SECONDA VERSIONE DI DESERIALIZER. DA CAMBIARE?
+                File commonFormatFile = new File(filePath);
+                articles = deserializersHandler.deserializeFile(commonFormatFile);
             }
             catch (IOException e) {
-                ConsoleTextColors.printlnError("Deserializzazione fallita per il formato: " + e.getMessage());
+                System.err.println("Error: "+e.getMessage());
                 return;
             }
-            ConsoleTextColors.printlnProcess("Fine deserializzazione...");
+            System.out.println("Exiting the deserialization part...\n");
 
-            ConsoleTextColors.printlnProcess("Inizio estrazione termini...");
+            // B. ANALYZE the Objects to obtain the most important words
 
-            // ESTRAZIONE DEI TERMINI PIU' IMPORTANTI
-            int count_cli = interpreter.obtainNumberOption();
-            if (count_cli != -1)
+            System.out.println("\nEntering the analysis part...");
+
+            //Obtains the properties from the command line, if specified.
+            int count = interpreter.obtainNumberOption();
+            if (count == -1)
             {
-                tot_count = count_cli;
+                count = totalProperties.getWordsCount();
             }
 
-            ConsoleTextColors.printlnProcess("Scrittura dei primi "+tot_count+" termini più importanti in corso..");
-
+            String out_file;
             try {
-                AnalyzerHandler<Article> analyzerHandler = new AnalyzerHandler<>(analyze_properties);
-                analyzerHandler.analyze(articles, outFile, tot_count);
-            } catch (IOException e) {
-                ConsoleTextColors.printlnError("Errore nell'apertura del file di properties di analyze");
-                e.printStackTrace();
+                //Obtains the properties from the command line, if specified, and calls the handler.
+                out_file = AnalyzerHandler.analyze(interpreter.obtainAnalyzeProps(), articles, count, interpreter.obtainStopWords());
+            } catch (IOException | IllegalArgumentException e) {
+                System.err.println("The program has been terminated: "+e.getMessage());
                 return;
             }
+            System.out.println("Exiting the analysis part. You can find the resulting file in"+out_file+"...\n");
 
-            ConsoleTextColors.printlnProcess("Fine estrazione termini...");
         }
+        System.out.println("Everything went correctly.\nThank you for choosing our application, we hope to see you soon.");
     }
 
 }

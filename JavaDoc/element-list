@@ -1,8 +1,8 @@
 it.unipd.dei.dbdc
 it.unipd.dei.dbdc.DESERIALIZERS_FILE_PROPERTIES
-it.unipd.dei.dbdc.DownloadAPI
-it.unipd.dei.dbdc.DownloadAPI.Libraries
-it.unipd.dei.dbdc.DownloadAPI.TheGuardianAPI
+it.unipd.dei.dbdc.download
+it.unipd.dei.dbdc.download.src_callers
+it.unipd.dei.dbdc.download.TheGuardianAPI
 it.unipd.dei.dbdc.SEARCH_TERMS
 it.unipd.dei.dbdc.SERIALIZERS_FILE_PROPERTIES
 it.unipd.dei.xj

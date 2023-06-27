@@ -14,7 +14,7 @@ public class Kong {
 
         // 2. Settare URL di default, per non doverlo specificare poi
         Unirest.config().defaultBaseUrl("https://content.guardianapis.com");
-        // Unirest.get("/search").asString();
+        // Unirest.get("/analysis").asString();
 
         // 3. followRedirects(true) che permette di essere reindirizzati. E' settato di default.
 
@@ -22,20 +22,20 @@ public class Kong {
         // B. FUNZIONAMENTO DI BASE DEL GET
         // Questo ci permette di avere una richiesta di tipo GET
         HttpResponse<JsonNode> jsonResponse
-                = Unirest.get("/search").queryString("api-key", "2..........").asJson();
+                = Unirest.get("/analysis").queryString("api-key", "2..........").asJson();
 
         // Alcune cose che si possono avere con il get:
         // 1. Mettere un placeholder nell'URL e poi rimpiazzarlo con quello che vogliamo:
-        Unirest.get("/{fruit}?api-key=.............").routeParam("fruit", "search").asString();
+        Unirest.get("/{fruit}?api-key=.............").routeParam("fruit", "analysis").asString();
 
         // 2. Mettere dentro i parametri con queryString (è come mettere ?fruit=apple&..)
-        Unirest.get("/search")
+        Unirest.get("/analysis")
                 .queryString("api-key", ".................")
                 .queryString("page-size", "4")
                 .asString();
 
         // Posso passarli anche come array
-        Unirest.get("/search")
+        Unirest.get("/analysis")
                 .queryString("api-key", "...................")
                 .queryString("show-fields", Arrays.asList("headline", "body"))
                 .asString();
@@ -60,7 +60,7 @@ public class Kong {
         // Per fare asObject() dobbiamo prima definire un'implementazione dell'ObjectMapper.
         // Deve essere fatto una sola volta, e solo se non vogliamo usare quello di default
         // Response to Object
-        HttpResponse<MyResponse> response = Unirest.get("/search").queryString("api-key", ".................................")
+        HttpResponse<MyResponse> response = Unirest.get("/analysis").queryString("api-key", ".................................")
                 .asObject(MyResponse.class);
         // TODO: prova con annidati
 
@@ -69,7 +69,7 @@ public class Kong {
         //ex.getOriginalBody(); // Has the original body as a string.
 
         // FILE:
-        File result = Unirest.get("/search").queryString("api-key", ".................................")
+        File result = Unirest.get("/analysis").queryString("api-key", ".................................")
                 .asFile("./database/file_kong.json")
                 .getBody();
 
