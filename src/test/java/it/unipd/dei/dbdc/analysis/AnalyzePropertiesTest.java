@@ -16,14 +16,14 @@ public class AnalyzePropertiesTest {
         Analyzer analyzer;
         try {
             //Tests with valid properties (default)
-            analyzer = AnalyzeProperties.readProperties(AnalyzerHandlerTest.resources_url+"default.properties");
+            analyzer = (Analyzer) AnalyzeProperties.readProperties(AnalyzerHandlerTest.resources_url+"default.properties")[0];
             assertTrue(analyzer instanceof MapSplitAnalyzer);
 
             //Tests with valid properties
-            analyzer = AnalyzeProperties.readProperties(null);
+            analyzer = (Analyzer) AnalyzeProperties.readProperties(null)[0];
             assertTrue(analyzer instanceof MapSplitAnalyzer);
 
-            analyzer = AnalyzeProperties.readProperties(AnalyzerHandlerTest.resources_url+"priority.properties");
+            analyzer = (Analyzer) AnalyzeProperties.readProperties(AnalyzerHandlerTest.resources_url+"priority.properties")[0];
             assertTrue(analyzer instanceof PriorityQueueSplitAnalyzer);
         } catch (IOException e) {
             fail("Failed the reading of correct properties, or download ones");

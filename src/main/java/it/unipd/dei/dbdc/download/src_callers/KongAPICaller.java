@@ -30,21 +30,34 @@ public class KongAPICaller implements APICaller {
 
     /**
      * The main method of the class: it sends the request to the specified API with the specified params
-     * and saves the result of the call as a file at the specified path.
+     * and saves the result of the call as a file at the specified path. If the base url or the path are null,
+     * or any exception occurs, returns false.
      *
      * @param base_url The base url of the API to call.
      * @param params The parameters of the API call.
      * @param path The path of the file where the response should be saved.
-     * @return A boolean representing the success of the call
+     * @return A boolean representing the success of the call, or false if any exception occurs.
+     *
      * @see APICaller#sendRequest(String, Map, String)
      */
     @Override
     public boolean sendRequest(String base_url, Map<String, Object> params, String path) {
+        if (base_url == null || path == null)
+        {
+            return false;
+        }
         // To save the files in a path, we first have to make sure that there is
         // no other file with that name in that directory.
         PathTools.deleteDirOrFile(new File(path));
-        HttpResponse<File> res = Unirest.get(base_url).queryString(params).asFile(path);
-        return res.isSuccess();
+        try {
+            HttpResponse<File> res = Unirest.get(base_url).queryString(params).asFile(path);
+            return res.isSuccess();
+        }
+        //This is required as we don't know what are the customized exceptions that the library could throw
+        catch (Exception e)
+        {
+            return false;
+        }
     }
 
     /**

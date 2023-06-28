@@ -2,6 +2,7 @@ package it.unipd.dei.dbdc.download;
 
 import it.unipd.dei.dbdc.download.interfaces.APIManager;
 import it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIManager;
+import it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIManagerTest;
 import it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIParams;
 import it.unipd.dei.dbdc.download.src_callers.KongAPICallerTest;
 import org.junit.jupiter.api.Test;
@@ -32,7 +33,7 @@ public class APIPropertiesTest {
 
         //Test with everything right
         Map<String, Object> list = new HashMap<>();
-        list.put("api-key", KongAPICallerTest.key);
+        list.put("api-key", GuardianAPIManagerTest.key);
         list.put("from-date", "1904-12-12");
         list.put("to-date", "2001-12-04");
         list.put("page-size", 11);

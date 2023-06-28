@@ -86,12 +86,20 @@ public class GuardianAPIParams {
      * If it's a date, the format should be yyyy-mm-dd
      *
      * @param param The param to add to the specified params
-     * @throws IllegalArgumentException If the date specified is not in the correct format or is invalid
+     * @throws IllegalArgumentException If the date specified is not in the correct format or is invalid, or if the passed param is null or has a null key or value
      */
     public void addParam(QueryParam param) throws IllegalArgumentException
     {
+        if (param == null)
+        {
+            throw new IllegalArgumentException("Null parameter");
+        }
         String elem = param.getValue();
         String key = param.getKey();
+        if (elem == null || key == null)
+        {
+            throw new IllegalArgumentException("Null key or value");
+        }
         switch (key)
         {
             case ("api-key"):
@@ -119,6 +127,7 @@ public class GuardianAPIParams {
      * Function to get the specified params for the call.
      * It returns a {@link ArrayList} of a number of {@link Map} equal to the number of pages of the request,
      * and every map contains all the specified params, plus the default params.
+     * If there is any parameter that is equal to the default ones (show-fields and format), this will be overwritten by the default values.
      *
      * @throws IllegalArgumentException If the api-key was not specified
      * @return A {@link ArrayList} of a number of {@link Map} equal to the number of pages of the request

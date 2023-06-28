@@ -13,6 +13,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class GuardianAPIManagerTest {
 
+    //TODO: RIVEDI E METTI BENE I TESTS
+
+    public static String key = "21b5c154-934c-4a4e-b2f5-64adbd68af5f";
+
     private static final GuardianAPIManager manager = new GuardianAPIManager(new KongAPICaller(), "TheGuardianAPI");
 
     @Test
@@ -62,7 +66,7 @@ public class GuardianAPIManagerTest {
         List<QueryParam> list = new ArrayList<>();
         GuardianAPIManager man = new GuardianAPIManager(new KongAPICaller(), "");
 
-        list.add(new QueryParam("api-key", KongAPICallerTest.key));
+        list.add(new QueryParam("api-key", GuardianAPIManagerTest.key));
         man.addParams(list);
 
         assertDoesNotThrow(() -> man.callAPI("./database/"));

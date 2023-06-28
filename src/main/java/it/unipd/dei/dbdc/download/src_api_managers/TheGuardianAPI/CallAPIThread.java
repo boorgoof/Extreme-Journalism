@@ -2,6 +2,7 @@ package it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI;
 
 import it.unipd.dei.dbdc.download.interfaces.APICaller;
 
+import java.io.IOException;
 import java.util.Map;
 
 /**
@@ -59,16 +60,8 @@ public class CallAPIThread implements Runnable {
      */
     @Override
     public void run() throws IllegalArgumentException {
-        try
-        {
-            if (!caller.sendRequest(url, params, path)) {
-                throw new IllegalArgumentException();
-            }
-        }
-        //This is required as we don't know what are the customized exceptions that the library could throw
-        catch(Exception e)
-        {
-            throw new IllegalArgumentException("The request made is not correct: "+e.getMessage());
+        if (caller == null || !caller.sendRequest(url, params, path)) {
+            throw new IllegalArgumentException("The request made is not correct");
         }
     }
 }

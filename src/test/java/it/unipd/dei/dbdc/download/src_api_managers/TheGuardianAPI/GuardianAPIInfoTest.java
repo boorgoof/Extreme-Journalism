@@ -18,10 +18,11 @@ public class GuardianAPIInfoTest {
             new QueryParam("from-date", "The date to analysis from, in the format yyyy-mm-dd"),
             new QueryParam("to-date", "The date to analysis to, in the format yyyy-mm-dd")
     };
+
     @Test
     public void getFormattedParams()
     {
-        //Access the private static field
+        //Access the private static field and save it as a variable max_length
         Field length = null;
         try {
             length = GuardianAPIInfo.class.getDeclaredField("formatted_key_length");
@@ -49,7 +50,11 @@ public class GuardianAPIInfoTest {
             par.append(this_field);
         }
         String params = par.toString();
+
+        //Assertion
         assertEquals(params, GuardianAPIInfo.getFormattedParams());
+
+        //End reflection
         length.setAccessible(false);
     }
 
@@ -65,10 +70,11 @@ public class GuardianAPIInfoTest {
         for (QueryParam q : possible_fields) {
             assertTrue(GuardianAPIInfo.isPresent(q.getKey()));
         }
-
         assertFalse(GuardianAPIInfo.isPresent("invalid"));
         assertFalse(GuardianAPIInfo.isPresent("apikey"));
         assertFalse(GuardianAPIInfo.isPresent("page"));
+        assertFalse(GuardianAPIInfo.isPresent(null));
+        assertFalse(GuardianAPIInfo.isPresent(""));
     }
 
 }

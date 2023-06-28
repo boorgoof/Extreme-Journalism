@@ -35,16 +35,52 @@ public class GuardianAPIParamsTest {
         par.addParam(new QueryParam("from-date", "1200-11-12"));
         assertEquals(par, new GuardianAPIParams(par));
 
-        par = new GuardianAPIParams();
-        assertEquals(par, new GuardianAPIParams(par));
+        GuardianAPIParams par1 = new GuardianAPIParams();
+        assertEquals(par1, new GuardianAPIParams(par1));
 
-        par.addParam(new QueryParam("no", "exist"));
-        assertEquals(par, new GuardianAPIParams(par));
+        par1.addParam(new QueryParam("no", "exist"));
+        assertEquals(par1, new GuardianAPIParams(par1));
     }
 
     @Test
-    public void addParam() {
+    public void equals()
+    {
+        //They are equals through the copy constructor
+        GuardianAPIParams par = new GuardianAPIParams();
+        par.addParam(new QueryParam("api-key", "ugo"));
+        par.addParam(new QueryParam("q", "kingdom"));
+        par.addParam(new QueryParam("pages", "2"));
+        par.addParam(new QueryParam("page-size", "3"));
+        par.addParam(new QueryParam("from-date", "1200-11-12"));
+        GuardianAPIParams par2 = new GuardianAPIParams(par);
+        assertTrue(par2.equals(par));
 
+        //They are not equals if they have different params
+        GuardianAPIParams par1 = new GuardianAPIParams();
+        assertFalse(par.equals(par1));
+        par1.addParam(new QueryParam("no", "exist"));
+        assertFalse(par.equals(par1));
+
+        //They are equals with the same params
+        par1.addParam(new QueryParam("api-key", "ugo"));
+        par1.addParam(new QueryParam("q", "kingdom"));
+        par1.addParam(new QueryParam("pages", "2"));
+        par1.addParam(new QueryParam("page-size", "3"));
+        par1.addParam(new QueryParam("from-date", "1200-11-12"));
+        par.addParam(new QueryParam("no", "exist"));
+        assertTrue(par.equals(par1));
+
+        //Changing params, they are not equals
+        par1.addParam(new QueryParam("api-key", "ananoa"));
+        assertFalse(par.equals(par1));
+
+        par1.addParam(new QueryParam("api-key", ""));
+        assertFalse(par.equals(par1));
+    }
+
+    @Test
+    public void addParam()
+    {
         GuardianAPIParams tester = new GuardianAPIParams();
         Map<String, Object> specified_fields = new HashMap<>();
         try {
@@ -64,16 +100,10 @@ public class GuardianAPIParamsTest {
             specified_fields.put("this", "fake");
             assertNotEquals(specified_fields, objectFields.get(tester));
 
-        } catch (IllegalAccessException e) {
-            fail("Error during reflection");
-        }
+            specified_fields.clear();
+            tester = new GuardianAPIParams();
 
-        //Test params that are legal
-        specified_fields = new HashMap<>();
-        tester = new GuardianAPIParams();
-        try {
-            assertEquals(specified_fields, objectFields.get(tester));
-
+            //Parameters that have a default value, and should not be put into the field
             tester.addParam(new QueryParam("q", "test"));
             assertEquals(specified_fields, objectFields.get(tester));
 
@@ -84,6 +114,15 @@ public class GuardianAPIParamsTest {
             assertEquals(specified_fields, objectFields.get(tester));
 
             tester.addParam(new QueryParam("api-key", "12345"));
+            assertEquals(specified_fields, objectFields.get(tester));
+
+            //Add parameters that are not default ones
+            tester.addParam(new QueryParam("from-date", "1987-12-23"));
+            specified_fields.put("from-date", "1987-12-23");
+            assertEquals(specified_fields, objectFields.get(tester));
+
+            tester.addParam(new QueryParam("to-date", "1987-12-23"));
+            specified_fields.put("to-date", "1987-12-23");
             assertEquals(specified_fields, objectFields.get(tester));
 
         } catch (IllegalAccessException e) {
@@ -121,6 +160,10 @@ public class GuardianAPIParamsTest {
         assertThrows(IllegalArgumentException.class, () -> finalTester.addParam(new QueryParam("to-date", "1987-09-31")));
         assertThrows(IllegalArgumentException.class, () -> finalTester.addParam(new QueryParam("to-date", "1987-02-36")));
 
+        //Null parameters
+        assertThrows(IllegalArgumentException.class, () -> finalTester.addParam(new QueryParam(null, "1987-02-12")));
+        assertThrows(IllegalArgumentException.class, () -> finalTester.addParam(new QueryParam("to-date", null)));
+        assertThrows(IllegalArgumentException.class, () -> finalTester.addParam(null));
     }
 
     @Test
@@ -128,7 +171,7 @@ public class GuardianAPIParamsTest {
         GuardianAPIParams tester = new GuardianAPIParams();
         Map<String, Object> specified_fields = new HashMap<>();
 
-        //Without parameters
+        //Without the api-key
         assertThrows(IllegalArgumentException.class, tester::getParams);
 
         //Adds some parameters and get params, but illegally because there is no api-key
@@ -142,12 +185,12 @@ public class GuardianAPIParamsTest {
 
         //Adds parameters that are the default ones
         tester.addParam(new QueryParam("api-key", "notakey"));
+
         specified_fields.put("api-key", "notakey");
         specified_fields.put("page-size", 200);
         specified_fields.put("q", "\"nuclear power\"");
         specified_fields.put("show-fields", "bodyText,headline");
         specified_fields.put("format", "json");
-
         ArrayList<Map<String, Object>> expected = new ArrayList<>(5);
         for (int i = 0; i<5; i++)
         {
@@ -162,10 +205,19 @@ public class GuardianAPIParamsTest {
         specified_fields.put("page-size", 34);
         tester.addParam(new QueryParam("q", "kingdom"));
         specified_fields.put("q", "kingdom");
+        tester.addParam(new QueryParam("pages", "3"));
 
+        //Adds also default values, these should be overwritten
         tester.addParam(new QueryParam("show-fields", "all"));
         tester.addParam(new QueryParam("format", "xml"));
-        tester.addParam(new QueryParam("pages", "3"));
+
+        //Adds other not real parameters
+        tester.addParam(new QueryParam("fake", "test"));
+        tester.addParam(new QueryParam("another", "fake"));
+        tester.addParam(new QueryParam("this", "fails"));
+        specified_fields.put("fake", "test");
+        specified_fields.put("another", "fake");
+        specified_fields.put("this", "fails");
 
         expected = new ArrayList<>(3);
         for (int i = 0; i<3; i++)
