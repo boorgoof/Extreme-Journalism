@@ -37,7 +37,7 @@ public class DownloadProperties {
      * @return An {@link HashMap} of {@link APIManager} and their names specified in the properties file.
      * @throws IOException If both the default properties file and the user specified are not present, or if the properties specified are not correct.
      */
-    public static HashMap<String, APIManager> readAPIContainerProperties(String out_properties) throws IOException {
+    public static HashMap<String, APIManager> readProperties(String out_properties) throws IOException {
 
         Properties downProps = PropertiesTools.getProperties(default_properties, out_properties);
 

@@ -19,12 +19,12 @@ public class DownloadPropertiesTest {
         GuardianAPIManager guardianAPIManager = new GuardianAPIManager(new KongAPICaller(), "TheGuardianAPI");
         try {
             //Tests with a valid download.properties
-            obtained = DownloadProperties.readAPIContainerProperties(DownloadHandlerTest.resources_url+"defaultDownload.properties");
+            obtained = DownloadProperties.readProperties(DownloadHandlerTest.resources_url+"defaultDownload.properties");
             assertEquals(1, obtained.size());
             assertEquals(guardianAPIManager, obtained.get("TheGuardianAPI"));
 
             //Tests with default properties
-            obtained = DownloadProperties.readAPIContainerProperties(null);
+            obtained = DownloadProperties.readProperties(null);
             assertEquals(1, obtained.size());
             assertEquals(guardianAPIManager, obtained.get("TheGuardianAPI"));
         } catch (IOException | ClassCastException e) {
@@ -32,13 +32,13 @@ public class DownloadPropertiesTest {
         }
 
         //Tests with invalid download.properties
-        assertThrows(IOException.class, () -> DownloadProperties.readAPIContainerProperties(DownloadHandlerTest.resources_url + "falseDownload.properties"));
+        assertThrows(IOException.class, () -> DownloadProperties.readProperties(DownloadHandlerTest.resources_url + "falseDownload.properties"));
 
-        assertThrows(IOException.class, () -> DownloadProperties.readAPIContainerProperties(DownloadHandlerTest.resources_url+"falseDownload2.properties"));
+        assertThrows(IOException.class, () -> DownloadProperties.readProperties(DownloadHandlerTest.resources_url+"falseDownload2.properties"));
 
         //Test with other properties
         try {
-            obtained = DownloadProperties.readAPIContainerProperties(DownloadHandlerTest.resources_url+"trueDownload.properties");
+            obtained = DownloadProperties.readProperties(DownloadHandlerTest.resources_url+"trueDownload.properties");
             assertEquals(obtained.size(), 2);
             assertEquals(guardianAPIManager, obtained.get("TheGuardianAPI"));
             assertTrue(obtained.get("Test") instanceof TestManager);

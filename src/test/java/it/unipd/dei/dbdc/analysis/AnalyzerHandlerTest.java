@@ -1,6 +1,7 @@
 package it.unipd.dei.dbdc.analysis;
 
 import it.unipd.dei.dbdc.analysis.interfaces.Analyzer;
+import it.unipd.dei.dbdc.analysis.interfaces.OutPrinter;
 import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
 import it.unipd.dei.dbdc.tools.PathTools;
 import it.unipd.dei.dbdc.tools.PathManagerTest;
@@ -19,16 +20,18 @@ public class AnalyzerHandlerTest {
     //Throws IOException se non c'è il default properties o se è scorretto o se non riesce ad aprire o scrivere il file di output
     public static String analyze(String filePropertiesName, List<UnitOfSearch> articles, int tot_count, boolean stop_words) throws IOException, IllegalArgumentException {
 
-        Analyzer analyzer = AnalyzeProperties.readProperties(filePropertiesName);
+        Object[] list = AnalyzeProperties.readProperties(filePropertiesName);
+        Analyzer analyzer = (Analyzer) list[0];
+        OutPrinter printer = (OutPrinter) list[1];
         Set<String> banned = null;
         if (stop_words)
         {
             banned = bannedArray();
         }
-        ArrayList<OrderedEntryStringInt> max = analyzer.mostPresent(articles, tot_count, banned);
+        List<OrderedEntryStringInt> max = analyzer.mostPresent(articles, tot_count, banned);
 
         String outFile = PathTools.getOutFile();
-        outFile(max, outFile);
+        printer.outFile(max);
         return outFile;
     }
 

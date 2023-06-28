@@ -32,6 +32,7 @@
     <plugins>
 
       <!-- Maven resource plugin: copia il folder dei file da serializzare in un folder (chiamato database) dentro a target. -->
+      <!-- TODO: fallo anche per out_properties-->
       <plugin>
         <artifactId>maven-resources-plugin</artifactId>
         <version>3.0.2</version>

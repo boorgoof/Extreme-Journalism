@@ -25,8 +25,10 @@ public class DownloadHandler {
         APIManager manager = null;
         boolean selected = false;
         try {
-            manager = APIProperties.readAPIProperties(api_props, download_props);
-            selected = true;
+            manager = APIProperties.readProperties(api_props, download_props);
+            if (manager != null) {
+                selected = true;
+            }
         }
         catch (IOException | IllegalArgumentException e)
         {

@@ -39,8 +39,12 @@ public class APIProperties
      * @throws IOException If both the API properties files or both of the Download properties files are not present
      * @throws IllegalArgumentException If the name or the parameters of the {@link APIManager} specified aren't correct.
      */
-    public static APIManager readAPIProperties(String out_properties, String download_properties) throws IOException, IllegalArgumentException {
+    public static APIManager readProperties(String out_properties, String download_properties) throws IOException, IllegalArgumentException {
         //Properties apiProps = PropertiesTools.getProperties(default_properties, out_properties);
+        if (out_properties == null)
+        {
+            return null;
+        }
         Properties apiProps = PropertiesTools.getOutProperties(out_properties);
 
         String n = null;

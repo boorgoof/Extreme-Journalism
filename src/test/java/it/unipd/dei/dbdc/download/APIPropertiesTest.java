@@ -51,7 +51,7 @@ public class APIPropertiesTest {
 
         //Takes the manager returned and reads its parameters
         try {
-            manager = APIProperties.readAPIProperties(DownloadHandlerTest.resources_url+"trueApi.properties", null);
+            manager = APIProperties.readProperties(DownloadHandlerTest.resources_url+"trueApi.properties", null);
             GuardianAPIParams par = (GuardianAPIParams) params.get(manager);
             ArrayList<Map<String, Object>> parameters = par.getParams();
             assertEquals(expected, parameters);
@@ -63,10 +63,10 @@ public class APIPropertiesTest {
 
 
         //Tests with false api properties
-        assertThrows(IllegalArgumentException.class, () -> APIProperties.readAPIProperties(DownloadHandlerTest.resources_url + "falseApi.properties", null));
-        assertThrows(IllegalArgumentException.class, () -> APIProperties.readAPIProperties(DownloadHandlerTest.resources_url + "falseApi2.properties", null));
+        assertThrows(IllegalArgumentException.class, () -> APIProperties.readProperties(DownloadHandlerTest.resources_url + "falseApi.properties", null));
+        assertThrows(IllegalArgumentException.class, () -> APIProperties.readProperties(DownloadHandlerTest.resources_url + "falseApi2.properties", null));
         //Test with not existent api properties
-        assertThrows(IOException.class, () -> APIProperties.readAPIProperties(DownloadHandlerTest.resources_url + "NotExistent.properties", null));
+        assertThrows(IOException.class, () -> APIProperties.readProperties(DownloadHandlerTest.resources_url + "NotExistent.properties", null));
 
         //TODO: altri test?
 

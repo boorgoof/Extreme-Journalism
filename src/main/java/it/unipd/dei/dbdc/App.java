@@ -9,40 +9,49 @@ import it.unipd.dei.dbdc.analysis.AnalyzerHandler;
 import it.unipd.dei.dbdc.deserialization.DeserializationHandler;
 import it.unipd.dei.dbdc.download.DownloadHandler;
 import it.unipd.dei.dbdc.serializers.SerializationHandler;
-import it.unipd.dei.dbdc.tools.TotalProperties;
+import it.unipd.dei.dbdc.tools.GeneralProperties;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * The main class of the application: it invokes the {@link CommandLineInterpreter} to
+ * check the actions to perform, and gives control to the different Handlers, linking their results.
+ * The use of the Handlers is an example of the Facade design pattern.
+ *
+ */
 public class App
 {
     //TODO: stampa cose più significative, e vedi bene dove vanno le varie eccezioni
 
     public static void main(String[] args) {
 
+        // Parses the commands given
         CommandLineInterpreter interpreter;
         try {
             interpreter = new CommandLineInterpreter(args);
         }
-        catch (IllegalStateException e)
+        catch (IllegalArgumentException e)
         {
             System.err.println("The program has been terminated because there was no action to perform specified.");
             return;
         }
 
+        // After this point, it is certain that cmd in the CommandLineInterpreter will not throw NullPointerException
         if (interpreter.help())
         {
             return;
         }
 
-        TotalProperties totalProperties;
+        //Parses the general properties of the application
+        GeneralProperties totalProperties;
         try {
-            totalProperties = new TotalProperties(interpreter.obtainTotProps());
+            totalProperties = new GeneralProperties(interpreter.obtainGenProps());
         }
         catch (IOException e)
         {
-            System.err.println("The program has been terminated because the file "+TotalProperties.default_properties+" was not found: "+e.getMessage());
+            System.err.println("The program has been terminated because the file "+ GeneralProperties.default_properties+" was not found, or the properties passed by the user were not valid: "+e.getMessage());
             return;
         }
 
@@ -166,7 +175,7 @@ public class App
                 System.err.println("The program has been terminated: "+e.getMessage());
                 return;
             }
-            System.out.println("Exiting the analysis part. You can find the resulting file in"+out_file+"...\n");
+            System.out.println("Exiting the analysis part. You can find the resulting file in"+out_file+"\n");
 
         }
         System.out.println("Everything went correctly.\nThank you for choosing our application, we hope to see you soon.");

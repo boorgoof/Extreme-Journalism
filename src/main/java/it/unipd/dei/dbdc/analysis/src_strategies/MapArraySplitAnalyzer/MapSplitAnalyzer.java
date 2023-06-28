@@ -20,18 +20,18 @@ public class MapSplitAnalyzer implements Analyzer {
 
     /**
      * The main function, which accepts a {@link List} of {@link UnitOfSearch} and returns the most important
-     * terms of this list as an {@link ArrayList} of {@link OrderedEntryStringInt}.
+     * terms of this list as an {@link List} of {@link OrderedEntryStringInt}.
      * The most important terms are the one that appear in the most number of articles, and if two terms appear
      * in the same amount of articles, the one which is alphabetically precedent is the most important one.
      *
      * @param articles A {@link List} of {@link UnitOfSearch} to search into.
-     * @param tot_words The number of words we want the returned {@link ArrayList} to contain. If there are not enough words, it will contain only the possible ones.
+     * @param tot_words The number of words we want the returned {@link List} to contain. If there are not enough words, it will contain only the possible ones.
      * @param banned A {@link Set} of words that should not be counted. If null or empty, all the words will be counted.
-     * @return An {@link ArrayList} of {@link OrderedEntryStringInt} containing the most important terms of the articles
+     * @return An {@link List} of {@link OrderedEntryStringInt} containing the most important terms of the articles
      * @throws IllegalArgumentException If there is an error in the parallelism (a thread is interrupted before it can finish)
      */
     @Override
-    public ArrayList<OrderedEntryStringInt> mostPresent(List<UnitOfSearch> articles, int tot_words, Set<String> banned) throws IllegalArgumentException
+    public List<OrderedEntryStringInt> mostPresent(List<UnitOfSearch> articles, int tot_words, Set<String> banned) throws IllegalArgumentException
     {
         //If there are no articles, the returned ArrayList is empty
         if (articles == null || articles.isEmpty())

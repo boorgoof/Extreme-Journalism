@@ -43,7 +43,7 @@ public class APIContainer {
     }
 
     /**
-     * The constructor, which calls the {@link DownloadProperties#readAPIContainerProperties(String)} function.
+     * The constructor, which calls the {@link DownloadProperties#readProperties(String)} function.
      *
      * @param download_properties The properties specified by the user where are specified all the possible {@link APIManager}.
      *                            If it is null, the default properties file will be used.
@@ -51,7 +51,7 @@ public class APIContainer {
      */
     private APIContainer(String download_properties) throws IOException
     {
-        managers = DownloadProperties.readAPIContainerProperties(download_properties);
+        managers = DownloadProperties.readProperties(download_properties);
     }
 
     /**

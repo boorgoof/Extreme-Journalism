@@ -1,5 +1,6 @@
 package it.unipd.dei.dbdc.analysis;
 
+import it.unipd.dei.dbdc.analysis.interfaces.OutPrinter;
 import it.unipd.dei.dbdc.tools.PathTools;
 import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
 import it.unipd.dei.dbdc.analysis.interfaces.Analyzer;
@@ -26,17 +27,19 @@ public class AnalyzerHandler {
      */
     public static String analyze(String filePropertiesName, List<UnitOfSearch> articles, int tot_words, boolean stop_words) throws IOException, IllegalArgumentException {
 
-        Analyzer analyzer = AnalyzeProperties.readProperties(filePropertiesName);
+        Object[] props = AnalyzeProperties.readProperties(filePropertiesName);
+
+        Analyzer analyzer = (Analyzer) props[0];
+        OutPrinter printer = (OutPrinter) props[1];
+
         Set<String> banned = null;
         if (stop_words)
         {
             banned = bannedArray();
         }
-        ArrayList<OrderedEntryStringInt> max = analyzer.mostPresent(articles, tot_words, banned);
+        List<OrderedEntryStringInt> max = analyzer.mostPresent(articles, tot_words, banned);
 
-        String outFile = PathTools.getOutFile();
-        outFile(max, outFile);
-        return outFile;
+        return printer.outFile(max);
     }
 
     /**
@@ -64,29 +67,5 @@ public class AnalyzerHandler {
             System.out.println("The stop-words won't be used because there was an error in the reading of the file.");
         }
         return banned;
-    }
-
-    /**
-     * The function that prints the most important terms into a file.
-     *
-     * @param max The {@link ArrayList} of terms to print, that are already in order.
-     * @param outFilePath The path of the file to print.
-     * @throws IOException If it can't print the file
-     * @throws IllegalArgumentException If the {@link ArrayList} of terms to print is empty or null.
-     */
-    private static void outFile(ArrayList<OrderedEntryStringInt> max, String outFilePath) throws IOException, IllegalArgumentException {
-        if (max == null || max.isEmpty())
-        {
-            throw new IllegalArgumentException("Vector of most important words is null");
-        }
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(outFilePath))) {
-            for (int i = 0; i <max.size(); i++) {
-                OrderedEntryStringInt el = max.get(i);
-                writer.write(el.getKey() + " " + el.getValue());
-                if (i != max.size()-1) {
-                    writer.newLine();
-                }
-            }
-        }
     }
 }
