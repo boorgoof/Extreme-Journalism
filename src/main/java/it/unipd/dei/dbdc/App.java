@@ -1,173 +1,184 @@
 package it.unipd.dei.dbdc;
 
-
-import it.unipd.dei.dbdc.resources.PathManager;
-import it.unipd.dei.dbdc.search.interfaces.UnitOfSearch;
-import it.unipd.dei.dbdc.search.AnalyzerHandler;
+import it.unipd.dei.dbdc.deserialization.DeserializationProperties;
+import it.unipd.dei.dbdc.download.DownloadProperties;
+import it.unipd.dei.dbdc.tools.CommandLineInterpreter;
+import it.unipd.dei.dbdc.tools.PathTools;
+import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
+import it.unipd.dei.dbdc.analysis.AnalyzerHandler;
 import it.unipd.dei.dbdc.deserialization.DeserializationHandler;
 import it.unipd.dei.dbdc.download.DownloadHandler;
 import it.unipd.dei.dbdc.serializers.SerializationHandler;
+import it.unipd.dei.dbdc.tools.GeneralProperties;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The main class of the application: it invokes the {@link CommandLineInterpreter} to
+ * check the actions to perform, and gives control to the different Handlers, linking their results.
+ * The use of the Handlers is an example of the Facade design pattern.
+ *
+ */
 public class App
 {
+    //TODO: stampa cose più significative, e vedi bene dove vanno le varie eccezioni
 
     public static void main(String[] args) {
 
-        // L'utente deve passare da riga di comando l'azione che vuole fare.
+        // Parses the commands given
         CommandLineInterpreter interpreter;
         try {
             interpreter = new CommandLineInterpreter(args);
         }
-        catch (IllegalStateException e)
+        catch (IllegalArgumentException e)
         {
-            System.out.println("Programma terminato perche' non e' stata fornita una azione da compiere.");
+            System.err.println("The program has been terminated because there was no action to perform specified.");
             return;
         }
 
+        // After this point, it is certain that cmd in the CommandLineInterpreter will not throw NullPointerException
         if (interpreter.help())
         {
             return;
         }
 
-        TotalProperties properties;
+        //Parses the general properties of the application
+        GeneralProperties totalProperties;
         try {
-            properties = new TotalProperties(interpreter.obtainTotProps());
+            totalProperties = new GeneralProperties(interpreter.obtainGenProps());
         }
         catch (IOException e)
         {
-            //TODO: stampa cose più significative, e vedi bene dove vanno le varie eccezioni
-            System.err.println("Programma terminato perche' non e' stato trovato il file total.properties: "+e.getMessage());
+            System.err.println("The program has been terminated because the file "+ GeneralProperties.default_properties+" was not found, or the properties passed by the user were not valid: "+e.getMessage());
             return;
         }
 
-        // Folder to serialize to common format.
+        // Folder to serialize.
         String folderPath = null;
 
-        // FASE 1: download
+        // FIRST PHASE: download
         if (interpreter.downloadPhase()) {
-
             System.out.println("Entering the download part...");
-
-            // The only download option is the path of the properties file for the API to call.
-            String apiProps = interpreter.obtainAPIProps();
-            String downProps = interpreter.obtainDownProps();
             try {
-                folderPath = DownloadHandler.download(downProps, apiProps);
+                //Obtains the properties from the command line, if specified, and calls the handler.
+                folderPath = DownloadHandler.download(interpreter.obtainDownProps(), interpreter.obtainAPIProps());
             }
             catch (IOException e)
             {
-                System.err.println("Errore nella fase di download. Non e' stato trovato il file download.properties: "+e.getMessage());
+                System.err.println("The program has been terminated because the file "+ DownloadProperties.default_properties+" was not found: "+e.getMessage());
                 return;
             }
 
             System.out.println("Exiting the download part...\n");
         }
 
-        // FASE 2: avviene sempre, è la serializzazione in formato comune
+        // SECOND PHASE: it always happens, as the serialization is always necessary.
 
-        // A. DESERIALIZZAZIONE formato fornito -> Article
+        // A. DESERIALIZATION from the given format to a List of Objects
+
+        //Obtains the properties from the command line, if specified
         String path_cli = interpreter.obtainPathOption();
 
         if (path_cli == null && folderPath == null) {
-            System.out.println("Errore: nessun file da deserializzare");
+            System.err.println("Error: there is no file to serialize.");
             return;
         } else if (path_cli != null) {
             folderPath = path_cli;
         }
 
-        System.out.println("\nInizio deserializzazione di "+folderPath+"...");
+        System.out.println("\nEntering the deserialization of "+folderPath+"...");
+
+        //Initializes the handler.
         DeserializationHandler deserializersHandler;
         try {
-             deserializersHandler = new DeserializationHandler(interpreter.obtainDeserProps());
+            //Obtains the properties from the command line, if specified, and calls the handler.
+            deserializersHandler = new DeserializationHandler(interpreter.obtainDeserProps());
         }
         catch (IOException e)
         {
-            System.err.println("Errore del programma: non sono stati caricati correttamente i deserializzatori del file");
-            e.printStackTrace();
+            System.err.println("The program has been terminated because the file "+ DeserializationProperties.default_properties+" was not found: "+e.getMessage());
             return;
         }
+
+        //Tries to deserialize the specified folder.
         List<UnitOfSearch> articles;
         try{
              articles = deserializersHandler.deserializeFolder(folderPath);
         } catch (IOException e){
-            System.err.println(e); // SISTEMA LE ECCEZIONI
+            System.err.println(e.getMessage()); //TODO: eccezioni
             return;
         }
 
-        System.out.println("Fine deserializzazione...\n");
+        System.out.println("Exiting the deserialization part...\n");
 
-        // B. SERIALIZZAZIONE Article -> formato comune
 
-        // Percorso del file serializzato.
+        // B. SERIALIZATION to the List of Objects to the common format
+
+        System.out.println("\nEntering the serialization part...");
+
+        //Path of the serialized file
         String filePath;
         try {
-            filePath = PathManager.getSerializedFile(properties.getCommonFormat());
+            filePath = PathTools.getSerializedFile(totalProperties.getCommonFormat());
         }
         catch (IOException e)
         {
-            System.out.println("Non si riesce a creare il folder di output");
+            System.err.println("Error: it was not possible to create the serialized file.");
             return;
         }
 
-        System.out.println("\nInizio serializzazione...");
         try {
-
-            // Creazione della lista di oggetti UnitOfSearch a partire dalla lista di Article (Article implementa UnitOfSearch)
-            List<UnitOfSearch> objects = new ArrayList<>(articles);
-
+            //Obtains the properties from the command line, if specified, and calls the handler.
             SerializationHandler serializersHandler = new SerializationHandler(interpreter.obtainSerProps());
-
-            serializersHandler.serializeObjects(objects, properties.getCommonFormat(), filePath);
-
+            serializersHandler.serializeObjects(articles, totalProperties.getCommonFormat(), filePath);
         } catch (IOException e) {
-            System.out.println("Errore nella serializzazione: ");
-            e.printStackTrace();
+            System.err.println("Error during the serialization: "+e.getMessage());
             return;
         }
-        System.out.println("Fine serializzazione. Potrete trovare il file serializzato in "+filePath+"\n");
+        System.out.println("Exiting the serialization part. You can find the serialized file in "+filePath+"...\n");
 
-        // FASE 3: Estrazione termini
-        if (interpreter.searchPhase())
+        // THIRD PHASE: analysis
+        if (interpreter.analyzePhase())
         {
-            // DESERIALIZZAZIONE formato comune -> articles
-            System.out.println("\nInizio deserializzazione...");
+            // A. DESERIALIZATION from common_format to a list of Objects
+            System.out.println("\nEntering the deserialization of "+filePath+"...");
 
             try {
-                // AL MOMENTO USA LA SECONDA VERSIONE DI DESERIALIZER. DA CAMBIARE?
+                //TODO: AL MOMENTO USA LA SECONDA VERSIONE DI DESERIALIZER. DA CAMBIARE?
                 File commonFormatFile = new File(filePath);
                 articles = deserializersHandler.deserializeFile(commonFormatFile);
             }
             catch (IOException e) {
-                System.out.println(e.getMessage());
+                System.err.println("Error: "+e.getMessage());
                 return;
             }
-            System.out.println("Fine deserializzazione...\n");
+            System.out.println("Exiting the deserialization part...\n");
 
-            System.out.println("\nInizio estrazione termini...");
+            // B. ANALYZE the Objects to obtain the most important words
 
-            // ESTRAZIONE DEI TERMINI PIU' IMPORTANTI
+            System.out.println("\nEntering the analysis part...");
+
+            //Obtains the properties from the command line, if specified.
             int count = interpreter.obtainNumberOption();
             if (count == -1)
             {
-                count = properties.getWordsCount();
+                count = totalProperties.getWordsCount();
             }
 
-            String analyzeProps = interpreter.obtainAnalyzeProps();
+            String out_file;
             try {
-                AnalyzerHandler.analyze(analyzeProps, articles, count);
-            } catch (IOException e) {
-                System.out.println("Errore nell'apertura del file di properties di analyze");
-                e.printStackTrace();
+                //Obtains the properties from the command line, if specified, and calls the handler.
+                out_file = AnalyzerHandler.analyze(interpreter.obtainAnalyzeProps(), articles, count, interpreter.obtainStopWords());
+            } catch (IOException | IllegalArgumentException e) {
+                System.err.println("The program has been terminated: "+e.getMessage());
                 return;
             }
+            System.out.println("Exiting the analysis part. You can find the resulting file in"+out_file+"\n");
 
-            System.out.println("Fine estrazione termini...\n");
         }
+        System.out.println("Everything went correctly.\nThank you for choosing our application, we hope to see you soon.");
     }
 
 }

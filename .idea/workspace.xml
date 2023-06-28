@@ -4,9 +4,40 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Merge fede-io">
+    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Creato outPrinter, cambiato qualcosina, fatto javadoc">
+      <change afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true12.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true13.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true14.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true15.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true16.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true17.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/download/thread.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/src_deserializers/JsonDeserializerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/src_deserializers/JsonDeserializerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/CallAPIThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/CallAPIThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIParams.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/src_callers/KongAPICaller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/download/src_callers/KongAPICaller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/AppTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/analysis/AnalyzePropertiesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/analysis/AnalyzePropertiesTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/APIPropertiesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/APIPropertiesTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/CallAPIThreadTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/CallAPIThreadTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIInfoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIInfoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIParamsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIParamsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_callers/KongAPICallerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_callers/KongAPICallerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/false2.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/kong/false2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/false3.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/kong/false3.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/false4.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/kong/false4.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/false5.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/kong/false5.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/true10.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true10.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/true11.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true11.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/true4.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true4.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/true5.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true5.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/true6.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true6.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/true7.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true7.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/true8.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true8.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/true9.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true9.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/thread.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/thread.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,34 +125,46 @@
       <recent name="it.unipd.dei.dbdc.Serializers" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.deserialization in Extreme_journalism">
-    <configuration name="DeserializationHandlerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.GuardianAPIParamsTest">
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.App" />
       <module name="Extreme_journalism" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="it.unipd.dei.dbdc.deserialization.*" />
+          <option name="PATTERN" value="it.unipd.dei.dbdc.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.deserialization" />
-      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.deserialization.DeserializationHandlerTest" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CallAPIThreadTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Extreme_journalism" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.CallAPIThreadTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DeserializationHandlerTest.testDeserializeFolder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GuardianAPIInfoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Extreme_journalism" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="it.unipd.dei.dbdc.deserialization.*" />
+          <option name="PATTERN" value="it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.deserialization" />
-      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.deserialization.DeserializationHandlerTest" />
-      <option name="METHOD_NAME" value="testDeserializeFolder" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIInfoTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -141,18 +184,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="deserialization in Extreme_journalism" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="KongAPICallerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Extreme_journalism" />
-      <option name="TEST_OBJECT" value="directory" />
-      <dir value="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="download in Extreme_journalism" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Extreme_journalism" />
-      <option name="TEST_OBJECT" value="directory" />
-      <dir value="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.unipd.dei.dbdc.download.src_callers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.download.src_callers" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.download.src_callers.KongAPICallerTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -172,11 +214,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.deserialization in Extreme_journalism" />
-        <item itemvalue="JUnit.download in Extreme_journalism" />
-        <item itemvalue="JUnit.DeserializationHandlerTest.testDeserializeFolder" />
-        <item itemvalue="JUnit.DeserializationHandlerTest" />
         <item itemvalue="JUnit.GuardianAPIParamsTest" />
+        <item itemvalue="JUnit.CallAPIThreadTest" />
+        <item itemvalue="JUnit.KongAPICallerTest" />
+        <item itemvalue="JUnit.GuardianAPIInfoTest" />
+        <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
   </component>
@@ -343,7 +385,23 @@
       <option name="project" value="LOCAL" />
       <updated>1687276366541</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Merge tot">
+      <option name="closed" value="true" />
+      <created>1687860778889</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1687860778889</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Creato outPrinter, cambiato qualcosina, fatto javadoc">
+      <option name="closed" value="true" />
+      <created>1687954396788</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1687954396788</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -390,7 +448,9 @@
     <MESSAGE value="PathManager e ThreadPool" />
     <MESSAGE value="Messo quasi tutto in properties o file a parte, in modo che il main sia snello" />
     <MESSAGE value="Fixato properties, iniziato javadoc (c'è un esempio al livello del readme)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixato properties, iniziato javadoc (c'è un esempio al livello del readme)" />
+    <MESSAGE value="Merge tot" />
+    <MESSAGE value="Creato outPrinter, cambiato qualcosina, fatto javadoc" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creato outPrinter, cambiato qualcosina, fatto javadoc" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

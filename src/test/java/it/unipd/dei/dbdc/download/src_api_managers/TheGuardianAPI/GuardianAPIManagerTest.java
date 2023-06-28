@@ -9,12 +9,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class GuardianAPIManagerTest {
 
-    private static GuardianAPIManager manager = new GuardianAPIManager(new KongAPICaller(), "TheGuardianAPI");
+    //TODO: RIVEDI E METTI BENE I TESTS
+
+    public static String key = "21b5c154-934c-4a4e-b2f5-64adbd68af5f";
+
+    private static final GuardianAPIManager manager = new GuardianAPIManager(new KongAPICaller(), "TheGuardianAPI");
 
     @Test
     public void getName() {
@@ -22,36 +25,21 @@ public class GuardianAPIManagerTest {
     }
 
     @Test
-    public void getParams() {
+    public void getFormattedParams() {
         assertEquals(GuardianAPIInfo.getFormattedParams(), manager.getFormattedParams());
     }
 
     @Test
     public void addParams()
     {
-        List<QueryParam> list = new ArrayList<>();
-        try
-        {
-            manager.addParams(null);
-            fail("Added null params");
-        }
-        catch (IllegalArgumentException e)
-        {
-            //Intentionally left blank
-        }
+        //Check if it throws IllegalArgumentException
+        assertThrows(IllegalArgumentException.class, () -> manager.addParams(null));
 
-        manager.addParams(list);
+        List<QueryParam> list = new ArrayList<>();
+        assertDoesNotThrow(() -> manager.addParams(list));
 
         list.add(new QueryParam("ugo", "gianni"));
-
-        try {
-            manager.addParams(list);
-            fail("Added not correct params");
-        }
-        catch (IllegalArgumentException e)
-        {
-            //Intentionally left blank
-        }
+        assertThrows(IllegalArgumentException.class, () -> manager.addParams(list));
 
         list.clear();
         list.add(new QueryParam("api-key", "false"));
@@ -62,19 +50,14 @@ public class GuardianAPIManagerTest {
         list.add(new QueryParam("q", "\"solar energy\""));
         list.add(new QueryParam("order-by", "newest"));
 
-        manager.addParams(list);
+        assertDoesNotThrow(() -> manager.addParams(list));
 
         list.add(new QueryParam("show-fields", "all"));
         list.add(new QueryParam("format", "xml"));
-        try {
-            manager.addParams(list);
-            fail("Added not correct params");
-        }
-        catch (IllegalArgumentException e)
-        {
-            //Intentionally left blank
-        }
 
+        assertThrows(IllegalArgumentException.class, () -> manager.addParams(list));
+
+        //TODO: check altro, tipo se li aggiunge giusti
     }
 
     @Test
@@ -83,39 +66,46 @@ public class GuardianAPIManagerTest {
         List<QueryParam> list = new ArrayList<>();
         GuardianAPIManager man = new GuardianAPIManager(new KongAPICaller(), "");
 
-        list.add(new QueryParam("api-key", KongAPICallerTest.key));
+        list.add(new QueryParam("api-key", GuardianAPIManagerTest.key));
         man.addParams(list);
 
-        try {
-            man.callAPI("./database/");
-        }
-        catch (IllegalArgumentException e)
-        {
-            fail();
-        }
+        assertDoesNotThrow(() -> man.callAPI("./database/"));
 
         GuardianAPIManager other = new GuardianAPIManager(null, null);
 
-        try {
-            other.callAPI("./output/");
-            fail();
-        }
-        catch (IllegalArgumentException e)
-        {
-            //Intentionally left blank
-        }
+        assertThrows(IllegalArgumentException.class, () ->other.callAPI("./output/"));
 
-        try {
-            man.callAPI("./nonesiste/");
-            fail();
-        }
-        catch (IllegalArgumentException e)
-        {
-            fail();
-        }
+        assertThrows(IllegalArgumentException.class, () ->other.callAPI("./nonesiste/"));
 
         //TODO: test con altri parametri
     }
 
+
+    @Test
+    public void copy()
+    {
+        GuardianAPIManager g = new GuardianAPIManager(new KongAPICaller(), "TheGuardianAPI");
+        assertEquals(g, g.copy());
+        GuardianAPIManager g2 = new GuardianAPIManager(new KongAPICaller(), "TheGuardianAPI");
+        List<QueryParam> list = new ArrayList<>();
+        list.add(new QueryParam("from-date", "2200-11-23"));
+        g2.addParams(list);
+        assertNotEquals(g2, g.copy());
+    }
+
+    @Test
+    public void equals()
+    {
+        GuardianAPIManager g = new GuardianAPIManager(new KongAPICaller(), "TheGuardianAPI");
+        assertTrue(g.equals(g));
+
+        GuardianAPIManager g2 = new GuardianAPIManager(new KongAPICaller(), "TheGuardianAPI");
+        List<QueryParam> list = new ArrayList<>();
+        list.add(new QueryParam("from-date", "2200-11-23"));
+        g2.addParams(list);
+        assertFalse(g.equals(g2));
+
+        assertFalse(g.equals(23));
+    }
 
 }

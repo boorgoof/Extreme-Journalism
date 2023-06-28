@@ -1,6 +1,6 @@
 package it.unipd.dei.dbdc.serializers.interfaces;
 
-import it.unipd.dei.dbdc.search.interfaces.UnitOfSearch;
+import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
 
 import java.io.IOException;
 import java.util.List;

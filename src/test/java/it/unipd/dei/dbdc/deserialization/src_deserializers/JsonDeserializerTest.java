@@ -1,7 +1,6 @@
 package it.unipd.dei.dbdc.deserialization.src_deserializers;
-import it.unipd.dei.dbdc.search.Article;
-import it.unipd.dei.dbdc.search.interfaces.UnitOfSearch;
-import it.unipd.dei.dbdc.deserialization.src_deserializers.JsonDeserializer;
+import it.unipd.dei.dbdc.analysis.Article;
+import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

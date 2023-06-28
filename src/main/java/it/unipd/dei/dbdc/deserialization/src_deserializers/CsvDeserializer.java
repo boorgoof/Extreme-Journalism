@@ -1,7 +1,7 @@
 package it.unipd.dei.dbdc.deserialization.src_deserializers;
 
-import it.unipd.dei.dbdc.search.Article;
-import it.unipd.dei.dbdc.search.interfaces.UnitOfSearch;
+import it.unipd.dei.dbdc.analysis.Article;
+import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
 import it.unipd.dei.dbdc.deserialization.interfaces.DeserializerWithFields;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
@@ -14,8 +14,6 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
-
-import static it.unipd.dei.dbdc.search.Article.instanceArticle;
 
 public class CsvDeserializer implements DeserializerWithFields {
 
