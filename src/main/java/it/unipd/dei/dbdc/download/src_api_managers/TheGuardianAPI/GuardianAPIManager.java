@@ -87,7 +87,7 @@ public class GuardianAPIManager implements APIManager {
      * The function which permits to add parameters to the request to the API.
      *
      * @param l The list of the {@link QueryParam} parameters to pass to the API.
-     * @throws IllegalArgumentException If one of those parameters is not a possible parameter (or is invalid if it's a date) or if the list is null.
+     * @throws IllegalArgumentException If one of those parameters is not a possible parameter (or is invalid if it's a date or pages or page-size) or if the list is null.
      */
     @Override
     public void addParams(List<QueryParam> l) throws IllegalArgumentException
@@ -98,20 +98,20 @@ public class GuardianAPIManager implements APIManager {
         }
         for (QueryParam q : l)
         {
-            if (GuardianAPIInfo.isPresent(q.getKey()))
+            if (q != null && GuardianAPIInfo.isPresent(q.getKey()))
             {
                 params.addParam(q);
             }
             else
             {
-                throw new IllegalArgumentException("The key of the parameter "+q.getKey()+" is not present in the system");
+                throw new IllegalArgumentException("The key of the parameter is not present in the system, or the parameters is null");
             }
         }
     }
 
     /**
-     * The function calls the API with all the parameters specified before.
-     * It uses the {@link CallAPIThread} to send the requests to the {@link APICaller}
+     * The function calls the API with all the parameters specified before. If there is any not correct parameter, it will be ignored, or an exception will be thrown.
+     * It uses the {@link CallAPIThread} to send the requests to the {@link APICaller}.
      *
      * @param path_folder The path of the folder where the files of the requests should be saved.
      * @throws IllegalArgumentException If the {@link APICaller} was not initialized, the api-key was not given or there was an exception in the calling of the API.
@@ -121,18 +121,17 @@ public class GuardianAPIManager implements APIManager {
     {
         if (caller == null)
         {
-            throw new IllegalArgumentException("Caller non inizializzato");
+            throw new IllegalArgumentException("Caller not initialized");
         }
 
         ArrayList<Map<String, Object>> requests = params.getParams();
 
         // Create a thread pool and send requests
         List<Future<?>> futures = new ArrayList<>();
-        ExecutorService threadPool = ThreadPoolTools.getExecutor();
 
         for (int i = 0; i < requests.size(); i++) {
             String path = path_folder+"/request"+(i+1)+".json";
-            Future<?> f = threadPool.submit(new CallAPIThread(caller, GuardianAPIInfo.getDefaultURL(), path, requests.get(i)));
+            Future<?> f = ThreadPoolTools.submit(new CallAPIThread(caller, GuardianAPIInfo.getDefaultURL(), path, requests.get(i)));
             futures.add(f);
         }
 
@@ -141,12 +140,12 @@ public class GuardianAPIManager implements APIManager {
             try {
                 future.get();
             } catch (InterruptedException | ExecutionException e) {
-                threadPool.shutdown();
+                ThreadPoolTools.shutdown();
                 throw new IllegalArgumentException(e.getMessage());
             }
         }
 
-        threadPool.shutdown();
+        ThreadPoolTools.shutdown();
         caller.endRequests();
     }
 

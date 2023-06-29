@@ -16,13 +16,6 @@ import java.util.Properties;
  */
 public class APIProperties
 {
-    /* TODO: ha senso avere delle properties di default in questo caso?
-    /**
-     * The name of the default properties file. It is present in the folder tools.
-     *
-    private static final String default_properties = "api.properties";
-    */
-
     /**
      * The key of the parameter of the properties file that specifies the {@link APIManager} to use
      *
@@ -34,13 +27,12 @@ public class APIProperties
      * parameters specified in the properties file.
      *
      * @param out_properties The name of the properties file specified by the user. If null, the default properties file will be used.
-     * @param download_properties The name of the download properties file specified by the user. It's used to initialize the {@link APIContainer}
+     * @param download_properties The name of the download properties file specified by the user. It's used to initialize the {@link APIContainer}, if it is not already initialized.
      * @return The {@link APIManager} specified in the properties file with all the parameters.
-     * @throws IOException If both the API properties files or both of the Download properties files are not present
+     * @throws IOException If the API properties file is not present or the download properties file specified is invalid or if the default download properties file is missing or invalid
      * @throws IllegalArgumentException If the name or the parameters of the {@link APIManager} specified aren't correct.
      */
     public static APIManager readProperties(String out_properties, String download_properties) throws IOException, IllegalArgumentException {
-        //Properties apiProps = PropertiesTools.getProperties(default_properties, out_properties);
         if (out_properties == null)
         {
             return null;

@@ -21,7 +21,7 @@ public class TestManager implements APIManager {
 
     private final APICaller caller;
 
-    private final GuardianAPIParams params;
+    public final GuardianAPIParams params;
 
     private final String name;
 
@@ -79,11 +79,10 @@ public class TestManager implements APIManager {
 
         // Create a thread pool and send requests
         List<Future<?>> futures = new ArrayList<>();
-        ExecutorService threadPool = ThreadPoolTools.getExecutor();
 
         for (int i = 0; i < requests.size(); i++) {
             String path = path_folder+"/request"+(i+1)+".json";
-            Future<?> f = threadPool.submit(new CallAPIThread(caller, GuardianAPIInfo.getDefaultURL(), path, requests.get(i)));
+            Future<?> f = ThreadPoolTools.submit(new CallAPIThread(caller, GuardianAPIInfo.getDefaultURL(), path, requests.get(i)));
             futures.add(f);
         }
 
@@ -92,12 +91,12 @@ public class TestManager implements APIManager {
             try {
                 future.get();
             } catch (InterruptedException | ExecutionException e) {
-                threadPool.shutdown();
+                ThreadPoolTools.shutdown();
                 throw new IllegalArgumentException(e.getMessage());
             }
         }
 
-        threadPool.shutdown();
+        ThreadPoolTools.shutdown();
         caller.endRequests();
     }
 

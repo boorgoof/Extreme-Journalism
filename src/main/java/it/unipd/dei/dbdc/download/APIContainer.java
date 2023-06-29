@@ -83,7 +83,7 @@ public class APIContainer {
      * which has the parameters that are also passed to the function.
      *
      * @param name The name of the {@link APIManager}.
-     * @throws IllegalArgumentException If there is no {@link APIManager} with that name.
+     * @throws IllegalArgumentException If there is no {@link APIManager} with that name, or the parameters passed are not valid.
      */
     public APIManager getAPIManager(String name, List<QueryParam> l) throws IllegalArgumentException
     {
