@@ -160,6 +160,13 @@ public class GuardianAPIParamsTest {
         assertThrows(IllegalArgumentException.class, () -> finalTester.addParam(new QueryParam("to-date", "1987-09-31")));
         assertThrows(IllegalArgumentException.class, () -> finalTester.addParam(new QueryParam("to-date", "1987-02-36")));
 
+        //Invalid pages or page-size
+        assertThrows(IllegalArgumentException.class, () -> finalTester.addParam(new QueryParam("page-size", "-2")));
+        assertThrows(IllegalArgumentException.class, () -> finalTester.addParam(new QueryParam("page-size", "201")));
+        assertThrows(IllegalArgumentException.class, () -> finalTester.addParam(new QueryParam("page-size", "ajaio")));
+        assertThrows(IllegalArgumentException.class, () -> finalTester.addParam(new QueryParam("pages", "afjpia")));
+        assertThrows(IllegalArgumentException.class, () -> finalTester.addParam(new QueryParam("pages", "-3")));
+
         //Null parameters
         assertThrows(IllegalArgumentException.class, () -> finalTester.addParam(new QueryParam(null, "1987-02-12")));
         assertThrows(IllegalArgumentException.class, () -> finalTester.addParam(new QueryParam("to-date", null)));

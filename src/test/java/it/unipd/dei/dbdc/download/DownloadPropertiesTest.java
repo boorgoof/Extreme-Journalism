@@ -13,39 +13,34 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class DownloadPropertiesTest {
     @Test
-    public void readAPIContainerProperties()
+    public void readProperties()
     {
-        HashMap<String, APIManager> obtained;
         GuardianAPIManager guardianAPIManager = new GuardianAPIManager(new KongAPICaller(), "TheGuardianAPI");
-        try {
+
+        assertDoesNotThrow(() -> {
+            //Tests with default properties
+            final HashMap<String, APIManager> obt2 = DownloadProperties.readProperties(null);
+            assertEquals(1, obt2.size());
+            assertEquals(guardianAPIManager, obt2.get("TheGuardianAPI"));
+
             //Tests with a valid download.properties
+            final HashMap<String, APIManager> obtained;
             obtained = DownloadProperties.readProperties(DownloadHandlerTest.resources_url+"defaultDownload.properties");
             assertEquals(1, obtained.size());
             assertEquals(guardianAPIManager, obtained.get("TheGuardianAPI"));
+        });
 
-            //Tests with default properties
-            obtained = DownloadProperties.readProperties(null);
-            assertEquals(1, obtained.size());
-            assertEquals(guardianAPIManager, obtained.get("TheGuardianAPI"));
-        } catch (IOException | ClassCastException e) {
-            fail("Failed the reading of the defaultDownload.properties");
-        }
-
-        //Tests with invalid download.properties
+        //Tests with invalid download.properties (wrong keys or classes)
         assertThrows(IOException.class, () -> DownloadProperties.readProperties(DownloadHandlerTest.resources_url + "falseDownload.properties"));
-
         assertThrows(IOException.class, () -> DownloadProperties.readProperties(DownloadHandlerTest.resources_url+"falseDownload2.properties"));
 
-        //Test with other properties
-        try {
-            obtained = DownloadProperties.readProperties(DownloadHandlerTest.resources_url+"trueDownload.properties");
-            assertEquals(obtained.size(), 2);
-            assertEquals(guardianAPIManager, obtained.get("TheGuardianAPI"));
-            assertTrue(obtained.get("Test") instanceof TestManager);
-        } catch (IOException e) {
-            fail("Failed the reading of the trueDownload.properties");
-        }
+        //Test with other properties, with TestManager
+        assertDoesNotThrow( () -> {
+            final HashMap<String, APIManager> finalObt = DownloadProperties.readProperties(DownloadHandlerTest.resources_url + "trueDownload.properties");
+            assertEquals(2, finalObt.size());
+            assertEquals(guardianAPIManager, finalObt.get("TheGuardianAPI"));
+            assertTrue(finalObt.get("Test") instanceof TestManager);
+        });
 
-        //TODO: more tests?
     }
 }

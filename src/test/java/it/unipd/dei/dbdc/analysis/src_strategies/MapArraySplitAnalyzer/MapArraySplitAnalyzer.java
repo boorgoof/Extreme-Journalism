@@ -25,10 +25,9 @@ public class MapArraySplitAnalyzer implements Analyzer {
         //To access the global map, we need to guarantee mutual exclusion
         Semaphore mutex = new Semaphore(1);
 
-        ExecutorService threadPool = ThreadPoolTools.getExecutor();
         List<Future<?>> futures = new ArrayList<>(articles.size());
         for (UnitOfSearch article : articles) {
-            Future<?> f = threadPool.submit(new AnalyzerArticleThread(article, global_map, mutex));
+            Future<?> f = ThreadPoolTools.submit(new AnalyzerArticleThread(article, global_map, mutex));
             futures.add(f);
         }
 
@@ -36,11 +35,11 @@ public class MapArraySplitAnalyzer implements Analyzer {
             try {
                 future.get();
             } catch (InterruptedException | ExecutionException e) {
-                threadPool.shutdown();
+                ThreadPoolTools.shutdown();
                 throw new IllegalArgumentException(e.getMessage());
             }
         }
-        threadPool.shutdown();
+        ThreadPoolTools.shutdown();
 
         // To order the couples, we need to have an order. That's why we use the OrderedEntries
         ArrayList<OrderedEntryStringInt> max = new ArrayList<>(tot_words);

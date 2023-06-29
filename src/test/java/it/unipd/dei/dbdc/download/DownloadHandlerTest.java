@@ -1,17 +1,32 @@
 package it.unipd.dei.dbdc.download;
 
+import it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIManagerTest;
 import it.unipd.dei.dbdc.tools.PathManagerTest;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-//FIXME: assertions have the first value that is the expected parameter
-//FIXME: assertThrows
 public class DownloadHandlerTest {
 
     public final static String resources_url = PathManagerTest.resources_folder +"download/";
+
+    //Useful function to change the input from System.in to the String specified as a parameter
+    private void provideInput(String data) {
+        ByteArrayInputStream testIn = new ByteArrayInputStream(data.getBytes());
+        System.setIn(testIn);
+    }
+
+    //Function to restore the standard input
+    @AfterAll
+    public static void restoreSystemInputOutput() {
+        System.setIn(System.in);
+    }
+
     @Test
     public void download()
     {
@@ -19,16 +34,54 @@ public class DownloadHandlerTest {
         assertThrows(IOException.class, () -> DownloadHandler.download(resources_url+"falseDownload.properties", resources_url+"trueApi.properties"));
 
         //Tests with valid download.properties
-        try {
-            assertEquals("./database/TheGuardianAPI", DownloadHandler.download(resources_url+"trueDownload.properties", resources_url+"trueApi.properties"));
-            assertEquals("./database/Test", DownloadHandler.download(resources_url+"trueDownload.properties", resources_url+"trueApiTest.properties"));
-        }
-        catch (IOException e)
+        assertDoesNotThrow( () ->
         {
-            fail("Exception thrown even if download properties were right");
-        }
+            assertEquals("./database/TheGuardianAPI", DownloadHandler.download(resources_url+"trueDownload.properties", resources_url+"trueApi.properties"));
+            assertEquals("./database/Test", DownloadHandler.download(null, resources_url+"trueApiTest.properties"));
+        });
 
-        //FIXME: vedi se e' possibile fare come scritto sotto
-        //More tests with false api properties are not possible because that would require the user to give some input.
+        //Tests with invalid api.properties, but valid things specified by the user
+        assertDoesNotThrow( () ->
+        {
+            provideInput("TheGuardianAPI\nq kingdom\nfrom-date 2003-12-23\nto-date 2002-12-23\npages 1\npage-size 120\napi-key "+ GuardianAPIManagerTest.key+"\nquit");
+            assertEquals("./database/TheGuardianAPI", DownloadHandler.download(null, null));
+
+            provideInput("Test\nq kingdom\nfrom-date 2003-12-23\nto-date 2002-12-23\npages 1\npage-size 120\napi-key "+ GuardianAPIManagerTest.key+"\nquit");
+            assertEquals("./database/Test", DownloadHandler.download(null, resources_url+"falseApi.properties"));
+
+            provideInput("Test\nq kingdom\nfrom-date 2003-12-23\nto-date 2002-12-23\npages 1\npage-size 120\napi-key "+ GuardianAPIManagerTest.key+"\nquit");
+            assertEquals("./database/Test", DownloadHandler.download(null, resources_url+"falseApi.properties"));
+
+            provideInput("Test\nq kingdom\nfrom-date 2003-12-23\nto-date 2002-12-23\npages 1\npage-size 120\napi-key "+ GuardianAPIManagerTest.key+"\nquit");
+            assertEquals("./database/Test", DownloadHandler.download(null, resources_url+"falseApi2.properties"));
+
+            provideInput("Test\nq kingdom\nfrom-date 2003-12-23\nto-date 2002-12-23\npages 1\npage-size 120\napi-key "+ GuardianAPIManagerTest.key+"\nquit");
+            assertEquals("./database/Test", DownloadHandler.download(null, resources_url+"falseApi3.properties"));
+
+            provideInput("Test\nq kingdom\nfrom-date 2003-12-23\nto-date 2002-12-23\npages 1\npage-size 120\napi-key "+ GuardianAPIManagerTest.key+"\nquit");
+            assertEquals("./database/Test", DownloadHandler.download(null, resources_url+"notexistent.properties"));
+
+            //Tests with different inputs
+            provideInput("Test\nTheGuardianAPI\nq kingdom\napi-key "+ GuardianAPIManagerTest.key+"\nquit");
+            assertEquals("./database/Test", DownloadHandler.download(null, null));
+
+            provideInput("api-key "+ GuardianAPIManagerTest.key+"\nquit\nTheGuardianAPI\napi-key "+ GuardianAPIManagerTest.key+"\nquit");
+            assertEquals("./database/TheGuardianAPI", DownloadHandler.download(null, null));
+
+            provideInput("TheGuardianAPI\napi-key "+ GuardianAPIManagerTest.key+"\npages 3\npage-size 120\nquit");
+            assertEquals("./database/TheGuardianAPI", DownloadHandler.download(null, null));
+
+            provideInput("TheGuardianAP\napi-key "+ GuardianAPIManagerTest.key+"\nquit\nTest\napi-key "+GuardianAPIManagerTest.key+"\nquit");
+            assertEquals("./database/Test", DownloadHandler.download(null, null));
+
+            provideInput("TheGuardianAPI\napi-key "+ GuardianAPIManagerTest.key+"\npages 2\nq \"solar energy\"\nquit");
+            assertEquals("./database/TheGuardianAPI", DownloadHandler.download(null, null));
+
+            provideInput("Test\napi-key "+GuardianAPIManagerTest.key+"\nfrom-date 1200-12-23\nquit");
+            assertEquals("./database/Test", DownloadHandler.download(null, null));
+
+            provideInput("Test\napi-key "+GuardianAPIManagerTest.key+"\nfrom-date 1200.12-23\nquit\nTheGuardianAPI\napi-key "+ GuardianAPIManagerTest.key+"\nquit\n");
+            assertEquals("./database/TheGuardianAPI", DownloadHandler.download(null, null));
+        });
     }
 }

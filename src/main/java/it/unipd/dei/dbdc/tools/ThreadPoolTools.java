@@ -4,8 +4,7 @@ import java.util.concurrent.*;
 
 /**
  * This utility class has the logic to initialize a threadPool with a specified number of threads
- * and return it.
- * It uses the Singleton design pattern.
+ * and use it to run Runnable objects.
  *
  * @see ExecutorService
  */
@@ -25,19 +24,39 @@ public class ThreadPoolTools {
     private static final int threads = Runtime.getRuntime().availableProcessors()-1;
 
     /**
-     * This function uses the Singleton design pattern to return the {@link ExecutorService}
-     * with a fixed number of threads equal to the number of processors available minus one.
-     * It uses only a thread pool, if this was not terminated.
+     * This function has the logic to submit to an {@link ExecutorService} the {@link Runnable}
+     * passed as a parameter.
      *
-     * @return An instance of a {@link ExecutorService} with that number of threads.
+     * @param r A {@link Runnable} to submit.
+     * @return A {@link Future} obtained by submitting the {@link Runnable} to the {@link ExecutorService}.
      */
-    public static ExecutorService getExecutor()
-    {
-        if (threadPool == null || threadPool.isTerminated())
-        {
-            threadPool = Executors.newFixedThreadPool(threads);
+    public static Future<?> submit(Runnable r) {
+            if (threadPool == null || threadPool.isShutdown()) {
+                threadPool = Executors.newFixedThreadPool(threads);
+            }
+            return threadPool.submit(r);
         }
-        return threadPool;
+
+    /**
+     * This function has the logic to shut down the {@link ExecutorService},
+     * waiting 60 seconds if it all the other threads have not finished yet.
+     *
+     */
+    public static void shutdown()
+    {
+        if (threadPool == null || threadPool.isShutdown())
+        {
+            return;
+        }
+        threadPool.shutdown();
+        try {
+            if (!threadPool.awaitTermination(60, TimeUnit.SECONDS)) {
+                threadPool.shutdownNow();
+            }
+        } catch (InterruptedException ex) {
+            threadPool.shutdownNow();
+            Thread.currentThread().interrupt();
+        }
     }
 
 }

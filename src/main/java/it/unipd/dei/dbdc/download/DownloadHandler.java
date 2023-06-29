@@ -9,13 +9,13 @@ import java.util.Scanner;
 public class DownloadHandler {
 
     /**
-     * The main function of the Handler. It selects the api specified by the API properties file passed as
-     * a parameter (or the default one) or asks the user interactively to select the API and the parameters.
+     * The main function of the Handler. It selects the API specified by the API properties file passed as
+     * a parameter or asks the user interactively to select the API and the parameters.
      * It continues to ask the user if something is not correct, to the point where the responses are correct.
      * It returns the path of the folder where the responses are saved.
      *
      * @param download_props The download properties specified by the user. If null, the default ones will be used.
-     * @param api_props The API properties specified by the user. If null, the default ones will be used. If both of them are incorrect, the user will be asked to select the API.
+     * @param api_props The API properties specified by the user. If null or incorrect, the user will be asked to select the API.
      * @throws IOException If the download properties files (the default one and the one specified by the user) are not present or are not correct.
      * @return A {@link String} representing the path where the downloaded files were saved.
      */
@@ -67,7 +67,7 @@ public class DownloadHandler {
      * It asks repetitively the user, to the point where the constructed {@link APIManager} is correct.
      *
      * @param download_props The download properties specified by the user. If null, the default ones will be used.
-     * @throws IOException If the download properties files (the default one and the one specified by the user) are not present or are not correct.
+     * @throws IOException If the download properties file specified by the user is incorrect or the default one is missing or incorrect.
      * @return A {@link APIManager} that represents the API to call.
      */
     private static APIManager selectInteractive(String download_props) throws IOException

@@ -86,7 +86,7 @@ public class GuardianAPIParams {
      * If it's a date, the format should be yyyy-mm-dd
      *
      * @param param The param to add to the specified params
-     * @throws IllegalArgumentException If the date specified is not in the correct format or is invalid, or if the passed param is null or has a null key or value
+     * @throws IllegalArgumentException If the date specified is not in the correct format or is invalid, or if the passed param is null or has a null key or value, or if the page-size or pages are invalid
      */
     public void addParam(QueryParam param) throws IllegalArgumentException
     {
@@ -100,16 +100,37 @@ public class GuardianAPIParams {
         {
             throw new IllegalArgumentException("Null key or value");
         }
+        int parsed = -1;
         switch (key)
         {
             case ("api-key"):
                 api_key = elem;
                 return;
             case ("pages"):
-                pages = Integer.parseInt(elem);
+                try {
+                    parsed = Integer.parseInt(elem);
+                }
+                catch (NumberFormatException e)
+                {   //In this case parsed will be equal to -1
+                }
+                if (parsed <= 0)
+                {
+                    throw new IllegalArgumentException("The number of pages is invalid");
+                }
+                pages = parsed;
                 return;
             case ("page-size"):
-                page_size = Integer.parseInt(elem);
+                try {
+                    parsed = Integer.parseInt(elem);
+                }
+                catch (NumberFormatException e) {
+                    //In this case parsed will be equal to -1
+                }
+                if (parsed <= 0 || parsed > 200)
+                {
+                    throw new IllegalArgumentException("The page size is invalid");
+                }
+                page_size = parsed;
                 return;
             case("q"):
                 query = elem;
@@ -117,7 +138,7 @@ public class GuardianAPIParams {
             case ("from-date"):
             case ("to-date"):
                 if (!format(elem)) {
-                    throw new IllegalArgumentException("The date is not in the correct format");
+                    throw new IllegalArgumentException("The date is not correct");
                 }
         }
         specified_params.put(key, elem);

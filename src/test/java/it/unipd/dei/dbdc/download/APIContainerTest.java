@@ -53,7 +53,26 @@ public class APIContainerTest {
         //Test with everything right
         GuardianAPIManager g = new GuardianAPIManager(new KongAPICaller(), "TheGuardianAPI");
         List<QueryParam> queries = new ArrayList<>();
+        assertEquals(g, container.getAPIManager(g.getName(), queries));
+
+        //With a parameter
         queries.add(new QueryParam("api-key", "ugo"));
+        g.addParams(queries);
+        assertEquals(g, container.getAPIManager(g.getName(), queries));
+
+        queries.add(new QueryParam("page-size", "3"));
+        g.addParams(queries);
+        assertEquals(g, container.getAPIManager(g.getName(), queries));
+
+        queries.add(new QueryParam("pages", "4"));
+        g.addParams(queries);
+        assertEquals(g, container.getAPIManager(g.getName(), queries));
+
+        queries.add(new QueryParam("from-date", "2303-02-23"));
+        g.addParams(queries);
+        assertEquals(g, container.getAPIManager(g.getName(), queries));
+
+        queries.add(new QueryParam("to-date", "1203-03-21"));
         g.addParams(queries);
         assertEquals(g, container.getAPIManager(g.getName(), queries));
 
@@ -63,8 +82,68 @@ public class APIContainerTest {
         g = new GuardianAPIManager(new KongAPICaller(), "TheGuardianAPI");
         assertEquals(g,container.getAPIManager(g.getName(), queries));
 
+        //Pass invalid parameters
         assertThrows(IllegalArgumentException.class, () -> container.getAPIManager("TheGuardianAPI", null));
+
+        queries.clear();
+        queries.add(new QueryParam("to-date", "1203.03-21"));
+        assertThrows(IllegalArgumentException.class, () -> container.getAPIManager("TheGuardianAPI", queries));
+
+        queries.clear();
+        queries.add(new QueryParam("from-date", "120-03-21"));
+        assertThrows(IllegalArgumentException.class, () -> container.getAPIManager("TheGuardianAPI", queries));
+
+        queries.clear();
+        queries.add(new QueryParam("pages", "-1200"));
+        assertThrows(IllegalArgumentException.class, () -> container.getAPIManager("TheGuardianAPI", queries));
+
+        queries.clear();
+        queries.add(new QueryParam("page-size", "203"));
+        assertThrows(IllegalArgumentException.class, () -> container.getAPIManager("TheGuardianAPI", queries));
+
+        queries.clear();
+        queries.add(new QueryParam("page-size", "aaa"));
+        assertThrows(IllegalArgumentException.class, () -> container.getAPIManager("TheGuardianAPI", queries));
+
+        queries.clear();
+        queries.add(new QueryParam("page-size", "-2"));
+        assertThrows(IllegalArgumentException.class, () -> container.getAPIManager("TheGuardianAPI", queries));
+
+        queries.clear();
+        queries.add(new QueryParam("page-size", "aaa"));
+        assertThrows(IllegalArgumentException.class, () -> container.getAPIManager("TheGuardianAPI", queries));
+
+        queries.clear();
+        queries.add(new QueryParam("pages", "aaa"));
+        assertThrows(IllegalArgumentException.class, () -> container.getAPIManager("TheGuardianAPI", queries));
+
+        queries.clear();
+        queries.add(null);
+        assertThrows(IllegalArgumentException.class, () -> container.getAPIManager("TheGuardianAPI", queries));
+
+        queries.clear();
+        queries.add(new QueryParam(null, "aaa"));
+        assertThrows(IllegalArgumentException.class, () -> container.getAPIManager("TheGuardianAPI", queries));
+
+        queries.clear();
+        queries.add(new QueryParam("page-size", null));
+        assertThrows(IllegalArgumentException.class, () -> container.getAPIManager("TheGuardianAPI", queries));
+
+        queries.clear();
+        queries.add(new QueryParam(null, null));
+        assertThrows(IllegalArgumentException.class, () -> container.getAPIManager("TheGuardianAPI", queries));
+
+        queries.clear();
+        queries.add(new QueryParam("from-date", null));
+        assertThrows(IllegalArgumentException.class, () -> container.getAPIManager("TheGuardianAPI", queries));
+
+        queries.clear();
+        queries.add(new QueryParam("api-key", null));
+        assertThrows(IllegalArgumentException.class, () -> container.getAPIManager("TheGuardianAPI", queries));
+
+        //Pass invalid names
+        queries.clear();
         assertThrows(IllegalArgumentException.class, () -> container.getAPIManager("NotExistent", queries));
-        //TODO: crea altri test
+        assertThrows(IllegalArgumentException.class, () -> container.getAPIManager(null, queries));
     }
 }
