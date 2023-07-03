@@ -23,13 +23,11 @@ public class PropertiesTools {
      * @throws IOException If the default properties file has any error or is missing
      */
     public static Properties getProperties(String default_properties, String out_properties) throws IOException {
-        if (out_properties != null)
-        {
-            try {
-                return getOutProperties(out_properties);
-            } catch (IOException e) {
-                //Intentionally left blank
-            }
+        try {
+            return getOutProperties(out_properties);
+        } catch (IOException e) {
+            //Intentionally left blank.
+            //We don't check if the out_properties is null because it is done inside the function getOutProperties
         }
         return getDefaultProperties(default_properties);
     }
@@ -39,10 +37,14 @@ public class PropertiesTools {
      * and throws an Exception if the file is missing or has an error.
      *
      * @param properties_file The name of the default properties file to read.
-     * @throws IOException If the default properties file has any error or is missing
+     * @throws IOException If the default properties file has any error or is missing, or the parameter is null or empty
      */
     public static Properties getDefaultProperties(String properties_file) throws IOException
     {
+        if (properties_file == null || properties_file.isEmpty())
+        {
+            throw new IOException();
+        }
         try (InputStream propertiesFile = Thread.currentThread().getContextClassLoader().getResourceAsStream(properties_file)) {
             if (propertiesFile == null) {
                 throw new IOException();
@@ -59,10 +61,14 @@ public class PropertiesTools {
      * is missing.
      *
      * @param properties_file The path to the properties file specified by the user.
-     * @throws IOException If the specified properties file has any error or is missing
+     * @throws IOException If the specified properties file has any error or is missing, or the parameter is null or empty
      */
     public static Properties getOutProperties(String properties_file) throws IOException
     {
+        if (properties_file == null || properties_file.isEmpty())
+        {
+            throw new IOException();
+        }
         try (InputStream propertiesFile = Files.newInputStream(Paths.get(properties_file))) {
             Properties properties = new Properties();
             properties.load(propertiesFile);

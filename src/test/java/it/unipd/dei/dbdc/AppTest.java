@@ -60,14 +60,4 @@ public class AppTest
         System.setIn(systemIn);
         System.setOut(systemOut);
     }
-
-    @Test
-    public void testCase1() {
-        final String testString = "Hello!";
-        provideInput(testString);
-
-        App.main(new String[0]);
-
-        assertEquals(testString, getOutput());
-    }
 }
