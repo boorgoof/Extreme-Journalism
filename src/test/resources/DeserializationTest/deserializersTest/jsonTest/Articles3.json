@@ -1,25 +1,29 @@
-[ {
-  "id": null,
-  "url": null,
-  "title": null,
-  "body": null,
-  "date": null,
-  "sourceSet" : null,
-  "source": null
-}, {
-  "id": null,
-  "url": null,
-  "title": null,
-  "body": null,
-  "date": null,
-  "sourceSet" : null,
-  "source": null
-}, {
-  "id": null,
-  "url": null,
-  "title": null,
-  "body": null,
-  "date": null,
-  "sourceSet" : null,
-  "source": null
-} ]
+<ArrayList>
+  <item>
+    <id/>
+    <url/>
+    <title/>
+    <body/>
+    <date/>
+    <sourceSet/>
+    <source/>
+  </item>
+  <item>
+    <id/>
+    <url/>
+    <title/>
+    <body/>
+    <date/>
+    <sourceSet/>
+    <source/>
+  </item>
+  <item>
+    <id/>
+    <url/>
+    <title/>
+    <body/>
+    <date/>
+    <sourceSet/>
+    <source/>
+  </item>
+</ArrayList>

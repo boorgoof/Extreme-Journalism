@@ -1,23 +1,20 @@
-[ {
-
-  "url" : "URL 1",
-  "title" : "Title 1",
-  "body" : "Body 1",
-  "date" : "Date 1",
-  "sourceSet" : "sourceSet 1",
-  "source" : "Source 1"
-}, {
-  "id" : "ID 1",
-  "url" : "URL 1",
-  "title" : "Title 1",
-  "body" : "Body 1",
-  "date" : "Date 1"
-
-}, {
-  "id" : "ID 1",
-  "url" : "URL 1",
-  "title" : "Title 1",
-  "body" : "Body 1",
-  "date" : "Date 1"
-
-} ]
+<ArrayList>
+  <item>
+    <id>ID 1</id>
+    <url>URL 1</url>
+    <title>Title 1</title>
+    <body>Body 1</body>
+    <date>Date 1</date>
+    <sourceSet/>
+    <source/>
+  </item>
+  <item>
+    <id>ID 1</id>
+    <url>URL 1</url>
+    <title>Title 1</title>
+    <body>Body 1</body>
+    <date>Date 1</date>
+    <sourceSet/>
+    <source/>
+  </item>
+</ArrayList>

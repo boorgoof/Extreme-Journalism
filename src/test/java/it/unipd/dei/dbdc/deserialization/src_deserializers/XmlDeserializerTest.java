@@ -77,7 +77,7 @@ public class XmlDeserializerTest {
             assertEquals(expectedArticles, articles);
 
         } catch (IOException e) {
-            fail("Errore durante la lettura del file JSON: " + e.getMessage());
+            fail("Errore durante la lettura del file XML: " + e.getMessage());
         }
     }
 
