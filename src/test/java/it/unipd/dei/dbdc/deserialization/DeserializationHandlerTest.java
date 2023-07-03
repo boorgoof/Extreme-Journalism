@@ -123,7 +123,7 @@ public class DeserializationHandlerTest {
         try {
             String[] fileFields = {"id" , "url" , "title" , "body" , "date" , "sourceSet", "source"};
             Set<File> files = new HashSet<>();
-            DeserializationHandler handler = new DeserializationHandler("deserializers.properties");
+            DeserializationHandler handler = new DeserializationHandler(deserializers_properties);
             DeserializersContainer container = (DeserializersContainer) cont_field.get(handler);
             container.setSpecificFields("json", fileFields);
             List<UnitOfSearch> deserializationFiles = handler.deserializeFile(new File("src/test/tools/DeserializationTest/handlerTest/Database/Articles1.json"));

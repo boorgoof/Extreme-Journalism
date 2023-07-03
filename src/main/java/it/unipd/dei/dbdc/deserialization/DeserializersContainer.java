@@ -14,18 +14,24 @@ public class DeserializersContainer {
     public DeserializersContainer(String filePropertiesName) throws IOException {
         deserializers = readDeserializersProperties(filePropertiesName);
     }
-    public Deserializer getDeserializer(String format){
+    public Deserializer getDeserializer(String format) throws IOException{
+        if(!deserializers.containsKey(format)){
+            throw new IOException("the program is not yet able to deserialize the requested format");
+        }
         return deserializers.get(format);
     }
 
     public Set<String> getFormats() {
         return deserializers.keySet();
     }
-    public void setSpecificFields(String format, String[] fields) {
+    public void setSpecificFields(String format, String[] fields) throws IOException{
 
         if(deserializers.get(format) instanceof DeserializerWithFields){
             DeserializerWithFields deserializer = (DeserializerWithFields) deserializers.get(format);
             deserializer.setFields(fields);
+        } else {
+            throw new IOException("the selected deserializer does not implement field specification");
+
         }
 
     }

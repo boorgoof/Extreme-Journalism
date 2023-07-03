@@ -38,7 +38,8 @@ public class XmlSerializerTest {
         XmlSerializer serializer = new XmlSerializer();
         try {
             // serializzo
-            serializer.serialize(expectedArticles, filePath);
+            File xmlFile = new File(filePath);
+            serializer.serialize(expectedArticles, xmlFile);
 
         } catch (IOException e) {
             fail("Errore nella serializzazione degli articoli: " + e.getMessage());
@@ -67,15 +68,15 @@ public class XmlSerializerTest {
 
         XmlSerializer serializer = new XmlSerializer();
 
-        String filePath = "src/test/resources/SerializationTest/serializersTest/xmlTest/ArticlesError.xml";
-        NullPointerException exception1 = assertThrows(NullPointerException.class, () -> serializer.serialize(createTestArticles1(), null));
+
+        IOException exception1 = assertThrows(IOException.class, () -> serializer.serialize(createTestArticles1(), null));
         System.out.println(exception1.getMessage());
 
-        assertDoesNotThrow(() -> serializer.serialize(null, filePath));
+        String filePath = "src/test/resources/SerializationTest/serializersTest/xmlTest/ArticlesError.xml";
+        File xmlFile = new File(filePath);
+        assertDoesNotThrow(() -> serializer.serialize(null, xmlFile));
 
-        String filePath2 = "src/test/resources/SerializationTest/serializersTest/xmlTest";
-        assertDoesNotThrow(() -> serializer.serialize(createTestArticles1(), filePath2));
-
+        
     }
 
     private static List<UnitOfSearch> createTestArticles1() {

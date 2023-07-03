@@ -23,13 +23,27 @@ public class SerializationHandler {
         container = new SerializersContainer(fileProperties);
     }
 
-    public void serializeObjects(List<UnitOfSearch> objects, String format, String filePath) throws IOException {
+    public void serializeObjects(List<UnitOfSearch> objects, File file) throws IOException {
 
+        if (file == null) {
+            throw new IOException("The XML file cannot be null"); //TODo viene controllato anche in xmlserialize
+        }
+
+        String format = getFileFormat(file.getName());
         Serializer serializer = container.getSerializer(format);
         if (serializer == null) {
-            throw new IOException("objects cannot be serialized in the specified format. The format provided is " + format);
+            throw new IOException("Objects cannot be serialized in the specified file. The file provided is " + file.getName());
         }
-        serializer.serialize(objects, filePath);
+
+        serializer.serialize(objects, file);
+    }
+    // viene usata due volte dove posso metterla? in entrambi gli handeler
+    private static String getFileFormat(String fileName) {
+        int dotIndex = fileName.lastIndexOf(".");
+        if (dotIndex > 0 && dotIndex < fileName.length() - 1) {
+            return fileName.substring(dotIndex + 1).toLowerCase();
+        }
+        return null;
     }
 
 }

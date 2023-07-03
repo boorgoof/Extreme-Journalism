@@ -24,29 +24,25 @@ public class JsonDeserializerTest {
 
         JsonDeserializer deserializer = new JsonDeserializer();
 
+        // todo mettere i campi giusti
         String[] expectedFields = {"id", "webUrl", "headline", "bodyText", "webPublicationDate", "webUrl", "webUrl"}; // da modificare
         String[] fields = deserializer.getFields();
 
         assertArrayEquals(expectedFields, fields);
     }
 
-    @ParameterizedTest
-    @MethodSource("fields")
-    public void setFields(String[] newfields) {
+    @Test
+    public void setFields() {
 
+        String[] newfields = {"ID", "Link", "Titolo", "Testo", "Data", "FonteSet", "Fonte"};
         JsonDeserializer deserializer = new JsonDeserializer();
         deserializer.setFields(newfields);
-
         assertArrayEquals(newfields, deserializer.getFields());
 
-    }
+        String[] newfields2 = {"ID", "Link", "Titolo", "Testo", "Data", "Fonte"};
+        deserializer.setFields(newfields2);
+        assertArrayEquals(newfields2, deserializer.getFields());
 
-    // fixare
-    private static Stream<Arguments> fields() {
-        return Stream.of(
-                Arguments.of((Object) new String[]{"ID", "Link", "Titolo", "Testo", "Data", "FonteSet", "Fonte"}),
-                Arguments.of((Object) new String[]{"ID", "Link", "Titolo", "Testo", "Data", "Fonte"})
-        );
     }
 
     private static Stream<Arguments> deserializeParameters() {
