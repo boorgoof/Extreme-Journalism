@@ -8,4 +8,5 @@ public class SerializationPropertiesTest {
     @Test
     public void readSerializersProperties() {
     }
+
 }

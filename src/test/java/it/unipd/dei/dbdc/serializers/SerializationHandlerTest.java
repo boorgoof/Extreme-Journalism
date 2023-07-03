@@ -7,5 +7,7 @@ public class SerializationHandlerTest {
 
     @Test
     public void serializeObjects() {
+
+
     }
 }

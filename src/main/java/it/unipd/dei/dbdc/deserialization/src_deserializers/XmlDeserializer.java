@@ -18,8 +18,10 @@ public class XmlDeserializer implements Deserializer {
     public List<UnitOfSearch> deserialize(File xmlFile) throws IOException {
 
         XmlMapper xmlMapper = new XmlMapper();
-        List<Article> a = xmlMapper.readValue(xmlFile, new TypeReference<List<Article>>() {}); // FIXME: funziona, ma non ha senso
-        return new ArrayList<>(a);
+        List<Article> articles = xmlMapper.readValue(xmlFile, new TypeReference<List<Article>>() {}); // FIXME: funziona, ma non ha senso
+        return new ArrayList<>(articles);
+
+
     }
 
 
@@ -43,5 +45,16 @@ public class XmlDeserializer implements Deserializer {
         return Collections.emptyList(); // In caso di errore, restituisce una lista vuota
     }
     */
+
+     /*
+        XmlMapper xmlMapper = new XmlMapper();
+
+        // read file and put contents into the string
+        String readContent = new String(Files.readAllBytes(Paths.get("file.xml")));
+
+        // deserialize from the XML into a Phone object
+        PhoneDetails deserializedData = xmlMapper.readValue(readContent, Articles.class);
+
+         */
 
 }

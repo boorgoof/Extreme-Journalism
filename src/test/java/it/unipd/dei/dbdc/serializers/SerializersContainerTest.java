@@ -12,4 +12,5 @@ public class SerializersContainerTest {
     @Test
     public void getFormats() {
     }
+
 }

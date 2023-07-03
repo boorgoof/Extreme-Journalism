@@ -27,7 +27,7 @@ public class SerializationHandler {
 
         Serializer serializer = container.getSerializer(format);
         if (serializer == null) {
-            throw new IOException("No deserializer found for the specified format: " + format);
+            throw new IOException("objects cannot be serialized in the specified format. The format provided is " + format);
         }
         serializer.serialize(objects, filePath);
     }
