@@ -86,11 +86,11 @@ public class Article implements UnitOfSearch {
      * Constructor of the article which requires every parameter passed as an array of {@link String}.
      *
      * @param values The parameters of the article, in order: ID, URL, title, body, date, source set, source.
-     * @throws IllegalArgumentException If the length of the array passed as a parameter is not 7.
+     * @throws IllegalArgumentException If the length of the array passed as a parameter is not 7, or it is null.
      */
     public Article(String[] values) throws IllegalArgumentException
     {
-        if (values.length != 7) {
+        if (values == null || values.length != 7) {
             throw new IllegalArgumentException("The array to initialize the Article should contain 7 values");
         }
 
@@ -231,10 +231,15 @@ public class Article implements UnitOfSearch {
      * The function that returns the text to analyze. Overrides the one of {@link UnitOfSearch}.
      *
      * @return A {@link String} representing the article's title and body, separated by a space.
+     * @throws IllegalArgumentException If the body or the title are not initialized.
      */
     @Override
     public String obtainText()
     {
+        if (title == null || body == null)
+        {
+            throw new IllegalArgumentException("Article not initialized");
+        }
         return getTitle()+" "+getBody();
     }
 

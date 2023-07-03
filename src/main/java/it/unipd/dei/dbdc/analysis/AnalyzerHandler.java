@@ -1,7 +1,7 @@
 package it.unipd.dei.dbdc.analysis;
 
 import it.unipd.dei.dbdc.analysis.interfaces.OutPrinter;
-import it.unipd.dei.dbdc.tools.PathTools;
+import it.unipd.dei.dbdc.tools.PathManager;
 import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
 import it.unipd.dei.dbdc.analysis.interfaces.Analyzer;
 
@@ -12,6 +12,10 @@ import java.io.*;
  *
  */
 public class AnalyzerHandler {
+    /**
+     * The number of stop words that are present inside the file of the stop words.
+     *
+     */
     private final static int default_stop_words = 524;
 
     /**
@@ -22,7 +26,7 @@ public class AnalyzerHandler {
      * @param tot_words The number of words to print out.
      * @param stop_words A boolean that is true if the words in the banned words file should be banned.
      * @return A {@link String} representing the path of the file that was printed.
-     * @throws IllegalArgumentException If there are no terms to print.
+     * @throws IllegalArgumentException If there are no terms to print or the {@link UnitOfSearch} were not initialized correctly.
      * @throws IOException If the analysis properties file is invalid or the default one is invalid or missing, or if it can't print the output file.
      */
     public static String analyze(String filePropertiesName, List<UnitOfSearch> articles, int tot_words, boolean stop_words) throws IOException, IllegalArgumentException {
@@ -44,14 +48,15 @@ public class AnalyzerHandler {
 
     /**
      * The function that gets the terms that are banned, if needed. It uses the file that is specified by the
-     * {@link PathTools} class.
+     * {@link PathManager} class.
      *
      * @return A {@link Set} representing the terms that are banned. It's null if the file is missing or there is an error in it.
      */
     private static Set<String> bannedArray()
     {
+        //TODO: prendere stop words da fuori
         HashSet<String> banned = null;
-        try (InputStream file = Thread.currentThread().getContextClassLoader().getResourceAsStream(PathTools.getBannedWordsFile()))
+        try (InputStream file = Thread.currentThread().getContextClassLoader().getResourceAsStream(PathManager.getBannedWordsFile()))
         {
             if (file == null)
             {

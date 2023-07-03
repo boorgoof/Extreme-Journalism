@@ -3,7 +3,7 @@ package it.unipd.dei.dbdc;
 import it.unipd.dei.dbdc.deserialization.DeserializationProperties;
 import it.unipd.dei.dbdc.download.DownloadProperties;
 import it.unipd.dei.dbdc.tools.CommandLineInterpreter;
-import it.unipd.dei.dbdc.tools.PathTools;
+import it.unipd.dei.dbdc.tools.PathManager;
 import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
 import it.unipd.dei.dbdc.analysis.AnalyzerHandler;
 import it.unipd.dei.dbdc.deserialization.DeserializationHandler;
@@ -27,6 +27,10 @@ public class App
 
     public static void main(String[] args) {
 
+        for (String s : args)
+        {
+            System.out.println(s);
+        }
         // Parses the commands given
         CommandLineInterpreter interpreter;
         try {
@@ -121,7 +125,7 @@ public class App
         //Path of the serialized file
         String filePath;
         try {
-            filePath = PathTools.getSerializedFile(totalProperties.getCommonFormat());
+            filePath = PathManager.getSerializedFile(totalProperties.getCommonFormat());
         }
         catch (IOException e)
         {
@@ -162,7 +166,7 @@ public class App
 
             //Obtains the properties from the command line, if specified.
             int count = interpreter.obtainNumberOption();
-            if (count == -1)
+            if (count <= 0)
             {
                 count = totalProperties.getWordsCount();
             }

@@ -3,7 +3,7 @@ package it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI;
 import it.unipd.dei.dbdc.download.interfaces.APICaller;
 import it.unipd.dei.dbdc.download.interfaces.APIManager;
 import it.unipd.dei.dbdc.download.QueryParam;
-import it.unipd.dei.dbdc.tools.ThreadPoolTools;
+import it.unipd.dei.dbdc.tools.ThreadPool;
 
 import java.util.*;
 import java.util.concurrent.*;
@@ -131,7 +131,7 @@ public class GuardianAPIManager implements APIManager {
 
         for (int i = 0; i < requests.size(); i++) {
             String path = path_folder+"/request"+(i+1)+".json";
-            Future<?> f = ThreadPoolTools.submit(new CallAPIThread(caller, GuardianAPIInfo.getDefaultURL(), path, requests.get(i)));
+            Future<?> f = ThreadPool.submit(new CallAPIThread(caller, GuardianAPIInfo.getDefaultURL(), path, requests.get(i)));
             futures.add(f);
         }
 
@@ -140,12 +140,12 @@ public class GuardianAPIManager implements APIManager {
             try {
                 future.get();
             } catch (InterruptedException | ExecutionException e) {
-                ThreadPoolTools.shutdown();
+                ThreadPool.shutdown();
                 throw new IllegalArgumentException(e.getMessage());
             }
         }
 
-        ThreadPoolTools.shutdown();
+        ThreadPool.shutdown();
         caller.endRequests();
     }
 

@@ -4,7 +4,7 @@ import it.unipd.dei.dbdc.analysis.OrderedEntryStringInt;
 
 import java.util.Map;
 
-//This is only a utility class that is used for the tests. It extends OrderedEntryStringInt, as it is the only way to implement an Analyzer
+//This is only a utility class that is used for the tests. It extends OrderedEntryStringInt, as it is the only way to use it inside an Analyzer
 public class OrderedEntryComparable extends OrderedEntryStringInt implements Comparable<OrderedEntryComparable>
 {
     public OrderedEntryComparable(Map.Entry<String, Integer> e)
@@ -14,13 +14,14 @@ public class OrderedEntryComparable extends OrderedEntryStringInt implements Com
 
     @Override
     public int compareTo(OrderedEntryComparable o) {
+        //Return the opposite of what it should be because we use it in a min priority queue to have a max priority queue
         if (this.isMajorThan(o))
         {
-            return 1;
+            return -1;
         } else if (this.equals(o)) {
             return 0;
         }
-        return -1;
+        return 1;
     }
 
     @Override

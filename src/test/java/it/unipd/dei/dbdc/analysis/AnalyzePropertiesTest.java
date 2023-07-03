@@ -1,7 +1,7 @@
 package it.unipd.dei.dbdc.analysis;
 
-import it.unipd.dei.dbdc.analysis.interfaces.Analyzer;
-import it.unipd.dei.dbdc.analysis.src_strategies.MapArraySplitAnalyzer.MapSplitAnalyzer;
+import it.unipd.dei.dbdc.analysis.src_printers.TxtOutPrinter;
+import it.unipd.dei.dbdc.analysis.src_strategies.MapSplitAnalyzer.MapSplitAnalyzer;
 import it.unipd.dei.dbdc.analysis.src_strategies.PriorityQueueSplitAnalyzer;
 import org.junit.jupiter.api.Test;
 
@@ -13,25 +13,27 @@ public class AnalyzePropertiesTest {
     @Test
     public void readProperties()
     {
-        Analyzer analyzer;
-        try {
-            //Tests with valid properties (default)
-            analyzer = (Analyzer) AnalyzeProperties.readProperties(AnalyzerHandlerTest.resources_url+"default.properties")[0];
-            assertTrue(analyzer instanceof MapSplitAnalyzer);
-
+        assertDoesNotThrow( () -> {
             //Tests with valid properties
-            analyzer = (Analyzer) AnalyzeProperties.readProperties(null)[0];
-            assertTrue(analyzer instanceof MapSplitAnalyzer);
+            Object[] props = AnalyzeProperties.readProperties(AnalyzerHandlerTest.resources_url+"default.properties");
+            assertEquals(2, props.length);
+            assertTrue(props[0] instanceof MapSplitAnalyzer);
+            assertTrue(props[1] instanceof TxtOutPrinter);
 
-            analyzer = (Analyzer) AnalyzeProperties.readProperties(AnalyzerHandlerTest.resources_url+"priority.properties")[0];
-            assertTrue(analyzer instanceof PriorityQueueSplitAnalyzer);
-        } catch (IOException e) {
-            fail("Failed the reading of correct properties, or download ones");
-        }
+            props = AnalyzeProperties.readProperties(null);
+            assertEquals(2, props.length);
+            assertTrue(props[0] instanceof MapSplitAnalyzer);
+            assertTrue(props[1] instanceof TxtOutPrinter);
+
+
+            props = AnalyzeProperties.readProperties(AnalyzerHandlerTest.resources_url+"priority.properties");
+            assertEquals(2, props.length);
+            assertTrue(props[0] instanceof PriorityQueueSplitAnalyzer);
+            assertTrue(props[1] instanceof TxtOutPrinter);
+        });
 
         //Tests with invalid properties
         assertThrows(IOException.class, () -> AnalyzeProperties.readProperties(AnalyzerHandlerTest.resources_url + "false.properties"));
-
         assertThrows(IOException.class, () -> AnalyzeProperties.readProperties(AnalyzerHandlerTest.resources_url+"false2.properties"));
 
     }
