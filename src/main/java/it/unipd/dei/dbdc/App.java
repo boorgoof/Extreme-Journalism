@@ -23,14 +23,9 @@ import java.util.List;
  */
 public class App
 {
-    //TODO: stampa cose più significative, e vedi bene dove vanno le varie eccezioni
-
     public static void main(String[] args) {
+        //todo: aggiungi cli per modificare i fields di deserializers
 
-        for (String s : args)
-        {
-            System.out.println(s);
-        }
         // Parses the commands given
         CommandLineInterpreter interpreter;
         try {
@@ -71,7 +66,7 @@ public class App
             }
             catch (IOException e)
             {
-                System.err.println("The program has been terminated because the file "+ DownloadProperties.default_properties+" was not found: "+e.getMessage());
+                System.err.println("The program has been terminated because the file "+ DownloadProperties.default_properties+" was not found, or the properties passed by the user were not valid: "+e.getMessage());
                 return;
             }
 
@@ -98,11 +93,12 @@ public class App
         DeserializationHandler deserializersHandler;
         try {
             //Obtains the properties from the command line, if specified, and calls the handler.
+            //TODO: passargli anche interpreter.obtainSetFields()
             deserializersHandler = new DeserializationHandler(interpreter.obtainDeserProps());
         }
         catch (IOException e)
         {
-            System.err.println("The program has been terminated because the file "+ DeserializationProperties.default_properties+" was not found: "+e.getMessage());
+            System.err.println("The program has been terminated because the file "+ DeserializationProperties.default_properties+" was not found, or the properties passed by the user were not valid: "+e.getMessage());
             return;
         }
 
@@ -111,7 +107,7 @@ public class App
         try{
              articles = deserializersHandler.deserializeFolder(folderPath);
         } catch (IOException e){
-            System.err.println(e.getMessage()); //TODO: eccezioni
+            System.err.println("The program has been terminated because there was an error in the deserialization: "+e.getMessage()); //TODO: eccezioni
             return;
         }
 
@@ -150,12 +146,11 @@ public class App
             System.out.println("\nEntering the deserialization of "+filePath+"...");
 
             try {
-                //TODO: AL MOMENTO USA LA SECONDA VERSIONE DI DESERIALIZER. DA CAMBIARE?
                 File commonFormatFile = new File(filePath);
                 articles = deserializersHandler.deserializeFile(commonFormatFile);
             }
             catch (IOException e) {
-                System.err.println("Error: "+e.getMessage());
+                System.err.println("Error during the deserialization of the common format: "+e.getMessage());
                 return;
             }
             System.out.println("Exiting the deserialization part...\n");
@@ -176,7 +171,7 @@ public class App
                 //Obtains the properties from the command line, if specified, and calls the handler.
                 out_file = AnalyzerHandler.analyze(interpreter.obtainAnalyzeProps(), articles, count, interpreter.obtainStopWords());
             } catch (IOException | IllegalArgumentException e) {
-                System.err.println("The program has been terminated: "+e.getMessage());
+                System.err.println("The program has been terminated for an error in the analysis: "+e.getMessage());
                 return;
             }
             System.out.println("Exiting the analysis part. You can find the resulting file in"+out_file+"\n");

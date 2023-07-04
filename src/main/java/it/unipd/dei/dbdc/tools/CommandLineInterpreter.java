@@ -65,7 +65,7 @@ public class CommandLineInterpreter {
     private final static Option[] analysis = {
             new Option("anapf", "analysis-properties-file", true, "Contains the path to the properties file that contains the analyzer to use for the extraction"),
             new Option("path", "folder-path", true, "Contains the location of the place to take the files from"),
-            new Option("n", "number", true, "Contains the number of terms you want to have in the final output"),
+            new Option("n", "number", true, "Contains the positive number of terms you want to have in the final output"),
             new Option("stop", "enable-stop-words", true, "True if you want to enable the stop-words in the analysis")
     };
 
@@ -76,7 +76,8 @@ public class CommandLineInterpreter {
     private final static Option[] general = {
             new Option("genpf", "general-properties-file", true, "Contains the path to the properties file that contains the common format and the number of terms to extract"),
             new Option("despf", "deserializers-properties-file", true, "Contains the path to the properties file that contains the deserializers to use"),
-            new Option("serpf", "serializers-properties-file", true, "Contains the path to the properties file that contains the serializers to use")
+            new Option("serpf", "serializers-properties-file", true, "Contains the path to the properties file that contains the serializers to use"),
+            new Option("setfi", "set-deserializers-fields", true, "A boolean indicating if you want to select interactively the fields of the deserializers to use")
     };
 
     /**
@@ -154,7 +155,6 @@ public class CommandLineInterpreter {
     // This is the third phase: the interrogation.
 
     /**
-     * It should be called after being sure that the {@link CommandLine} of this class is not null.
      * It returns true if the option -h was specified, and prints the possible options.
      *
      * @return True if the option -h was specified
@@ -168,7 +168,6 @@ public class CommandLineInterpreter {
     }
 
     /**
-     * It should be called after being sure that the {@link CommandLine} of this class is not null.
      * It returns true if the option -d or -da was specified, and prints the possible options.
      *
      * @return True if the option -d or -da was specified
@@ -178,7 +177,6 @@ public class CommandLineInterpreter {
     }
 
     /**
-     * It should be called after being sure that the {@link CommandLine} of this class is not null.
      * It returns true if the option -h was specified, and prints the possible options.
      *
      * @return True if the option -h was specified
@@ -190,7 +188,6 @@ public class CommandLineInterpreter {
     // INTERROGATION OF THE PROPERTIES OPTIONS
 
     /**
-     * It should be called after being sure that the {@link CommandLine} of this class is not null.
      * It returns the value specified with the key -apf.
      *
      * @return The value specified with the key -apf, null if not present
@@ -200,7 +197,6 @@ public class CommandLineInterpreter {
     }
 
     /**
-     * It should be called after being sure that the {@link CommandLine} of this class is not null.
      * It returns the value specified with the key -despf.
      *
      * @return The value specified with the key -despf, null if not present
@@ -210,7 +206,6 @@ public class CommandLineInterpreter {
     }
 
     /**
-     * It should be called after being sure that the {@link CommandLine} of this class is not null.
      * It returns the value specified with the key -apf.
      *
      * @return The value specified with the key -apf, null if not present
@@ -220,7 +215,6 @@ public class CommandLineInterpreter {
     }
 
     /**
-     * It should be called after being sure that the {@link CommandLine} of this class is not null.
      * It returns the value specified with the key -dowpf.
      *
      * @return The value specified with the key -dowpf, null if not present
@@ -230,7 +224,6 @@ public class CommandLineInterpreter {
     }
 
     /**
-     * It should be called after being sure that the {@link CommandLine} of this class is not null.
      * It returns the value specified with the key -genpf.
      *
      * @return The value specified with the key -genpf, null if not present
@@ -240,7 +233,6 @@ public class CommandLineInterpreter {
     }
 
     /**
-     * It should be called after being sure that the {@link CommandLine} of this class is not null.
      * It returns the value specified with the key -anapf.
      *
      * @return The value specified with the key -anapf, null if not present
@@ -250,7 +242,16 @@ public class CommandLineInterpreter {
     }
 
     /**
-     * It should be called after being sure that the {@link CommandLine} of this class is not null.
+     * It returns the value specified with the key -setfi, by default false.
+     *
+     * @return True only if the value true is specified, false by default.
+     */
+    public boolean obtainSetFields()
+    {
+        return cmd.hasOption("setfi") && cmd.getOptionValue("setfi").equalsIgnoreCase("true");
+    }
+
+    /**
      * It returns the value specified with the key -path.
      *
      * @return The value specified with the key -path, null if not present
@@ -260,7 +261,6 @@ public class CommandLineInterpreter {
     }
 
     /**
-     * It should be called after being sure that the {@link CommandLine} of this class is not null.
      * It returns the value specified with the key -n.
      *
      * @return The value specified with the key -n as an Integer, -1 if not present
@@ -278,7 +278,6 @@ public class CommandLineInterpreter {
     }
 
     /**
-     * It should be called after being sure that the {@link CommandLine} of this class is not null.
      * It returns the value specified with the key -stop. The default value is true.
      *
      * @return The value specified with the key -stop, true if not present
