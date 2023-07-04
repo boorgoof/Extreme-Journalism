@@ -8,7 +8,7 @@ import java.io.IOException;
 
 import java.util.*;
 
-import it.unipd.dei.dbdc.tools.PathTools;
+import it.unipd.dei.dbdc.tools.PathManager;
 
 public class DeserializationHandler {
 
@@ -37,7 +37,7 @@ public class DeserializationHandler {
     public Set<File> deleteUnavailableFiles(Set<File> allFiles) {
         Set<File> rejectedFiles = new HashSet<>();
         for(File file : allFiles){
-            String format = PathTools.getFileFormat(file.getName());
+            String format = PathManager.getFileFormat(file.getName());
             if(!container.getFormats().contains(format)){
                 rejectedFiles.add(file);
             }
@@ -80,7 +80,7 @@ public class DeserializationHandler {
 
     public List<UnitOfSearch> deserializeFile(File file) throws IOException {
 
-        String format = PathTools.getFileFormat(file.getName());
+        String format = PathManager.getFileFormat(file.getName());
         Deserializer deserializer = container.getDeserializer(format);
 
         if (deserializer == null) {
