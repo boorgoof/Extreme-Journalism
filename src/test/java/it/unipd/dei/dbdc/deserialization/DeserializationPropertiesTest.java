@@ -55,11 +55,13 @@ public class DeserializationPropertiesTest {
             assertTrue(deserializers.get("xml") instanceof XmlDeserializer);
 
 
-            // empty file properties. (no exceptions thrown) it works because it takes the default one
+            // empty file properties.
             final Map<String, Deserializer> deserializers2;
             deserializers2 = DeserializationProperties.readDeserializersProperties(empty_deserializers_properties);
-            assertEquals(3, deserializers.size());
+            assertEquals(0, deserializers2.size());
+
         });
+
 
 
         //Tests with invalid serializers.properties (wrong classes)

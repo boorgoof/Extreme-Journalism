@@ -52,10 +52,10 @@ public class SerializationPropertiesTest {
             assertEquals(1, serializers.size());
             assertTrue(serializers.get("xml") instanceof XmlSerializer );
 
-            // empty file properties. (no exceptions thrown) it works because it takes the default one
+            // empty file properties. (no exceptions thrown)
             final Map<String, Serializer> serializers2;
             serializers2 = SerializationProperties.readSerializersProperties(empty_serializers_properties);
-            assertEquals(1, serializers.size());
+            assertEquals(0, serializers2.size());
         });
 
 

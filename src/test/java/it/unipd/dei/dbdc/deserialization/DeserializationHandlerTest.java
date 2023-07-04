@@ -2,6 +2,7 @@ package it.unipd.dei.dbdc.deserialization;
 
 import it.unipd.dei.dbdc.analysis.Article;
 import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
+import it.unipd.dei.dbdc.serializers.SerializationProperties;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -66,12 +67,16 @@ public class DeserializationHandlerTest {
             Set<File> files = new HashSet<>();
             DeserializationHandler handler = new DeserializationHandler(deserializers_properties);
             handler.getFolderFiles("src/test/resources/DeserializationTest/handlerTest/Database", files);
-
             assertEquals(expectedAllFiles(), files);
+
+            IOException exception1 = assertThrows(IOException.class, () -> handler.getFolderFiles(null, files));
+            System.out.println(exception1.getMessage())
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+
 
     }
 
@@ -163,4 +168,8 @@ public class DeserializationHandlerTest {
         }
     }
 
+    @Test
+    void deserializerSetFields() {
+
+    }
 }

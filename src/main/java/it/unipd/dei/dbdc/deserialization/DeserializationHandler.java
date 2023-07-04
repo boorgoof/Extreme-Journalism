@@ -22,6 +22,13 @@ public class DeserializationHandler {
 
     public void getFolderFiles(String folderPath, Set<File> allFiles) {
 
+        if(folderPath == null){
+            throw new IllegalArgumentException("The path cannot be null");
+        }
+        if(allFiles == null){
+            throw new IllegalArgumentException("The file list cannot be null");
+        }
+
         File folder = new File(folderPath);
         File[] files = folder.listFiles();
 
@@ -37,6 +44,11 @@ public class DeserializationHandler {
     }
 
     public Set<File> deleteUnavailableFiles(Set<File> allFiles) {
+
+        if(allFiles == null){
+            throw new IllegalArgumentException("The file list cannot be null");
+        }
+
         Set<File> rejectedFiles = new HashSet<>();
         for(File file : allFiles){
             String format = PathManager.getFileFormat(file.getName());
@@ -49,6 +61,10 @@ public class DeserializationHandler {
         return rejectedFiles;
     }
     public Set<File> getDeserializationFiles(String folderPath) {
+
+        if(folderPath == null){
+            throw new IllegalArgumentException("The path cannot be null");
+        }
 
         Set<File> files = new HashSet<>();
         Set<File> rejectedFiles;
@@ -63,6 +79,10 @@ public class DeserializationHandler {
     }
 
     private void rejectedFilesInfo(Set<File> rejectedFiles){
+
+        if(rejectedFiles == null){
+            throw new IllegalArgumentException("The list cannot be null");
+        }
 
         System.out.println("Il programma, al momento, è in grado di deserializzare solo i seguenti formati: ");
         Set<String> formatsAvailable = container.getFormats();
@@ -82,6 +102,10 @@ public class DeserializationHandler {
 
     public List<UnitOfSearch> deserializeFile(File file) throws IOException {
 
+        if(file == null){
+            throw new IllegalArgumentException("The file cannot be null");
+        }
+
         String format = PathManager.getFileFormat(file.getName());
         Deserializer deserializer = container.getDeserializer(format);
 
@@ -99,6 +123,10 @@ public class DeserializationHandler {
 
     public List<UnitOfSearch> deserializeFolder(String folderPath) throws IOException {
 
+        if(folderPath == null){
+            throw new IllegalArgumentException("The folder path cannot be null");
+        }
+
         Set<File> files = getDeserializationFiles(folderPath);
 
         // Cerco di deserializzare l'intero folder, con tutti i formati possibili
@@ -113,6 +141,10 @@ public class DeserializationHandler {
 
     // TODO se mettono roba sbagliata lancia eccezione non posso farci molto; da cambiare?
     public void deserializerSetFields(String format) throws IOException {
+
+        if(format == null){
+            throw new IllegalArgumentException("the format cannot be null");
+        }
 
         DeserializerWithFields deserializer;
 

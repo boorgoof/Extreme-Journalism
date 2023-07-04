@@ -5,15 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/xmlTest/correctTreeArticles.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/xmlTest/emptyNoError.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/xmlTest/wrongTreeArticles.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/analysis/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/analysis/Article.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/src_deserializers/XmlDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/src_deserializers/XmlDeserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/DeserializationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/DeserializationHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/DeserializationHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/DeserializationHandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/DeserializationPropertiesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/DeserializationPropertiesTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/src_deserializers/XmlDeserializerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/src_deserializers/XmlDeserializerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles5.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/xmlTest/treeArticles.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/serializers/SerializationPropertiesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/serializers/SerializationPropertiesTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,9 +93,9 @@
       <recent name="it.unipd.dei.dbdc.Download" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="it.unipd.dei.dbdc.deserialization" />
       <recent name="it.unipd.dei.dbdc.deserialization.src_deserializers" />
       <recent name="it.unipd.dei.dbdc.serializers" />
-      <recent name="it.unipd.dei.dbdc.deserialization" />
       <recent name="it.unipd.dei.dbdc.Handlers" />
       <recent name="it.unipd.dei.dbdc.Deserializers" />
     </key>
@@ -106,48 +103,51 @@
       <recent name="it.unipd.dei.dbdc.download" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.XmlDeserializerTest.deserialize_particular_cases">
-    <configuration name="CsvDeserializerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.DeserializationHandlerTest.getFolderFiles">
+    <configuration name="DeserializationHandlerTest.getFolderFiles" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Extreme_journalism" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="it.unipd.dei.dbdc.deserialization.src_deserializers.*" />
+          <option name="PATTERN" value="it.unipd.dei.dbdc.deserialization.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.deserialization.src_deserializers" />
-      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.deserialization.src_deserializers.CsvDeserializerTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.deserialization" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.deserialization.DeserializationHandlerTest" />
+      <option name="METHOD_NAME" value="getFolderFiles" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="JsonDeserializerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DeserializationPropertiesTest.readDeserializersProperties" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Extreme_journalism" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="it.unipd.dei.dbdc.deserialization.src_deserializers.*" />
+          <option name="PATTERN" value="it.unipd.dei.dbdc.deserialization.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.deserialization.src_deserializers" />
-      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.deserialization.src_deserializers.JsonDeserializerTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.deserialization" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.deserialization.DeserializationPropertiesTest" />
+      <option name="METHOD_NAME" value="readDeserializersProperties" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="XmlDeserializerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SerializationPropertiesTest.readSerializersProperties" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Extreme_journalism" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="it.unipd.dei.dbdc.deserialization.src_deserializers.*" />
+          <option name="PATTERN" value="it.unipd.dei.dbdc.serializers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.deserialization.src_deserializers" />
-      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.deserialization.src_deserializers.XmlDeserializerTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.serializers" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.serializers.SerializationPropertiesTest" />
+      <option name="METHOD_NAME" value="readSerializersProperties" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -199,11 +199,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.XmlDeserializerTest.deserialize_particular_cases" />
+        <item itemvalue="JUnit.DeserializationHandlerTest.getFolderFiles" />
+        <item itemvalue="JUnit.SerializationPropertiesTest.readSerializersProperties" />
+        <item itemvalue="JUnit.DeserializationPropertiesTest.readDeserializersProperties" />
         <item itemvalue="JUnit.XmlDeserializerTest.deserialize" />
-        <item itemvalue="JUnit.XmlDeserializerTest" />
-        <item itemvalue="JUnit.JsonDeserializerTest" />
-        <item itemvalue="JUnit.CsvDeserializerTest" />
+        <item itemvalue="JUnit.XmlDeserializerTest.deserialize_particular_cases" />
       </list>
     </recent_temporary>
   </component>
