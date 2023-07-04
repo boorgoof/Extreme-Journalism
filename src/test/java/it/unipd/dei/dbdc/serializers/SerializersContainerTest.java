@@ -3,6 +3,7 @@ package it.unipd.dei.dbdc.serializers;
 
 import it.unipd.dei.dbdc.analysis.Article;
 import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
+import it.unipd.dei.dbdc.deserialization.DeserializersContainer;
 import it.unipd.dei.dbdc.serializers.interfaces.Serializer;
 import org.junit.jupiter.api.Test;
 import it.unipd.dei.dbdc.deserialization.DeserializationHandler;
@@ -10,8 +11,11 @@ import it.unipd.dei.dbdc.deserialization.DeserializationHandler;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class SerializersContainerTest {
@@ -42,10 +46,19 @@ public class SerializersContainerTest {
         }
 
     }
-
     @Test
     public void getFormats() {
 
+        Set<String> expectedFormats = new HashSet<>();
+        expectedFormats.add("xml");
+
+        try {
+            SerializersContainer container = new SerializersContainer(serializers_properties);
+            assertEquals(expectedFormats, container.getFormats());
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

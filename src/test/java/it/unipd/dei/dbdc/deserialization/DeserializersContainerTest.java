@@ -11,13 +11,15 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class DeserializersContainerTest {
     // todo Fixare le properties. il path intendo
-    private static final String deserializers_properties = "deserializers.properties";
+    private static final String deserializers_properties = "src/test/resources/DeserializationTest/properties/deserializers.properties";
 
     private static List<UnitOfSearch> expectedArticles() {
         List<UnitOfSearch> articles = new ArrayList<>();
@@ -53,6 +55,19 @@ public class DeserializersContainerTest {
     // todo
     @Test
     public void getFormats() {
+
+        Set<String> expectedFormats = new HashSet<>();
+        expectedFormats.add("xml");
+        expectedFormats.add("csv");
+        expectedFormats.add("json");
+        try {
+
+            DeserializersContainer container = new DeserializersContainer(deserializers_properties);
+            assertEquals(expectedFormats, container.getFormats());
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Test

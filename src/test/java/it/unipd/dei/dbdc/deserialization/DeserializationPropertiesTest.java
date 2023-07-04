@@ -63,11 +63,9 @@ public class DeserializationPropertiesTest {
         });
 
 
-
         //Tests with invalid serializers.properties (wrong classes)
         IOException exception1 = assertThrows(IOException.class, () -> DeserializationProperties.readDeserializersProperties(false_deserializers_properties));
         System.out.println(exception1.getMessage());
-
 
     }
 }
