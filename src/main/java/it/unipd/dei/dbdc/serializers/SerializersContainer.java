@@ -17,7 +17,10 @@ public class SerializersContainer {
         serializers = readSerializersProperties(filePropertiesName);
 
     }
-    public Serializer getSerializer(String format){
+    public Serializer getSerializer(String format) throws IOException { // TODO è giusto IOEXCEPTIoN?
+        if(!serializers.containsKey(format)){
+            throw new IOException("The program is not yet able to serialize a file to the requested format");
+        }
         return serializers.get(format);
     }
     public Set<String> getFormats() {

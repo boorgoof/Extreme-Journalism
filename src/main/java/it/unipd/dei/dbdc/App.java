@@ -118,10 +118,14 @@ public class App
 
         System.out.println("\nEntering the serialization part...");
 
+
+        // Ho modificato da filepath a file direttamente cosi le eccezioni sono migliori
         //Path of the serialized file
         String filePath;
+        File serializedFile;
         try {
             filePath = PathManager.getSerializedFile(totalProperties.getCommonFormat());
+            serializedFile = new File(filePath);
         }
         catch (IOException e)
         {
@@ -132,11 +136,14 @@ public class App
         try {
             //Obtains the properties from the command line, if specified, and calls the handler.
             SerializationHandler serializersHandler = new SerializationHandler(interpreter.obtainSerProps());
-            serializersHandler.serializeObjects(articles, totalProperties.getCommonFormat(), filePath);
+
+            serializersHandler.serializeObjects(articles, serializedFile);
         } catch (IOException e) {
             System.err.println("Error during the serialization: "+e.getMessage());
             return;
         }
+
+
         System.out.println("Exiting the serialization part. You can find the serialized file in "+filePath+"...\n");
 
         // THIRD PHASE: analysis

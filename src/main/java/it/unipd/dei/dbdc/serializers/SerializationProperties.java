@@ -12,6 +12,7 @@ public class SerializationProperties {
 
     private final static String default_properties = "serializers.properties";
 
+    // TODO va bene uguale tra hashmap e MAP?
     public static Map<String, Serializer> readSerializersProperties(String out_properties) throws IOException {
 
         Properties serializersProperties = PropertiesTools.getProperties(default_properties, out_properties);

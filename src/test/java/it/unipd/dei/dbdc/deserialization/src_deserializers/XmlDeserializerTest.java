@@ -36,23 +36,36 @@ public class XmlDeserializerTest {
 
     @Test
     public void deserializeExpetedError() {
-        XmlDeserializer deserializer = new XmlDeserializer();
 
+        XmlDeserializer deserializer = new XmlDeserializer();
+        File file = new File("src/test/resources/DeserializationTest/deserializersTest/xmlTest/ArticlesError.xml");
+        IOException e = assertThrows(IOException.class, () -> deserializer.deserialize((file)));
+        System.out.println(e.getMessage());
+
+
+        /*
         try {
             File file = new File("src/test/resources/DeserializationTest/deserializersTest/xmlTest/ArticlesError.xml");
+
             List<UnitOfSearch> articles = deserializer.deserialize(file);
             assertNotNull(articles);
             assertFalse(articles.isEmpty());
             assertEquals( createTestArticlesError().size(), articles.size());
             assertEquals(createTestArticlesError(), articles);
+
         } catch (IOException e) {
             // Se si verifica un'eccezione, verifica se è l'eccezione desiderata
-            assertTrue(e instanceof IOException);
+
+            assertTrue(true);
             return;
         }
         // Se non viene sollevata alcuna eccezione, il test fallisce
-        fail("Errore: nessuna eccezione è stata sollevata durante la lettura del file XML");
+        fail("nessuna eccezione è stata sollevata durante la lettura del file XML. Si aspettava una eccezione IOException");
+        */
+
     }
+
+
 
     private static Stream<Arguments> testParameters() {
         return Stream.of(
@@ -77,7 +90,7 @@ public class XmlDeserializerTest {
             assertEquals(expectedArticles, articles);
 
         } catch (IOException e) {
-            fail("Errore durante la lettura del file JSON: " + e.getMessage());
+            fail("Errore durante la lettura del file XML: " + e.getMessage());
         }
     }
 

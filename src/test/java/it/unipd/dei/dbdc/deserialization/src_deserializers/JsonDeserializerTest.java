@@ -24,29 +24,25 @@ public class JsonDeserializerTest {
 
         JsonDeserializer deserializer = new JsonDeserializer();
 
+        // todo mettere i campi giusti
         String[] expectedFields = {"id", "webUrl", "headline", "bodyText", "webPublicationDate", "webUrl", "webUrl"}; // da modificare
         String[] fields = deserializer.getFields();
 
         assertArrayEquals(expectedFields, fields);
     }
 
-    @ParameterizedTest
-    @MethodSource("fields")
-    public void setFields(String[] newfields) {
+    @Test
+    public void setFields() {
 
+        String[] newfields = {"ID", "Link", "Titolo", "Testo", "Data", "FonteSet", "Fonte"};
         JsonDeserializer deserializer = new JsonDeserializer();
         deserializer.setFields(newfields);
-
         assertArrayEquals(newfields, deserializer.getFields());
 
-    }
+        String[] newfields2 = {"ID", "Link", "Titolo", "Testo", "Data", "Fonte"};
+        deserializer.setFields(newfields2);
+        assertArrayEquals(newfields2, deserializer.getFields());
 
-    // fixare
-    private static Stream<Arguments> fields() {
-        return Stream.of(
-                Arguments.of((Object) new String[]{"ID", "Link", "Titolo", "Testo", "Data", "FonteSet", "Fonte"}),
-                Arguments.of((Object) new String[]{"ID", "Link", "Titolo", "Testo", "Data", "Fonte"})
-        );
     }
 
     private static Stream<Arguments> deserializeParameters() {
@@ -138,7 +134,7 @@ public class JsonDeserializerTest {
 
 
 
-    // TEST FILE JSON CON CHIAVI MANCANTI. ATTENZIONE L'ID NON PUO ESSERE MANCANTE altrimenti errore. non viene caricato articolo
+    // TEST FILE JSON CON CHIAVI MANCANTI. ATTENZIONE L'ID NON PUO ESSERE MANCANTE altrimenti  non viene caricato articolo
     private static List<Article> createTestArticles6() {
         List<Article> articles = new ArrayList<>();
         articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1",null,null));
