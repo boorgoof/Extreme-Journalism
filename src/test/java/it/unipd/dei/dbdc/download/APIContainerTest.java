@@ -3,7 +3,8 @@ package it.unipd.dei.dbdc.download;
 import it.unipd.dei.dbdc.download.src_api_managers.TestManager.TestManager;
 import it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIManager;
 import it.unipd.dei.dbdc.download.src_callers.KongAPICaller;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -14,11 +15,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class APIContainerTest {
 
-    public static APIContainer container = null;
-    @BeforeAll
-    public static void getInstance()
+    public APIContainer container = null;
+    @BeforeEach
+    public void getInstance()
     {
         try {
+            //The container is initialized with trueDownload.properties by all the test classes that use it
             //Tests if every instance returned is the same
             container = APIContainer.getInstance(DownloadHandlerTest.resources_url+"trueDownload.properties");
             assertEquals(container, APIContainer.getInstance(null));

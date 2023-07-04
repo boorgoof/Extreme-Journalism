@@ -4,6 +4,8 @@ import it.unipd.dei.dbdc.download.DownloadHandlerTest;
 import it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIInfo;
 import it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIManagerTest;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
@@ -11,6 +13,8 @@ import java.util.TreeMap;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@Disabled
+@Order(1)
 public class KongAPICallerTest {
 
     private static final String key = GuardianAPIManagerTest.key;

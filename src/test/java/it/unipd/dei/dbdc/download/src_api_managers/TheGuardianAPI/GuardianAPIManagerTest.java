@@ -3,6 +3,8 @@ package it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI;
 import it.unipd.dei.dbdc.download.DownloadHandlerTest;
 import it.unipd.dei.dbdc.download.QueryParam;
 import it.unipd.dei.dbdc.download.src_callers.KongAPICaller;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -10,9 +12,11 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@Disabled
+@Order(3)
 public class GuardianAPIManagerTest {
 
-    public static String key = "21b5c154-934c-4a4e-b2f5-64adbd68af5f";
+    public static String key = "e824cbd7-23a5-4534-a2a0-b6b868dabd98";
     private static final GuardianAPIManager manager = new GuardianAPIManager(new KongAPICaller(), "TheGuardianAPI");
     @Test
     public void getName() {

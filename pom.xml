@@ -4,7 +4,7 @@
 
   <groupId>it.unipd.dei.dbdc</groupId>
   <artifactId>Extreme_journalism</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0</version>
   <packaging>jar</packaging>
 
   <name>Extreme_journalism</name>
@@ -14,30 +14,18 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+    <!-- The name of the folder that is copied into the database folder of the target directory -->
     <filesToSerialize.folder>database</filesToSerialize.folder>
   </properties>
 
   <build>
 
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-resources-plugin</artifactId>
-          <version>3.2.0</version>
-        </plugin>
-      </plugins>
-    </pluginManagement>
-
     <plugins>
-
-      <!-- Maven resource plugin: copia il folder dei file da serializzare in un folder (chiamato database) dentro a target. -->
-      <!-- TODO: fallo anche per out_properties-->
+      <!-- Maven resource plugin: copies the specified folder into a folder in the target directory -->
       <plugin>
         <artifactId>maven-resources-plugin</artifactId>
         <version>3.0.2</version>
         <executions>
-          <!-- Copia la directory fornita come database in alto nel pom nella directory database di target -->
           <execution>
             <id>copy-resource-one</id>
             <phase>generate-sources</phase>
@@ -58,7 +46,7 @@
         </executions>
       </plugin>
 
-      <!-- Set the version of SDK used for the project -->
+      <!-- Maven compiler plugin: sets the version of SDK used for the project -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -70,32 +58,33 @@
         </configuration>
       </plugin>
 
-      <!-- Site lifecycle  TODO: guardarlo -->
+      <!-- Maven site plugin: TODO: guardarlo -->
       <plugin>
         <artifactId>maven-site-plugin</artifactId>
         <version>3.7.1</version>
       </plugin>
 
-      <!-- Javadoc lifecycle TODO: guardalo-->
+      <!-- Maven javadoc plugin: javadoc lifecycle, to create javadocs-->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
         <version>3.5.0</version>
       </plugin>
 
-      <!-- Report dei test -->
+      <!-- Maven surefire plugin: to generate reports for the tests -->
       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>2.22.1</version>
       </plugin>
 
-      <!-- SHADE PLUGIN: Builds an uber JAR that contains all the dependencies. -->
+      <!-- Maven shade plugin: builds an uber JAR that contains all the dependencies. -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
         <version>3.4.1</version>
 
-        <!-- Serve per fare un jar diverso da quello originale ma attacandocelo, che include tutte le dipendenze -->
+        <!-- Making a different jar but attached to the original one, which includes all the dependencies -->
         <configuration>
           <shadedArtifactAttached>true</shadedArtifactAttached>
           <shadedClassifierName>jar-with-dependencies</shadedClassifierName>
@@ -109,14 +98,14 @@
             </goals>
             <configuration>
               <shadedArtifactAttached>true</shadedArtifactAttached>
-              <!-- Necessario per avere una main class, e quindi rendere eseguibile il jar -->
+              <!-- Specify a main class to make the jar executable -->
               <transformers>
                 <transformer
                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                   <mainClass>it.unipd.dei.dbdc.App</mainClass>
                 </transformer>
               </transformers>
-              <!-- Serve per escludere i seguenti file da tutti gli artifact per il jar -->
+              <!-- These filters are used to exclude these files from all the artifacts when creating the jar -->
               <filters>
                 <filter>
                   <artifact>*:*</artifact>
@@ -124,18 +113,6 @@
                     <exclude>META-INF/*.SF</exclude>
                     <exclude>META-INF/*.DSA</exclude>
                     <exclude>META-INF/*.RSA</exclude>
-                    <!--  Si possono aggiungere queste cose per togliere i warning, ma non ha senso
-                    <exclude>module-info.class</exclude>
-                    <exclude>META-INF/*.MF</exclude>
-                    <exclude>META-INF/NOTICE</exclude>
-                    <exclude>META-INF.versions.9.module-info</exclude>
-                    <exclude>META-INF/LICENSE</exclude>
-                    <exclude>META-INF/DEPENDENCIES</exclude>
-                    <exclude>META-INF/services/com.fasterxml.jackson.core.ObjectCodec</exclude>
-                    <exclude>META-INF/LICENSE.txt</exclude>
-                    <exclude>META-INF/NOTICE.txt</exclude>
-                    <exclude>META-INF/services/com.fasterxml.jackson.core.JsonFactory</exclude>
-                    -->
                   </excludes>
                 </filter>
               </filters>
@@ -144,7 +121,7 @@
         </executions>
       </plugin>
 
-      <!-- To set the main class of the original jar without the dependencies
+      <!-- Maven jar plugin: sets the main class of the jar without the dependencies -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
@@ -157,7 +134,6 @@
           </archive>
         </configuration>
       </plugin>
-      -->
 
     </plugins>
 
@@ -190,30 +166,29 @@
 
   <dependencies>
 
-    <!-- NUOVA VERSIONE DI JUNIT 5 -->
-
+    <!-- Junit 5 Aggregator -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-params</artifactId>
+      <artifactId>junit-jupiter</artifactId>
       <version>5.9.2</version>
       <scope>test</scope>
     </dependency>
 
-    <!-- Libreria per gestire le opzioni specificate da linea di comando -->
+    <!-- Commons cli: used to manage all the commands specified by the user using the command line -->
     <dependency>
       <groupId>commons-cli</groupId>
       <artifactId>commons-cli</artifactId>
       <version>1.5.0</version>
     </dependency>
 
-    <!-- Libreria per le richieste http -->
+    <!-- Kong Unirest: used to make the http requests -->
     <dependency>
       <groupId>com.konghq</groupId>
       <artifactId>unirest-java</artifactId>
       <version>3.14.2</version>
     </dependency>
 
-    <!-- Librerie per serializzatori e deserializzatori -->
+    <!-- Libraries for serializers and deserializers -->
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>

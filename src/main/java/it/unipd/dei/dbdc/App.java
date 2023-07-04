@@ -24,7 +24,6 @@ import java.util.List;
 public class App
 {
     public static void main(String[] args) {
-        //todo: aggiungi cli per modificare i fields di deserializers
 
         // Parses the commands given
         CommandLineInterpreter interpreter;
@@ -107,7 +106,7 @@ public class App
         try{
              articles = deserializersHandler.deserializeFolder(folderPath);
         } catch (IOException e){
-            System.err.println("The program has been terminated because there was an error in the deserialization: "+e.getMessage()); //TODO: eccezioni
+            System.err.println("The program has been terminated because there was an error in the deserialization: "+e.getMessage());
             return;
         }
 

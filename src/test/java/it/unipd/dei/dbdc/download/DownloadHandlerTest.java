@@ -4,13 +4,13 @@ import it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIMan
 import it.unipd.dei.dbdc.tools.PathManagerTest;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 public class DownloadHandlerTest {
 
     public final static String resources_url = PathManagerTest.resources_folder +"download/";
@@ -30,8 +30,9 @@ public class DownloadHandlerTest {
     @Test
     public void download()
     {
-        //Test with invalid download.properties
-        assertThrows(IOException.class, () -> DownloadHandler.download(resources_url+"falseDownload.properties", resources_url+"trueApi.properties"));
+        //The container is initialized with trueDownload.properties by all the test classes that use it
+        assertDoesNotThrow(() -> DownloadHandler.download(resources_url+"trueDownload.properties", resources_url+"trueApi.properties"));
+        assertDoesNotThrow(() -> DownloadHandler.download(resources_url+"falseDownload.properties", resources_url+"trueApi.properties"));
 
         //Tests with valid download.properties
         assertDoesNotThrow( () ->

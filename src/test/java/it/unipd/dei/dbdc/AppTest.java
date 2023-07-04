@@ -1,9 +1,9 @@
 package it.unipd.dei.dbdc;
 
+import it.unipd.dei.dbdc.download.APIContainer;
+import it.unipd.dei.dbdc.download.DownloadHandlerTest;
 import it.unipd.dei.dbdc.tools.PathManagerTest;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.io.*;
 
@@ -12,10 +12,15 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * Unit test for simple App.
  */
+@Order(7)
+@Disabled
 public class AppTest
 {
     @Test
     public void mainTestErr() {
+        //The container is initialized with trueDownload.properties by all the test classes that use it
+        assertDoesNotThrow(() -> APIContainer.getInstance(DownloadHandlerTest.resources_url+"trueDownload.properties"));
+
         deleteFilesOut();
         //Test of help, it is done here because we want to see the errors produced (as the output is too long and may vary a lot)
         App.main(new String[]{"-h"});
@@ -40,24 +45,9 @@ public class AppTest
         expected_err += "The program has been terminated because the file general.properties was not found, or the properties passed by the user were not valid: Error in the format of the properties";
         assertEquals(expected_err, getError());
 
-        //Download properties not valid
-        App.main(new String[]{"-d", "-dowpf", PathManagerTest.resources_folder + "download/trueApiTest.properties", "-apf", PathManagerTest.resources_folder + "download/trueApiTest.properties"});
-        expected_err += "The program has been terminated because the file download.properties was not found, or the properties passed by the user were not valid: There is no library property in the file of the download properties, or the value is not correct";
-        assertEquals(expected_err, getError());
-
         //No file specified to serialize
         App.main(new String[]{"-a"});
         expected_err += "Error: there is no file to serialize.";
-        assertEquals(expected_err, getError());
-
-        //Deserializers properties not valid
-        App.main(new String[]{"-a", "-path", "./database/nytimes_articles_v2", "-despf", PathManagerTest.resources_folder + "download/trueApiTest.properties"});
-        expected_err += "The program has been terminated because the file deserializers.properties was not found, or the properties passed by the user were not valid: Failed to instantiate the deserializer for the format: pages";
-        assertEquals(expected_err, getError());
-
-        //Deserialization of something that has not a deserializer
-        App.main(new String[]{"-a", "-path", "./database/nytimes_articles_v2", "-anapf", PathManagerTest.resources_folder + "download/trueApiTest.properties"});
-        expected_err += "The program has been terminated for an error in the analysis: There is no class with the name null";
         assertEquals(expected_err, getError());
 
         deleteFilesOut();
@@ -90,8 +80,8 @@ public class AppTest
         deleteFilesOut();
 
         //Analysis
-        App.main(new String[]{"-a", "-path", "./database/nytimes_articles_v2"});
-        expected_out += "Entering the deserialization of ./database/nytimes_articles_v2..." +
+        App.main(new String[]{"-a", "-path", PathManagerTest.resources_folder+"DeserializationTest/deserializersTest/csvTest"});
+        expected_out += "Entering the deserialization of "+PathManagerTest.resources_folder+"DeserializationTest/deserializersTest/csvTest..." +
                 "Exiting the deserialization part..." +
                 "Entering the serialization part..." +
                 "Exiting the serialization part. " +

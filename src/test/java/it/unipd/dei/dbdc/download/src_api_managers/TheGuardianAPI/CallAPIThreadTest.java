@@ -2,6 +2,7 @@ package it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI;
 
 import it.unipd.dei.dbdc.download.DownloadHandlerTest;
 import it.unipd.dei.dbdc.download.src_callers.KongAPICaller;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
@@ -9,6 +10,7 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@Order(2)
 public class CallAPIThreadTest {
 
     private static final KongAPICaller caller = new KongAPICaller();

@@ -1,6 +1,7 @@
 package it.unipd.dei.dbdc.analysis.src_strategies.MapSplitAnalyzer;
 
 import it.unipd.dei.dbdc.analysis.Article;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import java.util.TreeMap;
@@ -8,6 +9,7 @@ import java.util.concurrent.Semaphore;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@Order(4)
 public class AnalyzerArticleThreadTest {
 
     @Test
