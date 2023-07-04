@@ -5,6 +5,7 @@ import it.unipd.dei.dbdc.download.src_api_managers.TestManager.TestManager;
 import it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIManager;
 import it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIManagerTest;
 import it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIParams;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -52,7 +53,7 @@ public class APIPropertiesTest {
 
         //Takes the manager returned and reads its parameters. We check with two different files
         try {
-            //As the container is only initialized one time, we have to pass the test download properties the first time
+            //The container is initialized with trueDownload.properties by all the test classes that use it
             manager = APIProperties.readProperties(DownloadHandlerTest.resources_url+"trueApiTest.properties", DownloadHandlerTest.resources_url + "trueDownload.properties");
             TestManager t = (TestManager) manager;
             GuardianAPIParams par = t.params;

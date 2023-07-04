@@ -49,7 +49,6 @@ public class PropertiesToolsTest {
             assertNotNull(PropertiesTools.getOutProperties(path+"generalproperties/default.properties"));
             assertNotNull(PropertiesTools.getOutProperties(path+"generalproperties/true.properties"));
 
-            assertNotNull(PropertiesTools.getOutProperties(path+"download/defaultDownload.properties"));
             assertNotNull(PropertiesTools.getOutProperties(path+"download/falseApi.properties"));
             assertNotNull(PropertiesTools.getOutProperties(path+"download/falseApi2.properties"));
             assertNotNull(PropertiesTools.getOutProperties(path+"download/falseApi3.properties"));

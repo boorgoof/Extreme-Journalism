@@ -5,6 +5,7 @@ import it.unipd.dei.dbdc.analysis.OrderedEntryStringInt;
 import it.unipd.dei.dbdc.analysis.interfaces.Analyzer;
 import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
 import it.unipd.dei.dbdc.analysis.src_strategies.PriorityQueueSplitAnalyzer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@Order(5)
 public class MapSplitAnalyzerTest {
 
     private static final Analyzer toTest = new MapSplitAnalyzer();

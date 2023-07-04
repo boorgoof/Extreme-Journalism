@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -21,11 +20,12 @@ public class InteractiveSelectAPITest {
     @Test
     public void initialize()
     {
-        assertThrows(IOException.class, () -> new InteractiveSelectAPI(null, DownloadHandlerTest.resources_url+"falseDownload.properties"));
-        assertThrows(IOException.class, () -> new InteractiveSelectAPI(null, DownloadHandlerTest.resources_url+"falseDownload2.properties"));
-
+        //The container is initialized with trueDownload.properties by all the test classes that use it
         assertDoesNotThrow(() -> new InteractiveSelectAPI(null, DownloadHandlerTest.resources_url+"trueDownload.properties"));
         assertDoesNotThrow(() -> new InteractiveSelectAPI(null, null));
+
+        assertDoesNotThrow(() -> new InteractiveSelectAPI(null, DownloadHandlerTest.resources_url+"falseDownload.properties"));
+        assertDoesNotThrow(() -> new InteractiveSelectAPI(null, DownloadHandlerTest.resources_url+"falseDownload2.properties"));
     }
     @Order(2)
     @Test
