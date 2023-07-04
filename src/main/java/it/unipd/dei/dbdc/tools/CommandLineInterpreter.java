@@ -43,8 +43,8 @@ public class CommandLineInterpreter {
     private final static Option[] actions = {
             new Option("h", "help", false, "Print help"),
             new Option("d", "download-files", false, "Download files from the selected API"),
-            new Option("a", "analysis-terms", false, "Analyze the top 50 terms of the selected files"),
-            new Option("da", "download-and-analysis", false, "Download files from the selected API and analysis the top 50 terms of those files")
+            new Option("a", "analysis-terms", false, "Analyze the top terms of the selected files"),
+            new Option("da", "download-and-analysis", false, "Download files from the selected API and analysis the top terms of those files")
     };
 
     /**

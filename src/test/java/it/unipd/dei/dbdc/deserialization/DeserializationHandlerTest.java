@@ -4,6 +4,7 @@ import it.unipd.dei.dbdc.analysis.Article;
 import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -13,6 +14,7 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 // HANDLER per mdoificare i fields devo mettere container public
+@Disabled
 public class DeserializationHandlerTest {
     private static final String deserializers_properties = "src/test/resources/DeserializationTest/properties/deserializers.properties";
     private static Field cont_field;

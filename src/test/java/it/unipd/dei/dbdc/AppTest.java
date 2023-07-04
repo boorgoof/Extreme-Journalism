@@ -13,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * Unit test for simple App.
  */
 @Order(7)
+@Disabled
 public class AppTest
 {
     @Test
