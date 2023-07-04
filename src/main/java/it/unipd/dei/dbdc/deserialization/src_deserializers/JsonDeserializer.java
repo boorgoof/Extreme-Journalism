@@ -23,7 +23,9 @@ public class JsonDeserializer implements DeserializerWithFields {
         return fields;
     }
 
-
+    public int numberOfFields(){
+        return fields.length;
+    }
     public void setFields(String[] newFields) {
         fields = newFields;
     }

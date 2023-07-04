@@ -23,6 +23,9 @@ public class CsvDeserializer implements DeserializerWithFields {
 
         fields = new String[]{"Identifier", "URL", "Title", "Body", "Date", "Source Set", "Source"};
     }
+    public int numberOfFields(){
+        return fields.length;
+    }
     public String[] getFields() {
         return fields;
     }
@@ -138,7 +141,6 @@ public class CsvDeserializer implements DeserializerWithFields {
 
 
             // IL PRIMO ELEMENTO DELL' HEDER NON SO PERCHE MA NON é UGUALE. NON RIESCO A CAPIRE IL PERCHE
-            // TODO: il problema è che per qualche motivo il parser va a prendere Identifier con un carattere nullo all'inizio
 
             // Imposta a null i valori non presenti nell'array di riferimento (quelli da parsare)
             for (int i = 0; i < header.length; i++) {
