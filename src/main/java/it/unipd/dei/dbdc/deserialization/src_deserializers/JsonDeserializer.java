@@ -34,6 +34,13 @@ public class JsonDeserializer implements DeserializerWithFields {
     @Override
     public List<UnitOfSearch> deserialize(File jsonFile) throws IOException {
 
+        if(jsonFile == null){
+            throw new IllegalArgumentException("The JSON file cannot be null");
+        }
+        if (!jsonFile.exists()) {
+            throw new IllegalArgumentException("The JSON file does not exist");
+        }
+
         List<UnitOfSearch> articles = new ArrayList<>();
 
         ObjectMapper mapper = new ObjectMapper();

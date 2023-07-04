@@ -27,8 +27,8 @@ public class XmlSerializer implements Serializer {
     @Override
     public void serialize(List<UnitOfSearch> objects, File xmlFile) throws IOException {
 
-        if (xmlFile == null) {
-            throw new IOException("The XML file cannot be null"); // TODO: non è meglio illegalargument?
+        if(xmlFile == null){
+            throw new IllegalArgumentException("The xmlFile file cannot be null");
         }
 
         try {

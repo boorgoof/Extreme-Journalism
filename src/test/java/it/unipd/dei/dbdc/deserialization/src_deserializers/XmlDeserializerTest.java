@@ -35,12 +35,42 @@ public class XmlDeserializerTest {
      */
 
     @Test
-    public void deserializeExpetedError() {
+    public void deserialize_particular_cases() {
 
         XmlDeserializer deserializer = new XmlDeserializer();
-        File file = new File("src/test/resources/DeserializationTest/deserializersTest/xmlTest/ArticlesError.xml");
-        IOException e = assertThrows(IOException.class, () -> deserializer.deserialize((file)));
-        System.out.println(e.getMessage());
+
+        IllegalArgumentException exception1 = assertThrows(IllegalArgumentException.class, () -> deserializer.deserialize( null));
+        System.out.println(exception1.getMessage());
+
+        // gli viene dato un file che non esistente
+        File nonExistentFile = new File("src/test/resources/DeserializationTest/deserializersTest/csvTest/nonExistentFile.xml");
+        IllegalArgumentException exception2 = assertThrows(IllegalArgumentException.class, () -> deserializer.deserialize( nonExistentFile));
+        System.out.println(exception2.getMessage());
+
+        // se è un xml ad albero non è in grado di farlo al contrario di json o csv
+        File file = new File("src/test/resources/DeserializationTest/deserializersTest/xmlTest/treeArticles.xml");
+        IOException exception3 = assertThrows(IOException.class, () -> deserializer.deserialize((file)));
+        System.out.println(exception3.getMessage());
+
+        // con un file vuoto non c'è errore semplicemnte non deserializza nulla
+        File emptyFile = new File("src/test/resources/DeserializationTest/deserializersTest/xmlTest/emptyArticles.xml");
+        try {
+            List<UnitOfSearch> articles = deserializer.deserialize(emptyFile);
+            assertTrue(articles.isEmpty());
+
+        } catch (IOException e) {
+            fail("Errore durante la lettura del file JSON: " + e.getMessage());
+        }
+
+        // gli viene dato un file che non ha articoli al suo interno, non c'è errore semplicemente non deserializza nulla
+        File errorFile = new File("src/test/resources/DeserializationTest/deserializersTest/xmlTest/noArticles.xml");
+        try {
+            List<UnitOfSearch> articles = deserializer.deserialize(errorFile);
+            assertTrue(articles.isEmpty());
+
+        } catch (IOException e) {
+            fail("Errore durante la lettura del file JSON: " + e.getMessage());
+        }
 
     }
 
@@ -51,7 +81,9 @@ public class XmlDeserializerTest {
                 Arguments.of(createTestArticles1(), "src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles1.xml"),
                 Arguments.of(createTestArticles2(), "src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles2.xml"),
                 Arguments.of(createTestArticles3(), "src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles3.xml"),
-                Arguments.of(createTestArticles4(), "src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles4.xml"));
+                Arguments.of(createTestArticles4(), "src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles4.xml"),
+                Arguments.of(createTestArticles5(), "src/test/resources/SerializationTest/serializersTest/xmlTest/Articles5.xml")
+        );
     }
 
     @ParameterizedTest
@@ -105,6 +137,14 @@ public class XmlDeserializerTest {
         articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1","",""));
         articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1","",""));
         articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1","",""));
+        return articles;
+    }
+
+    private static List<UnitOfSearch> createTestArticles5() {
+        List<UnitOfSearch> articles = new ArrayList<>();
+        articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1", "sourceSet 1", "Source 1"));
+        articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1", "sourceSet 1", "Source 1"));
+        articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1", "sourceSet 1", "Source 1"));
         return articles;
     }
 

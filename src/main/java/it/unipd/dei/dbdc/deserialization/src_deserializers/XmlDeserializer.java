@@ -20,6 +20,13 @@ public class XmlDeserializer implements Deserializer {
     @Override
     public List<UnitOfSearch> deserialize(File xmlFile) throws IOException {
 
+        if(xmlFile == null){
+            throw new IllegalArgumentException("The xmlFile file cannot be null");
+        }
+        if (!xmlFile.exists()) {
+            throw new IllegalArgumentException("The XML file does not exist");
+        }
+
         XmlMapper xmlMapper = new XmlMapper();
         List<Article> articles = xmlMapper.readValue(xmlFile, new TypeReference<List<Article>>() {}); // FIXME: funziona, ma non ha senso
         return new ArrayList<>(articles);
