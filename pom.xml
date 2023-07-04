@@ -190,11 +190,10 @@
 
   <dependencies>
 
-    <!-- NUOVA VERSIONE DI JUNIT 5 -->
-
+    <!-- Junit 5 Aggregator -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-params</artifactId>
+      <artifactId>junit-jupiter</artifactId>
       <version>5.9.2</version>
       <scope>test</scope>
     </dependency>
