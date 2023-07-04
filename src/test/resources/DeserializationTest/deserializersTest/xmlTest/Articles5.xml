@@ -1,5 +1,6 @@
 <ArrayList>
-  <item>
+  <response>
+    <cover>art book</cover>
     <id>ID 1</id>
     <url>URL 1</url>
     <title>Title 1</title>
@@ -8,7 +9,7 @@
     <sourceSet>sourceSet 1</sourceSet>
     <source>Source 1</source>
     <author>Author 1</author>
-  </item>
+  </response>
   <item>
     <id>ID 1</id>
     <url>URL 1</url>

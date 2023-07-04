@@ -30,9 +30,16 @@ public class XmlDeserializer implements Deserializer {
         if (!xmlFile.exists()) {
             throw new IllegalArgumentException("The XML file does not exist");
         }
-
+        List<Article> articles;
         XmlMapper xmlMapper = new XmlMapper();
-        List<Article> articles = xmlMapper.readValue(xmlFile, new TypeReference<List<Article>>() {}); // FIXME: funziona, ma non ha senso
+
+        try {
+            articles = xmlMapper.readValue(xmlFile, new TypeReference<List<Article>>() {}); // FIXME: funziona, ma non ha senso
+
+        } catch (IOException e){
+            System.out.print("XML file with wrong structure. " );
+            throw new IOException(e);
+        }
         return new ArrayList<>(articles);
 
     }

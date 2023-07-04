@@ -1,5 +1,6 @@
 package it.unipd.dei.dbdc.analysis;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
 
 import java.util.Objects;
@@ -10,6 +11,7 @@ import java.util.Objects;
  * It implements {@link UnitOfSearch}, and permits to analyze only its body and title.
  *
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Article implements UnitOfSearch {
     /**
      * ID of the article

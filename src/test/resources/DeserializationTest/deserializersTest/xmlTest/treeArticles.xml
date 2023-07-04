@@ -1,32 +1,38 @@
-<root>
-  <ArrayList>
+<object>
+  <data>
+    <sector>Articles</sector>
+    <type>science</type>
     <item>
-      <id>ID 1</id>
-      <url>URL 1</url>
-      <title>Title 1</title>
-      <body>Body 1</body>
-      <date>Date 1</date>
-      <sourceSet>sourceSet 1</sourceSet>
-      <source>Source 1</source>
+      <response>
+        <id>ID 2</id>
+        <url>URL 2</url>
+        <title>Title 2</title>
+        <body>Body 2</body>
+        <date>Date 2</date>
+        <sourceSet>sourceSet 2</sourceSet>
+        <source>Source 2</source>
+      </response>
     </item>
     <item>
-      <id>ID 2</id>
-      <url>URL 2</url>
-      <title>Title 2</title>
-      <body>Body 2</body>
-      <date>Date 2</date>
-      <sourceSet>sourceSet 2</sourceSet>
-      <source>Source 2</source>
+      <response>
+        <id>ID 2</id>
+        <url>URL 2</url>
+        <title>Title 2</title>
+        <body>Body 2</body>
+        <date>Date 2</date>
+        <sourceSet>sourceSet 2</sourceSet>
+        <source>Source 2</source>
+      </response>
+      <response3>
+        <id>ID 2</id>
+        <url>URL 2</url>
+        <title>Title 2</title>
+        <body>Body 2</body>
+        <date>Date 2</date>
+        <sourceSet>sourceSet 2</sourceSet>
+        <source>Source 2</source>
+      </response3>
     </item>
-    <item>
-      <id>ID 3</id>
-      <url>URL 3</url>
-      <title>Title 3</title>
-      <body>Body 3</body>
-      <date>Date 3</date>
-      <sourceSet>sourceSet 3</sourceSet>
-      <source>Source 3</source>
-    </item>
-  </ArrayList>
-</root>
+  </data>
+</object>
 
