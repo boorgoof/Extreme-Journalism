@@ -12,7 +12,7 @@ import java.util.Set;
  * A term is everything that is made only of letters.
  *
  * @see UnitOfSearch
- * @see it.unipd.dei.dbdc.analysis.src_strategies.MapArraySplitAnalyzer.MapSplitAnalyzer
+ * @see it.unipd.dei.dbdc.analysis.src_strategies.MapSplitAnalyzer.MapSplitAnalyzer
  */
 public interface Analyzer {
     /**
@@ -25,6 +25,7 @@ public interface Analyzer {
      * @param tot_words The number of words we want the returned {@link List} to contain. If there are not enough words, it will contain only the possible ones.
      * @param banned_words A {@link Set} of words that should not be counted. If null or empty, all the words will be counted.
      * @return A {@link List} of {@link OrderedEntryStringInt} containing the most important terms of the articles
+     * @throws IllegalArgumentException If something went wrong (it is the only exception that should be thrown).
      */
-    List<OrderedEntryStringInt> mostPresent(List<UnitOfSearch> articles, int tot_words, Set<String> banned_words);
+    List<OrderedEntryStringInt> mostPresent(List<UnitOfSearch> articles, int tot_words, Set<String> banned_words) throws IllegalArgumentException;
 }

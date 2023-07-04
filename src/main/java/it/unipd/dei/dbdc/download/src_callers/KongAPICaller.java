@@ -1,7 +1,7 @@
 package it.unipd.dei.dbdc.download.src_callers;
 
 import it.unipd.dei.dbdc.download.interfaces.APICaller;
-import it.unipd.dei.dbdc.tools.PathTools;
+import it.unipd.dei.dbdc.tools.PathManager;
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
 
@@ -48,7 +48,7 @@ public class KongAPICaller implements APICaller {
         }
         // To save the files in a path, we first have to make sure that there is
         // no other file with that name in that directory.
-        PathTools.deleteDirOrFile(new File(path));
+        PathManager.deleteDirOrFile(new File(path));
         try {
             HttpResponse<File> res = Unirest.get(base_url).queryString(params).asFile(path);
             return res.isSuccess();

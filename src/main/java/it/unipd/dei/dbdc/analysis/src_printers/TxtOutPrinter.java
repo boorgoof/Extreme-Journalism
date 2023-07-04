@@ -2,11 +2,10 @@ package it.unipd.dei.dbdc.analysis.src_printers;
 
 import it.unipd.dei.dbdc.analysis.OrderedEntryStringInt;
 import it.unipd.dei.dbdc.analysis.interfaces.OutPrinter;
-import it.unipd.dei.dbdc.tools.PathTools;
+import it.unipd.dei.dbdc.tools.PathManager;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 /**
@@ -25,7 +24,7 @@ public class TxtOutPrinter implements OutPrinter {
      * The function that prints the most important terms into a file.
      *
      * @param max The {@link List} of terms to print, that are already in order.
-     * @param outFilePath The path of the file to print, with the name but without the extension
+     * @return The path of the file printed
      * @throws IOException If it can't print the file
      * @throws IllegalArgumentException If the {@link List} of terms to print is empty or null.
      */
@@ -35,13 +34,13 @@ public class TxtOutPrinter implements OutPrinter {
         {
             throw new IllegalArgumentException("Vector of most important words is empty");
         }
-        String file_name = PathTools.getOutFile() +extension;
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file_name))) {
+        String file_name = PathManager.getOutFile() +extension;
+        try (PrintWriter writer = new PrintWriter(file_name)) {
             for (int i = 0; i <max.size(); i++) {
                 OrderedEntryStringInt el = max.get(i);
-                writer.write(el.getKey() + " " + el.getValue());
+                writer.print(el.getKey() + " " + el.getValue());
                 if (i != max.size()-1) {
-                    writer.newLine();
+                    writer.println();
                 }
             }
         }

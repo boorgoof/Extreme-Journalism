@@ -6,14 +6,13 @@ import it.unipd.dei.dbdc.download.interfaces.APIManager;
 import it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.CallAPIThread;
 import it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIInfo;
 import it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIParams;
-import it.unipd.dei.dbdc.tools.ThreadPoolTools;
+import it.unipd.dei.dbdc.tools.ThreadPool;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 
 // It's a class useful only for the tests, which is identical to GuardianAPIManager but differs in the name
@@ -82,7 +81,7 @@ public class TestManager implements APIManager {
 
         for (int i = 0; i < requests.size(); i++) {
             String path = path_folder+"/request"+(i+1)+".json";
-            Future<?> f = ThreadPoolTools.submit(new CallAPIThread(caller, GuardianAPIInfo.getDefaultURL(), path, requests.get(i)));
+            Future<?> f = ThreadPool.submit(new CallAPIThread(caller, GuardianAPIInfo.getDefaultURL(), path, requests.get(i)));
             futures.add(f);
         }
 
@@ -91,12 +90,12 @@ public class TestManager implements APIManager {
             try {
                 future.get();
             } catch (InterruptedException | ExecutionException e) {
-                ThreadPoolTools.shutdown();
+                ThreadPool.shutdown();
                 throw new IllegalArgumentException(e.getMessage());
             }
         }
 
-        ThreadPoolTools.shutdown();
+        ThreadPool.shutdown();
         caller.endRequests();
     }
 

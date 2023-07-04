@@ -5,7 +5,8 @@ import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
 
 import java.io.*;
 import java.util.List;
-import it.unipd.dei.dbdc.tools.PathTools;
+
+import it.unipd.dei.dbdc.tools.PathManager;
 /**
  * Classe per la gestione della serializzazione.
  *
@@ -29,7 +30,7 @@ public class SerializationHandler {
             throw new IOException("The XML file cannot be null"); //TODo viene controllato anche in xmlserialize, mettere illegal
         }
 
-        String format = PathTools.getFileFormat(file.getName());
+        String format = PathManager.getFileFormat(file.getName());
         Serializer serializer = container.getSerializer(format);
         if (serializer == null) {
             throw new IOException("Objects cannot be serialized in the specified file. The file provided is " + file.getName());

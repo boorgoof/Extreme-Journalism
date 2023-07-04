@@ -17,7 +17,6 @@ public class ArticleTest {
         assertEquals("f", art.getSourceSet());
         assertEquals("g", art.getSource());
 
-
         art = new Article();
             assertNull(art.getID());
             assertNull(art.getURL());
@@ -27,9 +26,7 @@ public class ArticleTest {
             assertNull(art.getSourceSet());
             assertNull(art.getSource());
 
-
         String[] params = {"a1", "b1", "c1", "d1", "e1", "f1", "g1"};
-
         art = new Article(params);
         assertEquals("a1", art.getID());
         assertEquals("b1", art.getURL());
@@ -39,11 +36,17 @@ public class ArticleTest {
         assertEquals("f1", art.getSourceSet());
         assertEquals("g1", art.getSource());
 
+        //Initializes with a number of parameters that are not legal
         String[] par = {null, null, null, null};
         assertThrows(IllegalArgumentException.class, () -> new Article(par));
+
+        String[] par1 = {"null", "null", "null", "null"};
+        assertThrows(IllegalArgumentException.class, () -> new Article(par1));
+
+        assertThrows(IllegalArgumentException.class, () -> new Article(null));
     }
 
-    //We don't test getters and setters as they are little functions
+    //We don't test getters and setters as they are functions
 
     @Test
     public void obtainText()
@@ -51,6 +54,14 @@ public class ArticleTest {
         String[] params = {"a1", "b1", "c1", "d1", "e1", "f1", "g1"};
         Article article = new Article(params);
         assertEquals("c1 d1", article.obtainText());
+
+        String[] params1 = {"a1", "b1", null, null, "e1", "f1", "g1"};
+        final Article article1 = new Article(params1);
+        assertThrows(IllegalArgumentException.class, article1::obtainText);
+
+        article.setBody("");
+        article.setTitle("");
+        assertEquals(" ", article.obtainText());
     }
 
     @Test
@@ -76,10 +87,18 @@ public class ArticleTest {
         Article article = new Article(params);
         Article article1 = new Article(params);
         assertTrue(article1.equals(article));
+
+        article.setBody("z1");
+        assertFalse(article1.equals(article));
+
+        //This also tests if there are any null exceptions
         article1 = new Article();
         assertFalse(article1.equals(article));
+
         article = new Article();
         assertTrue(article1.equals(article));
+
+        assertFalse(article1.equals(null));
     }
 
 }

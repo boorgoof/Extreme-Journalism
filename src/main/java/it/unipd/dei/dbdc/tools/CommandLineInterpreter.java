@@ -27,7 +27,7 @@ public class CommandLineInterpreter {
      * {@link CommandLineInterpreter#defineOptions()} function.
      *
      */
-    private static final Options options = new Options();
+    private final Options options;
     /**
      * The {@link HelpFormatter} that is used to print the possible options, if the user
      * asks it or if there are no arguments passed.
@@ -64,33 +64,36 @@ public class CommandLineInterpreter {
      */
     private final static Option[] analysis = {
             new Option("anapf", "analysis-properties-file", true, "Contains the path to the properties file that contains the analyzer to use for the extraction"),
-            new Option("despf", "deserializers-properties-file", true, "Contains the path to the properties file that contains the deserializers to use"),
-            new Option("serpf", "serializers-properties-file", true, "Contains the path to the properties file that contains the serializers to use"),
             new Option("path", "folder-path", true, "Contains the location of the place to take the files from"),
-            new Option("n", "number", true, "Contains the number of terms you want to have in the final output"),
+            new Option("n", "number", true, "Contains the positive number of terms you want to have in the final output"),
             new Option("stop", "enable-stop-words", true, "True if you want to enable the stop-words in the analysis")
     };
 
     /**
-     * An {@link Option} that can be specified to modify the general properties of the application.
+     * An array of {@link Option} that can be specified to modify the general properties of the application.
      *
      */
-    private final static Option general = new Option("genpf", "general-properties-file", true, "Contains the path to the properties file that contains the common format and the number of terms to extract");
+    private final static Option[] general = {
+            new Option("genpf", "general-properties-file", true, "Contains the path to the properties file that contains the common format and the number of terms to extract"),
+            new Option("despf", "deserializers-properties-file", true, "Contains the path to the properties file that contains the deserializers to use"),
+            new Option("serpf", "serializers-properties-file", true, "Contains the path to the properties file that contains the serializers to use"),
+            new Option("setfi", "set-deserializers-fields", true, "A boolean indicating if you want to select interactively the fields of the deserializers to use")
+    };
 
     /**
      * The constructor, which defines the possible {@link Option} of the command line,
      * tries to parse the ones passed by the user and throw an {@link IllegalArgumentException} if there is
-     * an error in the parsing.
+     * an error in the parsing. If the exception is thrown, the object is not created and it is initialized as null.
      *
      * @param args The arguments passed by the user to the command line
      * @throws IllegalArgumentException If the user hasn't specified anything or there is an error in the parsing of the options.
      */
     public CommandLineInterpreter(String[] args) {
-        defineOptions();
-        cmd = parse(args);
+        options = defineOptions();
+        cmd = parse(options, args);
         if (cmd == null)
         {
-            formatter.printHelp("App -{et} [options]", options);
+            formatter.printHelp("java -jar Extreme_journalism-1.0-SNAPSHOT-jar-with-dependencies.jar -{h, d, a, da} -{options} [value]", options);
             throw new IllegalArgumentException();
         }
     }
@@ -100,7 +103,8 @@ public class CommandLineInterpreter {
      * It uses the {@link Option} specified as static fields in this class.
      *
      */
-    private static void defineOptions() {
+    private Options defineOptions() {
+        Options opt = new Options();
         // Add the mandatory actions to an OptionGroup
         OptionGroup actionGroup = new OptionGroup();
         for (Option op : actions) {
@@ -108,21 +112,24 @@ public class CommandLineInterpreter {
         }
 
         // Set the options as required
-        // actionGroup.setRequired(true); FIXME
-        options.addOptionGroup(actionGroup);
+        actionGroup.setRequired(true);
+        opt.addOptionGroup(actionGroup);
 
         // Download options
         for (Option op : download) {
-            options.addOption(op);
+            opt.addOption(op);
         }
 
         // Analysis options
         for (Option op : analysis) {
-            options.addOption(op);
+            opt.addOption(op);
         }
 
-        // General option
-        options.addOption(general);
+        // General options
+        for (Option op : general) {
+            opt.addOption(op);
+        }
+        return opt;
     }
 
     /**
@@ -134,12 +141,12 @@ public class CommandLineInterpreter {
      * @return A {@link CommandLine} that has all the options passed by the user
      * @throws IllegalArgumentException If the user hasn't specified anything or there is an error in the parsing of the options.
      */
-    public static CommandLine parse(String[] args) {
+    private static CommandLine parse(Options options, String[] args) {
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd = null;
         try {
             cmd = parser.parse(options, args);
-        } catch (org.apache.commons.cli.ParseException ex) {
+        } catch (org.apache.commons.cli.ParseException | NullPointerException ex) {
             System.err.println("ERROR - parsing command line:\n"+ex.getMessage());
         }
         return cmd;
@@ -147,174 +154,136 @@ public class CommandLineInterpreter {
 
     // This is the third phase: the interrogation.
 
-    //INTERROGATION OF ACTIONS
-
     /**
-     * It should be called after being sure that the {@link CommandLine} of this class is not null.
      * It returns true if the option -h was specified, and prints the possible options.
      *
      * @return True if the option -h was specified
-     * @throws NullPointerException If the {@link CommandLine} of this class is null
      */
-    public boolean help() throws NullPointerException {
+    public boolean help() {
         if (cmd.hasOption("h")) {
-            formatter.printHelp("App -{et} [options]", options);
+            formatter.printHelp("java -jar Extreme_journalism-1.0-SNAPSHOT-jar-with-dependencies.jar -{required one of these: h, d, a, da} -{not required options} [value]", options);
             return true;
         }
         return false;
     }
 
     /**
-     * It should be called after being sure that the {@link CommandLine} of this class is not null.
      * It returns true if the option -d or -da was specified, and prints the possible options.
      *
      * @return True if the option -d or -da was specified
-     * @throws NullPointerException If the {@link CommandLine} of this class is null
      */
-    public boolean downloadPhase() throws NullPointerException {
-        return true;
-        // return cmd.hasOption("d") || cmd.hasOption("ds"); FIXME
+    public boolean downloadPhase() {
+        return cmd.hasOption("d") || cmd.hasOption("da");
     }
 
     /**
-     * It should be called after being sure that the {@link CommandLine} of this class is not null.
      * It returns true if the option -h was specified, and prints the possible options.
      *
      * @return True if the option -h was specified
-     * @throws NullPointerException If the {@link CommandLine} of this class is null
      */
-    public boolean analyzePhase() throws NullPointerException {
-        return true;
-        //return cmd.hasOption("s") || cmd.hasOption("ds"); FIXME
+    public boolean analyzePhase() {
+        return cmd.hasOption("a") || cmd.hasOption("da");
     }
 
     // INTERROGATION OF THE PROPERTIES OPTIONS
 
     /**
-     * It should be called after being sure that the {@link CommandLine} of this class is not null.
      * It returns the value specified with the key -apf.
      *
      * @return The value specified with the key -apf, null if not present
-     * @throws NullPointerException If the {@link CommandLine} of this class is null
      */
-    public String obtainAPIProps() throws NullPointerException {
-        return "./out_properties/api.properties";
-        //return cmd.getOptionValue("apf"); FIXME
+    public String obtainAPIProps() {
+        return cmd.getOptionValue("apf");
     }
 
     /**
-     * It should be called after being sure that the {@link CommandLine} of this class is not null.
      * It returns the value specified with the key -despf.
      *
      * @return The value specified with the key -despf, null if not present
-     * @throws NullPointerException If the {@link CommandLine} of this class is null
      */
-    public String obtainDeserProps() throws NullPointerException {
-        return null;
-        //return cmd.getOptionValue("despf"); FIXME
+    public String obtainDeserProps(){
+        return cmd.getOptionValue("despf");
     }
 
     /**
-     * It should be called after being sure that the {@link CommandLine} of this class is not null.
      * It returns the value specified with the key -apf.
      *
      * @return The value specified with the key -apf, null if not present
-     * @throws NullPointerException If the {@link CommandLine} of this class is null
      */
-    public String obtainSerProps() throws NullPointerException {
-        return null;
-        //return cmd.getOptionValue("serpf"); FIXME
+    public String obtainSerProps(){
+        return cmd.getOptionValue("serpf");
     }
 
     /**
-     * It should be called after being sure that the {@link CommandLine} of this class is not null.
      * It returns the value specified with the key -dowpf.
      *
      * @return The value specified with the key -dowpf, null if not present
-     * @throws NullPointerException If the {@link CommandLine} of this class is null
      */
-    public String obtainDownProps() throws NullPointerException {
-        return null;
-        //return cmd.getOptionValue("dowpf"); FIXME
+    public String obtainDownProps() {
+        return cmd.getOptionValue("dowpf");
     }
 
     /**
-     * It should be called after being sure that the {@link CommandLine} of this class is not null.
      * It returns the value specified with the key -genpf.
      *
      * @return The value specified with the key -genpf, null if not present
-     * @throws NullPointerException If the {@link CommandLine} of this class is null
      */
-    public String obtainGenProps() throws NullPointerException {
-        return null;
-        //return cmd.getOptionValue("genpf"); FIXME
+    public String obtainGenProps() {
+        return cmd.getOptionValue("genpf");
     }
 
     /**
-     * It should be called after being sure that the {@link CommandLine} of this class is not null.
      * It returns the value specified with the key -anapf.
      *
      * @return The value specified with the key -anapf, null if not present
-     * @throws NullPointerException If the {@link CommandLine} of this class is null
      */
-    public String obtainAnalyzeProps() throws NullPointerException {
-        return null;
-        //return cmd.getOptionValue("anapf"); FIXME
+    public String obtainAnalyzeProps() {
+        return cmd.getOptionValue("anapf");
     }
 
     /**
-     * It should be called after being sure that the {@link CommandLine} of this class is not null.
+     * It returns the value specified with the key -setfi, by default false.
+     *
+     * @return True only if the value true is specified, false by default.
+     */
+    public boolean obtainSetFields()
+    {
+        return cmd.hasOption("setfi") && cmd.getOptionValue("setfi").equalsIgnoreCase("true");
+    }
+
+    /**
      * It returns the value specified with the key -path.
      *
      * @return The value specified with the key -path, null if not present
-     * @throws NullPointerException If the {@link CommandLine} of this class is null
      */
-    public String obtainPathOption() throws NullPointerException {
-        /*
-        return cmd.getOptionValue("path"); FIXME
-         */
-        return "./database/nytimes_articles_v2";
-        //return null;
+    public String obtainPathOption() {
+        return cmd.getOptionValue("path");
     }
 
     /**
-     * It should be called after being sure that the {@link CommandLine} of this class is not null.
      * It returns the value specified with the key -n.
      *
      * @return The value specified with the key -n as an Integer, -1 if not present
-     * @throws NullPointerException If the {@link CommandLine} of this class is null
-     * @throws NumberFormatException If the specified value is not a number
      */
-    public int obtainNumberOption() throws NullPointerException
+    public int obtainNumberOption()
     {
-        return 50;
-        /*
         try
         {
-            return Integer.parseInt(cmd.getOptionValue("n")); FIXME
+            return Integer.parseInt(cmd.getOptionValue("n"));
          }
-         catch(...)
-         {
+        catch(NumberFormatException e)
+        {
             return -1;
-         }
-         */
+        }
     }
 
     /**
-     * It should be called after being sure that the {@link CommandLine} of this class is not null.
      * It returns the value specified with the key -stop. The default value is true.
      *
      * @return The value specified with the key -stop, true if not present
-     * @throws NullPointerException If the {@link CommandLine} of this class is null
      */
-    public boolean obtainStopWords() throws NullPointerException
+    public boolean obtainStopWords()
     {
-        /*
-        if (cmd.getOptionValue("stop").equalsIgnoreCase("false"))
-        {
-            return false;
-        }
-         */
-        return true;
+        return !(cmd.hasOption("stop") && cmd.getOptionValue("stop").equalsIgnoreCase("false"));
     }
 }
