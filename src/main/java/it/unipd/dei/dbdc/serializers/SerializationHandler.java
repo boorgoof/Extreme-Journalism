@@ -27,7 +27,7 @@ public class SerializationHandler {
     public void serializeObjects(List<UnitOfSearch> objects, File file) throws IOException {
 
         if (file == null) {
-            throw new IOException("The XML file cannot be null"); //TODo viene controllato anche in xmlserialize
+            throw new IOException("The XML file cannot be null"); //TODo viene controllato anche in xmlserialize, mettere illegal
         }
 
         String format = PathManager.getFileFormat(file.getName());

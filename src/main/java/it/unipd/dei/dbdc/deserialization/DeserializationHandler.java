@@ -8,7 +8,9 @@ import java.io.IOException;
 
 import java.util.*;
 
+import it.unipd.dei.dbdc.deserialization.interfaces.DeserializerWithFields;
 import it.unipd.dei.dbdc.tools.PathManager;
+
 
 public class DeserializationHandler {
 
@@ -109,6 +111,35 @@ public class DeserializationHandler {
         return objects;
     }
 
+    // TODO se mettono roba sbagliata lancia eccezione non posso farci molto; da cambiare?
+    public void deserializerSetFields(String format) throws IOException {
+
+        DeserializerWithFields deserializer;
+
+        if(container.getDeserializer(format) instanceof DeserializerWithFields){
+            deserializer = (DeserializerWithFields) container.getDeserializer(format); // mi serve per sapere il numero di fields
+        } else {
+            throw new IOException("The selected deserializer does not implement field specification");
+        }
+
+        int numberOfFields = deserializer.numberOfFields();
+        String[] newFields = new String[numberOfFields];
+        Scanner scanner = new Scanner(System.in);
+
+        for(int i = 0; i < numberOfFields; i++){
+            System.out.println("Enter field" + (i+1) + ": ");
+            String field = scanner.nextLine();
+            newFields[i] = field;
+        }
+
+        System.out.println("The entered fields are:");
+        for (String field : newFields) {
+            System.out.print(field + "  ");
+        }
+
+        scanner.close();
+
+    }
 
 }
 
