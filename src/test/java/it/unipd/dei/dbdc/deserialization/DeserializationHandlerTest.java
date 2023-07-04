@@ -14,7 +14,7 @@ import java.util.*;
 import static org.junit.jupiter.api.Assertions.*;
 // HANDLER per mdoificare i fields devo mettere container public
 public class DeserializationHandlerTest {
-    private static final String deserializers_properties = "deserializers.properties";
+    private static final String deserializers_properties = "src/test/resources/DeserializationTest/properties/deserializers.properties";
     private static Field cont_field;
     @BeforeAll
     public static void initialize()
@@ -34,28 +34,28 @@ public class DeserializationHandlerTest {
     }
     private static Set<File> expectedAllFiles() {
         Set<File> files = new HashSet<>();
-        files.add(new File("src/test/tools/DeserializationTest/handlerTest/Database/Articles1.csv"));
-        files.add(new File("src/test/tools/DeserializationTest/handlerTest/Database/Articles1.json"));
-        files.add(new File("src/test/tools/DeserializationTest/handlerTest/Database/Articles1.xml"));
-        files.add(new File("src/test/tools/DeserializationTest/handlerTest/Database/Database2/Articles1.html"));
-        files.add(new File("src/test/tools/DeserializationTest/handlerTest/Database/Articles1.txt"));
-        files.add(new File("src/test/tools/DeserializationTest/handlerTest/Database/Articles2.txt"));
-        files.add(new File("src/test/tools/DeserializationTest/handlerTest/Database/Database2/Articles1.pdf"));
+        files.add(new File("src/test/resources/DeserializationTest/handlerTest/Database/Articles1.csv"));
+        files.add(new File("src/test/resources/DeserializationTest/handlerTest/Database/Articles1.json"));
+        files.add(new File("src/test/resources/DeserializationTest/handlerTest/Database/Articles1.xml"));
+        files.add(new File("src/test/resources/DeserializationTest/handlerTest/Database/Database2/Articles1.html"));
+        files.add(new File("src/test/resources/DeserializationTest/handlerTest/Database/Articles1.txt"));
+        files.add(new File("src/test/resources/DeserializationTest/handlerTest/Database/Articles2.txt"));
+        files.add(new File("src/test/resources/DeserializationTest/handlerTest/Database/Database2/Articles1.pdf"));
         return files;
     }
     private static Set<File> expectedRejectedFiles() {
         Set<File> files = new HashSet<>();
-        files.add(new File("src/test/tools/DeserializationTest/handlerTest/Database/Articles1.txt"));
-        files.add(new File("src/test/tools/DeserializationTest/handlerTest/Database/Articles2.txt"));
-        files.add(new File("src/test/tools/DeserializationTest/handlerTest/Database/Database2/Articles1.pdf"));
-        files.add(new File("src/test/tools/DeserializationTest/handlerTest/Database/Database2/Articles1.html"));
+        files.add(new File("src/test/resources/DeserializationTest/handlerTest/Database/Articles1.txt"));
+        files.add(new File("src/test/resources/DeserializationTest/handlerTest/Database/Articles2.txt"));
+        files.add(new File("src/test/resources/DeserializationTest/handlerTest/Database/Database2/Articles1.pdf"));
+        files.add(new File("src/test/resources/DeserializationTest/handlerTest/Database/Database2/Articles1.html"));
         return files;
     }
     private static Set<File> expectedCorrectFiles() {
         Set<File> files = new HashSet<>();
-        files.add(new File("src/test/tools/DeserializationTest/handlerTest/Database/Articles1.csv"));
-        files.add(new File("src/test/tools/DeserializationTest/handlerTest/Database/Articles1.json"));
-        files.add(new File("src/test/tools/DeserializationTest/handlerTest/Database/Articles1.xml"));
+        files.add(new File("src/test/resources/DeserializationTest/handlerTest/Database/Articles1.csv"));
+        files.add(new File("src/test/resources/DeserializationTest/handlerTest/Database/Articles1.json"));
+        files.add(new File("src/test/resources/DeserializationTest/handlerTest/Database/Articles1.xml"));
         return files;
     }
 
@@ -65,7 +65,7 @@ public class DeserializationHandlerTest {
         try {
             Set<File> files = new HashSet<>();
             DeserializationHandler handler = new DeserializationHandler(deserializers_properties);
-            handler.getFolderFiles("src/test/tools/DeserializationTest/handlerTest/Database", files);
+            handler.getFolderFiles("src/test/resources/DeserializationTest/handlerTest/Database", files);
 
             assertEquals(expectedAllFiles(), files);
 
@@ -80,9 +80,9 @@ public class DeserializationHandlerTest {
 
         try {
             Set<File> files = new HashSet<>();
-            DeserializationHandler handler = new DeserializationHandler("deserializers.properties");
+            DeserializationHandler handler = new DeserializationHandler(deserializers_properties);
 
-            handler.getFolderFiles("src/test/tools/DeserializationTest/handlerTest/Database", files);
+            handler.getFolderFiles("src/test/resources/DeserializationTest/handlerTest/Database", files);
             Set<File> rejectedFiles = handler.deleteUnavailableFiles(files);
 
             assertEquals(expectedRejectedFiles(), rejectedFiles);
@@ -97,9 +97,9 @@ public class DeserializationHandlerTest {
 
         try {
             Set<File> files = new HashSet<>();
-            DeserializationHandler handler = new DeserializationHandler("deserializers.properties");
+            DeserializationHandler handler = new DeserializationHandler(deserializers_properties);
 
-            Set<File> deserializationFiles = handler.getDeserializationFiles("src/test/tools/DeserializationTest/handlerTest/Database");
+            Set<File> deserializationFiles = handler.getDeserializationFiles("src/test/resources/DeserializationTest/handlerTest/Database");
 
             assertEquals(expectedCorrectFiles(), deserializationFiles);
 
@@ -126,7 +126,7 @@ public class DeserializationHandlerTest {
             DeserializationHandler handler = new DeserializationHandler(deserializers_properties);
             DeserializersContainer container = (DeserializersContainer) cont_field.get(handler);
             container.setSpecificFields("json", fileFields);
-            List<UnitOfSearch> deserializationFiles = handler.deserializeFile(new File("src/test/tools/DeserializationTest/handlerTest/Database/Articles1.json"));
+            List<UnitOfSearch> deserializationFiles = handler.deserializeFile(new File("src/test/resources/DeserializationTest/handlerTest/Database/Articles1.json"));
 
             assertEquals(expectedDeserializeFile(), deserializationFiles);
 
@@ -154,7 +154,7 @@ public class DeserializationHandlerTest {
 
             DeserializersContainer container = (DeserializersContainer) cont_field.get(handler);
             container.setSpecificFields("json", fileFields);
-            List<UnitOfSearch> deserializationFolder = handler.deserializeFolder("src/test/tools/DeserializationTest/handlerTest/Database");
+            List<UnitOfSearch> deserializationFolder = handler.deserializeFolder("src/test/resources/DeserializationTest/handlerTest/Database");
 
 
             assertEquals(expectedDeserializeFolder(), deserializationFolder);
@@ -163,4 +163,5 @@ public class DeserializationHandlerTest {
             throw new RuntimeException(e);
         }
     }
+
 }

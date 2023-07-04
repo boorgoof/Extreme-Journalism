@@ -137,4 +137,12 @@ public class PathTools {
         }
         file.delete();
     }
+
+    public static String getFileFormat(String fileName) {
+        int dotIndex = fileName.lastIndexOf(".");
+        if (dotIndex > 0 && dotIndex < fileName.length() - 1) {
+            return fileName.substring(dotIndex + 1).toLowerCase();
+        }
+        return null;
+    }
 }
