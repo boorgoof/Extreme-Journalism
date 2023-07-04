@@ -151,7 +151,6 @@ public class DeserializationHandlerTest {
             Set<File> files = new HashSet<>();
             String[] fileFields = {"id" , "url" , "title" , "body" , "date" , "sourceSet", "source"};
             DeserializationHandler handler = new DeserializationHandler(deserializers_properties);
-
             DeserializersContainer container = (DeserializersContainer) cont_field.get(handler);
             container.setSpecificFields("json", fileFields);
             List<UnitOfSearch> deserializationFolder = handler.deserializeFolder("src/test/resources/DeserializationTest/handlerTest/Database");

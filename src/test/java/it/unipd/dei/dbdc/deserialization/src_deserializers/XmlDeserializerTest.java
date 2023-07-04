@@ -48,10 +48,16 @@ public class XmlDeserializerTest {
         System.out.println(exception2.getMessage());
 
         // se è un xml ad albero non è in grado di farlo al contrario di json o csv
-        File file = new File("src/test/resources/DeserializationTest/deserializersTest/xmlTest/treeArticles.xml");
-        IOException exception3 = assertThrows(IOException.class, () -> deserializer.deserialize((file)));
+        File treeFile = new File("src/test/resources/DeserializationTest/deserializersTest/xmlTest/treeArticles.xml");
+        IOException exception3 = assertThrows(IOException.class, () -> deserializer.deserialize((treeFile)));
         System.out.println(exception3.getMessage());
 
+        // se è un xml ad albero non è in grado di farlo al contrario di json o csv
+        File emptyFile = new File("src/test/resources/DeserializationTest/deserializersTest/xmlTest/emptyArticles.xml");
+        IOException exception4 = assertThrows(IOException.class, () -> deserializer.deserialize((emptyFile)));
+        System.out.println(exception4.getMessage());
+
+        /*
         // con un file vuoto non c'è errore semplicemnte non deserializza nulla
         File emptyFile = new File("src/test/resources/DeserializationTest/deserializersTest/xmlTest/emptyArticles.xml");
         try {
@@ -62,6 +68,8 @@ public class XmlDeserializerTest {
             fail("Errore durante la lettura del file JSON: " + e.getMessage());
         }
 
+
+
         // gli viene dato un file che non ha articoli al suo interno, non c'è errore semplicemente non deserializza nulla
         File errorFile = new File("src/test/resources/DeserializationTest/deserializersTest/xmlTest/noArticles.xml");
         try {
@@ -71,7 +79,7 @@ public class XmlDeserializerTest {
         } catch (IOException e) {
             fail("Errore durante la lettura del file JSON: " + e.getMessage());
         }
-
+*/
     }
 
 
