@@ -15,7 +15,7 @@ import java.util.Properties;
  */
 public class SerializationProperties {
 
-    private final static String default_properties = "serializers.properties";
+    private final static String default_properties = "serializers.properties"; // TODO è il nome o il path, meglio specificare?
     /**
      * The function that reads the properties file and returns a {@link Map} of {@link Serializer} and their names
      *  specified in the properties file. The names conventionally represent the file format into which the objects will be serialized.

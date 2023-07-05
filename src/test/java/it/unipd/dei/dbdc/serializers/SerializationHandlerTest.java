@@ -33,16 +33,16 @@ public class SerializationHandlerTest {
             File serializeFile = new File("src/test/resources/SerializationTest/handlerTest/Articles1.xml");
             handler.serializeObjects(articlesToSerialize(), serializeFile);
 
-            File serializeFile2 = new File("src/test/resources/SerializationTest/handlerTest/Articles2.xml");
-            handler.serializeObjects(null, serializeFile2);
-
-            File serializeFile3 = new File("src/test/resources/SerializationTest/handlerTest/Articles2.html"); // TODO una volta eliminati csv e json provare con csv ad esempio ( da elimanre anceh nel file properties)
-            IOException exception1 = assertThrows(IOException.class, () -> handler.serializeObjects(articlesToSerialize(), serializeFile3));
+            File serializeFile2 = new File("src/test/resources/SerializationTest/handlerTest/Articles2.html"); // TODO una volta eliminati csv e json provare con csv ad esempio ( da elimanre anceh nel file properties)
+            IllegalArgumentException exception1 = assertThrows(IllegalArgumentException.class, () -> handler.serializeObjects(articlesToSerialize(), serializeFile2));
             System.out.println(exception1.getMessage());
 
-            IOException exception2 = assertThrows(IOException.class, () -> handler.serializeObjects(null, null));
+
+            IllegalArgumentException exception2 = assertThrows(IllegalArgumentException.class, () -> handler.serializeObjects(null, null));
             System.out.println(exception2.getMessage());
 
+            IllegalArgumentException exception3 = assertThrows(IllegalArgumentException.class, () -> handler.serializeObjects(null, serializeFile2));
+            System.out.println(exception3.getMessage());
 
         } catch (IOException e) {
             throw new RuntimeException(e);
