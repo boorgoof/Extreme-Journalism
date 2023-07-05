@@ -96,7 +96,7 @@ public class CsvDeserializer implements DeserializerWithFields {
             try {
                 headerRecord = parser.iterator().next();
             } catch (NoSuchElementException e) {
-                throw new IOException("Empty CSV file", e);
+                throw new IOException("Empty CSV file", e); // TODO nel json non do errore bisogna scegliere questa cosa
             }
 
             // Salva gli header delle colonne in un array
@@ -144,82 +144,25 @@ public class CsvDeserializer implements DeserializerWithFields {
 
 
 
-    /*
 
-    DA ELIMINARE ROBE VECCHIE
-    private String[] readHeader(File csvFile) throws IOException {
-        CSVFormat csvFormat = CSVFormat.DEFAULT;
 
-        try (Reader reader = new FileReader(csvFile); CSVParser parser = new CSVParser(reader, csvFormat)) {
 
-            // Leggi la prima riga del file
-            CSVRecord headerRecord = parser.iterator().next();
 
-            // Salva gli header delle colonne in un array
-            String[] header = new String[headerRecord.size()];
-            for (int i = 0; i < headerRecord.size(); i++) {
-                header[i] = headerRecord.get(i).trim();
-            }
 
-            char[] charArray = header[0].toCharArray();
 
-            // Itera sull'array di caratteri
-            for (char c : charArray) {
-                // Fai qualcosa con ogni carattere
-                System.out.println(c +"1");
-            }
 
 
-            // IL PRIMO ELEMENTO DELL' HEDER NON SO PERCHE MA NON é UGUALE. NON RIESCO A CAPIRE IL PERCHE
 
-            // Imposta a null i valori non presenti nell'array di riferimento (quelli da parsare)
-            for (int i = 0; i < header.length; i++) {
-                if (!contains(fields, header[i])) {
-                    header[i] = null; // posso setterlo a qualsisi cosa
-                }
 
-            }
 
-            header[0] = "Identifier"; // SONO COSTRETTO A METTERLO perche mi dice che non è presente in fields ma invece lo è
 
-            return header;
-        }
-    }*/
 
-      /*
-    @Override
-    public List<Article> deserialize(String filePath) throws IOException {
-        List<Article> articles = new ArrayList<>();
 
-        try (Reader reader = new FileReader(filePath)) {
 
-            CSVFormat csvFormat = CSVFormat.DEFAULT.builder()
-                    .setSkipHeaderRecord(true)
-                    .setHeader(fields)
-                    .build();
 
-            CSVParser parser = new CSVParser(reader, csvFormat);
 
-            // Questo metodo utilizza l'header pensando che ci sia una corrispondenza con le colonne del csv
-            for (CSVRecord record : parser) {
-                String id = record.get(fields[0]);
-                String url = record.get(fields[1]);
-                String title = record.get(fields[2]);
-                String body = record.get(fields[3]);
-                String date = record.get(fields[4]);
-                String sourceSet = record.get(fields[5]);
-                String source = record.get(fields[6]);
 
-                Article article = new Article(id, url, title, body, date, sourceSet, source);
-                //System.out.println(article);
-                articles.add(article);
 
-            }
-            parser.close();
-        }
-        return articles;
-    }
-    */
 
 
 
@@ -227,109 +170,3 @@ public class CsvDeserializer implements DeserializerWithFields {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-@Override
-public List<Article> deserialize(String filePath) throws IOException {
-        List<Article> articles = new ArrayList<>();
-
-        try (Reader reader = new FileReader(filePath)) {
-
-        CSVFormat csvFormat = CSVFormat.DEFAULT.builder()
-        .setHeader(fields)
-        .build();
-
-        CSVParser parser = new CSVParser(reader, csvFormat);
-
-        for (CSVRecord record : parser) {
-        String id = record.get(fields[0]);
-        String url = record.get(fields[1]);
-        String title = record.get(fields[2]);
-        String body = record.get(fields[3]);
-        String date = record.get(fields[4]);
-        String sourceSet = record.get(fields[5]);
-        String source = record.get(fields[6]);
-
-        Article article = new Article(id, url, title, body, date, sourceSet, source);
-        //System.out.println(article);
-        articles.add(article);
-
-        }
-        parser.close();
-        }
-        return articles;
-}*/
-
-/*
- public String[] deserializeHeader(String filePath) throws IOException {
-
-        try (Reader reader = new FileReader(filePath)) {
-
-            CSVFormat csvFormat = CSVFormat.DEFAULT;
-
-            CSVParser parser = new CSVParser(reader, csvFormat);
-
-            // Leggi la prima riga del file
-            CSVRecord headerRecord = parser.iterator().next();
-
-            // Salva gli header delle colonne in un array
-            String[] columnHeaders = new String[headerRecord.size()];
-
-            for (int i = 0; i < headerRecord.size(); i++) {
-                columnHeaders[i] = headerRecord.get(i);
-            }
-
-            parser.close();
-            return columnHeaders;
-        }
-    }
- */
-
-/*
-    private String[] readHeader(String filePath) throws IOException {
-        CSVFormat csvFormat = CSVFormat.DEFAULT;
-        try (Reader reader = new FileReader(filePath); CSVParser parser = new CSVParser(reader, csvFormat)) {
-
-            // Leggi la prima riga del file
-            CSVRecord headerRecord = parser.iterator().next();
-
-            // Salva gli header delle colonne in un array
-            String[] header = new String[headerRecord.size()];
-            for (int i = 0; i < headerRecord.size(); i++) {
-               header[i] = headerRecord.get(i);
-            }
-            /*
-            for(int i = 0; i < header.length; i++){
-                if(!contains(fields, header[i])){
-                    header[i] = null;
-                }
-            }
-
-            return header;
-        }
-    }
-    public static boolean contains(String[] array, String elemento) {
-        List<String> lista = Arrays.asList(array);
-        return lista.contains(elemento);
-    }
-    */

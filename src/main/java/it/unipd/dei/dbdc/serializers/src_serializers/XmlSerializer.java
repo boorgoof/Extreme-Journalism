@@ -2,6 +2,7 @@ package it.unipd.dei.dbdc.serializers.src_serializers;
 
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import it.unipd.dei.dbdc.analysis.interfaces.OutPrinter;
 import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
 import it.unipd.dei.dbdc.serializers.interfaces.Serializer;
 
@@ -11,22 +12,26 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Classe che implementa l'interfaccia "Serializer".
- * La classe serializza in un file ".xml" una lista di oggetti "UnitOfSearch" tramite la libreria Jackson.
- * @see UnitOfSearch
+ * This class implements the interface: {@link Serializer}
+ * It uses the Jackson library's {@link XmlMapper} to serialize {@link UnitOfSearch} list into an XML file
+ *
  */
 public class XmlSerializer implements Serializer {
 
     /**
-     * Serializza una lista di oggetti UnitOfSearch in un file JSON.
+     * Serializes a list of {@link UnitOfSearch} objects into XML file with indented formatting.
      *
-     * @param objects   Lista di oggetti da serializzare.
-     *
-     * @throws IOException Se si verifica un errore durante la scrittura del file JSON.
+     * @param objects  The list of {@link UnitOfSearch} objects to be serialized.
+     * @param xmlFile  The file into which the objects will be serialized
+     * @throws IOException  If an I/O error occurs while writing to the XML file.
+     * @throws IllegalArgumentException  If the objects or xmlFile parameter is null.
      */
     @Override
     public void serialize(List<UnitOfSearch> objects, File xmlFile) throws IOException {
 
+        if(objects == null){
+            throw new IllegalArgumentException("The list of UnitOfSearch cannot be null");
+        }
         if(xmlFile == null){
             throw new IllegalArgumentException("The xmlFile file cannot be null");
         }
@@ -39,9 +44,7 @@ public class XmlSerializer implements Serializer {
             // Transform objects into XML
             String xmlString = xmlMapper.writeValueAsString(objects);
 
-            //System.out.println(xmlString); // da togliere
-
-            // Create a new XML file (if it doesn't already exist) and write the XML content to the file
+            // writing the XML string to the file
             FileWriter fileWriter = new FileWriter(xmlFile);
             fileWriter.write(xmlString);
             fileWriter.close();

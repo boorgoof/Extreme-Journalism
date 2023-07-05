@@ -38,7 +38,7 @@ public class SerializersContainerTest {
             File xmlFile = new File("src/test/resources/SerializationTest/ContainerTest/Articles1.xml");
             serializer1.serialize(articlesToSerialize(), xmlFile);
 
-            IOException exception1 = assertThrows(IOException.class, () -> container.getSerializer("html")); // todo da fare con csv quando tolto
+            IllegalArgumentException exception1 = assertThrows(IllegalArgumentException.class, () -> container.getSerializer("html"));
             System.out.println(exception1.getMessage());
 
         } catch (IOException e) {

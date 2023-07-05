@@ -68,7 +68,6 @@ public class XmlSerializerTest {
 
         XmlSerializer serializer = new XmlSerializer();
 
-
         IllegalArgumentException exception1 = assertThrows(IllegalArgumentException.class, () -> serializer.serialize(createTestArticles1(), null));
         System.out.println(exception1.getMessage());
 

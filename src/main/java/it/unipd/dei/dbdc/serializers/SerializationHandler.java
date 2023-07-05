@@ -8,7 +8,7 @@ import java.util.List;
 
 import it.unipd.dei.dbdc.tools.PathManager;
 /**
- * Classe per la gestione della serializzazione.
+ *
  *
  */
 public class SerializationHandler {

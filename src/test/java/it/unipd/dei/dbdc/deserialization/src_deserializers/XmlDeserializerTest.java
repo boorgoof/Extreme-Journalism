@@ -102,6 +102,7 @@ public class XmlDeserializerTest {
         return articles;
     }
 
+
     @Test
     public void deserialize_particular_cases() {
 
