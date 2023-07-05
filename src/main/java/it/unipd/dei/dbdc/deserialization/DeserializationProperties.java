@@ -9,7 +9,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-
+/**
+ * Utility class that reads a properties file specifying all the {@link Deserializer} that the program can use
+ * @see Properties
+ * @see PropertiesTools
+ */
 public class DeserializationProperties {
 
     /**

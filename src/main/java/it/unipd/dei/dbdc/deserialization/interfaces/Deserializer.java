@@ -14,9 +14,9 @@ public interface Deserializer {
     /**
      * Deserialize a file into a list of objects {@link UnitOfSearch}
      *
-     * @param file The file in which the list to be serialized is saved
-     * @throws IOException If an error occurs during the file writing operation. It can be thrown if the file is not accessible
+     * @param file The file to deserialize into {@link UnitOfSearch}
      * @return the list of {@link UnitOfSearch} objects obtained from deserialization
+     * @throws IOException If an I/O error occurs during the deserialization process.
      */
     List<UnitOfSearch> deserialize(File file) throws IOException;
 }

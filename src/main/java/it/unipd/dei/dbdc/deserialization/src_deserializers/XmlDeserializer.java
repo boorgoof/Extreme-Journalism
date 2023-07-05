@@ -45,4 +45,3 @@ public class XmlDeserializer implements Deserializer {
     }
 
 }
-//new TypeReference<List<Article>>() {}

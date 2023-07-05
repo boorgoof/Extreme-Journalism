@@ -10,7 +10,11 @@ import java.io.IOException;
 import java.util.*;
 
 import static it.unipd.dei.dbdc.deserialization.DeserializationProperties.readDeserializersProperties;
-
+/**
+ *  This class contains all the possible {@link Deserializer} as specified in the deserializers properties file.
+ *  It uses the Singleton design pattern to read only one time the properties.
+ *
+ */
 public class DeserializersContainer {
     /**
      * A {@link Map} containing all the possible {@link Deserializer}, representing all the possible serializers that we can use.

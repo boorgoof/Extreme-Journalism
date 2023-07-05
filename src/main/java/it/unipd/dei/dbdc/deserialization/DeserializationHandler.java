@@ -72,7 +72,7 @@ public class DeserializationHandler {
 
     /**
      * The function removes from the {@link Set} of {@link File} passed as a parameter,
-     * all the files for which there is no deserializer contained in the {@link DeserializersContainer}.
+     * all the files for which there is no deserializer contained in the {@link DeserializationHandler#container}.
      * The function returns the files removed from the Set
      *
      * @param allFiles Set of {@link File} from which files that do not have a deserilizer will be removed
@@ -124,7 +124,7 @@ public class DeserializationHandler {
     }
     /**
      * Function that shows the user all the main information of the files
-     * that will not be deserialized because they do not have a deserializer
+     * that will not be deserialized because they do not have a deserializer contained in {@link DeserializationHandler#container}
      *
      * @param rejectedFiles Set of {@link File} that have been removed from the set of files to deserialize
      * @throws IllegalArgumentException If rejectedFiles parameter is null
@@ -183,7 +183,7 @@ public class DeserializationHandler {
 
     /**
      * The function deserializes all the files contained within the folder passed as a parameter into a list of {@link UnitOfSearch},
-     * provided that there is a deserializer available for their specific format
+     * provided that there is a deserializer available for their specific format (contained in the {@link DeserializationHandler#container})
      * The function correctly selects the {@link Deserializer} to use starting from the extension of the file to be deserialized.
      * Files that do not have a deserializer are not treated
      *
