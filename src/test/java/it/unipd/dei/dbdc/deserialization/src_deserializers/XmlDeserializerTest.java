@@ -29,7 +29,9 @@ public class XmlDeserializerTest {
                 Arguments.of(createTestArticles2(), "src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles2.xml"),
                 Arguments.of(createTestArticles3(), "src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles3.xml"),
                 Arguments.of(createTestArticles4(), "src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles4.xml"),
-                Arguments.of(createTestArticles5(), "src/test/resources/SerializationTest/serializersTest/xmlTest/Articles5.xml")
+                Arguments.of(createTestArticles5(), "src/test/resources/SerializationTest/serializersTest/xmlTest/Articles5.xml"),
+                Arguments.of(createTestArticles6(), "src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles6.xml")
+
         );
     }
 
@@ -91,6 +93,13 @@ public class XmlDeserializerTest {
         articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1", "sourceSet 1", "Source 1"));
         articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1", "sourceSet 1", "Source 1"));
         articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1", "sourceSet 1", "Source 1"));
+        return articles;
+    }
+    private static List<Article> createTestArticles6() {
+        List<Article> articles = new ArrayList<>();
+        articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1", "sourceSet 1","Source 1"));
+        articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1","sourceSet 1","Source 1"));
+        articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1","sourceSet 1","Source 1"));
         return articles;
     }
 

@@ -190,7 +190,7 @@ public class DeserializationHandlerTest {
         }
     }
 
-    // TODO come testo gli ingressi
+
     @Test
     void deserializerSetFields() {
 

@@ -65,7 +65,9 @@ public class SerializersContainer {
      * The function which return an instance of the {@link Serializer} whose name is passed as a parameter
      *
      * @param format The format associated with the {@link Serializer}.
+     * @return An instance of the {@link Serializer} for the specified format.
      * @throws IllegalArgumentException If there is no {@link Serializer} available for the specified format, or the parameters passed are not valid.
+     *
      */
     public Serializer getSerializer(String format) {
 
@@ -76,6 +78,8 @@ public class SerializersContainer {
     }
     /**
      * A function that returns a {@link Set} of the formats of all {@link Serializer}s in the container.
+     *
+     * @return A {@link Set} of strings representing the supported formats.
      */
     public Set<String> getFormats() {
         return serializers.keySet();

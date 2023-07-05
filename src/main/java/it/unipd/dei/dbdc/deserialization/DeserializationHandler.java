@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.*;
 
 import it.unipd.dei.dbdc.deserialization.interfaces.DeserializerWithFields;
+import it.unipd.dei.dbdc.serializers.SerializersContainer;
 import it.unipd.dei.dbdc.tools.PathManager;
 
 
@@ -16,8 +17,9 @@ public class DeserializationHandler {
 
     private final DeserializersContainer container; // Dovrei metterlo public se voglio modificare i fields
 
-    public DeserializationHandler(String fileProperties) throws IOException {
-        container = new DeserializersContainer(fileProperties);
+    public DeserializationHandler(String deserializers_properties) throws IOException {
+
+        container = DeserializersContainer.getInstance(deserializers_properties);
     }
 
     public void getFolderFiles(String folderPath, Set<File> allFiles) {
