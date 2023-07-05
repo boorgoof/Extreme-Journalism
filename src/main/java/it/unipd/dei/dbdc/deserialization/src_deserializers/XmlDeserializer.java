@@ -16,11 +16,24 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
+import it.unipd.dei.dbdc.deserialization.interfaces.DeserializerWithFields;
 import it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIManager;
 
-// ricodati che questa funziona solo con xml costruiti da noi ( comunque xml semplici )
+/**
+ * This class implements the interface: {@link Deserializer}.
+ * It is used to deserialize CSV files into a list of {@link UnitOfSearch} objects.
+ *
+ */
 public class XmlDeserializer implements Deserializer {
 
+    /**
+     * Deserializes an XML file into a list of {@link UnitOfSearch}.
+     *
+     * @param xmlFile The XML file to deserialize.
+     * @return The list of {@link UnitOfSearch} objects obtained from deserialization.
+     * @throws IOException If an I/O error occurs during the deserialization process. //TODO fix
+     * @throws IllegalArgumentException If the provided XML file is null or does not exist.
+     */
     @Override
     public List<UnitOfSearch> deserialize(File xmlFile) throws IOException {
 

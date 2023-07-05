@@ -61,12 +61,12 @@ public class CsvDeserializer implements DeserializerWithFields {
     }
 
     /**
-     * The function deserializes a csv file in {@link List} of {@link UnitOfSearch} referring to
+     * The function deserializes a CSV file in {@link List} of {@link UnitOfSearch} referring to
      * the header present in the first line of the csv file.
      * Only columns that have an association with fields stored in {@link CsvDeserializer#fields} will be considered.
      * The fields specified in the header need not be in the same order as they are stored in {@link CsvDeserializer#fields}
      *
-     * @param csvFile The csv format file to deserialize into {@link UnitOfSearch}
+     * @param csvFile The CSV file to deserialize into {@link UnitOfSearch}
      * @return the list of {@link UnitOfSearch} objects obtained from deserialization
      * @throws IOException If an I/O error occurs during the deserialization process.
      * @throws IllegalArgumentException if the file does not exist or is not null
