@@ -15,7 +15,11 @@ import java.util.Properties;
  */
 public class SerializationProperties {
 
+    /**
+     * The name of the default properties file.
+     */
     private final static String default_properties = "serializers.properties"; // TODO è il nome o il path, meglio specificare?
+
     /**
      * The function that reads the properties file and returns a {@link Map} of {@link Serializer} and their names
      *  specified in the properties file. The names conventionally represent the file format into which the objects will be serialized.
@@ -24,7 +28,6 @@ public class SerializationProperties {
      * @return A {@link Map} of {@link Serializer} and their names specified in the properties file.
      * @throws IOException If both the default properties file and the user specified are not present, or if the properties specified are not correct.
      */
-
     public static Map<String, Serializer> readSerializersProperties(String out_properties) throws IOException {
 
         // load the properties file selected by the user, or by default
@@ -42,7 +45,7 @@ public class SerializationProperties {
 
             try {
                 Class<?> serializerClass = Class.forName(serializerClassName);
-                // Instantiate the serializer
+                // Instantiate the Serializer
                 Serializer serializer = (Serializer) serializerClass.getDeclaredConstructor().newInstance();
                 // the serializer is added to the map according to its format
                 serializerMap.put(format, serializer);

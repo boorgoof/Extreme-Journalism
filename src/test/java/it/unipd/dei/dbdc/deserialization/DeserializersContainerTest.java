@@ -54,7 +54,7 @@ public class DeserializersContainerTest {
             String[] containerFields = container.getSpecificFields("json");
             assertEquals(containerFields,fileFields);
 
-            IOException exception = assertThrows(IOException.class, () -> container.setSpecificFields("xml", fileFields));
+            IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> container.setSpecificFields("xml", fileFields));
             System.out.println(exception.getMessage());
 
         } catch (IOException e) {

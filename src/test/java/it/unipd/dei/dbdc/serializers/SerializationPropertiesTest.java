@@ -19,9 +19,10 @@ public class SerializationPropertiesTest {
     private static final String serializers_properties = "src/test/resources/SerializationTest/properties/serializers.properties";
     private static final String nonExistentFile_properties = "src/test/resources/SerializationTest/properties/nonExistentFile.properties";
 
-    private static final String false_serializers_properties = "src/test/resources/SerializationTest/properties/falseSerializers.properties";
-    private static final String empty_serializers_properties = "src/test/resources/SerializationTest/properties/emptySerializers.properties";
 
+    private static final String empty_serializers_properties = "src/test/resources/SerializationTest/properties/emptySerializers.properties";
+    private static final String false_serializers_properties = "src/test/resources/SerializationTest/properties/falseSerializers.properties";
+    private static final String false_serializers_properties2 = "src/test/resources/SerializationTest/properties/falseSerializers2.properties";
     @Test
     void readSerializersProperties() {
 
@@ -38,7 +39,7 @@ public class SerializationPropertiesTest {
             //Tests with a valid serializers.properties
             final Map<String, Serializer> serializers;
             serializers = SerializationProperties.readSerializersProperties(serializers_properties);
-            assertEquals(2, serializers.size());
+            assertEquals(1, serializers.size());
             assertTrue(serializers.get("xml") instanceof XmlSerializer );
 
 
@@ -62,6 +63,10 @@ public class SerializationPropertiesTest {
         //Tests with invalid serializers.properties (wrong classes)
         IOException exception1 = assertThrows(IOException.class, () -> SerializationProperties.readSerializersProperties(false_serializers_properties));
         System.out.println(exception1.getMessage());
+
+        //Tests with invalid serializers.properties (wrong classes)
+        IOException exception2 = assertThrows(IOException.class, () -> SerializationProperties.readSerializersProperties(false_serializers_properties2));
+        System.out.println(exception2.getMessage());
 
     }
 }

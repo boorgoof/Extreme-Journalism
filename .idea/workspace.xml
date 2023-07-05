@@ -5,17 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Tests">
-      <change afterPath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/SerializationTest/properties/falseSerializers2.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/DeserializationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/DeserializationHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/DeserializationProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/DeserializationProperties.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/DeserializersContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/DeserializersContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/interfaces/Deserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/interfaces/Deserializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/interfaces/DeserializerWithFields.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/interfaces/DeserializerWithFields.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/serializers/SerializersContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/serializers/SerializersContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/serializers/interfaces/Serializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/serializers/interfaces/Serializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/DeserializationHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/DeserializationHandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/serializers/SerializationProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/serializers/SerializationProperties.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/DeserializersContainerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/DeserializersContainerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/src_deserializers/XmlDeserializerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/src_deserializers/XmlDeserializerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/serializers/SerializationPropertiesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/serializers/SerializationPropertiesTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +62,7 @@
     "git-widget-placeholder": "newBranch",
     "ignore.virus.scanning.warn.message": "true",
     "jdk.selected.JAVA_MODULE": "1.8",
-    "last_opened_file_path": "D:/ingengeria software/eis-final/src/test/resources/DeserializationTest/deserializersTest/xmlTest",
+    "last_opened_file_path": "D:/ingengeria software/eis-final/src/test/resources/SerializationTest/properties",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -74,10 +71,10 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\ingengeria software\eis-final\src\test\resources\SerializationTest\properties" />
       <recent name="D:\ingengeria software\eis-final\src\test\resources\DeserializationTest\deserializersTest\xmlTest" />
       <recent name="D:\ingengeria software\eis-final\documentation\UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU" />
       <recent name="D:\ingengeria software\eis-final\src\test\resources\DeserializationTest\properties" />
-      <recent name="D:\ingengeria software\eis-final\src\test\resources\SerializationTest\properties" />
       <recent name="D:\ingengeria software\eis-final\src\test\resources\SerializationTest\serializersTest\xmlTest" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -108,7 +105,7 @@
       <recent name="it.unipd.dei.dbdc.download" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.XmlDeserializerTest.deserialize">
+  <component name="RunManager" selected="JUnit.DeserializersContainerTest.setSpecificFields">
     <configuration name="DeserializersContainerTest.getSpecificFields" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Extreme_journalism" />
       <extension name="coverage">
@@ -120,6 +117,22 @@
       <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.deserialization" />
       <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.deserialization.DeserializersContainerTest" />
       <option name="METHOD_NAME" value="getSpecificFields" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DeserializersContainerTest.setSpecificFields" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Extreme_journalism" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.unipd.dei.dbdc.deserialization.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.deserialization" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.deserialization.DeserializersContainerTest" />
+      <option name="METHOD_NAME" value="setSpecificFields" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -141,7 +154,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SerializersContainerTest.getFormats" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SerializationPropertiesTest.readSerializersProperties" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Extreme_journalism" />
       <extension name="coverage">
         <pattern>
@@ -150,24 +163,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.serializers" />
-      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.serializers.SerializersContainerTest" />
-      <option name="METHOD_NAME" value="getFormats" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SerializersContainerTest.getSerializer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Extreme_journalism" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.unipd.dei.dbdc.serializers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.serializers" />
-      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.serializers.SerializersContainerTest" />
-      <option name="METHOD_NAME" value="getSerializer" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.serializers.SerializationPropertiesTest" />
+      <option name="METHOD_NAME" value="readSerializersProperties" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -204,11 +201,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.DeserializersContainerTest.setSpecificFields" />
+        <item itemvalue="JUnit.SerializationPropertiesTest.readSerializersProperties" />
         <item itemvalue="JUnit.XmlDeserializerTest.deserialize" />
         <item itemvalue="JUnit.DeserializersContainerTest.getSpecificFields" />
         <item itemvalue="JUnit.SerializationHandlerTest.serializeObjects" />
-        <item itemvalue="JUnit.SerializersContainerTest.getFormats" />
-        <item itemvalue="JUnit.SerializersContainerTest.getSerializer" />
       </list>
     </recent_temporary>
   </component>
