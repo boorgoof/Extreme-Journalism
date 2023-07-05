@@ -71,10 +71,9 @@ public class XmlSerializerTest {
         IllegalArgumentException exception1 = assertThrows(IllegalArgumentException.class, () -> serializer.serialize(createTestArticles1(), null));
         System.out.println(exception1.getMessage());
 
-        String filePath = "src/test/resources/SerializationTest/serializersTest/xmlTest/ArticlesError.xml";
-        File xmlFile = new File(filePath);
-        assertDoesNotThrow(() -> serializer.serialize(null, xmlFile));
-
+        File xmlFile = new File("src/test/resources/SerializationTest/serializersTest/xmlTest/ArticlesError.xml");
+        IllegalArgumentException exception2 = assertThrows(IllegalArgumentException.class, () -> serializer.serialize(null, xmlFile));
+        System.out.println(exception2.getMessage());
         
     }
 

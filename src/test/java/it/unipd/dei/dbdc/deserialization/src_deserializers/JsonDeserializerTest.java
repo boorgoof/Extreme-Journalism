@@ -64,17 +64,15 @@ public class JsonDeserializerTest {
         deserializer.setFields(fileFields);
         File file = new File (filePath);
 
-        try {
+        assertDoesNotThrow(() -> {
+
             List<UnitOfSearch> articles = deserializer.deserialize(file);
             assertNotNull(articles);
             assertFalse(articles.isEmpty());
             assertEquals(expectedArticles.size(), articles.size());
             assertEquals(expectedArticles, articles);
 
-
-        } catch (IOException e) {
-            fail("Errore durante la lettura del file JSON: " + e.getMessage());
-        }
+        });
 
     }
 
@@ -93,25 +91,19 @@ public class JsonDeserializerTest {
         IllegalArgumentException exception2 = assertThrows(IllegalArgumentException.class, () -> deserializer.deserialize( nonExistentFile));
         System.out.println(exception2.getMessage());
 
-        // con un file vuoto non c'è errore semplicemnte non deserializza nulla
-        File emptyFile = new File("src/test/resources/DeserializationTest/deserializersTest/jsonTest/emptyArticles.json");
-        try {
+        assertDoesNotThrow(() -> {
+
+            // con un file vuoto non c'è errore semplicemnte non deserializza nulla
+            File emptyFile = new File("src/test/resources/DeserializationTest/deserializersTest/jsonTest/emptyArticles.json");
             List<UnitOfSearch> articles = deserializer.deserialize(emptyFile);
             assertTrue(articles.isEmpty());
 
-        } catch (IOException e) {
-            fail("Errore durante la lettura del file JSON: " + e.getMessage());
-        }
-
-        // gli viene dato un file che non ha articoli al suo interno, non c'è errore semplicemente non deserializza nulla
-        File errorFile = new File("src/test/resources/DeserializationTest/deserializersTest/jsonTest/noArticles.json");
-        try {
-            List<UnitOfSearch> articles = deserializer.deserialize(errorFile);
+            // gli viene dato un file che non ha articoli al suo interno, non c'è errore semplicemente non deserializza nulla
+            File noArticles = new File("src/test/resources/DeserializationTest/deserializersTest/jsonTest/noArticles.json");
+            articles = deserializer.deserialize(noArticles);
             assertTrue(articles.isEmpty());
+        });
 
-        } catch (IOException e) {
-            fail("Errore durante la lettura del file JSON: " + e.getMessage());
-        }
 
     }
 

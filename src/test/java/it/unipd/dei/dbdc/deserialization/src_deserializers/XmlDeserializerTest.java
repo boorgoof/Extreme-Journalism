@@ -144,14 +144,11 @@ public class XmlDeserializerTest {
         });
 
 
-        // non lancia errore ma non è in grado di deserializzare
-        File treeFile = new File("src/test/resources/DeserializationTest/deserializersTest/xmlTest/treeArticles.xml");
-        try {
+        assertDoesNotThrow(() -> {
+            File treeFile = new File("src/test/resources/DeserializationTest/deserializersTest/xmlTest/treeArticles.xml");
             List<UnitOfSearch> articles = deserializer.deserialize(treeFile);
             assertNotEquals(treeArticles(), articles);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        });
 
         // file con struttura corretta ma non ci sono articoli
         assertDoesNotThrow(() -> {

@@ -6,18 +6,14 @@ import it.unipd.dei.dbdc.analysis.Article;
 import it.unipd.dei.dbdc.deserialization.interfaces.Deserializer;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
 
 import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
-import it.unipd.dei.dbdc.deserialization.interfaces.DeserializerWithFields;
-import it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIManager;
+
 
 /**
  * This class implements the interface: {@link Deserializer}.

@@ -63,15 +63,17 @@ public class CsvDeserializerTest {
         File file = new File(filePath);
         CsvDeserializer deserializer = new CsvDeserializer();
 
-        try {
+
+        assertDoesNotThrow(() -> {
+
             List<UnitOfSearch> articles = deserializer.deserialize(file);
             assertNotNull(articles);
             assertFalse(articles.isEmpty());
             assertEquals(expectedArticles.size(), articles.size());
             assertEquals(expectedArticles, articles);
-        } catch (IOException e) {
-            fail("Errore durante la lettura del file CSV: " + e.getMessage());
-        }
+
+        });
+
     }
 
     @Test
@@ -87,19 +89,21 @@ public class CsvDeserializerTest {
         IllegalArgumentException exception2 = assertThrows(IllegalArgumentException.class, () -> deserializer.deserialize( nonExistentFile));
         System.out.println(exception2.getMessage());
 
-        // gli viene dato un file vuoto. TODO FORse è meglio che non deserializzi niente come il caso sotto ( é quello che fa json)
-        File emptyFile = new File("src/test/resources/DeserializationTest/deserializersTest/csvTest/emptyArticles.csv");
-        IOException exception3 = assertThrows(IOException.class, () -> deserializer.deserialize( emptyFile));
-        System.out.println(exception3.getMessage());
 
-        // gli viene dato un file che non ha articoli al suo interno semplicemente non deserializza niente
-        File noArticlesFile = new File("src/test/resources/DeserializationTest/deserializersTest/csvTest/noArticles.csv");
-        try {
-            List<UnitOfSearch> articles = deserializer.deserialize(noArticlesFile);
+        assertDoesNotThrow(() -> {
+
+            // file vuoto
+            File emptyFile = new File("src/test/resources/DeserializationTest/deserializersTest/csvTest/emptyArticles.csv");
+            List<UnitOfSearch> articles = deserializer.deserialize(emptyFile);
             assertTrue(articles.isEmpty());
-        } catch (IOException e) {
-            fail("Errore durante la lettura del file CSV: " + e.getMessage());
-        }
+
+            // gli viene dato un file che non ha articoli al suo interno semplicemente non deserializza niente
+            File noArticlesFile = new File("src/test/resources/DeserializationTest/deserializersTest/csvTest/noArticles.csv");
+            articles = deserializer.deserialize(noArticlesFile);
+            assertTrue(articles.isEmpty());
+
+        });
+
 
     }
 
