@@ -2,10 +2,7 @@ package it.unipd.dei.dbdc.deserialization;
 
 
 import it.unipd.dei.dbdc.analysis.Article;
-import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
 import it.unipd.dei.dbdc.deserialization.interfaces.Deserializer;
-import it.unipd.dei.dbdc.serializers.SerializersContainer;
-import it.unipd.dei.dbdc.serializers.interfaces.Serializer;
 import org.junit.jupiter.api.*;
 
 import java.io.File;
@@ -18,6 +15,7 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@Order(1)
 public class DeserializersContainerTest {
     // todo Fixare le properties. il path intendo
     private static final String deserializers_properties = "src/test/resources/DeserializationTest/properties/deserializers.properties";
@@ -73,7 +71,8 @@ public class DeserializersContainerTest {
     @Test
     public void getDeserializer() {
 
-        try {
+        assertDoesNotThrow( () ->
+        {
             DeserializersContainer container = DeserializersContainer.getInstance(deserializers_properties);
 
             // non serve perche tanto uso singleton
@@ -90,9 +89,7 @@ public class DeserializersContainerTest {
             IOException exception = assertThrows(IOException.class, () -> container.getDeserializer("html"));
             System.out.println(exception.getMessage());
 
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        });
     }
 
 
@@ -103,14 +100,10 @@ public class DeserializersContainerTest {
         expectedFormats.add("xml");
         expectedFormats.add("csv");
         expectedFormats.add("json");
-        try {
-
+       assertDoesNotThrow( () -> {
             DeserializersContainer container = DeserializersContainer.getInstance(deserializers_properties);
             assertEquals(expectedFormats, container.getFormats());
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        });
     }
 
 

@@ -2,6 +2,7 @@ package it.unipd.dei.dbdc.deserialization;
 
 import it.unipd.dei.dbdc.deserialization.interfaces.Deserializer;
 import it.unipd.dei.dbdc.deserialization.interfaces.DeserializerWithFields;
+import it.unipd.dei.dbdc.deserialization.src_deserializers.JsonArticleDeserializer;
 import it.unipd.dei.dbdc.serializers.SerializationProperties;
 import it.unipd.dei.dbdc.serializers.SerializersContainer;
 import it.unipd.dei.dbdc.serializers.interfaces.Serializer;
@@ -20,7 +21,7 @@ public class DeserializersContainer {
      * A {@link Map} containing all the possible {@link Deserializer}, representing all the possible serializers that we can use.
      *
      */
-    private Map<String, Deserializer> deserializers;
+    private final Map<String, Deserializer> deserializers;
     /**
      * This is the only instance of the class that is possible to obtain.
      *
