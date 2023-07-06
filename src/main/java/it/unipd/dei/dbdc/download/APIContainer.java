@@ -43,7 +43,7 @@ public class APIContainer {
     }
 
     /**
-     * The constructor, which calls the {@link DownloadProperties#readAPIContainerProperties(String)} function.
+     * The constructor, which calls the {@link DownloadProperties#readProperties(String)} function.
      *
      * @param download_properties The properties specified by the user where are specified all the possible {@link APIManager}.
      *                            If it is null, the default properties file will be used.
@@ -51,11 +51,13 @@ public class APIContainer {
      */
     private APIContainer(String download_properties) throws IOException
     {
-        managers = DownloadProperties.readAPIContainerProperties(download_properties);
+        managers = DownloadProperties.readProperties(download_properties);
     }
 
     /**
      * A function that returns the names of all the {@link APIManager} that are present in the container.
+     *
+     *  @return A {@link String} with all the names of the {@link APIManager} inside the container.
      */
     public String getAPINames()
     {
@@ -72,6 +74,7 @@ public class APIContainer {
      *
      * @param name The name of the {@link APIManager}.
      * @throws IllegalArgumentException If there is no {@link APIManager} with that name.
+     *  @return A {@link String} with the parameters of the {@link APIManager} whose name is specified as a parameter. These parameters are already formatted
      */
     public String getAPIPossibleParams(String name) throws IllegalArgumentException
     {
@@ -83,7 +86,9 @@ public class APIContainer {
      * which has the parameters that are also passed to the function.
      *
      * @param name The name of the {@link APIManager}.
-     * @throws IllegalArgumentException If there is no {@link APIManager} with that name.
+     * @param l The {@link List} of the {@link QueryParam} to pass to the {@link APIManager}.
+     * @throws IllegalArgumentException If there is no {@link APIManager} with that name, or the parameters passed are not valid.
+     * @return A {@link APIManager} whose name is passed as a parameter which has the parameters that are also passed to the function.
      */
     public APIManager getAPIManager(String name, List<QueryParam> l) throws IllegalArgumentException
     {

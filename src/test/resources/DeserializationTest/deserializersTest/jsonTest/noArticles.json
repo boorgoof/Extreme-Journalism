@@ -1,0 +1,34 @@
+{
+  "cani": [
+    {
+      "nome": "Fido",
+      "razza": "Labrador Retriever",
+      "età": 3,
+      "peso": 25,
+      "proprietario": {
+        "nome": "Marco",
+        "cognome": "Rossi"
+      }
+    },
+    {
+      "nome": "Luna",
+      "razza": "Golden Retriever",
+      "età": 2,
+      "peso": 28,
+      "proprietario": {
+        "nome": "Laura",
+        "cognome": "Bianchi"
+      }
+    },
+    {
+      "nome": "Rocky",
+      "razza": "Bulldog",
+      "età": 5,
+      "peso": 20,
+      "proprietario": {
+        "nome": "Giuseppe",
+        "cognome": "Verdi"
+      }
+    }
+  ]
+}

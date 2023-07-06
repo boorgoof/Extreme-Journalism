@@ -3,46 +3,55 @@ package it.unipd.dei.dbdc;
 import it.unipd.dei.dbdc.deserialization.DeserializationProperties;
 import it.unipd.dei.dbdc.download.DownloadProperties;
 import it.unipd.dei.dbdc.tools.CommandLineInterpreter;
-import it.unipd.dei.dbdc.tools.PathTools;
+import it.unipd.dei.dbdc.tools.PathManager;
 import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
 import it.unipd.dei.dbdc.analysis.AnalyzerHandler;
 import it.unipd.dei.dbdc.deserialization.DeserializationHandler;
 import it.unipd.dei.dbdc.download.DownloadHandler;
 import it.unipd.dei.dbdc.serializers.SerializationHandler;
-import it.unipd.dei.dbdc.tools.TotalProperties;
+import it.unipd.dei.dbdc.tools.GeneralProperties;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The main class of the application: it invokes the {@link CommandLineInterpreter} to
+ * check the actions to perform, and gives control to the different Handlers, linking their results.
+ * The use of the Handlers is an example of the Facade design pattern.
+ *
+ */
 public class App
 {
-    //TODO: stampa cose più significative, e vedi bene dove vanno le varie eccezioni
-
     public static void main(String[] args) {
 
+        // Parses the commands given
         CommandLineInterpreter interpreter;
         try {
             interpreter = new CommandLineInterpreter(args);
         }
-        catch (IllegalStateException e)
+        catch (IllegalArgumentException e)
         {
             System.err.println("The program has been terminated because there was no action to perform specified.");
             return;
         }
 
+        // After this point, it is certain that cmd in the CommandLineInterpreter will not throw NullPointerException
         if (interpreter.help())
         {
             return;
         }
 
-        TotalProperties totalProperties;
+        //Parses the general properties of the application
+        GeneralProperties totalProperties;
         try {
-            totalProperties = new TotalProperties(interpreter.obtainTotProps());
+            totalProperties = new GeneralProperties(interpreter.obtainGenProps());
         }
         catch (IOException e)
         {
-            System.err.println("The program has been terminated because the file "+TotalProperties.default_properties+" was not found: "+e.getMessage());
+            System.err.println("The program has been terminated because the file "+ GeneralProperties.default_properties+" was not found, or the properties passed by the user were not valid: "+e.getMessage());
             return;
         }
 
@@ -58,7 +67,7 @@ public class App
             }
             catch (IOException e)
             {
-                System.err.println("The program has been terminated because the file "+ DownloadProperties.default_properties+" was not found: "+e.getMessage());
+                System.err.println("The program has been terminated because the file "+ DownloadProperties.default_properties+" was not found, or the properties passed by the user were not valid: "+e.getMessage());
                 return;
             }
 
@@ -85,20 +94,21 @@ public class App
         DeserializationHandler deserializersHandler;
         try {
             //Obtains the properties from the command line, if specified, and calls the handler.
+            //TODO: passargli anche interpreter.obtainSetFields()
             deserializersHandler = new DeserializationHandler(interpreter.obtainDeserProps());
         }
         catch (IOException e)
         {
-            System.err.println("The program has been terminated because the file "+ DeserializationProperties.default_properties+" was not found: "+e.getMessage());
+            System.err.println("The program has been terminated because the file "+ DeserializationProperties.default_properties+" was not found, or the properties passed by the user were not valid: "+e.getMessage());
             return;
         }
 
         //Tries to deserialize the specified folder.
-        List<UnitOfSearch> articles;
+        List<Serializable> articles;
         try{
              articles = deserializersHandler.deserializeFolder(folderPath);
         } catch (IOException e){
-            System.err.println(e.getMessage()); //TODO: eccezioni
+            System.err.println("The program has been terminated because there was an error in the deserialization: "+e.getMessage());
             return;
         }
 
@@ -109,10 +119,14 @@ public class App
 
         System.out.println("\nEntering the serialization part...");
 
+
+        // Ho modificato da filepath a file direttamente cosi le eccezioni sono migliori
         //Path of the serialized file
         String filePath;
+        File serializedFile;
         try {
-            filePath = PathTools.getSerializedFile(totalProperties.getCommonFormat());
+            filePath = PathManager.getSerializedFile(totalProperties.getCommonFormat());
+            serializedFile = new File(filePath);
         }
         catch (IOException e)
         {
@@ -123,11 +137,21 @@ public class App
         try {
             //Obtains the properties from the command line, if specified, and calls the handler.
             SerializationHandler serializersHandler = new SerializationHandler(interpreter.obtainSerProps());
-            serializersHandler.serializeObjects(articles, totalProperties.getCommonFormat(), filePath);
+
+            serializersHandler.serializeObjects(articles, serializedFile);
         } catch (IOException e) {
             System.err.println("Error during the serialization: "+e.getMessage());
             return;
         }
+
+        List<UnitOfSearch> unitOfSearches = new ArrayList<>();
+        for (Serializable obj : articles) {
+            if(obj instanceof UnitOfSearch){
+               unitOfSearches.add((UnitOfSearch) obj);
+            }
+        }
+
+
         System.out.println("Exiting the serialization part. You can find the serialized file in "+filePath+"...\n");
 
         // THIRD PHASE: analysis
@@ -137,12 +161,11 @@ public class App
             System.out.println("\nEntering the deserialization of "+filePath+"...");
 
             try {
-                //TODO: AL MOMENTO USA LA SECONDA VERSIONE DI DESERIALIZER. DA CAMBIARE?
                 File commonFormatFile = new File(filePath);
                 articles = deserializersHandler.deserializeFile(commonFormatFile);
             }
             catch (IOException e) {
-                System.err.println("Error: "+e.getMessage());
+                System.err.println("Error during the deserialization of the common format: "+e.getMessage());
                 return;
             }
             System.out.println("Exiting the deserialization part...\n");
@@ -153,7 +176,7 @@ public class App
 
             //Obtains the properties from the command line, if specified.
             int count = interpreter.obtainNumberOption();
-            if (count == -1)
+            if (count <= 0)
             {
                 count = totalProperties.getWordsCount();
             }
@@ -161,12 +184,12 @@ public class App
             String out_file;
             try {
                 //Obtains the properties from the command line, if specified, and calls the handler.
-                out_file = AnalyzerHandler.analyze(interpreter.obtainAnalyzeProps(), articles, count, interpreter.obtainStopWords());
+                out_file = AnalyzerHandler.analyze(interpreter.obtainAnalyzeProps(), unitOfSearches, count, interpreter.obtainStopWords());
             } catch (IOException | IllegalArgumentException e) {
-                System.err.println("The program has been terminated: "+e.getMessage());
+                System.err.println("The program has been terminated for an error in the analysis: "+e.getMessage());
                 return;
             }
-            System.out.println("Exiting the analysis part. You can find the resulting file in"+out_file+"...\n");
+            System.out.println("Exiting the analysis part. You can find the resulting file in"+out_file+"\n");
 
         }
         System.out.println("Everything went correctly.\nThank you for choosing our application, we hope to see you soon.");

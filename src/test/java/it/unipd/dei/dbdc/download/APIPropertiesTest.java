@@ -1,9 +1,11 @@
 package it.unipd.dei.dbdc.download;
 
 import it.unipd.dei.dbdc.download.interfaces.APIManager;
+import it.unipd.dei.dbdc.download.src_api_managers.TestManager.TestManager;
 import it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIManager;
+import it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIManagerTest;
 import it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIParams;
-import it.unipd.dei.dbdc.download.src_callers.KongAPICallerTest;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -14,8 +16,18 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Class that tests {@link APIProperties}.
+ * As this class is one of the last to be processed, the {@link APIContainer} has already been initialized, so
+ * it should not throw any {@link java.io.IOException}
+ */
+@Order(7)
 public class APIPropertiesTest {
 
+    /**
+     * Tests the {@link APIProperties#readProperties(String, String)} with various valid and invalid inputs.
+     * It uses reflection to access the parameters specified for the {@link GuardianAPIManager} initialized.
+     */
     @Test
     public void readAPIProperties()
     {
@@ -32,7 +44,7 @@ public class APIPropertiesTest {
 
         //Test with everything right
         Map<String, Object> list = new HashMap<>();
-        list.put("api-key", KongAPICallerTest.key);
+        list.put("api-key", GuardianAPIManagerTest.key);
         list.put("from-date", "1904-12-12");
         list.put("to-date", "2001-12-04");
         list.put("page-size", 11);
@@ -49,11 +61,19 @@ public class APIPropertiesTest {
             expected.add(a);
         }
 
-        //Takes the manager returned and reads its parameters
+        //Takes the manager returned and reads its parameters. We check with two different files
         try {
-            manager = APIProperties.readAPIProperties(DownloadHandlerTest.resources_url+"trueApi.properties", null);
-            GuardianAPIParams par = (GuardianAPIParams) params.get(manager);
+            //The container is initialized with trueDownload.properties by all the test classes that use it
+            //This is done only if we want to test this class alone.
+            manager = APIProperties.readProperties(DownloadHandlerTest.resources_url+"trueApiTest.properties", DownloadHandlerTest.resources_url + "trueDownload.properties");
+            TestManager t = (TestManager) manager;
+            GuardianAPIParams par = t.params;
             ArrayList<Map<String, Object>> parameters = par.getParams();
+            assertEquals(expected, parameters);
+
+            manager = APIProperties.readProperties(DownloadHandlerTest.resources_url+"trueApi.properties", null);
+            par = (GuardianAPIParams) params.get(manager);
+            parameters = par.getParams();
             assertEquals(expected, parameters);
         } catch (IOException e) {
             fail("Error in the reading of the properties");
@@ -61,14 +81,19 @@ public class APIPropertiesTest {
             fail("Error during the reflection: check the source code");
         }
 
-
         //Tests with false api properties
-        assertThrows(IllegalArgumentException.class, () -> APIProperties.readAPIProperties(DownloadHandlerTest.resources_url + "falseApi.properties", null));
-        assertThrows(IllegalArgumentException.class, () -> APIProperties.readAPIProperties(DownloadHandlerTest.resources_url + "falseApi2.properties", null));
-        //Test with not existent api properties
-        assertThrows(IOException.class, () -> APIProperties.readAPIProperties(DownloadHandlerTest.resources_url + "NotExistent.properties", null));
+        assertThrows(IllegalArgumentException.class, () -> APIProperties.readProperties(DownloadHandlerTest.resources_url + "falseApi.properties", null));
+        assertThrows(IllegalArgumentException.class, () -> APIProperties.readProperties(DownloadHandlerTest.resources_url + "falseApi2.properties", null));
+        assertThrows(IllegalArgumentException.class, () -> APIProperties.readProperties(DownloadHandlerTest.resources_url + "falseApi3.properties", null));
 
-        //TODO: altri test?
+        //Test with not existent api properties
+        assertThrows(IOException.class, () -> APIProperties.readProperties(DownloadHandlerTest.resources_url + "NotExistent.properties", null));
+
+        //Test with null
+        assertDoesNotThrow(() -> assertNull(APIProperties.readProperties(null, null)));
+
+        //Test with other true download properties
+        assertDoesNotThrow(() -> APIProperties.readProperties(DownloadHandlerTest.resources_url + "trueAPI.properties", DownloadHandlerTest.resources_url + "defaultDownload.properties"));
 
         params.setAccessible(false);
     }

@@ -86,22 +86,51 @@ public class GuardianAPIParams {
      * If it's a date, the format should be yyyy-mm-dd
      *
      * @param param The param to add to the specified params
-     * @throws IllegalArgumentException If the date specified is not in the correct format or is invalid
+     * @throws IllegalArgumentException If the date specified is not in the correct format or is invalid, or if the passed param is null or has a null key or value, or if the page-size or pages are invalid
      */
     public void addParam(QueryParam param) throws IllegalArgumentException
     {
+        if (param == null)
+        {
+            throw new IllegalArgumentException("Null parameter");
+        }
         String elem = param.getValue();
         String key = param.getKey();
+        if (elem == null || key == null)
+        {
+            throw new IllegalArgumentException("Null key or value");
+        }
+        int parsed = -1;
         switch (key)
         {
             case ("api-key"):
                 api_key = elem;
                 return;
             case ("pages"):
-                pages = Integer.parseInt(elem);
+                try {
+                    parsed = Integer.parseInt(elem);
+                }
+                catch (NumberFormatException e)
+                {   //In this case parsed will be equal to -1
+                }
+                if (parsed <= 0)
+                {
+                    throw new IllegalArgumentException("The number of pages is invalid");
+                }
+                pages = parsed;
                 return;
             case ("page-size"):
-                page_size = Integer.parseInt(elem);
+                try {
+                    parsed = Integer.parseInt(elem);
+                }
+                catch (NumberFormatException e) {
+                    //In this case parsed will be equal to -1
+                }
+                if (parsed <= 0 || parsed > 200)
+                {
+                    throw new IllegalArgumentException("The page size is invalid");
+                }
+                page_size = parsed;
                 return;
             case("q"):
                 query = elem;
@@ -109,7 +138,7 @@ public class GuardianAPIParams {
             case ("from-date"):
             case ("to-date"):
                 if (!format(elem)) {
-                    throw new IllegalArgumentException("The date is not in the correct format");
+                    throw new IllegalArgumentException("The date is not correct");
                 }
         }
         specified_params.put(key, elem);
@@ -119,6 +148,7 @@ public class GuardianAPIParams {
      * Function to get the specified params for the call.
      * It returns a {@link ArrayList} of a number of {@link Map} equal to the number of pages of the request,
      * and every map contains all the specified params, plus the default params.
+     * If there is any parameter that is equal to the default ones (show-fields and format), this will be overwritten by the default values.
      *
      * @throws IllegalArgumentException If the api-key was not specified
      * @return A {@link ArrayList} of a number of {@link Map} equal to the number of pages of the request

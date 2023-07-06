@@ -36,16 +36,21 @@ public class OrderedEntryStringInt extends AbstractMap.SimpleEntry<String, Integ
      * Comparator between two {@link OrderedEntryStringInt}: a {@link OrderedEntryStringInt} is major than
      * the other only if his value is major or his value is the same and his key is alphabetically previous
      * than the other's key.
+     * If they are identical, it returns false.
      *
      * @param a The other entry
-     * @return true if this entry is major than the one passed as a parameter
+     * @return true if this entry is major than the one passed as a parameter, or the parameter is null
      */
     public boolean isMajorThan(OrderedEntryStringInt a)
     {
+        if (a == null)
+        {
+            return false;
+        }
         if (this.getValue() > a.getValue())
         {
             return true;
         }
-        else return this.getValue().equals(a.getValue()) && (this.getKey().compareToIgnoreCase(a.getKey()) < 0);
+        return this.getValue().equals(a.getValue()) && (this.getKey().compareToIgnoreCase(a.getKey()) < 0);
     }
 }

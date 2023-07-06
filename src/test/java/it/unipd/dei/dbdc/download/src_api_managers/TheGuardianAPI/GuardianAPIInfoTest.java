@@ -1,14 +1,27 @@
 package it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI;
 
 import it.unipd.dei.dbdc.download.QueryParam;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Field;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Class that tests {@link GuardianAPIInfo}.
+ */
+@Order(7)
 public class GuardianAPIInfoTest {
+
+    /**
+     * The default URL of the TheGuardianAPI.
+     */
     private final static String defaultURL = "https://content.guardianapis.com/search?";
+
+    /**
+     * The possible fields of the TheGuardianAPI.
+     */
     private final static QueryParam[] possible_fields = {
             new QueryParam("api-key", "MANDATORY: the key to access the API"),
             new QueryParam("page-size","The number of articles to have in a single file .json. Values: 1-200. Default = 200"),
@@ -18,10 +31,15 @@ public class GuardianAPIInfoTest {
             new QueryParam("from-date", "The date to analysis from, in the format yyyy-mm-dd"),
             new QueryParam("to-date", "The date to analysis to, in the format yyyy-mm-dd")
     };
+
+    /**
+     * Tests of {@link GuardianAPIInfo#getFormattedParams()}. It uses reflection to access the
+     * length of the spaces to be put after the key.
+     */
     @Test
     public void getFormattedParams()
     {
-        //Access the private static field
+        //Access the private static field and save it as a variable max_length
         Field length = null;
         try {
             length = GuardianAPIInfo.class.getDeclaredField("formatted_key_length");
@@ -49,26 +67,37 @@ public class GuardianAPIInfoTest {
             par.append(this_field);
         }
         String params = par.toString();
+
+        //Assertion
         assertEquals(params, GuardianAPIInfo.getFormattedParams());
+
+        //End reflection
         length.setAccessible(false);
     }
 
+    /**
+     * Tests of {@link GuardianAPIInfo#getDefaultURL()}
+     */
     @Test
     public void getDefaultURL()
     {
         assertEquals(defaultURL, GuardianAPIInfo.getDefaultURL());
     }
 
+    /**
+     * Tests of {@link GuardianAPIInfo#isPresent(String)} with valid and invalid inputs.
+     */
     @Test
     public void isPresent()
     {
         for (QueryParam q : possible_fields) {
             assertTrue(GuardianAPIInfo.isPresent(q.getKey()));
         }
-
         assertFalse(GuardianAPIInfo.isPresent("invalid"));
         assertFalse(GuardianAPIInfo.isPresent("apikey"));
         assertFalse(GuardianAPIInfo.isPresent("page"));
+        assertFalse(GuardianAPIInfo.isPresent(null));
+        assertFalse(GuardianAPIInfo.isPresent(""));
     }
 
 }

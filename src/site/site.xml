@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- This describes the structure of the site -->
+<project name="Extreme journalism">
+
+    <body>
+        <!-- Links displayed at the top of the page -->
+        <links>
+            <item name="Apache" href="http://www.apache.org/"/>
+            <item name="Kong Unirest" href="https://kong.github.io/unirest-java/"/>
+            <item name="Junit 5" href="https://junit.org/junit5/"/>
+        </links>
+
+        <!-- Menus -->
+
+        <menu name="Istruzioni">
+            <item name="Homepage" href="index.html"/>
+            <item name="Creare il progetto" href="istruzioni/installazione.html"/>
+            <item name="Eseguire il progetto" href="istruzioni/esecuzione.html"/>
+            <item name="Generare il sito" href="istruzioni/sito.html"/>
+            <item name="Javadoc e commenti" href="istruzioni/javadoc.html"/>
+        </menu>
+
+        <menu name="Implementazione">
+            <item name="Spiegazione" href="manuale/spiegazione.html"/>
+            <!-- TODO -->
+            <item name="Problemi e trade-off" href="manuale/problemi.html"/>
+            <item name="Flessibilita'" href="manuale/flessibilita.html"/>
+            <item name="Design patterns" href="manuale/design_patterns.html"/>
+            <item name="Test" href="manuale/test.html"/>
+            <item name="Librerie" href="manuale/librerie.html"/>
+        </menu>
+
+        <menu name="Documentazione">
+            <item name="Requisiti" href="documentazione/requisiti.html"/>
+            <item name="Casi d'uso" href="documentazione/casi_uso.html"/>
+            <item name="Modello di dominio" href="documentazione/domain_model.html"/>
+            <item name="Design model" href="documentazione/design_model.html"/>
+        </menu>
+
+        <!-- This is replaced by a menu with links to all the reports that are configure -->
+        <menu ref="reports"/>
+
+    </body>
+</project>

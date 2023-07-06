@@ -1,1 +1,1 @@
-{"response":{"status":"error","message":"requested page is beyond the number of available pages"}}
+{"response":{"status":"error","message":"page must be a positive integer"}}
