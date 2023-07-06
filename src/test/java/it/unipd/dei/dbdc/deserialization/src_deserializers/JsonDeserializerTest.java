@@ -64,20 +64,48 @@ public class JsonDeserializerTest {
         deserializer.setFields(fileFields);
         File file = new File (filePath);
 
-        try {
+        assertDoesNotThrow(() -> {
+
             List<UnitOfSearch> articles = deserializer.deserialize(file);
             assertNotNull(articles);
             assertFalse(articles.isEmpty());
             assertEquals(expectedArticles.size(), articles.size());
             assertEquals(expectedArticles, articles);
 
-
-        } catch (IOException e) {
-            fail("Errore durante la lettura del file JSON: " + e.getMessage());
-        }
+        });
 
     }
 
+    @Test
+    public void deserialize_other_cases() {
+
+        JsonDeserializer deserializer = new JsonDeserializer();
+        String[] fileFields = {"id" , "url" , "title" , "body" , "date" , "sourceSet", "source"};
+        deserializer.setFields(fileFields);
+
+        IllegalArgumentException exception1 = assertThrows(IllegalArgumentException.class, () -> deserializer.deserialize( null));
+        System.out.println(exception1.getMessage());
+
+        // gli viene dato un file che non esistente
+        File nonExistentFile = new File("src/test/resources/DeserializationTest/deserializersTest/csvTest/nonExistentFile.json");
+        IllegalArgumentException exception2 = assertThrows(IllegalArgumentException.class, () -> deserializer.deserialize( nonExistentFile));
+        System.out.println(exception2.getMessage());
+
+        assertDoesNotThrow(() -> {
+
+            // con un file vuoto non c'è errore semplicemnte non deserializza nulla
+            File emptyFile = new File("src/test/resources/DeserializationTest/deserializersTest/jsonTest/emptyArticles.json");
+            List<UnitOfSearch> articles = deserializer.deserialize(emptyFile);
+            assertTrue(articles.isEmpty());
+
+            // gli viene dato un file che non ha articoli al suo interno, non c'è errore semplicemente non deserializza nulla
+            File noArticles = new File("src/test/resources/DeserializationTest/deserializersTest/jsonTest/noArticles.json");
+            articles = deserializer.deserialize(noArticles);
+            assertTrue(articles.isEmpty());
+        });
+
+
+    }
 
 
     private static List<Article> createTestArticles1() {

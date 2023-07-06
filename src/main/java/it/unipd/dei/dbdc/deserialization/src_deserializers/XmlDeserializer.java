@@ -7,23 +7,49 @@ import it.unipd.dei.dbdc.deserialization.interfaces.Deserializer;
 
 import java.io.File;
 import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+
 
 import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
-import it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIManager;
 
-// ricodati che questa funziona solo con xml costruiti da noi ( comunque xml semplici )
+
+/**
+ * This class implements the interface: {@link Deserializer}.
+ * It is used to deserialize CSV files into a list of {@link UnitOfSearch} objects.
+ *
+ */
 public class XmlDeserializer implements Deserializer {
 
+    /**
+     * Deserializes an XML file into a list of {@link UnitOfSearch}.
+     *
+     * @param xmlFile The XML file to deserialize.
+     * @return The list of {@link UnitOfSearch} objects obtained from deserialization.
+     * @throws IOException If an I/O error occurs during the deserialization process. //TODO fix
+     * @throws IllegalArgumentException If the provided XML file is null or does not exist.
+     */
     @Override
     public List<UnitOfSearch> deserialize(File xmlFile) throws IOException {
 
+        if(xmlFile == null){
+            throw new IllegalArgumentException("The xmlFile file cannot be null");
+        }
+        if (!xmlFile.exists()) {
+            throw new IllegalArgumentException("The XML file does not exist");
+        }
+        List<Article> articles;
         XmlMapper xmlMapper = new XmlMapper();
-        List<Article> articles = xmlMapper.readValue(xmlFile, new TypeReference<List<Article>>() {}); // FIXME: funziona, ma non ha senso
-        return new ArrayList<>(articles);
 
+        try {
+            articles = xmlMapper.readValue(xmlFile, new TypeReference<List<Article>>() {}); // FIXME: funziona, ma non ha senso
+
+        } catch (IOException e){
+            System.out.print("XML file with wrong structure. " );
+            throw new IOException(e);
+        }
+        return new ArrayList<>(articles);
 
     }
 

@@ -1,0 +1,38 @@
+<object>
+  <data>
+    <sector>Articles</sector>
+    <type>science</type>
+    <item>
+      <response>
+        <id>ID 2</id>
+        <url>URL 2</url>
+        <title>Title 2</title>
+        <body>Body 2</body>
+        <date>Date 2</date>
+        <sourceSet>sourceSet 2</sourceSet>
+        <source>Source 2</source>
+      </response>
+    </item>
+    <item>
+      <response>
+        <id>ID 2</id>
+        <url>URL 2</url>
+        <title>Title 2</title>
+        <body>Body 2</body>
+        <date>Date 2</date>
+        <sourceSet>sourceSet 2</sourceSet>
+        <source>Source 2</source>
+      </response>
+      <response3>
+        <id>ID 2</id>
+        <url>URL 2</url>
+        <title>Title 2</title>
+        <body>Body 2</body>
+        <date>Date 2</date>
+        <sourceSet>sourceSet 2</sourceSet>
+        <source>Source 2</source>
+      </response3>
+    </item>
+  </data>
+</object>
+

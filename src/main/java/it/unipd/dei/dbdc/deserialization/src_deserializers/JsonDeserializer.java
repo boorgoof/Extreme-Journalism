@@ -11,28 +11,61 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
+/**
+ * This class implements the interface: {@link DeserializerWithFields}.
+ * It is used to deserialize JSON files into a list of {@link UnitOfSearch} objects.
+ * This class uses the Jackson library.
+ */
 public class JsonDeserializer implements DeserializerWithFields {
 
-    // TODO: mettere i campi giusti
+    /**
+     * An array of {@link String} containing the fields that are taken into account when deserializing the csv file
+     */ //TODO mettere i campi corretti
     private String[] fields = {"id", "webUrl", "headline", "bodyText", "webPublicationDate", "webUrl", "webUrl" };
-    // preferisco usare un campo in più di supporto rispetto alle json properties. (in caso vediamo)
 
+    /**
+     * Provides the fields taken into account during deserialization
+     *
+     * @return An array of {@link String} representing the fields.
+     */
     public String[] getFields() {
         return fields;
     }
 
+    /**
+     * Provides the number of fields taken into account during deserialization
+     *
+     * @return An {@link Integer} representing number of fileds
+     */
     public int numberOfFields(){
         return fields.length;
     }
+
+    /**
+     * sets the new fields to be considered during deserialization
+     */
     public void setFields(String[] newFields) {
         fields = newFields;
     }
 
-    // Adesso accetto che non ci siano campi. Li mette a null
+    /**
+     * The function deserializes a JSON file in {@link List} of {@link UnitOfSearch}
+     * // todo da fare commento
+     *
+     * @param jsonFile The JOSN  file to deserialize into {@link UnitOfSearch}
+     * @return the list of {@link UnitOfSearch} objects obtained from deserialization
+     * @throws IOException If an I/O error occurs during the deserialization process. //TODO FIx commento
+     * @throws IllegalArgumentException if the file does not exist or is not null
+     */
     @Override
     public List<UnitOfSearch> deserialize(File jsonFile) throws IOException {
+
+        if(jsonFile == null){
+            throw new IllegalArgumentException("The JSON file cannot be null");
+        }
+        if (!jsonFile.exists()) {
+            throw new IllegalArgumentException("The JSON file does not exist");
+        }
 
         List<UnitOfSearch> articles = new ArrayList<>();
 
@@ -53,6 +86,12 @@ public class JsonDeserializer implements DeserializerWithFields {
         return articles;
     }
 
+    /**
+     * Parses a JSON node into an {@link Article} object.
+     *
+     * @param node The JSON node to parse.
+     * @return An {@link Article} object obtained from the parsed node.
+     */
     private Article parseNode(JsonNode node) {
 
         Class<Article> myClass = Article.class;
@@ -73,65 +112,3 @@ public class JsonDeserializer implements DeserializerWithFields {
 
 }
 
-
-
-/*
-    public void setFields(String[] newFields) {
-        if( newFields.length == fields.length){
-            fields = newFields;
-        }
-        else throw new IllegalArgumentException("Deve essere fornito un array di dimensione " + fields.length);
-    }*/
-
-// E' come prima non accetta campi mancanti manda errore c'e nullPointerexception
-/*
-@Override
-    public List<Article> deserialize(String filePath) throws IOException {
-
-        List<Article> articles = new ArrayList<>();
-
-        ObjectMapper mapper = new ObjectMapper();
-        JsonNode jsonNode = mapper.readTree(new File(filePath));
-
-        // Trova tutti i nodi che hanno ID dentro (come figlio, quindi sono gli articoli)
-        List<JsonNode> articleParentNodes = jsonNode.findParents(fields[0]);
-
-        for (JsonNode parentNode : articleParentNodes) {
-            Article article = new Article(
-                    parentNode.findValue(fields[0]).asText(),
-                    parentNode.findValue(fields[1]).asText(),
-                    parentNode.findValue(fields[2]).asText(),
-                    parentNode.findValue(fields[3]).asText(),
-                    parentNode.findValue(fields[4]).asText(),
-                    parentNode.findValue(fields[5]).asText()
-            );
-
-            System.out.println(article);
-            articles.add(article);
-
-        }
-
-        return articles;
-}
-*/
-
-
-
-
-// idee di miglioramento. deserializzare in modo dinamico
-/*
-  public void setFields(String[] fields) {
-        Constructor<?>[] constructors = Article.class.getConstructors();
-
-        for (Constructor<?> constructor : constructors) {
-            int numConstructorParams = constructor.getParameterCount();
-
-            if (fields.length == numConstructorParams) {
-                this.fields = fields;
-                return;
-            }
-        }
-
-        throw new IllegalArgumentException("Nessun costruttore di Article corrisponde al numero di campi specificato.");
-    }
-*/

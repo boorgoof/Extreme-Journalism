@@ -68,14 +68,12 @@ public class XmlSerializerTest {
 
         XmlSerializer serializer = new XmlSerializer();
 
-
-        IOException exception1 = assertThrows(IOException.class, () -> serializer.serialize(createTestArticles1(), null));
+        IllegalArgumentException exception1 = assertThrows(IllegalArgumentException.class, () -> serializer.serialize(createTestArticles1(), null));
         System.out.println(exception1.getMessage());
 
-        String filePath = "src/test/resources/SerializationTest/serializersTest/xmlTest/ArticlesError.xml";
-        File xmlFile = new File(filePath);
-        assertDoesNotThrow(() -> serializer.serialize(null, xmlFile));
-
+        File xmlFile = new File("src/test/resources/SerializationTest/serializersTest/xmlTest/ArticlesError.xml");
+        IllegalArgumentException exception2 = assertThrows(IllegalArgumentException.class, () -> serializer.serialize(null, xmlFile));
+        System.out.println(exception2.getMessage());
         
     }
 
@@ -110,5 +108,6 @@ public class XmlSerializerTest {
         articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "","sourceSet 1","Source 1"));
         return articles;
     }
+
 
 }

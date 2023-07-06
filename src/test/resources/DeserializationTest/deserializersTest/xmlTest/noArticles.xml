@@ -1,0 +1,20 @@
+<AnimalList>
+  <Animal>
+    <species>cane</species>
+    <name>Fido</name>
+    <age>10</age>
+    <weight>15</weight>
+  </Animal>
+  <Animal>
+    <species>gatto</species>
+    <name>Lerry il gattino</name>
+    <age>5</age>
+    <weight>8</weight>
+  </Animal>
+  <Animal>
+    <species>topo</species>
+    <name>topo GIGIO</name>
+    <age>2</age>
+    <weight>2.5</weight>
+  </Animal>
+</AnimalList>

@@ -63,15 +63,48 @@ public class CsvDeserializerTest {
         File file = new File(filePath);
         CsvDeserializer deserializer = new CsvDeserializer();
 
-        try {
+
+        assertDoesNotThrow(() -> {
+
             List<UnitOfSearch> articles = deserializer.deserialize(file);
             assertNotNull(articles);
             assertFalse(articles.isEmpty());
             assertEquals(expectedArticles.size(), articles.size());
             assertEquals(expectedArticles, articles);
-        } catch (IOException e) {
-            fail("Errore durante la lettura del file CSV: " + e.getMessage());
-        }
+
+        });
+
+    }
+
+    @Test
+    public void deserialize_particular_cases() {
+
+        CsvDeserializer deserializer = new CsvDeserializer();
+
+        IllegalArgumentException exception1 = assertThrows(IllegalArgumentException.class, () -> deserializer.deserialize( null));
+        System.out.println(exception1.getMessage());
+
+        // gli viene dato un file che non esistente
+        File nonExistentFile = new File("src/test/resources/DeserializationTest/deserializersTest/csvTest/nonExistentFile.csv");
+        IllegalArgumentException exception2 = assertThrows(IllegalArgumentException.class, () -> deserializer.deserialize( nonExistentFile));
+        System.out.println(exception2.getMessage());
+
+
+        assertDoesNotThrow(() -> {
+
+            // file vuoto
+            File emptyFile = new File("src/test/resources/DeserializationTest/deserializersTest/csvTest/emptyArticles.csv");
+            List<UnitOfSearch> articles = deserializer.deserialize(emptyFile);
+            assertTrue(articles.isEmpty());
+
+            // gli viene dato un file che non ha articoli al suo interno semplicemente non deserializza niente
+            File noArticlesFile = new File("src/test/resources/DeserializationTest/deserializersTest/csvTest/noArticles.csv");
+            articles = deserializer.deserialize(noArticlesFile);
+            assertTrue(articles.isEmpty());
+
+        });
+
+
     }
 
 
