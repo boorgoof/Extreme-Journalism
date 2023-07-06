@@ -1,4 +1,4 @@
-﻿Identifier,URL,Title,Body,Date,Source Set,Source
-ID 1,URL 1,,Body 1,Date 1,SourceSet 1,Source 1
-ID 1,URL 1,Title 1,,Date 1,SourceSet 1,Source 1
-ID 1,URL 1,Title 1,Body 1,Date 1,,Source 1
+﻿Identifier,URL,Title,Body,Site,Date,Source Set,Source
+ID 1,URL 1,,Body 1,Site1,Date 1,SourceSet 1,Source 1
+ID 1,URL 1,Title 1,,Site 1,Date 1,SourceSet 1,Source 1
+ID 1,URL 1,Title 1,Body 1,Site 1,Date 1,,Source 1

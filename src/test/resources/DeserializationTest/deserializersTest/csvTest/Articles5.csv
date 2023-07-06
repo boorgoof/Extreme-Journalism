@@ -1,4 +1,4 @@
-﻿URL,Identifier,Body,Source,Date,Title
-URL 1,ID 1,Body 1,Source 1,,
-URL 1,ID 1,,Source 1,,Title 1
-URL 1,,Body 1,Source 1,Date 1,Title 1
+﻿URL,Identifier,Body,Source,Date,Title,Cover
+URL 1,ID 1,Body 1,Source 1,,,cover 1
+URL 1,ID 1,,Source 1,,Title 1,cover 1
+URL 1,,Body 1,Source 1,Date 1,Title 1,cover 1
