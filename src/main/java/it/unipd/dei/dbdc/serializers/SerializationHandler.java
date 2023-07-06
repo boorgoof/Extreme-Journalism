@@ -29,6 +29,7 @@ public class SerializationHandler {
      * @param serializers_properties The file properties specified by the user. If null, the default ones will be used.
      * @throws IOException If the download properties files (the default one and the one specified by the user) are not present or are not correct.
      */
+
     public SerializationHandler(String serializers_properties) throws IOException {
         container = SerializersContainer.getInstance(serializers_properties);
     }
@@ -61,8 +62,6 @@ public class SerializationHandler {
         // if a serializer is actually available for the file then serialization is performed
         serializer.serialize(objects, file);
     }
-
-
 
 }
 

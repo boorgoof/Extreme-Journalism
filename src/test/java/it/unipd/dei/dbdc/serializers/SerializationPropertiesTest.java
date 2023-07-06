@@ -10,16 +10,14 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 /**
- * Class that tests {@link DownloadProperties}.
+ * Class that tests {@link SerializationProperties}.
  */
 public class SerializationPropertiesTest {
-    private static final String serializers_properties = "src/test/resources/SerializationTest/properties/serializers.properties";
-    private static final String nonExistentFile_properties = "src/test/resources/SerializationTest/properties/nonExistentFile.properties";
 
-
-    private static final String empty_serializers_properties = "src/test/resources/SerializationTest/properties/emptySerializers.properties";
-    private static final String false_serializers_properties = "src/test/resources/SerializationTest/properties/falseSerializers.properties";
-    private static final String false_serializers_properties2 = "src/test/resources/SerializationTest/properties/falseSerializers2.properties";
+    /**
+     * Tests {@link SerializationProperties#readSerializersProperties(String)}  with various valid and invalid inputs.
+     *
+     */
     @Test
     void readSerializersProperties() {
 
@@ -34,36 +32,39 @@ public class SerializationPropertiesTest {
 
 
             //Tests with a valid serializers.properties
-            final Map<String, Serializer> serializers;
-            serializers = SerializationProperties.readSerializersProperties(serializers_properties);
+            String serializers_properties = "src/test/resources/SerializationTest/properties/serializers.properties";
+            final Map<String, Serializer> serializers = SerializationProperties.readSerializersProperties(serializers_properties);
             assertEquals(1, serializers.size());
             assertTrue(serializers.get("xml") instanceof XmlSerializer );
-
 
         });
 
         assertDoesNotThrow(() -> {
 
             // test with a non-existing properties file.
-            final Map<String, Serializer> serializers;
-            serializers = SerializationProperties.readSerializersProperties(nonExistentFile_properties);
+            String nonExistentFile_properties = "src/test/resources/SerializationTest/properties/nonExistentFile.properties";
+            Map<String, Serializer> serializers = SerializationProperties.readSerializersProperties(nonExistentFile_properties);
             assertEquals(1, serializers.size());
             assertTrue(serializers.get("xml") instanceof XmlSerializer );
 
             // empty file properties. (no exceptions thrown)
-            final Map<String, Serializer> serializers2;
-            serializers2 = SerializationProperties.readSerializersProperties(empty_serializers_properties);
+            String empty_serializers_properties = "src/test/resources/SerializationTest/properties/emptySerializers.properties";
+            final Map<String, Serializer> serializers2 = SerializationProperties.readSerializersProperties(empty_serializers_properties);
             assertEquals(0, serializers2.size());
         });
 
 
         //Tests with invalid serializers.properties (wrong classes)
-        IOException exception1 = assertThrows(IOException.class, () -> SerializationProperties.readSerializersProperties(false_serializers_properties));
-        System.out.println(exception1.getMessage());
+        String false_serializers_properties = "src/test/resources/SerializationTest/properties/falseSerializers.properties";
+        String messageError1 = "Failed to instantiate the serializer for the format: html";
+        IOException exception1 = assertThrows(IOException.class, () -> SerializationProperties.readSerializersProperties(false_serializers_properties), messageError1);
+
 
         //Tests with invalid serializers.properties (wrong classes)
-        IOException exception2 = assertThrows(IOException.class, () -> SerializationProperties.readSerializersProperties(false_serializers_properties2));
-        System.out.println(exception2.getMessage());
+        String false_serializers_properties2 = "src/test/resources/SerializationTest/properties/falseSerializers2.properties";
+        String messageError2 = "Failed to instantiate the serializer for the format: xml";
+        IOException exception2 = assertThrows(IOException.class, () -> SerializationProperties.readSerializersProperties(false_serializers_properties2), messageError2);
+
 
     }
 }
