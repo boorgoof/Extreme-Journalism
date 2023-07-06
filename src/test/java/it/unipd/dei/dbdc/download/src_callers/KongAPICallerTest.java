@@ -4,7 +4,6 @@ import it.unipd.dei.dbdc.download.DownloadHandlerTest;
 import it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIInfo;
 import it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIManagerTest;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
@@ -13,12 +12,26 @@ import java.util.TreeMap;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@Disabled
-@Order(1)
+/**
+ * Class that tests {@link KongAPICallerTest} by calling approximately 30 times the TheGuardianAPI.
+ * This causes a certain number of requests that is possible to use in a day to be used.
+ */
+@Order(7)
 public class KongAPICallerTest {
 
+    /**
+     * The key for the TheGuardian API. It only takes the one in {@link GuardianAPIManagerTest}.
+     */
     private static final String key = GuardianAPIManagerTest.key;
+
+    /**
+     * The instance of the {@link KongAPICaller}, initialized in {@link KongAPICallerTest#KongAPICaller()}
+     */
     private static KongAPICaller caller;
+
+    /**
+     * Initializes the instance of the {@link KongAPICaller} used in the tests.
+     */
     @BeforeAll
     public static void KongAPICaller()
     {
@@ -26,6 +39,10 @@ public class KongAPICallerTest {
         assertNotNull(caller);
     }
 
+    /**
+     * Tests the {@link KongAPICaller#sendRequest(String, Map, String)} with various valid and invalid inputs.
+     * It calls the TheGuardianAPI and "https://api.publicapis.org/entries".
+     */
     @Test
     public void sendRequest() {
         //TRUE TESTS
@@ -338,17 +355,23 @@ public class KongAPICallerTest {
 
     }
 
+    /**
+     * Tests the {@link KongAPICaller#endRequests()}. There is nothing to test, except if there is any error.
+     */
     @Test
     public void endRequest() {
-        //There is nothing to test, except if there is any error
-        caller.endRequests();
+        assertDoesNotThrow(caller::endRequests);
     }
 
+    /**
+     * Tests the {@link KongAPICaller#equals(Object)}.
+     */
     @Test
     public void equals()
     {
         KongAPICaller c = new KongAPICaller();
         assertTrue(c.equals(caller));
         assertFalse(c.equals(123));
+        assertFalse(c.equals(new DownloadHandlerTest()));
     }
 }

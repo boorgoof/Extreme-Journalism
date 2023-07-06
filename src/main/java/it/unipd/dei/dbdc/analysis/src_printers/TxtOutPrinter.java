@@ -15,13 +15,14 @@ import java.util.List;
  * @see OutPrinter
  */
 public class TxtOutPrinter implements OutPrinter {
+
     /**
      * This is the extension of the file printed by this class.
      *
      */
     private static final String extension = ".txt";
     /**
-     * The function that prints the most important terms into a file.
+     * The function that prints the most important terms into a .txt file.
      *
      * @param max The {@link List} of terms to print, that are already in order.
      * @return The path of the file printed

@@ -8,8 +8,19 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-//Utility class identical to TxtOutPrinter
+/**
+ * Utility class identical to {@link TxtOutPrinter}. It is not tested as its function is in {@link TxtOutPrinterTest}.
+ */
 public class TestPrinter implements OutPrinter {
+
+    /**
+     * The function that prints the most important terms into a file .txt.
+     *
+     * @param max The {@link List} of terms to print, that are already in order.
+     * @return The path of the file printed
+     * @throws IOException If it can't print the file
+     * @throws IllegalArgumentException If the {@link List} of terms to print is empty or null.
+     */
     @Override
     public String outFile(List<OrderedEntryStringInt> max) throws IOException, IllegalArgumentException {
         if (max == null || max.isEmpty())

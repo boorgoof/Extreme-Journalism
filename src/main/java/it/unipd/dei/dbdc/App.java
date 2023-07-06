@@ -27,7 +27,6 @@ public class App
 {
     public static void main(String[] args) {
 
-        args = new String[]{"-da"};
         // Parses the commands given
         CommandLineInterpreter interpreter;
         try {

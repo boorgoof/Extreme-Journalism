@@ -21,6 +21,7 @@ public class PropertiesTools {
      * @param default_properties The name of the default properties file to read if the user's one was not specified or had some exceptions
      * @param out_properties The path to the properties file specified by the user. If it was not specified, null
      * @throws IOException If the default properties file has any error or is missing
+     * @return A {@link Properties} object with the properties inside the out properties, if those are right, or inside the default properties.
      */
     public static Properties getProperties(String default_properties, String out_properties) throws IOException {
         try {
@@ -38,6 +39,7 @@ public class PropertiesTools {
      *
      * @param properties_file The name of the default properties file to read.
      * @throws IOException If the default properties file has any error or is missing, or the parameter is null or empty
+     * @return A {@link Properties} object with the properties inside the default properties, if those are right.
      */
     public static Properties getDefaultProperties(String properties_file) throws IOException
     {
@@ -62,6 +64,7 @@ public class PropertiesTools {
      *
      * @param properties_file The path to the properties file specified by the user.
      * @throws IOException If the specified properties file has any error or is missing, or the parameter is null or empty
+     * @return A {@link Properties} object with the properties inside the out properties, if those are right and the file exists.
      */
     public static Properties getOutProperties(String properties_file) throws IOException
     {

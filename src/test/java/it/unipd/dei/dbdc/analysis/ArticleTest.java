@@ -1,11 +1,20 @@
 package it.unipd.dei.dbdc.analysis;
 
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Class that tests {@link Article}.
+ * It doesn't test setters and getters as they are very simple functions.
+ */
+@Order(7)
 public class ArticleTest {
 
+    /**
+     * Tests the various constructors of {@link Article}.
+     */
     @Test
     public void Article() {
         Article art = new Article("a", "b", "c", "d", "e", "f", "g");
@@ -46,8 +55,9 @@ public class ArticleTest {
         assertThrows(IllegalArgumentException.class, () -> new Article(null));
     }
 
-    //We don't test getters and setters as they are functions
-
+    /**
+     * Tests {@link Article#obtainText()} with even null strings.
+     */
     @Test
     public void obtainText()
     {
@@ -64,6 +74,9 @@ public class ArticleTest {
         assertEquals(" ", article.obtainText());
     }
 
+    /**
+     * Tests of {@link Article#toString()}.
+     */
     @Test
     public void string() {
         String[] params = {"a1", "b1", "c1", "d1", "e1", "f1", "g1"};
@@ -81,6 +94,9 @@ public class ArticleTest {
         assertEquals(expected, article.toString());
     }
 
+    /**
+     * Tests of {@link Article#equals(Object)}.
+     */
     @Test
     public void equals() {
         String[] params = {"a1", "b1", "c1", "d1", "e1", "f1", "g1"};

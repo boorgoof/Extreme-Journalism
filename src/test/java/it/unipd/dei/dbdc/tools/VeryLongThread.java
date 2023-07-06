@@ -1,8 +1,15 @@
 package it.unipd.dei.dbdc.tools;
 
-//Utility class used for the tests
+/**
+ * Utility class that implements {@link Runnable} and sleeps for 70 seconds.
+ */
 public class VeryLongThread implements Runnable {
 
+    /**
+     * Sleeps for 70 seconds.
+     *
+     * @throws IllegalArgumentException If it's interrupted
+     */
     @Override
     public void run() {
         try {

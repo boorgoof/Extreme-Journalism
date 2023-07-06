@@ -1,11 +1,19 @@
 package it.unipd.dei.dbdc.tools;
 
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Class that tests {@link CommandLineInterpreter}.
+ */
+@Order(7)
 public class CommandLineInterpreterTest {
 
+    /**
+     * Tests the defining and parsing of the options, and also the interrogation with various valid or invalid inputs.
+     */
     @Test
     public void CommandLineInterpreter()
     {

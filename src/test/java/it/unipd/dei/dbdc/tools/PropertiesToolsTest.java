@@ -1,13 +1,21 @@
 package it.unipd.dei.dbdc.tools;
 
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Class that tests {@link PropertiesTools}.
+ */
+@Order(7)
 public class PropertiesToolsTest {
 
+    /**
+     * Tests the {@link PropertiesTools#getProperties(String, String)} with various valid or invalid inputs.
+     */
     @Test
     public void getProperties()
     {
@@ -36,6 +44,9 @@ public class PropertiesToolsTest {
         assertThrows(IOException.class, () -> PropertiesTools.getProperties("dese.properties",""));
     }
 
+    /**
+     * Tests the {@link PropertiesTools#getOutProperties(String)} with various valid or invalid inputs.
+     */
     @Test
     public void getOutProperties()
     {
@@ -57,7 +68,9 @@ public class PropertiesToolsTest {
             assertNotNull(PropertiesTools.getOutProperties(path+"download/trueApi.properties"));
             assertNotNull(PropertiesTools.getOutProperties(path+"download/trueApiTest.properties"));
             assertNotNull(PropertiesTools.getOutProperties(path+"download/trueDownload.properties"));
-            //TODO: completa con altre properties di serializers/deserializers
+
+            assertNotNull(PropertiesTools.getOutProperties(path+"DeserializationTest/properties/deserializers.properties"));
+            assertNotNull(PropertiesTools.getOutProperties(path+"SerializationTest/properties/serializers.properties"));
         });
 
         //Test with not existent properties
@@ -66,6 +79,9 @@ public class PropertiesToolsTest {
         assertThrows(IOException.class, () -> PropertiesTools.getOutProperties(""));
     }
 
+    /**
+     * Tests the {@link PropertiesTools#getDefaultProperties(String)} with various valid or invalid inputs.
+     */
     @Test
     public void getDefaultProperties()
     {

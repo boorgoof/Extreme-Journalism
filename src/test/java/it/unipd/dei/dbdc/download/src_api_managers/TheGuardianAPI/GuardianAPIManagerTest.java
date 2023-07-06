@@ -3,7 +3,6 @@ package it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI;
 import it.unipd.dei.dbdc.download.DownloadHandlerTest;
 import it.unipd.dei.dbdc.download.QueryParam;
 import it.unipd.dei.dbdc.download.src_callers.KongAPICaller;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
@@ -12,24 +11,46 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@Disabled
+/**
+ * Class that tests {@link GuardianAPIManager} by calling approximately 21 times the TheGuardianAPI.
+ * This causes a certain number of requests that is possible to use in a day to be used.
+ * This class is tested right after {@link it.unipd.dei.dbdc.tools.ThreadPoolTest}
+ */
 @Order(3)
 public class GuardianAPIManagerTest {
 
+    /**
+     * The key that is used to test the TheGuardianAPI. It should only be put here by the user, as all the other
+     * test classes takes this one. TODO svuota
+     */
     public static String key = "e824cbd7-23a5-4534-a2a0-b6b868dabd98";
+
+    /**
+     * The instance of {@link GuardianAPIManager} used for the tests.
+     */
     private static final GuardianAPIManager manager = new GuardianAPIManager(new KongAPICaller(), "TheGuardianAPI");
+
+    /**
+     * Tests of {@link GuardianAPIManager#getName()}
+     */
     @Test
     public void getName() {
         assertEquals("TheGuardianAPI", manager.getName());
         assertEquals("test", (new GuardianAPIManager(null, "test")).getName());
     }
 
+    /**
+     * Tests of {@link GuardianAPIManager#getFormattedParams()} using {@link GuardianAPIInfo#getFormattedParams()}
+     * The function {@link GuardianAPIInfo#getFormattedParams()} is tested in {@link GuardianAPIInfoTest}
+     */
     @Test
     public void getFormattedParams() {
-        //The function GuardianAPIInfo.getFormattedParams is tested in GuardianAPIInfo
         assertEquals(GuardianAPIInfo.getFormattedParams(), manager.getFormattedParams());
     }
 
+    /**
+     * Tests of {@link GuardianAPIManager#addParams(List)} with valid and invalid inputs.
+     */
     @Test
     public void addParams()
     {
@@ -125,6 +146,10 @@ public class GuardianAPIManagerTest {
         assertThrows(IllegalArgumentException.class, () -> manager.addParams(list));
     }
 
+    /**
+     * Tests of {@link GuardianAPIManager#callAPI(String)}. It calls the TheGuardianAPI approximately 72 times,
+     * as it also implements a stress test.
+     */
     @Test
     public void callAPI() {
         List<QueryParam> list = new ArrayList<>();
@@ -169,7 +194,9 @@ public class GuardianAPIManagerTest {
         assertDoesNotThrow(() -> man.addParams(list));
         assertDoesNotThrow(() -> man.callAPI(DownloadHandlerTest.resources_url+"manager/"));
 
+        //We also change pages to diminish the number of calls made
         list.clear();
+        list.add(new QueryParam("pages", "1"));
         list.add(new QueryParam("page-size", "143"));
         assertDoesNotThrow(() -> man.addParams(list));
         assertDoesNotThrow(() -> man.callAPI(DownloadHandlerTest.resources_url+"manager/"));
@@ -197,6 +224,9 @@ public class GuardianAPIManagerTest {
     }
 
 
+    /**
+     * Tests of {@link GuardianAPIManager#copy()} adding various parameters.
+     */
     @Test
     public void copy()
     {
@@ -291,6 +321,9 @@ public class GuardianAPIManagerTest {
         assertEquals(g3, g2.copy());
     }
 
+    /**
+     * Tests of {@link GuardianAPIManager#equals(Object)} adding various parameters.
+     */
     @Test
     public void equals()
     {

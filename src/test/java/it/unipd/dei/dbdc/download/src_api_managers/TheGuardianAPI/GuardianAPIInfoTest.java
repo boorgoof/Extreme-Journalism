@@ -8,8 +8,20 @@ import java.lang.reflect.Field;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Class that tests {@link GuardianAPIInfo}.
+ */
+@Order(7)
 public class GuardianAPIInfoTest {
+
+    /**
+     * The default URL of the TheGuardianAPI.
+     */
     private final static String defaultURL = "https://content.guardianapis.com/search?";
+
+    /**
+     * The possible fields of the TheGuardianAPI.
+     */
     private final static QueryParam[] possible_fields = {
             new QueryParam("api-key", "MANDATORY: the key to access the API"),
             new QueryParam("page-size","The number of articles to have in a single file .json. Values: 1-200. Default = 200"),
@@ -20,6 +32,10 @@ public class GuardianAPIInfoTest {
             new QueryParam("to-date", "The date to analysis to, in the format yyyy-mm-dd")
     };
 
+    /**
+     * Tests of {@link GuardianAPIInfo#getFormattedParams()}. It uses reflection to access the
+     * length of the spaces to be put after the key.
+     */
     @Test
     public void getFormattedParams()
     {
@@ -59,12 +75,18 @@ public class GuardianAPIInfoTest {
         length.setAccessible(false);
     }
 
+    /**
+     * Tests of {@link GuardianAPIInfo#getDefaultURL()}
+     */
     @Test
     public void getDefaultURL()
     {
         assertEquals(defaultURL, GuardianAPIInfo.getDefaultURL());
     }
 
+    /**
+     * Tests of {@link GuardianAPIInfo#isPresent(String)} with valid and invalid inputs.
+     */
     @Test
     public void isPresent()
     {
