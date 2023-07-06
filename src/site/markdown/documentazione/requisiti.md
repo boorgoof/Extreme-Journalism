@@ -14,6 +14,9 @@ disponibili da diverse sorgenti e di estrarre e visualizzare i termini
 più “importanti” nell’insieme degli articoli scaricati.
 
 ### Sorgenti
+Un file o un insieme di file (ad esempio in formato CSV o JSON) contenente articoli o un servizio da cui scaricarli (ad esempio le API del The Guardian).
+In modo che sia possibile aggiungere una nuova sorgente senza la necessità di apportare un numero elevato di modifiche.
+1000 per da scaricare mediante le API del The Guardian, 1000 dal CSV (sono già 1000 nel file). La query utilizzata per scaricare gli articoli è "nuclear power".
 - File CSV la cui prima riga è l'header, con la lista di attributi/campi
 - [TheGuardianAPI](https://open-platform.theguardian.com/documentation/)
 - Il sistema deve poter supportare nuove sorgenti

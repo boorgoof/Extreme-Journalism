@@ -1,14 +1,26 @@
 package it.unipd.dei.dbdc.tools;
 
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Class that tests {@link GeneralProperties}.
+ */
+@Order(7)
 public class GeneralPropertiesTest {
 
-    public static final String resources_url = PathManagerTest.resources_folder+"generalproperties/";
+    /**
+     * The folder of the resources for the tests.
+     */
+    private static final String resources_url = PathManagerTest.resources_folder+"generalproperties/";
+
+    /**
+     * Tests the reading of the properties with various inputs, all files that are inside the resources' folder.
+     */
     @Test
     public void testTotal(){
         //Test with default properties

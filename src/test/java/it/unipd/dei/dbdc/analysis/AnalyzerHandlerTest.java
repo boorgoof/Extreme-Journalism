@@ -66,7 +66,7 @@ public class AnalyzerHandlerTest {
         //Test the returned output with a simple example
         assertDoesNotThrow( () -> assertEquals("./output/output.txt", AnalyzerHandler.analyze(resources_url+"default.properties", articles, 76, true)));
         assertDoesNotThrow( () -> {
-            String output = TxtOutPrinterTest.readFile(AnalyzerHandler.analyze(resources_url+"default.properties", articles, 6, true));
+            String output = PathManagerTest.readFile(AnalyzerHandler.analyze(resources_url+"default.properties", articles, 6, true));
             assertEquals("energy 5 global 5 good 5 industry 5 nuclear 5 plants 5 ", output);
         });
     }

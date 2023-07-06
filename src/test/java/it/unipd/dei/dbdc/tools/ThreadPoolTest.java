@@ -6,7 +6,6 @@ import it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.CallAPIThread;
 import it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIInfo;
 import it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIManagerTest;
 import it.unipd.dei.dbdc.download.src_callers.KongAPICaller;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
@@ -20,10 +19,15 @@ import java.util.concurrent.Semaphore;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@Order(6)
-@Disabled
+/**
+ * Class that tests {@link ThreadPool}. The order implies it is the last class of parallelism to be tested.
+ */
+@Order(1)
 public class ThreadPoolTest {
 
+    /**
+     * Tries to submit various {@link Runnable} to the class.
+     */
     @Test
     public void submit()
     {
@@ -57,6 +61,10 @@ public class ThreadPoolTest {
         });
     }
 
+    /**
+     * Checks if the shutdown of the {@link ThreadPool} causes any error. This function is really long,
+     * as it uses {@link VeryLongThread} and {@link LongThread}
+     */
     @Test
     public void shutdown()
     {
@@ -69,50 +77,52 @@ public class ThreadPoolTest {
                     future.get();
                 });
 
-        //After many submitted thread
+        int tot = Runtime.getRuntime().availableProcessors()+1;
+
+        //After many submitted thread, more than the processors
         assertDoesNotThrow(() -> {
-            List<Future<?>> l = new ArrayList<>(10);
-            for (int i = 0; i<10; i++) {
+            List<Future<?>> l = new ArrayList<>(tot);
+            for (int i = 0; i<tot; i++) {
                 Future<?> future = ThreadPool.submit(new LongThread());
                 l.add(future);
             }
-            assertEquals(10, l.size());
+            assertEquals(tot, l.size());
             for (Future<?> future : l) {
                 future.get();
             }
             ThreadPool.shutdown();
         });
 
-        //These tests are meant to see if the shutdown of the thread pool gives any error when we try to submit another thread.
-        //It will be done only by using LongThread and VeryLongThread
+        // Shutdown before the get
         assertDoesNotThrow(() -> {
-            List<Future<?>> l = new ArrayList<>(10);
-            for (int i = 0; i<10; i++) {
+            List<Future<?>> l = new ArrayList<>(tot);
+            for (int i = 0; i<tot; i++) {
                 Future<?> future = ThreadPool.submit(new LongThread());
                 l.add(future);
             }
             ThreadPool.shutdown();
-            assertEquals(10, l.size());
+            assertEquals(tot, l.size());
             for (Future<?> future : l) {
                 future.get();
             }
         });
 
+        //Checks if there is an error when we submit a thread after shutdown
         assertDoesNotThrow(() -> {
-            List<Future<?>> l = new ArrayList<>(10);
-            for (int i = 0; i<10; i++) {
+            List<Future<?>> l = new ArrayList<>(tot);
+            for (int i = 0; i<tot; i++) {
                 Future<?> future = ThreadPool.submit(new LongThread());
                 ThreadPool.shutdown();
                 l.add(future);
             }
-            assertEquals(10, l.size());
+            assertEquals(tot, l.size());
             for (Future<?> future : l) {
                 future.get();
             }
         });
 
+        //Test to interrupt the thread pool even if there is a thread still running
         Future<?> future = ThreadPool.submit(new VeryLongThread());
-        //Useful because we want to interrupt the thread pool even if there is a thread still running
         ThreadPool.shutdown();
         assertThrows(ExecutionException.class, future::get);
     }

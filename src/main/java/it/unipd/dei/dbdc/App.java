@@ -53,10 +53,9 @@ public class App
             return;
         }
 
-        // Folder to serialize.
         String folderPath = null;
 
-        // FIRST PHASE: download
+        // 1: download
         if (interpreter.downloadPhase()) {
             System.out.println("Entering the download part...");
             try {
@@ -68,17 +67,15 @@ public class App
                 System.err.println("The program has been terminated because the file "+ DownloadProperties.default_properties+" was not found, or the properties passed by the user were not valid: "+e.getMessage());
                 return;
             }
-
             System.out.println("Exiting the download part...\n");
         }
 
-        // SECOND PHASE: it always happens, as the serialization is always necessary.
+        // 2: it always happens, as the serialization is always necessary.
 
-        // A. DESERIALIZATION from the given format to a List of Objects
+        // 2.1 DESERIALIZATION from the given format to a List of Objects
 
         //Obtains the properties from the command line, if specified
         String path_cli = interpreter.obtainPathOption();
-
         if (path_cli == null && folderPath == null) {
             System.err.println("Error: there is no file to serialize.");
             return;
@@ -87,12 +84,11 @@ public class App
         }
 
         System.out.println("\nEntering the deserialization of "+folderPath+"...");
-
         //Initializes the handler.
         DeserializationHandler deserializersHandler;
         try {
             //Obtains the properties from the command line, if specified, and calls the handler.
-            //TODO: passargli anche interpreter.obtainSetFields()
+            //todo: passargli anche interpreter.obtainSetFields()
             deserializersHandler = new DeserializationHandler(interpreter.obtainDeserProps());
         }
         catch (IOException e)
@@ -101,91 +97,107 @@ public class App
             return;
         }
 
-        //Tries to deserialize the specified folder.
-        List<UnitOfSearch> articles;
-        try{
-             articles = deserializersHandler.deserializeFolder(folderPath);
-        } catch (IOException e){
-            System.err.println("The program has been terminated because there was an error in the deserialization: "+e.getMessage());
+        List<UnitOfSearch> articles = deserialize(deserializersHandler, folderPath);
+        if (articles == null)
+        {
             return;
         }
-
         System.out.println("Exiting the deserialization part...\n");
 
 
-        // B. SERIALIZATION to the List of Objects to the common format
+        // 2.2. SERIALIZATION to the List of Objects to the common format
 
         System.out.println("\nEntering the serialization part...");
+        File serializedFile = serialize(articles, totalProperties.getCommonFormat(), interpreter);
+        if (serializedFile == null)
+        {
+            return;
+        }
+        System.out.println("Exiting the serialization part. You can find the serialized file in "+serializedFile.getPath()+"...\n");
 
+        // 3: analysis
+        if (interpreter.analyzePhase())
+        {
+            analysis(serializedFile, deserializersHandler, interpreter, totalProperties.getWordsCount());
+        }
+        System.out.println("Everything went correctly.\nThank you for choosing our application, we hope to see you soon.");
+    }
 
-        // Ho modificato da filepath a file direttamente cosi le eccezioni sono migliori
+    private static List<UnitOfSearch> deserialize(DeserializationHandler deserializersHandler, String folderPath)
+    {
+        //Tries to deserialize the specified folder.
+        List<UnitOfSearch> articles;
+        try{
+            articles = deserializersHandler.deserializeFolder(folderPath);
+        } catch (IOException e){
+            System.err.println("The program has been terminated because there was an error in the deserialization: "+e.getMessage());
+            return null;
+        }
+        return articles;
+    }
+
+    public static File serialize(List<UnitOfSearch> articles, String common_format, CommandLineInterpreter interpreter)
+    {
         //Path of the serialized file
-        String filePath;
         File serializedFile;
         try {
-            filePath = PathManager.getSerializedFile(totalProperties.getCommonFormat());
-            serializedFile = new File(filePath);
+            serializedFile = new File(PathManager.getSerializedFile(common_format));
         }
         catch (IOException e)
         {
             System.err.println("Error: it was not possible to create the serialized file.");
-            return;
+            return null;
         }
 
         try {
             //Obtains the properties from the command line, if specified, and calls the handler.
             SerializationHandler serializersHandler = new SerializationHandler(interpreter.obtainSerProps());
-
             serializersHandler.serializeObjects(articles, serializedFile);
         } catch (IOException e) {
             System.err.println("Error during the serialization: "+e.getMessage());
-            return;
+            return null;
         }
-
-
-        System.out.println("Exiting the serialization part. You can find the serialized file in "+filePath+"...\n");
-
-        // THIRD PHASE: analysis
-        if (interpreter.analyzePhase())
-        {
-            // A. DESERIALIZATION from common_format to a list of Objects
-            System.out.println("\nEntering the deserialization of "+filePath+"...");
-
-            try {
-                File commonFormatFile = new File(filePath);
-                articles = deserializersHandler.deserializeFile(commonFormatFile);
-            }
-            catch (IOException e) {
-                System.err.println("Error during the deserialization of the common format: "+e.getMessage());
-                return;
-            }
-            System.out.println("Exiting the deserialization part...\n");
-
-            // B. ANALYZE the Objects to obtain the most important words
-
-            System.out.println("\nEntering the analysis part...");
-
-            //Obtains the properties from the command line, if specified.
-            int count = interpreter.obtainNumberOption();
-            if (count <= 0)
-            {
-                count = totalProperties.getWordsCount();
-            }
-
-            String out_file;
-            try {
-                //Obtains the properties from the command line, if specified, and calls the handler.
-                out_file = AnalyzerHandler.analyze(interpreter.obtainAnalyzeProps(), articles, count, interpreter.obtainStopWords());
-            } catch (IOException | IllegalArgumentException e) {
-                System.err.println("The program has been terminated for an error in the analysis: "+e.getMessage());
-                return;
-            }
-            System.out.println("Exiting the analysis part. You can find the resulting file in"+out_file+"\n");
-
-        }
-        System.out.println("Everything went correctly.\nThank you for choosing our application, we hope to see you soon.");
+        return serializedFile;
     }
 
+    public static int analysis(File serializedFile, DeserializationHandler deserializersHandler, CommandLineInterpreter interpreter, int properties_word_count)
+    {
+        // A. DESERIALIZATION from common_format to a list of Objects
+        System.out.println("\nEntering the deserialization of "+serializedFile.getPath()+"...");
+
+        List<UnitOfSearch> articles;
+        try {
+            articles = deserializersHandler.deserializeFile(serializedFile);
+        }
+        catch (IOException e) {
+            System.err.println("Error during the deserialization of the common format: "+e.getMessage());
+            return -1;
+        }
+
+        System.out.println("Exiting the deserialization part...\n");
+
+        // B. ANALYZE the Objects to obtain the most important words
+
+        System.out.println("\nEntering the analysis part...");
+
+        //Obtains the properties from the command line, if specified.
+        int count = interpreter.obtainNumberOption();
+        if (count <= 0)
+        {
+            count = properties_word_count;
+        }
+
+        String out_file;
+        try {
+            //Obtains the properties from the command line, if specified, and calls the handler.
+            out_file = AnalyzerHandler.analyze(interpreter.obtainAnalyzeProps(), articles, count, interpreter.obtainStopWords());
+        } catch (IOException | IllegalArgumentException e) {
+            System.err.println("The program has been terminated for an error in the analysis: "+e.getMessage());
+            return -1;
+        }
+        System.out.println("Exiting the analysis part. You can find the resulting file in"+out_file+"\n");
+        return 0;
+    }
 }
 
 

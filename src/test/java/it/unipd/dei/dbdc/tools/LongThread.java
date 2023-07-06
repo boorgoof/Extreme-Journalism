@@ -1,10 +1,15 @@
 package it.unipd.dei.dbdc.tools;
 
-import java.util.Timer;
-
-//Utility class used for the tests
+/**
+ * Utility class that implements {@link Runnable} and sleeps for 1 second.
+ */
 public class LongThread implements Runnable {
 
+    /**
+     * Sleeps for 1 second.
+     *
+     * @throws IllegalArgumentException If it's interrupted
+     */
     @Override
     public void run() {
         try {
