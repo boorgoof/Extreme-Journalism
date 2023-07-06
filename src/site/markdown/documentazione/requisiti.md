@@ -32,7 +32,7 @@ In modo che sia possibile aggiungere una nuova sorgente senza la necessità di a
   al numero di articoli in cui appare. Se ci sono pareggi, viene usato l'ordine alfabetico.
 - Estrarre i 50 termini con maggior peso e memorizzarli in un file di
   testo (txt), dove ciascuna riga deve essere nel formato:
-  “<termine> <peso>”
+  “termine peso”
 - Per estrarre i termini ed il loro peso (numero di documenti in cui appare),
   è necessario partire dai file in cui gli articoli sono memorizzati
 - Il sistema deve poter supportare nuove strutture per memorizzare ed
