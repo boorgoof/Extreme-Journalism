@@ -15,11 +15,29 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@Order(5)
+/**
+ * The class that tests {@link MapSplitAnalyzer} and {@link PriorityQueueSplitAnalyzer}.
+ * The first class is the one used in the program, the second one is tested at the beginning and then is
+ * used for the tests of the first class with many articles.
+ * It is tested after {@link it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIManagerTest}.
+ */
+@Order(4)
 public class MapSplitAnalyzerTest {
 
+    /**
+     * The instance of {@link MapSplitAnalyzer} to test.
+     */
     private static final Analyzer toTest = new MapSplitAnalyzer();
+
+    /**
+     * The instance of {@link PriorityQueueSplitAnalyzer} to test.
+     */
     private static final Analyzer toCheck = new PriorityQueueSplitAnalyzer();
+
+    /**
+     * Tests of {@link MapSplitAnalyzer#mostPresent(List, int, Set)} and {@link PriorityQueueSplitAnalyzer#mostPresent(List, int, Set)}.
+     * Firstly we test both with inputs that are easy to process by hand, then we use the second one to test the first one.
+     */
     @Test
     public void mostPresent()
     {

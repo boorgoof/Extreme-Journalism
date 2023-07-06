@@ -11,7 +11,15 @@ import java.io.IOException;
 import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * Class that tests {@link DownloadProperties}.
+ */
+@Order(7)
 public class DownloadPropertiesTest {
+    /**
+     * Tests {@link DownloadProperties#readProperties(String)} with various valid and invalid inputs.
+     */
     @Test
     public void readProperties()
     {

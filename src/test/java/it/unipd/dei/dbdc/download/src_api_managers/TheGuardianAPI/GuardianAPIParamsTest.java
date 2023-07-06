@@ -13,8 +13,19 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Class that tests {@link GuardianAPIParams} and gets the resulting parameters added through reflection.
+ */
+@Order(7)
 public class GuardianAPIParamsTest {
-    public static Field objectFields;
+    /**
+     * The {@link Field} of {@link GuardianAPIParams} that has the parameters added.
+     */
+    private static Field objectFields;
+
+    /**
+     * Uses the reflection to set the {@link Field} of {@link GuardianAPIParams} that has the parameters added as accessible.
+     */
     @BeforeAll
     public static void setAccessible() {
         try {
@@ -25,6 +36,9 @@ public class GuardianAPIParamsTest {
         objectFields.setAccessible(true);
     }
 
+    /**
+     * Tests of {@link GuardianAPIParams#GuardianAPIParams(GuardianAPIParams)} to check if it copies the object.
+     */
     @Test
     public void copy()
     {
@@ -43,6 +57,9 @@ public class GuardianAPIParamsTest {
         assertEquals(par1, new GuardianAPIParams(par1));
     }
 
+    /**
+     * Tests of {@link GuardianAPIParams#equals(Object)}
+     */
     @Test
     public void equals()
     {
@@ -79,6 +96,10 @@ public class GuardianAPIParamsTest {
         assertFalse(par.equals(par1));
     }
 
+    /**
+     * Tests of {@link GuardianAPIParams#addParam(QueryParam)} with valid and invalid inputs.
+     * This also tests the function that checks the correctness of the dates.
+     */
     @Test
     public void addParam()
     {
@@ -174,6 +195,9 @@ public class GuardianAPIParamsTest {
         assertThrows(IllegalArgumentException.class, () -> finalTester.addParam(null));
     }
 
+    /**
+     * Tests {@link GuardianAPIParams#getParams()} with valid and invalid {@link GuardianAPIParams}.
+     */
     @Test
     public void getParams() {
         GuardianAPIParams tester = new GuardianAPIParams();
@@ -237,6 +261,9 @@ public class GuardianAPIParamsTest {
         assertEquals(expected, tester.getParams());
     }
 
+    /**
+     * Uses the reflection to set the {@link Field} of {@link GuardianAPIParams} that has the parameters added as not accessible.
+     */
     @AfterAll
     public static void setInaccessible() {
         objectFields.setAccessible(false);

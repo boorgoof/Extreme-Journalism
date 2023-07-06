@@ -39,7 +39,7 @@ public class AnalyzerHandler {
         Set<String> banned = null;
         if (stop_words)
         {
-            banned = bannedArray();
+            banned = bannedSet();
         }
         List<OrderedEntryStringInt> max = analyzer.mostPresent(articles, tot_words, banned);
 
@@ -52,9 +52,8 @@ public class AnalyzerHandler {
      *
      * @return A {@link Set} representing the terms that are banned. It's null if the file is missing or there is an error in it.
      */
-    private static Set<String> bannedArray()
+    private static Set<String> bannedSet()
     {
-        //TODO: prendere stop words da fuori
         HashSet<String> banned = null;
         try (InputStream file = Thread.currentThread().getContextClassLoader().getResourceAsStream(PathManager.getBannedWordsFile()))
         {

@@ -9,9 +9,15 @@ import java.util.concurrent.Semaphore;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@Order(4)
+/**
+ * The class that tests {@link AnalyzerArticleThread}.
+ */
+@Order(7)
 public class AnalyzerArticleThreadTest {
 
+    /**
+     * Tests of {@link AnalyzerArticleThread#run()} with valid and invalid inputs gave to the constructor.
+     */
     @Test
     public void run()
     {

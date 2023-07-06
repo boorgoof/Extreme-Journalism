@@ -31,6 +31,7 @@ Repository del progetto finale di "Elementi di Ingegneria del Software".
 Per installare il progetto basta posizionare la propria chiave per la theGuardian API nei seguenti file:
 - `src/test/resources/trueApi.properties` (in api-key)
 - `src/test/resources/trueApiTest.properties` (in api-key)
+- `src/test/java/system_tests/api.properties` (in api-key)
 - `src/test/java/download/src_api_managers/TheGuardianAPI/GuardianAPIManager` (come una stringa, in key)
 
 A quel punto si può digitare da riga di comando:

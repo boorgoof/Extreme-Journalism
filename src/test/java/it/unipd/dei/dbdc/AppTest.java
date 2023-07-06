@@ -10,7 +10,8 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * System tests, that check if everything works fine and the results. It redirects the System.err to
  * a {@link ByteArrayOutputStream} that we can check.
- * It is the last test to be run, as specified in junit-platform.properties
+ * It is the last test to be run, as specified in junit-platform.properties.
+ * It uses functions to redirect the error output and normal output of the system.
  */
 @Order(8)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -26,7 +27,7 @@ public class AppTest
      * It also sets the System.out to a {@link ByteArrayOutputStream} so that we don't see the output during the tests.
      */
     @BeforeEach
-    public void setUpError() {
+    public void setUpErrorOutput() {
         testErr = new ByteArrayOutputStream();
         System.setErr(new PrintStream(testErr));
         System.setOut(new PrintStream(new ByteArrayOutputStream()));
@@ -46,7 +47,7 @@ public class AppTest
      * To restore the System.err and System.out
      */
     @AfterEach
-    public void restoreSystemError() {
+    public void restoreSystemErrorOutput() {
         System.setErr(System.err);
         System.setOut(System.out);
     }
@@ -57,12 +58,14 @@ public class AppTest
     private final static String folder = PathManagerTest.resources_folder+"system_tests/";
 
     /**
+     * This is the first function that is executed.
      * Checks the output of the application if everything goes right. It is done by checking if there are any
      * errors and if the output file is the one we expect.
-     * The check is done on the output.txt file, and not on the serialized.xml file, because otherwise the tests
+     * The check on the serialized.xml file is done only for the ny times articles, on
+     * the other tests the check is done only on the output.txt file, because otherwise the tests
      * would take too long. The assumption this takes is that if the output files are identical, also the
      * serialized ones should be.
-     * The check on the serialized.xml file is done only for the ny times articles.
+     * It uses {@link PathManagerTest#readFile(String)} to read the output file.
      */
     @Order(1)
     @Test
@@ -142,6 +145,7 @@ public class AppTest
     }
 
     /**
+     * This is the second function that is executed.
      * Checks the errors that are thrown when something goes wrong.
      */
     @Order(2)
@@ -167,7 +171,8 @@ public class AppTest
         expected_err += "Error: there is no file to serialize.";
         assertEquals(expected_err, getError());
 
-        //The APIContainer and DeserializersContainer and SerializersContainer have already been initialized, so we can't try to pass illegal properties to them.
+        //The APIContainer and DeserializersContainer and SerializersContainer have already been initialized, so we can't try to pass illegal properties to them (they use the Singleton design pattern).
+
         //Analysis properties not valid
         App.main(new String[]{"-a", "-path", folder+"nytimes_articles_v2", "-anapf", PathManagerTest.resources_folder + "download/trueApiTest.properties"});
         expected_err += "The program has been terminated for an error in the analysis: There is no class with the name null";

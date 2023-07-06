@@ -1,6 +1,7 @@
 package it.unipd.dei.dbdc.analysis.src_printers;
 
 import it.unipd.dei.dbdc.analysis.OrderedEntryStringInt;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -9,7 +10,16 @@ import it.unipd.dei.dbdc.tools.PathManagerTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Class that tests {@link TxtOutPrinter}. It also uses {@link PathManagerTest#readFile(String)} to check the printed files.
+ */
+@Order(7)
 public class TxtOutPrinterTest {
+
+    /**
+     * Tests of {@link TxtOutPrinter#outFile(List)}.
+     * It uses {@link PathManagerTest#readFile(String)} to check the printed files.
+     */
     @Test
     public void outFile()
     {

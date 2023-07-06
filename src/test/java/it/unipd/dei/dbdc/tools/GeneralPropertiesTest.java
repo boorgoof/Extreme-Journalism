@@ -20,6 +20,7 @@ public class GeneralPropertiesTest {
 
     /**
      * Tests the reading of the properties with various inputs, all files that are inside the resources' folder.
+     * The tests are done with various valid or invalid inputs
      */
     @Test
     public void testTotal(){

@@ -16,8 +16,18 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Class that tests {@link APIProperties}.
+ * As this class is one of the last to be processed, the {@link APIContainer} has already been initialized, so
+ * it should not throw any {@link java.io.IOException}
+ */
+@Order(7)
 public class APIPropertiesTest {
 
+    /**
+     * Tests the {@link APIProperties#readProperties(String, String)} with various valid and invalid inputs.
+     * It uses reflection to access the parameters specified for the {@link GuardianAPIManager} initialized.
+     */
     @Test
     public void readAPIProperties()
     {
@@ -54,6 +64,7 @@ public class APIPropertiesTest {
         //Takes the manager returned and reads its parameters. We check with two different files
         try {
             //The container is initialized with trueDownload.properties by all the test classes that use it
+            //This is done only if we want to test this class alone.
             manager = APIProperties.readProperties(DownloadHandlerTest.resources_url+"trueApiTest.properties", DownloadHandlerTest.resources_url + "trueDownload.properties");
             TestManager t = (TestManager) manager;
             GuardianAPIParams par = t.params;

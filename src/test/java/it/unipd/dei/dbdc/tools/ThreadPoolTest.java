@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * Class that tests {@link ThreadPool}. The order implies it is the last class of parallelism to be tested.
  */
-@Order(1)
+@Order(2)
 public class ThreadPoolTest {
 
     /**
