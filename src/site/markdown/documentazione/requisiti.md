@@ -1,4 +1,5 @@
 # DOCUMENTO DEI REQUISITI
+Requisiti d'utente: sono ad alto livello
 ## Requisiti di sistema
 * Linguaggio: Java 8 (opzionale, se usata una versione diversa specificarne il motivo)
 * Commentato in modo da poter utilizzare javadoc
