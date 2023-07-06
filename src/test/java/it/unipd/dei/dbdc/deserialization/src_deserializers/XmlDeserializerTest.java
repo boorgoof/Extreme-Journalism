@@ -18,23 +18,37 @@ import java.util.List;
 import java.util.stream.Stream;
 
 
-@Disabled
+/**
+ * Class that tests {@link XmlArticleDeserializer}.
+ */
 public class XmlDeserializerTest {
 
-    private static Stream<Arguments> testParameters() {
+    /**
+     * Several parameters with which to test the function {@link XmlDeserializerTest#deserialize(List, String)} .
+     * The different test cases are defined by:
+     * {@link XmlDeserializerTest#createTestArticles1()},
+     * {@link XmlDeserializerTest#createTestArticles2()},
+     * {@link XmlDeserializerTest#createTestArticles3()},
+     * {@link XmlDeserializerTest#createTestArticles4()},
+     * {@link XmlDeserializerTest#createTestArticles5()},
+     *
+     */
+    private static Stream<Arguments> deserializeParameters() {
         return Stream.of(
                 Arguments.of(createTestArticles1(), "src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles1.xml"),
                 Arguments.of(createTestArticles2(), "src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles2.xml"),
                 Arguments.of(createTestArticles3(), "src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles3.xml"),
                 Arguments.of(createTestArticles4(), "src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles4.xml"),
-                Arguments.of(createTestArticles5(), "src/test/resources/SerializationTest/serializersTest/xmlTest/Articles5.xml"),
-                Arguments.of(createTestArticles6(), "src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles6.xml")
+                Arguments.of(createTestArticles5(), "src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles5.xml")
 
         );
     }
-
+    /**
+     * Tests {@link XmlArticleDeserializer#deserialize(File)}  with different parameters defined by {@link XmlDeserializerTest#deserializeParameters()}
+     *
+     */
     @ParameterizedTest
-    @MethodSource("testParameters")
+    @MethodSource("deserializeParameters")
     public void deserialize(List<Article> expectedArticles, String filePath) {
         XmlArticleDeserializer deserializer = new XmlArticleDeserializer();
 
@@ -51,7 +65,11 @@ public class XmlDeserializerTest {
 
     }
 
-
+    /**
+     * This utility function creates articles for testing {@link XmlArticleDeserializer#deserialize(File)}.
+     *
+     * @return list of {@link Article}. Three Article objects with all fields initialized
+     */
     private static List<Article> createTestArticles1() {
         List<Article> articles = new ArrayList<>();
         articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1", "sourceSet 1","Source 1"));
@@ -60,6 +78,13 @@ public class XmlDeserializerTest {
         return articles;
     }
 
+    /**
+     * This utility function creates articles for testing {@link XmlArticleDeserializer#deserialize(File)}.
+     *
+     * @return list of {@link Article}. Three Article objects with all fields null.
+     *         There are no articles in the XML file (all tags associated with fields of an Article object are missing)
+     *         The basic structure of the file is still present.
+     */
     private static List<Article> createTestArticles2() {
         List<Article> articles = new ArrayList<>();
         articles.add(new Article(null, null,null,null,null,null, null));
@@ -68,7 +93,11 @@ public class XmlDeserializerTest {
         return articles;
     }
 
-
+    /**
+     * This utility function creates articles for testing {@link XmlArticleDeserializer#deserialize(File)}.
+     *
+     * @return list of {@link Article}. Three Article objects with some fields null. Some tags are missing in the XML file
+     */
     private static List<Article> createTestArticles3() {
         List<Article> articles = new ArrayList<>();
         articles.add(new Article("ID 1", null, "Title 1", "Body 1", "Date 1","sourceSet 1",null));
@@ -77,7 +106,12 @@ public class XmlDeserializerTest {
         return articles;
     }
 
-
+    /**
+     * This utility function creates articles for testing {@link XmlArticleDeserializer#deserialize(File)}.
+     *
+     * @return list of {@link Article}. Three Article objects with some fields initialized and others initialized with an empty {@link String}
+     *         Fields are initialized to an empty {@link String} if the tags are present in the xml file but nothing is written inside
+     */
     private static List<Article> createTestArticles4() {
         List<Article> articles = new ArrayList<>();
         articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1","",""));
@@ -86,14 +120,13 @@ public class XmlDeserializerTest {
         return articles;
     }
 
-    private static List<UnitOfSearch> createTestArticles5() {
-        List<UnitOfSearch> articles = new ArrayList<>();
-        articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1", "sourceSet 1", "Source 1"));
-        articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1", "sourceSet 1", "Source 1"));
-        articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1", "sourceSet 1", "Source 1"));
-        return articles;
-    }
-    private static List<Article> createTestArticles6() {
+
+    /**
+     * This utility function creates articles for testing {@link XmlArticleDeserializer#deserialize(File)}.
+     *
+     * @return list of {@link Article}. Three Article objects with all fields initialized. The file has tags in a different order than the case in {@link XmlDeserializerTest#createTestArticles1()}
+     */
+    private static List<Article> createTestArticles5() {
         List<Article> articles = new ArrayList<>();
         articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1", "sourceSet 1","Source 1"));
         articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1","sourceSet 1","Source 1"));
@@ -109,51 +142,49 @@ public class XmlDeserializerTest {
         return articles;
     }
 
-
+    /**
+     * Tests {@link XmlArticleDeserializer#deserialize(File)} in particular cases
+     *
+     */
     @Test
     public void deserialize_particular_cases() {
 
         XmlArticleDeserializer deserializer = new XmlArticleDeserializer();
-
+        // null is passed as input
         IllegalArgumentException exception1 = assertThrows(IllegalArgumentException.class, () -> deserializer.deserialize( null));
         System.out.println(exception1.getMessage());
 
-        // gli viene dato un file che non esistente
+        // Input file does not exist
         File nonExistentFile = new File("src/test/resources/DeserializationTest/deserializersTest/csvTest/nonExistentFile.xml");
         IllegalArgumentException exception2 = assertThrows(IllegalArgumentException.class, () -> deserializer.deserialize( nonExistentFile));
         System.out.println(exception2.getMessage());
 
-
+        // Deserializing an empty XML file
         File emptyFile = new File("src/test/resources/DeserializationTest/deserializersTest/xmlTest/emptyArticles.xml");
         IOException exception3 = assertThrows(IOException.class, () -> deserializer.deserialize((emptyFile)));
         System.out.println(exception3.getMessage());
 
+        // Deserialize an empty XML file but with a correct basic structure
         assertDoesNotThrow(() -> {
             File emptyCorrectFile = new File("src/test/resources/DeserializationTest/deserializersTest/xmlTest/emptyNoError.xml");
             List<Serializable> articles = deserializer.deserialize(emptyCorrectFile);
             assertTrue(articles.isEmpty());
         });
 
-
+        // The file does not specify Article objects
         assertDoesNotThrow(() -> {
             File noArticlesFile = new File("src/test/resources/DeserializationTest/deserializersTest/xmlTest/noArticles.xml");
             List<Serializable> articles = deserializer.deserialize(noArticlesFile);
             assertFalse(articles.isEmpty());
         });
 
-
+        // XML file with a tree structure
         assertDoesNotThrow(() -> {
             File treeFile = new File("src/test/resources/DeserializationTest/deserializersTest/xmlTest/treeArticles.xml");
             List<Serializable> articles = deserializer.deserialize(treeFile);
             assertNotEquals(treeArticles(), articles);
         });
 
-        // file con struttura corretta ma non ci sono articoli
-        assertDoesNotThrow(() -> {
-            File noArticlesFile = new File("src/test/resources/DeserializationTest/deserializersTest/xmlTest/noArticles.xml");
-            List<Serializable> articles = deserializer.deserialize(noArticlesFile);
-            assertFalse(articles.isEmpty());
-        });
     }
 
 }

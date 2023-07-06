@@ -16,7 +16,7 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 // HANDLER per mdoificare i fields devo mettere container public
-@Disabled
+
 public class DeserializationHandlerTest {
     private static final String deserializers_properties = "src/test/resources/DeserializationTest/properties/deserializers.properties";
     private static Field cont_field;

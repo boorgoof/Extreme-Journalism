@@ -93,7 +93,7 @@ public class XmlSerializerTest {
 
     }
     /**
-     * The function creates articles for testing {@link XmlSerializer#serialize(List, File)}.
+     * This utility function creates articles for testing {@link XmlSerializer#serialize(List, File)}.
      *
      * @return list of {@link Serializable} objects that are instances of {@link Article} to serialize. Three Article objects with all fields initialized
      */
@@ -105,7 +105,7 @@ public class XmlSerializerTest {
         return articles;
     }
     /**
-     * The function creates articles for testing {@link XmlSerializer#serialize(List, File)}
+     * This utility function creates articles for testing {@link XmlSerializer#serialize(List, File)}
      *
      * @return list of {@link Serializable} objects that are instances of {@link Article} to serialize.
      *         Three Article objects with all fields initialized
@@ -118,7 +118,7 @@ public class XmlSerializerTest {
         return articles;
     }
     /**
-     * The function creates articles for testing {@link XmlSerializer#serialize(List, File)}
+     * This utility function creates articles for testing {@link XmlSerializer#serialize(List, File)}
      *
      * @return list of {@link Serializable} objects that are instances of {@link Article} to serialize.
      *         Three Article objects with all fields initialized with an empty {@link String}
@@ -131,7 +131,7 @@ public class XmlSerializerTest {
         return articles;
     }
     /**
-     * The function creates articles for testing {@link XmlSerializer#serialize(List, File)}
+     * This utility function creates articles for testing {@link XmlSerializer#serialize(List, File)}
      *
      * @return list of {@link Serializable} objects that are instances of {@link Article} to serialize.
      *         Three Article objects with some fields initialized and others initialized with an empty {@link String}

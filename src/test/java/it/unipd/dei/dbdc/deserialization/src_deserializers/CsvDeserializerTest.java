@@ -1,6 +1,9 @@
 package it.unipd.dei.dbdc.deserialization.src_deserializers;
 
 import it.unipd.dei.dbdc.analysis.Article;
+import it.unipd.dei.dbdc.deserialization.DeserializationProperties;
+import it.unipd.dei.dbdc.serializers.src_serializers.XmlSerializer;
+import it.unipd.dei.dbdc.serializers.src_serializers.XmlSerializerTest;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -11,6 +14,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 
 
 import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,10 +22,16 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@Disabled
+/**
+ * Class that tests {@link CsvArticleDeserializer}.
+ */
 
 public class CsvDeserializerTest {
 
+    /**
+     * Tests {@link CsvArticleDeserializer#getFields()}
+     *
+     */
     @Test
     public void getFields() {
 
@@ -33,6 +43,10 @@ public class CsvDeserializerTest {
         assertArrayEquals(expectedFields, fields);
     }
 
+    /**
+     * Tests {@link CsvArticleDeserializer#setFields(String[])}  with various valid and invalid inputs.
+     *
+     */
     @Test
     public void setFields() {
 
@@ -42,17 +56,41 @@ public class CsvDeserializerTest {
         deserializer.setFields(newFields);
         assertArrayEquals(newFields, deserializer.getFields());
 
-        String[] newFields2 = {"ID"};
+        // It is possible to provide only one field to be taken into account for deserization, but the other values in the array are empty strings
+        String[] newFields2 = {"Identifier", "", "", "", "","",""};
         deserializer.setFields(newFields2);
         assertArrayEquals(newFields2, deserializer.getFields());
+        // to check the real correctness
+        assertDoesNotThrow(() -> {
 
+            List<Serializable> articles = deserializer.deserialize(new File("src/test/resources/DeserializationTest/deserializersTest/csvTest/Articles1.csv"));
+            assertEquals(createTestArticles6(), articles);
+
+        });
+
+        // --Cases where exceptions are thrown--
+
+        // More fields are provided than defined by the Article class
         String[] newFields3 = {"ID", "Link", "Titolo", "Testo", "Data", "Fonte", "Set di fonti", "cover"};
-        String errorMessage = "You cannot insert an array with more fields than those declared in the Article class";
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> deserializer.setFields(newFields3), errorMessage);
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> deserializer.setFields(newFields3));
+
+        //Fewer fields are provided than those defined by the Article class
+        String[] newFields4 = {"ID"};
+        IllegalArgumentException exception2 = assertThrows(IllegalArgumentException.class, () -> deserializer.setFields(newFields4));
 
     }
 
-    private static Stream<Arguments> testParameters() {
+    /**
+     * Several parameters with which to test the function {@link XmlDeserializerTest#deserialize(List, String)} .
+     * The different test cases are defined by:
+     * {@link CsvDeserializerTest#createTestArticles1()},
+     * {@link CsvDeserializerTest#createTestArticles2()},
+     * {@link CsvDeserializerTest#createTestArticles3()},
+     * {@link CsvDeserializerTest#createTestArticles4()},
+     * {@link CsvDeserializerTest#createTestArticles5()},
+     *
+     */
+    private static Stream<Arguments> deserializeParameters() {
         return Stream.of(
                 Arguments.of(createTestArticles1(), "src/test/resources/DeserializationTest/deserializersTest/csvTest/Articles1.csv"),
                 Arguments.of(createTestArticles2(), "src/test/resources/DeserializationTest/deserializersTest/csvTest/Articles2.csv"),
@@ -62,10 +100,12 @@ public class CsvDeserializerTest {
         );
     }
 
-
-
+    /**
+     * Tests {@link CsvArticleDeserializer#deserialize(File)}  with different parameters defined by {@link CsvDeserializerTest#deserializeParameters()}
+     *
+     */
     @ParameterizedTest
-    @MethodSource("testParameters")
+    @MethodSource("deserializeParameters")
     public void deserialize(List<Article> expectedArticles, String filePath) {
         File file = new File(filePath);
         CsvArticleDeserializer deserializer = new CsvArticleDeserializer();
@@ -84,15 +124,20 @@ public class CsvDeserializerTest {
 
     }
 
+    /**
+     * Tests {@link CsvArticleDeserializer#deserialize(File)} in particular cases
+     *
+     */
     @Test
     public void deserialize_particular_cases() {
 
         CsvArticleDeserializer deserializer = new CsvArticleDeserializer();
 
+        // null is passed as input
         IllegalArgumentException exception1 = assertThrows(IllegalArgumentException.class, () -> deserializer.deserialize( null));
         System.out.println(exception1.getMessage());
 
-        // gli viene dato un file che non esistente
+        // Input file does not exist
         File nonExistentFile = new File("src/test/resources/DeserializationTest/deserializersTest/csvTest/nonExistentFile.csv");
         IllegalArgumentException exception2 = assertThrows(IllegalArgumentException.class, () -> deserializer.deserialize( nonExistentFile));
         System.out.println(exception2.getMessage());
@@ -100,24 +145,25 @@ public class CsvDeserializerTest {
 
         assertDoesNotThrow(() -> {
 
-            // file vuoto
+            // Deserializing an empty CSV file
             File emptyFile = new File("src/test/resources/DeserializationTest/deserializersTest/csvTest/emptyArticles.csv");
             List<Serializable> articles = deserializer.deserialize(emptyFile);
             assertTrue(articles.isEmpty());
 
-            // gli viene dato un file che non ha articoli al suo interno semplicemente non deserializza niente
+            // The file does not specify Article objects
             File noArticlesFile = new File("src/test/resources/DeserializationTest/deserializersTest/csvTest/noArticles.csv");
             articles = deserializer.deserialize(noArticlesFile);
             assertTrue(articles.isEmpty());
 
         });
 
-
     }
 
-
-
-    // TEST FILE SEMPLICE
+    /**
+     * This utility function creates articles for testing {@link CsvArticleDeserializer#deserialize(File)}.
+     *
+     * @return list of {@link Article}. Three Article objects with all fields initialized
+     */
     private static List<Article> createTestArticles1() {
         List<Article> articles = new ArrayList<>();
         articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1","SourceSet 1","Source 1"));
@@ -126,7 +172,11 @@ public class CsvDeserializerTest {
         return articles;
     }
 
-    // caso in cui alcuni campi non ci sono
+    /**
+     * This utility function creates articles for testing {@link CsvArticleDeserializer#deserialize(File)}.
+     *
+     * @return list of {@link Article}. Three Article objects with some fields null (fields associated with null values were not present in the header of the CSV file)
+     */
     private static List<Article> createTestArticles2() {
         List<Article> articles = new ArrayList<>();
         articles.add(new Article("ID 1", null, "Title 1", "Body 1", "Date 1","SourceSet 1",null));
@@ -134,7 +184,13 @@ public class CsvDeserializerTest {
         articles.add(new Article("ID 1", null, "Title 1", "Body 1", "Date 1","SourceSet 1",null));
         return articles;
     }
-
+    /**
+     * This utility function creates articles for testing {@link CsvArticleDeserializer#deserialize(File)}.
+     *
+     * @return list of {@link Article}. Three Article objects with some fields null. In particular, Date is not present in the header
+     *         In the test the fields are in a different order than the one specified by default by {@link CsvArticleDeserializer}
+     *         However, the deserialization is correct
+     */
     private static List<Article> createTestArticles3() {
         List<Article> articles = new ArrayList<>();
         articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", null,"SourceSet 1","Source 1"));
@@ -143,7 +199,12 @@ public class CsvDeserializerTest {
         return articles;
     }
 
-    // Se è presente L'header ma non il valore segna a valore vuoto
+    /**
+     * This utility function creates articles for testing {@link CsvArticleDeserializer#deserialize(File)}.
+     *
+     * @return list of {@link Article}. Three Article objects with some fields initialized and others initialized with an empty {@link String}
+     *         Fields are initialized to an empty {@link String} if they are specified in the file header, that item's record in the csv is empty
+     */
     private static List<Article> createTestArticles4() {
         List<Article> articles = new ArrayList<>();
         articles.add(new Article("ID 1", "URL 1", "", "Body 1", "Date 1","SourceSet 1","Source 1"));
@@ -152,12 +213,30 @@ public class CsvDeserializerTest {
         return articles;
     }
 
-    // caso in cui alcuni campi sono in ordine non consueto, ma comunque consistenti in logica. ci sono dei campi mancanti ( sono accettati comunque con null). Ci sono campi senza header
+    /**
+     * This utility function creates articles for testing {@link CsvArticleDeserializer#deserialize(File)}.
+     *
+     * @return list of {@link Article}. Three Article objects with some fields initialized, some initialized with an empty {@link String} and some initialized with a null value
+     *         The fields of an article object are initialized to null if they are not specified in the header of the CSV file.
+     *         Fields are initialized to an empty {@link String} if they are specified in the file header, that item's record is empty
+     */
     private static List<Article> createTestArticles5() {
         List<Article> articles = new ArrayList<>();
         articles.add(new Article("ID 1", "URL 1", "", "Body 1", "",null,"Source 1"));
         articles.add(new Article("ID 1", "URL 1", "Title 1", "", "",null,"Source 1"));
         articles.add(new Article("", "URL 1", "Title 1", "Body 1", "Date 1",null,"Source 1"));
+        return articles;
+    }
+    /**
+     * This utility function creates articles for testing {@link CsvArticleDeserializer#getFields()}
+     *
+     * @return list of {@link Article}.
+     */
+    private static List<Article> createTestArticles6() {
+        List<Article> articles = new ArrayList<>();
+        articles.add(new Article("ID 1", null, null, null, null,null,null));
+        articles.add(new Article("ID 1", null, null, null, null,null,null));
+        articles.add(new Article("ID 1", null, null, null, null,null,null));
         return articles;
     }
 

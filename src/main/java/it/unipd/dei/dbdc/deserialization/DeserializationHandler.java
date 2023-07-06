@@ -234,7 +234,7 @@ public class DeserializationHandler {
 
 
         System.out.println("The number of fields to enter is : " + numberOfFields );
-
+        System.out.println("If you don't want to enter other fields, enter an empty string");
         for(int i = 0; i < numberOfFields; i++){
             System.out.println("Enter field" + (i+1) + ": ");
             String field = scanner.nextLine();

@@ -56,15 +56,13 @@ public class SerializationPropertiesTest {
 
         //Tests with invalid serializers.properties (wrong classes)
         String false_serializers_properties = "src/test/resources/SerializationTest/properties/falseSerializers.properties";
-        String messageError1 = "Failed to instantiate the serializer for the format: html";
-        IOException exception1 = assertThrows(IOException.class, () -> SerializationProperties.readSerializersProperties(false_serializers_properties), messageError1);
-
+        IOException exception1 = assertThrows(IOException.class, () -> SerializationProperties.readSerializersProperties(false_serializers_properties));
+        System.out.println(exception1.getMessage());
 
         //Tests with invalid serializers.properties (wrong classes)
         String false_serializers_properties2 = "src/test/resources/SerializationTest/properties/falseSerializers2.properties";
-        String messageError2 = "Failed to instantiate the serializer for the format: xml";
-        IOException exception2 = assertThrows(IOException.class, () -> SerializationProperties.readSerializersProperties(false_serializers_properties2), messageError2);
-
+        IOException exception2 = assertThrows(IOException.class, () -> SerializationProperties.readSerializersProperties(false_serializers_properties2));
+        System.out.println(exception2.getMessage());
 
     }
 }

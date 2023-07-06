@@ -1,5 +1,7 @@
 package it.unipd.dei.dbdc.deserialization.src_deserializers;
 import it.unipd.dei.dbdc.analysis.Article;
+import it.unipd.dei.dbdc.deserialization.DeserializersContainer;
+import it.unipd.dei.dbdc.serializers.src_serializers.XmlSerializerTest;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -14,10 +16,15 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@Disabled
-
+/**
+ * Class that tests {@link JsonArticleDeserializer}.
+ */
 public class JsonDeserializerTest {
 
+    /**
+     * Tests {@link JsonArticleDeserializer#getFields()}
+     *
+     */
     @Test
     public void getFields() {
 
@@ -30,24 +37,53 @@ public class JsonDeserializerTest {
         assertArrayEquals(expectedFields, fields);
     }
 
+    /**
+     * Tests {@link JsonArticleDeserializer#setFields(String[])}  with various valid and invalid inputs.
+     *
+     */
     @Test
     public void setFields() {
 
-        String[] newfields = {"ID", "Link", "Titolo", "Testo", "Data", "FonteSet", "Fonte"};
+        String[] newFields = {"id" , "url" , "title" , "body" , "date" , "sourceSet", "source"};
         JsonArticleDeserializer deserializer = new JsonArticleDeserializer();
-        deserializer.setFields(newfields);
-        assertArrayEquals(newfields, deserializer.getFields());
 
-        String[] newfields2 = {"ID", "Link", "Titolo", "Testo", "Data", "Fonte"};
-        deserializer.setFields(newfields2);
-        assertArrayEquals(newfields2, deserializer.getFields());
+        deserializer.setFields(newFields);
+        assertArrayEquals(newFields, deserializer.getFields());
 
-        String[] newFields3 = {"ID", "Link", "Titolo", "Testo", "Data", "Fonte", "Set di fonti", "cover"};
-        String errorMessage = "You cannot insert an array with more fields than those declared in the Article class";
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> deserializer.setFields(newFields3), errorMessage);
+        // It is possible to provide only one field to be taken into account for deserization, but the other values in the array are empty strings
+        String[] newFields2 = {"id", "", "", "", "","",""};
+        deserializer.setFields(newFields2);
+        assertArrayEquals(newFields2, deserializer.getFields());
+        // to check the real correctness
+        assertDoesNotThrow(() -> {
+
+            List<Serializable> articles = deserializer.deserialize(new File("src/test/resources/DeserializationTest/deserializersTest/jsonTest/Articles1.json"));
+            assertEquals(createTestArticles7(), articles);
+
+        });
+
+        // --Cases where exceptions are thrown--
+
+        // More fields are provided than defined by the Article class
+        String[] newFields3 = {"ID", "Link", "Titolo", "Testo", "Data", "sourceSet", "Set ", "cover"};
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> deserializer.setFields(newFields3));
+
+        //Fewer fields are provided than those defined by the Article class
+        String[] newFields4 = {"id"};
+        IllegalArgumentException exception2 = assertThrows(IllegalArgumentException.class, () -> deserializer.setFields(newFields4));
 
     }
-
+    /**
+     * Several parameters with which to test the function {@link XmlSerializerTest#serialize(List, String)}.
+     * The different test cases are defined by:
+     * {@link JsonDeserializerTest#createTestArticles1()},
+     * {@link JsonDeserializerTest#createTestArticles2()},
+     * {@link JsonDeserializerTest#createTestArticles3()},
+     * {@link JsonDeserializerTest#createTestArticles4()},
+     * {@link JsonDeserializerTest#createTestArticles5()},
+     * {@link JsonDeserializerTest#createTestArticles5()}
+     *
+     */
     private static Stream<Arguments> deserializeParameters() {
         return Stream.of(
                 Arguments.of(createTestArticles1(), "src/test/resources/DeserializationTest/deserializersTest/jsonTest/Articles1.json"),
@@ -58,6 +94,11 @@ public class JsonDeserializerTest {
                 Arguments.of(createTestArticles6(), "src/test/resources/DeserializationTest/deserializersTest/jsonTest/Articles6.json")
         );
     }
+
+    /**
+     * Tests {@link JsonArticleDeserializer#deserialize(File)}  with different parameters defined by {@link JsonDeserializerTest#deserializeParameters()}
+     *
+     */
     @ParameterizedTest
     @MethodSource("deserializeParameters")
     public void deserialize(List<Article> expectedArticles, String filePath) {
@@ -79,6 +120,10 @@ public class JsonDeserializerTest {
 
     }
 
+    /**
+     * Tests {@link JsonArticleDeserializer#deserialize(File)} in particular cases
+     *
+     */
     @Test
     public void deserialize_other_cases() {
 
@@ -86,31 +131,35 @@ public class JsonDeserializerTest {
         String[] fileFields = {"id" , "url" , "title" , "body" , "date" , "sourceSet", "source"};
         deserializer.setFields(fileFields);
 
+        // null is passed as input
         IllegalArgumentException exception1 = assertThrows(IllegalArgumentException.class, () -> deserializer.deserialize( null));
         System.out.println(exception1.getMessage());
 
-        // gli viene dato un file che non esistente
+        // Input file does not exist
         File nonExistentFile = new File("src/test/resources/DeserializationTest/deserializersTest/csvTest/nonExistentFile.json");
         IllegalArgumentException exception2 = assertThrows(IllegalArgumentException.class, () -> deserializer.deserialize( nonExistentFile));
         System.out.println(exception2.getMessage());
 
         assertDoesNotThrow(() -> {
 
-            // con un file vuoto non c'è errore semplicemnte non deserializza nulla
+            // Deserializing an empty JSON file
             File emptyFile = new File("src/test/resources/DeserializationTest/deserializersTest/jsonTest/emptyArticles.json");
             List<Serializable> articles = deserializer.deserialize(emptyFile);
             assertTrue(articles.isEmpty());
 
-            // gli viene dato un file che non ha articoli al suo interno, non c'è errore semplicemente non deserializza nulla
+            // The JSON file does not specify Article objects
             File noArticles = new File("src/test/resources/DeserializationTest/deserializersTest/jsonTest/noArticles.json");
             articles = deserializer.deserialize(noArticles);
             assertTrue(articles.isEmpty());
         });
 
-
     }
 
-
+    /**
+     * This utility function creates articles for testing {@link CsvArticleDeserializer#deserialize(File)}.
+     *
+     * @return list of {@link Article}. Three Article objects with all fields initialized
+     */
     private static List<Article> createTestArticles1() {
         List<Article> articles = new ArrayList<>();
         articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1", "sourceSet 1", "Source 1"));
@@ -119,6 +168,11 @@ public class JsonDeserializerTest {
         return articles;
     }
 
+    /**
+     * This utility function creates articles for testing {@link CsvArticleDeserializer#deserialize(File)}.
+     *
+     * @return list of {@link Article}. Three Article objects with all fields initialized. The test is done with a json file with a tree structure
+     */
     private static List<Article> createTestArticles2() {
         List<Article> articles = new ArrayList<>();
         articles.add(new Article("ID 2", "URL 2", "Title 2", "Body 2", "Date 2","sourceSet 2","Source 2"));
@@ -128,7 +182,11 @@ public class JsonDeserializerTest {
     }
 
 
-    // TEST FILE JSON CON CAMPI NULL.
+    /**
+     * This utility function creates articles for testing {@link CsvArticleDeserializer#deserialize(File)}.
+     *
+     * @return list of {@link Article}. Three Article objects with all fields null. In the JSON file the values associated with the keys are set to null
+     */
     private static List<Article> createTestArticles3() {
         List<Article> articles = new ArrayList<>();
         articles.add(new Article(null, null,null,null,null,null, null));
@@ -138,8 +196,11 @@ public class JsonDeserializerTest {
     }
 
 
-
-
+    /**
+     * This utility function creates articles for testing {@link CsvArticleDeserializer#deserialize(File)}.
+     *
+     * @return list of {@link Article}. Three Article objects with some fields null. Some keys are missing in the JSON file
+     */
     private static List<Article> createTestArticles4() {
         List<Article> articles = new ArrayList<>();
         articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1","sourceSet 1",null));
@@ -149,11 +210,12 @@ public class JsonDeserializerTest {
     }
 
 
-
-    // TEST FILE JSON CON formattazione sbagliata.
-    // Di fatto seguono i campi successivi all' ID.
-    // se vengono posti due ID affiuncati il file json mi sta dicendo che ci sono due Articoli con due ID diversi ma con lo stesso contenuto.
-    // si tratta di un errore di formattazione fornito dall'utente. l'interpretazione del file però a mio avviso è pertinente.
+    /**
+     * This utility function creates articles for testing {@link CsvArticleDeserializer#deserialize(File)}.
+     *
+     * @return list of {@link Article}. Three Article objects with all fields initialized. The test is performed with a JSON file that has wrong formatting (logically)
+     *         The interpretation of the file is pertinent to the modalities explained in {@link JsonArticleDeserializer#deserialize(File)}
+     */
     private static List<Article> createTestArticles5() {
         List<Article> articles = new ArrayList<>();
         articles.add(new Article("ID 1", "URL 2", "Title 2", "Body 2", "Date 2","sourceSet 2","Source 2"));
@@ -163,13 +225,30 @@ public class JsonDeserializerTest {
     }
 
 
-
-
-    // TEST FILE JSON CON CHIAVI MANCANTI. ATTENZIONE L'ID NON PUO ESSERE MANCANTE altrimenti  non viene caricato articolo
+    /**
+     * This utility function creates articles for testing {@link CsvArticleDeserializer#deserialize(File)}.
+     *
+     * @return list of {@link Article}. Three Article objects with some fields null.
+     *         Some keys are missing in the JSON file.
+     *         Attention the id cannot be missing otherwise the article will not be deserialized
+     */
     private static List<Article> createTestArticles6() {
         List<Article> articles = new ArrayList<>();
         articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1",null,null));
         articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1",null,null));
+        return articles;
+    }
+
+    /**
+     * This utility function creates articles for testing {@link JsonArticleDeserializer#getFields()}
+     *
+     * @return list of {@link Article}.
+     */
+    private static List<Article> createTestArticles7() {
+        List<Article> articles = new ArrayList<>();
+        articles.add(new Article("ID 1", null, null, null, null,null,null));
+        articles.add(new Article("ID 1", null, null, null, null,null,null));
+        articles.add(new Article("ID 1", null, null, null, null,null,null));
         return articles;
     }
 

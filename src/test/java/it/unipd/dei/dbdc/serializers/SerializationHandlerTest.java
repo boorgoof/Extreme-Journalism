@@ -25,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class SerializationHandlerTest {
     
     /**
-     * The function creates articles for testing {@link SerializationHandler#serializeObjects(List, File)}.
+     * This utility function creates articles for testing {@link SerializationHandler#serializeObjects(List, File)}
      *
      * @return list of {@link Serializable} objects that are instances of {@link Article} to serialize. Three Article objects with all fields initialized
      */

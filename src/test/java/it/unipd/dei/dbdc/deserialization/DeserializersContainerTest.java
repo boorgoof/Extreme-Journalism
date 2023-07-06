@@ -3,6 +3,8 @@ package it.unipd.dei.dbdc.deserialization;
 
 import it.unipd.dei.dbdc.analysis.Article;
 import it.unipd.dei.dbdc.deserialization.interfaces.Deserializer;
+import it.unipd.dei.dbdc.deserialization.src_deserializers.JsonArticleDeserializer;
+import it.unipd.dei.dbdc.serializers.SerializersContainer;
 import org.junit.jupiter.api.*;
 
 import java.io.File;
@@ -14,6 +16,9 @@ import java.util.List;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
+/**
+ * Class that tests {@link DeserializersContainer}.
+ */
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @Order(1)
 public class DeserializersContainerTest {
@@ -61,6 +66,12 @@ public class DeserializersContainerTest {
         }
 
     }
+
+    /**
+     * This utility function creates articles for testing {@link DeserializersContainer#getDeserializer(String)}
+     *
+     * @return list of {@link Article}
+     */
     private static List<Article> expectedArticles() {
         List<Article> articles = new ArrayList<>();
         articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1", "sourceSet 1", "Source 1"));
@@ -68,23 +79,22 @@ public class DeserializersContainerTest {
         articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1", "sourceSet 1", "Source 1"));
         return articles;
     }
+
+    /**
+     * Tests {@link SerializersContainer#getSerializer(String)} with valid and invalid inputs.
+     *
+     */
     @Test
     public void getDeserializer() {
 
+
+        // there is no need to set the fields because I use singleton (I already did it)
         assertDoesNotThrow( () ->
         {
+            // The test verifies that the container returns the Deserializer corresponding to the requested format
             DeserializersContainer container = DeserializersContainer.getInstance(deserializers_properties);
-
-            // non serve perche tanto uso singleton
-            //String[] fileFields = {"id" , "url" , "title" , "body" , "date" , "sourceSet", "source"};
-            //container.setSpecificFields("json", fileFields);
-
             Deserializer deserializer = container.getDeserializer("json");
-
-            File jsonFile = new File("src/test/resources/DeserializationTest/containerTest/Articles1.json");
-            List<Serializable> deserializedArticles = deserializer.deserialize(jsonFile);
-
-            assertEquals(expectedArticles(), deserializedArticles);
+            assertTrue(deserializer instanceof JsonArticleDeserializer);
 
             IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> container.getDeserializer("html"));
             System.out.println(exception.getMessage());
@@ -93,6 +103,10 @@ public class DeserializersContainerTest {
     }
 
 
+    /**
+     * Tests {@link SerializersContainer#getFormats()}
+     *
+     */
     @Test
     public void getFormats() {
 
