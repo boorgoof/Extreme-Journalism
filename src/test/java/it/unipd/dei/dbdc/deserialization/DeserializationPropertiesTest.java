@@ -40,7 +40,6 @@ public class DeserializationPropertiesTest {
             assertEquals(3, deserializers.size());
             assertTrue(deserializers.get("json") instanceof JsonArticleDeserializer);
 
-
         });
 
         assertDoesNotThrow(() -> {

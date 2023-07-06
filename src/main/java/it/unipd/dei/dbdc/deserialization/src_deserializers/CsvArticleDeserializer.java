@@ -182,7 +182,7 @@ public class CsvArticleDeserializer implements DeserializerWithFields {
             // Set to null all values that are not also present in CsvDeserializer#fields
             for (int i = 0; i < header.length; i++) {
                 if (!contains(fields, header[i])) {
-                    header[i] = null;
+                    header[i] = "X";
                 }
 
             }
