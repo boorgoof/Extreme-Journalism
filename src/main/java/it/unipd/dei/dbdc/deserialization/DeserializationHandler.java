@@ -10,8 +10,6 @@ import java.io.Serializable;
 import java.util.*;
 
 import it.unipd.dei.dbdc.deserialization.interfaces.DeserializerWithFields;
-import it.unipd.dei.dbdc.serializers.SerializersContainer;
-import it.unipd.dei.dbdc.serializers.interfaces.Serializer;
 import it.unipd.dei.dbdc.tools.PathManager;
 
 /**
@@ -215,12 +213,11 @@ public class DeserializationHandler {
      * The function sets the fields only if the requested {@link Deserializer} implements
      * the {@link DeserializerWithFields} interface
      *
-     * @param format format The format for which the fields will be set.
-     * @throws IllegalArgumentException If folderPath parameter is null
+     * @throws IllegalArgumentException If folderPath parameter is null or the selected deserializer does not implement field specification
      */
-
     // TODO se mettono roba sbagliata lancia eccezione non posso farci molto; da cambiare? Devo fare i test
-    public void deserializerSetFields(String format) throws IOException {
+    public void deserializerSetFields() throws IOException {
+        String format = "null";
 
         if(format == null){
             throw new IllegalArgumentException("the format cannot be null");
@@ -231,7 +228,7 @@ public class DeserializationHandler {
         if(container.getDeserializer(format) instanceof DeserializerWithFields){
             deserializer = (DeserializerWithFields) container.getDeserializer(format); // mi serve per sapere il numero di fields
         } else {
-            throw new IOException("The selected deserializer does not implement field specification");
+            throw new IllegalArgumentException("The selected deserializer does not implement field specification");
         }
 
         int numberOfFields = deserializer.numberOfFields();

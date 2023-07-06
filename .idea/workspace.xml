@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Tests">
+    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Merging">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/interfaces/Deserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/interfaces/Deserializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/interfaces/DeserializerWithFields.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/interfaces/DeserializerWithFields.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/src_deserializers/CsvArticleDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/src_deserializers/CsvArticleDeserializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/src_deserializers/JsonArticleDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/src_deserializers/JsonArticleDeserializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/src_deserializers/CsvDeserializerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/src_deserializers/CsvDeserializerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/src_deserializers/JsonDeserializerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/src_deserializers/JsonDeserializerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/csvTest/Articles3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/csvTest/Articles3.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/jsonTest/Articles2.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/jsonTest/Articles2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/DeserializationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/DeserializationHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/site/markdown/documentazione/requisiti.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/markdown/documentazione/requisiti.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +54,7 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "newBranch",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "jdk.selected.JAVA_MODULE": "1.8",
     "last_opened_file_path": "D:/ingengeria software/eis-final/src/test/resources/SerializationTest/properties",

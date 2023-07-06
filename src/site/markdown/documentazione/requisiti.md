@@ -1,5 +1,19 @@
 # DOCUMENTO DEI REQUISITI
-Requisiti d'utente: sono ad alto livello
+Requisiti d'utente: sono ad alto livello.
+Requisiti di sistema: più specifici.
+
+Requisiti funzionali: definizione dei servizi che il sistema deve fornire, come reagire a particolari input, 
+come reagire in particolari situazioni.
+Descrivono ciò che il sistema deve fare.
+devono specificare dettagliatamente
+- funzioni
+- input
+- output
+- eccezioni
+
+Requisiti non funzionali: vincoli sulle funzioni/servizi offerti dal sistema,
+vincoli temporali sul processo di sviluppo, vincoli legati a normative
+
 ## Requisiti di sistema
 * Linguaggio: Java 8 (opzionale, se usata una versione diversa specificarne il motivo)
 * Commentato in modo da poter utilizzare javadoc
