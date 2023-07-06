@@ -2,18 +2,15 @@ package it.unipd.dei.dbdc.deserialization;
 
 import it.unipd.dei.dbdc.analysis.Article;
 import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
+import it.unipd.dei.dbdc.deserialization.interfaces.Deserializer;
+import it.unipd.dei.dbdc.deserialization.src_deserializers.CsvArticleDeserializer;
+import it.unipd.dei.dbdc.deserialization.src_deserializers.JsonArticleDeserializer;
 import it.unipd.dei.dbdc.download.DownloadHandler;
 import it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIManagerTest;
 import it.unipd.dei.dbdc.serializers.SerializationProperties;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.IOException;
-import java.io.Serializable;
+import java.io.*;
 import java.lang.reflect.Field;
 import java.util.*;
 
@@ -23,6 +20,8 @@ import static org.junit.jupiter.api.Assertions.*;
 public class DeserializationHandlerTest {
     private static final String deserializers_properties = "src/test/resources/DeserializationTest/properties/deserializers.properties";
     private static Field cont_field;
+
+
     @BeforeAll
     public static void initialize()
     {
@@ -194,7 +193,7 @@ public class DeserializationHandlerTest {
         }
     }
 
-    /*
+
     private void provideInput(String data) {
         ByteArrayInputStream testIn = new ByteArrayInputStream(data.getBytes());
         System.setIn(testIn);
@@ -206,13 +205,37 @@ public class DeserializationHandlerTest {
         System.setIn(System.in);
     }
 
+    /**
+     * To set the System.out to a {@link ByteArrayOutputStream} so that we don't see the output during the tests.
+     */
+    @BeforeEach
+    public void setUpOutput() {
+        System.setOut(new PrintStream(new ByteArrayOutputStream()));
+    }
+
+    /**
+     * To restore the System.out
+     */
+    @AfterEach
+    public void restoreSystemOutput() {
+        System.setOut(System.out);
+    }
+
     @Test
     void deserializerSetFields() {
 
-        provideInput("id\nurl\ntitle\nbody\ndate\nsourceSet\nsource");
+        assertDoesNotThrow(() -> {
 
+            DeserializationHandler handler = new DeserializationHandler(deserializers_properties);
+            String[] fileFields = {"id1" , "url1" , "title1" , "body1" , "date1" , "sourceSet1", "source1"};
+            provideInput("json\nid1\nurl1\ntitle1\nbody1\ndate1\nsourceSet1\nsource1");
+            handler.deserializerSetFields();
+
+            DeserializersContainer container = (DeserializersContainer) cont_field.get(handler);
+            assertArrayEquals(container.getSpecificFields("json"),fileFields);
+        });
 
     }
-    */
+
 
 }

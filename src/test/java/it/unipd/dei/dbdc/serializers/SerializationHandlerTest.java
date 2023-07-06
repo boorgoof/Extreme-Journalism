@@ -4,6 +4,7 @@ import it.unipd.dei.dbdc.analysis.Article;
 import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
 import it.unipd.dei.dbdc.deserialization.DeserializationHandler;
 import it.unipd.dei.dbdc.deserialization.DeserializersContainer;
+import it.unipd.dei.dbdc.serializers.src_serializers.XmlSerializer;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -17,6 +18,12 @@ import java.util.Set;
 import static org.junit.jupiter.api.Assertions.*;
 public class SerializationHandlerTest {
     private static final String serializers_properties = "src/test/resources/SerializationTest/properties/serializers.properties";
+
+    /**
+     * The function creates articles for testing {@link XmlSerializer#serialize(List, File)}.
+     *
+     * @return list of {@link Serializable} objects that are instances of {@link Article} to serialize. Three Article objects with all fields initialized
+     */
     private static List<Serializable> articlesToSerialize() {
         List<Serializable> articles = new ArrayList<>();
         articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1", "SourceSet 1","Source 1"));

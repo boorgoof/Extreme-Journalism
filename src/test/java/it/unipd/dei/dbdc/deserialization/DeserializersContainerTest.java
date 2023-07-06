@@ -86,7 +86,7 @@ public class DeserializersContainerTest {
 
             assertEquals(expectedArticles(), deserializedArticles);
 
-            IOException exception = assertThrows(IOException.class, () -> container.getDeserializer("html"));
+            IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> container.getDeserializer("html"));
             System.out.println(exception.getMessage());
 
         });

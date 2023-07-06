@@ -1,5 +1,6 @@
 package it.unipd.dei.dbdc.serializers;
 
+import it.unipd.dei.dbdc.download.DownloadProperties;
 import it.unipd.dei.dbdc.serializers.interfaces.Serializer;
 import it.unipd.dei.dbdc.serializers.src_serializers.XmlSerializer;
 import org.junit.jupiter.api.Test;
@@ -8,6 +9,9 @@ import java.io.IOException;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
+/**
+ * Class that tests {@link DownloadProperties}.
+ */
 public class SerializationPropertiesTest {
     private static final String serializers_properties = "src/test/resources/SerializationTest/properties/serializers.properties";
     private static final String nonExistentFile_properties = "src/test/resources/SerializationTest/properties/nonExistentFile.properties";
