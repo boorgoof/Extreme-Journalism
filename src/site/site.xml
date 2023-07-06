@@ -21,13 +21,13 @@
         </menu>
 
         <menu name="Implementazione">
-            <item name="Spiegazione" href="manuale/spiegazione.html"/>
+            <item name="Spiegazione" href="implementazione/spiegazione.html"/>
             <!-- TODO -->
-            <item name="Problemi e trade-off" href="manuale/problemi.html"/>
-            <item name="Flessibilita'" href="manuale/flessibilita.html"/>
-            <item name="Design patterns" href="manuale/design_patterns.html"/>
-            <item name="Test" href="manuale/test.html"/>
-            <item name="Librerie" href="manuale/librerie.html"/>
+            <item name="Problemi e trade-off" href="implementazione/problemi.html"/>
+            <item name="Flessibilita'" href="implementazione/flessibilita.html"/>
+            <item name="Design patterns" href="implementazione/design_patterns.html"/>
+            <item name="Test" href="implementazione/test.html"/>
+            <item name="Librerie" href="implementazione/librerie.html"/>
         </menu>
 
         <menu name="Documentazione">

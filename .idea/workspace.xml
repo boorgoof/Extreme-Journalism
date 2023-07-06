@@ -4,10 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Merging">
+    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Tests">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/DeserializationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/deserialization/DeserializationHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/tools/CommandLineInterpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/tools/CommandLineInterpreter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/site/markdown/documentazione/casi_uso.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/markdown/documentazione/casi_uso.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/site/markdown/documentazione/requisiti.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/markdown/documentazione/requisiti.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/site/markdown/manuale/design_patterns.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/markdown/implementazione/design_patterns.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/site/markdown/manuale/flessibilita.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/markdown/implementazione/flessibilita.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/site/markdown/manuale/librerie.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/markdown/implementazione/librerie.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/site/markdown/manuale/problemi.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/markdown/implementazione/problemi.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/site/markdown/manuale/spiegazione.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/markdown/implementazione/spiegazione.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/site/markdown/manuale/test.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/markdown/implementazione/test.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/site/site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/site.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -391,7 +401,15 @@
       <option name="project" value="LOCAL" />
       <updated>1687961021749</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Tests">
+      <option name="closed" value="true" />
+      <created>1688655286553</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1688655286553</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

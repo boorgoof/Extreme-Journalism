@@ -21,7 +21,7 @@ public class SerializationHandler {
      * The {@link SerializersContainer} instance that supplies all the {@link Serializer} we have
      *
      */
-    private final SerializersContainer container;
+    private static SerializersContainer container;
 
     /**
      * Constructor that initializes the SerializationHandler.
@@ -29,7 +29,7 @@ public class SerializationHandler {
      * @param serializers_properties The file properties specified by the user. If null, the default ones will be used.
      * @throws IOException If the download properties files (the default one and the one specified by the user) are not present or are not correct.
      */
-    public SerializationHandler(String serializers_properties) throws IOException {
+    public static void instantiate(String serializers_properties) throws IOException {
         container = SerializersContainer.getInstance(serializers_properties);
     }
     /**
@@ -41,7 +41,7 @@ public class SerializationHandler {
      * @throws IOException  If the file passed as a parameter has no associated {@link Serializer}
      * @throws IllegalArgumentException  If either the objects or file parameter is null.
      */
-    public void serializeObjects(List<Serializable> objects, File file) throws IOException {
+    public static void serializeObjects(List<Serializable> objects, File file) throws IOException {
 
         if (file == null) {
             throw new IllegalArgumentException("The XML file cannot be null");

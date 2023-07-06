@@ -55,6 +55,7 @@ public class CommandLineInterpreter {
     private final static Option[] download = {
             new Option("apf", "api-properties-file", true, "Contains the path to the properties of the API to call"),
             new Option("dowpf", "download-properties-file", true, "Contains the path to the properties file that contains the managers that is possible to call"),
+            new Option("path", "folder-path", true, "Contains the location of the place to take the files from"),
     };
 
     /**
@@ -64,7 +65,6 @@ public class CommandLineInterpreter {
      */
     private final static Option[] analysis = {
             new Option("anapf", "analysis-properties-file", true, "Contains the path to the properties file that contains the analyzer to use for the extraction"),
-            new Option("path", "folder-path", true, "Contains the location of the place to take the files from"),
             new Option("n", "number", true, "Contains the positive number of terms you want to have in the final output"),
             new Option("stop", "enable-stop-words", true, "True if you want to enable the stop-words in the analysis")
     };

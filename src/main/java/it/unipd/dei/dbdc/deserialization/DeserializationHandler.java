@@ -22,15 +22,15 @@ public class DeserializationHandler {
      * The {@link DeserializersContainer} instance that supplies all the {@link Deserializer} we have
      *
      */
-    private final DeserializersContainer container; // Dovrei metterlo public se voglio modificare i fields
+    private static DeserializersContainer container; // Dovrei metterlo public se voglio modificare i fields
 
     /**
-     * Constructor that initializes the DeserializationHandler.
+     * Function that initializes the {@link DeserializersContainer}.
      *
      * @param deserializers_properties The file properties specified by the user. If null, the default ones will be used.
      * @throws IOException If the download properties files (the default one and the one specified by the user) are not present or are not correct.
      */
-    public DeserializationHandler(String deserializers_properties) throws IOException {
+    public static void instantiate(String deserializers_properties) throws IOException {
 
         container = DeserializersContainer.getInstance(deserializers_properties);
     }
@@ -44,7 +44,7 @@ public class DeserializationHandler {
      * @param allFiles Set of {@link File} in which all files in the specified folder will be stored
      * @throws IllegalArgumentException If either the objects or file parameter is null
      */
-    public void getFolderFiles(String folderPath, Set<File> allFiles) {
+    public static void getFolderFiles(String folderPath, Set<File> allFiles) {
 
         if(folderPath == null){
             throw new IllegalArgumentException("The path cannot be null");
@@ -78,7 +78,7 @@ public class DeserializationHandler {
      * @return A Set of {@link File} that have been removed from the set of files passed to the function
      * @throws IllegalArgumentException If allFiles parameter is null
      */
-    public Set<File> deleteUnavailableFiles(Set<File> allFiles) {
+    public static Set<File> deleteUnavailableFiles(Set<File> allFiles) {
 
         if(allFiles == null){
             throw new IllegalArgumentException("The file list cannot be null");
@@ -104,7 +104,7 @@ public class DeserializationHandler {
      * @return A Set of {@link File} for which a deserializer is available
      * @throws IllegalArgumentException If folderPath parameter is null
      */
-    public Set<File> getDeserializationFiles(String folderPath) {
+    public static Set<File> getDeserializationFiles(String folderPath) {
 
         if(folderPath == null){
             throw new IllegalArgumentException("The path cannot be null");
@@ -128,7 +128,7 @@ public class DeserializationHandler {
      * @param rejectedFiles Set of {@link File} that have been removed from the set of files to deserialize
      * @throws IllegalArgumentException If rejectedFiles parameter is null
      */
-    private void rejectedFilesInfo(Set<File> rejectedFiles){
+    private static void rejectedFilesInfo(Set<File> rejectedFiles){
 
         if(rejectedFiles == null){
             throw new IllegalArgumentException("The list cannot be null");
@@ -159,7 +159,7 @@ public class DeserializationHandler {
      * @throws IOException  If the file passed as a parameter has no associated {@link Deserializer}
      * @throws IllegalArgumentException  If file parameter is null.
      */
-    public List<Serializable> deserializeFile(File file) throws IOException {
+    public static List<Serializable> deserializeFile(File file) throws IOException {
 
         if(file == null){
             throw new IllegalArgumentException("The file cannot be null");
@@ -190,7 +190,7 @@ public class DeserializationHandler {
      * @throws IOException IOException If an I/O error occurs during deserialization
      * @throws IllegalArgumentException  If the folderPath parameter is null.
      */
-    public List<Serializable> deserializeFolder(String folderPath) throws IOException {
+    public static List<Serializable> deserializeFolder(String folderPath) throws IOException {
 
         if(folderPath == null){
             throw new IllegalArgumentException("The folder path cannot be null");
@@ -216,7 +216,7 @@ public class DeserializationHandler {
      * @throws IllegalArgumentException If folderPath parameter is null or the selected deserializer does not implement field specification
      */
     // TODO se mettono roba sbagliata lancia eccezione non posso farci molto; da cambiare? Devo fare i test
-    public void deserializerSetFields() throws IOException {
+    public static void deserializerSetFields()  {
         String format = "null";
 
         if(format == null){
@@ -225,10 +225,14 @@ public class DeserializationHandler {
 
         DeserializerWithFields deserializer;
 
-        if(container.getDeserializer(format) instanceof DeserializerWithFields){
-            deserializer = (DeserializerWithFields) container.getDeserializer(format); // mi serve per sapere il numero di fields
-        } else {
-            throw new IllegalArgumentException("The selected deserializer does not implement field specification");
+        try {
+            if(container.getDeserializer(format) instanceof DeserializerWithFields){
+                deserializer = (DeserializerWithFields) container.getDeserializer(format); // mi serve per sapere il numero di fields
+            } else {
+                throw new IllegalArgumentException("The selected deserializer does not implement field specification");
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
 
         int numberOfFields = deserializer.numberOfFields();
