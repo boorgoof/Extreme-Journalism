@@ -4,148 +4,41 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Tests">
-      <change afterPath="$PROJECT_DIR$/cmd/unix/analysis.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmd/unix/da.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmd/unix/download.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmd/unix/help.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmd/windows/help.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/site/markdown/index.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/site/markdown/prj_create.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/site/markdown/prj_exec.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/site/site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true7.json" afterDir="false" />
+    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Iniziata la parte di site">
+      <change afterPath="$PROJECT_DIR$/src/site/markdown/documentazione/casi_uso.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/site/markdown/documentazione/design_model.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/site/markdown/documentazione/domain_model.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/site/markdown/documentazione/requisiti.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/site/markdown/istruzioni/installazione.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/site/markdown/istruzioni/javadoc.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/site/markdown/istruzioni/sito.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/site/markdown/manuale/design_patterns.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/site/markdown/manuale/flessibilita.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/site/markdown/manuale/librerie.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/site/markdown/manuale/problemi.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/site/markdown/manuale/spiegazione.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/site/markdown/manuale/test.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/site/resources/images/Schema progetto.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/allclasses-index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/allclasses.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/allpackages-index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/constant-values.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/deprecated-list.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/element-list" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/help-doc.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-10.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-11.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-12.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-13.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-14.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-15.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-16.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-17.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-18.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-19.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-20.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-4.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-5.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-6.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-7.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-8.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-9.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/App.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/CommandLineInterpreter.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/ConsoleTextColors.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DESERIALIZERS_FILE_PROPERTIES/Article.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DESERIALIZERS_FILE_PROPERTIES/CsvDeserializer.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DESERIALIZERS_FILE_PROPERTIES/DeserializationHandler.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DESERIALIZERS_FILE_PROPERTIES/JsonDeserializer.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DESERIALIZERS_FILE_PROPERTIES/Main.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DESERIALIZERS_FILE_PROPERTIES/XmlDeserializer.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DESERIALIZERS_FILE_PROPERTIES/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DESERIALIZERS_FILE_PROPERTIES/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/APIContainer.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/APIManager.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/DownloadHandler.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/DownloadProperties.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/InteractiveSelectAPI.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/Libraries/APICaller.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/Libraries/KongAPICaller.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/Libraries/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/Libraries/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/QueryParam.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/GuardianAPIInfo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/GuardianAPIManager.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/GuardianAPIParams.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/TheGuardianAPI/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/DownloadAPI/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/SEARCH_TERMS/Article.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/SEARCH_TERMS/MyPriorityQueue.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/SEARCH_TERMS/main.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/SEARCH_TERMS/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/SEARCH_TERMS/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/SERIALIZERS_FILE_PROPERTIES/Article.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/SERIALIZERS_FILE_PROPERTIES/CsvSerializer.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/SERIALIZERS_FILE_PROPERTIES/JsonSerializer.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/SERIALIZERS_FILE_PROPERTIES/Main.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/SERIALIZERS_FILE_PROPERTIES/SerializationHandler.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/SERIALIZERS_FILE_PROPERTIES/XmlSerializer.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/SERIALIZERS_FILE_PROPERTIES/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/SERIALIZERS_FILE_PROPERTIES/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/it/unipd/dei/dbdc/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/jquery-ui.overrides.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/jquery/external/jquery/jquery.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/jquery/jquery-3.6.1.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/jquery/jquery-ui.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/jquery/jquery-ui.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/jquery/jszip-utils/dist/jszip-utils-ie.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/jquery/jszip-utils/dist/jszip-utils-ie.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/jquery/jszip-utils/dist/jszip-utils.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/jquery/jszip-utils/dist/jszip-utils.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/jquery/jszip/dist/jszip.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/jquery/jszip/dist/jszip.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/member-search-index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/member-search-index.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/overview-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/overview-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/package-search-index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/package-search-index.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/resources/glass.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/resources/x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/script.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/search.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/serialized-form.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/stylesheet.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/type-search-index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/type-search-index.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Problems.md" beforeDir="false" afterPath="$PROJECT_DIR$/Problems.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TODO.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/uu.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/windows/download.bat" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/windows/download.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/windows/ds.bat" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/windows/da.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/windows/search.bat" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/windows/analysis.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/Serialized.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request1.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request2.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request2.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request3.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request3.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request4.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request4.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request5.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request5.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/output.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/request1.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/request2.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/request3.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/request4.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/request5.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/Test/request1.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request1.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request3.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request4.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request5.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out_properties/api.properties" beforeDir="false" afterPath="$PROJECT_DIR$/out_properties/api.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/Requisiti.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/Requisiti.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/output.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/tools/CommandLineInterpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unipd/dei/dbdc/tools/CommandLineInterpreter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/AppTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/DeserializationHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/DeserializationHandlerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIManagerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_callers/KongAPICallerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_callers/KongAPICallerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/tools/ThreadPoolToolsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/tools/ThreadPoolTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/download/falseApi2.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/falseApi2.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/true8.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true8.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/request1.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/request1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/request3.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/request3.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/request5.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/request5.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request50.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request50.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/analyze.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/analyze.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/deserializers.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/deserializers.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/download.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/download.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/serializers.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/serializers.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/site/markdown/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/markdown/index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/site/markdown/prj_create.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/site/markdown/prj_exec.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/markdown/istruzioni/esecuzione.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/site/site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/site.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,7 +88,7 @@
     "git-widget-placeholder": "newBranch",
     "ignore.virus.scanning.warn.message": "true",
     "jdk.selected.JAVA_MODULE": "1.8",
-    "last_opened_file_path": "C:/Users/vison/OneDrive/Desktop/Programmi/JAVA/INGEGNERIA DEL SOFTWARE/Progetto/eis-final/src",
+    "last_opened_file_path": "C:/Users/vison/OneDrive/Desktop/Programmi/JAVA/INGEGNERIA DEL SOFTWARE/Progetto/eis-final/src/site/markdown/manuale",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -204,18 +97,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\src\site\markdown\manuale" />
+      <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\src\site\markdown" />
+      <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\src\site\resources\images" />
       <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\src" />
       <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\cmd\unix" />
-      <recent name="D:\ingengeria software\eis-final\src\test\resources\DeserializationTest\properties" />
-      <recent name="D:\ingengeria software\eis-final\src\test\resources\SerializationTest\properties" />
-      <recent name="D:\ingengeria software\eis-final\src\test\resources\SerializationTest\serializersTest\xmlTest" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\src\site\markdown\manuale" />
+      <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\src\site\markdown\istruzioni" />
+      <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\src\site\markdown\documentazione" />
       <recent name="D:\ingengeria software\eis-final\src\test\resources\SerializationTest\properties" />
       <recent name="D:\ingengeria software\eis-final\src\test\resources\DeserializationTest\deserializersTest\jsonTest" />
-      <recent name="D:\ingengeria software\eis-final\src\test\resources\DeserializationTest\deserializersTest" />
-      <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\bash" />
-      <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\src\test\resources" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -516,7 +409,15 @@
       <option name="project" value="LOCAL" />
       <updated>1687961021749</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Iniziata la parte di site">
+      <option name="closed" value="true" />
+      <created>1688488836687</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1688488836687</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -566,7 +467,8 @@
     <MESSAGE value="Merge tot" />
     <MESSAGE value="Creato outPrinter, cambiato qualcosina, fatto javadoc" />
     <MESSAGE value="Tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tests" />
+    <MESSAGE value="Iniziata la parte di site" />
+    <option name="LAST_COMMIT_MESSAGE" value="Iniziata la parte di site" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
