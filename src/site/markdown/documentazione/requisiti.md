@@ -1,5 +1,5 @@
 # DOCUMENTO DEI REQUISITI
-## Tecnici
+## Requisiti di sistema
 * Linguaggio: Java 8 (opzionale, se usata una versione diversa specificarne il motivo)
 * Commentato in modo da poter utilizzare javadoc
 * Unit testing eseguito con JUnit
@@ -7,7 +7,7 @@
 
 [Casi d'uso](casi_uso.md)
 
-## Logici
+## Requisiti d'utente
 Progettare ed implementare un sistema software in grado di
 scaricare (download) articoli da testate giornalistiche online resi
 disponibili da diverse sorgenti e di estrarre e visualizzare i termini
