@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 import it.unipd.dei.dbdc.tools.PathManager;
 /**
- * Class that manages the serialization of {@link UnitOfSearch} into files
+ * Class that manages the serialization of {@link Serializable} into files
  *
  * @see SerializersContainer
  */
@@ -33,15 +33,15 @@ public class SerializationHandler {
         container = SerializersContainer.getInstance(serializers_properties);
     }
     /**
-     * Serializes a list of {@link UnitOfSearch} objects into XML file with indented formatting.
+     * Serializes a list of {@link Serializable} objects into XML file with indented formatting.
      * The function correctly selects the {@link Serializer} to use starting from the extension of the file passed as a parameter
      *
-     * @param objects  The list of {@link UnitOfSearch} objects to be serialized.
+     * @param objects  The list of {@link Serializable} objects to be serialized.
      * @param file  The file into which the objects will be serialized
      * @throws IOException  If the file passed as a parameter has no associated {@link Serializer}
      * @throws IllegalArgumentException  If either the objects or file parameter is null.
      */
-    public void serializeObjects(List<UnitOfSearch> objects, File file) throws IOException {
+    public void serializeObjects(List<Serializable> objects, File file) throws IOException {
 
         if (file == null) {
             throw new IllegalArgumentException("The XML file cannot be null");
@@ -61,6 +61,8 @@ public class SerializationHandler {
         // if a serializer is actually available for the file then serialization is performed
         serializer.serialize(objects, file);
     }
+
+
 
 }
 

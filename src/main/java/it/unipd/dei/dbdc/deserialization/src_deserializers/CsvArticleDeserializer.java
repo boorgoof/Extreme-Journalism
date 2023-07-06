@@ -1,18 +1,13 @@
 package it.unipd.dei.dbdc.deserialization.src_deserializers;
 
 import it.unipd.dei.dbdc.analysis.Article;
-import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
 import it.unipd.dei.dbdc.deserialization.interfaces.DeserializerWithFields;
-import it.unipd.dei.dbdc.serializers.SerializationProperties;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -20,17 +15,17 @@ import java.util.NoSuchElementException;
 
 /**
  * This class implements the interface: {@link DeserializerWithFields}.
- * It is used to deserialize CSV files into a list of {@link UnitOfSearch} objects.
+ * It is used to deserialize CSV files into a list of {@link Serializable} objects that are instances of {@link Article}.
  * It uses Apache Commons CSV library for parsing CSV files.
  */
-public class CsvDeserializer implements DeserializerWithFields {
+public class CsvArticleDeserializer implements DeserializerWithFields {
 
     /**
      * An array of {@link String} containing the fields that are taken into account when deserializing the csv file
      */
     private String[] fields;
 
-    public CsvDeserializer(){
+    public CsvArticleDeserializer(){
 
         fields = new String[]{"Identifier", "URL", "Title", "Body", "Date", "Source Set", "Source"};
     }
@@ -57,22 +52,29 @@ public class CsvDeserializer implements DeserializerWithFields {
      * sets the new fields to be considered during deserialization
      */
     public void setFields(String[] newFields) {
-        fields = newFields;
+
+        int maxLength = Article.class.getDeclaredFields().length;
+        if (newFields.length <= maxLength){
+            fields = newFields;
+        } else {
+            throw new IllegalArgumentException("You cannot insert an array with more fields than those declared in the Article class");
+        }
     }
 
     /**
-     * The function deserializes a CSV file in {@link List} of {@link UnitOfSearch} referring to
-     * the header present in the first line of the csv file.
-     * Only columns that have an association with fields stored in {@link CsvDeserializer#fields} will be considered.
-     * The fields specified in the header need not be in the same order as they are stored in {@link CsvDeserializer#fields}
+     * The function deserializes a CSV file into {@link List} of {@link Serializable} objects which are instances of {@link Article}. Deserialization occurs in reference
+     * to the header in the first line of the CSV file.
+     * Only columns in the CSV file that have an association with fields stored in {@link CsvArticleDeserializer#fields} will be considered.
+     * The fields specified in the header need not be in the same order as they are stored in {@link CsvArticleDeserializer#fields}
+     * If there is no header in the CSV file, deserialization does not occur. An empty list is returned
      *
-     * @param csvFile The CSV file to deserialize into {@link UnitOfSearch}
-     * @return the list of {@link UnitOfSearch} objects obtained from deserialization
+     * @param csvFile The CSV file to deserialize into {@link Serializable} objects that are instances of {@link Article}.
+     * @return the list of {@link Serializable} objects that are instances of {@link Article} obtained from deserialization.
      * @throws IOException If an I/O error occurs during the deserialization process.
-     * @throws IllegalArgumentException if the file does not exist or is not null
+     * @throws IllegalArgumentException If the file does not exist or is not null.
      */
     @Override
-    public List<UnitOfSearch> deserialize(File csvFile) throws IOException {
+    public List<Serializable> deserialize(File csvFile) throws IOException {
 
         if(csvFile == null){
             throw new IllegalArgumentException("The CSV file cannot be null");
@@ -81,27 +83,33 @@ public class CsvDeserializer implements DeserializerWithFields {
             throw new IllegalArgumentException("The CSV file does not exist");
         }
 
-        List<UnitOfSearch> articles = new ArrayList<>();
-        // Leggo gli header
+        List<Serializable> articles = new ArrayList<>();
+        // I read the header of the CSV file. This is the first line of the CSV file (I only take into account the header fields that match with CsvArticleDeserializer#fields)
         String[] header = readHeader(csvFile);
 
         if(header == null || areAllElementsArrayNull(header)){
-            return articles; // se non c'è un header non deserializza nulla
+            return articles; // If there is no header in the CSV file, deserialization does not occur. An empty list is returned
         }
 
         try (Reader reader = new FileReader(csvFile)) {
 
+            // Define the CSV format with the specified header and skip the header record for the real deserialization
             CSVFormat csvFormat = CSVFormat.DEFAULT.builder()
                     .setHeader(header)
                     .setSkipHeaderRecord(true)
                     .build();
 
+            // Create a CSV parser
             CSVParser parser = new CSVParser(reader, csvFormat);
 
             for (CSVRecord record : parser) {
+
+                // Parse the CSV record into an Article object
                 Article article = parseArticleRecord(record);
                 articles.add(article);
+
             }
+            // Close the CSV parser
             parser.close();
         }
         return articles;
@@ -109,55 +117,63 @@ public class CsvDeserializer implements DeserializerWithFields {
 
     /**
      * Parses a CSV record into an {@link Article} object.
+     * Performs the  deserialization of a JSON node into an object of type Article ("POJO")
      *
      * @param record The CSV record to parse.
      * @return An {@link Article} object obtained from the parsed record.
      */
     private Article parseArticleRecord(CSVRecord record){
 
+        // Create an array to store the deserialized strings from the CSV file to associate with the Article object.
+        // The length of the array is equal to the number of fields declared by the Article class
         Class<Article> myClass = Article.class;
-        String[] fieldsValues = new String[fields.length];
+        String[] fieldsValues = new String[myClass.getDeclaredFields().length];
 
         for(int i=0; i < fieldsValues.length; i++){
             if(record.isSet(fields[i])){
+                // Get the value of the field from the CSV record
                 fieldsValues[i] = record.get(fields[i]);
             }
         }
 
+        // Create a new Article object using the field values obtained from deserialization
         return new Article(fieldsValues);
     }
 
     /**
      * This utility function reads the CSV file header and stores it in an array of {@link String}.
      * The array is then modified according to the following criteria:
-     * if the field is present in {@link CsvDeserializer#fields},it is kept in the array
-     * in the position it is in, if the field is not present in {@link CsvDeserializer#fields},
+     * if the field is present in {@link CsvArticleDeserializer#fields},it is kept in the array
+     * in the position it is in, if the field is not present in {@link CsvArticleDeserializer#fields},
      * it is set to null. The function will then return the array which will be used
-     * to set the reference header for the function {@link CsvDeserializer#deserialize(File)}
+     * to set the reference header for the function {@link CsvArticleDeserializer#deserialize(File)}
      *
      * @param csvFile The file from which the header is read
      * @return An array of {@link String} which defines the reference header of the csv file according to the fields contained in @link CsvDeserializer#fields}
      */
     private String[] readHeader(File csvFile) throws IOException {
 
+        // Define the CSV format
         CSVFormat csvFormat = CSVFormat.DEFAULT;
 
         try (Reader reader = new FileReader(csvFile); CSVParser parser = new CSVParser(reader, csvFormat)) {
 
-            CSVRecord headerRecord = null;
+            CSVRecord headerRecord;
             try {
+                // Get the next record, which represents the header of the CSV ( It is the first line of the CSV file)
                 headerRecord = parser.iterator().next();
             } catch (NoSuchElementException e) {
-                return null; // empty csv file or wrong header
+                // Empty csv file or wrong header
+                return null;
             }
 
-            // Salva gli header delle colonne in un array
+            // Save the column headers in an array
             String[] header = new String[headerRecord.size()];
             for (int i = 0; i < headerRecord.size(); i++) {
-                header[i] = headerRecord.get(i).replace("\uFEFF", "");
+                header[i] = headerRecord.get(i).replace("\uFEFF", "");// Remove BOM character if present
             }
 
-            // Imposta a null i valori non presenti nell'array di riferimento
+            // Set to null all values that are not also present in CsvDeserializer#fields
             for (int i = 0; i < header.length; i++) {
                 if (!contains(fields, header[i])) {
                     header[i] = null;

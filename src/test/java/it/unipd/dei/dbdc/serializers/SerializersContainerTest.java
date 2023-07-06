@@ -10,6 +10,7 @@ import it.unipd.dei.dbdc.deserialization.DeserializationHandler;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -20,8 +21,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class SerializersContainerTest {
     private static final String serializers_properties = "src/test/resources/SerializationTest/properties/serializers.properties";
-    private static List<UnitOfSearch> articlesToSerialize() {
-        List<UnitOfSearch> articles = new ArrayList<>();
+    private static List<Serializable> articlesToSerialize() {
+        List<Serializable> articles = new ArrayList<>();
         articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1", "SourceSet 1","Source 1"));
         articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1","SourceSet 1","Source 1"));
         articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1","SourceSet 1","Source 1"));

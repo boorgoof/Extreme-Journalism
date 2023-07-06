@@ -9,25 +9,26 @@ import it.unipd.dei.dbdc.serializers.interfaces.Serializer;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * This class implements the interface: {@link Serializer}
- * It uses the Jackson library's {@link XmlMapper} to serialize {@link UnitOfSearch} list into an XML file
+ * It uses the Jackson library's {@link XmlMapper} to serialize {@link Serializable} list into an XML file
  *
  */
 public class XmlSerializer implements Serializer {
 
     /**
-     * Serializes a list of {@link UnitOfSearch} objects into XML file with indented formatting.
+     * Serializes a list of {@link Serializable} objects into XML file with indented formatting.
      *
-     * @param objects  The list of {@link UnitOfSearch} objects to be serialized.
+     * @param objects  The list of {@link Serializable} objects to be serialized.
      * @param xmlFile  The file into which the objects will be serialized
      * @throws IOException  If an I/O error occurs while writing to the XML file.
      * @throws IllegalArgumentException  If the objects or xmlFile parameter is null.
      */
     @Override
-    public void serialize(List<UnitOfSearch> objects, File xmlFile) throws IOException {
+    public void serialize(List<Serializable> objects, File xmlFile) throws IOException {
 
         if(objects == null){
             throw new IllegalArgumentException("The list of UnitOfSearch cannot be null");

@@ -4,8 +4,6 @@ import it.unipd.dei.dbdc.analysis.Article;
 import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
 import static org.junit.jupiter.api.Assertions.*;
 
-import it.unipd.dei.dbdc.deserialization.DeserializationProperties;
-import it.unipd.dei.dbdc.deserialization.interfaces.Deserializer;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -14,9 +12,9 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Stream;
 
 
@@ -38,12 +36,12 @@ public class XmlDeserializerTest {
     @ParameterizedTest
     @MethodSource("testParameters")
     public void deserialize(List<Article> expectedArticles, String filePath) {
-        XmlDeserializer deserializer = new XmlDeserializer();
+        XmlArticleDeserializer deserializer = new XmlArticleDeserializer();
 
         assertDoesNotThrow(() -> {
 
             File file = new File(filePath);
-            List<UnitOfSearch> articles = deserializer.deserialize(file);
+            List<Serializable> articles = deserializer.deserialize(file);
             assertNotNull(articles);
             assertFalse(articles.isEmpty());
             assertEquals(expectedArticles.size(), articles.size());
@@ -115,7 +113,7 @@ public class XmlDeserializerTest {
     @Test
     public void deserialize_particular_cases() {
 
-        XmlDeserializer deserializer = new XmlDeserializer();
+        XmlArticleDeserializer deserializer = new XmlArticleDeserializer();
 
         IllegalArgumentException exception1 = assertThrows(IllegalArgumentException.class, () -> deserializer.deserialize( null));
         System.out.println(exception1.getMessage());
@@ -132,28 +130,28 @@ public class XmlDeserializerTest {
 
         assertDoesNotThrow(() -> {
             File emptyCorrectFile = new File("src/test/resources/DeserializationTest/deserializersTest/xmlTest/emptyNoError.xml");
-            List<UnitOfSearch> articles = deserializer.deserialize(emptyCorrectFile);
+            List<Serializable> articles = deserializer.deserialize(emptyCorrectFile);
             assertTrue(articles.isEmpty());
         });
 
 
         assertDoesNotThrow(() -> {
             File noArticlesFile = new File("src/test/resources/DeserializationTest/deserializersTest/xmlTest/noArticles.xml");
-            List<UnitOfSearch> articles = deserializer.deserialize(noArticlesFile);
+            List<Serializable> articles = deserializer.deserialize(noArticlesFile);
             assertFalse(articles.isEmpty());
         });
 
 
         assertDoesNotThrow(() -> {
             File treeFile = new File("src/test/resources/DeserializationTest/deserializersTest/xmlTest/treeArticles.xml");
-            List<UnitOfSearch> articles = deserializer.deserialize(treeFile);
+            List<Serializable> articles = deserializer.deserialize(treeFile);
             assertNotEquals(treeArticles(), articles);
         });
 
         // file con struttura corretta ma non ci sono articoli
         assertDoesNotThrow(() -> {
             File noArticlesFile = new File("src/test/resources/DeserializationTest/deserializersTest/xmlTest/noArticles.xml");
-            List<UnitOfSearch> articles = deserializer.deserialize(noArticlesFile);
+            List<Serializable> articles = deserializer.deserialize(noArticlesFile);
             assertFalse(articles.isEmpty());
         });
     }

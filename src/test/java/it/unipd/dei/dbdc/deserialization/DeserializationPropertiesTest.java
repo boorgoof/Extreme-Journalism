@@ -2,12 +2,9 @@ package it.unipd.dei.dbdc.deserialization;
 
 
 import it.unipd.dei.dbdc.deserialization.interfaces.Deserializer;
-import it.unipd.dei.dbdc.deserialization.src_deserializers.CsvDeserializer;
-import it.unipd.dei.dbdc.deserialization.src_deserializers.JsonDeserializer;
-import it.unipd.dei.dbdc.deserialization.src_deserializers.XmlDeserializer;
-import it.unipd.dei.dbdc.serializers.SerializationProperties;
-import it.unipd.dei.dbdc.serializers.interfaces.Serializer;
-import it.unipd.dei.dbdc.serializers.src_serializers.XmlSerializer;
+import it.unipd.dei.dbdc.deserialization.src_deserializers.CsvArticleDeserializer;
+import it.unipd.dei.dbdc.deserialization.src_deserializers.JsonArticleDeserializer;
+import it.unipd.dei.dbdc.deserialization.src_deserializers.XmlArticleDeserializer;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -27,21 +24,21 @@ public class DeserializationPropertiesTest {
     public void readDeserializersProperties() {
 
 
-        Deserializer xmlSer = new JsonDeserializer();
+        Deserializer xmlSer = new JsonArticleDeserializer();
 
         assertDoesNotThrow(() -> {
 
             //Tests with default properties
             Map<String, Deserializer> defaultDeserializers = DeserializationProperties.readDeserializersProperties(null);
             assertEquals(3, defaultDeserializers.size());
-            assertTrue( defaultDeserializers.get("csv") instanceof CsvDeserializer);
+            assertTrue( defaultDeserializers.get("csv") instanceof CsvArticleDeserializer);
 
 
             //Tests with a valid serializers.properties
             final Map<String, Deserializer> deserializers;
             deserializers = DeserializationProperties.readDeserializersProperties(deserializers_properties);
             assertEquals(3, deserializers.size());
-            assertTrue(deserializers.get("json") instanceof JsonDeserializer );
+            assertTrue(deserializers.get("json") instanceof JsonArticleDeserializer);
 
 
         });
@@ -52,7 +49,7 @@ public class DeserializationPropertiesTest {
             final Map<String, Deserializer> deserializers;
             deserializers = DeserializationProperties.readDeserializersProperties(nonExistentFile_properties);
             assertEquals(3, deserializers.size());
-            assertTrue(deserializers.get("xml") instanceof XmlDeserializer);
+            assertTrue(deserializers.get("xml") instanceof XmlArticleDeserializer);
 
 
             // empty file properties.

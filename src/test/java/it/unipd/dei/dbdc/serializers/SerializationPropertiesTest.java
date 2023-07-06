@@ -1,17 +1,10 @@
 package it.unipd.dei.dbdc.serializers;
 
-import it.unipd.dei.dbdc.deserialization.src_deserializers.XmlDeserializer;
-import it.unipd.dei.dbdc.download.DownloadHandlerTest;
-import it.unipd.dei.dbdc.download.DownloadProperties;
-import it.unipd.dei.dbdc.download.interfaces.APIManager;
-import it.unipd.dei.dbdc.download.src_api_managers.TestManager.TestManager;
 import it.unipd.dei.dbdc.serializers.interfaces.Serializer;
 import it.unipd.dei.dbdc.serializers.src_serializers.XmlSerializer;
-import it.unipd.dei.dbdc.tools.PathManagerTest;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;

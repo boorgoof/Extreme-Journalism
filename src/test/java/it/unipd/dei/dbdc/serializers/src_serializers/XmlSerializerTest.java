@@ -2,9 +2,7 @@ package it.unipd.dei.dbdc.serializers.src_serializers;
 
 
 import it.unipd.dei.dbdc.analysis.Article;
-import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
-import it.unipd.dei.dbdc.deserialization.src_deserializers.JsonDeserializer;
-import it.unipd.dei.dbdc.deserialization.src_deserializers.XmlDeserializer;
+import it.unipd.dei.dbdc.deserialization.src_deserializers.XmlArticleDeserializer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -12,6 +10,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
@@ -33,7 +32,7 @@ public class XmlSerializerTest {
     }
     @ParameterizedTest
     @MethodSource("serializeParameters")
-    public void serialize(List<UnitOfSearch> expectedArticles, String filePath) {
+    public void serialize(List<Serializable> expectedArticles, String filePath) {
 
         XmlSerializer serializer = new XmlSerializer();
         try {
@@ -47,12 +46,12 @@ public class XmlSerializerTest {
 
         // verifico che sia corretta tanto so che i deserializzatori sono corretti
 
-        XmlDeserializer deserializer = new XmlDeserializer();
+        XmlArticleDeserializer deserializer = new XmlArticleDeserializer();
 
         try {
 
             File file = new File(filePath);
-            List<UnitOfSearch> articles = deserializer.deserialize(file);
+            List<Serializable> articles = deserializer.deserialize(file);
 
             assertEquals(expectedArticles.size(), articles.size());
             assertEquals(expectedArticles, articles);
@@ -77,32 +76,32 @@ public class XmlSerializerTest {
         
     }
 
-    private static List<UnitOfSearch> createTestArticles1() {
-        List<UnitOfSearch> articles = new ArrayList<>();
+    private static List<Serializable> createTestArticles1() {
+        List<Serializable> articles = new ArrayList<>();
         articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1", "sourceSet 1", "Source 1"));
         articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1", "sourceSet 1", "Source 1"));
         articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1", "sourceSet 1", "Source 1"));
         return articles;
     }
 
-    private static List<UnitOfSearch> createTestArticles2() {
-        List<UnitOfSearch> articles = new ArrayList<>();
+    private static List<Serializable> createTestArticles2() {
+        List<Serializable> articles = new ArrayList<>();
         articles.add(new Article("ID 2", "URL 2", "Title 2", "Body 2", "Date 2","sourceSet 2","Source 2"));
         articles.add(new Article("ID 2", "URL 2", "Title 2", "Body 2", "Date 2","sourceSet 2", "Source 2"));
         articles.add(new Article("ID 2", "URL 2", "Title 2", "Body 2", "Date 2","sourceSet 2", "Source 2"));
         return articles;
     }
 
-    private static List<UnitOfSearch> createTestArticles3() {
-        List<UnitOfSearch> articles = new ArrayList<>();
+    private static List<Serializable> createTestArticles3() {
+        List<Serializable> articles = new ArrayList<>();
         articles.add(new Article("", "","","","","", ""));
         articles.add(new Article("", "","","","","",""));
         articles.add(new Article("", "","","","","",""));
         return articles;
     }
 
-    private static List<UnitOfSearch> createTestArticles4() {
-        List<UnitOfSearch> articles = new ArrayList<>();
+    private static List<Serializable> createTestArticles4() {
+        List<Serializable> articles = new ArrayList<>();
         articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1","sourceSet 1",""));
         articles.add(new Article("ID 1", "URL 1", "", "Body 1", "Date 1","sourceSet 1","Source 1"));
         articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "","sourceSet 1","Source 1"));

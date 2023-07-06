@@ -6,6 +6,7 @@ import it.unipd.dei.dbdc.deserialization.interfaces.Deserializer;
 import java.io.File;
 import java.io.IOException;
 
+import java.io.Serializable;
 import java.util.*;
 
 import it.unipd.dei.dbdc.deserialization.interfaces.DeserializerWithFields;
@@ -14,7 +15,7 @@ import it.unipd.dei.dbdc.serializers.interfaces.Serializer;
 import it.unipd.dei.dbdc.tools.PathManager;
 
 /**
- * This class handles the deserialization of the database into a list of {@link UnitOfSearch}
+ * This class handles the deserialization of the database into a list of {@link Serializable}
  *
  * @see DeserializersContainer
  */
@@ -153,14 +154,14 @@ public class DeserializationHandler {
     }
 
     /**
-     * The function deserializes a file into a list of {@link UnitOfSearch}
+     * The function deserializes a file into a list of {@link Serializable}
      * The function correctly selects the {@link Deserializer} to use starting from the extension of the file passed as a parameter
      *
      * @param file File to deserialize
      * @throws IOException  If the file passed as a parameter has no associated {@link Deserializer}
      * @throws IllegalArgumentException  If file parameter is null.
      */
-    public List<UnitOfSearch> deserializeFile(File file) throws IOException {
+    public List<Serializable> deserializeFile(File file) throws IOException {
 
         if(file == null){
             throw new IllegalArgumentException("The file cannot be null");
@@ -182,7 +183,7 @@ public class DeserializationHandler {
     }
 
     /**
-     * The function deserializes all the files contained within the folder passed as a parameter into a list of {@link UnitOfSearch},
+     * The function deserializes all the files contained within the folder passed as a parameter into a list of {@link Serializable},
      * provided that there is a deserializer available for their specific format (contained in the {@link DeserializationHandler#container})
      * The function correctly selects the {@link Deserializer} to use starting from the extension of the file to be deserialized.
      * Files that do not have a deserializer are not treated
@@ -191,7 +192,7 @@ public class DeserializationHandler {
      * @throws IOException IOException If an I/O error occurs during deserialization
      * @throws IllegalArgumentException  If the folderPath parameter is null.
      */
-    public List<UnitOfSearch> deserializeFolder(String folderPath) throws IOException {
+    public List<Serializable> deserializeFolder(String folderPath) throws IOException {
 
         if(folderPath == null){
             throw new IllegalArgumentException("The folder path cannot be null");
@@ -200,7 +201,7 @@ public class DeserializationHandler {
         Set<File> files = getDeserializationFiles(folderPath);
 
         // Cerco di deserializzare l'intero folder, con tutti i formati possibili
-        List<UnitOfSearch> objects = new ArrayList<>();
+        List<Serializable> objects = new ArrayList<>();
         for(File file : files){
             objects.addAll(deserializeFile(file));
         }
@@ -237,11 +238,15 @@ public class DeserializationHandler {
         String[] newFields = new String[numberOfFields];
         Scanner scanner = new Scanner(System.in);
 
+        System.out.println("The number of fields to enter is : " + numberOfFields );
+
         for(int i = 0; i < numberOfFields; i++){
             System.out.println("Enter field" + (i+1) + ": ");
             String field = scanner.nextLine();
             newFields[i] = field;
         }
+
+        deserializer.setFields(newFields);
 
         System.out.println("The entered fields are:");
         for (String field : newFields) {

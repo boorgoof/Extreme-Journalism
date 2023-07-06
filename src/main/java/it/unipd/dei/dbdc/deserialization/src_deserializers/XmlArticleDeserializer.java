@@ -8,6 +8,7 @@ import it.unipd.dei.dbdc.deserialization.interfaces.Deserializer;
 import java.io.File;
 import java.io.IOException;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,13 +18,13 @@ import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
 
 /**
  * This class implements the interface: {@link Deserializer}.
- * It is used to deserialize CSV files into a list of {@link UnitOfSearch} objects.
+ * It is used to deserialize CSV files into a list of {@link Serializable} objects that are instances of {@link Article}.
  *
  */
-public class XmlDeserializer implements Deserializer {
+public class XmlArticleDeserializer implements Deserializer {
 
     /**
-     * Deserializes an XML file into a list of {@link UnitOfSearch}.
+     * Deserializes an XML file into a list of {@link Serializable}.
      *
      * @param xmlFile The XML file to deserialize.
      * @return The list of {@link UnitOfSearch} objects obtained from deserialization.
@@ -31,7 +32,7 @@ public class XmlDeserializer implements Deserializer {
      * @throws IllegalArgumentException If the provided XML file is null or does not exist.
      */
     @Override
-    public List<UnitOfSearch> deserialize(File xmlFile) throws IOException {
+    public List<Serializable> deserialize(File xmlFile) throws IOException {
 
         if(xmlFile == null){
             throw new IllegalArgumentException("The xmlFile file cannot be null");

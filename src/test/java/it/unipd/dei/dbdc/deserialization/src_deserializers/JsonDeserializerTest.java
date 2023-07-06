@@ -1,6 +1,5 @@
 package it.unipd.dei.dbdc.deserialization.src_deserializers;
 import it.unipd.dei.dbdc.analysis.Article;
-import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -8,7 +7,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.io.File;
-import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
@@ -22,7 +21,7 @@ public class JsonDeserializerTest {
     @Test
     public void getFields() {
 
-        JsonDeserializer deserializer = new JsonDeserializer();
+        JsonArticleDeserializer deserializer = new JsonArticleDeserializer();
 
         // todo mettere i campi giusti
         String[] expectedFields = {"id", "webUrl", "headline", "bodyText", "webPublicationDate", "webUrl", "webUrl"}; // da modificare
@@ -35,7 +34,7 @@ public class JsonDeserializerTest {
     public void setFields() {
 
         String[] newfields = {"ID", "Link", "Titolo", "Testo", "Data", "FonteSet", "Fonte"};
-        JsonDeserializer deserializer = new JsonDeserializer();
+        JsonArticleDeserializer deserializer = new JsonArticleDeserializer();
         deserializer.setFields(newfields);
         assertArrayEquals(newfields, deserializer.getFields());
 
@@ -59,14 +58,14 @@ public class JsonDeserializerTest {
     @MethodSource("deserializeParameters")
     public void deserialize(List<Article> expectedArticles, String filePath) {
 
-        JsonDeserializer deserializer = new JsonDeserializer();
+        JsonArticleDeserializer deserializer = new JsonArticleDeserializer();
         String[] fileFields = {"id" , "url" , "title" , "body" , "date" , "sourceSet", "source"};
         deserializer.setFields(fileFields);
         File file = new File (filePath);
 
         assertDoesNotThrow(() -> {
 
-            List<UnitOfSearch> articles = deserializer.deserialize(file);
+            List<Serializable> articles = deserializer.deserialize(file);
             assertNotNull(articles);
             assertFalse(articles.isEmpty());
             assertEquals(expectedArticles.size(), articles.size());
@@ -79,7 +78,7 @@ public class JsonDeserializerTest {
     @Test
     public void deserialize_other_cases() {
 
-        JsonDeserializer deserializer = new JsonDeserializer();
+        JsonArticleDeserializer deserializer = new JsonArticleDeserializer();
         String[] fileFields = {"id" , "url" , "title" , "body" , "date" , "sourceSet", "source"};
         deserializer.setFields(fileFields);
 
@@ -95,7 +94,7 @@ public class JsonDeserializerTest {
 
             // con un file vuoto non c'è errore semplicemnte non deserializza nulla
             File emptyFile = new File("src/test/resources/DeserializationTest/deserializersTest/jsonTest/emptyArticles.json");
-            List<UnitOfSearch> articles = deserializer.deserialize(emptyFile);
+            List<Serializable> articles = deserializer.deserialize(emptyFile);
             assertTrue(articles.isEmpty());
 
             // gli viene dato un file che non ha articoli al suo interno, non c'è errore semplicemente non deserializza nulla

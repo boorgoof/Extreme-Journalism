@@ -13,6 +13,8 @@ import it.unipd.dei.dbdc.tools.GeneralProperties;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,6 +27,7 @@ public class App
 {
     public static void main(String[] args) {
 
+        args = new String[]{"-da"};
         // Parses the commands given
         CommandLineInterpreter interpreter;
         try {
@@ -102,7 +105,7 @@ public class App
         }
 
         //Tries to deserialize the specified folder.
-        List<UnitOfSearch> articles;
+        List<Serializable> articles;
         try{
              articles = deserializersHandler.deserializeFolder(folderPath);
         } catch (IOException e){
@@ -142,6 +145,13 @@ public class App
             return;
         }
 
+        List<UnitOfSearch> unitOfSearches = new ArrayList<>();
+        for (Serializable obj : articles) {
+            if(obj instanceof UnitOfSearch){
+               unitOfSearches.add((UnitOfSearch) obj);
+            }
+        }
+
 
         System.out.println("Exiting the serialization part. You can find the serialized file in "+filePath+"...\n");
 
@@ -175,7 +185,7 @@ public class App
             String out_file;
             try {
                 //Obtains the properties from the command line, if specified, and calls the handler.
-                out_file = AnalyzerHandler.analyze(interpreter.obtainAnalyzeProps(), articles, count, interpreter.obtainStopWords());
+                out_file = AnalyzerHandler.analyze(interpreter.obtainAnalyzeProps(), unitOfSearches, count, interpreter.obtainStopWords());
             } catch (IOException | IllegalArgumentException e) {
                 System.err.println("The program has been terminated for an error in the analysis: "+e.getMessage());
                 return;

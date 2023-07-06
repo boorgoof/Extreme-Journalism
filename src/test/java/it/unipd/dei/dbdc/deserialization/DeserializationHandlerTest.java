@@ -2,14 +2,18 @@ package it.unipd.dei.dbdc.deserialization;
 
 import it.unipd.dei.dbdc.analysis.Article;
 import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
+import it.unipd.dei.dbdc.download.DownloadHandler;
+import it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIManagerTest;
 import it.unipd.dei.dbdc.serializers.SerializationProperties;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.*;
 
@@ -122,8 +126,8 @@ public class DeserializationHandlerTest {
         }
     }
 
-    private static List<UnitOfSearch> expectedDeserializeFile() {
-        List<UnitOfSearch> articles = new ArrayList<>();
+    private static List<Article> expectedDeserializeFile() {
+        List<Article> articles = new ArrayList<>();
         articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1", "SourceSet 1","Source 1"));
         articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1","SourceSet 1","Source 1"));
         articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1","SourceSet 1","Source 1"));
@@ -145,7 +149,7 @@ public class DeserializationHandlerTest {
             container.setSpecificFields("json", fileFields);
 
             String filePath = "src/test/resources/DeserializationTest/handlerTest/Database/Articles1.json";
-            List<UnitOfSearch> deserializationFiles = handler.deserializeFile(new File(filePath));
+            List<Serializable> deserializationFiles = handler.deserializeFile(new File(filePath));
 
             assertEquals(expectedDeserializeFile(), deserializationFiles);
 
@@ -178,7 +182,7 @@ public class DeserializationHandlerTest {
             DeserializersContainer container = (DeserializersContainer) cont_field.get(handler);
             container.setSpecificFields("json", fileFields);
 
-            List<UnitOfSearch> deserializationFolder = handler.deserializeFolder("src/test/resources/DeserializationTest/handlerTest/Database");
+            List<Serializable> deserializationFolder = handler.deserializeFolder("src/test/resources/DeserializationTest/handlerTest/Database");
             assertEquals(expectedDeserializeFolder(), deserializationFolder);
 
             // caso null
@@ -190,9 +194,25 @@ public class DeserializationHandlerTest {
         }
     }
 
+    /*
+    private void provideInput(String data) {
+        ByteArrayInputStream testIn = new ByteArrayInputStream(data.getBytes());
+        System.setIn(testIn);
+    }
+
+    //Function to restore the standard input
+    @AfterAll
+    public static void restoreSystemInputOutput() {
+        System.setIn(System.in);
+    }
 
     @Test
     void deserializerSetFields() {
 
+        provideInput("id\nurl\ntitle\nbody\ndate\nsourceSet\nsource");
+
+
     }
+    */
+
 }

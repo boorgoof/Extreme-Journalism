@@ -10,6 +10,7 @@ import org.junit.jupiter.api.*;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -62,8 +63,8 @@ public class DeserializersContainerTest {
         }
 
     }
-    private static List<UnitOfSearch> expectedArticles() {
-        List<UnitOfSearch> articles = new ArrayList<>();
+    private static List<Article> expectedArticles() {
+        List<Article> articles = new ArrayList<>();
         articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1", "sourceSet 1", "Source 1"));
         articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1", "sourceSet 1", "Source 1"));
         articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1", "sourceSet 1", "Source 1"));
@@ -82,7 +83,7 @@ public class DeserializersContainerTest {
             Deserializer deserializer = container.getDeserializer("json");
 
             File jsonFile = new File("src/test/resources/DeserializationTest/containerTest/Articles1.json");
-            List<UnitOfSearch> deserializedArticles = deserializer.deserialize(jsonFile);
+            List<Serializable> deserializedArticles = deserializer.deserialize(jsonFile);
 
             assertEquals(expectedArticles(), deserializedArticles);
 

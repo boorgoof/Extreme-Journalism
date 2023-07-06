@@ -1,7 +1,6 @@
 package it.unipd.dei.dbdc.deserialization.src_deserializers;
 
 import it.unipd.dei.dbdc.analysis.Article;
-import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -12,7 +11,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 
 
 import java.io.File;
-import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
@@ -26,7 +25,7 @@ public class CsvDeserializerTest {
     @Test
     public void getFields() {
 
-        CsvDeserializer deserializer = new CsvDeserializer();
+        CsvArticleDeserializer deserializer = new CsvArticleDeserializer();
 
         String[] expectedFields = {"Identifier","URL","Title","Body","Date","Source Set","Source"};
         String[] fields = deserializer.getFields();
@@ -37,13 +36,13 @@ public class CsvDeserializerTest {
     @Test
     public void setFields() {
 
-        CsvDeserializer deserializer = new CsvDeserializer();
+        CsvArticleDeserializer deserializer = new CsvArticleDeserializer();
 
         String[] newFields = {"ID", "Link", "Titolo", "Testo", "Data", "Fonte", "Set di fonti"};
         deserializer.setFields(newFields);
+        assertArrayEquals(newFields, deserializer.getFields());
 
-        String[] fields = deserializer.getFields();
-        assertArrayEquals(newFields, fields);
+
     }
 
     private static Stream<Arguments> testParameters() {
@@ -57,16 +56,18 @@ public class CsvDeserializerTest {
     }
 
 
+
     @ParameterizedTest
     @MethodSource("testParameters")
     public void deserialize(List<Article> expectedArticles, String filePath) {
         File file = new File(filePath);
-        CsvDeserializer deserializer = new CsvDeserializer();
+        CsvArticleDeserializer deserializer = new CsvArticleDeserializer();
 
 
         assertDoesNotThrow(() -> {
 
-            List<UnitOfSearch> articles = deserializer.deserialize(file);
+            List<Serializable> articles = deserializer.deserialize(file);
+            assertTrue(articles.get(1) instanceof Article);
             assertNotNull(articles);
             assertFalse(articles.isEmpty());
             assertEquals(expectedArticles.size(), articles.size());
@@ -79,7 +80,7 @@ public class CsvDeserializerTest {
     @Test
     public void deserialize_particular_cases() {
 
-        CsvDeserializer deserializer = new CsvDeserializer();
+        CsvArticleDeserializer deserializer = new CsvArticleDeserializer();
 
         IllegalArgumentException exception1 = assertThrows(IllegalArgumentException.class, () -> deserializer.deserialize( null));
         System.out.println(exception1.getMessage());
@@ -94,7 +95,7 @@ public class CsvDeserializerTest {
 
             // file vuoto
             File emptyFile = new File("src/test/resources/DeserializationTest/deserializersTest/csvTest/emptyArticles.csv");
-            List<UnitOfSearch> articles = deserializer.deserialize(emptyFile);
+            List<Serializable> articles = deserializer.deserialize(emptyFile);
             assertTrue(articles.isEmpty());
 
             // gli viene dato un file che non ha articoli al suo interno semplicemente non deserializza niente
