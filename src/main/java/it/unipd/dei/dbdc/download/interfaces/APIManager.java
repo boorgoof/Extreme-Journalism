@@ -43,6 +43,7 @@ public interface APIManager {
     /**
      * The function copies this object and gives another object that is identical to it.
      *
+     * @return An {@link APIManager} which is the copy of this one.
      */
     APIManager copy();
 }

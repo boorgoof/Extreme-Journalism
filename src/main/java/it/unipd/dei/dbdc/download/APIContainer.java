@@ -56,6 +56,8 @@ public class APIContainer {
 
     /**
      * A function that returns the names of all the {@link APIManager} that are present in the container.
+     *
+     *  @return A {@link String} with all the names of the {@link APIManager} inside the container.
      */
     public String getAPINames()
     {
@@ -72,6 +74,7 @@ public class APIContainer {
      *
      * @param name The name of the {@link APIManager}.
      * @throws IllegalArgumentException If there is no {@link APIManager} with that name.
+     *  @return A {@link String} with the parameters of the {@link APIManager} whose name is specified as a parameter. These parameters are already formatted
      */
     public String getAPIPossibleParams(String name) throws IllegalArgumentException
     {
@@ -83,7 +86,9 @@ public class APIContainer {
      * which has the parameters that are also passed to the function.
      *
      * @param name The name of the {@link APIManager}.
+     * @param l The {@link List} of the {@link QueryParam} to pass to the {@link APIManager}.
      * @throws IllegalArgumentException If there is no {@link APIManager} with that name, or the parameters passed are not valid.
+     * @return A {@link APIManager} whose name is passed as a parameter which has the parameters that are also passed to the function.
      */
     public APIManager getAPIManager(String name, List<QueryParam> l) throws IllegalArgumentException
     {

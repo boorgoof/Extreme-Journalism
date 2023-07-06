@@ -6,8 +6,29 @@ import it.unipd.dei.dbdc.analysis.interfaces.Analyzer;
 
 import java.util.*;
 
-//This is only a utility class that is used for the tests. It is not efficient.
+/**
+ * This is only a utility class that is used for the tests. It is not intended to be efficient,
+ * but to be right. It uses a {@link PriorityQueue} filled with {@link OrderedEntryComparable},
+ * so the order is done by the standard library of java.
+ * It is also an example of how to implement a different strategy to analyze articles.
+ * It is tested, along with {@link it.unipd.dei.dbdc.analysis.src_strategies.MapSplitAnalyzer.MapSplitAnalyzer},
+ * in {@link it.unipd.dei.dbdc.analysis.src_strategies.MapSplitAnalyzer.MapSplitAnalyzerTest}.
+ */
 public class PriorityQueueSplitAnalyzer implements Analyzer {
+
+    /**
+     * The main function, which accepts a {@link List} of {@link UnitOfSearch} and returns the most important
+     * terms of this list as an {@link List} of {@link OrderedEntryStringInt}.
+     * The most important terms are the one that appear in the most number of articles, and if two terms appear
+     * in the same amount of articles, the one which is alphabetically precedent is the most important one.
+     * It uses the order defined in {@link OrderedEntryComparable}
+     *
+     * @param articles A {@link List} of {@link UnitOfSearch} to search into.
+     * @param tot_words The number of words we want the returned {@link List} to contain. If there are not enough words, it will contain only the possible ones.
+     * @param banned A {@link Set} of words that should not be counted. If null or empty, all the words will be counted.
+     * @return An {@link List} of {@link OrderedEntryStringInt} containing the most important terms of the articles
+     * @throws IllegalArgumentException If the {@link UnitOfSearch} were not initialized.
+     */
     @Override
     public ArrayList<OrderedEntryStringInt> mostPresent(List<UnitOfSearch> articles, int tot_words, Set<String> banned) throws IllegalArgumentException
     {
@@ -30,7 +51,7 @@ public class PriorityQueueSplitAnalyzer implements Analyzer {
                 }
             }
 
-            //We use a negative number to obtain a max priority queue
+            //The order is defined in OrderedEntryComparable
             for (String elem : local_map) {
                 Integer val = global_map.get(elem);
                 if (val == null) {
@@ -56,5 +77,4 @@ public class PriorityQueueSplitAnalyzer implements Analyzer {
 
         return max;
     }
-
 }

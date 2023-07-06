@@ -3,6 +3,7 @@ package it.unipd.dei.dbdc.analysis;
 import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
 import it.unipd.dei.dbdc.analysis.src_printers.TxtOutPrinterTest;
 import it.unipd.dei.dbdc.tools.PathManagerTest;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -11,10 +12,22 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Class that tests {@link AnalyzerHandler}.
+ */
+@Order(7)
 public class AnalyzerHandlerTest {
 
+    /**
+     * The path to the resources for the analysis part. It uses the {@link PathManagerTest#resources_folder} and adds analysis/
+     */
     public static final String resources_url = PathManagerTest.resources_folder+"analysis/";
 
+    /**
+     * Tests the {@link AnalyzerHandler#analyze(String, List, int, boolean)} function, and also the
+     * function that obtains the banned set of terms (implicitly, as it is private).
+     * It uses {@link PathManagerTest#readFile(String)} to read the output file.
+     */
     @Test
     public void analyze()  {
         //Tests with null
@@ -66,7 +79,7 @@ public class AnalyzerHandlerTest {
         //Test the returned output with a simple example
         assertDoesNotThrow( () -> assertEquals("./output/output.txt", AnalyzerHandler.analyze(resources_url+"default.properties", articles, 76, true)));
         assertDoesNotThrow( () -> {
-            String output = TxtOutPrinterTest.readFile(AnalyzerHandler.analyze(resources_url+"default.properties", articles, 6, true));
+            String output = PathManagerTest.readFile(AnalyzerHandler.analyze(resources_url+"default.properties", articles, 6, true));
             assertEquals("energy 5 global 5 good 5 industry 5 nuclear 5 plants 5 ", output);
         });
     }

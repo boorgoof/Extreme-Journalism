@@ -3,7 +3,7 @@ package it.unipd.dei.dbdc.download;
 import it.unipd.dei.dbdc.download.src_api_managers.TestManager.TestManager;
 import it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIManager;
 import it.unipd.dei.dbdc.download.src_callers.KongAPICaller;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
@@ -13,14 +13,30 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Class that tests {@link APIContainer}.
+ * As this class is one of the first to be processed, the {@link APIContainer} has not already been initialized, so
+ * it can throw {@link java.io.IOException}
+ */
+@Order(1)
 public class APIContainerTest {
 
-    public APIContainer container = null;
-    @BeforeEach
-    public void getInstance()
+    /**
+    * The instance of the {@link APIContainer} that will be used.
+    */
+    private static APIContainer container = null;
+
+    /**
+     * Initializes the {@link APIContainer} instance used by all the other tests and classes.
+     * It uses the trueDownload.properties file.
+     * It is the only function where passing an invalid properties file causes an {@link IOException} to be thrown.
+     */
+    @BeforeAll
+    public static void getInstance()
     {
+        assertThrows(IOException.class, () -> APIContainer.getInstance(DownloadHandlerTest.resources_url+"falseDownload.properties"));
         try {
-            //The container is initialized with trueDownload.properties by all the test classes that use it
+            //The container is initialized with trueDownload.properties by this class, so all the other classes will have this instance.
             //Tests if every instance returned is the same
             container = APIContainer.getInstance(DownloadHandlerTest.resources_url+"trueDownload.properties");
             assertEquals(container, APIContainer.getInstance(null));
@@ -30,6 +46,9 @@ public class APIContainerTest {
         }
     }
 
+    /**
+     * Tests the {@link APIContainer#getAPINames()}
+     */
     @Test
     public void getAPINames()
     {
@@ -37,6 +56,10 @@ public class APIContainerTest {
         assertEquals(names, container.getAPINames());
     }
 
+    /**
+     * Tests the {@link APIContainer#getAPIPossibleParams(String)} with the {@link GuardianAPIManager#getFormattedParams()}
+     * and {@link TestManager#getFormattedParams()}.
+     */
     @Test
     public void getAPIPossibleParams()
     {
@@ -49,6 +72,9 @@ public class APIContainerTest {
         assertEquals(expected, container.getAPIPossibleParams(t.getName()));
     }
 
+    /**
+     * Tests the {@link APIContainer#getAPIManager(String, List)} with valid and invalid inputs.
+     */
     @Test
     public void getAPIManager()
     {

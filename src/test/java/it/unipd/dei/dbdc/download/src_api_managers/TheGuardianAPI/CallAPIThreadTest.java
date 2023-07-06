@@ -10,11 +10,26 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@Order(2)
+/**
+ * Class that tests {@link CallAPIThreadTest} by calling approximately 21 times the TheGuardianAPI.
+ * This causes a certain number of requests that is possible to use in a day to be used.
+ */
+@Order(7)
 public class CallAPIThreadTest {
 
+    /**
+     * The instance of {@link KongAPICaller} to use.
+     */
     private static final KongAPICaller caller = new KongAPICaller();
+
+    /**
+     * The key to use for the API. It only takes the one in {@link GuardianAPIManagerTest}.
+     */
     private static final String key = GuardianAPIManagerTest.key;
+
+    /**
+     * Tests the function {@link CallAPIThread#run()} by calling the API approximately 21 times.
+     */
     @Test
     public void run()
     {

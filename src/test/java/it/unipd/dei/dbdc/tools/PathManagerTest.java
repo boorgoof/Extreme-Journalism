@@ -1,31 +1,50 @@
 package it.unipd.dei.dbdc.tools;
 
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Class that tests {@link PathManager}.
+ */
+@Order(7)
 public class PathManagerTest {
+    /**
+     * The folder of the resources for all the tests, which also comprehends a final /.
+     */
     public final static String resources_folder = "./src/test/resources/";
 
+    /**
+     * Tests the output of {@link PathManager#getDatabaseFolder()}.
+     */
     @Test
     public void getDatabaseFolder() {
         assertDoesNotThrow( () ->
                 assertEquals("./database/", PathManager.getDatabaseFolder()));
     }
 
+    /**
+     * Tests the output of {@link PathManager#getOutFile()}.
+     */
     @Test
     public void getOutFile() {
         assertDoesNotThrow( () ->
                 assertEquals("./output/output", PathManager.getOutFile()));
     }
 
+    /**
+     * Tests the output of {@link PathManager#getSerializedFile(String)} passing various common formats.
+     */
     @Test
     public void getSerializedFile() {
         assertDoesNotThrow(() -> {
@@ -36,11 +55,19 @@ public class PathManagerTest {
         });
     }
 
+    /**
+     * Tests the output of {@link PathManager#getBannedWordsFile()}.
+     */
     @Test
     public void getBannedWordsFile() {
         assertDoesNotThrow(() -> assertEquals("english_stoplist.txt", PathManager.getBannedWordsFile()));
     }
 
+    /**
+     * Tests if the folders are really clear after {@link PathManager#clearFolder(String)}.
+     * It uses various folders inside the path subdirectory of the resources' folder.
+     * Then it refills the folders.
+     */
     @Test
     public void clearFolder() {
         assertThrows(IOException.class, () -> PathManager.clearFolder(null));
@@ -66,8 +93,6 @@ public class PathManagerTest {
             PathManager.clearFolder(resources_folder + "path/full");
             dir = new File(resources_folder+"path/full");
             assertEquals(0, dir.listFiles().length);
-            //Refill the folder
-            fullFolder();
 
             //Not existent inside a folder that does not exist
             PathManager.clearFolder(resources_folder+"path/not/existent/yhaha");
@@ -81,8 +106,15 @@ public class PathManagerTest {
             dir = new File(resources_folder+"path/not");
             dir.delete();
         });
+        //Refill the folder
+        fullFolder();
     }
 
+    /**
+     * Tests if the directories are really empty after {@link PathManager#deleteFilesInDir(File)}.
+     * It uses various folders inside the path subdirectory of the resources' folder.
+     * Then it refills the folders.
+     */
     @Test
     public void deleteFilesInDir()
     {
@@ -97,13 +129,19 @@ public class PathManagerTest {
 
         //A folder that is not empty
         assertTrue(PathManager.deleteFilesInDir(new File(resources_folder+"path/full")));
-        //Refill the folder
-        fullFolder();
 
         //A file
         assertFalse(PathManager.deleteFilesInDir(new File(resources_folder+"path/full/hh.txt")));
+
+        //Refill the folder
+        fullFolder();
     }
 
+    /**
+     * Tests if the directories or files are really deleted after {@link PathManager#deleteDirOrFile(File)}.
+     * It uses various folders inside the path subdirectory of the resources' folder.
+     * Then it refills the folders.
+     */
     @Test
     public void deleteDirOrFile()
     {
@@ -128,12 +166,15 @@ public class PathManagerTest {
         //A file already deleted
         PathManager.deleteDirOrFile(new File(resources_folder+"path/full/hh.txt"));
 
+        //Refill the folder
         fullFolder();
     }
 
 
-    //Copies the files from files directory to the full folder
-    public void fullFolder() {
+    /**
+     * Copies the files from files directory to the full folder.
+     */
+    private void fullFolder() {
         try {
             List<File> files = new ArrayList<>();
             files.add(new File(resources_folder + "path/files/hh.json"));
@@ -162,4 +203,26 @@ public class PathManagerTest {
         }
     }
 
+    /**
+     * Reads the file whose path is specified as a {@link String} and returns its content.
+     *
+     * @param file The path of the file to read
+     * @return A {@link String} that contains the content of the file, ending with a space if not empty.
+     */
+    public static String readFile(String file)
+    {
+        try (FileReader read = new FileReader(file); Scanner sc = new Scanner(read)) {
+            StringBuilder ret = new StringBuilder();
+            while (sc.hasNext())
+            {
+                ret.append(sc.next()).append(" ");
+            }
+            return ret.toString();
+        }
+        catch (IOException e)
+        {
+            fail("Not able to read file");
+            return null;
+        }
+    }
 }

@@ -2,35 +2,61 @@ package it.unipd.dei.dbdc.download;
 
 import it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIManagerTest;
 import it.unipd.dei.dbdc.tools.PathManagerTest;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * Class that tests {@link DownloadHandler}.
+ * It uses functions to redirect output of the tested class, and provides input with a specific function.
+ * As this class is one of the last to be processed, the {@link APIContainer} has already been initialized, so
+ * it should not throw any {@link java.io.IOException}.
+ */
+@Order(7)
 public class DownloadHandlerTest {
 
+    /**
+     * The path to the folder where there will be all the download resources.
+     * It uses the {@link PathManagerTest#resources_folder} and adds download.
+     */
     public final static String resources_url = PathManagerTest.resources_folder +"download/";
 
-    //Useful function to change the input from System.in to the String specified as a parameter
+    /**
+     * Useful function to change the input from System.in to the String specified as a parameter.
+     */
     private void provideInput(String data) {
         ByteArrayInputStream testIn = new ByteArrayInputStream(data.getBytes());
         System.setIn(testIn);
     }
 
-    //Function to restore the standard input
-    @AfterAll
-    public static void restoreSystemInputOutput() {
-        System.setIn(System.in);
+    /**
+     * To set the System.out to a {@link ByteArrayOutputStream} so that we don't see the output during the tests.
+     */
+    @BeforeEach
+    public void setUpOutput() {
+        System.setOut(new PrintStream(new ByteArrayOutputStream()));
     }
 
+
+
+    @AfterEach
+    public void restoreSystemInputOutput() {
+        System.setIn(System.in);
+        System.setOut(System.out);
+    }
+
+    /**
+     * Tests the download part with various valid and invalid inputs.
+     */
     @Test
     public void download()
     {
         //The container is initialized with trueDownload.properties by all the test classes that use it
+        //This is done only if we want to test this class alone.
         assertDoesNotThrow(() -> DownloadHandler.download(resources_url+"trueDownload.properties", resources_url+"trueApi.properties"));
         assertDoesNotThrow(() -> DownloadHandler.download(resources_url+"falseDownload.properties", resources_url+"trueApi.properties"));
 
