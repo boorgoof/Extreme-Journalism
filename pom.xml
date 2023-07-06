@@ -7,7 +7,7 @@
   <version>1.0</version>
   <packaging>jar</packaging>
 
-  <name>Extreme_journalism</name>
+  <name>Extreme journalism</name>
   <url>http://maven.apache.org</url>
 
   <properties>
@@ -18,8 +18,50 @@
     <filesToSerialize.folder>database</filesToSerialize.folder>
   </properties>
 
-  <build>
+  <dependencies>
+    <!-- Junit 5 Aggregator -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>5.9.2</version>
+      <scope>test</scope>
+    </dependency>
 
+    <!-- Commons cli: used to manage all the commands specified by the user using the command line -->
+    <dependency>
+      <groupId>commons-cli</groupId>
+      <artifactId>commons-cli</artifactId>
+      <version>1.5.0</version>
+    </dependency>
+
+    <!-- Kong Unirest: used to make the http requests -->
+    <dependency>
+      <groupId>com.konghq</groupId>
+      <artifactId>unirest-java</artifactId>
+      <version>3.14.2</version>
+    </dependency>
+
+    <!-- Libraries for serializers and deserializers -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.15.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.dataformat</groupId>
+      <artifactId>jackson-dataformat-xml</artifactId>
+      <version>2.15.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-csv</artifactId>
+      <version>1.10.0</version>
+    </dependency>
+  </dependencies>
+
+  <build>
     <plugins>
       <!-- Maven resource plugin: copies the specified folder into a folder in the target directory -->
       <plugin>
@@ -33,6 +75,8 @@
               <goal>copy-resources</goal>
             </goals>
             <configuration>
+              <!-- Encoding -->
+              <encoding>${project.build.sourceEncoding}</encoding>
               <!-- Output directory -->
               <outputDirectory>${basedir}/target/database</outputDirectory>
               <resources>
@@ -58,24 +102,32 @@
         </configuration>
       </plugin>
 
-      <!-- Maven site plugin: TODO: guardarlo -->
+      <!-- Maven site plugin: to create the site -->
       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
         <version>3.7.1</version>
       </plugin>
 
-      <!-- Maven javadoc plugin: javadoc lifecycle, to create javadocs-->
+      <!-- Maven javadoc plugin: to create javadocs-->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
         <version>3.5.0</version>
       </plugin>
 
-      <!-- Maven surefire plugin: to generate reports for the tests -->
+      <!-- Maven surefire plugin: to generate reports from the tests -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>2.22.1</version>
+      </plugin>
+
+      <!-- To add reports to the site -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <version>3.4.5</version>
       </plugin>
 
       <!-- Maven shade plugin: builds an uber JAR that contains all the dependencies. -->
@@ -83,13 +135,11 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
         <version>3.4.1</version>
-
         <!-- Making a different jar but attached to the original one, which includes all the dependencies -->
         <configuration>
           <shadedArtifactAttached>true</shadedArtifactAttached>
           <shadedClassifierName>jar-with-dependencies</shadedClassifierName>
         </configuration>
-
         <executions>
           <execution>
             <phase>package</phase>
@@ -136,26 +186,36 @@
       </plugin>
 
     </plugins>
-
   </build>
 
-  <!-- Serve per mettere i reports nel sito TODO: guardalo-->
+  <!-- Things that will be in the site -->
   <reporting>
     <plugins>
+
+      <!-- Reports of the tests -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-project-info-reports-plugin</artifactId>
-        <version>3.4.5</version>
+        <artifactId>maven-surefire-report-plugin</artifactId>
+        <version>3.1.2</version>
+        <!-- To not run the tests when creating the site -->
         <reportSets>
           <reportSet>
             <reports>
-              <report>dependencies</report>
-              <report>team</report>
-              <report>mailing-lists</report>
-              <report>ci-management</report>
-              <report>issue-management</report>
-              <report>licenses</report>
-              <report>scm</report>
+              <report>report-only</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+
+      <!-- Javadocs -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>3.5.0</version>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>javadoc</report>
             </reports>
           </reportSet>
         </reportSets>
@@ -163,49 +223,4 @@
     </plugins>
   </reporting>
 
-
-  <dependencies>
-
-    <!-- Junit 5 Aggregator -->
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter</artifactId>
-      <version>5.9.2</version>
-      <scope>test</scope>
-    </dependency>
-
-    <!-- Commons cli: used to manage all the commands specified by the user using the command line -->
-    <dependency>
-      <groupId>commons-cli</groupId>
-      <artifactId>commons-cli</artifactId>
-      <version>1.5.0</version>
-    </dependency>
-
-    <!-- Kong Unirest: used to make the http requests -->
-    <dependency>
-      <groupId>com.konghq</groupId>
-      <artifactId>unirest-java</artifactId>
-      <version>3.14.2</version>
-    </dependency>
-
-    <!-- Libraries for serializers and deserializers -->
-    <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-databind</artifactId>
-      <version>2.15.0</version>
-    </dependency>
-
-    <dependency>
-      <groupId>com.fasterxml.jackson.dataformat</groupId>
-      <artifactId>jackson-dataformat-xml</artifactId>
-      <version>2.15.1</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-csv</artifactId>
-      <version>1.10.0</version>
-    </dependency>
-
-  </dependencies>
 </project>

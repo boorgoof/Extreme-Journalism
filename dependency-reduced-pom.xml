@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>it.unipd.dei.dbdc</groupId>
   <artifactId>Extreme_journalism</artifactId>
-  <name>Extreme_journalism</name>
+  <name>Extreme journalism</name>
   <version>1.0</version>
   <url>http://maven.apache.org</url>
   <build>
@@ -19,6 +19,7 @@
               <goal>copy-resources</goal>
             </goals>
             <configuration>
+              <encoding>${project.build.sourceEncoding}</encoding>
               <outputDirectory>${basedir}/target/database</outputDirectory>
               <resources>
                 <resource>
@@ -122,21 +123,12 @@
   <reporting>
     <plugins>
       <plugin>
-        <artifactId>maven-project-info-reports-plugin</artifactId>
-        <version>3.4.5</version>
-        <reportSets>
-          <reportSet>
-            <reports>
-              <report>dependencies</report>
-              <report>team</report>
-              <report>mailing-lists</report>
-              <report>ci-management</report>
-              <report>issue-management</report>
-              <report>licenses</report>
-              <report>scm</report>
-            </reports>
-          </reportSet>
-        </reportSets>
+        <artifactId>maven-surefire-report-plugin</artifactId>
+        <version>3.1.2</version>
+      </plugin>
+      <plugin>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>3.5.0</version>
       </plugin>
     </plugins>
   </reporting>
