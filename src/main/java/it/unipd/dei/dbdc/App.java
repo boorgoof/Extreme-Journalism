@@ -96,9 +96,18 @@ public class App
             serialize(interpreter, articles, serializedFile);
         }
         if (interpreter.analyzePhase()) {
+            if (!serializedFile.exists())
+            {
+                System.err.println("Error: it was required the analysis of a file that do not exist");
+                return;
+            }
 
             // FIRST PHASE: deserialization from common format to a list of Objects
             List<UnitOfSearch> articles = deserializeCommonFile(serializedFile);
+            if (articles == null)
+            {
+                return;
+            }
 
             // SECOND PHASE: analyze the articles to obtain the most important words
             //Obtains the properties from the command line, if specified.
