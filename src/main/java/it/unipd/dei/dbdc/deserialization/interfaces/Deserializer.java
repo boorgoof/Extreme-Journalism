@@ -13,7 +13,8 @@ import java.util.List;
  */
 public interface Deserializer {
     /**
-     * Deserialize a file into a list of objects {@link Serializable}
+     * Deserialize a file into a list of objects {@link Serializable}.
+     * If the fields of the object to be deserialized are not present in the file, an empty list is returned.
      *
      * @param file The file to deserialize into {@link Serializable}
      * @return the list of {@link Serializable} objects obtained from deserialization

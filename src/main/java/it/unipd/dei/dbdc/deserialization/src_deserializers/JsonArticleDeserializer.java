@@ -57,12 +57,57 @@ public class JsonArticleDeserializer implements DeserializerWithFields {
     }
 
     /**
-     * The function deserializes a JSON file in {@link List} of {@link UnitOfSearch}
-     * // todo da fare commento
+     * The function deserializes a JSON file in {@link List} of {@link Serializable} objects which are instances of {@link Article}
+     * To perform the deserialization, all the nodes present in the entire file that contain the key {@link JsonArticleDeserializer#fields}[0] are found in them.
+     * By default {@link JsonArticleDeserializer#fields}[0] ="id" (it can be changed like all other search fields).
+     * So in a file, in the default case, as many articles are identified as the "id" value keys are present inside it.
+     * Once all the nodes have been found that have an article inside them, each of them is parsed.
+     * So an article is formed by the values associated with these keys both in the JSON file and in {@link JsonArticleDeserializer#fields}.
+     * <pre>
+     *For example:
      *
-     * @param jsonFile The JOSN  file to deserialize into {@link UnitOfSearch}
-     * @return the list of {@link UnitOfSearch} objects obtained from deserialization
-     * @throws IOException If an I/O error occurs during the deserialization process. //TODO FIx commento
+     *"object": {
+     *     "data": [
+     *       {
+     *         "response1": {
+     *           "id" : "ID 1",
+     *           "url" : "URL 1",
+     *           "title" : "Title 1",
+     *           "body" : "Body 1",
+     *           "date" : "Date 1",
+     *           "sourceSet" : "sourceSet 1",
+     *           "source" : "Source 1"
+     *         }
+     *       },
+     *       {
+     *         "response2": {
+     *           "id" : "ID 2",
+     *           "url" : "URL 2",
+     *           "title" : "Title 2",
+     *           "body" : "Body 2",
+     *           "date" : "Date 2",
+     *           "sourceSet" : "sourceSet 2",
+     *           "source" : "Source 2"
+     *         },
+     *         "response3": {
+     *           "url" : "URL 3",
+     *           "title" : "Title 3",
+     *           "body" : "Body 3",
+     *           "date" : "Date 3",
+     *           "sourceSet" : "sourceSet 3",
+     *           "source" : "Source 2"
+     *         }
+     *       }
+     *     ]
+     *   }
+     *   <pre>
+     * In this case, only the response1 and response2 nodes are parsed. So the deserialization of the file expects two {@link Article} objects.
+     * The "id" key is not present in response3, so it is not considered as an {@link Article}
+     * It is possible to change the keys that define an article with the method {@link JsonArticleDeserializer#setFields(String[])}
+     *
+     * @param jsonFile The JOSN  file to deserialize into {@link List} of {@link Serializable} objects which are instances of {@link Article}
+     * @return the list of {@link Serializable} objects obtained from deserialization
+     * @throws IOException If an I/O error occurs during the deserialization process. //TODO FIx commento errori
      * @throws IllegalArgumentException if the file does not exist or is not null
      */
     @Override
@@ -77,16 +122,18 @@ public class JsonArticleDeserializer implements DeserializerWithFields {
 
         List<Serializable> articles = new ArrayList<>();
 
+        // Create an ObjectMapper
         ObjectMapper mapper = new ObjectMapper();
+        // Read the JSON file and obtain the root JsonNode
         JsonNode jsonNode = mapper.readTree(jsonFile);
 
-        // Trova tutti i nodi che hanno ID dentro (come figlio, quindi sono gli articoli)
-        List<JsonNode> articleParentNodes = jsonNode.findParents(fields[0]);
+        // Find all nodes that have the specified ID field (each node found contains an article)
+        List<JsonNode> articleNodes = jsonNode.findParents(fields[0]);
 
-        for (JsonNode parentNode : articleParentNodes) {
+        // Each of them is parsed in an article object
+        for (JsonNode node : articleNodes) {
 
-            Article article = parseNode(parentNode);
-            //System.out.println(article);
+            Article article = parseNode(node);
             articles.add(article);
 
         }
@@ -103,21 +150,20 @@ public class JsonArticleDeserializer implements DeserializerWithFields {
      */
     private Article parseNode(JsonNode node) {
 
-        // Create an array to store the deserialized strings from the CSV file to associate with the Article object.
+        // Create an array to store the deserialized strings from the JSON file to associate with the Article object.
         // The length of the array is equal to the number of fields declared by the Article class
         Class<Article> myClass = Article.class;
         String[] fieldsValues = new String[myClass.getDeclaredFields().length];
 
-        // serve per accettare i casi in cui non esiste la chiave nel file json altrimenti avrei nullPointerException con asText()
         for(int i=0; i < fields.length; i++){
-
+            // Handle cases where the key may not exist. So if the value associated with a key is not null, it is deserialized and stored in the array
             if(node.findValue(fields[i]) != null && !node.findValue(fields[i]).asText().equals("null")){
                 fieldsValues[i] = node.findValue(fields[i]).asText();
             } else {
                 fieldsValues[i] = null;
             }
         }
-        // Create a new Article object using the field values obtained from deserialization
+        // Create a new Article object using the field values obtained from deserialization contained in the array
         return new Article(fieldsValues);
     }
 

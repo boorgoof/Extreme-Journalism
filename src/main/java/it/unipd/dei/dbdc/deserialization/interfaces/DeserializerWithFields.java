@@ -4,7 +4,7 @@ import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
 
 /**
  * This interface extends the {@link Deserializer} interface and defines additional methods related to fields.
- * This interface defines a more specific deserializer that is capable to deal with files  with a complex and variable structure.
+ * This interface defines a more specific deserializer that is capable to deal with files with a complex and variable structure.
  * In particular, It provides the ability to selectively deserialize specific fields with the option to modify them.
  *
  */

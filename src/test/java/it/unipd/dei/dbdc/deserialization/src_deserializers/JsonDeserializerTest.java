@@ -42,6 +42,10 @@ public class JsonDeserializerTest {
         deserializer.setFields(newfields2);
         assertArrayEquals(newfields2, deserializer.getFields());
 
+        String[] newFields3 = {"ID", "Link", "Titolo", "Testo", "Data", "Fonte", "Set di fonti", "cover"};
+        String errorMessage = "You cannot insert an array with more fields than those declared in the Article class";
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> deserializer.setFields(newFields3), errorMessage);
+
     }
 
     private static Stream<Arguments> deserializeParameters() {

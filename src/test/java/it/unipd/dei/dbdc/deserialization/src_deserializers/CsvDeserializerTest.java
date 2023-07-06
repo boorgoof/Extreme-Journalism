@@ -42,6 +42,13 @@ public class CsvDeserializerTest {
         deserializer.setFields(newFields);
         assertArrayEquals(newFields, deserializer.getFields());
 
+        String[] newFields2 = {"ID"};
+        deserializer.setFields(newFields2);
+        assertArrayEquals(newFields2, deserializer.getFields());
+
+        String[] newFields3 = {"ID", "Link", "Titolo", "Testo", "Data", "Fonte", "Set di fonti", "cover"};
+        String errorMessage = "You cannot insert an array with more fields than those declared in the Article class";
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> deserializer.setFields(newFields3), errorMessage);
 
     }
 
@@ -130,9 +137,9 @@ public class CsvDeserializerTest {
 
     private static List<Article> createTestArticles3() {
         List<Article> articles = new ArrayList<>();
-        articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1","SourceSet 1","Source 1"));
-        articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1","SourceSet 1","Source 1"));
-        articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", "Date 1","SourceSet 1","Source 1"));
+        articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", null,"SourceSet 1","Source 1"));
+        articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", null,"SourceSet 1","Source 1"));
+        articles.add(new Article("ID 1", "URL 1", "Title 1", "Body 1", null,"SourceSet 1","Source 1"));
         return articles;
     }
 
