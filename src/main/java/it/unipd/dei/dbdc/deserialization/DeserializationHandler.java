@@ -217,17 +217,15 @@ public class DeserializationHandler {
      */
     // TODO se mettono roba sbagliata lancia eccezione non posso farci molto; da cambiare? Devo fare i test
     public static void deserializerSetFields()  {
-        String format = "null";
 
-        if(format == null){
-            throw new IllegalArgumentException("the format cannot be null");
-        }
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("If no other fields are desired, enter an empty string");
+        String format = scanner.nextLine();
 
         DeserializerWithFields deserializer;
-
         try {
             if(container.getDeserializer(format) instanceof DeserializerWithFields){
-                deserializer = (DeserializerWithFields) container.getDeserializer(format); // mi serve per sapere il numero di fields
+                deserializer = (DeserializerWithFields) container.getDeserializer(format);
             } else {
                 throw new IllegalArgumentException("The selected deserializer does not implement field specification");
             }
@@ -237,9 +235,9 @@ public class DeserializationHandler {
 
         int numberOfFields = deserializer.numberOfFields();
         String[] newFields = new String[numberOfFields];
-        Scanner scanner = new Scanner(System.in);
 
         System.out.println("The number of fields to enter is : " + numberOfFields );
+        System.out.println("If no other fields are desired, enter an empty string");
 
         for(int i = 0; i < numberOfFields; i++){
             System.out.println("Enter field" + (i+1) + ": ");
