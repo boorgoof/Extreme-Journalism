@@ -21,6 +21,14 @@ public class TxtOutPrinter implements OutPrinter {
      *
      */
     private static final String extension = ".txt";
+
+    /**
+     * Default constructor of the class. It is the only constructor, as there are
+     * no fields to give value to, so it doesn't do anything.
+     *
+     */
+    public TxtOutPrinter() {}
+
     /**
      * The function that prints the most important terms into a .txt file.
      *
