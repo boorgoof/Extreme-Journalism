@@ -14,6 +14,13 @@ import java.util.Properties;
  */
 public class PropertiesTools {
     /**
+     * The only constructor of the class. It is declared as private to
+     * prevent the default constructor to be created.
+     *
+     */
+    private PropertiesTools() {}
+
+    /**
      * This function accepts the name of the default properties file and the path of the properties
      * file specified by the user: it tries to read the user's properties file, calling {@link PropertiesTools#getOutProperties(String)}
      * and if an Exception occurs or the parameter passed is null, reads the default properties.

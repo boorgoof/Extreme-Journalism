@@ -10,6 +10,13 @@ import it.unipd.dei.dbdc.download.QueryParam;
  */
 public class GuardianAPIInfo {
     /**
+     * The only constructor of the class. It is declared as private to
+     * prevent the default constructor to be created.
+     *
+     */
+    private GuardianAPIInfo() {}
+
+    /**
      * Default URL of the API, it's the base to create the request, it is accessible by
      * the {@link GuardianAPIInfo#getDefaultURL()} method.
      *

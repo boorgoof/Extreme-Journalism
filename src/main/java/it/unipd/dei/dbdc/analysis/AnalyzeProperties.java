@@ -14,8 +14,16 @@ import java.util.Properties;
  * @see PropertiesTools
  */
 public class AnalyzeProperties {
+
     /**
-     * The name of the default properties file. It is present in the folder tools.
+     * The only constructor of the class. It is declared as private to
+     * prevent the default constructor to be created.
+     *
+     */
+    private AnalyzeProperties() {}
+
+    /**
+     * The name of the default properties file. It is present in the folder resources.
      *
      */
     public final static String default_properties = "analyze.properties";

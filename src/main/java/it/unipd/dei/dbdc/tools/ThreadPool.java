@@ -11,6 +11,13 @@ import java.util.concurrent.*;
 public class ThreadPool {
 
     /**
+     * The only constructor of the class. It is declared as private to
+     * prevent the default constructor to be created.
+     *
+     */
+    private ThreadPool() {}
+
+    /**
      * The {@link ExecutorService} object to pass to the user.
      *
      */
