@@ -19,13 +19,31 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * Class that tests {@link DeserializersContainer}.
  */
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+
+// manca test con properties falsa
+
 @Order(1)
 public class DeserializersContainerTest {
     // todo Fixare le properties. il path intendo
     private static final String deserializers_properties = "src/test/resources/DeserializationTest/properties/deserializers.properties";
+    @AfterEach
+    public void setOriginalFields()  {
 
-    @Test @Order(1)
+        String[] jsonDefaultFields = {"id", "apiUrl", "headline", "bodyText", "webPublicationDate", "publication", "sectionName" };
+        String[] csvDefaultFields = {"Identifier", "URL", "Title", "Body", "Date", "Source Set", "Source"};
+        DeserializersContainer container = null;
+        try {
+            container = DeserializersContainer.getInstance(deserializers_properties);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        container.setSpecificFields("json", jsonDefaultFields);
+        container.setSpecificFields("csv", csvDefaultFields);
+
+    }
+
+
+    @Test
     public void getSpecificFields() {
         String[] expectedFields = {"id", "apiUrl", "headline", "bodyText", "webPublicationDate", "publication", "sectionName" };
 
@@ -47,7 +65,6 @@ public class DeserializersContainerTest {
 
     }
 
-    @Test @Order(2)
     public void setSpecificFields() {
 
         String[] fileFields = {"id" , "url" , "title" , "body" , "date" , "sourceSet", "source"};

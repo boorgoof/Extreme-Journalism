@@ -221,7 +221,6 @@ public class DeserializationHandler {
      *
      * @throws IllegalArgumentException If folderPath parameter is null or the selected deserializer does not implement field specification
      */
-    // TODO se mettono roba sbagliata lancia eccezione non posso farci molto; da cambiare? Devo fare i test
     public static void deserializerSetFields()  {
 
         Scanner scanner = new Scanner(System.in);

@@ -2,6 +2,7 @@ package it.unipd.dei.dbdc.deserialization.src_deserializers;
 import it.unipd.dei.dbdc.analysis.Article;
 import it.unipd.dei.dbdc.deserialization.DeserializersContainer;
 import it.unipd.dei.dbdc.serializers.src_serializers.XmlSerializerTest;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -20,6 +21,15 @@ import static org.junit.jupiter.api.Assertions.*;
  * Class that tests {@link JsonArticleDeserializer}.
  */
 public class JsonDeserializerTest {
+
+    @AfterEach
+    public void setOriginalFields()  {
+
+        JsonArticleDeserializer deserializer = new JsonArticleDeserializer();
+
+        String[] defaultFields = {"Identifier", "URL", "Title", "Body", "Date", "Source Set", "Source"};
+        deserializer.setFields(defaultFields);
+    }
 
     /**
      * Tests {@link JsonArticleDeserializer#getFields()}

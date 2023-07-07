@@ -1,14 +1,6 @@
 package it.unipd.dei.dbdc.deserialization;
 
 import it.unipd.dei.dbdc.analysis.Article;
-import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
-import it.unipd.dei.dbdc.deserialization.interfaces.Deserializer;
-import it.unipd.dei.dbdc.deserialization.src_deserializers.CsvArticleDeserializer;
-import it.unipd.dei.dbdc.deserialization.src_deserializers.JsonArticleDeserializer;
-import it.unipd.dei.dbdc.deserialization.src_deserializers.XmlArticleDeserializer;
-import it.unipd.dei.dbdc.download.DownloadHandler;
-import it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIManagerTest;
-import it.unipd.dei.dbdc.serializers.SerializationProperties;
 import org.junit.jupiter.api.*;
 
 import java.io.*;
@@ -16,8 +8,8 @@ import java.lang.reflect.Field;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
-// HANDLER per mdoificare i fields devo mettere container public
 
+@Order(7)
 public class DeserializationHandlerTest {
     private static final String deserializers_properties = "src/test/resources/DeserializationTest/properties/deserializers.properties";
     private static Field cont_field;
@@ -35,99 +27,35 @@ public class DeserializationHandlerTest {
     }
 
     @AfterAll
-    public static void terminate()
-    {
-        cont_field.setAccessible(true);
-    }
-   /*
+    public static void terminate()  {
 
-    private static Set<File> expectedAllFiles() {
-        Set<File> files = new HashSet<>();
-        files.add(new File("src/test/resources/DeserializationTest/handlerTest/Database/Articles1.csv"));
-        files.add(new File("src/test/resources/DeserializationTest/handlerTest/Database/Articles1.json"));
-        files.add(new File("src/test/resources/DeserializationTest/handlerTest/Database/Articles1.xml"));
-        files.add(new File("src/test/resources/DeserializationTest/handlerTest/Database/Database2/Articles1.html"));
-        files.add(new File("src/test/resources/DeserializationTest/handlerTest/Database/Articles1.txt"));
-        files.add(new File("src/test/resources/DeserializationTest/handlerTest/Database/Articles2.txt"));
-        files.add(new File("src/test/resources/DeserializationTest/handlerTest/Database/Database2/Articles1.pdf"));
-        return files;
-    }
-    private static Set<File> expectedRejectedFiles() {
-        Set<File> files = new HashSet<>();
-        files.add(new File("src/test/resources/DeserializationTest/handlerTest/Database/Articles1.txt"));
-        files.add(new File("src/test/resources/DeserializationTest/handlerTest/Database/Articles2.txt"));
-        files.add(new File("src/test/resources/DeserializationTest/handlerTest/Database/Database2/Articles1.pdf"));
-        files.add(new File("src/test/resources/DeserializationTest/handlerTest/Database/Database2/Articles1.html"));
-        return files;
-    }
-    private static Set<File> expectedCorrectFiles() {
-        Set<File> files = new HashSet<>();
-        files.add(new File("src/test/resources/DeserializationTest/handlerTest/Database/Articles1.csv"));
-        files.add(new File("src/test/resources/DeserializationTest/handlerTest/Database/Articles1.json"));
-        files.add(new File("src/test/resources/DeserializationTest/handlerTest/Database/Articles1.xml"));
-        return files;
+        cont_field.setAccessible(false);
     }
 
-    @Test
-    void getFolderFiles() {
+    @AfterEach
+    public void setOriginalFields()  {
+
+        //
+        String[] jsonDefaultFields = {"id", "apiUrl", "headline", "bodyText", "webPublicationDate", "publication", "sectionName" };
+        DeserializersContainer container = null;
 
         try {
-            Set<File> files = new HashSet<>();
-            String folderPath = "src/test/resources/DeserializationTest/handlerTest/Database";
-            DeserializationHandler handler = new DeserializationHandler(deserializers_properties);
-
-            handler.getFolderFiles(folderPath, files);
-            assertEquals(expectedAllFiles(), files);
-
-            IllegalArgumentException exception1 = assertThrows(IllegalArgumentException.class, () -> handler.getFolderFiles(null, files));
-            System.out.println(exception1.getMessage());
-
-            IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> handler.getFolderFiles(folderPath, null));
-
-        } catch (IOException e) {
+            container = (DeserializersContainer) cont_field.get(DeserializationHandler.class);
+        } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
+        container.setSpecificFields("json", jsonDefaultFields);
 
-    }
-
-    @Test
-    void deleteUnavailableFiles() {
-
+        //
+        String[] csvDefaultFields = {"Identifier", "URL", "Title", "Body", "Date", "Source Set", "Source"};
         try {
-            Set<File> files = new HashSet<>();
-            DeserializationHandler handler = new DeserializationHandler(deserializers_properties);
-            handler.getFolderFiles("src/test/resources/DeserializationTest/handlerTest/Database", files);
-
-            // qui
-            Set<File> rejectedFiles = handler.deleteUnavailableFiles(files);
-            assertEquals(expectedRejectedFiles(), rejectedFiles);
-
-            // caso in cui gli passo null
-            IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> handler.deleteUnavailableFiles(null));
-
-        } catch (IOException e) {
+            container = (DeserializersContainer) cont_field.get(DeserializationHandler.class);
+        } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
+        container.setSpecificFields("csv", csvDefaultFields);
+
     }
-
-    @Test
-    void getDeserializationFiles() {
-
-        try {
-            Set<File> files = new HashSet<>();
-            DeserializationHandler handler = new DeserializationHandler(deserializers_properties);
-            String folderDatabase = "src/test/resources/DeserializationTest/handlerTest/Database";
-            Set<File> deserializationFiles = handler.getDeserializationFiles(folderDatabase);
-            assertEquals(expectedCorrectFiles(), deserializationFiles);
-
-            IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> handler.getDeserializationFiles(null));
-
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-*/
 
     /**
      * This utility function creates articles for testing {@link DeserializationHandler#deserializeFile(File)}.
@@ -229,7 +157,6 @@ public class DeserializationHandlerTest {
 
             // case I pass it null as input
             IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> DeserializationHandler.deserializeFolder(null));
-            System.out.println(exception);
 
         } catch (IOException | IllegalAccessException e) {
             throw new RuntimeException(e);
@@ -247,7 +174,7 @@ public class DeserializationHandlerTest {
     /**
      * To set the System.out to a {@link ByteArrayOutputStream} so that we don't see the output during the tests.
      */
-    /*
+
     @BeforeEach
     public void setUpOutput() {
         System.setOut(new PrintStream(new ByteArrayOutputStream()));

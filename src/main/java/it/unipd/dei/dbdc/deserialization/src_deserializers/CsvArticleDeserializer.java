@@ -93,7 +93,7 @@ public class CsvArticleDeserializer implements DeserializerWithFields {
         // I read the header of the CSV file. This is the first line of the CSV file (I only take into account the header fields that match with CsvArticleDeserializer#fields)
         String[] header = readHeader(csvFile);
 
-        if(header == null || areAllElementsArrayNull(header)){
+        if(header == null || areAllElementsArrayX(header)){
             return articles; // If there is no header in the CSV file, deserialization does not occur. An empty list is returned
         }
 
@@ -213,10 +213,10 @@ public class CsvArticleDeserializer implements DeserializerWithFields {
      * @param array The array to check.
      * @return {@code true} if all elements in the array are null, {@code false} otherwise.
      */
-    private boolean areAllElementsArrayNull(Object[] array) {
+    private boolean areAllElementsArrayX(String[] array) {
 
-        for (Object element : array) {
-            if (element != null) {
+        for (String element : array) {
+            if (!element.equals("X") ) {
                 return false;
             }
         }
