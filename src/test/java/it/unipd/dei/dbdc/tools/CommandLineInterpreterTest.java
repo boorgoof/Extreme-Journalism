@@ -1,7 +1,12 @@
 package it.unipd.dei.dbdc.tools;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -10,6 +15,23 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 @Order(7)
 public class CommandLineInterpreterTest {
+    /**
+     * To set the System.out to a {@link ByteArrayOutputStream} so that we don't see the output during the tests.
+     */
+    @BeforeEach
+    public void setUpOutputError() {
+        System.setOut(new PrintStream(new ByteArrayOutputStream()));
+        System.setErr(new PrintStream(new ByteArrayOutputStream()));
+    }
+
+    /**
+     * To restore the System.out and System.err
+     */
+    @AfterEach
+    public void restoreSystemOutput() {
+        System.setOut(System.out);
+        System.setErr(System.err);
+    }
 
     /**
      * Tests the defining and parsing of the options, and also the interrogation with various valid or invalid inputs.
@@ -55,11 +77,12 @@ public class CommandLineInterpreterTest {
                     assertNull(cli.obtainSerProps());
                     //Other options
                     assertNull(cli.obtainPathOption());
+                    assertNull(cli.obtainOutStopWords());
                     assertTrue(cli.obtainStopWords());
                     assertFalse(cli.obtainSetFields());
                     assertEquals(-1, cli.obtainNumberOption());
 
-                    String[] args1 = {"-d", "-apf", "aa", "-dowpf", "dd"};
+                    String[] args1 = {"-d", "-apf", "aa", "-dowpf", "dd", "-path", "uu"};
                     cli = new CommandLineInterpreter(args1);
                     //Phases
                     assertFalse(cli.help());
@@ -73,12 +96,13 @@ public class CommandLineInterpreterTest {
                     assertNull(cli.obtainGenProps());
                     assertNull(cli.obtainSerProps());
                     //Other options
-                    assertNull(cli.obtainPathOption());
+                    assertEquals("uu", cli.obtainPathOption());
+                    assertNull(cli.obtainOutStopWords());
                     assertTrue(cli.obtainStopWords());
                     assertFalse(cli.obtainSetFields());
                     assertEquals(-1, cli.obtainNumberOption());
 
-                    String[] args2 = {"-a", "-anapf", "an", "-n", "45", "-path", "uu", "-stop", "false"};
+                    String[] args2 = {"-a", "-anapf", "an", "-n", "45", "-stop", "false", "-stopfile", "aa.txt"};
                     cli = new CommandLineInterpreter(args2);
                     //Phases
                     assertFalse(cli.help());
@@ -92,7 +116,8 @@ public class CommandLineInterpreterTest {
                     assertNull(cli.obtainGenProps());
                     assertNull(cli.obtainSerProps());
                     //Other options
-                    assertEquals("uu", cli.obtainPathOption());
+                    assertNull(cli.obtainPathOption());
+                    assertEquals("aa.txt", cli.obtainOutStopWords());
                     assertFalse(cli.obtainStopWords());
                     assertFalse(cli.obtainSetFields());
                     assertEquals(45, cli.obtainNumberOption());
@@ -111,13 +136,14 @@ public class CommandLineInterpreterTest {
                     assertEquals("gg", cli.obtainGenProps());
                     assertEquals("ss", cli.obtainSerProps());
                     //Other options
+                    assertNull(cli.obtainOutStopWords());
                     assertNull(cli.obtainPathOption());
                     assertTrue(cli.obtainStopWords());
                     assertTrue(cli.obtainSetFields());
                     assertEquals(-1, cli.obtainNumberOption());
 
                     //Test with various things
-                    String[] args4 = {"-da", "-genpf", "gg", "-despf", "dd", "-serpf", "ss", "-setfi", "fal", "-anapf", "an", "-n", "34", "-path", "uu", "-stop", "false", "-apf", "aa", "-dowpf", "dd"};
+                    String[] args4 = {"-da", "-genpf", "gg", "-despf", "dd", "-serpf", "ss", "-setfi", "fal", "-anapf", "an", "-n", "34", "-path", "uu", "-stop", "false", "-apf", "aa", "-dowpf", "dd", "-stopfile", "aa.txt"};
                     cli = new CommandLineInterpreter(args4);
                     //Phases
                     assertFalse(cli.help());
@@ -132,6 +158,7 @@ public class CommandLineInterpreterTest {
                     assertEquals("ss", cli.obtainSerProps());
                     //Other options
                     assertEquals("uu", cli.obtainPathOption());
+                    assertEquals("aa.txt", cli.obtainOutStopWords());
                     assertFalse(cli.obtainSetFields());
                     assertFalse(cli.obtainStopWords());
                     assertEquals(34, cli.obtainNumberOption());

@@ -26,7 +26,6 @@ import java.util.List;
 public class App
 {
     public static void main(String[] args) {
-
         //There are a few things that should be done before the start of the application:
 
         //1. Parse the commands given
@@ -208,7 +207,7 @@ public class App
         String out_file;
         try {
             //Obtains the properties from the command line, if specified, and calls the handler.
-            out_file = AnalyzerHandler.analyze(interpreter.obtainAnalyzeProps(), unitOfSearches, count, interpreter.obtainStopWords());
+            out_file = AnalyzerHandler.analyze(interpreter.obtainAnalyzeProps(), unitOfSearches, count, interpreter.obtainStopWords(), interpreter.obtainOutStopWords());
         } catch (IOException | IllegalArgumentException e) {
             System.err.println("The program has been terminated for an error in the analysis: " + e.getMessage());
             return;

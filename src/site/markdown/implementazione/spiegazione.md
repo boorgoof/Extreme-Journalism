@@ -78,7 +78,8 @@ alla parte di download da una API.
 interamente da un [handler](design_patterns.md), il quale nasconde al main la logica dell'analisi e ne fornisce
 una semplice modalità di chiamata.
 Implementa al suo interno una funzione per leggere il file di stop words (ovvero termini che non verranno contati
-durante l'analisi dei termini degli articoli) presente nel codice sorgente.
+durante l'analisi dei termini degli articoli) presente nel codice sorgente, o uno passato esternamente dall'utente (se 
+non presente, verrà usato quello di default).
 Se l'utente non vuole usare queste stop words, può specificare da riga di comando di analizzare tutti i termini.
 
 - **Stampare i termini in un file:** per stampare i termini in un file è stata creata un'interfaccia OutPrinter,
