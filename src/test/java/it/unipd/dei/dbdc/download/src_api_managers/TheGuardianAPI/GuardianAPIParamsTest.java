@@ -221,7 +221,7 @@ public class GuardianAPIParamsTest {
         specified_fields.put("api-key", "notakey");
         specified_fields.put("page-size", 200);
         specified_fields.put("q", "\"nuclear power\"");
-        specified_fields.put("show-fields", "bodyText,headline");
+        specified_fields.put("show-fields", "bodyText,headline,publication");
         specified_fields.put("format", "json");
         ArrayList<Map<String, Object>> expected = new ArrayList<>(5);
         for (int i = 0; i<5; i++)

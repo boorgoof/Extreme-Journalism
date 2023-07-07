@@ -51,7 +51,7 @@ public class APIPropertiesTest {
         list.put("q", "\"solar energy\"");
         list.put("order-by", "newest");
         list.put("format", "json");
-        list.put("show-fields", "bodyText,headline");
+        list.put("show-fields", "bodyText,headline,publication");
 
         ArrayList<Map<String, Object>> expected = new ArrayList<>(3);
         for (int i = 0; i<3; i++)
