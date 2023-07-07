@@ -28,6 +28,7 @@ public class DeserializationProperties {
      * @param out_properties The name of the properties file specified by the user. If null, the default properties file will be used.
      * @return A {@link Map} of {@link Deserializer} and their names specified in the properties file.
      * @throws IOException If both the default properties file and the user specified are not present, or if the properties specified are not correct.
+     * @see PropertiesTools
      */
     public static Map<String, Deserializer> readDeserializersProperties(String out_properties) throws IOException {
 

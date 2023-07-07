@@ -15,6 +15,7 @@ import java.util.Set;
  * @see it.unipd.dei.dbdc.analysis.src_strategies.MapSplitAnalyzer.MapSplitAnalyzer
  */
 public interface Analyzer {
+
     /**
      * The main function, which accepts a {@link List} of {@link UnitOfSearch} and returns the most important
      * terms of this list as a {@link List} of {@link OrderedEntryStringInt}.

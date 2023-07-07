@@ -9,6 +9,8 @@ import java.util.Objects;
  * This class represents an article downloaded from any source.
  * It has an ID, a URL, a title, a body, a date, a source set and a source.
  * It implements {@link UnitOfSearch}, and permits to analyze only its body and title.
+ * As {@link UnitOfSearch} implements {@link java.io.Serializable}, this class is also
+ * serializable and deserializable.
  *
  */
 @JsonIgnoreProperties(ignoreUnknown = true)

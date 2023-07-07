@@ -9,12 +9,14 @@ import java.util.*;
 import java.util.concurrent.*;
 
 /**
- * This class implements {@link Analyzer}.
+ * This class implements an {@link Analyzer}.
  * It is a Strategy that analyzes a {@link List} of {@link UnitOfSearch} and returns the most important ones.
- * A term is everything that is made only of letters.
+ * A term is everything that is made only of letters,  and two terms are equals
+ * even if they have different upper or lower case letters.
  *
  * @see UnitOfSearch
  * @see Analyzer
+ * @see AnalyzerArticleThread
  */
 public class MapSplitAnalyzer implements Analyzer {
 
@@ -32,11 +34,12 @@ public class MapSplitAnalyzer implements Analyzer {
      * terms of this list as an {@link List} of {@link OrderedEntryStringInt}.
      * The most important terms are the one that appear in the most number of articles, and if two terms appear
      * in the same amount of articles, the one which is alphabetically precedent is the most important one.
+     * Two terms are the same even if they differ because one has an upper case letter.
      *
      * @param articles A {@link List} of {@link UnitOfSearch} to search into.
      * @param tot_words The number of words we want the returned {@link List} to contain. If there are not enough words, it will contain only the possible ones.
      * @param banned A {@link Set} of words that should not be counted. If null or empty, all the words will be counted.
-     * @return An {@link List} of {@link OrderedEntryStringInt} containing the most important terms of the articles
+     * @return A {@link List} of {@link OrderedEntryStringInt} containing the most important terms of the articles
      * @throws IllegalArgumentException If the {@link UnitOfSearch} were not initialized.
      */
     @Override
@@ -83,13 +86,13 @@ public class MapSplitAnalyzer implements Analyzer {
 
     /**
      * A utility function which has the logic to check if it is needed to add the
-     * {@link Map.Entry} to the {@link ArrayList} of {@link OrderedEntryStringInt}, and in what place.
+     * {@link Map.Entry} to the {@link List} of {@link OrderedEntryStringInt}, and in what place.
      *
-     * @param vec A {@link ArrayList} of {@link OrderedEntryStringInt} which contains the most important terms added till now.
-     * @param entry A {@link Map.Entry} that can be added or not to the {@link ArrayList}.
-     * @param tot_words The number of words we want the returned {@link ArrayList} to contain.
+     * @param vec A {@link List} of {@link OrderedEntryStringInt} which contains the most important terms added till now.
+     * @param entry A {@link Map.Entry} that can be added or not to the {@link List}.
+     * @param tot_words The number of words we want the returned {@link List} to contain.
      */
-    private static void addOrdered(ArrayList<OrderedEntryStringInt> vec, Map.Entry<String, Integer> entry, int tot_words) {
+    private static void addOrdered(List<OrderedEntryStringInt> vec, Map.Entry<String, Integer> entry, int tot_words) {
 
         OrderedEntryStringInt el = new OrderedEntryStringInt(entry);
         int vector_size = vec.size();

@@ -45,7 +45,7 @@ public class AnalyzeProperties {
      *
      * @param filePropertiesName The name of the properties file specified by the user. If it's null, the default properties file is analyzed.
      * @return An array of {@link Object} whose first Object is an {@link Analyzer} and the second one an {@link OutPrinter} class is written in the properties file.
-     * @throws IOException If the default analysis properties file is absent or incorrect.
+     * @throws IOException If the file specified by the user is invalid or the default analysis properties file is absent or incorrect.
      * @see PropertiesTools
      */
     public static Object[] readProperties(String filePropertiesName) throws IOException {

@@ -11,6 +11,7 @@ import java.util.List;
  *
  */
 public interface OutPrinter {
+
     /**
      * The function that saves the most important terms into a file.
      *

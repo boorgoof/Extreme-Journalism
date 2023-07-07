@@ -27,7 +27,6 @@ public class App
 {
     public static void main(String[] args) {
 
-        args = new String[] {"-d", "-apf", "./out_properties/api.properties"};
         //There are a few things that should be done before the start of the application:
 
         //1. Parse the commands given

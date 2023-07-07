@@ -11,21 +11,27 @@ import java.util.concurrent.Semaphore;
  * It represents a thread that can be called to analyze a {@link UnitOfSearch}
  * and extract all the words that are contained inside it and put them in a {@link java.util.Map}
  * that is shared between the threads.
- * A term is everything that is made only of letters.
+ * A term is everything that is made only of letters, and two terms are equals
+ * even if they have different upper or lower case letters.
+ * This thread is used in {@link MapSplitAnalyzer}
  *
  * @see Runnable
+ * @see MapSplitAnalyzer
  */
 public class AnalyzerArticleThread implements Runnable {
+
     /**
      * The {@link java.util.Map} to insert the terms into.
      *
      */
     private final Map<String, Integer> global_map;
+
     /**
      * The {@link UnitOfSearch} to extract the terms from.
      *
      */
     private final UnitOfSearch article;
+
     /**
      * The {@link Semaphore} that is needed to provide mutual exclusion.
      *
@@ -51,7 +57,7 @@ public class AnalyzerArticleThread implements Runnable {
      * The method that overrides the one of the {@link Runnable} interface:
      * it analyzes the {@link UnitOfSearch} and inserts its terms into the {@link java.util.Map}
      *
-     * @throws IllegalArgumentException If the parameters passed to the constructor are null
+     * @throws IllegalArgumentException If any of the parameters passed to the constructor is null
      */
     @Override
     public void run() throws IllegalArgumentException

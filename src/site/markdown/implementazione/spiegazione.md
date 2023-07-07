@@ -77,5 +77,39 @@ alla parte di download da una API.
 - **Handler:** come ogni sottosistema di questo programma, anche la parte di analisi è gestita
 interamente da un [handler](design_patterns.md), il quale nasconde al main la logica dell'analisi e ne fornisce
 una semplice modalità di chiamata.
+Implementa al suo interno una funzione per leggere il file di stop words (ovvero termini che non verranno contati
+durante l'analisi dei termini degli articoli) presente nel codice sorgente.
+Se l'utente non vuole usare queste stop words, può specificare da riga di comando di analizzare tutti i termini.
 
-Mettiamo tutte le parole in lower case per fare l'analisi
+- **Stampare i termini in un file:** per stampare i termini in un file è stata creata un'interfaccia OutPrinter,
+che può essere implementata da varie classi che hanno la logica per stampare la lista di termini in file di diversi formati.
+Attualmente è stato implementato solo un OutPrinter che stampa i termini in un file .txt, ma in futuro è molto
+semplice modificare il programma per stampare i termini in file con diverse estensioni, come spiegato in [flessibilità](flessibilita.md).
+
+- **Analisi:** la parte di analisi è svolta da diverse classi che implementano l'interfaccia Analyzer, seguendo
+lo [strategy design pattern](design_patterns.md). Infatti, all'interno del file di properties della parte di analisi è
+specificata la strategia da adottare, e quindi quale classe utilizzare per fare questa analisi.
+La strategia da noi adottata, presente in MapSplitAnalyzer, utilizza il metodo split della classe String per scomporre il testo da
+analizzare nei vari termini (un termine è composto solamente da lettere), dato che StringTokenizer è definita deprecata all'interno della documentazione di Java.
+Questi termini vengono considerati uguali anche se differiscono per maiuscole e minuscole: le parole in lower case per fare l'analisi.
+Viene poi utilizzato il parallelismo per ottenere il risultato in maniera più efficiente, oltre a una funzione specifica
+che pone in ordine i vari termini all'interno della lista ritornata.
+L'alternativa di utilizzare una Priority Queue è affrontata nella parte dei [test](test.md), ma risulta inefficiente
+in quanto si dovrebbe scansionare 2 volte l'insieme contenente tutti i termini: la prima volta per metterli dentro alla coda
+e la seconda per estrarre dalla coda prioritaria i termini più importanti.
+Per il peso dei termini viene utilizzata la classe OrderedEntryStringInt, la quale definisce che un termine è maggiore
+dell'altro se compare in più articoli o, se il numero di articoli in cui compaiono è lo stesso, viene prima
+in ordine alfabetico.
+
+- **Analysis properties:** è utilizzato un file di properties per la parte di analisi: questo possiede al suo interno
+2 proprietà: l'Analyzer da utilizzare per l'analisi e l'OutPrinter per stampare su file il risultato.
+Questo rispetta quanto detto in [flessibilità](flessibilita.md).
+
+- **Article e UnitOfSearch:** per la parte di analisi viene definita l'interfaccia UnitOfSearch. 
+Questa interfaccia ha una funzione per ottenere la parte di testo da analizzare, ed estende l'interfaccia vuota
+Serializable utilizzata nelle parti di Serializzazione e Deserializzazione.
+In questo modo, la parte di analisi può avere successo per ogni classe che implementi UnitOfSearch.
+Article è la classe che implementa UnitOfSearch, e viene utilizzata dai deserializzatori e serializzatori
+definiti in questo programma come oggetto dove salvare i vari articoli.
+Come spiegato in [flessibilità](flessibilita.md), è quindi molto semplice andare a modificare la classe che
+implementa UnitOfSearch andando a definire dei nuovi deserializzatori.
