@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.util.*;
 
 import it.unipd.dei.dbdc.deserialization.interfaces.DeserializerWithFields;
+import it.unipd.dei.dbdc.serializers.SerializersContainer;
 import it.unipd.dei.dbdc.tools.PathManager;
 
 /**
@@ -30,7 +31,7 @@ public class DeserializationHandler {
      * @param deserializers_properties The file properties specified by the user. If null, the default ones will be used.
      * @throws IOException If the download properties files (the default one and the one specified by the user) are not present or are not correct.
      */
-    public static void instantiate(String deserializers_properties) throws IOException {
+    public static void setProperties(String deserializers_properties) throws IOException {
 
         container = DeserializersContainer.getInstance(deserializers_properties);
     }
@@ -163,6 +164,10 @@ public class DeserializationHandler {
 
         if(file == null){
             throw new IllegalArgumentException("The file cannot be null");
+        }
+
+        if(container.isEmpty()){
+            container = DeserializersContainer.getInstance(null);
         }
 
         String format = PathManager.getFileFormat(file.getName());

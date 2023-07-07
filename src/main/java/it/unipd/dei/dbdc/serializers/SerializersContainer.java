@@ -2,6 +2,7 @@ package it.unipd.dei.dbdc.serializers;
 
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
+import it.unipd.dei.dbdc.deserialization.DeserializersContainer;
 import it.unipd.dei.dbdc.download.APIContainer;
 import it.unipd.dei.dbdc.download.DownloadProperties;
 import it.unipd.dei.dbdc.download.interfaces.APIManager;
@@ -23,7 +24,7 @@ public class SerializersContainer {
      * A {@link Map} containing all the possible {@link Serializer}, representing all the possible serializers that we can use.
      *
      */
-    private Map<String, Serializer> serializers; // todo Perchè final?
+    private final Map<String, Serializer> serializers;
 
     /**
      * This is the only instance of the class that is possible to obtain.
@@ -83,6 +84,15 @@ public class SerializersContainer {
      */
     public Set<String> getFormats() {
         return serializers.keySet();
+    }
+
+    /**
+     * Returns a boolean value indicating whether the {@link SerializersContainer#serializers} is empty.
+     *
+     * @return {@code true} if the {@link SerializersContainer#serializers} is empty, {@code false} otherwise.
+     */
+    public boolean isEmpty(){
+        return serializers.isEmpty();
     }
 
 }

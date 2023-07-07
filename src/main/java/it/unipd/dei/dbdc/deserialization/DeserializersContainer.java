@@ -118,4 +118,13 @@ public class DeserializersContainer {
         return null;
     }
 
+    /**
+     * Returns a boolean value indicating whether the {@link DeserializersContainer#deserializers} is empty.
+     *
+     * @return {@code true} if the {@link DeserializersContainer#deserializers} is empty, {@code false} otherwise.
+     */
+    public boolean isEmpty(){
+        return deserializers.isEmpty();
+    }
+
 }
