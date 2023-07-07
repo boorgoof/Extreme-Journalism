@@ -24,9 +24,11 @@ public interface DeserializerWithFields extends Deserializer{
      */
     int numberOfFields();
 
+
     /**
-     * sets the new fields to be considered during deserialization
+     * Sets the new fields to be considered during deserialization
      *
+     * @param fields The new fields to be considered during deserialization
      */
     void setFields(String[] fields);
 }

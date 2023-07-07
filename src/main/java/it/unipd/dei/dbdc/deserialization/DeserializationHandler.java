@@ -1,5 +1,6 @@
 package it.unipd.dei.dbdc.deserialization;
 
+import it.unipd.dei.dbdc.analysis.Article;
 import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
 import it.unipd.dei.dbdc.deserialization.interfaces.Deserializer;
 
@@ -157,6 +158,7 @@ public class DeserializationHandler {
      * The function correctly selects the {@link Deserializer} to use starting from the extension of the file passed as a parameter
      *
      * @param file File to deserialize
+     * @return the {@link List} of {@link Serializable} obtained by deserializing the file
      * @throws IOException  If the file passed as a parameter has no associated {@link Deserializer}
      * @throws IllegalArgumentException  If file parameter is null.
      */
@@ -193,6 +195,7 @@ public class DeserializationHandler {
      * Files that do not have a deserializer are not treated
      *
      * @param folderPath The path to the folder containing the files to deserialize
+     * @return the {@link List} of {@link Serializable} objects obtained by deserializing the folder
      * @throws IOException IOException If an I/O error occurs during deserialization
      * @throws IllegalArgumentException  If the folderPath parameter is null.
      */

@@ -1,5 +1,6 @@
 package it.unipd.dei.dbdc.download;
 
+import it.unipd.dei.dbdc.deserialization.DeserializersContainer;
 import it.unipd.dei.dbdc.download.interfaces.APIManager;
 
 import java.io.IOException;
@@ -31,6 +32,7 @@ public class APIContainer {
      *
      * @param download_properties The properties specified by the user where are specified all the possible {@link APIManager}.
      *                            If it is null, the default properties file will be used.
+     * @return The {@link APIContainer} object instantiate from download_properties
      * @throws IOException If the properties file specified by the user is invalid or the default one is missing or invalid.
      */
     public static APIContainer getInstance(String download_properties) throws IOException

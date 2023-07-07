@@ -34,6 +34,7 @@ public class DeserializersContainer {
      *
      * @param  deserializers_properties properties specified by the user where are specified all the possible {@link Deserializer}.
      *                                  If it is null, the default properties file will be used.
+     * @return The {@link DeserializersContainer} object instantiate from deserializers_properties
      * @throws IOException If both the default and specified by the user properties files are not present, or they are incorrect.
      */
     public static DeserializersContainer getInstance(String deserializers_properties) throws IOException
@@ -84,8 +85,7 @@ public class DeserializersContainer {
      * The function sets the fields only if the {@link Deserializer} in implements the interface {@link DeserializerWithFields}
      *
      * @param format The format for which the fields will be set.
-     * @param fields The new fields that will be considered during deserialization
-     * @throws IOException If the selected deserializer does not implement the interface {@link DeserializerWithFields}
+     * @param fields The new fields that will be considered during deserialization.
      *
      */
     public void setSpecificFields(String format, String[] fields){
@@ -106,7 +106,6 @@ public class DeserializersContainer {
      *
      * @param format The format for which the fields are required
      * @return An array of {@link String} representing the fields.
-     * @throws IOException If the selected deserializer does not implement the interface {@link DeserializerWithFields}
      *
      */
     public String[] getSpecificFields(String format){

@@ -38,6 +38,7 @@ public class SerializersContainer {
      *
      * @param serializers_properties The properties specified by the user where are specified all the possible {@link Serializer}.
      *                                If it is null, the default properties file will be used.
+     * @return The {@link SerializersContainer} object instantiate from serializers_properties
      * @throws IOException If both the default and specified by the user properties files are not present, or they are incorrect.
      */
     public static SerializersContainer getInstance(String serializers_properties) throws IOException
