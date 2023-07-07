@@ -124,7 +124,8 @@ Per eseguire il programma in maniera personalizzata sono disponibili varie opzio
   * `-path [value]` per fare la serializzazione degli articoli contenuti in un folder il cui path è passato come valore.
   * `-n [value]` per specificare il numero di termini che si vuole avere nel file di output. Questo prevarrà su quanto specificato nel file
     `general.properties` solo se è un numero intero positivo.
-  * `-stop [value]` per disabilitare (con false) o abilitare (con true) le stop words specificate nel file `english_stoplist.txt`. Di default il suo valore è true
+  * `-stop [value]` per disabilitare (con false) o abilitare (con true) le stop words specificate nel file `english_stoplist.txt` o in quello passato in `-stopfile`. Di default il suo valore è true
+  * `-stopfile [value]` per andare a utilizzare le stop words del file passato come value e non di `english_stoplist.txt`. Se il file è assente, viene usato quello di default.
   * `-setfi [value]` per abilitare (con true) o disabilitare (con false) la richiesta interattiva di quali fields analizzare degli articoli, nel caso in cui questo sia reso
     possibile dal deserializzatore fornito.
 
