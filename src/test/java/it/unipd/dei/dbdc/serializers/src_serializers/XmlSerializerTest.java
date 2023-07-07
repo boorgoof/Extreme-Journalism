@@ -4,6 +4,7 @@ package it.unipd.dei.dbdc.serializers.src_serializers;
 import it.unipd.dei.dbdc.analysis.Article;
 import it.unipd.dei.dbdc.deserialization.src_deserializers.XmlArticleDeserializer;
 import it.unipd.dei.dbdc.download.DownloadProperties;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -21,6 +22,7 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * Class that tests {@link XmlSerializer}.
  */
+@Order(7)
 public class XmlSerializerTest {
     /**
      * Several parameters with which to test the function {@link XmlSerializerTest#serialize(List, String)}.

@@ -3,6 +3,7 @@ package it.unipd.dei.dbdc.serializers;
 import it.unipd.dei.dbdc.download.DownloadProperties;
 import it.unipd.dei.dbdc.serializers.interfaces.Serializer;
 import it.unipd.dei.dbdc.serializers.src_serializers.XmlSerializer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -12,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * Class that tests {@link SerializationProperties}.
  */
+@Order(7)
 public class SerializationPropertiesTest {
 
     /**

@@ -6,6 +6,7 @@ import it.unipd.dei.dbdc.deserialization.src_deserializers.CsvArticleDeserialize
 import it.unipd.dei.dbdc.deserialization.src_deserializers.JsonArticleDeserializer;
 import it.unipd.dei.dbdc.deserialization.src_deserializers.XmlArticleDeserializer;
 import it.unipd.dei.dbdc.serializers.SerializationProperties;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -16,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 /**
  * Class that tests {@link DeserializationProperties}.
  */
+@Order(7)
 public class DeserializationPropertiesTest {
     /**
      * Tests {@link DeserializationProperties#readDeserializersProperties(String)}  with various valid and invalid inputs.
