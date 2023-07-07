@@ -1,5 +1,6 @@
 package it.unipd.dei.dbdc.serializers;
 
+import it.unipd.dei.dbdc.deserialization.DeserializersContainer;
 import it.unipd.dei.dbdc.download.APIContainer;
 import it.unipd.dei.dbdc.download.interfaces.APIManager;
 import it.unipd.dei.dbdc.serializers.interfaces.Serializer;
@@ -31,6 +32,17 @@ public class SerializationHandler {
     private static SerializersContainer container;
 
     /**
+     * Function that initializes the {@link SerializersContainer}.
+     *
+     * @param deserializers_properties The file properties specified by the user. If null, the default ones will be used.
+     * @throws IOException If the download properties files (the default one and the one specified by the user) are not present or are not correct.
+     */
+    public static void setProperties(String deserializers_properties) throws IOException {
+
+        container = SerializersContainer.getInstance(deserializers_properties);
+    }
+
+    /**
      * Serializes a list of {@link Serializable} objects into XML file with indented formatting.
      * The function correctly selects the {@link Serializer} to use starting from the extension of the file passed as a parameter
      *
@@ -39,7 +51,7 @@ public class SerializationHandler {
      * @throws IOException  If the file passed as a parameter has no associated {@link Serializer}
      * @throws IllegalArgumentException  If either the objects or file parameter is null.
      */
-    public static void serializeObjects(List<Serializable> objects, File file, String serializers_properties) throws IOException {
+    public static void serializeObjects(List<Serializable> objects, File file) throws IOException {
 
         if (file == null) {
             throw new IllegalArgumentException("The common format file cannot be null");
@@ -48,7 +60,9 @@ public class SerializationHandler {
             throw new IllegalArgumentException("The object list cannot be null");
         }
 
-        container = SerializersContainer.getInstance(serializers_properties);
+        if(container.isEmpty()){
+            container = SerializersContainer.getInstance(null);
+        }
 
         // the file format is stored
         String format = PathManager.getFileFormat(file.getName());

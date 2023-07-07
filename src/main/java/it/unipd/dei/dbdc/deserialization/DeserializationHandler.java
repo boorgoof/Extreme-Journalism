@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.util.*;
 
 import it.unipd.dei.dbdc.deserialization.interfaces.DeserializerWithFields;
+import it.unipd.dei.dbdc.serializers.SerializersContainer;
 import it.unipd.dei.dbdc.tools.PathManager;
 
 /**
@@ -30,7 +31,7 @@ public class DeserializationHandler {
      * @param deserializers_properties The file properties specified by the user. If null, the default ones will be used.
      * @throws IOException If the download properties files (the default one and the one specified by the user) are not present or are not correct.
      */
-    public static void instantiate(String deserializers_properties) throws IOException {
+    public static void setProperties(String deserializers_properties) throws IOException {
 
         container = DeserializersContainer.getInstance(deserializers_properties);
     }
@@ -165,6 +166,10 @@ public class DeserializationHandler {
             throw new IllegalArgumentException("The file cannot be null");
         }
 
+        if(container.isEmpty()){
+            container = DeserializersContainer.getInstance(null);
+        }
+
         String format = PathManager.getFileFormat(file.getName());
         Deserializer deserializer = container.getDeserializer(format);
 
@@ -217,17 +222,15 @@ public class DeserializationHandler {
      */
     // TODO se mettono roba sbagliata lancia eccezione non posso farci molto; da cambiare? Devo fare i test
     public static void deserializerSetFields()  {
-        String format = "null";
 
-        if(format == null){
-            throw new IllegalArgumentException("the format cannot be null");
-        }
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("If no other fields are desired, enter an empty string");
+        String format = scanner.nextLine();
 
         DeserializerWithFields deserializer;
-
         try {
             if(container.getDeserializer(format) instanceof DeserializerWithFields){
-                deserializer = (DeserializerWithFields) container.getDeserializer(format); // mi serve per sapere il numero di fields
+                deserializer = (DeserializerWithFields) container.getDeserializer(format);
             } else {
                 throw new IllegalArgumentException("The selected deserializer does not implement field specification");
             }
@@ -237,9 +240,9 @@ public class DeserializationHandler {
 
         int numberOfFields = deserializer.numberOfFields();
         String[] newFields = new String[numberOfFields];
-        Scanner scanner = new Scanner(System.in);
 
         System.out.println("The number of fields to enter is : " + numberOfFields );
+        System.out.println("If no other fields are desired, enter an empty string");
 
         for(int i = 0; i < numberOfFields; i++){
             System.out.println("Enter field" + (i+1) + ": ");
