@@ -29,7 +29,7 @@ public class GuardianAPIParams {
      */
     private final static QueryParam[] default_fields =
             {
-                    new QueryParam("show-fields", "bodyText,headline"),
+                    new QueryParam("show-fields", "bodyText,headline,publication"),
                     new QueryParam("format", "json")
             };
 

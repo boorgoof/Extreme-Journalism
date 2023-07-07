@@ -65,7 +65,7 @@ public class App
 
         //4. Instantiate the DeserializersContainer
         try {
-            DeserializationHandler.instantiate(interpreter.obtainDeserProps());
+            DeserializationHandler.setProperties(interpreter.obtainDeserProps());
         } catch (IOException e) {
             System.err.println("The program has been terminated because the file " + DeserializationProperties.default_properties + " was not found, or the properties passed by the user were not valid: " + e.getMessage());
             return;
@@ -165,6 +165,7 @@ public class App
 
         try {
             //Obtains the properties from the command line, if specified, and calls the handler.
+            SerializationHandler.setProperties(interpreter.obtainSerProps());
             SerializationHandler.serializeObjects(articles, serializedFile);
         } catch (IOException e) {
             System.err.println("Error during the serialization: " + e.getMessage());
