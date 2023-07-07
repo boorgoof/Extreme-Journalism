@@ -66,7 +66,8 @@ public class CommandLineInterpreter {
     private final static Option[] analysis = {
             new Option("anapf", "analysis-properties-file", true, "Contains the path to the properties file that contains the analyzer to use for the extraction"),
             new Option("n", "number", true, "Contains the positive number of terms you want to have in the final output"),
-            new Option("stop", "enable-stop-words", true, "True if you want to enable the stop-words in the analysis")
+            new Option("stop", "enable-stop-words", true, "True if you want to enable the stop-words in the analysis"),
+            new Option("stopfile", "stop-words-file", true, "The path of the file of stop words to consider")
     };
 
     /**
@@ -285,5 +286,15 @@ public class CommandLineInterpreter {
     public boolean obtainStopWords()
     {
         return !(cmd.hasOption("stop") && cmd.getOptionValue("stop").equalsIgnoreCase("false"));
+    }
+
+    /**
+     * It returns the value specified with the key -stopfile, or null if not present.
+     *
+     * @return The value specified with the key -stopfile, null if not present
+     */
+    public String obtainOutStopWords()
+    {
+        return cmd.getOptionValue("stopfile");
     }
 }
