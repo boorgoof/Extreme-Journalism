@@ -66,7 +66,7 @@ public class DeserializersContainer {
      */
     public Deserializer getDeserializer(String format) throws IOException{
         if(!deserializers.containsKey(format)){
-            throw new IOException("the program is not yet able to deserialize the requested format");
+            throw new IllegalArgumentException("the program is not yet able to deserialize the requested format");
         }
         return deserializers.get(format);
     }

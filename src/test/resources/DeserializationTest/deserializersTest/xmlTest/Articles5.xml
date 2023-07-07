@@ -1,33 +1,29 @@
 <ArrayList>
-  <response>
-    <cover>art book</cover>
-    <id>ID 1</id>
-    <url>URL 1</url>
-    <title>Title 1</title>
-    <body>Body 1</body>
-    <date>Date 1</date>
-    <sourceSet>sourceSet 1</sourceSet>
-    <source>Source 1</source>
-    <author>Author 1</author>
-  </response>
   <item>
+    <sourceSet>sourceSet 1</sourceSet>
+    <source>Source 1</source>
     <id>ID 1</id>
     <url>URL 1</url>
     <title>Title 1</title>
     <body>Body 1</body>
     <date>Date 1</date>
-    <sourceSet>sourceSet 1</sourceSet>
-    <source>Source 1</source>
-    <author>Author 1</author>
   </item>
   <item>
     <id>ID 1</id>
     <url>URL 1</url>
     <title>Title 1</title>
+    <sourceSet>sourceSet 1</sourceSet>
+    <source>Source 1</source>
+    <body>Body 1</body>
+    <date>Date 1</date>
+  </item>
+  <item>
+    <url>URL 1</url>
+    <title>Title 1</title>
     <body>Body 1</body>
     <date>Date 1</date>
     <sourceSet>sourceSet 1</sourceSet>
     <source>Source 1</source>
-    <author>Author 1</author>
+    <id>ID 1</id>
   </item>
 </ArrayList>

@@ -48,10 +48,10 @@ public class JsonArticleDeserializer implements DeserializerWithFields {
     public void setFields(String[] newFields) {
 
         int maxLength = Article.class.getDeclaredFields().length;
-        if (newFields.length <= maxLength){
+        if (newFields.length == maxLength){
             fields = newFields;
         } else {
-            throw new IllegalArgumentException("You cannot insert an array with more fields than those declared in the Article class");
+            throw new IllegalArgumentException("You cannot insert an array of different length by the number of fields than those declared in the Article class");
         }
 
     }
