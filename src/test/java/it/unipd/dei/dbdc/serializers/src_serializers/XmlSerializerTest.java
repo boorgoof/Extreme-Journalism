@@ -44,7 +44,9 @@ public class XmlSerializerTest {
 
     /**
     * Tests {@link XmlSerializer#serialize(List, File)} with different parameters defined by {@link XmlSerializerTest#serializeParameters}
-    *
+     *
+    *  @param expectedArticles {@link List} of {@link Serializable} to serialize
+     * @param filePath The file path to serialize
      */
     @ParameterizedTest
     @MethodSource("serializeParameters")

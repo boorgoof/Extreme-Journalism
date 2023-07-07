@@ -119,13 +119,14 @@ public class CsvDeserializerTest {
     /**
      * Tests {@link CsvArticleDeserializer#deserialize(File)}  with different parameters defined by {@link CsvDeserializerTest#deserializeParameters()}
      *
+     * @param expectedArticles the {@link List}of {@link Article} expected from deserialization
+     * @param filePath the file path to deserialize
      */
     @ParameterizedTest
     @MethodSource("deserializeParameters")
     public void deserialize(List<Article> expectedArticles, String filePath) {
         File file = new File(filePath);
         CsvArticleDeserializer deserializer = new CsvArticleDeserializer();
-
 
         assertDoesNotThrow(() -> {
 
