@@ -6,6 +6,7 @@ import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
 import it.unipd.dei.dbdc.deserialization.DeserializersContainer;
 import it.unipd.dei.dbdc.serializers.interfaces.Serializer;
 import it.unipd.dei.dbdc.serializers.src_serializers.XmlSerializer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import it.unipd.dei.dbdc.deserialization.DeserializationHandler;
 
@@ -22,6 +23,7 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * Class that tests {@link SerializersContainer}.
  */
+@Order(1)
 public class SerializersContainerTest {
 
     /**

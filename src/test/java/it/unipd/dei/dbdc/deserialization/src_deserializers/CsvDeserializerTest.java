@@ -1,9 +1,12 @@
 package it.unipd.dei.dbdc.deserialization.src_deserializers;
 
 import it.unipd.dei.dbdc.analysis.Article;
+import it.unipd.dei.dbdc.deserialization.DeserializationHandler;
 import it.unipd.dei.dbdc.deserialization.DeserializationProperties;
+import it.unipd.dei.dbdc.deserialization.DeserializersContainer;
 import it.unipd.dei.dbdc.serializers.src_serializers.XmlSerializer;
 import it.unipd.dei.dbdc.serializers.src_serializers.XmlSerializerTest;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -27,6 +30,15 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 
 public class CsvDeserializerTest {
+
+    @AfterEach
+    public void setOriginalFields()  {
+
+        CsvArticleDeserializer deserializer = new CsvArticleDeserializer();
+
+        String[] defaultFields = {"Identifier", "URL", "Title", "Body", "Date", "Source Set", "Source"};
+        deserializer.setFields(defaultFields);
+    }
 
     /**
      * Tests {@link CsvArticleDeserializer#getFields()}
@@ -153,6 +165,16 @@ public class CsvDeserializerTest {
             // The file does not specify Article objects
             File noArticlesFile = new File("src/test/resources/DeserializationTest/deserializersTest/csvTest/noArticles.csv");
             articles = deserializer.deserialize(noArticlesFile);
+            assertTrue(articles.isEmpty());
+
+            // The file does not specify Article objects. And the records are empty
+            File noArticlesFile2 = new File("src/test/resources/DeserializationTest/deserializersTest/csvTest/noArticles2.csv");
+            articles = deserializer.deserialize(noArticlesFile2);
+            assertTrue(articles.isEmpty());
+
+            // correct header but empty cvs records
+            File noArticlesFile3 = new File("src/test/resources/DeserializationTest/deserializersTest/csvTest/noArticles3.csv");
+            articles = deserializer.deserialize(noArticlesFile3);
             assertTrue(articles.isEmpty());
 
         });
