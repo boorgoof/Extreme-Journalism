@@ -19,6 +19,15 @@ import java.util.concurrent.*;
 public class MapSplitAnalyzer implements Analyzer {
 
     /**
+     * Default constructor of the class. It is the only constructor, as there are
+     * no fields to give value to, so it doesn't do anything.
+     * This is required as the interface {@link Analyzer} can only give non-static
+     * methods to be implemented by other classes.
+     *
+     */
+    public MapSplitAnalyzer() {}
+
+    /**
      * The main function, which accepts a {@link List} of {@link UnitOfSearch} and returns the most important
      * terms of this list as an {@link List} of {@link OrderedEntryStringInt}.
      * The most important terms are the one that appear in the most number of articles, and if two terms appear

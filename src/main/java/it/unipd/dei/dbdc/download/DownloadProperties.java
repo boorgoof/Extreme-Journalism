@@ -18,6 +18,13 @@ import java.util.*;
 public class DownloadProperties {
 
     /**
+     * The only constructor of the class. It is declared as private to
+     * prevent the default constructor to be created.
+     *
+     */
+    private DownloadProperties() {}
+
+    /**
      * The name of the default properties file. It is present in the folder tools.
      *
      */

@@ -25,6 +25,8 @@ public class TxtOutPrinter implements OutPrinter {
     /**
      * Default constructor of the class. It is the only constructor, as there are
      * no fields to give value to, so it doesn't do anything.
+     * This is required as the interface {@link OutPrinter} can only give non-static
+     * methods to be implemented by other classes.
      *
      */
     public TxtOutPrinter() {}

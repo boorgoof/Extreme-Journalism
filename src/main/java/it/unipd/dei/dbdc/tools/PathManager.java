@@ -13,6 +13,13 @@ import java.nio.file.Paths;
 public class PathManager {
 
     /**
+     * The only constructor of the class. It is declared as private to
+     * prevent the default constructor to be created.
+     *
+     */
+    private PathManager() {}
+
+    /**
      * The folder where the downloaded files will be put and where the user
      * should put the files he wants to serialize and analyse.
      *

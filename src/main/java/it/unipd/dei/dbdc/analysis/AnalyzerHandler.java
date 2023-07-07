@@ -19,6 +19,13 @@ public class AnalyzerHandler {
     private final static int default_stop_words = 524;
 
     /**
+     * The only constructor of the class. It is declared as private to
+     * prevent the default constructor to be created.
+     *
+     */
+    private AnalyzerHandler() {}
+
+    /**
      * The main function that analyzes the articles and prints the most important words in a file.
      *
      * @param filePropertiesName The name of the file of the analysis properties. If it is null, default properties will be used.

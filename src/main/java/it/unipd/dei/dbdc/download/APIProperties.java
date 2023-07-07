@@ -17,6 +17,13 @@ import java.util.Properties;
 public class APIProperties
 {
     /**
+     * The only constructor of the class. It is declared as private to
+     * prevent the default constructor to be created.
+     *
+     */
+    private APIProperties() {}
+
+    /**
      * The key of the parameter of the properties file that specifies the {@link APIManager} to use
      *
      */

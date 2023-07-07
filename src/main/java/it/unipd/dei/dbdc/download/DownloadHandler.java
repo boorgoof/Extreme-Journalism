@@ -9,6 +9,13 @@ import java.util.Scanner;
 public class DownloadHandler {
 
     /**
+     * The only constructor of the class. It is declared as private to
+     * prevent the default constructor to be created.
+     *
+     */
+    private DownloadHandler() {}
+
+    /**
      * The main function of the Handler. It selects the API specified by the API properties file passed as
      * a parameter or asks the user interactively to select the API and the parameters.
      * It continues to ask the user if something is not correct, to the point where the responses are correct.

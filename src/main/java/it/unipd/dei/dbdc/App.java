@@ -164,8 +164,7 @@ public class App
 
         try {
             //Obtains the properties from the command line, if specified, and calls the handler.
-            SerializationHandler.instantiate(interpreter.obtainSerProps());
-            SerializationHandler.serializeObjects(articles, serializedFile);
+            SerializationHandler.serializeObjects(articles, serializedFile, interpreter.obtainSerProps());
         } catch (IOException e) {
             System.err.println("Error during the serialization: " + e.getMessage());
             return;
