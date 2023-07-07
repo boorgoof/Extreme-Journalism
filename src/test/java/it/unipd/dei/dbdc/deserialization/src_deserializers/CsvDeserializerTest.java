@@ -32,6 +32,9 @@ import static org.junit.jupiter.api.Assertions.*;
 @Order(7)
 public class CsvDeserializerTest {
 
+    /**
+     * The function sets the default fields for {@link CsvArticleDeserializer}
+     */
     @AfterEach
     public void setOriginalFields()  {
 
@@ -147,13 +150,12 @@ public class CsvDeserializerTest {
         CsvArticleDeserializer deserializer = new CsvArticleDeserializer();
 
         // null is passed as input
-        IllegalArgumentException exception1 = assertThrows(IllegalArgumentException.class, () -> deserializer.deserialize( null));
-        System.out.println(exception1.getMessage());
+        assertThrows(IllegalArgumentException.class, () -> deserializer.deserialize( null));
 
         // Input file does not exist
         File nonExistentFile = new File("src/test/resources/DeserializationTest/deserializersTest/csvTest/nonExistentFile.csv");
-        IllegalArgumentException exception2 = assertThrows(IllegalArgumentException.class, () -> deserializer.deserialize( nonExistentFile));
-        System.out.println(exception2.getMessage());
+        assertThrows(IllegalArgumentException.class, () -> deserializer.deserialize( nonExistentFile));
+
 
 
         assertDoesNotThrow(() -> {

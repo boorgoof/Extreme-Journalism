@@ -86,12 +86,10 @@ public class XmlSerializerTest {
     public void serializeError() {
 
         XmlSerializer serializer = new XmlSerializer();
-        String messageError1 = "The xmlFile file cannot be null";
-        IllegalArgumentException exception1 = assertThrows(IllegalArgumentException.class, () -> serializer.serialize(createTestArticles1(), null), messageError1);
+        assertThrows(IllegalArgumentException.class, () -> serializer.serialize(createTestArticles1(), null));
 
         File xmlFile = new File("src/test/resources/SerializationTest/serializersTest/xmlTest/ArticlesError.xml");
-        String messageError2 = "The list of UnitOfSearch cannot be null";
-        IllegalArgumentException exception2 = assertThrows(IllegalArgumentException.class, () -> serializer.serialize(null, xmlFile), messageError2);
+        assertThrows(IllegalArgumentException.class, () -> serializer.serialize(null, xmlFile));
 
     }
     /**
