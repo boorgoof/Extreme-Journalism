@@ -30,8 +30,7 @@ public class JsonDeserializerTest {
 
         JsonArticleDeserializer deserializer = new JsonArticleDeserializer();
 
-        // todo mettere i campi giusti
-        String[] expectedFields = {"id", "webUrl", "headline", "bodyText", "webPublicationDate", "webUrl", "webUrl"}; // da modificare
+        String[] expectedFields =  {"id", "apiUrl", "headline", "bodyText", "webPublicationDate", "publication", "sectionName" };
         String[] fields = deserializer.getFields();
 
         assertArrayEquals(expectedFields, fields);

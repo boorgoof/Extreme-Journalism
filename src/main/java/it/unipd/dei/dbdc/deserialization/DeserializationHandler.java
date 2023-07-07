@@ -23,7 +23,7 @@ public class DeserializationHandler {
      * The {@link DeserializersContainer} instance that supplies all the {@link Deserializer} we have
      *
      */
-    private static DeserializersContainer container; // Dovrei metterlo public se voglio modificare i fields
+    private static DeserializersContainer container;
 
     /**
      * Function that initializes the {@link DeserializersContainer}.
@@ -166,8 +166,9 @@ public class DeserializationHandler {
             throw new IllegalArgumentException("The file cannot be null");
         }
 
-        if(container.isEmpty()){
-            container = DeserializersContainer.getInstance(null);
+        // the default properties are set if they have not already been set by the user
+        if(container == null){
+            setProperties(null);
         }
 
         String format = PathManager.getFileFormat(file.getName());
@@ -203,7 +204,7 @@ public class DeserializationHandler {
 
         Set<File> files = getDeserializationFiles(folderPath);
 
-        // Cerco di deserializzare l'intero folder, con tutti i formati possibili
+        // Deserializes the entire folder, with all possible formats
         List<Serializable> objects = new ArrayList<>();
         for(File file : files){
             objects.addAll(deserializeFile(file));
@@ -224,19 +225,27 @@ public class DeserializationHandler {
     public static void deserializerSetFields()  {
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("If no other fields are desired, enter an empty string");
+        System.out.println("Enter the format for which you want to set new fields");
         String format = scanner.nextLine();
 
         DeserializerWithFields deserializer;
+
         try {
-            if(container.getDeserializer(format) instanceof DeserializerWithFields){
-                deserializer = (DeserializerWithFields) container.getDeserializer(format);
-            } else {
-                throw new IllegalArgumentException("The selected deserializer does not implement field specification");
-            }
+
+            // the default properties are set if they have not already been set by the user
+            if(container == null ){ setProperties(null); }
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        // It checks that the requested format has a serializer that supports choosing fields
+        if(container.getDeserializer(format) instanceof DeserializerWithFields){
+            deserializer = (DeserializerWithFields) container.getDeserializer(format);
+        } else {
+            throw new IllegalArgumentException("The selected deserializer does not implement field specification");
+        }
+
 
         int numberOfFields = deserializer.numberOfFields();
         String[] newFields = new String[numberOfFields];
@@ -256,6 +265,7 @@ public class DeserializationHandler {
         for (String field : newFields) {
             System.out.print(field + "  ");
         }
+        System.out.println(" ");
 
         scanner.close();
 
