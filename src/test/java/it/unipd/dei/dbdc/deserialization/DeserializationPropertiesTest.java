@@ -19,6 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
  */
 @Order(7)
 public class DeserializationPropertiesTest {
+
     /**
      * Tests {@link DeserializationProperties#readDeserializersProperties(String)}  with various valid and invalid inputs.
      *
@@ -66,8 +67,7 @@ public class DeserializationPropertiesTest {
 
         //Tests with invalid serializers.properties (wrong classes)
         String false_deserializers_properties = "src/test/resources/DeserializationTest/properties/falseDeserializers.properties";
-        IOException exception1 = assertThrows(IOException.class, () -> DeserializationProperties.readDeserializersProperties(false_deserializers_properties));
-        System.out.println(exception1.getMessage());
+        assertThrows(IOException.class, () -> DeserializationProperties.readDeserializersProperties(false_deserializers_properties));
 
     }
 }

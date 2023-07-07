@@ -58,13 +58,12 @@ public class SerializationPropertiesTest {
 
         //Tests with invalid serializers.properties (wrong classes)
         String false_serializers_properties = "src/test/resources/SerializationTest/properties/falseSerializers.properties";
-        IOException exception1 = assertThrows(IOException.class, () -> SerializationProperties.readSerializersProperties(false_serializers_properties));
-        System.out.println(exception1.getMessage());
+        assertThrows(IOException.class, () -> SerializationProperties.readSerializersProperties(false_serializers_properties));
+
 
         //Tests with invalid serializers.properties (wrong classes)
         String false_serializers_properties2 = "src/test/resources/SerializationTest/properties/falseSerializers2.properties";
-        IOException exception2 = assertThrows(IOException.class, () -> SerializationProperties.readSerializersProperties(false_serializers_properties2));
-        System.out.println(exception2.getMessage());
+        assertThrows(IOException.class, () -> SerializationProperties.readSerializersProperties(false_serializers_properties2));
 
     }
 }

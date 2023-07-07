@@ -4,16 +4,12 @@ import it.unipd.dei.dbdc.analysis.Article;
 import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.Serializable;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
@@ -45,6 +41,7 @@ public class XmlDeserializerTest {
 
         );
     }
+
     /**
      * Tests {@link XmlArticleDeserializer#deserialize(File)}  with different parameters defined by {@link XmlDeserializerTest#deserializeParameters()}
      *
@@ -146,25 +143,22 @@ public class XmlDeserializerTest {
 
     /**
      * Tests {@link XmlArticleDeserializer#deserialize(File)} in particular cases
-     *
      */
     @Test
     public void deserialize_particular_cases() {
 
         XmlArticleDeserializer deserializer = new XmlArticleDeserializer();
         // null is passed as input
-        IllegalArgumentException exception1 = assertThrows(IllegalArgumentException.class, () -> deserializer.deserialize( null));
-        System.out.println(exception1.getMessage());
+        assertThrows(IllegalArgumentException.class, () -> deserializer.deserialize( null));
 
         // Input file does not exist
         File nonExistentFile = new File("src/test/resources/DeserializationTest/deserializersTest/csvTest/nonExistentFile.xml");
-        IllegalArgumentException exception2 = assertThrows(IllegalArgumentException.class, () -> deserializer.deserialize( nonExistentFile));
-        System.out.println(exception2.getMessage());
+        assertThrows(IllegalArgumentException.class, () -> deserializer.deserialize( nonExistentFile));
 
         // Deserializing an empty XML file
         File emptyFile = new File("src/test/resources/DeserializationTest/deserializersTest/xmlTest/emptyArticles.xml");
-        IOException exception3 = assertThrows(IOException.class, () -> deserializer.deserialize((emptyFile)));
-        System.out.println(exception3.getMessage());
+        assertThrows(IOException.class, () -> deserializer.deserialize((emptyFile)));
+
 
         // Deserialize an empty XML file but with a correct basic structure
         assertDoesNotThrow(() -> {
@@ -187,6 +181,23 @@ public class XmlDeserializerTest {
             assertNotEquals(treeArticles(), articles);
         });
 
+    }
+
+    /**
+     * To set the System.out to a {@link ByteArrayOutputStream} so that we don't see the output during the tests.
+     */
+    @BeforeEach
+    public void setUpOutput() {
+        System.setOut(new PrintStream(new ByteArrayOutputStream()));
+    }
+
+    /**
+     * To restore the System.out and System.in
+     */
+    @AfterEach
+    public void restoreSystemInputOutput() {
+        System.setIn(System.in);
+        System.setOut(System.out);
     }
 
 }

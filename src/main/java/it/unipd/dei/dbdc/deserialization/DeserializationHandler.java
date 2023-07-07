@@ -45,7 +45,7 @@ public class DeserializationHandler {
      * @param allFiles Set of {@link File} in which all files in the specified folder will be stored
      * @throws IllegalArgumentException If either the objects or file parameter is null
      */
-    public static void getFolderFiles(String folderPath, Set<File> allFiles) {
+    private static void getFolderFiles(String folderPath, Set<File> allFiles) {
 
         if(folderPath == null){
             throw new IllegalArgumentException("The path cannot be null");
@@ -79,7 +79,7 @@ public class DeserializationHandler {
      * @return A Set of {@link File} that have been removed from the set of files passed to the function
      * @throws IllegalArgumentException If allFiles parameter is null
      */
-    public static Set<File> deleteUnavailableFiles(Set<File> allFiles) {
+    private static Set<File> deleteUnavailableFiles(Set<File> allFiles) {
 
         if(allFiles == null){
             throw new IllegalArgumentException("The file list cannot be null");
@@ -105,7 +105,7 @@ public class DeserializationHandler {
      * @return A Set of {@link File} for which a deserializer is available
      * @throws IllegalArgumentException If folderPath parameter is null
      */
-    public static Set<File> getDeserializationFiles(String folderPath) {
+    private static Set<File> getDeserializationFiles(String folderPath) {
 
         if(folderPath == null){
             throw new IllegalArgumentException("The path cannot be null");
@@ -230,7 +230,6 @@ public class DeserializationHandler {
         DeserializerWithFields deserializer;
 
         try {
-
             // the default properties are set if they have not already been set by the user
             if(container == null ){ setProperties(null); }
 

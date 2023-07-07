@@ -10,6 +10,7 @@ import org.junit.jupiter.api.*;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -24,8 +25,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @Order(1)
 public class DeserializersContainerTest {
-    // todo Fixare le properties. il path intendo
+
+    /**
+     * The path to an appropriate properties file used by {@link DeserializersContainerTest} tests
+     */
     private static final String deserializers_properties = "src/test/resources/DeserializationTest/properties/deserializers.properties";
+
+    /**
+     * The function sets the default fields for the JSON and CSV deserializer used by {@link DeserializersContainer}
+     */
     @AfterEach
     public void setOriginalFields()  {
 
@@ -37,12 +45,39 @@ public class DeserializersContainerTest {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        // sets the default fields
         container.setSpecificFields("json", jsonDefaultFields);
         container.setSpecificFields("csv", csvDefaultFields);
 
     }
 
+    /**
+     * Check for cases where an incorrect properties file is passed {@link DeserializersContainer}
+     */
+    @Test
+    public void notCorrectIstance() {
 
+        try {
+
+            // test with a non-existing properties file. it works because it takes the default one
+            String nonExistentFile_properties = "src/test/resources/DeserializationTest/properties/nonExistentFile.properties";
+            DeserializersContainer container = DeserializersContainer.getInstance(nonExistentFile_properties);
+
+            //Tests with invalid serializers.properties (wrong classes)
+            String false_deserializers_properties = "src/test/resources/DeserializationTest/properties/falseDeserializers.properties";
+            assertThrows(IOException.class, () -> DeserializationProperties.readDeserializersProperties(false_deserializers_properties));
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    /**
+     * Tests {@link DeserializersContainer#getSpecificFields(String)}
+     *
+     */
     @Test
     public void getSpecificFields() {
         String[] expectedFields = {"id", "apiUrl", "headline", "bodyText", "webPublicationDate", "publication", "sectionName" };
@@ -65,6 +100,11 @@ public class DeserializersContainerTest {
 
     }
 
+    /**
+     * Tests {@link DeserializersContainer#setSpecificFields(String, String[])}
+     *
+     */
+    @Test
     public void setSpecificFields() {
 
         String[] fileFields = {"id" , "url" , "title" , "body" , "date" , "sourceSet", "source"};
@@ -75,8 +115,8 @@ public class DeserializersContainerTest {
             String[] containerFields = container.getSpecificFields("json");
             assertEquals(containerFields,fileFields);
 
-            IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> container.setSpecificFields("xml", fileFields));
-            System.out.println(exception.getMessage());
+            // Selecting a deserializer that doesn't implement field specification
+            assertThrows(IllegalArgumentException.class, () -> container.setSpecificFields("xml", fileFields));
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -113,8 +153,9 @@ public class DeserializersContainerTest {
             Deserializer deserializer = container.getDeserializer("json");
             assertTrue(deserializer instanceof JsonArticleDeserializer);
 
-            IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> container.getDeserializer("html"));
-            System.out.println(exception.getMessage());
+            // Selecting a deserializer that is not present in the container
+            assertThrows(IllegalArgumentException.class, () -> container.getDeserializer("html"));
+
 
         });
     }

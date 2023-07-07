@@ -1,6 +1,8 @@
 package it.unipd.dei.dbdc.deserialization;
 
 import it.unipd.dei.dbdc.analysis.Article;
+import it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIParams;
+import it.unipd.dei.dbdc.download.src_callers.KongAPICallerTest;
 import org.junit.jupiter.api.*;
 
 import java.io.*;
@@ -8,13 +10,20 @@ import java.lang.reflect.Field;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+/**
+ * Class that tests {@link DeserializationHandler}
+ */
 @Order(7)
 public class DeserializationHandlerTest {
-    private static final String deserializers_properties = "src/test/resources/DeserializationTest/properties/deserializers.properties";
+
+    /**
+     * The {@link Field} object representing the container of {@link DeserializationHandler}
+     */
     private static Field cont_field;
 
-
+    /**
+     * Uses the reflection to set the {@link DeserializationHandlerTest#cont_field} of {@link DeserializationHandler} accessible.
+     */
     @BeforeAll
     public static void initialize()
     {
@@ -26,16 +35,22 @@ public class DeserializationHandlerTest {
         cont_field.setAccessible(true);
     }
 
+    /**
+     * Uses the reflection to set the {@link DeserializationHandlerTest#cont_field} of {@link DeserializationHandler} not accessible.
+     */
     @AfterAll
     public static void terminate()  {
 
         cont_field.setAccessible(false);
     }
 
+    /**
+     * The function sets the default fields for the JSON and CSV deserializer used by {@link DeserializationHandler}
+     */
     @AfterEach
     public void setOriginalFields()  {
 
-        //
+        // the default fields for the json deserializer are set
         String[] jsonDefaultFields = {"id", "apiUrl", "headline", "bodyText", "webPublicationDate", "publication", "sectionName" };
         DeserializersContainer container = null;
 
@@ -46,7 +61,7 @@ public class DeserializationHandlerTest {
         }
         container.setSpecificFields("json", jsonDefaultFields);
 
-        //
+        // the default fields for the csv deserializer are set
         String[] csvDefaultFields = {"Identifier", "URL", "Title", "Body", "Date", "Source Set", "Source"};
         try {
             container = (DeserializersContainer) cont_field.get(DeserializationHandler.class);
@@ -79,7 +94,20 @@ public class DeserializationHandlerTest {
     void testDeserializeFile() {
         try {
 
+            // 1) The case where default properties are used
+            // csv
+            File csvFile = new File("src/test/resources/DeserializationTest/testDeserializeFile/Articles1.csv");
+            List<Serializable> csvArticles = DeserializationHandler.deserializeFile(csvFile);
+            assertEquals(expectedDeserializeFile(), csvArticles);
+
+            //json
+            File josnFile = new File("src/test/resources/DeserializationTest/testDeserializeFile/Articles1.json");
+            List<Serializable> josnArticles = DeserializationHandler.deserializeFile(csvFile);
+            assertEquals(expectedDeserializeFile(), josnArticles);
+
+            // 2) The case where non-default properties are used
             // sets the properties file
+            String deserializers_properties = "src/test/resources/DeserializationTest/properties/deserializers.properties";
             DeserializationHandler.setProperties(deserializers_properties);
 
             // sets the fields of the json file
@@ -92,9 +120,8 @@ public class DeserializationHandlerTest {
             List<Serializable> deserializedFile = DeserializationHandler.deserializeFile(new File(filePath));
             assertEquals(expectedDeserializeFile(), deserializedFile);
 
-            // case I pass it null as input
-            IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> DeserializationHandler.deserializeFile(null));
-            System.out.println(exception);
+            // 3) The case I pass it null as input
+            assertThrows(IllegalArgumentException.class, () -> DeserializationHandler.deserializeFile(null));
 
         } catch (IOException | IllegalAccessException e) {
             throw new RuntimeException(e);
@@ -143,7 +170,9 @@ public class DeserializationHandlerTest {
 
         try {
 
+            // case the default properties are used
             String[] fileFields = {"id" , "url" , "title" , "body" , "date" , "sourceSet", "source"};
+            String deserializers_properties = "src/test/resources/DeserializationTest/properties/deserializers.properties";
             DeserializationHandler.setProperties(deserializers_properties);
 
             // sets the fields of the json file, it is necessary because in the file they are different from the default ones
@@ -153,10 +182,9 @@ public class DeserializationHandlerTest {
             List<Serializable> DeserializedFolder = DeserializationHandler.deserializeFolder("src/test/resources/DeserializationTest/handlerTest/Database");
             assertEquals(deserializedArticleFolder(), DeserializedFolder);
 
-            // caso in cui vengono usate le properties di default
 
             // case I pass it null as input
-            IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> DeserializationHandler.deserializeFolder(null));
+            assertThrows(IllegalArgumentException.class, () -> DeserializationHandler.deserializeFolder(null));
 
         } catch (IOException | IllegalAccessException e) {
             throw new RuntimeException(e);
@@ -174,7 +202,6 @@ public class DeserializationHandlerTest {
     /**
      * To set the System.out to a {@link ByteArrayOutputStream} so that we don't see the output during the tests.
      */
-
     @BeforeEach
     public void setUpOutput() {
         System.setOut(new PrintStream(new ByteArrayOutputStream()));
@@ -220,8 +247,7 @@ public class DeserializationHandlerTest {
 
         // invalid case: xml
         provideInput("xml\nid1\nurl1\ntitle1\nbody1\ndate1\nsourceSet1\nsource1");
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, DeserializationHandler::deserializerSetFields);
-        System.out.println(exception);
+        assertThrows(IllegalArgumentException.class, DeserializationHandler::deserializerSetFields);
 
     }
 

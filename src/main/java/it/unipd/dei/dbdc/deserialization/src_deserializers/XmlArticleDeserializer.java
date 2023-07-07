@@ -44,7 +44,7 @@ public class XmlArticleDeserializer implements Deserializer {
         XmlMapper xmlMapper = new XmlMapper();
 
         try {
-            articles = xmlMapper.readValue(xmlFile, new TypeReference<List<Article>>() {}); // FIXME: funziona, ma non ha senso
+            articles = xmlMapper.readValue(xmlFile, new TypeReference<List<Article>>() {});
 
         } catch (IOException e){
             System.out.print("XML file with wrong structure. " );
