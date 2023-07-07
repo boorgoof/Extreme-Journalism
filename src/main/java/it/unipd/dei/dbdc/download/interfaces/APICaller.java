@@ -12,9 +12,11 @@ public interface APICaller {
     /**
      * The main method of the interface: this is the way to send a request to the specified API with the specified params
      * and save the result of the call as a file at the specified path.
+     * It is preferred to return a boolean and not throw any exception, as this simplifies the logic of
+     * the program.
      *
      * @param url The base url of the API to call.
-     * @param params The parameters of the API call.
+     * @param params The parameters of the call to the API.
      * @param path The path of the file where the response should be saved.
      * @return A boolean representing the success of the call
      */

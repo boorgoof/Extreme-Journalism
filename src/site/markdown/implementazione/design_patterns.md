@@ -3,3 +3,7 @@
 ## Singleton
 
 ## Strategy
+
+## Adapter
+
+## Facade (handler)

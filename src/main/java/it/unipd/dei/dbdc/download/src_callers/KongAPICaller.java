@@ -19,7 +19,7 @@ public class KongAPICaller implements APICaller {
 
     /**
      * The only constructor of this class.
-     * It changes the cookies settings of {@link Unirest} to avoid errors during the calls.
+     * It changes the cookies settings of {@link Unirest} to avoid errors or warnings during the calls.
      *
      */
     public KongAPICaller()
@@ -32,9 +32,11 @@ public class KongAPICaller implements APICaller {
      * The main method of the class: it sends the request to the specified API with the specified params
      * and saves the result of the call as a file at the specified path. If the base url or the path are null,
      * or any exception occurs, returns false.
+     * It is preferred to return a boolean and not throw any exception, as this simplifies the logic of
+     * the program.
      *
      * @param base_url The base url of the API to call.
-     * @param params The parameters of the API call.
+     * @param params The parameters of the call to the API.
      * @param path The path of the file where the response should be saved.
      * @return A boolean representing the success of the call, or false if any exception occurs.
      *
@@ -54,7 +56,8 @@ public class KongAPICaller implements APICaller {
             return res.isSuccess();
         }
         //This is required as we don't know what are the customized exceptions that the library could throw
-        catch (Exception e)
+        //(they are not indicated in the javadocs)
+        catch (RuntimeException e)
         {
             return false;
         }
@@ -73,10 +76,10 @@ public class KongAPICaller implements APICaller {
 
     /**
      * This function overrides the function of Object. It returns true if the Object passed
-     * is of the same class of this object.
+     * is of the same class of this object, as the two objects do not have any field.
      *
      * @param o The Object to compare to
-     * @return True if the two objects are equals
+     * @return True if the two objects are of the same class
      */
     @Override
     public boolean equals(Object o)

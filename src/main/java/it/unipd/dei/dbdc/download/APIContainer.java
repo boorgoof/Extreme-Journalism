@@ -27,11 +27,11 @@ public class APIContainer {
 
     /**
      * This returns the only instance of this class, and initializes it if it is not.
-     * Once initialized without exceptions, this function returns always the same Container.
+     * Once initialized without exceptions, this function returns always the same APIContainer.
      *
      * @param download_properties The properties specified by the user where are specified all the possible {@link APIManager}.
      *                            If it is null, the default properties file will be used.
-     * @throws IOException If both the default and specified by the user properties files are not present or they are incorrect.
+     * @throws IOException If the properties file specified by the user is invalid or the default one is missing or invalid.
      */
     public static APIContainer getInstance(String download_properties) throws IOException
     {
@@ -47,7 +47,7 @@ public class APIContainer {
      *
      * @param download_properties The properties specified by the user where are specified all the possible {@link APIManager}.
      *                            If it is null, the default properties file will be used.
-     * @throws IOException If both the default and specified by the user properties files are not present or they are incorrect.
+     * @throws IOException If the properties file specified by the user is invalid or the default one is missing or invalid.
      */
     private APIContainer(String download_properties) throws IOException
     {
@@ -57,7 +57,7 @@ public class APIContainer {
     /**
      * A function that returns the names of all the {@link APIManager} that are present in the container.
      *
-     *  @return A {@link String} with all the names of the {@link APIManager} inside the container.
+     *  @return A {@link String} with all the names of the {@link APIManager} inside the container, one for line.
      */
     public String getAPINames()
     {
@@ -74,7 +74,7 @@ public class APIContainer {
      *
      * @param name The name of the {@link APIManager}.
      * @throws IllegalArgumentException If there is no {@link APIManager} with that name.
-     *  @return A {@link String} with the parameters of the {@link APIManager} whose name is specified as a parameter. These parameters are already formatted
+     * @return A {@link String} with the parameters of the {@link APIManager} whose name is specified as a parameter. These parameters are already formatted
      */
     public String getAPIPossibleParams(String name) throws IllegalArgumentException
     {

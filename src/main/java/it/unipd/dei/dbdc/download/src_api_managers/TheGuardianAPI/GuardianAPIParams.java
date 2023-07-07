@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * This is a class which contains all the parameters specified by the user to call the theGuardian API.
+ * This is a class which contains all the parameters specified by the user to call the TheGuardianAPI.
  * It is used by the {@link GuardianAPIManager} class, and also has a set of default parameters, the same
  * specified in the {@link GuardianAPIInfo} class.
  *
@@ -70,10 +70,15 @@ public class GuardianAPIParams {
      * Copy constructor: It initializes the map to be identical to the one of the object
      * passed as a parameter.
      *
-     * @param par The object to copy from
+     * @param par The object to copy from. If it is null, this constructor works as the default one.
      */
     public GuardianAPIParams(GuardianAPIParams par)
     {
+        if (par == null)
+        {
+            specified_params = new HashMap<>();
+            return;
+        }
         specified_params = new HashMap<>(par.specified_params);
         api_key = par.api_key;
         pages = par.pages;
@@ -83,7 +88,8 @@ public class GuardianAPIParams {
 
     /**
      * Function to add a param to the specified params for the call.
-     * If it's a date, the format should be yyyy-mm-dd
+     * If it's a date, the format should be yyyy-mm-dd, if it's a page size it should
+     * be minor or equals than 200 and major than 0, if it's pages it should be positive.
      *
      * @param param The param to add to the specified params
      * @throws IllegalArgumentException If the date specified is not in the correct format or is invalid, or if the passed param is null or has a null key or value, or if the page-size or pages are invalid
@@ -94,8 +100,8 @@ public class GuardianAPIParams {
         {
             throw new IllegalArgumentException("Null parameter");
         }
-        String elem = param.getValue();
         String key = param.getKey();
+        String elem = param.getValue();
         if (elem == null || key == null)
         {
             throw new IllegalArgumentException("Null key or value");
@@ -110,8 +116,8 @@ public class GuardianAPIParams {
                 try {
                     parsed = Integer.parseInt(elem);
                 }
-                catch (NumberFormatException e)
-                {   //In this case parsed will be equal to -1
+                catch (NumberFormatException e) {
+                    //In this case parsed will be equal to -1
                 }
                 if (parsed <= 0)
                 {
@@ -151,8 +157,7 @@ public class GuardianAPIParams {
      * If there is any parameter that is equal to the default ones (show-fields and format), this will be overwritten by the default values.
      *
      * @throws IllegalArgumentException If the api-key was not specified
-     * @return A {@link ArrayList} of a number of {@link Map} equal to the number of pages of the request
-     * and every map contains all the specified params, plus the default params.
+     * @return A {@link ArrayList} of a number of {@link Map} equal to the number of pages of the request, with every map that contains all the specified params, plus the default params.
      */
     public ArrayList<Map<String, Object>> getParams() throws IllegalArgumentException
     {
@@ -177,7 +182,7 @@ public class GuardianAPIParams {
     }
 
     /**
-     * This function overrides the function of Object. It returns true if the Object passed
+     * This function overrides the equals function of Object. It returns true if the Object passed
      * is of the same class and has the same parameters of this Object.
      *
      * @param o The Object to compare to

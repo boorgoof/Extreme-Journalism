@@ -13,7 +13,7 @@ import java.util.concurrent.*;
  * as proxies to get information about the API and to contain the specified params.
  *
  * @see GuardianAPIInfo
- * @see GuardianAPIManager
+ * @see GuardianAPIParams
  * @see APIManager
  */
 public class GuardianAPIManager implements APIManager {
@@ -112,6 +112,7 @@ public class GuardianAPIManager implements APIManager {
     /**
      * The function calls the API with all the parameters specified before. If there is any not correct parameter, it will be ignored, or an exception will be thrown.
      * It uses the {@link CallAPIThread} to send the requests to the {@link APICaller}.
+     * It uses {@link ThreadPool} submitting {@link CallAPIThread}.
      *
      * @param path_folder The path of the folder where the files of the requests should be saved.
      * @throws IllegalArgumentException If the {@link APICaller} was not initialized, the api-key was not given or there was an exception in the calling of the API.
