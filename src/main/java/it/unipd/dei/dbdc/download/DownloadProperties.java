@@ -18,8 +18,8 @@ import java.util.*;
 public class DownloadProperties {
 
     /**
-     * The only constructor of the class. It is declared as private to
-     * prevent the default constructor to be created.
+     * The only constructor of the class. It is declared private to
+     * prevent the default constructor to be created, as this is only a utility class.
      *
      */
     private DownloadProperties() {}
@@ -42,7 +42,8 @@ public class DownloadProperties {
      *
      * @param out_properties The name of the properties file specified by the user. If null, the default properties file will be used.
      * @return An {@link HashMap} of {@link APIManager} and their names specified in the properties file.
-     * @throws IOException If both the default properties file and the user specified are not present, or if the properties specified are not correct.
+     * @throws IOException If the user's specified properties file is invalid, or if the default properties are invalid or missing.
+     * @see PropertiesTools
      */
     public static HashMap<String, APIManager> readProperties(String out_properties) throws IOException {
 
@@ -81,10 +82,10 @@ public class DownloadProperties {
             }
         } catch (InstantiationException | IllegalAccessException | ClassCastException | ClassNotFoundException |
                  NoSuchMethodException | InvocationTargetException | NullPointerException ex) {
-            throw new IOException("The format of the file is not correct.\n" +
+            throw new IOException("The format of the download properties file is not correct.\n" +
                     "It should have a key string representing the name of the API and " +
-                    "as a value the class that implements the manager of that API.\n" +
-                    "This class should also implement APIManager interface and have a constructor that accepts an instance of an APICaller as argument.");
+                    "the class that implements the manager of that API as a value.\n" +
+                    "This class should also implement APIManager interface and have a constructor that accepts an instance of an APICaller and a String as arguments.");
         }
         return managers;
     }

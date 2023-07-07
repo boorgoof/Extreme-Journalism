@@ -13,18 +13,19 @@ import java.util.Properties;
  *
  * @see Properties
  * @see PropertiesTools
+ * @see DownloadProperties
  */
 public class APIProperties
 {
     /**
      * The only constructor of the class. It is declared as private to
-     * prevent the default constructor to be created.
+     * prevent the default constructor to be created, as this is only a utility class.
      *
      */
     private APIProperties() {}
 
     /**
-     * The key of the parameter of the properties file that specifies the {@link APIManager} to use
+     * The key of the parameter of the properties file that specifies the {@link APIManager} to use.
      *
      */
     private static final String name = "name";
@@ -33,11 +34,12 @@ public class APIProperties
      * The function that reads the properties file and returns an {@link APIManager} which has all the
      * parameters specified in the properties file.
      *
-     * @param out_properties The name of the properties file specified by the user. If null, the default properties file will be used.
+     * @param out_properties The name of the properties file specified by the user. If null, it will be returned null.
      * @param download_properties The name of the download properties file specified by the user. It's used to initialize the {@link APIContainer}, if it is not already initialized.
-     * @return The {@link APIManager} specified in the properties file with all the parameters.
+     * @return The {@link APIManager} specified in the properties file with all the parameters that are inside that file.
      * @throws IOException If the API properties file is not present or the download properties file specified is invalid or if the default download properties file is missing or invalid
      * @throws IllegalArgumentException If the name or the parameters of the {@link APIManager} specified aren't correct.
+     * @see PropertiesTools
      */
     public static APIManager readProperties(String out_properties, String download_properties) throws IOException, IllegalArgumentException {
         if (out_properties == null)

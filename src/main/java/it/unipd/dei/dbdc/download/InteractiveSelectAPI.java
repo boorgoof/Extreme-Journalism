@@ -27,11 +27,11 @@ public class InteractiveSelectAPI {
 
     /**
      * The constructor, which gets the {@link APIContainer} to get the information from and the way the user
-     * should be asked.
+     * should be asked as a {@link Scanner}.
      *
      * @param sc The {@link Scanner} that the user will use to select the API.
      * @param download_props The download properties specified by the user. If null, the default ones will be used.
-     * @throws IOException If the download properties files (the default one and the one specified by the user) are not present or are not correct.
+     * @throws IOException If the download properties file specified by the user is invalid or the default one is invalid or missing.
      */
     public InteractiveSelectAPI(Scanner sc, String download_props) throws IOException {
         container = APIContainer.getInstance(download_props);
@@ -40,6 +40,7 @@ public class InteractiveSelectAPI {
 
     /**
      * The function that asks the user the name of the {@link APIManager} to call.
+     * It doesn't check if this name is correct.
      *
      * @return A {@link String} representing the name of the {@link APIManager} selected.
      */

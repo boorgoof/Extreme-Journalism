@@ -11,7 +11,7 @@ import it.unipd.dei.dbdc.download.QueryParam;
 public class GuardianAPIInfo {
     /**
      * The only constructor of the class. It is declared as private to
-     * prevent the default constructor to be created.
+     * prevent the default constructor to be created, as this is a utility class.
      *
      */
     private GuardianAPIInfo() {}
@@ -35,20 +35,21 @@ public class GuardianAPIInfo {
             new QueryParam("pages", "The number of pages to download from the API. Default is 5, which means that by default are downloaded 1000 articles"),
             new QueryParam("q", "The topic of the articles to analysis for. Default is \"nuclear power\""),
             new QueryParam("order-by","The way the articles should be ordered (we take the first n in that order). Default = relevance"),
-            new QueryParam("from-date", "The date to analysis from, in the format yyyy-mm-dd"),
-            new QueryParam("to-date", "The date to analysis to, in the format yyyy-mm-dd")
+            new QueryParam("from-date", "The date to search from, in the format yyyy-mm-dd"),
+            new QueryParam("to-date", "The date to search to, in the format yyyy-mm-dd")
     };
 
     /**
      * The maximum length of the key that is accepted by the class.
-     * It is used only to provide a good way to see the possible fields in the
-     * {@link GuardianAPIInfo#getFormattedParams()} method
+     * It is used only to provide a good way to print to standard output the possible fields
+     * in the {@link GuardianAPIInfo#getFormattedParams()} method.
      *
      */
     private final static int formatted_key_length = 20;
 
     /**
-     * This method gives the possible fields to pass to the API and a description.
+     * This method gives the possible fields to pass to the API and a description of them.
+     * It formats them as they are to be printed to standard output.
      *
      * @return a formatted {@link String} which contains the fields and their description, one for each line, and their default value.
      */
@@ -79,10 +80,10 @@ public class GuardianAPIInfo {
     }
 
     /**
-     * This method checks if the field passed as a {@link String} as a parameter is a possible field of the API.
+     * This method checks if the key of the field passed as a {@link String} as a parameter is a possible field of the API.
      *
      * @param key The key of the field to check.
-     * @return true if the field specified is valid.
+     * @return true if the key of the field specified is valid.
      */
     public static boolean isPresent(String key)
     {

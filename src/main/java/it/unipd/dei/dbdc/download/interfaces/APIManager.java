@@ -5,7 +5,10 @@ import it.unipd.dei.dbdc.download.QueryParam;
 import java.util.List;
 
 /**
- * This interface represents a manager of an API. It should be implemented to permit the call of that API.
+ * This interface represents a manager of an API, which is a class that has the logic for the passing
+ * of the parameters to a specific API. It should be implemented to permit the call of that API.
+ * All the APIManagers should also have a constructor that requires a {@link APICaller} and a {@link String}
+ * representing the class to use to call the API and the name of the API, as it is presented to the user.
  *
  */
 public interface APIManager {
@@ -18,7 +21,8 @@ public interface APIManager {
     String getName();
 
     /**
-     * The function which returns the formatted possible parameters.
+     * The function which returns the possible parameters for the call, formatted to be printed
+     * in standard output.
      *
      * @return A {@link String} which contains the formatted parameters.
      */
@@ -33,7 +37,8 @@ public interface APIManager {
     void addParams(List<QueryParam> l) throws IllegalArgumentException;
 
     /**
-     * The function calls the API with all the parameters specified before.
+     * The function that calls the API with all the parameters specified before, and
+     * saves the files resulting in the specified folder.
      *
      * @param path_folder The path of the folder where the files of the requests should be saved.
      * @throws IllegalArgumentException If there was an error in the calling of the API.

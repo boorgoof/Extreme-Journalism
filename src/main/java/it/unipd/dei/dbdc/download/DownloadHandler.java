@@ -6,11 +6,16 @@ import it.unipd.dei.dbdc.tools.PathManager;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * The class which represents a point of access to the part of download
+ * from an API.
+ *
+ */
 public class DownloadHandler {
 
     /**
      * The only constructor of the class. It is declared as private to
-     * prevent the default constructor to be created.
+     * prevent the default constructor to be created, as this is a utility class.
      *
      */
     private DownloadHandler() {}
@@ -23,7 +28,7 @@ public class DownloadHandler {
      *
      * @param download_props The download properties specified by the user. If null, the default ones will be used.
      * @param api_props The API properties specified by the user. If null or incorrect, the user will be asked to select the API.
-     * @throws IOException If the download properties files (the default one and the one specified by the user) are not present or are not correct.
+     * @throws IOException If the download properties file specified by the user is invalid or the default one is invalid or missing.
      * @return A {@link String} representing the path where the downloaded files were saved.
      */
     public static String download(String download_props, String api_props) throws IOException {
@@ -92,5 +97,4 @@ public class DownloadHandler {
             }
         }
     }
-
 }

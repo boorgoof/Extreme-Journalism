@@ -2,15 +2,16 @@ package it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI;
 
 import it.unipd.dei.dbdc.download.interfaces.APICaller;
 
-import java.io.IOException;
 import java.util.Map;
 
 /**
  * This class implements the interface {@link Runnable}.
- * It represents a thread that can be called to send a request to the specified url
+ * It represents a thread that can be called to send a request to the specified URL
  * with the specified params and through the specified {@link APICaller} and save it
  * at the specified path.
+ * It is used by {@link GuardianAPIManager}, but can also be used by any {@link it.unipd.dei.dbdc.download.interfaces.APIManager}.
  *
+ * @see GuardianAPIManager
  * @see Runnable
  */
 public class CallAPIThread implements Runnable {
@@ -20,7 +21,7 @@ public class CallAPIThread implements Runnable {
      */
     private final APICaller caller;
     /**
-     * Default URL of the API to call.
+     * The URL of the API to call.
      *
      */
     private final String url;
@@ -39,16 +40,16 @@ public class CallAPIThread implements Runnable {
      * The constructor of the class: it accepts all the parameters of the API call
      * and the {@link APICaller} to pass the call to.
      *
-     * @param c The {@link APICaller} to pass the request.
-     * @param u The base url of the API to call
-     * @param p The path of the file where the response should be saved.
-     * @param par The parameters of the API call.
+     * @param call The {@link APICaller} to pass the request.
+     * @param url_ The base url of the API to call
+     * @param path_ The path of the file where the response should be saved.
+     * @param par The parameters of the call to the API.
      */
-    public CallAPIThread(APICaller c, String u, String p, Map<String, Object> par)
+    public CallAPIThread(APICaller call, String url_, String path_, Map<String, Object> par)
     {
-        caller = c;
-        url = u;
-        path = p;
+        caller = call;
+        url = url_;
+        path = path_;
         params = par;
     }
 

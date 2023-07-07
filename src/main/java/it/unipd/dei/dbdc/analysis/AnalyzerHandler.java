@@ -12,15 +12,16 @@ import java.io.*;
  *
  */
 public class AnalyzerHandler {
+
     /**
      * The number of stop words that are present inside the file of the stop words.
      *
      */
-    private final static int default_stop_words = 524;
+    private final static int number_stop_words = 524;
 
     /**
      * The only constructor of the class. It is declared as private to
-     * prevent the default constructor to be created.
+     * prevent the default constructor to be created, as this is only a utility class.
      *
      */
     private AnalyzerHandler() {}
@@ -68,7 +69,7 @@ public class AnalyzerHandler {
             {
                 throw new IOException();
             }
-            banned = new HashSet<>(default_stop_words);
+            banned = new HashSet<>(number_stop_words);
             Scanner scanner = new Scanner(file);
             while (scanner.hasNext()) {
                 banned.add(scanner.next());
