@@ -39,7 +39,7 @@ public class OrderedEntryStringInt extends AbstractMap.SimpleEntry<String, Integ
      * If they are identical, it returns false.
      *
      * @param a The other entry
-     * @return true if this entry is major than the one passed as a parameter, or the parameter is null
+     * @return true if this entry is major than the one passed as a parameter, false in all the other cases (even if the parameter is null).
      */
     public boolean isMajorThan(OrderedEntryStringInt a)
     {
