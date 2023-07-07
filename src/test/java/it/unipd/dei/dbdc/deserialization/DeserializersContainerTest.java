@@ -27,7 +27,7 @@ public class DeserializersContainerTest {
 
     @Test @Order(1)
     public void getSpecificFields() {
-        String[] expectedFields = {"id", "webUrl", "headline", "bodyText", "webPublicationDate", "webUrl", "webUrl"}; // da modificare
+        String[] expectedFields = {"id", "apiUrl", "headline", "bodyText", "webPublicationDate", "publication", "sectionName" };
 
         try {
             DeserializersContainer container = DeserializersContainer.getInstance(deserializers_properties);

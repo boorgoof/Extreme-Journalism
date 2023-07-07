@@ -22,7 +22,7 @@ public class JsonArticleDeserializer implements DeserializerWithFields {
     /**
      * An array of {@link String} containing the fields that are taken into account when deserializing the JSON file
      */ //TODO mettere i campi corretti
-    private String[] fields = {"id", "webUrl", "headline", "bodyText", "webPublicationDate", "webUrl", "webUrl" };
+    private String[] fields = {"id", "apiUrl", "headline", "bodyText", "webPublicationDate", "publication", "sectionName" };
 
     /**
      * Provides the fields taken into account during deserialization

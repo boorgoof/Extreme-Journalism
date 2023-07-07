@@ -64,7 +64,7 @@ public class DeserializersContainer {
      * @throws IllegalArgumentException If there is no {@link Deserializer} available for the specified format, or the parameters passed are not valid.
      *
      */
-    public Deserializer getDeserializer(String format) throws IOException{
+    public Deserializer getDeserializer(String format){
         if(!deserializers.containsKey(format)){
             throw new IllegalArgumentException("the program is not yet able to deserialize the requested format");
         }

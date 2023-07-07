@@ -60,8 +60,9 @@ public class SerializationHandler {
             throw new IllegalArgumentException("The object list cannot be null");
         }
 
-        if(container.isEmpty()){
-            container = SerializersContainer.getInstance(null);
+        // the default properties are set if they have not already been set by the user
+        if(container == null){
+            setProperties(null);
         }
 
         // the file format is stored

@@ -46,13 +46,12 @@ public class SerializationHandlerTest {
     public void serializeObjects() {
         try {
 
-
             String serializers_properties = "src/test/resources/SerializationTest/properties/serializers.properties";
-            SerializationHandler handler = new SerializationHandler(serializers_properties);
+            SerializationHandler.setProperties(serializers_properties);
 
             // Serializing the list of Serializable defined by articlesToSerialize()
             File serializeFile = new File("src/test/resources/SerializationTest/handlerTest/Articles1.xml");
-            handler.serializeObjects(articlesToSerialize(), serializeFile);
+            SerializationHandler.serializeObjects(articlesToSerialize(), serializeFile);
 
             // To verify that the content of the articles has been serialized correctly.
             // I should get the same objects Articles with deserialising the serialized file
@@ -67,15 +66,15 @@ public class SerializationHandlerTest {
             // Tests in which a serialization in an unavailable format is requested. The serializer is not present in the container
             File serializeFile2 = new File("src/test/resources/SerializationTest/handlerTest/Articles2.html");
             String messageError1 = "The program is not yet able to serialize a file to the requested format";
-            IllegalArgumentException exception1 = assertThrows(IllegalArgumentException.class, () -> handler.serializeObjects(articlesToSerialize(), serializeFile2), messageError1);
+            IllegalArgumentException exception1 = assertThrows(IllegalArgumentException.class, () -> SerializationHandler.serializeObjects(articlesToSerialize(), serializeFile2), messageError1);
 
             // Test with input null file
             String messageError2 = "The XML file cannot be null";
-            IllegalArgumentException exception2 = assertThrows(IllegalArgumentException.class, () -> handler.serializeObjects(articlesToSerialize(), null), messageError2);
+            IllegalArgumentException exception2 = assertThrows(IllegalArgumentException.class, () -> SerializationHandler.serializeObjects(articlesToSerialize(), null), messageError2);
 
             // Test with null list
             String messageError3 = "The object list cannot be null";
-            IllegalArgumentException exception3 = assertThrows(IllegalArgumentException.class, () -> handler.serializeObjects(null, serializeFile2), messageError3);
+            IllegalArgumentException exception3 = assertThrows(IllegalArgumentException.class, () -> SerializationHandler.serializeObjects(null, serializeFile2), messageError3);
 
 
         } catch (IOException e) {
