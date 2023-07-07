@@ -4,6 +4,7 @@ import it.unipd.dei.dbdc.deserialization.DeserializersContainer;
 import it.unipd.dei.dbdc.serializers.src_serializers.XmlSerializerTest;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -20,6 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * Class that tests {@link JsonArticleDeserializer}.
  */
+@Order(7)
 public class JsonDeserializerTest {
 
     @AfterEach

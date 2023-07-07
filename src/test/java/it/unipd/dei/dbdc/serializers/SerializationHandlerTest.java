@@ -7,6 +7,7 @@ import it.unipd.dei.dbdc.deserialization.DeserializersContainer;
 import it.unipd.dei.dbdc.deserialization.src_deserializers.XmlArticleDeserializer;
 import it.unipd.dei.dbdc.serializers.src_serializers.XmlSerializer;
 import it.unipd.dei.dbdc.serializers.src_serializers.XmlSerializerTest;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -22,6 +23,7 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * Class that tests {@link SerializationHandler}.
  */
+@Order(7)
 public class SerializationHandlerTest {
     
     /**

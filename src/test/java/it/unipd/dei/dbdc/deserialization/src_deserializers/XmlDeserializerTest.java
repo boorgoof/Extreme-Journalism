@@ -5,6 +5,7 @@ import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -21,6 +22,7 @@ import java.util.stream.Stream;
 /**
  * Class that tests {@link XmlArticleDeserializer}.
  */
+@Order(7)
 public class XmlDeserializerTest {
 
     /**
