@@ -74,40 +74,42 @@ public class JsonArticleDeserializer implements DeserializerWithFields {
      * So an article consists of the values associated with the keys that are present in both the JSON file and {@link JsonArticleDeserializer#fields}.
      * <pre>
      *For example:
-     *"object": {
-     *     "data": [
+     *{
+     *   "oggetto": {
+     *     "dati": [
      *       {
-     *         "response1": {
-     *           "id" : "ID 1",
-     *           "url" : "URL 1",
-     *           "title" : "Title 1",
-     *           "body" : "Body 1",
-     *           "date" : "Date 1",
-     *           "sourceSet" : "sourceSet 1",
-     *           "source" : "Source 1"
+     *         "risposta1": {
+     *           "id": "ID 1",
+     *           "apiUrl": "URL 1",
+     *           "headline": "Titolo 1",
+     *           "bodyText": "Corpo 1",
+     *           "webPublicationDate": "Data 1",
+     *           "publication": "sourceSet 1",
+     *           "sectionName": ""source 1""
      *         }
      *       },
      *       {
-     *         "response2": {
-     *           "id" : "ID 2",
-     *           "url" : "URL 2",
-     *           "title" : "Title 2",
-     *           "body" : "Body 2",
-     *           "date" : "Date 2",
-     *           "sourceSet" : "sourceSet 2",
-     *           "source" : "Source 2"
+     *         "risposta2": {
+     *           "id": "ID 2",
+     *           "apiUrl": "URL 2",
+     *           "headline": "Titolo 2",
+     *           "bodyText": "Corpo 2",
+     *           "webPublicationDate": "Data 2",
+     *           "publication": "sourceSet 2",
+     *           "sectionName": "source 2"
      *         },
-     *         "response3": {
-     *           "url" : "URL 3",
-     *           "title" : "Title 3",
-     *           "body" : "Body 3",
-     *           "date" : "Date 3",
-     *           "sourceSet" : "sourceSet 3",
-     *           "source" : "Source 2"
+     *         "risposta3": {
+     *           "apiUrl": "URL 3",
+     *           "headline": "Titolo 3",
+     *           "bodyText": "Corpo 3",
+     *           "webPublicationDate": "Data 3",
+     *           "publication": "sourceSet 3",
+     *           "sectionName": "source 3"
      *         }
      *       }
      *     ]
      *   }
+     * }
      * </pre>
      * In this case, only the response1 and response2 nodes are parsed. So the deserialization of the file expects two {@link Article} objects.
      * The "id" key is not present in response3, so it is not considered as an {@link Article}

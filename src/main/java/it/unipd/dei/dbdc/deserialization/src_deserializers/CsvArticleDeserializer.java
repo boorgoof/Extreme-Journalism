@@ -188,7 +188,7 @@ public class CsvArticleDeserializer implements DeserializerWithFields {
             // Save the column headers in an array
             String[] header = new String[headerRecord.size()];
             for (int i = 0; i < headerRecord.size(); i++) {
-                header[i] = headerRecord.get(i).replaceAll("[^a-zA-Z0-9\\s]", "");// Remove BOM character if present
+                header[i] = headerRecord.get(i).replaceAll("[^a-zA-Z0-9\\s]", ""); // Remove BOM character if present
             }
 
             // Set to null all values that are not also present in CsvDeserializer#fields
