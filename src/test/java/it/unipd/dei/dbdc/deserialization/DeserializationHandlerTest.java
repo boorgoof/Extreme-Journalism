@@ -120,8 +120,13 @@ public class DeserializationHandlerTest {
             List<Serializable> deserializedFile = DeserializationHandler.deserializeFile(new File(filePath));
             assertEquals(expectedDeserializeFile(), deserializedFile);
 
-            // 3) The case I pass it null as input
+            // 3) deserializer not available for file
+            String filePath2 = "src/test/resources/DeserializationTest/testDeserializeFile/Articles1.html";
+            assertThrows(IllegalArgumentException.class, () -> DeserializationHandler.deserializeFile(new File(filePath2)));
+
+            // 4) The case I pass it null as input
             assertThrows(IllegalArgumentException.class, () -> DeserializationHandler.deserializeFile(null));
+
 
         } catch (IOException | IllegalAccessException e) {
             throw new RuntimeException(e);

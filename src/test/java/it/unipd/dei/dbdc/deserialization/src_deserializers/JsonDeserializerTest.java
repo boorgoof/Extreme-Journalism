@@ -112,6 +112,8 @@ public class JsonDeserializerTest {
     /**
      * Tests {@link JsonArticleDeserializer#deserialize(File)}  with different parameters defined by {@link JsonDeserializerTest#deserializeParameters()}
      *
+     * @param expectedArticles The {@link List} of {@link Article} expected from deserialization
+     * @param filePath the file path to deserialize
      */
     @ParameterizedTest
     @MethodSource("deserializeParameters")

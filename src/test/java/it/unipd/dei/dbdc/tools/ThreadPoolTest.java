@@ -1,12 +1,11 @@
 package it.unipd.dei.dbdc.tools;
 
 import it.unipd.dei.dbdc.analysis.Article;
-import it.unipd.dei.dbdc.analysis.src_strategies.MapSplitAnalyzer.AnalyzerArticleThread;
+import it.unipd.dei.dbdc.analysis.src_analyzers.MapSplitAnalyzer.AnalyzerArticleThread;
 import it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.CallAPIThread;
 import it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIInfo;
 import it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIManagerTest;
 import it.unipd.dei.dbdc.download.src_callers.KongAPICaller;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 

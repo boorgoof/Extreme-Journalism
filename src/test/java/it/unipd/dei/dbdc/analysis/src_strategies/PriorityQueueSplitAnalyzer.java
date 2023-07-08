@@ -3,6 +3,8 @@ package it.unipd.dei.dbdc.analysis.src_strategies;
 import it.unipd.dei.dbdc.analysis.OrderedEntryStringInt;
 import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
 import it.unipd.dei.dbdc.analysis.interfaces.Analyzer;
+import it.unipd.dei.dbdc.analysis.src_analyzers.MapSplitAnalyzer.MapSplitAnalyzer;
+import it.unipd.dei.dbdc.analysis.src_analyzers.MapSplitAnalyzer.MapSplitAnalyzerTest;
 
 import java.util.*;
 
@@ -11,8 +13,8 @@ import java.util.*;
  * but to be right. It uses a {@link PriorityQueue} filled with {@link OrderedEntryComparable},
  * so the order is done by the standard library of java.
  * It is also an example of how to implement a different strategy to analyze articles.
- * It is tested, along with {@link it.unipd.dei.dbdc.analysis.src_strategies.MapSplitAnalyzer.MapSplitAnalyzer},
- * in {@link it.unipd.dei.dbdc.analysis.src_strategies.MapSplitAnalyzer.MapSplitAnalyzerTest}.
+ * It is tested, along with {@link MapSplitAnalyzer},
+ * in {@link MapSplitAnalyzerTest}.
  */
 public class PriorityQueueSplitAnalyzer implements Analyzer {
 

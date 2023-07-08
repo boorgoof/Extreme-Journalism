@@ -45,6 +45,8 @@ public class XmlDeserializerTest {
     /**
      * Tests {@link XmlArticleDeserializer#deserialize(File)}  with different parameters defined by {@link XmlDeserializerTest#deserializeParameters()}
      *
+     * @param expectedArticles {@link List} of {@link Article} expected from deserialization
+     * @param filePath The file path to deserialize
      */
     @ParameterizedTest
     @MethodSource("deserializeParameters")

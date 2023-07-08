@@ -1,6 +1,7 @@
 package it.unipd.dei.dbdc.analysis.interfaces;
 
 import it.unipd.dei.dbdc.analysis.OrderedEntryStringInt;
+import it.unipd.dei.dbdc.analysis.src_analyzers.MapSplitAnalyzer.MapSplitAnalyzer;
 
 import java.util.List;
 import java.util.Set;
@@ -12,7 +13,7 @@ import java.util.Set;
  * A term is everything that is made only of letters, and is presented in lower case.
  *
  * @see UnitOfSearch
- * @see it.unipd.dei.dbdc.analysis.src_strategies.MapSplitAnalyzer.MapSplitAnalyzer
+ * @see MapSplitAnalyzer
  */
 public interface Analyzer {
 
