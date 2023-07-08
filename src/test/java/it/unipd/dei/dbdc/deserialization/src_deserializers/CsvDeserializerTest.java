@@ -1,13 +1,7 @@
 package it.unipd.dei.dbdc.deserialization.src_deserializers;
 
 import it.unipd.dei.dbdc.analysis.Article;
-import it.unipd.dei.dbdc.deserialization.DeserializationHandler;
-import it.unipd.dei.dbdc.deserialization.DeserializationProperties;
-import it.unipd.dei.dbdc.deserialization.DeserializersContainer;
-import it.unipd.dei.dbdc.serializers.src_serializers.XmlSerializer;
-import it.unipd.dei.dbdc.serializers.src_serializers.XmlSerializerTest;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -18,7 +12,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 
 
 import java.io.File;
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;

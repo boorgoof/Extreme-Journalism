@@ -8,7 +8,7 @@ public class LongThread implements Runnable {
     /**
      * The only constructor of the class. It does nothing.
      */
-    private LongThread() {}
+    public LongThread() {}
 
     /**
      * Sleeps for 1 second.
