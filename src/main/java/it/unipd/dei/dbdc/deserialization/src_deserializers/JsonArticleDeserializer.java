@@ -43,7 +43,9 @@ public class JsonArticleDeserializer implements DeserializerWithFields {
     }
 
     /**
-     * sets the new fields to be considered during deserialization
+     * Sets the new fields to be considered during deserialization
+     *
+     * @param newFields The new fields that will be considered during deserialization.
      */
     public void setFields(String[] newFields) {
 
@@ -62,9 +64,10 @@ public class JsonArticleDeserializer implements DeserializerWithFields {
      * By default {@link JsonArticleDeserializer#fields}[0] ="id" (it can be changed like all other search fields).
      * So in a file, in the default case, as many articles are identified as the "id" value keys are present inside it.
      * Once all the nodes have been found that have an article inside them, each of them is parsed.
-     * So an article is formed by the values associated with these keys both in the JSON file and in {@link JsonArticleDeserializer#fields}.
+     * So an article consists of the values associated with the keys that are present in both the JSON file and {@link JsonArticleDeserializer#fields}.
      * <code>
-     * For example:
+     * <pre>
+     *For example:
      *"object": {
      *     "data": [
      *       {
@@ -99,6 +102,7 @@ public class JsonArticleDeserializer implements DeserializerWithFields {
      *       }
      *     ]
      *   }
+     * </pre>
      * </code>
      * In this case, only the response1 and response2 nodes are parsed. So the deserialization of the file expects two {@link Article} objects.
      * The "id" key is not present in response3, so it is not considered as an {@link Article}
@@ -106,7 +110,7 @@ public class JsonArticleDeserializer implements DeserializerWithFields {
      *
      * @param jsonFile The JOSN  file to deserialize into {@link List} of {@link Serializable} objects which are instances of {@link Article}
      * @return the list of {@link Serializable} objects obtained from deserialization
-     * @throws IOException If an I/O error occurs during the deserialization process. //TODO FIx commento errori
+     * @throws IOException If an I/O error occurs during the deserialization process.
      * @throws IllegalArgumentException if the file does not exist or is not null
      */
     @Override

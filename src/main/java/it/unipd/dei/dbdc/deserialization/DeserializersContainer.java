@@ -81,7 +81,7 @@ public class DeserializersContainer {
     }
 
     /**
-     * the function sets the new fields that will be considered when deserializing the specified format
+     * The function sets the new fields that will be considered when deserializing the specified format
      * The function sets the fields only if the {@link Deserializer} in implements the interface {@link DeserializerWithFields}
      *
      * @param format The format for which the fields will be set.
@@ -101,7 +101,7 @@ public class DeserializersContainer {
     }
 
     /**
-     * the function provides the fields taken into account during deserialization for the specified format
+     * The function provides the fields taken into account during deserialization for the specified format
      * The function sets the fields only if the {@link Deserializer} in implements the interface {@link DeserializerWithFields}
      *
      * @param format The format for which the fields are required
