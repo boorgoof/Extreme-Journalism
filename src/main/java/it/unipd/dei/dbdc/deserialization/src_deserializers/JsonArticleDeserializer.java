@@ -65,7 +65,6 @@ public class JsonArticleDeserializer implements DeserializerWithFields {
      * So in a file, in the default case, as many articles are identified as the "id" value keys are present inside it.
      * Once all the nodes have been found that have an article inside them, each of them is parsed.
      * So an article consists of the values associated with the keys that are present in both the JSON file and {@link JsonArticleDeserializer#fields}.
-     * <code>
      * <pre>
      *For example:
      *"object": {
@@ -103,7 +102,6 @@ public class JsonArticleDeserializer implements DeserializerWithFields {
      *     ]
      *   }
      * </pre>
-     * </code>
      * In this case, only the response1 and response2 nodes are parsed. So the deserialization of the file expects two {@link Article} objects.
      * The "id" key is not present in response3, so it is not considered as an {@link Article}
      * It is possible to change the keys that define an article with the method {@link JsonArticleDeserializer#setFields(String[])}

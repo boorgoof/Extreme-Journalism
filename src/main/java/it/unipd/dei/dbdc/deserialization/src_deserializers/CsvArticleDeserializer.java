@@ -64,7 +64,7 @@ public class CsvArticleDeserializer implements DeserializerWithFields {
      * Only columns in the CSV file that have an association with fields stored in {@link CsvArticleDeserializer#fields} will be considered.
      * The fields specified in the header need not be in the same order as they are stored in {@link CsvArticleDeserializer#fields}
      * If there is no header in the CSV file, deserialization does not occur. An empty list is returned.
-     * <code>
+     *
      * <pre>
      * For example in this CSV text:
      *
@@ -73,7 +73,7 @@ public class CsvArticleDeserializer implements DeserializerWithFields {
      * URL 2,ID 2,Title 2,Body 2,SourceSet 2,Source 2,cover 2
      * URL 3,ID 3,Title 3,Body 3,SourceSet 3,Source 3,cover 3
      * </pre>
-     * </code>
+     *
      * In this case, the deserialization involves three {@link Article} objects.
      * The "Date" field is not present in the header therefore the {@link Article} objects will be initialized with the date {@code = null}.
      * Deserialization also works without repeating the order of {@link CsvArticleDeserializer#fields}
