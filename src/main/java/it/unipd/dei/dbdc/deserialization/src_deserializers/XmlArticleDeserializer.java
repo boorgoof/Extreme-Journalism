@@ -28,7 +28,7 @@ public class XmlArticleDeserializer implements Deserializer {
      *
      * @param xmlFile The XML file to deserialize.
      * @return The list of {@link UnitOfSearch} objects obtained from deserialization.
-     * @throws IOException If an I/O error occurs during the deserialization process. //TODO fix
+     * @throws IOException If an I/O error occurs during the deserialization process.
      * @throws IllegalArgumentException If the provided XML file is null or does not exist.
      */
     @Override

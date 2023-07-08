@@ -31,7 +31,7 @@ public class SerializersContainer {
      * Once initialized without exceptions, this function returns always the same Container.
      *
      * @param serializers_properties The properties specified by the user where are specified all the possible {@link Serializer}.
-     *                                If it is null, the default properties file will be used.
+     *                               If it is null, the default properties file will be used.
      * @return The {@link SerializersContainer} object instantiate from serializers_properties
      * @throws IOException If both the default and specified by the user properties files are not present, or they are incorrect.
      */
@@ -79,15 +79,6 @@ public class SerializersContainer {
      */
     public Set<String> getFormats() {
         return serializers.keySet();
-    }
-
-    /**
-     * Returns a boolean value indicating whether the {@link SerializersContainer#serializers} is empty.
-     *
-     * @return {@code true} if the {@link SerializersContainer#serializers} is empty, {@code false} otherwise.
-     */
-    public boolean isEmpty(){
-        return serializers.isEmpty();
     }
 
 }

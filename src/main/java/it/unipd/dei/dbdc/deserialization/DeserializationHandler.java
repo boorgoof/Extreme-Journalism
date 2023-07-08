@@ -18,6 +18,7 @@ import it.unipd.dei.dbdc.tools.PathManager;
  * This class handles the deserialization of the database into a list of {@link Serializable}
  *
  * @see DeserializersContainer
+ * @see DeserializationProperties
  */
 public class DeserializationHandler {
 
@@ -77,7 +78,7 @@ public class DeserializationHandler {
      * all the files for which there is no deserializer contained in the {@link DeserializationHandler#container}.
      * The function returns the files removed from the Set
      *
-     * @param allFiles Set of {@link File} from which files that do not have a deserilizer will be removed
+     * @param allFiles A Set of {@link File} from which files that do not have a deserilizer will be removed
      * @return A Set of {@link File} that have been removed from the set of files passed to the function
      * @throws IllegalArgumentException If allFiles parameter is null
      */
@@ -159,7 +160,7 @@ public class DeserializationHandler {
      * The function correctly selects the {@link Deserializer} to use starting from the extension of the file passed as a parameter
      *
      * @param file File to deserialize
-     * @return the {@link List} of {@link Serializable} obtained by deserializing the file
+     * @return The {@link List} of {@link Serializable} obtained by deserializing the file
      * @throws IOException  If the file passed as a parameter has no associated {@link Deserializer}
      * @throws IllegalArgumentException  If file parameter is null.
      */
@@ -196,7 +197,7 @@ public class DeserializationHandler {
      * Files that do not have a deserializer are not treated
      *
      * @param folderPath The path to the folder containing the files to deserialize
-     * @return the {@link List} of {@link Serializable} objects obtained by deserializing the folder
+     * @return The {@link List} of {@link Serializable} objects obtained by deserializing the folder
      * @throws IOException IOException If an I/O error occurs during deserialization
      * @throws IllegalArgumentException  If the folderPath parameter is null.
      */

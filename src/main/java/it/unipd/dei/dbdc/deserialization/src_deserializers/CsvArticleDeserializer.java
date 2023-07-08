@@ -28,7 +28,7 @@ public class CsvArticleDeserializer implements DeserializerWithFields {
     /**
      * Provides the number of fields taken into account during deserialization
      *
-     * @return An {@link Integer} representing number of fileds
+     * @return An {@link Integer} representing the number of fileds
      */
     public int numberOfFields(){
         return fields.length;
@@ -44,7 +44,9 @@ public class CsvArticleDeserializer implements DeserializerWithFields {
     }
 
     /**
-     * sets the new fields to be considered during deserialization
+     * Sets the new fields to be considered during deserialization
+     *
+     * @param newFields The new fields that will be considered during deserialization.
      */
     public void setFields(String[] newFields) {
 
@@ -62,14 +64,16 @@ public class CsvArticleDeserializer implements DeserializerWithFields {
      * Only columns in the CSV file that have an association with fields stored in {@link CsvArticleDeserializer#fields} will be considered.
      * The fields specified in the header need not be in the same order as they are stored in {@link CsvArticleDeserializer#fields}
      * If there is no header in the CSV file, deserialization does not occur. An empty list is returned.
-     * <code>
+     *
+     * <pre>
      * For example in this CSV text:
      *
      * URL,Identifier,Title,Body,Source Set,Source,Cover
      * URL 1,ID 1,Title 1,Body 1,SourceSet 1,Source 1,cover 1
      * URL 2,ID 2,Title 2,Body 2,SourceSet 2,Source 2,cover 2
      * URL 3,ID 3,Title 3,Body 3,SourceSet 3,Source 3,cover 3
-     * </code>
+     * </pre>
+     *
      * In this case, the deserialization involves three {@link Article} objects.
      * The "Date" field is not present in the header therefore the {@link Article} objects will be initialized with the date {@code = null}.
      * Deserialization also works without repeating the order of {@link CsvArticleDeserializer#fields}
@@ -149,9 +153,9 @@ public class CsvArticleDeserializer implements DeserializerWithFields {
     /**
      * This utility function reads the CSV file header and stores it in an array of {@link String}.
      * The array is then modified according to the following criteria:
-     * if the field is present in {@link CsvArticleDeserializer#fields},it is kept in the array
+     * if the field is present in {@link CsvArticleDeserializer#fields}, it is kept in the array
      * in the position it is in, if the field is not present in {@link CsvArticleDeserializer#fields},
-     * it is set to null. The function will then return the array which will be used
+     * it is set to "X" (a random letter that identifies a value not to be considered). The function will then return the array which will be used
      * to set the reference header for the function {@link CsvArticleDeserializer#deserialize(File)}
      *
      * @param csvFile The file from which the header is read
@@ -196,7 +200,7 @@ public class CsvArticleDeserializer implements DeserializerWithFields {
      *
      * @param array The array to search in.
      * @param value The value to search for.
-     * @return {@code true} if the value is found in the array, {@code false} otherwise.
+     * @return {@code true} If the value is found in the array, {@code false} otherwise.
      */
     private boolean contains(String[] array, String value) {
         for (String element : array) {
@@ -208,10 +212,10 @@ public class CsvArticleDeserializer implements DeserializerWithFields {
     }
 
     /**
-     * Checks if all elements in the array are null.
+     * Checks if all elements in the array are "X".
      *
      * @param array The array to check.
-     * @return {@code true} if all elements in the array are null, {@code false} otherwise.
+     * @return {@code true} If all elements in the array are "X", {@code false} otherwise.
      */
     private boolean areAllElementsArrayX(String[] array) {
 
