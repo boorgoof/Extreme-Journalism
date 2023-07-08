@@ -1,7 +1,5 @@
 package it.unipd.dei.dbdc.deserialization;
 
-import it.unipd.dei.dbdc.analysis.Article;
-import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
 import it.unipd.dei.dbdc.deserialization.interfaces.Deserializer;
 
 import java.io.File;
@@ -11,7 +9,6 @@ import java.io.Serializable;
 import java.util.*;
 
 import it.unipd.dei.dbdc.deserialization.interfaces.DeserializerWithFields;
-import it.unipd.dei.dbdc.serializers.SerializersContainer;
 import it.unipd.dei.dbdc.tools.PathManager;
 
 /**
@@ -21,6 +18,12 @@ import it.unipd.dei.dbdc.tools.PathManager;
  * @see DeserializationProperties
  */
 public class DeserializationHandler {
+
+    /**
+     * The only constructor of the class. It is declared as private to
+     * prevent the default constructor to be created, as this is only a utility class.
+     */
+    private DeserializationHandler() {}
 
     /**
      * The {@link DeserializersContainer} instance that supplies all the {@link Deserializer} we have

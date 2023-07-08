@@ -25,14 +25,14 @@ import static org.junit.jupiter.api.Assertions.*;
 public class JsonDeserializerTest {
 
     /**
-     * The function sets the default fields for {@link CsvArticleDeserializer}
+     * The function sets the default fields for {@link JsonArticleDeserializer}
      */
     @AfterEach
     public void setOriginalFields()  {
 
         JsonArticleDeserializer deserializer = new JsonArticleDeserializer();
 
-        String[] defaultFields = {"Identifier", "URL", "Title", "Body", "Date", "Source Set", "Source"};
+        String[] defaultFields = {"id", "apiUrl", "headline", "bodyText", "webPublicationDate", "publication", "sectionName" };
         deserializer.setFields(defaultFields);
     }
 
@@ -266,4 +266,9 @@ public class JsonDeserializerTest {
         return articles;
     }
 
+    /**
+     * The only constructor of the class. It is declared as private to
+     * prevent the default constructor to be created.
+     */
+    private JsonDeserializerTest() {}
 }

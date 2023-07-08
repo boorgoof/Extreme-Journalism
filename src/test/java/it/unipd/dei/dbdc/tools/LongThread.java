@@ -6,6 +6,11 @@ package it.unipd.dei.dbdc.tools;
 public class LongThread implements Runnable {
 
     /**
+     * The only constructor of the class. It does nothing.
+     */
+    public LongThread() {}
+
+    /**
      * Sleeps for 1 second.
      *
      * @throws IllegalArgumentException If it's interrupted

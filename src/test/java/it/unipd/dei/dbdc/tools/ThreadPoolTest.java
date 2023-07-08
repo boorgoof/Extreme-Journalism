@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * Class that tests {@link ThreadPool}. The order implies it is the last class of parallelism to be tested.
  */
-@Order(2)
+@Order(7)
 public class ThreadPoolTest {
 
     /**
@@ -127,4 +127,9 @@ public class ThreadPoolTest {
         assertThrows(ExecutionException.class, future::get);
     }
 
+    /**
+     * The only constructor of the class. It is declared as private to
+     * prevent the default constructor to be created.
+     */
+    private ThreadPoolTest() {}
 }

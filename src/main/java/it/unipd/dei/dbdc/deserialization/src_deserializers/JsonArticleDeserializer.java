@@ -20,6 +20,13 @@ import java.util.List;
 public class JsonArticleDeserializer implements DeserializerWithFields {
 
     /**
+     * Default constructor of the class. It is the only constructor and it doesn't do anything,
+     * as the fields' values are defined by default.
+     *
+     */
+    public JsonArticleDeserializer() {}
+
+    /**
      * An array of {@link String} containing the fields that are taken into account when deserializing the JSON file
      */
     private String[] fields = {"id", "apiUrl", "headline", "bodyText", "webPublicationDate", "publication", "sectionName" };

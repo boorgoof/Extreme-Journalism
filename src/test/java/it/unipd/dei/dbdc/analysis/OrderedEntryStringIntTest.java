@@ -80,4 +80,10 @@ public class OrderedEntryStringIntTest
         //Null values
         assertFalse(e1.isMajorThan(null));
     }
+
+    /**
+     * The only constructor of the class. It is declared as private to
+     * prevent the default constructor to be created.
+     */
+    private OrderedEntryStringIntTest() {}
 }

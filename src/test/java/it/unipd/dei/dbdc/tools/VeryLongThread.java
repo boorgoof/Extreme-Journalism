@@ -6,6 +6,11 @@ package it.unipd.dei.dbdc.tools;
 public class VeryLongThread implements Runnable {
 
     /**
+     * The only constructor of the class. It does nothing.
+     */
+    public VeryLongThread() {}
+
+    /**
      * Sleeps for 70 seconds.
      *
      * @throws IllegalArgumentException If it's interrupted

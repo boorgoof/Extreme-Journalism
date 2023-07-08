@@ -2,7 +2,7 @@ package it.unipd.dei.dbdc.analysis;
 
 import it.unipd.dei.dbdc.analysis.src_printers.TxtOutPrinter;
 import it.unipd.dei.dbdc.analysis.src_analyzers.MapSplitAnalyzer.MapSplitAnalyzer;
-import it.unipd.dei.dbdc.analysis.src_strategies.PriorityQueueSplitAnalyzer;
+import it.unipd.dei.dbdc.analysis.src_analyzers.PriorityQueueSplitAnalyzer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
@@ -46,4 +46,10 @@ public class AnalyzePropertiesTest {
         assertThrows(IOException.class, () -> AnalyzeProperties.readProperties(AnalyzerHandlerTest.resources_url+"false2.properties"));
 
     }
+
+    /**
+     * The only constructor of the class. It is declared as private to
+     * prevent the default constructor to be created.
+     */
+    private AnalyzePropertiesTest() {}
 }

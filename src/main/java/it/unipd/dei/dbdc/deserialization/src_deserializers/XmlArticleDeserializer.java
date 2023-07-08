@@ -24,6 +24,13 @@ import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
 public class XmlArticleDeserializer implements Deserializer {
 
     /**
+     * Default constructor of the class. It is the only constructor and it doesn't do anything,
+     * as the object has no fields.
+     *
+     */
+    public XmlArticleDeserializer() {}
+
+    /**
      * Deserializes an XML file into a list of {@link Serializable}.
      *
      * @param xmlFile The XML file to deserialize.

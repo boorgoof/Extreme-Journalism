@@ -9,4 +9,4 @@ Il sito sarà quindi disponibile al seguente indirizzo: [http://localhost:8080/]
 Esso contiene i javadocs e i reports dei test, oltre alla documentazione del progetto.
 I suoi vari file saranno disponibili all'interno del folder `target/site`
 
-Per terminare il server basta premere CTRL+C (da dove si era avviato il sito).
+Per terminare l'esecuzione di site:run digitare da riga di comando CTRL+C (da dove si era avviato il sito).

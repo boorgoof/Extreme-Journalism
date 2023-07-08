@@ -1,6 +1,7 @@
 package it.unipd.dei.dbdc.deserialization.src_deserializers;
 
 import it.unipd.dei.dbdc.analysis.Article;
+import it.unipd.dei.dbdc.analysis.interfaces.Analyzer;
 import it.unipd.dei.dbdc.deserialization.interfaces.DeserializerWithFields;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
@@ -19,6 +20,13 @@ import java.util.NoSuchElementException;
  * It uses Apache Commons CSV library for parsing CSV files.
  */
 public class CsvArticleDeserializer implements DeserializerWithFields {
+
+    /**
+     * Default constructor of the class. It is the only constructor and it doesn't do anything,
+     * as the fields' values are defined by default.
+     *
+     */
+    public CsvArticleDeserializer() {}
 
     /**
      * An array of {@link String} containing the fields that are taken into account when deserializing the csv file

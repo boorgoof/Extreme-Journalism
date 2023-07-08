@@ -7,10 +7,7 @@ import it.unipd.dei.dbdc.deserialization.src_deserializers.JsonArticleDeserializ
 import it.unipd.dei.dbdc.serializers.SerializersContainer;
 import org.junit.jupiter.api.*;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.Serializable;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -179,4 +176,9 @@ public class DeserializersContainerTest {
     }
 
 
+    /**
+     * The only constructor of the class. It is declared as private to
+     * prevent the default constructor to be created.
+     */
+    private DeserializersContainerTest() {}
 }

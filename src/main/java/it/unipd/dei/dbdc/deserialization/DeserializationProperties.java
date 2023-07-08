@@ -17,6 +17,12 @@ import java.util.Properties;
 public class DeserializationProperties {
 
     /**
+     * The only constructor of the class. It is declared as private to
+     * prevent the default constructor to be created, as this is only a utility class.
+     */
+    private DeserializationProperties() {}
+
+    /**
      * The name of the default properties file.
      */
     public final static String default_properties = "deserializers.properties";

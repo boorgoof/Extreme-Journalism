@@ -174,4 +174,10 @@ public class APIContainerTest {
         assertThrows(IllegalArgumentException.class, () -> container.getAPIManager("NotExistent", queries));
         assertThrows(IllegalArgumentException.class, () -> container.getAPIManager(null, queries));
     }
+
+    /**
+     * The only constructor of the class. It is declared as private to
+     * prevent the default constructor to be created.
+     */
+    private APIContainerTest() {}
 }

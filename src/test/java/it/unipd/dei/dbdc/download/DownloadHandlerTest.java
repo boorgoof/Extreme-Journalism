@@ -42,7 +42,9 @@ public class DownloadHandlerTest {
     }
 
 
-
+    /**
+     * To restore the System.in and System.out
+     */
     @AfterEach
     public void restoreSystemInputOutput() {
         System.setIn(System.in);
@@ -111,4 +113,10 @@ public class DownloadHandlerTest {
             assertEquals("./database/TheGuardianAPI", DownloadHandler.download(null, null));
         });
     }
+
+    /**
+     * The only constructor of the class. It is declared as private to
+     * prevent the default constructor to be created.
+     */
+    private DownloadHandlerTest() {}
 }

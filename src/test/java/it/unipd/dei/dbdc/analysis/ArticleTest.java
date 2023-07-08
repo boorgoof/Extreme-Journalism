@@ -117,4 +117,9 @@ public class ArticleTest {
         assertFalse(article1.equals(null));
     }
 
+    /**
+     * The only constructor of the class. It is declared as private to
+     * prevent the default constructor to be created.
+     */
+    private ArticleTest() {}
 }

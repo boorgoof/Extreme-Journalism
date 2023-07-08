@@ -57,4 +57,10 @@ public class GeneralPropertiesTest {
         assertThrows(IOException.class, () -> new GeneralProperties(resources_url+"false2.properties"));
         assertThrows(IOException.class, () -> new GeneralProperties(resources_url+"false3.properties"));
     }
+
+    /**
+     * The only constructor of the class. It is declared as private to
+     * prevent the default constructor to be created.
+     */
+    private GeneralPropertiesTest() {}
 }

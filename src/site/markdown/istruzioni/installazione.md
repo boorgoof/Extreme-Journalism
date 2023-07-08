@@ -2,6 +2,7 @@
 Per installare il progetto basta posizionare la propria chiave per la theGuardian API nei seguenti file:
 - `src/test/resources/trueApi.properties` (in api-key)
 - `src/test/resources/trueApiTest.properties` (in api-key)
+- `src/test/java/system_tests/api.properties` (in api-key)
 - `src/test/java/download/src_api_managers/TheGuardianAPI/GuardianAPIManager` (come una stringa, in key)
 
 A quel punto si può digitare da riga di comando:
@@ -16,12 +17,3 @@ Al termine dell'installazione, si troverà una directory target in cui saranno p
 Saranno presenti due jar:
 * `Extreme_journalism-1.0-jar-with-dependencies.jar` è il jar che contiene tutte le dipendenze, e dunque è eseguibile;
 * `Extreme_journalism-1.0.jar` è il jar che non contiene le dipendenze;
-
-## Generazione dei javadocs
-Per generare i javadocs, digitare da riga di comando:
-
-    mvn javadoc:javadoc
-
-Essi verranno prodotti all'interno del folder `target/site/apidocs`.
-Possono essere visionati anche dal sito generato con il Maven Site Plugin, seguendo le istruzioni per la generazione del sito.
-

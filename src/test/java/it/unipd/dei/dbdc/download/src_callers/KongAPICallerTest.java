@@ -2,7 +2,9 @@ package it.unipd.dei.dbdc.download.src_callers;
 
 import it.unipd.dei.dbdc.download.DownloadHandlerTest;
 import it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIInfo;
+import it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIManager;
 import it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIManagerTest;
+import it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIParams;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -372,6 +374,12 @@ public class KongAPICallerTest {
         KongAPICaller c = new KongAPICaller();
         assertTrue(c.equals(caller));
         assertFalse(c.equals(123));
-        assertFalse(c.equals(new DownloadHandlerTest()));
+        assertFalse(c.equals(new GuardianAPIParams()));
     }
+
+    /**
+     * The only constructor of the class. It is declared as private to
+     * prevent the default constructor to be created.
+     */
+    private KongAPICallerTest() {}
 }
