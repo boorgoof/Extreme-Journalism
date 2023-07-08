@@ -18,11 +18,11 @@ public class SerializationProperties {
     /**
      * The name of the default properties file.
      */
-    private final static String default_properties = "serializers.properties"; // TODO è il nome o il path, meglio specificare?
+    private final static String default_properties = "serializers.properties";
 
     /**
      * The function that reads the properties file and returns a {@link Map} of {@link Serializer} and their names
-     *  specified in the properties file. The names conventionally represent the file format into which the objects will be serialized.
+     * specified in the properties file. The names conventionally represent the file format into which the objects will be serialized.
      *
      * @param out_properties The name of the properties file specified by the user. If null, the default properties file will be used.
      * @return A {@link Map} of {@link Serializer} and their names specified in the properties file.

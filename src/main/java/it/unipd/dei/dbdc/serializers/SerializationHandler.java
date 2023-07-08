@@ -77,8 +77,6 @@ public class SerializationHandler {
         serializer.serialize(objects, file);
     }
 
-
-
 }
 
 
