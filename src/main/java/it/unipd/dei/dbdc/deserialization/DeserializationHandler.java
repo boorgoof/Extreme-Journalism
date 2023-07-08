@@ -20,6 +20,7 @@ import it.unipd.dei.dbdc.tools.PathManager;
  * @see DeserializersContainer
  */
 public class DeserializationHandler {
+
     /**
      * The {@link DeserializersContainer} instance that supplies all the {@link Deserializer} we have
      *
