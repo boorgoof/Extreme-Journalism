@@ -1,11 +1,5 @@
 package it.unipd.dei.dbdc.serializers;
 
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
-import it.unipd.dei.dbdc.deserialization.DeserializersContainer;
-import it.unipd.dei.dbdc.download.APIContainer;
-import it.unipd.dei.dbdc.download.DownloadProperties;
-import it.unipd.dei.dbdc.download.interfaces.APIManager;
 import it.unipd.dei.dbdc.serializers.interfaces.Serializer;
 
 import java.io.IOException;

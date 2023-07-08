@@ -1,7 +1,7 @@
 package it.unipd.dei.dbdc.analysis;
 
 import it.unipd.dei.dbdc.analysis.src_printers.TxtOutPrinter;
-import it.unipd.dei.dbdc.analysis.src_strategies.MapSplitAnalyzer.MapSplitAnalyzer;
+import it.unipd.dei.dbdc.analysis.src_analyzers.MapSplitAnalyzer.MapSplitAnalyzer;
 import it.unipd.dei.dbdc.analysis.src_strategies.PriorityQueueSplitAnalyzer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
