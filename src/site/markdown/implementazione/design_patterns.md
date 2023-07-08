@@ -26,7 +26,7 @@ Elenco dei design pattern utilizzati, e di dove questi sono stati adoperati, olt
 * Soluzione (consiglio): Definire ciascun algoritmo/policy/strategia
   in una classe separata con un’interfaccia comune
 * Utilizzo: questo pattern è utilizzato nella parte di analisi, e precisamente per `Analyzer` e `OutPrinter`,
-  con l'intento di aumentare la [flessibilità](flessibilita.md) nei confronti di future modifiche:
+  con l'intento di aumentare la [flessibilità](flessibilita.html) nei confronti di future modifiche:
   * `OutPrinter`: la logica attuale del programma impone che vengano stampati i
     50 termini più importanti su un file output.txt, come definito in `TxtOutPrinter`, ma in futuro potrebbero cambiare i
     requisiti e potrebbe essere necessaria la stampa su un altro tipo di file, o su altre strutture.
@@ -45,7 +45,7 @@ Elenco dei design pattern utilizzati, e di dove questi sono stati adoperati, olt
   componente in un’altra interfaccia, mediante un oggetto adapter
   intermedio.
 * Utilizzo: questo pattern è stato utilizzato per l'implementazione di varie interfacce
-  con l'intento di aumentare la [flessibilità](flessibilita.md) nei confronti di future modifiche.
+  con l'intento di aumentare la [flessibilità](flessibilita.html) nei confronti di future modifiche.
   Più precisamente, esso può essere ritrovato in:
   * `APICaller` e la sua implementazione `KongAPICaller`: questo è un adapter tra gli `APIManager` e le
     librerie che vanno effettivamente a fare le chiamate alle API: i primi dovranno solo utilizzare la funzione

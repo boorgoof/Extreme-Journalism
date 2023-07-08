@@ -2,7 +2,7 @@
 Breve spiegazione di come sono state implementate le funzionalità richieste, e quali
 assunzioni sono state fatte.
 Per avere una visione d'insieme delle classi utilizzate e delle loro relazioni 
-vedere [design model](../documentazione/design_model.md).
+vedere [design model](../documentazione/design_model.html).
 
 Il codice è interamente in inglese, per una maggiore flessibilità riguardo possibili modifiche, che
 potrebbero essere fatte da chiunque.
@@ -10,7 +10,7 @@ potrebbero essere fatte da chiunque.
 ## DOWNLOAD
 ### Download da API
 - **Handler:** come ogni sottosistema di questo programma, anche la parte di download da una API è gestita
-interamente da un [handler](design_patterns.md), il quale nasconde al main la logica della chiamata e ne fornisce
+interamente da un [handler](design_patterns.html), il quale nasconde al main la logica della chiamata e ne fornisce
 una semplice modalità di chiamata.
 
 - **API properties:** per selezionare l'API si può passare un file di properties contenente il nome dell'API, come
@@ -24,21 +24,21 @@ Questa selezione interattiva avviene se l'utente non ha specificato un folder pr
 e se non è stato fornito un file di API properties o questo è invalido. Questa richiesta interattiva utilizza la riga di comando
 e continua finché non viene selezionata correttamente una API.
 
-- **Download properties:** per garantire una maggiore [flessibilità](flessibilita.md) vengono utilizzati dei file di properties.
+- **Download properties:** per garantire una maggiore [flessibilità](flessibilita.html) vengono utilizzati dei file di properties.
 Il file di properties di download contiene l'APICaller con cui chiamare le API e i vari APIManager con i nomi delle API che implementano.
 Esiste un file di properties di default, contenuto dentro alle risorse, ma è anche possibile passarne uno dall'esterno, in caso non si
 avesse accesso al codice sorgente. Se le properties che l'utente vuole utilizzare sono incorrette, il programma termina.
 
 - **APIContainer:** è la classe che contiene tutti gli APIManager specificati nel file download.properties o nel file
-passato dall'utente (se valido). Utilizza il [Singleton design pattern](design_patterns.md) in modo da leggere il file di
+passato dall'utente (se valido). Utilizza il [Singleton design pattern](design_patterns.html) in modo da leggere il file di
 properties una sola volta durante l'esecuzione del programma (in effetti, questo non può cambiare durante l'esecuzione del programma),
 nonostante venga acceduto da diverse parti del codice.
 
 - **APICaller:** per chiamare la vera e propria API vengono utilizzate delle librerie: ogni classe che utilizzi la logica
 di una libreria per permettere di fare richieste HTTP alle varie API deve implementare l'interfaccia APICaller.
-Questa interfaccia di fatto rappresenta un Adapter (vedi [design patterns](design_patterns.md)) tra le class che
+Questa interfaccia di fatto rappresenta un Adapter (vedi [design patterns](design_patterns.html)) tra le class che
 gestiscono la logica dei parametri per le varie API e il server che deve ricevere queste richieste.
-E' quindi molto semplice, come spiegato in [flessibilità](flessibilita.md), utilizzare un'altra libreria per fare
+E' quindi molto semplice, come spiegato in [flessibilità](flessibilita.html), utilizzare un'altra libreria per fare
 queste richieste al posto di quella da noi scelta.
 E' stato scelto di salvare i file di risposta dall'API, invece che ottenere direttamente degli oggetti:
 questo per uniformare la chiamata dell'API con il "download" di file presenti in locale e messi in un certo folder
@@ -49,9 +49,9 @@ Questa interfaccia viene utilizzata per presentare le varie API all'utente, con 
 che per aggiungere parametri per la chiamata (e quindi verificarli) e chiamare effettivamente l'API con i parametri specificati.
 Essendo un'interfaccia, non è possibile definire un costruttore da implementare, ma ogni APIManager dovrebbe avere un
 costruttore come definito all'interno dei javadocs dell'interfaccia.
-Sono degli [adapter](design_patterns.md) per le varie API che è possibile chiamare.
+Sono degli [adapter](design_patterns.html) per le varie API che è possibile chiamare.
 Tutti i manager vengono contenuti all'interno di un APIContainer, e l'insieme dei manager viene preso dal file download.properties,
-permettendo quindi [flessibilità](flessibilita.md) per l'aggiunta di future sorgenti.
+permettendo quindi [flessibilità](flessibilita.html) per l'aggiunta di future sorgenti.
 E' da notare il fatto che questi manager non permettano di togliere i parametri aggiunti, dato che per come
 è ideato il programma è più comodo andare a copiare un manager vuoto e aggiungervi parametri.
 
@@ -83,9 +83,9 @@ alla parte di download da una API.
   selezionato il Deserializer corretto per il formato del file indicato. Se non vi è alcun Deserializer disponibile in DeserializersContainer
   L'handler invierà un messaggio di errore indicando di non essere ancora in grado di deserializzare il file.
 
-- **Deserializers properties:** Per garantire una maggiore [flessibilità](flessibilita.md) vengono utilizzati dei file di properties.
+- **Deserializers properties:** Per garantire una maggiore [flessibilità](flessibilita.html) vengono utilizzati dei file di properties.
   Il file "deserializers.properties" contiene tutti i Deserializers di cui il programma può disporre per deserializzare i file.
-  Ciascun Deserializers deve essere associato ad un nome, che convenzionalmente  rappresenta il formato del file che è in grado di deserializzare.
+  Ciascun Deserializers deve essere associato ad un nome, che convenzionalmente rappresenta il formato del file che è in grado di deserializzare.
   L'handler, infatti, per eseguire la deserializzazione di un file ne estrapola il formato per chiamare il Deserializer associato.
   Segue dunque, che se un Deserializer non è associato ad un vero e proprio formato di un file, questi non potrà mai essere utilizzato, poichè L'handler 
   non disporra mai del suo nome identificativo.
@@ -97,7 +97,7 @@ alla parte di download da una API.
   
 
 - **DeserializersContainer:** Si tratta della classe che contiene tutti i Deserializer specificati nel file deserializers.properties o nel file
-  passato dall'utente (se valido). Utilizza il [Singleton design pattern](design_patterns.md) in modo da leggere il file di
+  passato dall'utente (se valido). Utilizza il [Singleton design pattern](design_patterns.html) in modo da leggere il file di
   properties una sola volta durante l'esecuzione del programma. Ciascun Deserializers è dunque associato ad un nome e contenuto all'interno di una mappa.
   L'handler estrapola il formato del file che deve deserializzare e chiama il Deserializers associato al formato stesso (in questo modo si riesce a selezionare 
   il Deserializzore corretto per il file)
@@ -115,16 +115,16 @@ alla parte di download da una API.
 - **serializationHandler:** La serializzazione è gestita da un handler che seleziona correttamente il Serializer da 
   utilizzare in riferimento al formato del file per cui si vuole ottenere la Serializzazione.
 
-- **Serializers properties:** Per garantire una maggiore [flessibilità](flessibilita.md) vengono utilizzati dei file di properties.
+- **Serializers properties:** Per garantire una maggiore [flessibilità](flessibilita.html) vengono utilizzati dei file di properties.
   Il file "serializers.properties" contiene tutti i Serializers di cui il programma può disporre per deserializzare i file.
-  In questo caso ogni Serializers sono associati ad un nome, che convenzionalmente  rappresenta il formato del file per il quale si ottine la serializzazione.
+  In questo caso ogni Serializers sono associati ad un nome, che convenzionalmente rappresenta il formato del file per il quale si ottine la serializzazione.
   Esiste un file di properties di default, contenuto dentro alle risorse, ma è anche possibile passarne uno dall'esterno, in caso non si
   avesse accesso al codice sorgente. Se le properties che l'utente vuole utilizzare sono incorrette, il programma termina.
 
   Esempio di un Deserializer specificato corretamente: `xml = it.unipd.dei.dbdc.serializers.src_serializers.XmlSerializer`
 
 - **SerializersContainer:** Si tratta della classe che contiene tutti i Serializer specificati nel file deserializers.properties o nel file
-  passato dall'utente (se valido). Utilizza il [Singleton design pattern](design_patterns.md) in modo da leggere il file di
+  passato dall'utente (se valido). Utilizza il [Singleton design pattern](design_patterns.html) in modo da leggere il file di
   properties una sola volta durante l'esecuzione del programma. 
 
 - **Serializer:** Questa interfaccia definisce un oggetto in grado di serializzare una lista di oggetti Serializable in un file.
@@ -137,7 +137,7 @@ alla parte di download da una API.
   "serializers.properties" associandola al nome del formato del file per cui avviene la serializzazione.
 ## ANALISI (estrazione termini)
 - **Handler:** come ogni sottosistema di questo programma, anche la parte di analisi è gestita
-interamente da un [handler](design_patterns.md), il quale nasconde al main la logica dell'analisi e ne fornisce
+interamente da un [handler](design_patterns.html), il quale nasconde al main la logica dell'analisi e ne fornisce
 una semplice modalità di chiamata.
 Implementa al suo interno una funzione per leggere il file di stop words (ovvero termini che non verranno contati
 durante l'analisi dei termini degli articoli) presente nel codice sorgente, o uno passato esternamente dall'utente (se 
@@ -147,17 +147,17 @@ Se l'utente non vuole usare queste stop words, può specificare da riga di coman
 - **Stampare i termini in un file:** per stampare i termini in un file è stata creata un'interfaccia OutPrinter,
 che può essere implementata da varie classi che hanno la logica per stampare la lista di termini in file di diversi formati.
 Attualmente è stato implementato solo un OutPrinter che stampa i termini in un file .txt, ma in futuro è molto
-semplice modificare il programma per stampare i termini in file con diverse estensioni, come spiegato in [flessibilità](flessibilita.md).
+semplice modificare il programma per stampare i termini in file con diverse estensioni, come spiegato in [flessibilità](flessibilita.html).
 
 - **Analisi:** la parte di analisi è svolta da diverse classi che implementano l'interfaccia Analyzer, seguendo
-lo [strategy design pattern](design_patterns.md). Infatti, all'interno del file di properties della parte di analisi è
+lo [strategy design pattern](design_patterns.html). Infatti, all'interno del file di properties della parte di analisi è
 specificata la strategia da adottare, e quindi quale classe utilizzare per fare questa analisi.
 La strategia da noi adottata, presente in MapSplitAnalyzer, utilizza il metodo split della classe String per scomporre il testo da
 analizzare nei vari termini (un termine è composto solamente da lettere), dato che StringTokenizer è definita deprecata all'interno della documentazione di Java.
 Questi termini vengono considerati uguali anche se differiscono per maiuscole e minuscole: le parole in lower case per fare l'analisi.
 Viene poi utilizzato il parallelismo per ottenere il risultato in maniera più efficiente, oltre a una funzione specifica
 che pone in ordine i vari termini all'interno della lista ritornata.
-L'alternativa di utilizzare una Priority Queue è affrontata nella parte dei [test](test.md), ma risulta inefficiente
+L'alternativa di utilizzare una Priority Queue è affrontata nella parte dei [test](test.html), ma risulta inefficiente
 in quanto si dovrebbe scansionare 2 volte l'insieme contenente tutti i termini: la prima volta per metterli dentro alla coda
 e la seconda per estrarre dalla coda prioritaria i termini più importanti.
 Per il peso dei termini viene utilizzata la classe OrderedEntryStringInt, la quale definisce che un termine è maggiore
@@ -166,7 +166,7 @@ in ordine alfabetico.
 
 - **Analysis properties:** è utilizzato un file di properties per la parte di analisi: questo possiede al suo interno
 2 proprietà: l'Analyzer da utilizzare per l'analisi e l'OutPrinter per stampare su file il risultato.
-Questo rispetta quanto detto in [flessibilità](flessibilita.md).
+Questo rispetta quanto detto in [flessibilità](flessibilita.html).
 
 - **Article e UnitOfSearch:** per la parte di analisi viene definita l'interfaccia UnitOfSearch. 
 Questa interfaccia ha una funzione per ottenere la parte di testo da analizzare, ed estende l'interfaccia vuota
@@ -174,12 +174,12 @@ Serializable utilizzata nelle parti di Serializzazione e Deserializzazione.
 In questo modo, la parte di analisi può avere successo per ogni classe che implementi UnitOfSearch.
 Article è la classe che implementa UnitOfSearch, e viene utilizzata dai deserializzatori e serializzatori
 definiti in questo programma come oggetto dove salvare i vari articoli.
-Come spiegato in [flessibilità](flessibilita.md), è quindi molto semplice andare a modificare la classe che
+Come spiegato in [flessibilità](flessibilita.html), è quindi molto semplice andare a modificare la classe che
 implementa UnitOfSearch andando a definire dei nuovi deserializzatori.
 
 ## Ulteriori informazioni:
-- [design patterns utilizzati](design_patterns.md)
-- [flessibilità](flessibilita.md)
-- [test](test.md)
-- [librerie utilizzate e motivazioni](librerie.md)
-- [problematiche incontrate e trade-off](problemi.md)
+- [Design patterns utilizzati](design_patterns.html)
+- [Flessibilità](flessibilita.html)
+- [Test](test.html)
+- [Librerie utilizzate e motivazioni](librerie.html)
+- [Problematiche incontrate e trade-off](problemi.html)

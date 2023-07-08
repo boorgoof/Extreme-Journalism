@@ -12,7 +12,7 @@ con peso maggiore nell’insieme degli articoli scaricati.
 L’utente può specificare se eseguire solo il download, solo l’estrazione dei termini a partire 
 dai file in cui sono stati memorizzati gli articoli, o entrambe le azioni in sequenza.
 
-Per ulteriori informazioni: [casi d'uso](casi_uso.md)
+Per ulteriori informazioni: [casi d'uso](casi_uso.html)
 
 ## Glossario
 - **API** = Le Application Programming Interface (API) sono meccanismi che consentono a due componenti software
@@ -44,7 +44,7 @@ testo (txt), dove ciascuna riga deve essere nel formato:
 “termine peso”
 
 ## Architettura del sistema
-Per avere delle informazioni su come questo sia stato implementato: [implementazione](../implementazione/spiegazione.md)
+Per avere delle informazioni su come questo sia stato implementato: [implementazione](../implementazione/spiegazione.html)
 
 ## Requisiti del sistema
 - Linguaggio: Java 8 (opzionale, se utilizzata una versione diversa specificarne il motivo)
@@ -53,13 +53,13 @@ Per avere delle informazioni su come questo sia stato implementato: [implementaz
 - Documentazione prodotta come gdoc o tramite il Maven site plugin
 
 ## Modelli del sistema
-- [Casi d'uso](casi_uso.md)
-- [Domain model](domain_model.md)
-- [Design model](design_model.md)
+- [Casi d'uso](casi_uso.html)
+- [Domain model](domain_model.html)
+- [Design model](design_model.html)
 
 ## Evoluzione del sistema
 Il sistema deve poter supportare:
 - nuove sorgenti (cioè che sia possibile aggiungere una nuova sorgente senza la necessità di apportare un numero elevato di modifiche).
 - nuove strutture per memorizzare ed avere accesso ai termini più importanti.
 - nuove modalità di memorizzazione ed accesso agli articoli.
-Per ulteriori informazioni su come ciò sia stato implementato: [Flessibilità](../implementazione/flessibilita.md)
+Per ulteriori informazioni su come ciò sia stato implementato: [Flessibilità](../implementazione/flessibilita.html)
