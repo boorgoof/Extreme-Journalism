@@ -52,6 +52,8 @@ costruttore come definito all'interno dei javadocs dell'interfaccia.
 Sono degli [adapter](design_patterns.md) per le varie API che è possibile chiamare.
 Tutti i manager vengono contenuti all'interno di un APIContainer, e l'insieme dei manager viene preso dal file download.properties,
 permettendo quindi [flessibilità](flessibilita.md) per l'aggiunta di future sorgenti.
+E' da notare il fatto che questi manager non permettano di togliere i parametri aggiunti, dato che per come
+è ideato il programma è più comodo andare a copiare un manager vuoto e aggiungervi parametri.
 
 - **GuardianAPIManager:** è la classe che implementa l'interfaccia APIManager e contiene tutte le informazioni
 per la chiamata dell'API del TheGuardian. Utilizza due classi ausiliarie, GuardianAPIInfo e GuardianAPIParams, semplicemente perchè
@@ -114,3 +116,10 @@ Article è la classe che implementa UnitOfSearch, e viene utilizzata dai deseria
 definiti in questo programma come oggetto dove salvare i vari articoli.
 Come spiegato in [flessibilità](flessibilita.md), è quindi molto semplice andare a modificare la classe che
 implementa UnitOfSearch andando a definire dei nuovi deserializzatori.
+
+## Ulteriori informazioni:
+- [design patterns utilizzati](design_patterns.md)
+- [flessibilità](flessibilita.md)
+- [test](test.md)
+- [librerie utilizzate e motivazioni](librerie.md)
+- [problematiche incontrate e trade-off](problemi.md)
