@@ -25,6 +25,12 @@ import java.util.List;
  */
 public class App
 {
+    /**
+     * The main function of the application: it invokes the {@link CommandLineInterpreter} to
+     * check the actions to perform, and gives control to the different Handlers, linking their results.
+     *
+     * @param args Arguments passed to the command line by the user
+     */
     public static void main(String[] args) {
         //There are a few things that should be done before the start of the application:
 
@@ -120,9 +126,16 @@ public class App
         System.out.println("Everything went correctly.\nThank you for choosing our application, we hope to see you soon.");
     }
 
+    /**
+     * The function that calls the {@link DownloadHandler} to download the files from the
+     * API. It prints to System.out the success of the operation.
+     *
+     * @param interpreter The {@link CommandLineInterpreter} of the arguments passed to the command line by the user
+     * @return The path of the downloaded files
+     */
     private static String downloadFromAPI(CommandLineInterpreter interpreter)
     {
-        // Folder to serialize.
+        // Folder where will be put the downloaded files
         String folderPath;
 
         System.out.println("Entering the download part...");
@@ -140,6 +153,15 @@ public class App
         return folderPath;
     }
 
+    /**
+     * The function that calls the {@link DeserializationHandler} to deserialize a folder
+     * of files that represent another source for the program.
+     * It prints to System.out the success of the operation.
+     *
+     * @param folderPath The folder to deserialize
+     * @return A {@link List} of {@link Serializable} representing the articles deserialized of the files
+     *         the deserializers could handle.
+     */
     private static List<Serializable> deserializeFolder(String folderPath)
     {
         System.out.println("\nEntering the deserialization of " + folderPath + "...");
@@ -157,6 +179,16 @@ public class App
         return articles;
     }
 
+    /**
+     * The function that calls the {@link SerializationHandler} to serialize a {@link List}
+     * of {@link Serializable}
+     * that represent another source for the program.
+     * It prints to System.out the success of the operation.
+     *
+     * @param interpreter The {@link CommandLineInterpreter} of the arguments passed to the command line by the user
+     * @param articles The {@link List} of {@link Serializable} to serialize.
+     * @param serializedFile The {@link File} to put the serialized files.
+     */
     public static void serialize(CommandLineInterpreter interpreter, List<Serializable> articles, File serializedFile)
     {
         System.out.println("\nEntering the serialization part...");
@@ -174,6 +206,14 @@ public class App
 
     }
 
+    /**
+     * The function that calls the {@link DeserializationHandler} to deserialize a file
+     * (the serialized one).
+     * It prints to System.out the success of the operation.
+     *
+     * @param serializedFile The {@link File} to deserialize.
+     * @return A {@link List} of {@link UnitOfSearch} obtained from the serialized file.
+     */
     public static List<UnitOfSearch> deserializeCommonFile(File serializedFile)
     {
         System.out.println("\nEntering the deserialization of " + serializedFile.getPath() + "...");
@@ -200,6 +240,15 @@ public class App
         return unitOfSearches;
     }
 
+    /**
+     * The function that calls the {@link AnalyzerHandler} to extract the most important terms
+     * from the {@link List} of {@link UnitOfSearch} passed as a parameter.
+     * It prints to System.out the success of the operation.
+     *
+     * @param interpreter The {@link CommandLineInterpreter} of the arguments passed to the command line by the user
+     * @param count The number of words to extract and print to the output file
+     * @param unitOfSearches The {@link List} of {@link UnitOfSearch} to extract the terms from.
+     */
     private static void analyze(CommandLineInterpreter interpreter, int count, List<UnitOfSearch> unitOfSearches)
     {
         System.out.println("\nEntering the analysis part...");
@@ -214,4 +263,9 @@ public class App
         }
         System.out.println("Exiting the analysis part. You can find the resulting file in" + out_file + "\n");
     }
+
+    /**
+     * The default constructor is declared private do avoid a warning from javadoc
+     */
+    private App() {}
 }

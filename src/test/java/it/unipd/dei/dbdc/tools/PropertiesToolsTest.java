@@ -100,4 +100,10 @@ public class PropertiesToolsTest {
         assertThrows(IOException.class, () -> PropertiesTools.getDefaultProperties(null));
         assertThrows(IOException.class, () -> PropertiesTools.getDefaultProperties(""));
     }
+
+    /**
+     * The only constructor of the class. It is declared as private to
+     * prevent the default constructor to be created.
+     */
+    private PropertiesToolsTest() {}
 }

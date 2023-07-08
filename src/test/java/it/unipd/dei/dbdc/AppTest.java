@@ -189,4 +189,10 @@ public class AppTest
         }
     }
 
+
+    /**
+     * The only constructor of the class. It is declared as private to
+     * prevent the default constructor to be created.
+     */
+    private AppTest() {}
 }

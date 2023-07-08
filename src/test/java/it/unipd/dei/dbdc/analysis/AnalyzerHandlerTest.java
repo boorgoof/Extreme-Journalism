@@ -1,7 +1,6 @@
 package it.unipd.dei.dbdc.analysis;
 
 import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
-import it.unipd.dei.dbdc.analysis.src_printers.TxtOutPrinterTest;
 import it.unipd.dei.dbdc.tools.PathManagerTest;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -90,4 +89,9 @@ public class AnalyzerHandlerTest {
         });
     }
 
+    /**
+     * The only constructor of the class. It is declared as private to
+     * prevent the default constructor to be created.
+     */
+    private AnalyzerHandlerTest() {}
 }

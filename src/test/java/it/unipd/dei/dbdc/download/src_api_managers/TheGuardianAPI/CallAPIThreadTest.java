@@ -149,4 +149,10 @@ public class CallAPIThreadTest {
         c = new CallAPIThread(new KongAPICaller(), GuardianAPIInfo.getDefaultURL(), DownloadHandlerTest.resources_url+"thread.json", specified_fields);
         assertThrows(IllegalArgumentException.class, c::run);
     }
+
+    /**
+     * The only constructor of the class. It is declared as private to
+     * prevent the default constructor to be created.
+     */
+    private CallAPIThreadTest() {}
 }

@@ -1,6 +1,5 @@
 package it.unipd.dei.dbdc.serializers;
 
-import it.unipd.dei.dbdc.download.DownloadProperties;
 import it.unipd.dei.dbdc.serializers.interfaces.Serializer;
 import it.unipd.dei.dbdc.serializers.src_serializers.XmlSerializer;
 import org.junit.jupiter.api.Order;
@@ -66,5 +65,11 @@ public class SerializationPropertiesTest {
         assertThrows(IOException.class, () -> SerializationProperties.readSerializersProperties(false_serializers_properties2));
 
     }
+
+    /**
+     * The only constructor of the class. It is declared as private to
+     * prevent the default constructor to be created.
+     */
+    private SerializationPropertiesTest() {}
 }
 

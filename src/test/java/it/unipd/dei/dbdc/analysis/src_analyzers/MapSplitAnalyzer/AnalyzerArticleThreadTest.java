@@ -118,4 +118,10 @@ public class AnalyzerArticleThreadTest {
         assertDoesNotThrow(t::run);
         assertEquals(expected, results);
     }
+
+    /**
+     * The only constructor of the class. It is declared as private to
+     * prevent the default constructor to be created.
+     */
+    private AnalyzerArticleThreadTest() {}
 }

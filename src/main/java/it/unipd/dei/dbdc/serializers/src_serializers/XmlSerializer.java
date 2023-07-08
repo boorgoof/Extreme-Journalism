@@ -20,6 +20,12 @@ import java.util.List;
 public class XmlSerializer implements Serializer {
 
     /**
+     * The only constructor of the class. It does nothing,
+     * as this class has no fields.
+     */
+    public XmlSerializer() {}
+
+    /**
      * Serializes a list of {@link Serializable} objects into XML file with indented formatting.
      *
      * @param objects  The list of {@link Serializable} objects to be serialized.

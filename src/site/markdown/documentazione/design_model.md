@@ -5,4 +5,4 @@ Nel diagramma delle classi tutte le
 associazioni hanno un nome e cardinalità? Le classi hanno gli
 attributi necessari?
 
-[Schema](../images/Schema_progetto.jpg)
+<img src="../images/Schema_progetto.jpg"/>

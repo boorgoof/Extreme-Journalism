@@ -4,7 +4,7 @@ import it.unipd.dei.dbdc.analysis.Article;
 import it.unipd.dei.dbdc.analysis.OrderedEntryStringInt;
 import it.unipd.dei.dbdc.analysis.interfaces.Analyzer;
 import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
-import it.unipd.dei.dbdc.analysis.src_strategies.PriorityQueueSplitAnalyzer;
+import it.unipd.dei.dbdc.analysis.src_analyzers.PriorityQueueSplitAnalyzer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * used for the tests of the first class with many articles.
  * It is tested after {@link it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIManagerTest}.
  */
-@Order(4)
+@Order(7)
 public class MapSplitAnalyzerTest {
 
     /**
@@ -227,5 +227,11 @@ public class MapSplitAnalyzerTest {
         obtained = toTest.mostPresent(articles, 7, banned);
         assertEquals(expected, obtained);
     }
+
+    /**
+     * The only constructor of the class. It is declared as private to
+     * prevent the default constructor to be created.
+     */
+    private MapSplitAnalyzerTest() {}
 }
 

@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * This causes a certain number of requests that is possible to use in a day to be used.
  * This class is tested right after {@link it.unipd.dei.dbdc.tools.ThreadPoolTest}
  */
-@Order(3)
+@Order(7)
 public class GuardianAPIManagerTest {
 
     /**
@@ -420,5 +420,11 @@ public class GuardianAPIManagerTest {
         assertFalse(g.equals(new GuardianAPIManager(new KongAPICaller(), null)));
         assertTrue(g.equals(new GuardianAPIManager(new KongAPICaller(), "")));
     }
+
+    /**
+     * The only constructor of the class. It is declared as private to
+     * prevent the default constructor to be created.
+     */
+    private GuardianAPIManagerTest() {}
 
 }

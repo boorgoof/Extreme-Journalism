@@ -152,6 +152,12 @@ public class PathManager {
         file.delete();
     }
 
+    /**
+     * Function that returns the format of a file, given its name.
+     *
+     * @param fileName The name of the file
+     * @return The format of the file (the extension) as a {@link String}, null if it doesn't exist.
+     */
     public static String getFileFormat(String fileName) {
         int dotIndex = fileName.lastIndexOf(".");
         if (dotIndex > 0 && dotIndex < fileName.length() - 1) {
