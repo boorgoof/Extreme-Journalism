@@ -1,8 +1,0 @@
-a 2
-all 5
-u 1
-zeta 567
-ugo 34
-nic 345
-ubo 34
-nick 345

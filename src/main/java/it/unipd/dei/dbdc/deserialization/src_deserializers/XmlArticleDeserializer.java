@@ -1,7 +1,8 @@
 package it.unipd.dei.dbdc.deserialization.src_deserializers;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.fasterxml.jackson.core.type.TypeReference;
+
 import it.unipd.dei.dbdc.analysis.Article;
 import it.unipd.dei.dbdc.deserialization.interfaces.Deserializer;
 
