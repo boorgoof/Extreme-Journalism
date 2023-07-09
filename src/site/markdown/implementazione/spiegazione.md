@@ -6,6 +6,10 @@ vedere [design model](../documentazione/design_model.html).
 
 Il codice è interamente in inglese, per una maggiore flessibilità riguardo possibili modifiche, che
 potrebbero essere fatte da chiunque.
+La classe principale, App, contiene diverse funzioni che demandano le chiamate all'handler sottostante, sfruttando
+il [facade design pattern](design_patterns.html). La suddivisione in funzioni aumenta anche la leggibilità del codice.
+All'interno del programma vengono utilizzati dei file di properties per aumentare la [flessibilità](flessibilita.html)
+del codice, in quanto diventa molto semplice andare a specificare una classe diversa da quella usata di default dal programma.
 
 ## DOWNLOAD
 ### Download da API
@@ -176,6 +180,25 @@ Article è la classe che implementa UnitOfSearch, e viene utilizzata dai deseria
 definiti in questo programma come oggetto dove salvare i vari articoli.
 Come spiegato in [flessibilità](flessibilita.html), è quindi molto semplice andare a modificare la classe che
 implementa UnitOfSearch andando a definire dei nuovi deserializzatori.
+
+## TOOLS
+Nella cartella tools sono state messe delle classi utili per il resto del programma:
+- **ThreadPool**: la classe che possiede la logica per il parallelismo. Come un ExecutorService, possiede quanto serve
+  possiamo fare submit di un Runnable e shutdown. La logica di shutdown è la seguente: se ci sono ancora thread che
+  sono in run aspetta 60 secondi (tempo più che sufficiente affinchè completino, tranne che nei test), dopodichè forza
+  lo shutdown. A quel punto, fare submit di altri thread porta a ricreare l'istanza di ExecutorService a cui fare submit.
+- **CommandLineInterpreter:** sfrutta la logica di [Commons CLI](https://commons.apache.org/proper/commons-cli/) per definire
+  le opzioni corrette, fare il parsing quelle fornite da riga di comando e permettere poi di interrogarle.
+  E' molto flessibile, in quanto aggiungere una nuova opzione consiste nell'aggiungerla in una delle 3 parti possibili
+  (download, analisi e generali) e aggiungere una nuova funzione per ottenere il valore passatole.
+- **PropertiesTools:** una semplice classe che legge i file esterni o interni di properties e ne ritorna un oggetto di Properties.
+  Le funzioni sono state messe qui perchè molto ricorrenti nel codice.
+- **PathManager:** una classe che gestisce tutto quanto riguarda path e files, dalla creazione all'eliminazione dei folder,
+  e possiede i nomi dei vari file di output generati. In questo modo è molto semplice apportare modifiche alla logica di dove e quali file
+  dovrebbero essere stampati
+- **GeneralProperties:** per la lettura del file di properties generale, messo in questo folder in quanto riguardante l'intera logica
+  del programma.
+
 
 ## Ulteriori informazioni:
 - [Design patterns utilizzati](design_patterns.html)
