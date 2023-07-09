@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * It is the last test to be run, as specified in junit-platform.properties.
  * It uses functions to redirect the error output and normal output of the system.
  */
-@Order(8)
+@Order(0)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class AppTest
 {
@@ -68,17 +68,48 @@ public class AppTest
     @Order(1)
     @Test
     public void mainTestOut() {
-        //The APIContainer is initialized with trueDownload.properties by all the test classes that use it
 
         deleteFilesOut();
-
         //HELP
         App.main(new String[]{"-h"});
         assertEquals("", getError());
 
-        File[] files = new File("./output").listFiles();
+        File[] files = new File("./output/").listFiles();
         assertNotNull(files);
         assertEquals(0, files.length);
+
+        //Analysis and "download" of nytimes
+        App.main(new String[]{"-da", "-path", folder+"nytimes_articles_v2"});
+        assertEquals("", getError());
+
+        files = new File("./output/").listFiles();
+        assertNotNull(files);
+        assertEquals(2, files.length);
+        File out = files[1];
+        assertEquals("serialized.xml", out.getName());
+        assertEquals(PathManagerTest.readFile(folder+"serialized_nytimes_v2.xml"), PathManagerTest.readFile(files[1].getPath()));
+        out = files[0];
+        assertEquals("output.txt", out.getName());
+        assertEquals(PathManagerTest.readFile(folder+"output_nytimes_v2.txt"), PathManagerTest.readFile(files[0].getPath()));
+
+        deleteFilesOut();
+
+        //Analysis and "download" of theGuardian
+        App.main(new String[]{"-da", "-path", folder+"theguardian_articles_v1"});
+        assertEquals("", getError());
+
+        files = new File("./output/").listFiles();
+        assertNotNull(files);
+        assertEquals(2, files.length);
+        out = files[1];
+        assertEquals("serialized.xml", out.getName());
+        assertEquals(PathManagerTest.readFile(folder+"serialized_theguardian_v1.xml"), PathManagerTest.readFile(files[1].getPath()));
+
+        out = files[0];
+        assertEquals("output.txt", out.getName());
+        assertEquals(PathManagerTest.readFile(folder+"output_theguardian_v1.txt"), PathManagerTest.readFile(files[0].getPath()));
+
+        deleteFilesOut();
 
         //DOWNLOAD OF ARTICLES
         App.main(new String[]{"-d", "-apf", folder+"api.properties"});
@@ -87,7 +118,7 @@ public class AppTest
         files = new File("./output").listFiles();
         assertNotNull(files);
         assertEquals(1, files.length);
-        File out = files[0];
+        out = files[0];
         assertEquals("serialized.xml", out.getName());
 
         //Analysis of the downloaded files
@@ -103,38 +134,6 @@ public class AppTest
         out = files[0];
         assertEquals("output.txt", out.getName());
         //We don't test the output as the output can vary depending on what is in the database of the TheGuardian
-        deleteFilesOut();
-
-        //Analysis and download of nytimes
-        App.main(new String[]{"-da", "-path", folder+"nytimes_articles_v2"});
-        assertEquals("", getError());
-
-        files = new File("./output").listFiles();
-        assertNotNull(files);
-        assertEquals(2, files.length);
-        out = files[1];
-        assertEquals("serialized.xml", out.getName());
-        assertEquals(PathManagerTest.readFile(folder+"serialized_nytimes_v2.xml"), PathManagerTest.readFile(files[1].getPath()));
-        out = files[0];
-        assertEquals("output.txt", out.getName());
-        assertEquals(PathManagerTest.readFile(folder+"output_nytimes_v2.txt"), PathManagerTest.readFile(files[0].getPath()));
-
-        deleteFilesOut();
-
-        //Analysis and download of theGuardian
-        App.main(new String[]{"-da", "-path", folder+"theguardian_articles_v1"});
-        assertEquals("", getError());
-
-        files = new File("./output").listFiles();
-        assertNotNull(files);
-        assertEquals(2, files.length);
-        out = files[1];
-        assertEquals("serialized.xml", out.getName());
-        assertEquals(PathManagerTest.readFile(folder+"serialized_theguardian_v1.xml"), PathManagerTest.readFile(files[1].getPath()));
-
-        out = files[0];
-        assertEquals("output.txt", out.getName());
-        assertEquals(PathManagerTest.readFile(folder+"output_theguardian_v1.txt"), PathManagerTest.readFile(files[0].getPath()));
 
         deleteFilesOut();
     }
@@ -173,7 +172,6 @@ public class AppTest
         expected_err += "The program has been terminated for an error in the analysis: There is no class with the name null";
         assertEquals(expected_err, getError());
 
-        deleteFilesOut();
     }
 
     /**
@@ -194,5 +192,5 @@ public class AppTest
      * The only constructor of the class. It is declared as private to
      * prevent the default constructor to be created.
      */
-    private AppTest() {}
+    public AppTest() {}
 }

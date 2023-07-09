@@ -17,9 +17,6 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * Class that tests {@link DeserializersContainer}.
  */
-
-// manca test con properties falsa
-
 @Order(1)
 public class DeserializersContainerTest {
 
@@ -53,7 +50,7 @@ public class DeserializersContainerTest {
      * Check for cases where an incorrect properties file is passed {@link DeserializersContainer}
      */
     @Test
-    public void notCorrectIstance() {
+    public void notCorrectInstance() {
 
         try {
 
