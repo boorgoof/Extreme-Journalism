@@ -5,24 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Oke">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/Test/request1.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/Test/request1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request1.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request2.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request2.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request3.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request3.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request4.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request4.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request5.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request5.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/serialized.xml" beforeDir="false" afterPath="$PROJECT_DIR$/output/serialized.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/site/markdown/implementazione/librerie.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/markdown/implementazione/librerie.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/true0.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true0.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/request1.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/request1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/request2.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/request2.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/request3.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/request3.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/request4.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/request4.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/request5.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/request5.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/download/thread.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/thread.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/threadpool/a.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/threadpool/a.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/true10.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true10.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/true16.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true16.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -436,7 +424,23 @@
       <option name="project" value="LOCAL" />
       <updated>1688825106726</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Oke">
+      <option name="closed" value="true" />
+      <created>1688884330223</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1688884330223</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Oke">
+      <option name="closed" value="true" />
+      <created>1688884349163</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1688884349163</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
