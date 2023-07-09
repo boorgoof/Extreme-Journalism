@@ -134,6 +134,7 @@
       </plugin>
 
       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
         <version>3.3.0</version>
         <executions>
@@ -141,11 +142,6 @@
             <id>bundle-sources</id>
             <phase>package</phase>
             <goals>
-              <!-- produce source artifact for main project sources -->
-              <goal>jar-no-fork</goal>
-
-              <!-- produce source artifact for project test sources -->
-              <goal>test-jar-no-fork</goal>
             </goals>
           </execution>
         </executions>
