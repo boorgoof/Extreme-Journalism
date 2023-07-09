@@ -99,8 +99,8 @@ In particolare verranno costruiti due oggetti Article con il seguente stato:
   ```
 ## FILE CSV
  La deserializzazione CSV richiede che sia presente una intestazione (header) che definisce il contenuto di ciascuna colonna 
- del file. Il programma, di default, terrà a considerazione le colonne che hanno una corrispondenza con il seguente header di default:
- {"Identifier", "URL", "Title", "Body", "Date", "Source Set", "Source"};
+ del file. Il programma terrà a considerazione le colonne che hanno una corrispondenza con il seguente header di default:
+ {"Identifier", "URL", "Title", "Body", "Date", "Source Set", "Source"}
 
  1) Esempio 
 
@@ -135,14 +135,147 @@ In particolare verranno costruiti due oggetti Article con il seguente stato:
   id = "ID 3", url = "URL 3", title = "Titolo 3", body = "Corpo 3", date = null, sourceSet = "", source = "Source 3";
 ```
   Caratteristiche header :
-  - Non può contenere caratteri differenti da lettere, numeri o spazi biachi.
+  - Non può contenere caratteri differenti da lettere, numeri o spazi bianchi.
   - Può avere i campi in posizione differente da quelli memorizzati di default.
   - Può specificare meno campi rispetto a quelli memorizzati (Esempio 1: manca "date") 
   - Possono essere presenti nell'header dei campi supplementari che il programma ignorerà (Esempio 1: è presente "cover")
   
  Si ricorda che, se si deseridera, è possibile modificare l'header memorizzato di defualt per la deserializzazione ad inizo programma
 
-## FILE XML da fare
+## FILE XML 
+
+  La deserializzazione di un file XML implementata nel programma non è flessibile come i precedenti casi. 
+  
+  Bisogna tenere in considerazione i seguenti vincoli:
+
+  - La deserializzazione avviene correttamente solamente se il nome degli elementi è uguale al nome degli attributi della classe Article.
+    Gli elementi devono pertanto avere nome uguale a {"id", "url", "title", "body", "date", "sourceSet", "source"}
+  - Attualmente non è possibile deserializzare elementi differenti da quelli di default. Se ad inizio programma si richiede di modificare i campi 
+    di deserializzazione del formato XML, verrà inoltrato un messaggio di errore.
+  - Nel file gli articoli devono essere necessariamente specificati all'interno di una struttura ordinata di tipo array. Non è possibile avere altri elementi 
+    che modificano tale struttura. Sono riportati quattro esempi esplicativi. 
+
+1) Esempio
+```
+<ArrayList>
+  <item>
+    <id>ID 1</id>
+    <url>URL 1</url>
+    <title>Title 1</title>
+    <body>Body 1</body>
+    <date>Date 1</date>
+    <sourceSet>sourceSet 1</sourceSet>
+    <source>Source 1</source>
+  </item>
+  <item>
+    <id>ID 2</id>
+    <url>URL 2</url>
+    <title>Title 2</title>
+    <body>Body 2</body>
+    <date>Date 2</date>
+    <sourceSet>sourceSet 2</sourceSet>
+    <source>Source 2</source>
+  </item>
+</ArrayList>
+```
+Articoli:
+```
+ articolo 1 avrà stato: ("ID 1", "URL 1", "Title 1", "Body 1", "Date 1", "sourceSet 1","Source 1")
+ articolo 2 avrà stato: ("ID 2", "URL 2", "Title 2", "Body 2", "Date 2","sourceSet 2","Source 2"));
+```
+
+2) Esempio
+```
+<ArrayList>
+  <item>
+    <id>ID 1</id>
+    <title>Title 1</title>
+    <body>Body 1</body>
+    <date>Date 1</date>
+    <sourceSet>sourceSet 1</sourceSet>
+  </item>
+  <item>
+    <id>ID 2</id>
+    <url>URL 2</url>
+    <body>Body 2</body>
+    <date>Date 2</date>
+    <sourceSet>sourceSet 2</sourceSet>
+    <source>Source 2</source>
+  </item>
+</ArrayList>
+```
+Articoli:
+
+```
+articolo 1 avrà stato: ("ID 1", null, "Title 1", "Body 1", "Date 1","sourceSet 1",null)
+articolo 2 avrà stato: ("ID 2", "URL 2", null, "Body 2", "Date 2","sourceSet 2","Source 2")
+```
+3) Esempio
+```
+<ArrayList>
+  <item>
+    <cover>cover 1</cover>
+    <sourceSet>sourceSet 1</sourceSet>
+    <source>Source 1</source>
+    <id>ID 1</id>
+    <url>URL 1</url>
+    <title>Title 1</title>
+    <body>Body 1</body>
+    <date>Date 1</date>
+  </item>
+  <item>
+    <id>ID 2</id>
+    <url>URL 2</url>
+    <title>Title 2</title>
+    <sourceSet>sourceSet 2</sourceSet>
+    <source>Source 2</source>
+    <body>Body 2</body>
+    <date>Date 2</date>
+  </item>
+</ArrayList>
+```
+Articoli:
+```
+articolo 1 avrà stato: ("ID 1", "URL 1", "Title 1", "Body 1", "Date 1", "sourceSet 1","Source 1"));
+articolo 2 avrà stato: ("ID 2", "URL 2", "Title 2", "Body 2", "Date 2","sourceSet 2","Source 2"));
+```
+4) Esempio. Caso errato
+```
+<object>
+  <data>
+    <sector>Articles</sector>
+    <type>science</type>
+    <item>
+      <response>
+        <id>ID 2</id>
+        <url>URL 2</url>
+        <title>Title 2</title>
+        <body>Body 2</body>
+        <date>Date 2</date>
+        <sourceSet>sourceSet 2</sourceSet>
+        <source>Source 2</source>
+      </response>
+    </item>
+    <item>
+      <response>
+        <id>ID 2</id>
+        <url>URL 2</url>
+        <title>Title 2</title>
+        <body>Body 2</body>
+        <date>Date 2</date>
+        <sourceSet>sourceSet 2</sourceSet>
+        <source>Source 2</source>
+      </response>
+    </item>
+  </data>
+</object>
+```
+  Come è possibile osservare, all'interno della stuttura dell'array gli elementi possono essere in posizione differente, oppure possono essere mancanti, o possono essere presenti elementi supplementari.
+  Tuttavia è importante notare che gli elementi supplementari non possono rompere la struttura di base.
+
+  Si tratta di limitazioni importanti, ma attualmente il programma si aspetta di trattare con i formati CSV e JSON. La deserializzazione del formato XML
+  è prevista solamente a livello interno, ovvero a partire dal file serialializzato per memorizzare in maniera ordinata tutti gli articoli
+  (tale file rispetta sicuramente la stuttura elencata). Ovviamente se l'utente desidera può decidere di sottoporre i file XML che rispettano tali caratteristiche.
 
 
 Nel diagramma delle classi tutte le
