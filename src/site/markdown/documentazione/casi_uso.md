@@ -270,7 +270,7 @@ articolo 2 avrà stato: ("ID 2", "URL 2", "Title 2", "Body 2", "Date 2","sourceS
   </data>
 </object>
 ```
-  Come è possibile osservare, all'interno della stuttura dell'array gli elementi possono essere in posizione differente, oppure possono essere mancanti, o possono essere presenti elementi supplementari.
+  Come è possibile osservare, all'interno della stuttura dell'array gli elementi possono essere in posizione differente, possono essere mancanti, o possono essere presenti elementi supplementari.
   Tuttavia è importante notare che gli elementi supplementari non possono rompere la struttura di base.
 
   Si tratta di limitazioni importanti, ma attualmente il programma si aspetta di trattare con i formati CSV e JSON. La deserializzazione del formato XML

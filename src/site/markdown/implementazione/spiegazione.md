@@ -80,19 +80,17 @@ alla parte di download da una API.
   viene specificato nome e path).
   L'handler, effettuata la deserializzazione dei file, restituirà una lista di oggetti Serializable.
   E' inoltre disponibile una funzione che deserializza un singolo file in una lista di oggetti Serializable. Anche in questo caso, se disponibile, viene
-  selezionato il Deserializer corretto per il formato del file indicato. Se non vi è alcun Deserializer disponibile in DeserializersContainer
-  L'handler invierà un messaggio di errore indicando di non essere ancora in grado di deserializzare il file.
+  selezionato il Deserializer corretto per il formato del file indicato. Se non vi è alcun Deserializer disponibile in DeserializersContainer,
+  l'handler invierà un messaggio di errore indicando di non essere ancora in grado di deserializzare il file.
 
 - **DeserializationProperties:** Per garantire una maggiore [flessibilità](flessibilita.html) vengono utilizzati dei file di properties.
   Il file "deserializers.properties" contiene tutti i Deserializers di cui il programma può disporre per deserializzare i file.
   Ciascun Deserializers deve essere associato ad un nome, che convenzionalmente rappresenta il formato del file che è in grado di deserializzare.
   L'handler, infatti, per eseguire la deserializzazione di un file ne estrapola il formato per chiamare il Deserializer associato.
-  Segue dunque, che se un Deserializer non è associato ad un vero e proprio formato di un file, questi non potrà mai essere utilizzato, poichè L'handler 
-  non disporra mai del suo nome identificativo.
-
+  Segue dunque, che se un Deserializer non è associato ad un vero e proprio formato di un file, questi non potrà mai essere utilizzato, poichè l'handler 
+  non disporra mai del suo nome identificativo. 
   Esiste un file di properties di default contenuto dentro alle risorse ma, in caso non si avesse accesso al codice sorgente, è anche possibile passarne 
-  uno dall'esterno. Se le properties che l'utente vuole utilizzare non sono corrette, il programma termina.
-  
+  uno dall'esterno. Se le properties che l'utente vuole utilizzare non sono corrette, il programma termina. 
   Esempio di un Deserializer specificato corretamente: `json = it.unipd.dei.dbdc.deserialization.src_deserializers.JsonArticleDeserializer`
 
 - **DeserializersContainer:** Si tratta della classe che contiene tutti i Deserializer specificati nel file deserializers.properties o nel file
@@ -118,9 +116,7 @@ alla parte di download da una API.
   Il file "serializers.properties" contiene tutti i Serializers di cui il programma può disporre per deserializzare i file.
   In questo caso ogni Serializers sono associati ad un nome, che convenzionalmente rappresenta il formato del file per il quale si ottine la serializzazione.
   Esiste un file di properties di default, contenuto dentro alle risorse, ma è anche possibile passarne uno dall'esterno, in caso non si
-  avesse accesso al codice sorgente. Se le properties che l'utente vuole utilizzare sono incorrette, il programma termina.
-
-  Esempio di un Deserializer specificato corretamente: `xml = it.unipd.dei.dbdc.serializers.src_serializers.XmlSerializer`
+  avesse accesso al codice sorgente. Se le properties che l'utente vuole utilizzare sono incorrette, il programma termina. Esempio di un Deserializer specificato corretamente: `xml = it.unipd.dei.dbdc.serializers.src_serializers.XmlSerializer`
 
 - **SerializersContainer:** Si tratta della classe che contiene tutti i Serializer specificati nel file deserializers.properties o nel file
   passato dall'utente (se valido). Utilizza il [Singleton design pattern](design_patterns.html) in modo da leggere il file di
@@ -128,10 +124,8 @@ alla parte di download da una API.
 
 - **Serializer:** Questa interfaccia definisce un oggetto in grado di serializzare una lista di oggetti Serializable in un file.
   La classe che implementa tale interfaccia dove fornire la logica di serializzazione per uno specifico formato di file.
-  
   Il programma attualmente dispone di una classe che implementa tale interrfaccia, ossia XmlSerializer.
   La classe è dunque responsabile della Serializzazione e memorizzazione di tutti gli oggetti in un formato comune che attualmente è "XML".
-
   Se si desidera Serializzare gli oggetti in un formato differente è sufficiente creare una nuova classe che implementa l'interfaccia "Serializer", ed inserirla nel file
   "serializers.properties" associandola al nome del formato del file per cui avviene la serializzazione.
 

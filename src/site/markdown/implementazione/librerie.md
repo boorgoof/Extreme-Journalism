@@ -30,34 +30,34 @@ offre diverse classi utili per la lettura, la scrittura e la manipolazione dei d
 la deserializzazione del formato csv:
 
 - [**CsvFormat**](https://commons.apache.org/proper/commons-csv/apidocs/index.html):
-  Viene utilizzata per definire il formato del file CSV, specificando le opzioni di delimitazione, citazione ed escape.
+  Viene utilizzata per definire il formato del file CSV, specificando le opzioni di delimitazione ed escape.
 - [**CSVParser**](https://commons.apache.org/proper/commons-csv/apidocs/index.html):
   La classe CSVParser viene utilizzata per analizzare un file CSV in un'istanza di CSVRecord, che rappresenta una riga del file CSV.
-  [**CSVRecord**](https://commons.apache.org/proper/commons-csv/apidocs/index.html):
-  CSVRecord fornisce metodi per accedere ai valori delle colonne in base all'indice o al nome delle colonne.
+- [**CSVRecord**](https://commons.apache.org/proper/commons-csv/apidocs/index.html):
+ CSVRecord fornisce metodi per accedere ai valori delle colonne in base all'indice o al nome delle colonne.
 
 Dunque, CSVParser viene utilizzata per analizzare un file CSV o una stringa CSV. Essa restituisce oggetti CSVRecord che rappresentano le righe del CSV.
 E' possibile utilizzare vari metodi di un CSVRecord per accedere ai valori delle colonne nella riga del CSV.
-CSVFormat viene utilizzata precedentemente per definire il formato del file CSV, specificando le opzioni di delimitazione, citazione ed escape.
+CSVFormat viene utilizzata precedentemente per definire il formato del file CSV, specificando le opzioni di delimitazione ed header del file.
 
 ## Jackson
 
 [**Jackson**](https://fasterxml.github.io/jackson-databind/javadoc/2.12/) è una libreria Java ad alte prestazioni che fornisce funzionalità per l'elaborazione di dati JSON.
 È progettata per consentire la conversione di oggetti Java in formato JSON, e viceversa. Sebbene la sua funzionalità principale 
-sia focalizzata su JSON, Jackson include moduli aggiuntivi, come "Jackson Dataformat XML", che consentono di lavorare con dati XML.
+sia focalizzata su JSON, Jackson include moduli aggiuntivi che consentono di lavorare con dati XML.
 
 - [**ObjectMapper**](https://fasterxml.github.io/jackson-databind/javadoc/2.13/com/fasterxml/jackson/databind/ObjectMapper.html):
   Si tratta di una classe fornta da Jackson che permette la conversione tra oggetti Java e JSON. Nel programma viene utilizzata per la deserializzazione dei file JSON in oggetti Java. 
   Nello specifico,viene utilizzato un oggetto ObjectMapper per ottenere un un oggetto  [**JsonNode**](https://fasterxml.github.io/jackson-databind/javadoc/2.12/com/fasterxml/jackson/databind/JsonNode.html).
-  Tale classe offre funzionalità per l'elaborazione, la manipolazione di dati JSON. 
+  Tale classe offre funzionalità per l'elaborazione e la manipolazione di dati JSON. 
   JsonNode può essere utilizzato per la rappresentazione ad albero dei dati JSON, consentendo un accesso e navigazione agevole all'interno di tale struttura.
 
 - [**XmlMapper**](https://fasterxml.github.io/jackson-dataformat-xml/javadoc/2.13/com/fasterxml/jackson/dataformat/xml/XmlMapper.html): 
   Questa classe fornisce metodi per la conversione di oggetti Java in una rappresentazione XML e viceversa. 
   Offre funzionalità di associazione dati per mappare gli attributi e gli elementi XML agli attributi degli oggetti Java. 
   XmlMapper supporta diverse opzioni di configurazione e formattazione per l'output XML. 
-  - Per quanto riguarda la deserializzazione sono state seguite le informazioni nella documentazione presenti in [**Jackson Databind**](https://github.com/FasterXML/jackson-databind)
-  - Per quanto riguarda la Serializzazione, l'oggetto XmlMapper stato usato in combinazione con 
+  - Per quanto riguarda la deserializzazione sono state seguite le informazioni presenti nella documentazione di [**Jackson Databind**](https://github.com/FasterXML/jackson-databind)
+  - Per quanto riguarda la Serializzazione, l'oggetto XmlMapper è stato usato in combinazione con 
    [**SerializationFeaturer**](https://fasterxml.github.io/jackson-databind/javadoc/2.13/com/fasterxml/jackson/databind/SerializationFeature.html) 
     che consente di abilitare o disabilitare diverse funzionalità di serializzazione, come l'indentazione dell'output XML
 
