@@ -68,8 +68,6 @@ public class AppTest
     @Order(1)
     @Test
     public void mainTestOut() {
-        //The APIContainer is initialized with trueDownload.properties by all the test classes that use it
-
         deleteFilesOut();
 
         //HELP
@@ -105,7 +103,7 @@ public class AppTest
         //We don't test the output as the output can vary depending on what is in the database of the TheGuardian
         deleteFilesOut();
 
-        //Analysis and download of nytimes
+        //Analysis and "download" of nytimes
         App.main(new String[]{"-da", "-path", folder+"nytimes_articles_v2"});
         assertEquals("", getError());
 
@@ -121,7 +119,7 @@ public class AppTest
 
         deleteFilesOut();
 
-        //Analysis and download of theGuardian
+        //Analysis and "download" of theGuardian
         App.main(new String[]{"-da", "-path", folder+"theguardian_articles_v1"});
         assertEquals("", getError());
 

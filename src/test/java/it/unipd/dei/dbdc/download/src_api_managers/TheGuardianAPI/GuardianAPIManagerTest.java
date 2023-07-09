@@ -23,7 +23,7 @@ public class GuardianAPIManagerTest {
      * The key that is used to test the TheGuardianAPI. It should only be put here by the user, as all the other
      * test classes takes this one. TODO svuota
      */
-    public static String key = "e824cbd7-23a5-4534-a2a0-b6b868dabd98";
+    public static String key = "21b5c154-934c-4a4e-b2f5-64adbd68af5f";
 
     /**
      * The instance of {@link GuardianAPIManager} used for the tests.
@@ -211,7 +211,8 @@ public class GuardianAPIManagerTest {
         assertDoesNotThrow(() -> man.addParams(list));
         assertDoesNotThrow(() -> man.callAPI(DownloadHandlerTest.resources_url+"manager/"));
 
-        //Stress test
+        //Stress test. It is commented to not finish all the calls to the API immediately
+        /*
         GuardianAPIManager stressed = new GuardianAPIManager(new KongAPICaller(), "");
 
         list.clear();
@@ -221,7 +222,9 @@ public class GuardianAPIManagerTest {
         list.add(new QueryParam("pages", "50"));
         assertDoesNotThrow(() -> stressed.addParams(list));
         assertDoesNotThrow(() -> stressed.callAPI(DownloadHandlerTest.resources_url+"manager/stressed/"));
+        */
     }
+
 
 
     /**
