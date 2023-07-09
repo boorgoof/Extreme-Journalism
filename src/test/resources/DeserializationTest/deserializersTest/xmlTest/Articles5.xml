@@ -1,5 +1,6 @@
 <ArrayList>
   <item>
+    <cover>cover 1</cover>
     <sourceSet>sourceSet 1</sourceSet>
     <source>Source 1</source>
     <id>ID 1</id>

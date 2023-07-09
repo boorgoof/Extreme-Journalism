@@ -1,7 +1,7 @@
 package it.unipd.dei.dbdc.deserialization.src_deserializers;
 
 import it.unipd.dei.dbdc.analysis.Article;
-import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.*;
@@ -35,6 +35,7 @@ public class XmlDeserializerTest {
         return Stream.of(
                 Arguments.of(createTestArticles1(), "src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles1.xml"),
                 Arguments.of(createTestArticles2(), "src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles2.xml"),
+                Arguments.of(createTestArticles2(), "src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles2vers2.xml"),
                 Arguments.of(createTestArticles3(), "src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles3.xml"),
                 Arguments.of(createTestArticles4(), "src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles4.xml"),
                 Arguments.of(createTestArticles5(), "src/test/resources/DeserializationTest/deserializersTest/xmlTest/Articles5.xml")
@@ -83,7 +84,7 @@ public class XmlDeserializerTest {
      * This utility function creates articles for testing {@link XmlArticleDeserializer#deserialize(File)}.
      *
      * @return list of {@link Article}. Three Article objects with all fields null.
-     *         There are no articles in the XML file (all tags associated with fields of an Article object are missing)
+     *         There are no articles in the XML file (all elements associated with fields of an Article object are missing)
      *         The basic structure of the file is still present.
      */
     private static List<Article> createTestArticles2() {
@@ -97,7 +98,7 @@ public class XmlDeserializerTest {
     /**
      * This utility function creates articles for testing {@link XmlArticleDeserializer#deserialize(File)}.
      *
-     * @return list of {@link Article}. Three Article objects with some fields null. Some tags are missing in the XML file
+     * @return list of {@link Article}. Three Article objects with some fields null. Some elements are missing in the XML file
      */
     private static List<Article> createTestArticles3() {
         List<Article> articles = new ArrayList<>();
@@ -111,7 +112,7 @@ public class XmlDeserializerTest {
      * This utility function creates articles for testing {@link XmlArticleDeserializer#deserialize(File)}.
      *
      * @return list of {@link Article}. Three Article objects with some fields initialized and others initialized with an empty {@link String}
-     *         Fields are initialized to an empty {@link String} if the tags are present in the xml file but nothing is written inside
+     *         Fields are initialized to an empty {@link String} if the elements are present in the xml file but nothing is written inside
      */
     private static List<Article> createTestArticles4() {
         List<Article> articles = new ArrayList<>();
@@ -125,7 +126,7 @@ public class XmlDeserializerTest {
     /**
      * This utility function creates articles for testing {@link XmlArticleDeserializer#deserialize(File)}.
      *
-     * @return list of {@link Article}. Three Article objects with all fields initialized. The file has tags in a different order than the case in {@link XmlDeserializerTest#createTestArticles1()}
+     * @return list of {@link Article}. Three Article objects with all fields initialized. The file has elements in a different order than the case in {@link XmlDeserializerTest#createTestArticles1()}
      */
     private static List<Article> createTestArticles5() {
         List<Article> articles = new ArrayList<>();
@@ -135,6 +136,11 @@ public class XmlDeserializerTest {
         return articles;
     }
 
+    /**
+     * This utility function creates articles for testing {@link XmlArticleDeserializer#deserialize(File)}.
+     *
+     * @return list of {@link Article}. Three Article objects with all fields initialized. In this case it is tested with a file with a different structure than an array, so I don't expect equality
+     */
     private static List<Article> treeArticles() {
         List<Article> articles = new ArrayList<>();
         articles.add(new Article("ID 2", "URL 2", "Title 2", "Body 2", "Date 2","sourceSet 2","Source 2"));

@@ -1,7 +1,6 @@
 package it.unipd.dei.dbdc.deserialization.src_deserializers;
 
 import it.unipd.dei.dbdc.analysis.Article;
-import it.unipd.dei.dbdc.analysis.interfaces.Analyzer;
 import it.unipd.dei.dbdc.deserialization.interfaces.DeserializerWithFields;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;

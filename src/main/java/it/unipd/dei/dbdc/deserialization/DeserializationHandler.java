@@ -249,7 +249,7 @@ public class DeserializationHandler {
         if(container.getDeserializer(format) instanceof DeserializerWithFields){
             deserializer = (DeserializerWithFields) container.getDeserializer(format);
         } else {
-            throw new IllegalArgumentException("The selected deserializer does not implement field specification");
+            throw new IllegalArgumentException("The selected deserializer does not implement fields specification");
         }
 
 
