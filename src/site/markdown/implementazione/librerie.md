@@ -33,13 +33,13 @@ offre diverse classi utili per la lettura, la scrittura e la manipolazione dei d
 la deserializzazione del formato csv:
 
 - [**CsvFormat**](https://commons.apache.org/proper/commons-csv/apidocs/index.html):
-  Viene utilizzata per definire il formato del file CSV, specificando le opzioni di delimitazione ed escape.
+  viene utilizzata per definire il formato del file CSV, specificando le opzioni di delimitazione ed escape.
 - [**CSVParser**](https://commons.apache.org/proper/commons-csv/apidocs/index.html):
-  La classe CSVParser viene utilizzata per analizzare un file CSV in un'istanza di CSVRecord, che rappresenta una riga del file CSV.
+  viene utilizzata per analizzare un file CSV in un'istanza di CSVRecord, che rappresenta una riga del file CSV.
 - [**CSVRecord**](https://commons.apache.org/proper/commons-csv/apidocs/index.html):
- CSVRecord fornisce metodi per accedere ai valori delle colonne in base all'indice o al nome delle colonne.
+  fornisce metodi per accedere ai valori delle colonne in base all'indice o al nome delle colonne.
 
-Dunque, CSVParser viene utilizzata per analizzare un file CSV o una stringa CSV. Essa restituisce oggetti CSVRecord che rappresentano le righe del CSV.
+Dunque, è una classe CSVParser viene utilizzata per analizzare un file CSV o una stringa CSV. Essa restituisce oggetti CSVRecord che rappresentano le righe del CSV.
 E' possibile utilizzare vari metodi di un CSVRecord per accedere ai valori delle colonne nella riga del CSV.
 CSVFormat viene utilizzata precedentemente per definire il formato del file CSV, specificando le opzioni di delimitazione ed header del file.
 
