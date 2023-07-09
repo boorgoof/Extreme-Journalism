@@ -33,6 +33,7 @@ public class App
      */
     public static void main(String[] args) {
         //There are a few things that should be done before the start of the application:
+        args = new String[]{"-da"};
 
         //1. Parse the commands given
         CommandLineInterpreter interpreter;

@@ -187,7 +187,6 @@ public class DeserializationHandlerTest {
             List<Serializable> DeserializedFolder = DeserializationHandler.deserializeFolder("src/test/resources/DeserializationTest/handlerTest/Database");
             assertEquals(deserializedArticleFolder(), DeserializedFolder);
 
-
             // case I pass it null as input
             assertThrows(IllegalArgumentException.class, () -> DeserializationHandler.deserializeFolder(null));
 

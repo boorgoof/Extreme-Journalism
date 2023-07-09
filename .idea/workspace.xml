@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Oke">
-      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request3.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request3.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request4.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request4.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/TheGuardianAPI/request5.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/TheGuardianAPI/request5.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/true10.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true10.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/true16.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true16.json" afterDir="false" />
+    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Javadoc funzionano">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/site/markdown/documentazione/casi_uso.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/markdown/documentazione/casi_uso.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/site/markdown/implementazione/spiegazione.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/markdown/implementazione/spiegazione.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/csvTest/articles_v1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/DeserializationTest/deserializersTest/csvTest/articles_v1.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,23 +101,7 @@
       <recent name="it.unipd.dei.dbdc.download" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CsvDeserializerTest">
-    <configuration name="AnalyzePropertiesTest.readProperties" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Extreme_journalism" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.unipd.dei.dbdc.analysis.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.analysis" />
-      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.analysis.AnalyzePropertiesTest" />
-      <option name="METHOD_NAME" value="readProperties" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.deserialization in Extreme_journalism">
     <configuration name="CsvDeserializerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Extreme_journalism" />
       <extension name="coverage">
@@ -131,6 +113,22 @@
       <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.deserialization.src_deserializers" />
       <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.deserialization.src_deserializers.CsvDeserializerTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CsvDeserializerTest.deserialize" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Extreme_journalism" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.unipd.dei.dbdc.deserialization.src_deserializers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.deserialization.src_deserializers" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.deserialization.src_deserializers.CsvDeserializerTest" />
+      <option name="METHOD_NAME" value="deserialize(java.util.List,java.lang.String)" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -150,18 +148,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="deserialization in Extreme_journalism" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DeserializationHandlerTest.testDeserializeFolder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Extreme_journalism" />
-      <option name="TEST_OBJECT" value="directory" />
-      <dir value="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.unipd.dei.dbdc.deserialization.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.deserialization" />
+      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.deserialization.DeserializationHandlerTest" />
+      <option name="METHOD_NAME" value="testDeserializeFolder" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="src_deserializers in Extreme_journalism" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="deserialization in Extreme_journalism" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Extreme_journalism" />
       <option name="TEST_OBJECT" value="directory" />
-      <dir value="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization/src_deserializers" />
+      <dir value="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/deserialization" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -181,11 +187,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.deserialization in Extreme_journalism" />
+        <item itemvalue="JUnit.DeserializationHandlerTest.testDeserializeFolder" />
+        <item itemvalue="JUnit.CsvDeserializerTest.deserialize" />
         <item itemvalue="JUnit.CsvDeserializerTest" />
         <item itemvalue="JUnit.DeserializationHandlerTest" />
-        <item itemvalue="JUnit.AnalyzePropertiesTest.readProperties" />
-        <item itemvalue="JUnit.src_deserializers in Extreme_journalism" />
-        <item itemvalue="JUnit.deserialization in Extreme_journalism" />
       </list>
     </recent_temporary>
   </component>
@@ -416,31 +422,7 @@
       <option name="project" value="LOCAL" />
       <updated>1688824283503</updated>
     </task>
-    <task id="LOCAL-00031" summary="Oke">
-      <option name="closed" value="true" />
-      <created>1688825106726</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1688825106726</updated>
-    </task>
-    <task id="LOCAL-00032" summary="Oke">
-      <option name="closed" value="true" />
-      <created>1688884330223</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1688884330223</updated>
-    </task>
-    <task id="LOCAL-00033" summary="Oke">
-      <option name="closed" value="true" />
-      <created>1688884349163</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1688884349163</updated>
-    </task>
-    <option name="localTasksCounter" value="34" />
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -468,6 +450,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Fixed something" />
     <MESSAGE value="Messo qualche test" />
     <MESSAGE value="Commentato" />
     <MESSAGE value="Parallelism" />
@@ -492,8 +475,7 @@
     <MESSAGE value="Messo a posto, spero per i test" />
     <MESSAGE value="merge" />
     <MESSAGE value="Javadoc funzionano" />
-    <MESSAGE value="Oke" />
-    <option name="LAST_COMMIT_MESSAGE" value="Oke" />
+    <option name="LAST_COMMIT_MESSAGE" value="Javadoc funzionano" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

@@ -72,7 +72,7 @@ public class CsvArticleDeserializer implements DeserializerWithFields {
      * Only columns in the CSV file that have an association with fields stored in {@link CsvArticleDeserializer#fields} will be considered.
      * The fields specified in the header need not be in the same order as they are stored in {@link CsvArticleDeserializer#fields}
      * If there is no header in the CSV file, deserialization does not occur. An empty list is returned.
-     *
+     * The words that are present in the header are considered valid only if they contain numbers, letters and white spaces. All other characters are not accepted.
      * <pre>
      * For example in this CSV text:
      *
@@ -188,7 +188,7 @@ public class CsvArticleDeserializer implements DeserializerWithFields {
             // Save the column headers in an array
             String[] header = new String[headerRecord.size()];
             for (int i = 0; i < headerRecord.size(); i++) {
-                header[i] = headerRecord.get(i).replace("\uFEFF", "");// Remove BOM character if present
+                header[i] = headerRecord.get(i).replaceAll("[^a-zA-Z0-9\\s]", ""); // Remove BOM character if present
             }
 
             // Set to null all values that are not also present in CsvDeserializer#fields
