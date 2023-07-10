@@ -97,3 +97,16 @@ Per eseguire il programma in maniera personalizzata sono disponibili varie opzio
   
     - `-setfi [value]` per abilitare (con true) o disabilitare (con false) la richiesta interattiva di quali fields analizzare degli articoli, nel caso in cui questo sia reso
       possibile dal deserializzatore fornito.
+
+## File cmd per eseguire automaticamente
+Nella directory `cmd` sono presenti degli script per eseguire il jar con le dipendenze una volta installata l'applicazione.
+Sono presenti script sia per Windows (.bat) che per Unix, cioè Linux e MacOS (.sh). 
+Ce ne sono quattro: 
+* Uno per capire quali parametri possono essere specificati (`help.sh` o `help.bat`);
+* Uno per fare il download dall'API specificata e la serializzazione a formato comune (`downloadAPI.sh` o `downloadAPI.bat`).
+  Questo usa il file di properties presente nella directory `out_properties` per selezionare l'API e passarvi i parametri; 
+* Uno per fare il download di tutti i file presenti in `target/database` e la serializzazione a formato comune (`downloadPath.sh` o `downloadPath.bat`).
+* Uno per fare l'analisi degli articoli del file serializzato: funziona solo se prima è stato fatto un download, ovvero se è presente un file `serialized.xml` in `target/output` (`analysis.sh` o `analysis.bat`);
+* Uno per fare il download dall'API specificata, serializzare a formato comune e fare l'analisi degli articoli scaricati (`daAPI.sh` o `daAPI.bat`).
+  Questo usa il file di properties presente nella directory `out_properties` per selezionare l'API e passarvi i parametri;
+* Uno per fare il download di tutti i file presenti in `target/database`, serializzare a formato comune e fare l'analisi degli articoli scaricati (`daPath.sh` o `daPath.bat`).

@@ -13,11 +13,13 @@ Repository del progetto finale di "Elementi di Ingegneria del Software".
   Sono presenti script sia per Windows (.bat) che per Unix, cioè Linux e MacOS (.sh).
   Ce ne sono quattro:
   * Uno per capire quali parametri possono essere specificati (`help.sh` o `help.bat`);
-  * Uno per fare il download dall'API specificata e la serializzazione a formato comune (`download.sh` o `download.bat`).
-    Questo usa il file di properties presente nella directory OUT_PROPERTIES per selezionare l'API e passarvi i parametri;
-  * Uno per fare l'analisi degli articoli del folder ny_times_v2 presente nella directory DATABASE (`analysis.sh` o `analysis.bat`);
-  * Uno per fare il download dall'API specificata, serializzare a formato comune e fare l'analisi degli articoli scaricati (`da.sh` o `da.bat`).
+  * Uno per fare il download dall'API specificata e la serializzazione a formato comune (`downloadAPI.sh` o `downloadAPI.bat`).
     Questo usa il file di properties presente nella directory `out_properties` per selezionare l'API e passarvi i parametri;
+  * Uno per fare il download di tutti i file presenti in `target/database` e la serializzazione a formato comune (`downloadPath.sh` o `downloadPath.bat`).
+  * Uno per fare l'analisi degli articoli del file serializzato: funziona solo se prima è stato fatto un download, ovvero se è presente un file `serialized.xml` in `target/output` (`analysis.sh` o `analysis.bat`);
+  * Uno per fare il download dall'API specificata, serializzare a formato comune e fare l'analisi degli articoli scaricati (`daAPI.sh` o `daAPI.bat`).
+    Questo usa il file di properties presente nella directory `out_properties` per selezionare l'API e passarvi i parametri;
+  * Uno per fare il download di tutti i file presenti in `target/database`, serializzare a formato comune e fare l'analisi degli articoli scaricati (`daPath.sh` o `daPath.bat`).
 
 * `out_properties`: qui è presente il file `api.properties` che viene utilizzato dagli script di CMD per la fase di download.
   Puo' essere utilizzato dall'utente per specificare quale API chiamare (di default è impostato sull'API del theGuardian,
