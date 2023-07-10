@@ -2,7 +2,7 @@
 Viene data indicazione di quali funzioni sono state riutilizzate da librerie esistenti,
 specificando la versione delle librerie e il motivo per cui sono state scelte queste librerie.
 
-## Kong Unirest
+## Kong Unirest (Version: 3.14.2)
 Sono state valutate attentamente diverse alternative prima di arrivare alla scelta della libreria
 Kong Unirest:
 
@@ -27,7 +27,7 @@ E' stata scelta anche perché in caso si volesse ottenere un oggetto e non un fi
 Purtroppo fornisce dei warning in fase di chiamata, dovuti al setting dei cookie, ma questo viene risolto
 direttamente nel costruttore ignorando questi cookie.
 
-## Apache Commons CSV
+## Apache Commons CSV (Version: 1.10.0)
 [**Apache Commons CSV**](https://commons.apache.org/proper/commons-csv/apidocs/index.html) fornisce funzionalità per l'elaborazione di file CSV in Java, ossia
 offre diverse classi utili per la lettura, la scrittura e la manipolazione dei dati CSV. Sono state usate queste classi per
 la deserializzazione del formato csv:
@@ -43,7 +43,7 @@ Dunque, è una classe CSVParser viene utilizzata per analizzare un file CSV o un
 E' possibile utilizzare vari metodi di un CSVRecord per accedere ai valori delle colonne nella riga del CSV.
 CSVFormat viene utilizzata precedentemente per definire il formato del file CSV, specificando le opzioni di delimitazione ed header del file.
 
-## Jackson
+## Jackson (Version: 2.15.0 databind, 2.15.1 dataformat)
 
 [**Jackson**](https://fasterxml.github.io/jackson-databind/javadoc/2.12/) è una libreria Java ad alte prestazioni che fornisce funzionalità per l'elaborazione di dati JSON.
 È progettata per consentire la conversione di oggetti Java in formato JSON, e viceversa. Sebbene la sua funzionalità principale 
@@ -65,8 +65,7 @@ sia focalizzata su JSON, Jackson include moduli aggiuntivi che consentono di lav
     che consente di abilitare o disabilitare diverse funzionalità di serializzazione, come l'indentazione dell'output XML
 
 
-
-## Apache Commons CLI
+## Apache Commons CLI (Version: 1.5.0)
 [Documentazione](https://commons.apache.org/proper/commons-cli/)
 
 Questa libreria è utilizzata per fare il parsing dei comandi impartiti dall'utente da riga di comando
