@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * It is the last test to be run, as specified in junit-platform.properties.
  * It uses functions to redirect the error output and normal output of the system.
  */
-@Order(8)
+@Order(14)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class AppTest
 {
