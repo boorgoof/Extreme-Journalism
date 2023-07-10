@@ -31,7 +31,7 @@ Per ulteriori informazioni: [casi d'uso](casi_uso.html)
 **Download:**
 Dopo la fase di download, viene effettuata la persistenza su file degli articoli
 usando un formato comune per tutti gli articoli di tutte le sorgenti.
-Le 2 sorgenti per cui deve essere possibile fare il download sono:
+Le due sorgenti per cui deve essere possibile fare il download sono:
 - File CSV la cui prima riga è l'header, con la lista di attributi/campi
 - TheGuardianAPI: [qui c'è la documentazione](https://open-platform.theguardian.com/documentation/).
   La query utilizzata per scaricare gli articoli è "nuclear power".
