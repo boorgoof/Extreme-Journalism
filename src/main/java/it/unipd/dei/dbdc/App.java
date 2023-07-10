@@ -193,6 +193,7 @@ public class App
      * @param interpreter The {@link CommandLineInterpreter} of the arguments passed to the command line by the user
      * @param articles The {@link List} of {@link Serializable} to serialize.
      * @param serializedFile The {@link File} to put the serialized files.
+     * @return An int that is 0 if everything went right, -1 if it doesn't
      */
     public static int serialize(CommandLineInterpreter interpreter, List<Serializable> articles, File serializedFile)
     {
@@ -253,6 +254,7 @@ public class App
      * @param interpreter The {@link CommandLineInterpreter} of the arguments passed to the command line by the user
      * @param count The number of words to extract and print to the output file
      * @param unitOfSearches The {@link List} of {@link UnitOfSearch} to extract the terms from.
+     * @return An int that is 0 if everything went right, -1 if it doesn't
      */
     private static int analyze(CommandLineInterpreter interpreter, int count, List<UnitOfSearch> unitOfSearches)
     {

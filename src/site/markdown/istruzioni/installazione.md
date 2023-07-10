@@ -12,6 +12,9 @@ A quel punto si può digitare da riga di comando:
 La parte di test richiede un po' di tempo, soprattutto per la classe `src/test/java/tools/ThreadPoolTest`.
 L'installazione produce dei warning, che possono essere ignorati: sono dovuti al fatto che esistono file con lo stesso nome
 nei vari artifacts che mettiamo nel jar con le dipendenze.
+Il warning è di questo tipo:
+
+    maven-shade-plugin has detected that some class files are present in two or more JARs. When this happens, only one single version of the class is copied to the uber jar.
 
 Al termine dell'installazione, si troverà una directory target in cui saranno presenti i file prodotti dall'installazione dell'applicazione.
 Saranno presenti due jar:
