@@ -55,7 +55,8 @@ Per avere delle informazioni su come questo sia stato implementato: [implementaz
 ## Modelli del sistema
 - [Casi d'uso](casi_uso.html)
 - [Domain model](domain_model.html)
-- [Design model](design_model.html)
+- [Sequence design model](design_seq_model.html)
+- [Class design model](design_class_diagrams.html)
 
 ## Evoluzione del sistema
 Il sistema deve poter supportare:

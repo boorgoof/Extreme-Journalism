@@ -17,13 +17,12 @@
             <item name="Creare il progetto" href="istruzioni/installazione.html"/>
             <item name="Eseguire il progetto" href="istruzioni/esecuzione.html"/>
             <item name="Generare il sito" href="istruzioni/sito.html"/>
-            <item name="Javadoc e commenti" href="istruzioni/javadoc.html"/>
+            <item name="Generare javadocs" href="istruzioni/javadoc.html"/>
         </menu>
 
         <menu name="Implementazione">
             <item name="Spiegazione" href="implementazione/spiegazione.html"/>
             <item name="Specifiche aggiuntive" href="implementazione/specifiche_aggiuntive.html"/>
-            <item name="Problemi e trade-off" href="implementazione/problemi.html"/>
             <item name="Flessibilita'" href="implementazione/flessibilita.html"/>
             <item name="Design patterns" href="implementazione/design_patterns.html"/>
             <item name="Test" href="implementazione/test.html"/>
@@ -34,7 +33,7 @@
             <item name="Requisiti" href="documentazione/requisiti.html"/>
             <item name="Use Cases" href="documentazione/casi_uso.html"/>
             <item name="Domain Model" href="documentazione/domain_model.html"/>
-            <item name="Design Model" href="documentazione/design_model.html"/>
+            <item name="Design Model" href="documentazione/design_seq_model.html"/>
             <item name="Design Class Diagrams" href="documentazione/desing_class_diagrams.html"/>
         </menu>
 

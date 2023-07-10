@@ -2,7 +2,7 @@
 Breve spiegazione di come sono state implementate le funzionalità richieste, e quali
 assunzioni sono state fatte.
 Per avere una visione d'insieme delle classi utilizzate e delle loro relazioni 
-vedere [design model](../documentazione/design_model.html).
+vedere [design model](../documentazione/design_class_diagrams.html).
 
 Il codice è interamente in inglese, per una maggiore flessibilità riguardo possibili modifiche, che
 potrebbero essere fatte da chiunque.
@@ -206,4 +206,3 @@ Nella cartella tools sono state messe delle classi utili per il resto del progra
 - [Flessibilità](flessibilita.html)
 - [Test](test.html)
 - [Librerie utilizzate e motivazioni](librerie.html)
-- [Problematiche incontrate e trade-off](problemi.html)
