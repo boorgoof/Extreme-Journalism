@@ -51,14 +51,9 @@ public class XmlArticleDeserializer implements Deserializer {
         List<Article> articles;
         XmlMapper xmlMapper = new XmlMapper();
 
-        try {
-            articles = xmlMapper.readValue(xmlFile, new TypeReference<List<Article>>() {});
+        articles = xmlMapper.readValue(xmlFile, new TypeReference<List<Article>>() {});
 
-        } catch (IOException e){
-            throw new IOException(e);
-        }
         return new ArrayList<>(articles);
 
     }
-
 }

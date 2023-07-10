@@ -97,7 +97,10 @@ public class App
                 return;
             }
             // 2.2 SERIALIZATION to the List of Objects to the common format
-            serialize(interpreter, articles, serializedFile);
+            if (serialize(interpreter, articles, serializedFile) == -1)
+            {
+                return;
+            }
         }
         if (interpreter.analyzePhase()) {
             if (!serializedFile.exists())
@@ -119,7 +122,10 @@ public class App
             if (count <= 0) {
                 count = totalProperties.getWordsCount();
             }
-            analyze(interpreter, count, articles);
+            if (analyze(interpreter, count, articles) == -1)
+            {
+                return;
+            }
 
         }
         System.out.println("Everything went correctly.\nThank you for choosing our application, we hope to see you soon.");
@@ -188,7 +194,7 @@ public class App
      * @param articles The {@link List} of {@link Serializable} to serialize.
      * @param serializedFile The {@link File} to put the serialized files.
      */
-    public static void serialize(CommandLineInterpreter interpreter, List<Serializable> articles, File serializedFile)
+    public static int serialize(CommandLineInterpreter interpreter, List<Serializable> articles, File serializedFile)
     {
         System.out.println("\nEntering the serialization part...");
 
@@ -198,11 +204,11 @@ public class App
             SerializationHandler.serializeObjects(articles, serializedFile);
         } catch (IOException e) {
             System.err.println("Error during the serialization: " + e.getMessage());
-            return;
+            return -1;
         }
 
         System.out.println("Exiting the serialization part. You can find the serialized file in " + serializedFile.getPath() + "...\n");
-
+        return 0;
     }
 
     /**
@@ -248,7 +254,7 @@ public class App
      * @param count The number of words to extract and print to the output file
      * @param unitOfSearches The {@link List} of {@link UnitOfSearch} to extract the terms from.
      */
-    private static void analyze(CommandLineInterpreter interpreter, int count, List<UnitOfSearch> unitOfSearches)
+    private static int analyze(CommandLineInterpreter interpreter, int count, List<UnitOfSearch> unitOfSearches)
     {
         System.out.println("\nEntering the analysis part...");
 
@@ -258,9 +264,10 @@ public class App
             out_file = AnalyzerHandler.analyze(interpreter.obtainAnalyzeProps(), unitOfSearches, count, interpreter.obtainStopWords(), interpreter.obtainOutStopWords());
         } catch (IOException | IllegalArgumentException e) {
             System.err.println("The program has been terminated for an error in the analysis: " + e.getMessage());
-            return;
+            return -1;
         }
         System.out.println("Exiting the analysis part. You can find the resulting file in" + out_file + "\n");
+        return 0;
     }
 
     /**

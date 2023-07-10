@@ -1,7 +1,10 @@
 package it.unipd.dei.dbdc.analysis;
 
 import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
+import it.unipd.dei.dbdc.tools.PathManager;
 import it.unipd.dei.dbdc.tools.PathManagerTest;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
@@ -17,6 +20,26 @@ import static org.junit.jupiter.api.Assertions.*;
 @Order(7)
 public class AnalyzerHandlerTest {
 
+
+    /**
+     * Initializes by setting the output folder to the one that this class will access
+     *
+     */
+    @BeforeAll
+    public static void initialize()
+    {
+        PathManager.setOutputFolder(resources_url);
+    }
+
+    /**
+     * Restores the output folder
+     *
+     */
+    @AfterAll
+    public static void end()
+    {
+        PathManager.setOutputFolder("./output/");
+    }
     /**
      * The path to the resources for the analysis part. It uses the {@link PathManagerTest#resources_folder} and adds analysis/
      */
@@ -82,7 +105,7 @@ public class AnalyzerHandlerTest {
         assertDoesNotThrow(() -> AnalyzerHandler.analyze(resources_url+"testprinter.properties", articles, 76, true, null));
 
         //Test the returned output with a simple example
-        assertDoesNotThrow( () -> assertEquals("./output/output.txt", AnalyzerHandler.analyze(resources_url+"default.properties", articles, 76, true, null)));
+        assertDoesNotThrow( () -> assertEquals(resources_url+"output.txt", AnalyzerHandler.analyze(resources_url+"default.properties", articles, 76, true, null)));
         assertDoesNotThrow( () -> {
             String output = PathManagerTest.readFile(AnalyzerHandler.analyze(resources_url+"default.properties", articles, 6, true, null));
             assertEquals("energy 5 global 5 good 5 industry 5 nuclear 5 plants 5 ", output);

@@ -6,7 +6,7 @@ Le istruzioni per creare e rendere disponibile il sito sono:
     mvn site:run
 
 Il sito sarà quindi disponibile al seguente indirizzo: [http://localhost:8080/](http://localhost:8080/)
-Esso contiene i javadocs e i reports dei test, oltre alla documentazione del progetto.
+Esso contiene anche i reports dei test, oltre alla documentazione del progetto.
 I suoi vari file saranno disponibili all'interno del folder `target/site`
 
-Per terminare l'esecuzione di site:run digitare da riga di comando CTRL+C (da dove si era avviato il sito).
+Per terminare l'esecuzione di site:run (una volta chiusa la pagina web) digitare due volte da riga di comando CTRL+C (da dove si era avviato il sito).

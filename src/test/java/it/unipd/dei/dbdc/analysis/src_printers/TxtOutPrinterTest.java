@@ -1,6 +1,10 @@
 package it.unipd.dei.dbdc.analysis.src_printers;
 
+import it.unipd.dei.dbdc.analysis.AnalyzerHandlerTest;
 import it.unipd.dei.dbdc.analysis.OrderedEntryStringInt;
+import it.unipd.dei.dbdc.tools.PathManager;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
@@ -15,6 +19,27 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 @Order(7)
 public class TxtOutPrinterTest {
+
+    /**
+     * Initializes by setting the output folder to the one that this class will access
+     *
+     */
+    @BeforeAll
+    public static void initialize()
+    {
+        PathManager.setOutputFolder(AnalyzerHandlerTest.resources_url);
+    }
+
+    /**
+     * Restores the output folder
+     *
+     */
+    @AfterAll
+    public static void end()
+    {
+        PathManager.setOutputFolder("./output/");
+    }
+
 
     /**
      * Tests of {@link TxtOutPrinter#outFile(List)}.
@@ -32,7 +57,7 @@ public class TxtOutPrinterTest {
         assertThrows(IllegalArgumentException.class, ()-> printer.outFile(list));
 
         list.add(new OrderedEntryStringInt("a", 2));
-        assertDoesNotThrow( () -> assertEquals("./output/output.txt", printer.outFile(list)));
+        assertDoesNotThrow( () -> assertEquals(AnalyzerHandlerTest.resources_url+"output.txt", printer.outFile(list)));
 
         //Check the files produced
         assertDoesNotThrow( () ->
