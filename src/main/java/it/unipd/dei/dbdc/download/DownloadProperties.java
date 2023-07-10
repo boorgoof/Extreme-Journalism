@@ -41,11 +41,11 @@ public class DownloadProperties {
      * specified in the properties file.
      *
      * @param out_properties The name of the properties file specified by the user. If null, the default properties file will be used.
-     * @return An {@link HashMap} of {@link APIManager} and their names specified in the properties file.
+     * @return An {@link Map} of {@link APIManager} and their names specified in the properties file.
      * @throws IOException If the user's specified properties file is invalid, or if the default properties are invalid or missing.
      * @see PropertiesTools
      */
-    public static HashMap<String, APIManager> readProperties(String out_properties) throws IOException {
+    public static Map<String, APIManager> readProperties(String out_properties) throws IOException {
 
         Properties downProps = PropertiesTools.getProperties(default_properties, out_properties);
 

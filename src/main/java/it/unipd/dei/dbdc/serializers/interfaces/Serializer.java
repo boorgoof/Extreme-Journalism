@@ -1,8 +1,5 @@
 package it.unipd.dei.dbdc.serializers.interfaces;
 
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import it.unipd.dei.dbdc.analysis.interfaces.UnitOfSearch;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
