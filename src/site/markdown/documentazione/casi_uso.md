@@ -96,8 +96,8 @@ contemporaneamente
 Si noti che la chiave "id" non è presente in response3. Segue che all'interno di questo codice JSON, il programma individuerà solamente due articoli.
 In particolare verranno costruiti due oggetti Article con il seguente stato: 
   ```
-   id = "ID 1", url = "URL 1", title = "Titolo 1", body = "Corpo 1", date = "Data 1", sourceSet = "sourceSet 1", source = "source 1";
-   id = "ID 2", url = "URL 2", title = "Titolo 2", body = "Corpo 2", date = "Data 2", sourceSet = "sourceSet 2", source = "source 2";
+   Articolo 1: (id = "ID 1", url = "URL 1", title = "Titolo 1", body = "Corpo 1", date = "Data 1", sourceSet = "sourceSet 1", source = "source 1")
+   Articolo 2: (id = "ID 2", url = "URL 2", title = "Titolo 2", body = "Corpo 2", date = "Data 2", sourceSet = "sourceSet 2", source = "source 2")
   ```
 ## File CSV
  La deserializzazione CSV richiede che sia presente una intestazione (header) che definisce il contenuto di ciascuna colonna 
@@ -116,9 +116,9 @@ In particolare verranno costruiti due oggetti Article con il seguente stato:
   Segue che verranno deserializzati 3 articoli (sono presenti 3 righe) che avranno il campo "date" inizializzato a null. Gli articoli avranno quindi il seguente stato:
   
 ```
-   id = "ID 1", url = "URL 1", title = "Titolo 1", body = "Corpo 1", date = null, sourceSet = "sourceSet 1", source = "Source 1";
-   id = "ID 2", url = "URL 2", title = "Titolo 2", body = "Corpo 2", date = null, sourceSet = "sourceSet 2", source = "Source 2";
-   id = "ID 3", url = "URL 3", title = "Titolo 3", body = "Corpo 3", date = null, sourceSet = "sourceSet 3", source = "Source 3";
+   Articolo 1: (id = "ID 1", url = "URL 1", title = "Titolo 1", body = "Corpo 1", date = null, sourceSet = "sourceSet 1", source = "Source 1")
+   Articolo 2: (id = "ID 2", url = "URL 2", title = "Titolo 2", body = "Corpo 2", date = null, sourceSet = "sourceSet 2", source = "Source 2")
+   Articolo 3: (id = "ID 3", url = "URL 3", title = "Titolo 3", body = "Corpo 3", date = null, sourceSet = "sourceSet 3", source = "Source 3")
 ```
 
   2) Esempio
@@ -132,9 +132,9 @@ In particolare verranno costruiti due oggetti Article con il seguente stato:
   con una stringa vuota. In questo esempio si ottengono oggetti con il seguente stato:
 
 ```
-  id = "ID 1", url = "URL 1", title = "", body = "Corpo 1", date = null, sourceSet = "sourceSet 1", source = "Source 1";
-  id = "ID 2", url = "URL 2", title = "Titolo 2", body = "", date = null, sourceSet = "sourceSet 2", source = "Source 2";
-  id = "ID 3", url = "URL 3", title = "Titolo 3", body = "Corpo 3", date = null, sourceSet = "", source = "Source 3";
+  Articolo 1: (id = "ID 1", url = "URL 1", title = "", body = "Corpo 1", date = null, sourceSet = "sourceSet 1", source = "Source 1")
+  Articolo 2: (id = "ID 2", url = "URL 2", title = "Titolo 2", body = "", date = null, sourceSet = "sourceSet 2", source = "Source 2")
+  Articolo 3: (id = "ID 3", url = "URL 3", title = "Titolo 3", body = "Corpo 3", date = null, sourceSet = "", source = "Source 3")
 ```
   Caratteristiche header :
   - Non può contenere caratteri differenti da lettere, numeri o spazi bianchi.
