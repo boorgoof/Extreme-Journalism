@@ -24,7 +24,7 @@ public class PathManager {
      * should put the files he wants to serialize and analyse.
      *
      */
-    private static final String database_folder = "./database/";
+    private static String database_folder = "./database/";
     /**
      * The folder where the output files will be put.
      *
@@ -174,5 +174,15 @@ public class PathManager {
     public static void setOutputFolder(String s)
     {
         output_folder = s;
+    }
+
+    /**
+     * Function that sets the database folder as the string passed by parameter.
+     *
+     * @param s The name of the folder to set the database folder to
+     */
+    public static void setDatabaseFolder(String s)
+    {
+        database_folder = s;
     }
 }

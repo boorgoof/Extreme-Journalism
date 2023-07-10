@@ -20,23 +20,25 @@ public class AppTest
 {
 
     /**
-     * Initializes by setting the output folder to the one that this class will access
+     * Initializes by setting the output and database folders to the ones that this class will access
      *
      */
     @BeforeAll
     public static void initialize()
     {
         PathManager.setOutputFolder(folder+"output/");
+        PathManager.setDatabaseFolder(folder+"database/");
     }
 
     /**
-     * Restores the output folder
+     * Restores the output and database folders
      *
      */
     @AfterAll
     public static void end()
     {
         PathManager.setOutputFolder("./output/");
+        PathManager.setDatabaseFolder("./database/");
     }
 
     /**

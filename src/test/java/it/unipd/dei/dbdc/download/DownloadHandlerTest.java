@@ -1,6 +1,7 @@
 package it.unipd.dei.dbdc.download;
 
 import it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI.GuardianAPIManagerTest;
+import it.unipd.dei.dbdc.tools.PathManager;
 import it.unipd.dei.dbdc.tools.PathManagerTest;
 import org.junit.jupiter.api.*;
 
@@ -31,6 +32,26 @@ public class DownloadHandlerTest {
     private void provideInput(String data) {
         ByteArrayInputStream testIn = new ByteArrayInputStream(data.getBytes());
         System.setIn(testIn);
+    }
+
+    /**
+     * Initializes by setting the database folder to the one that this class will access
+     *
+     */
+    @BeforeAll
+    public static void initialize()
+    {
+        PathManager.setDatabaseFolder(resources_url+"database/");
+    }
+
+    /**
+     * Restores the database folder
+     *
+     */
+    @AfterAll
+    public static void end()
+    {
+        PathManager.setDatabaseFolder("./database/");
     }
 
     /**
@@ -65,52 +86,52 @@ public class DownloadHandlerTest {
         //Tests with valid download.properties
         assertDoesNotThrow( () ->
         {
-            assertEquals("./database/TheGuardianAPI", DownloadHandler.download(resources_url+"trueDownload.properties", resources_url+"trueApi.properties"));
-            assertEquals("./database/Test", DownloadHandler.download(null, resources_url+"trueApiTest.properties"));
+            assertEquals(resources_url+"database/TheGuardianAPI", DownloadHandler.download(resources_url+"trueDownload.properties", resources_url+"trueApi.properties"));
+            assertEquals(resources_url+"database/Test", DownloadHandler.download(null, resources_url+"trueApiTest.properties"));
         });
 
         //Tests with invalid api.properties, but valid things specified by the user
         assertDoesNotThrow( () ->
         {
             provideInput("TheGuardianAPI\nq kingdom\nfrom-date 2003-12-23\nto-date 2002-12-23\npages 1\npage-size 120\napi-key "+ GuardianAPIManagerTest.key+"\nquit");
-            assertEquals("./database/TheGuardianAPI", DownloadHandler.download(null, null));
+            assertEquals(resources_url+"database/TheGuardianAPI", DownloadHandler.download(null, null));
 
             provideInput("Test\nq kingdom\nfrom-date 2003-12-23\nto-date 2002-12-23\npages 1\npage-size 120\napi-key "+ GuardianAPIManagerTest.key+"\nquit");
-            assertEquals("./database/Test", DownloadHandler.download(null, resources_url+"falseApi.properties"));
+            assertEquals(resources_url+"database/Test", DownloadHandler.download(null, resources_url+"falseApi.properties"));
 
             provideInput("Test\nq kingdom\nfrom-date 2003-12-23\nto-date 2002-12-23\npages 1\npage-size 120\napi-key "+ GuardianAPIManagerTest.key+"\nquit");
-            assertEquals("./database/Test", DownloadHandler.download(null, resources_url+"falseApi.properties"));
+            assertEquals(resources_url+"database/Test", DownloadHandler.download(null, resources_url+"falseApi.properties"));
 
             provideInput("Test\nq kingdom\nfrom-date 2003-12-23\nto-date 2002-12-23\npages 1\npage-size 120\napi-key "+ GuardianAPIManagerTest.key+"\nquit");
-            assertEquals("./database/Test", DownloadHandler.download(null, resources_url+"falseApi2.properties"));
+            assertEquals(resources_url+"database/Test", DownloadHandler.download(null, resources_url+"falseApi2.properties"));
 
             provideInput("Test\nq kingdom\nfrom-date 2003-12-23\nto-date 2002-12-23\npages 1\npage-size 120\napi-key "+ GuardianAPIManagerTest.key+"\nquit");
-            assertEquals("./database/Test", DownloadHandler.download(null, resources_url+"falseApi3.properties"));
+            assertEquals(resources_url+"database/Test", DownloadHandler.download(null, resources_url+"falseApi3.properties"));
 
             provideInput("Test\nq kingdom\nfrom-date 2003-12-23\nto-date 2002-12-23\npages 1\npage-size 120\napi-key "+ GuardianAPIManagerTest.key+"\nquit");
-            assertEquals("./database/Test", DownloadHandler.download(null, resources_url+"notexistent.properties"));
+            assertEquals(resources_url+"database/Test", DownloadHandler.download(null, resources_url+"notexistent.properties"));
 
             //Tests with different inputs
             provideInput("Test\nTheGuardianAPI\nq kingdom\napi-key "+ GuardianAPIManagerTest.key+"\nquit");
-            assertEquals("./database/Test", DownloadHandler.download(null, null));
+            assertEquals(resources_url+"database/Test", DownloadHandler.download(null, null));
 
             provideInput("api-key "+ GuardianAPIManagerTest.key+"\nquit\nTheGuardianAPI\napi-key "+ GuardianAPIManagerTest.key+"\nquit");
-            assertEquals("./database/TheGuardianAPI", DownloadHandler.download(null, null));
+            assertEquals(resources_url+"database/TheGuardianAPI", DownloadHandler.download(null, null));
 
             provideInput("TheGuardianAPI\napi-key "+ GuardianAPIManagerTest.key+"\npages 3\npage-size 120\nquit");
-            assertEquals("./database/TheGuardianAPI", DownloadHandler.download(null, null));
+            assertEquals(resources_url+"database/TheGuardianAPI", DownloadHandler.download(null, null));
 
             provideInput("TheGuardianAP\napi-key "+ GuardianAPIManagerTest.key+"\nquit\nTest\napi-key "+GuardianAPIManagerTest.key+"\nquit");
-            assertEquals("./database/Test", DownloadHandler.download(null, null));
+            assertEquals(resources_url+"database/Test", DownloadHandler.download(null, null));
 
             provideInput("TheGuardianAPI\napi-key "+ GuardianAPIManagerTest.key+"\npages 2\nq \"solar energy\"\nquit");
-            assertEquals("./database/TheGuardianAPI", DownloadHandler.download(null, null));
+            assertEquals(resources_url+"database/TheGuardianAPI", DownloadHandler.download(null, null));
 
             provideInput("Test\napi-key "+GuardianAPIManagerTest.key+"\nfrom-date 1200-12-23\nquit");
-            assertEquals("./database/Test", DownloadHandler.download(null, null));
+            assertEquals(resources_url+"database/Test", DownloadHandler.download(null, null));
 
             provideInput("Test\napi-key "+GuardianAPIManagerTest.key+"\nfrom-date 1200.12-23\nquit\nTheGuardianAPI\napi-key "+ GuardianAPIManagerTest.key+"\nquit\n");
-            assertEquals("./database/TheGuardianAPI", DownloadHandler.download(null, null));
+            assertEquals(resources_url+"database/TheGuardianAPI", DownloadHandler.download(null, null));
         });
     }
 

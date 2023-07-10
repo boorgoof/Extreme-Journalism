@@ -1,3 +1,4 @@
 # TODO
 * finisci sito
-* usare setdatabase folder per evitare che i file downloadati dai test vadano in database
+* UML: cambia con nuove funzioni di PathManager/App e fai quello di processo?
+* UML: fai freccette con il tratteggio per interfacce?
