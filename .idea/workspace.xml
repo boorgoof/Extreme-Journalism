@@ -5,13 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Javadoc funzionano">
-      <change afterPath="$PROJECT_DIR$/src/site/resources/images/Use_cases_uml2.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/site/markdown/documentazione/casi_uso.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/markdown/documentazione/casi_uso.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/site/markdown/documentazione/design_model.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/markdown/documentazione/design_model.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/site/markdown/documentazione/domain_model.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/markdown/documentazione/domain_model.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/site/resources/images/Domain.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/resources/images/Domain.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/site/resources/images/Use_cases_uml.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/resources/images/Use_cases_uml.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/site/site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/site.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
