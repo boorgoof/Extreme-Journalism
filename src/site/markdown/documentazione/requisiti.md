@@ -60,7 +60,11 @@ Per avere delle informazioni su come questo sia stato implementato: [implementaz
 
 ## Evoluzione del sistema
 Il sistema deve poter supportare:
+
 - nuove sorgenti (cioè che sia possibile aggiungere una nuova sorgente senza la necessità di apportare un numero elevato di modifiche).
+
 - nuove strutture per memorizzare ed avere accesso ai termini più importanti.
+
 - nuove modalità di memorizzazione ed accesso agli articoli.
+
 Per ulteriori informazioni su come ciò sia stato implementato: [Flessibilità](../implementazione/flessibilita.html)

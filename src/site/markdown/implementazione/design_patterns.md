@@ -27,12 +27,12 @@ Elenco dei design pattern utilizzati, e di dove questi sono stati adoperati, olt
   in una classe separata con un’interfaccia comune
 * Utilizzo: questo pattern è utilizzato nella parte di analisi, e precisamente per `Analyzer` e `OutPrinter`,
   con l'intento di aumentare la [flessibilità](flessibilita.html) nei confronti di future modifiche:
-  * `OutPrinter`: la logica attuale del programma impone che vengano stampati i
+    * `OutPrinter`: la logica attuale del programma impone che vengano stampati i
     50 termini più importanti su un file output.txt, come definito in `TxtOutPrinter`, ma in futuro potrebbero cambiare i
     requisiti e potrebbe essere necessaria la stampa su un altro tipo di file, o su altre strutture.
     In quel caso, le uniche cose da cambiare sarebbero l'implementazione di una nuova classe che implementi `OutPrinter`
     e il cambiamento del file di properties.
-  * `Analyzer`: attualmente la classe `MapSplitAnalyzer` estrae i tot termini più importanti e li pone in una lista
+    * `Analyzer`: attualmente la classe `MapSplitAnalyzer` estrae i tot termini più importanti e li pone in una lista
     da ritornare all'handler, ma questa logica potrebbe cambiare (si potrebbero voler estrarre i tot termini
     meno importanti), quindi come prima sarebbe molto semplice aggiungere una nuova classe e cambiare il file di properties.
 
@@ -47,10 +47,10 @@ Elenco dei design pattern utilizzati, e di dove questi sono stati adoperati, olt
 * Utilizzo: questo pattern è stato utilizzato per l'implementazione di varie interfacce
   con l'intento di aumentare la [flessibilità](flessibilita.html) nei confronti di future modifiche.
   Più precisamente, esso può essere ritrovato in:
-  * `APICaller` e la sua implementazione `KongAPICaller`: questo è un adapter tra gli `APIManager` e le
+    * `APICaller` e la sua implementazione `KongAPICaller`: questo è un adapter tra gli `APIManager` e le
     librerie che vanno effettivamente a fare le chiamate alle API: i primi dovranno solo utilizzare la funzione
     `sendRequest()`, passando i vari parametri ma senza preoccuparsi di come le diverse librerie vadano ad implementare quella funzione.
-  * `APIManager` e la sua implementazione `GuardianAPIManager`: questo è un adapter tra `APIContainer`, e in generale
+    * `APIManager` e la sua implementazione `GuardianAPIManager`: questo è un adapter tra `APIContainer`, e in generale
     l'utente che vuole selezionare una API in modo standard, e la logica che sta dietro al controllo dei parametri e alla 
     creazione delle chiamate da parte dell'`APIManager`.
 

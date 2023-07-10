@@ -77,10 +77,10 @@ Per portarsi all'interno della directory `target`. Da qui digitare:
     java -jar Extreme_journalism-1.0-jar-with-dependencies.jar -d -path [value]
 
 
-* Per fare l'analisi degli articoli del file serializzato con un certo path
+* Per fare l'analisi degli articoli del file serializzato
 
 
-    java -jar Extreme_journalism-1.0-jar-with-dependencies.jar -a -path [path]
+    java -jar Extreme_journalism-1.0-jar-with-dependencies.jar -a
 
 
 * Per fare il download dall'API specificata (chiesta interattivamente all'utente), la serializzazione a formato comune e l'analisi degli articoli
@@ -92,7 +92,7 @@ Per portarsi all'interno della directory `target`. Da qui digitare:
 * Per fare la serializzazione a formato comune dei file nel folder il cui path è specificato in value e l'analisi degli articoli
 
 
-    java -jar Extreme_journalism-1.0-jar-with-dependencies.jar -da
+    java -jar Extreme_journalism-1.0-jar-with-dependencies.jar -da -path [value]
 
 
 Alcune delle caratteristiche del programma sono modificabili andando a modificare i seguenti file, presenti in `src/main/resources`:

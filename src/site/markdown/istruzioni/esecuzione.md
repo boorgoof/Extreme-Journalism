@@ -1,52 +1,59 @@
 # Esecuzione del progetto
 Per eseguire il jar con le dipendenze, da riga di comando digitare:
-
+```
     cd target
-
+```
 
 Per portarsi all'interno della directory `target`. Da qui digitare:
-* Per avere informazioni su quali argomenti possono essere passati da riga di comando
 
+- Per avere informazioni su quali argomenti possono essere passati da riga di comando
 
+```
     java -jar Extreme_journalism-1.0-jar-with-dependencies.jar -h
+```
 
+- Per fare il download dall'API specificata (chiesta interattivamente all'utente) e la serializzazione a formato comune
 
-* Per fare il download dall'API specificata (chiesta interattivamente all'utente) e la serializzazione a formato comune
-
-
+```
     java -jar Extreme_journalism-1.0-jar-with-dependencies.jar -d
+```
 
+- Per fare la serializzazione a formato comune dei file nel folder il cui path è specificato in value
 
-* Per fare la serializzazione a formato comune dei file nel folder il cui path è specificato in value
-
-
+```
     java -jar Extreme_journalism-1.0-jar-with-dependencies.jar -d -path [value]
+```
 
+- Per fare l'analisi degli articoli del file serializzato
 
-* Per fare l'analisi degli articoli del file serializzato con un certo path
+```
+    java -jar Extreme_journalism-1.0-jar-with-dependencies.jar -a
+```
 
+- Per fare il download dall'API specificata (chiesta interattivamente all'utente), la serializzazione a formato comune e l'analisi degli articoli
 
-    java -jar Extreme_journalism-1.0-jar-with-dependencies.jar -a -path [path]
-
-
-* Per fare il download dall'API specificata (chiesta interattivamente all'utente), la serializzazione a formato comune e l'analisi degli articoli
-
-
+```
     java -jar Extreme_journalism-1.0-jar-with-dependencies.jar -da
+```
 
+- Per fare la serializzazione a formato comune dei file nel folder il cui path è specificato in value e l'analisi degli articoli
 
-* Per fare la serializzazione a formato comune dei file nel folder il cui path è specificato in value e l'analisi degli articoli
-
-
-    java -jar Extreme_journalism-1.0-jar-with-dependencies.jar -da
-
+```
+    java -jar Extreme_journalism-1.0-jar-with-dependencies.jar -da -path [value]
+```
 
 Alcune delle caratteristiche del programma sono modificabili andando a modificare i seguenti file, presenti in `src/main/resources`:
+
 - `download.properties` contiene la libreria con cui effettuare le chiamate alle API e i vari APIManager che gestiscono la logica di queste chiamate e dei loro parametri.
+
 - `serializers.properties` contiene i serializzatori per i vari formati (attualmente solo XML, il formato comune adottato)
+
 - `deserializers.properties` contiene i deserializzatori per i vari formati
+
 - `analyze.properties` contiene la strategia con cui analizzare i vari articoli e quella con cui stamparli in un file di output (quest'ultima strategia è quella che decide il formato di output)
+
 - `general.properties` contiene il numero di termini da estrarre (se non è specificato un altro valore da riga di comando, che prevale), e il formato comune in cui vengono salvati i file prima di farne l'analisi
+
 - `english_stoplist.txt` contiene i termini da ignorare durante l'analisi degli articoli. Questa opzione può essere disabilitata da riga di comando.
 
 Per andare a immettere un file di API properties, in modo da non avere le richieste interattive per l'API,
@@ -102,11 +109,17 @@ Per eseguire il programma in maniera personalizzata sono disponibili varie opzio
 Nella directory `cmd` sono presenti degli script per eseguire il jar con le dipendenze una volta installata l'applicazione.
 Sono presenti script sia per Windows (.bat) che per Unix, cioè Linux e MacOS (.sh). 
 Ce ne sono quattro: 
-* Uno per capire quali parametri possono essere specificati (`help.sh` o `help.bat`);
-* Uno per fare il download dall'API specificata e la serializzazione a formato comune (`downloadAPI.sh` o `downloadAPI.bat`).
+
+- Uno per capire quali parametri possono essere specificati (`help.sh` o `help.bat`);
+
+- Uno per fare il download dall'API specificata e la serializzazione a formato comune (`downloadAPI.sh` o `downloadAPI.bat`).
   Questo usa il file di properties presente nella directory `out_properties` per selezionare l'API e passarvi i parametri; 
-* Uno per fare il download di tutti i file presenti in `target/database` e la serializzazione a formato comune (`downloadPath.sh` o `downloadPath.bat`).
-* Uno per fare l'analisi degli articoli del file serializzato: funziona solo se prima è stato fatto un download, ovvero se è presente un file `serialized.xml` in `target/output` (`analysis.sh` o `analysis.bat`);
-* Uno per fare il download dall'API specificata, serializzare a formato comune e fare l'analisi degli articoli scaricati (`daAPI.sh` o `daAPI.bat`).
+
+- Uno per fare il download di tutti i file presenti in `target/database` e la serializzazione a formato comune (`downloadPath.sh` o `downloadPath.bat`).
+
+- Uno per fare l'analisi degli articoli del file serializzato: funziona solo se prima è stato fatto un download, ovvero se è presente un file `serialized.xml` in `target/output` (`analysis.sh` o `analysis.bat`);
+
+- Uno per fare il download dall'API specificata, serializzare a formato comune e fare l'analisi degli articoli scaricati (`daAPI.sh` o `daAPI.bat`).
   Questo usa il file di properties presente nella directory `out_properties` per selezionare l'API e passarvi i parametri;
-* Uno per fare il download di tutti i file presenti in `target/database`, serializzare a formato comune e fare l'analisi degli articoli scaricati (`daPath.sh` o `daPath.bat`).
+
+- Uno per fare il download di tutti i file presenti in `target/database`, serializzare a formato comune e fare l'analisi degli articoli scaricati (`daPath.sh` o `daPath.bat`).

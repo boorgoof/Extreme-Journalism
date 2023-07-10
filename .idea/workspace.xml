@@ -4,8 +4,89 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="top">
+    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="end">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/What_to_do.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/site/markdown/documentazione/casi_uso.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/markdown/documentazione/casi_uso.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/site/markdown/documentazione/desing_class_diagrams.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/markdown/documentazione/design_class_diagrams.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/site/markdown/documentazione/requisiti.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/markdown/documentazione/requisiti.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/site/markdown/implementazione/design_patterns.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/markdown/implementazione/design_patterns.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/site/markdown/implementazione/flessibilita.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/markdown/implementazione/flessibilita.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/site/markdown/implementazione/librerie.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/markdown/implementazione/librerie.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/site/markdown/implementazione/test.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/markdown/implementazione/test.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/site/markdown/istruzioni/esecuzione.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/markdown/istruzioni/esecuzione.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/site/resources/images/Download.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/resources/images/Download.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/site/site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/site.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/download/src_api_managers/TheGuardianAPI/GuardianAPIManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/database/TheGuardianAPI/request1.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/database/TheGuardianAPI/request1.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/database/TheGuardianAPI/request3.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/database/TheGuardianAPI/request3.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/database/TheGuardianAPI/request5.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/database/TheGuardianAPI/request5.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/true10.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true10.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/true12.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true12.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/true16.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true16.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/kong/true8.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/kong/true8.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request1.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request1.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request10.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request10.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request11.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request11.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request12.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request12.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request13.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request13.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request14.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request14.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request15.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request15.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request16.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request16.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request17.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request17.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request18.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request18.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request19.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request19.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request2.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request20.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request20.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request21.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request21.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request22.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request22.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request23.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request23.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request24.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request24.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request25.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request25.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request26.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request26.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request27.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request27.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request28.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request28.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request29.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request29.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request3.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request3.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request30.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request30.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request31.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request31.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request32.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request32.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request33.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request33.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request34.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request34.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request35.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request35.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request36.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request36.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request37.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request37.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request38.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request38.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request39.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request39.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request4.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request4.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request40.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request40.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request41.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request41.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request42.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request42.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request43.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request43.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request44.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request44.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request45.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request45.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request46.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request46.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request47.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request47.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request48.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request48.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request49.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request49.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request5.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request5.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request50.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request50.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request6.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request6.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request7.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request7.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request8.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request8.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request9.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/manager/stressed/request9.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/trueApi.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/trueApi.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/download/trueApiTest.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/download/trueApiTest.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/system_tests/api.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/system_tests/api.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/system_tests/database/TheGuardianAPI/request1.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/system_tests/database/TheGuardianAPI/request1.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/system_tests/database/TheGuardianAPI/request2.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/system_tests/database/TheGuardianAPI/request2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/system_tests/database/TheGuardianAPI/request3.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/system_tests/database/TheGuardianAPI/request3.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/system_tests/database/TheGuardianAPI/request4.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/system_tests/database/TheGuardianAPI/request4.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/system_tests/database/TheGuardianAPI/request5.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/system_tests/database/TheGuardianAPI/request5.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/system_tests/output/output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/system_tests/output/output.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/system_tests/output/serialized.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/system_tests/output/serialized.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -443,7 +524,15 @@
       <option name="project" value="LOCAL" />
       <updated>1689028827925</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="end">
+      <option name="closed" value="true" />
+      <created>1689029126715</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1689029126715</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -471,7 +560,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Messo qualche test" />
     <MESSAGE value="Commentato" />
     <MESSAGE value="Parallelism" />
     <MESSAGE value="SplitAnalyzer" />
@@ -496,7 +584,8 @@
     <MESSAGE value="merge" />
     <MESSAGE value="Javadoc funzionano" />
     <MESSAGE value="top" />
-    <option name="LAST_COMMIT_MESSAGE" value="top" />
+    <MESSAGE value="end" />
+    <option name="LAST_COMMIT_MESSAGE" value="end" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

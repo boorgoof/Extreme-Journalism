@@ -33,8 +33,8 @@
             <item name="Requisiti" href="documentazione/requisiti.html"/>
             <item name="Use Cases" href="documentazione/casi_uso.html"/>
             <item name="Domain Model" href="documentazione/domain_model.html"/>
-            <item name="Design Model" href="documentazione/design_seq_model.html"/>
-            <item name="Design Class Diagrams" href="documentazione/desing_class_diagrams.html"/>
+            <item name="Sequence Diagrams" href="documentazione/design_seq_model.html"/>
+            <item name="Class Diagrams" href="documentazione/design_class_diagrams.html"/>
         </menu>
 
         <!-- This is replaced by a menu with links to all the reports that are configure -->

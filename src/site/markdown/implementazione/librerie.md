@@ -59,9 +59,9 @@ sia focalizzata su JSON, Jackson include moduli aggiuntivi che consentono di lav
   Questa classe fornisce metodi per la conversione di oggetti Java in una rappresentazione XML e viceversa. 
   Offre funzionalità di associazione dati per mappare gli attributi e gli elementi XML agli attributi degli oggetti Java. 
   XmlMapper supporta diverse opzioni di configurazione e formattazione per l'output XML. 
-  - Per quanto riguarda la deserializzazione sono state seguite le informazioni presenti nella documentazione di [**Jackson Databind**](https://github.com/FasterXML/jackson-databind)
-  - Per quanto riguarda la Serializzazione, l'oggetto XmlMapper è stato usato in combinazione con 
-   [**SerializationFeaturer**](https://fasterxml.github.io/jackson-databind/javadoc/2.13/com/fasterxml/jackson/databind/SerializationFeature.html) 
+    - Per quanto riguarda la deserializzazione sono state seguite le informazioni presenti nella documentazione di [**Jackson Databind**](https://github.com/FasterXML/jackson-databind)
+    - Per quanto riguarda la Serializzazione, l'oggetto XmlMapper è stato usato in combinazione con 
+    [**SerializationFeaturer**](https://fasterxml.github.io/jackson-databind/javadoc/2.13/com/fasterxml/jackson/databind/SerializationFeature.html) 
     che consente di abilitare o disabilitare diverse funzionalità di serializzazione, come l'indentazione dell'output XML
 
 
@@ -71,8 +71,11 @@ sia focalizzata su JSON, Jackson include moduli aggiuntivi che consentono di lav
 Questa libreria è utilizzata per fare il parsing dei comandi impartiti dall'utente da riga di comando
 all'esecuzione del programma, e anche per stampare a video gli errori dovuti a questa cosa e le varie opzioni possibili.
 L'utilizzo di questa libreria, interamente riportato all'interno di `CommandLineInterpreter`, consiste di 3 fasi:
+
 1. Definizione di alcune opzioni che l'utente potrà fornire da riga di comando, elencate in [esecuzione](../istruzioni/esecuzione.html).
+
 2. Parsing delle opzioni fornite dall'utente (in questo caso mediante un parser di default):
    in maniera intelligente in mancanza di almeno una delle opzioni definite necessarie, viene lanciata un'eccezione
+
 3. Interrogazione dell'oggetto fornito dal parsing per ottenere i valori specificati con ogni opzione, o la
    presenza o meno di una certa opzione.
