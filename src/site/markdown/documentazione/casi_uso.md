@@ -23,7 +23,7 @@ gestiti i problemi risultanti
 contemporaneamente
 ∙ descrizione dello stato del sistema al termine dello scenario
 
-## Casi d'uso
+# CASI D'USO
 - Un utente vuole fare solo il download: viene svuotato il database, seleziona che vuole
   estrarre dal TheGuardian, inserisce la sua API key, inserisce un insieme di parole
   chiave tra cui cercare, aspetta il download di 1000 articoli e la loro trasformazione
@@ -37,7 +37,15 @@ contemporaneamente
   in un formato comune, chiede di estrarre i 50 termini con piu' peso
   e di salvarli in un file .txt di cui specifica il nome.
 
-## FILE JSON  
+# USE CASE DIAGRAM
+<img src="../images/Use_cases_uml.jpg"/>
+
+# USE CASES TABLES
+<img src="../images/Use_cases_tables.jpg"/>
+
+# SPECIFICHE DELL'ANALISI DEI FILE 
+
+## File JSON  
 
   Il programma è in grado di gestire un file JSON con varie strutture: come oggetti JSON con chiavi e valori, array JSON con elementi multipli e oggetti annidati all'interno di array.
   L'interpretazione del file segue i seguenti vincoli:
@@ -94,10 +102,10 @@ contemporaneamente
 Si noti che la chiave "id" non è presente in response3. Segue che all'interno di questo codice JSON, il programma individuerà solamente due articoli.
 In particolare verranno costruiti due oggetti Article con il seguente stato: 
   ```
-   id = "ID 1", url = "URL 1", title = "Titolo 1", body = "Corpo 1", date = "Data 1", sourceSet = "sourceSet 1", source = "source 1";
-   id = "ID 2", url = "URL 2", title = "Titolo 2", body = "Corpo 2", date = "Data 2", sourceSet = "sourceSet 2", source = "source 2";
+   Articolo 1: (id = "ID 1", url = "URL 1", title = "Titolo 1", body = "Corpo 1", date = "Data 1", sourceSet = "sourceSet 1", source = "source 1")
+   Articolo 2: (id = "ID 2", url = "URL 2", title = "Titolo 2", body = "Corpo 2", date = "Data 2", sourceSet = "sourceSet 2", source = "source 2")
   ```
-## FILE CSV
+## File CSV
  La deserializzazione CSV richiede che sia presente una intestazione (header) che definisce il contenuto di ciascuna colonna 
  del file. Il programma terrà a considerazione le colonne che hanno una corrispondenza con il seguente header di default:
  {"Identifier", "URL", "Title", "Body", "Date", "Source Set", "Source"}
@@ -114,9 +122,9 @@ In particolare verranno costruiti due oggetti Article con il seguente stato:
   Segue che verranno deserializzati 3 articoli (sono presenti 3 righe) che avranno il campo "date" inizializzato a null. Gli articoli avranno quindi il seguente stato:
   
 ```
-   id = "ID 1", url = "URL 1", title = "Titolo 1", body = "Corpo 1", date = null, sourceSet = "sourceSet 1", source = "Source 1";
-   id = "ID 2", url = "URL 2", title = "Titolo 2", body = "Corpo 2", date = null, sourceSet = "sourceSet 2", source = "Source 2";
-   id = "ID 3", url = "URL 3", title = "Titolo 3", body = "Corpo 3", date = null, sourceSet = "sourceSet 3", source = "Source 3";
+   Articolo 1: (id = "ID 1", url = "URL 1", title = "Titolo 1", body = "Corpo 1", date = null, sourceSet = "sourceSet 1", source = "Source 1")
+   Articolo 2: (id = "ID 2", url = "URL 2", title = "Titolo 2", body = "Corpo 2", date = null, sourceSet = "sourceSet 2", source = "Source 2")
+   Articolo 3: (id = "ID 3", url = "URL 3", title = "Titolo 3", body = "Corpo 3", date = null, sourceSet = "sourceSet 3", source = "Source 3")
 ```
 
   2) Esempio
@@ -130,9 +138,9 @@ In particolare verranno costruiti due oggetti Article con il seguente stato:
   con una stringa vuota. In questo esempio si ottengono oggetti con il seguente stato:
 
 ```
-  id = "ID 1", url = "URL 1", title = "", body = "Corpo 1", date = null, sourceSet = "sourceSet 1", source = "Source 1";
-  id = "ID 2", url = "URL 2", title = "Titolo 2", body = "", date = null, sourceSet = "sourceSet 2", source = "Source 2";
-  id = "ID 3", url = "URL 3", title = "Titolo 3", body = "Corpo 3", date = null, sourceSet = "", source = "Source 3";
+  Articolo 1: (id = "ID 1", url = "URL 1", title = "", body = "Corpo 1", date = null, sourceSet = "sourceSet 1", source = "Source 1")
+  Articolo 2: (id = "ID 2", url = "URL 2", title = "Titolo 2", body = "", date = null, sourceSet = "sourceSet 2", source = "Source 2")
+  Articolo 3: (id = "ID 3", url = "URL 3", title = "Titolo 3", body = "Corpo 3", date = null, sourceSet = "", source = "Source 3")
 ```
   Caratteristiche header :
   - Non può contenere caratteri differenti da lettere, numeri o spazi bianchi.
@@ -142,7 +150,7 @@ In particolare verranno costruiti due oggetti Article con il seguente stato:
   
  Si ricorda che, se si deseridera, è possibile modificare l'header memorizzato di defualt per la deserializzazione ad inizo programma
 
-## FILE XML 
+## File XML 
 
   La deserializzazione di un file XML implementata nel programma non è flessibile come i precedenti casi. 
   
@@ -278,6 +286,3 @@ articolo 2 avrà stato: ("ID 2", "URL 2", "Title 2", "Body 2", "Date 2","sourceS
   (tale file rispetta sicuramente la stuttura elencata). Ovviamente se l'utente desidera può decidere di sottoporre i file XML che rispettano tali caratteristiche.
 
 
-Nel diagramma delle classi tutte le
-associazioni hanno un nome e cardinalità? Le classi hanno gli
-attributi necessari?

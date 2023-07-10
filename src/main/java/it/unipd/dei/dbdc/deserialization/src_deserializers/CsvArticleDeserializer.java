@@ -191,7 +191,7 @@ public class CsvArticleDeserializer implements DeserializerWithFields {
             // Set to null all values that are not also present in CsvDeserializer#fields
             for (int i = 0; i < header.length; i++) {
                 if (!contains(fields, header[i])) {
-                    header[i] = "X";
+                    header[i] = "X"; // X is a random letter which means element not to be considered
                 }
 
             }

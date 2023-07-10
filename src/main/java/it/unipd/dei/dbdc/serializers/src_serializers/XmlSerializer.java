@@ -35,7 +35,7 @@ public class XmlSerializer implements Serializer {
     public void serialize(List<Serializable> objects, File xmlFile) throws IOException {
 
         if(objects == null){
-            throw new IllegalArgumentException("The list of UnitOfSearch cannot be null");
+            throw new IllegalArgumentException("The list of Serializable cannot be null");
         }
         if(xmlFile == null){
             throw new IllegalArgumentException("The xmlFile file cannot be null");
