@@ -77,6 +77,12 @@ alla parte di download da una API.
 
 ## DESERIALIZZAZIONE
 
+  La deserializzazione è stata sviluppata per essere il più possibile un concetto saparato dal programma. Si prefigge quindi il compito di deserializzare i
+  i file in modo generico in modo tale da favorire il riutilizzo del codice. Dunque si è scelto di ritornare una lista di oggetti
+  Serializible. Nello specifico, Serializable è  un' interfaccia Java che indica che gli oggetti di quella classe possono essere convertiti in una sequenza di byte 
+  (ossia, possono essere serializzati). Nel nostro caso verranno ritornati oggetti Serializable che sono istanze dell'interfaccia UnitOfSearch. La parte di analisi quindi, prima di svolgere 
+  i propri compiti, deve  verificare che gli oggetti forniti siano effettivamente delle istanze di UnitOfSearch e, in caso affermativo, eseguire un cast.
+
 - **DeserializationHandler:** La deserializzazione è gestita da un handler che nasconde al main la logica con cui vengono deserializzati tutti i 
   file contenuti in una cartella. La cartella in questione può essere specificata dall'utente oppure essere la cartella destinazione della fase di Download.
   L'handler si preoccuperà di selezionare tutti i file per cui si dispone di un Deserializer contenuto all'interno del
