@@ -4,84 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="domain">
+    <list default="true" id="1f0d29cc-12fe-43a5-9091-bbcd4e043c53" name="Changes" comment="Pulizia">
+      <change afterPath="$PROJECT_DIR$/src/site/markdown/documentazione/design_seq_model.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TODO.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/ALTERNATIVE_DI_COMPONENTI/PROVE_HTTPCLIENT_java11/HttpClientTester.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/ALTERNATIVE_DI_COMPONENTI/PROVE_MAPPE/MyMap.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/ALTERNATIVE_DI_COMPONENTI/PROVE_MAPPE/MyPriorityQueue.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/ALTERNATIVE_DI_COMPONENTI/PROVE_MAPPE/main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/ALTERNATIVE_DI_COMPONENTI/PROVE_UNIREST_java8/Kong.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/ALTERNATIVE_DI_COMPONENTI/PROVE_UNIREST_java8/Mashape.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/ALTERNATIVE_DI_COMPONENTI/PROVE_UNIREST_java8/Matarrese-github/App.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/ALTERNATIVE_DI_COMPONENTI/PROVE_UNIREST_java8/Matarrese-github/GuardianContentApi.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/ALTERNATIVE_DI_COMPONENTI/PROVE_UNIREST_java8/Matarrese-github/bean/Article.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/ALTERNATIVE_DI_COMPONENTI/PROVE_UNIREST_java8/Matarrese-github/bean/Response.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/ALTERNATIVE_DI_COMPONENTI/PROVE_UNIREST_java8/Matarrese-github/bean/ResponseWrapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/ALTERNATIVE_DI_COMPONENTI/PROVE_UNIREST_java8/OkHttp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/ALTERNATIVE_DI_COMPONENTI/PROVE_UNIREST_java8/RetrofitTry.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/ALTERNATIVE_DI_COMPONENTI/PROVE_UNIREST_java8/UrlHTTPConnectionTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/ALTERNATIVE_DI_COMPONENTI/PROVE_UNIREST_java8/Valutazione finale.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/ALTERNATIVE_DI_COMPONENTI/Parallelism.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/ALTERNATIVE_DI_COMPONENTI/Properties.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/Progettazione architetturale.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/Progettazione.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/Tutorial the guardian API.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UML/Schema progetto.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UML/Use cases.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UML/What_to_do.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/What_to_do.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UML/handler.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/DESERIALIZERS_INTERFACE/Article.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/DESERIALIZERS_INTERFACE/CsvDeserializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/DESERIALIZERS_INTERFACE/DeserializationHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/DESERIALIZERS_INTERFACE/Deserializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/DESERIALIZERS_INTERFACE/JsonDeserializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/DESERIALIZERS_INTERFACE/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/DESERIALIZERS_INTERFACE/XmlDeserializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/DeserializationHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/JsonSerializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/METODI_DESERIALIZZAZIONE_SERIALIZZAZIONE_PROVE/App1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/METODI_DESERIALIZZAZIONE_SERIALIZZAZIONE_PROVE/Article.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/METODI_DESERIALIZZAZIONE_SERIALIZZAZIONE_PROVE/csv0.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/METODI_DESERIALIZZAZIONE_SERIALIZZAZIONE_PROVE/csv1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/METODI_DESERIALIZZAZIONE_SERIALIZZAZIONE_PROVE/json0.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/METODI_DESERIALIZZAZIONE_SERIALIZZAZIONE_PROVE/json1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/METODI_DESERIALIZZAZIONE_SERIALIZZAZIONE_PROVE/json2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/METODI_DESERIALIZZAZIONE_SERIALIZZAZIONE_PROVE/json3.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/METODI_DESERIALIZZAZIONE_SERIALIZZAZIONE_PROVE/xml0.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/SERIALIZERS_INTERFACE/Article.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/SERIALIZERS_INTERFACE/CsvSerializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/SERIALIZERS_INTERFACE/JsonSerializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/SERIALIZERS_INTERFACE/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/SERIALIZERS_INTERFACE/SerializationHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/SERIALIZERS_INTERFACE/Serializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/SERIALIZERS_INTERFACE/XmlSerializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/SERIALIZERS_REFLECTION/Article.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/SERIALIZERS_REFLECTION/CsvSerializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/SERIALIZERS_REFLECTION/JsonSerializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/SERIALIZERS_REFLECTION/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/SERIALIZERS_REFLECTION/SerializationHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/SERIALIZERS_REFLECTION/XmlSerializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/deserialization/DeserializationHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/deserialization/DeserializationProperties.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/deserialization/DeserializersContainer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/deserialization/interfaces/DeserializerWithFields.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/deserialization/interfaces/testHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/deserialization/src_deserializers/CsvDeserializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/deserialization/src_deserializers/JsonDeserializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/deserialization/src_deserializers/XmlDeserializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/deserializationtest/DeserializationHandlerTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/deserializationtest/DeserializationPropertiesTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/deserializationtest/DeserializersContainerTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/deserializationtest/src_deserializers/CsvDeserializerTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/deserializationtest/src_deserializers/JsonDeserializerTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/deserializationtest/src_deserializers/XmlDeserializerTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/UTILITY_SONO_CLASSI_CHE_NON_SERVONO_PIU/prova.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/site/markdown/documentazione/design_model.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/markdown/documentazione/design_model.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/serialized.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/site/markdown/documentazione/casi_uso.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/markdown/documentazione/casi_uso.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/site/markdown/documentazione/design_model.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/site/markdown/documentazione/desing_class_diagrams.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/markdown/documentazione/desing_class_diagrams.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/site/markdown/documentazione/domain_model.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/markdown/documentazione/domain_model.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/site/markdown/implementazione/test.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/markdown/implementazione/test.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/site/markdown/documentazione/requisiti.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/markdown/documentazione/requisiti.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/site/markdown/implementazione/problemi.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/site/markdown/implementazione/spiegazione.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/markdown/implementazione/spiegazione.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/site/markdown/istruzioni/sito.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/markdown/istruzioni/sito.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/site/resources/images/Analysis.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/resources/images/Analysis.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/site/resources/images/Deserialization.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/resources/images/Deserialization.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/site/resources/images/Download.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/resources/images/Download.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/site/resources/images/General.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/resources/images/General.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/site/resources/images/Serialization.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/resources/images/Serialization.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/site/site.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/site/site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unipd/dei/dbdc/AppTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,11 +89,11 @@
       <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\src\test\java\it\unipd\dei\dbdc\analysis\src_analyzers" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\documentation" />
       <recent name="D:\ingengeria software\eis-final\src\test\resources\SerializationTest\properties" />
       <recent name="D:\ingengeria software\eis-final\src\test\resources\DeserializationTest\deserializersTest\jsonTest" />
       <recent name="D:\ingengeria software\eis-final\src\test\resources\DeserializationTest\deserializersTest" />
       <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\bash" />
-      <recent name="C:\Users\vison\OneDrive\Desktop\Programmi\JAVA\INGEGNERIA DEL SOFTWARE\Progetto\eis-final\src\test\resources" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -174,7 +116,20 @@
       <recent name="it.unipd.dei.dbdc.download" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.XmlSerializerTest.serialize">
+  <component name="RunManager" selected="Application.App">
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.App" />
+      <module name="Extreme_journalism" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.unipd.dei.dbdc.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MapSplitAnalyzerTest.mostPresent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Extreme_journalism" />
       <extension name="coverage">
@@ -202,22 +157,6 @@
       <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.serializers" />
       <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.serializers.SerializersContainerTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="XmlDeserializerTest.deserialize" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Extreme_journalism" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.unipd.dei.dbdc.deserialization.src_deserializers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.unipd.dei.dbdc.deserialization.src_deserializers" />
-      <option name="MAIN_CLASS_NAME" value="it.unipd.dei.dbdc.deserialization.src_deserializers.XmlDeserializerTest" />
-      <option name="METHOD_NAME" value="deserialize(java.util.List,java.lang.String)" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -268,11 +207,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.App" />
         <item itemvalue="JUnit.XmlSerializerTest.serialize" />
         <item itemvalue="JUnit.XmlSerializerTest" />
         <item itemvalue="JUnit.SerializersContainerTest" />
         <item itemvalue="JUnit.MapSplitAnalyzerTest.mostPresent" />
-        <item itemvalue="JUnit.XmlDeserializerTest.deserialize" />
       </list>
     </recent_temporary>
   </component>
@@ -503,7 +442,15 @@
       <option name="project" value="LOCAL" />
       <updated>1688824283503</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Pulizia">
+      <option name="closed" value="true" />
+      <created>1689022477732</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1689022477732</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -531,7 +478,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fixed something" />
     <MESSAGE value="Messo qualche test" />
     <MESSAGE value="Commentato" />
     <MESSAGE value="Parallelism" />
@@ -556,7 +502,8 @@
     <MESSAGE value="Messo a posto, spero per i test" />
     <MESSAGE value="merge" />
     <MESSAGE value="Javadoc funzionano" />
-    <option name="LAST_COMMIT_MESSAGE" value="Javadoc funzionano" />
+    <MESSAGE value="Pulizia" />
+    <option name="LAST_COMMIT_MESSAGE" value="Pulizia" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

@@ -142,6 +142,7 @@ Per eseguire il programma in maniera personalizzata sono disponibili varie opzio
 
 ## Generazione del sito
 Il sito viene generato con il Maven Site Plugin: il codice sorgente per la generazione del sito è nel folder `src/site`.
+Prima di creare il sito è consigliato installare il progetto. Infatti, la generazione del sito non comporta l'esecuzione dei vari test (volutamente, per non eseguirli due volte).
 Le istruzioni per creare e rendere disponibile il sito sono:
 
     mvn site
