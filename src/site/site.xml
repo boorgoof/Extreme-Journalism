@@ -23,7 +23,6 @@
         <menu name="Implementazione">
             <item name="Spiegazione" href="implementazione/spiegazione.html"/>
             <item name="Specifiche aggiuntive" href="implementazione/specifiche_aggiuntive.html"/>
-            <!-- TODO -->
             <item name="Problemi e trade-off" href="implementazione/problemi.html"/>
             <item name="Flessibilita'" href="implementazione/flessibilita.html"/>
             <item name="Design patterns" href="implementazione/design_patterns.html"/>

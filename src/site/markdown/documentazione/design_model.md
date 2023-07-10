@@ -1,4 +1,9 @@
 # Design Model
+L'architettura è del tipo pipe and filter:
+L’elaborazione dei dati del sistema è organizzata in modo che ciascun
+componente di elaborazione (filtro) sia discreto e svolga un particolare
+tipo di trasformazione dei dati. I dati fluiscono, come in un
+tubo (pipe), da un componente all’altro per essere elaborati.
 
 ## Sequence diagrams
 ### System sequence diagrams

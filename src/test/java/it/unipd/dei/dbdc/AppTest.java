@@ -14,29 +14,31 @@ import static org.junit.jupiter.api.Assertions.*;
  * It is the last test to be run, as specified in junit-platform.properties.
  * It uses functions to redirect the error output and normal output of the system.
  */
-@Order(8)
+@Order(14)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class AppTest
 {
 
     /**
-     * Initializes by setting the output folder to the one that this class will access
+     * Initializes by setting the output and database folders to the ones that this class will access
      *
      */
     @BeforeAll
     public static void initialize()
     {
         PathManager.setOutputFolder(folder+"output/");
+        PathManager.setDatabaseFolder(folder+"database/");
     }
 
     /**
-     * Restores the output folder
+     * Restores the output and database folders
      *
      */
     @AfterAll
     public static void end()
     {
         PathManager.setOutputFolder("./output/");
+        PathManager.setDatabaseFolder("./database/");
     }
 
     /**
