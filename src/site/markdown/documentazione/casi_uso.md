@@ -37,6 +37,12 @@ contemporaneamente
   in un formato comune, chiede di estrarre i 50 termini con piu' peso
   e di salvarli in un file .txt di cui specifica il nome.
 
+# USE CASE DIAGRAM
+<img src="../images/Use_cases_uml.jpg"/>
+
+# USE CASES TABLES
+<img src="../images/Use_cases_tables.jpg"/>
+
 # SPECIFICHE DELL'ANALISI DEI FILE 
 
 ## File JSON  

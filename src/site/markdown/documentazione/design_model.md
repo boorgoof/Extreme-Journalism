@@ -1,11 +1,6 @@
 # DESIGN 
 
-## Domain model
-
-<img src="../images/Domain.jpg"/>
-
 ## Design class model
-
 <img src="../images/General.jpg"/>
 
 ## Sequence diagrams
