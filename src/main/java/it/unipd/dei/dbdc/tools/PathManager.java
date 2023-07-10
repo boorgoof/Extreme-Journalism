@@ -29,7 +29,7 @@ public class PathManager {
      * The folder where the output files will be put.
      *
      */
-    private static final String output_folder = "./output/";
+    private static String output_folder = "./output/";
     /**
      * The name of the file which will contain the most important terms.
      *
@@ -164,5 +164,15 @@ public class PathManager {
             return fileName.substring(dotIndex + 1).toLowerCase();
         }
         return null;
+    }
+
+    /**
+     * Function that sets the output folder as the string passed by parameter.
+     *
+     * @param s The name of the folder to set the output folder to
+     */
+    public static void setOutputFolder(String s)
+    {
+        output_folder = s;
     }
 }

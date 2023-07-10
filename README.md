@@ -13,11 +13,13 @@ Repository del progetto finale di "Elementi di Ingegneria del Software".
   Sono presenti script sia per Windows (.bat) che per Unix, cioè Linux e MacOS (.sh).
   Ce ne sono quattro:
   * Uno per capire quali parametri possono essere specificati (`help.sh` o `help.bat`);
-  * Uno per fare il download dall'API specificata e la serializzazione a formato comune (`download.sh` o `download.bat`).
-    Questo usa il file di properties presente nella directory OUT_PROPERTIES per selezionare l'API e passarvi i parametri;
-  * Uno per fare l'analisi degli articoli del folder ny_times_v2 presente nella directory DATABASE (`analysis.sh` o `analysis.bat`);
-  * Uno per fare il download dall'API specificata, serializzare a formato comune e fare l'analisi degli articoli scaricati (`da.sh` o `da.bat`).
+  * Uno per fare il download dall'API specificata e la serializzazione a formato comune (`downloadAPI.sh` o `downloadAPI.bat`).
     Questo usa il file di properties presente nella directory `out_properties` per selezionare l'API e passarvi i parametri;
+  * Uno per fare il download di tutti i file presenti in `target/database` e la serializzazione a formato comune (`downloadPath.sh` o `downloadPath.bat`).
+  * Uno per fare l'analisi degli articoli del file serializzato: funziona solo se prima è stato fatto un download, ovvero se è presente un file `serialized.xml` in `target/output` (`analysis.sh` o `analysis.bat`);
+  * Uno per fare il download dall'API specificata, serializzare a formato comune e fare l'analisi degli articoli scaricati (`daAPI.sh` o `daAPI.bat`).
+    Questo usa il file di properties presente nella directory `out_properties` per selezionare l'API e passarvi i parametri;
+  * Uno per fare il download di tutti i file presenti in `target/database`, serializzare a formato comune e fare l'analisi degli articoli scaricati (`daPath.sh` o `daPath.bat`).
 
 * `out_properties`: qui è presente il file `api.properties` che viene utilizzato dagli script di CMD per la fase di download.
   Puo' essere utilizzato dall'utente per specificare quale API chiamare (di default è impostato sull'API del theGuardian,
@@ -41,6 +43,9 @@ A quel punto si può digitare da riga di comando:
 La parte di test richiede un po' di tempo, soprattutto per la classe `src/test/java/tools/ThreadPoolTest`.
 L'installazione produce dei warning, che possono essere ignorati: sono dovuti al fatto che esistono file con lo stesso nome
 nei vari artifacts che mettiamo nel jar con le dipendenze.
+Il warning è di questo tipo:
+
+    maven-shade-plugin has detected that some class files are present in two or more JARs. When this happens, only one single version of the class is copied to the uber jar.
 
 Al termine dell'installazione, si troverà una directory target in cui saranno presenti i file prodotti dall'installazione dell'applicazione. 
 Saranno presenti due jar:
@@ -98,6 +103,10 @@ Alcune delle caratteristiche del programma sono modificabili andando a modificar
 - `general.properties` contiene il numero di termini da estrarre (se non è specificato un altro valore da riga di comando, che prevale), e il formato comune in cui vengono salvati i file prima di farne l'analisi
 - `english_stoplist.txt` contiene i termini da ignorare durante l'analisi degli articoli. Questa opzione può essere disabilitata da riga di comando.
 
+Per andare a immettere un file di API properties, in modo da non avere le richieste interattive per l'API,
+si può andare ad utilizzare il file `out_properties/api.properties`, immettendo la propria chiave per l'API del
+TheGuardian e andando a modificare i parametri, se desiderato.
+
 ### Opzioni da riga di comando
 Per eseguire il programma in maniera personalizzata sono disponibili varie opzioni da passare da riga di comando:
 * Per eseguire una determinata azione (deve essere utilizzato uno solo di questi quattro comandi, non inserirlo significa
@@ -106,7 +115,9 @@ Per eseguire il programma in maniera personalizzata sono disponibili varie opzio
   * `-d` per fare il download degli articoli e il loro salvataggio in formato comune.
     Se si vuole specificare un folder presente in locale, è obbligatorio specificare l'opzione `-path` con il path del folder contenente gli articoli di cui fare la serializzazione a formato comune.
   * `-a` per fare l'analisi degli articoli, ovvero l'estrazione dei termini piu' importanti. 
-  * `-da` per fare il download degli articoli e il loro salvataggio in formato comune
+  * `-da` per fare il download degli articoli e il loro salvataggio in formato comune. Come per `-d`,
+    se si vuole specificare un folder presente in locale, è obbligatorio specificare l'opzione `-path` con il path del folder contenente gli articoli di cui fare la serializzazione a formato comune
+    e l'analisi.
 * Altre opzioni facoltative per cambiare valori di default, che accettano un valore:
   * `-apf [value]` per utilizzare un file di properties (il cui path è passato come valore) da cui prendere il nome della API da chiamare
     e i vari parametri da passarci. Un esempio è il file `out_properties/api.properties`. 
@@ -137,16 +148,21 @@ Le istruzioni per creare e rendere disponibile il sito sono:
     mvn site:run
 
 Il sito sarà quindi disponibile al seguente indirizzo: [http://localhost:8080/](http://localhost:8080/)
-Esso contiene i javadocs e i reports dei test, oltre alla documentazione del progetto.
+Esso contiene anche i reports dei test, oltre alla documentazione del progetto.
 I suoi vari file saranno disponibili all'interno del folder `target/site`
 
-Per terminare l'esecuzione di site:run digitare da riga di comando CTRL+C (da dove si era avviato il sito).
-
+Per terminare l'esecuzione di site:run (una volta chiusa la pagina web) digitare due volte da riga di comando CTRL+C (da dove si era avviato il sito).
 
 ## Generazione dei javadocs
 Per generare i javadocs, digitare da riga di comando:
 
     mvn javadoc:javadoc
 
-Essi verranno prodotti all'interno del folder `target/site/apidocs`.
-Possono essere visionati anche dal sito generato con il Maven Site Plugin, seguendo le istruzioni per la generazione del sito.
+Essi verranno prodotti all'interno del folder `target/site/apidocs`, e apribili con un qualsivoglia browser.
+I javadoc sono stati prodotti anche per i test: per generarli, digitare da riga di comando:
+
+    mvn javadoc:test-javadoc
+
+Essi verranno prodotti all'interno del folder `target/site/testapidocs`, e apribili con un qualsivoglia browser.
+Questi ultimi sono molto più semplici di quelli del programma in sè, in quanto sarebbe stato impossibile
+descrivere tutti i test effettuati all'interno di ogni classe per ogni funzione.

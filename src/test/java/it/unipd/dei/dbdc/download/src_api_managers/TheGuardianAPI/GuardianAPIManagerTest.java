@@ -23,7 +23,7 @@ public class GuardianAPIManagerTest {
      * The key that is used to test the TheGuardianAPI. It should only be put here by the user, as all the other
      * test classes takes this one. TODO svuota
      */
-    public static String key = "b38f1b71-e6fc-4a9c-8081-dd7a97cae648";
+    public static String key = "21b5c154-934c-4a4e-b2f5-64adbd68af5f";
 
     /**
      * The instance of {@link GuardianAPIManager} used for the tests.

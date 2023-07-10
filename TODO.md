@@ -1,5 +1,3 @@
 # TODO
-* Il sito con tutta la documentazione
-* Rivedere codice totale
-* Javadoc dei test
-* UML
+* finisci sito
+* usare setdatabase folder per evitare che i file downloadati dai test vadano in database

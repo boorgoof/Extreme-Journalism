@@ -41,21 +41,16 @@ public class XmlSerializer implements Serializer {
             throw new IllegalArgumentException("The xmlFile file cannot be null");
         }
 
-        try {
-            // Create an instance of XmlMapper for the serialization
-            XmlMapper xmlMapper = new XmlMapper();
-            xmlMapper.enable(SerializationFeature.INDENT_OUTPUT); // Enable indented formatting
+        // Create an instance of XmlMapper for the serialization
+        XmlMapper xmlMapper = new XmlMapper();
+        xmlMapper.enable(SerializationFeature.INDENT_OUTPUT); // Enable indented formatting
 
-            // Transform objects into XML
-            String xmlString = xmlMapper.writeValueAsString(objects);
+        // Transform objects into XML
+        String xmlString = xmlMapper.writeValueAsString(objects);
 
-            // writing the XML string to the file
-            FileWriter fileWriter = new FileWriter(xmlFile);
-            fileWriter.write(xmlString);
-            fileWriter.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        // writing the XML string to the file
+        FileWriter fileWriter = new FileWriter(xmlFile);
+        fileWriter.write(xmlString);
+        fileWriter.close();
     }
 }

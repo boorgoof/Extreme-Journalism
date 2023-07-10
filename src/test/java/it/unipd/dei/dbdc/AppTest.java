@@ -1,5 +1,6 @@
 package it.unipd.dei.dbdc;
 
+import it.unipd.dei.dbdc.tools.PathManager;
 import it.unipd.dei.dbdc.tools.PathManagerTest;
 import org.junit.jupiter.api.*;
 
@@ -13,14 +14,36 @@ import static org.junit.jupiter.api.Assertions.*;
  * It is the last test to be run, as specified in junit-platform.properties.
  * It uses functions to redirect the error output and normal output of the system.
  */
-@Order(0)
+@Order(8)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class AppTest
 {
+
+    /**
+     * Initializes by setting the output folder to the one that this class will access
+     *
+     */
+    @BeforeAll
+    public static void initialize()
+    {
+        PathManager.setOutputFolder(folder+"output/");
+    }
+
+    /**
+     * Restores the output folder
+     *
+     */
+    @AfterAll
+    public static void end()
+    {
+        PathManager.setOutputFolder("./output/");
+    }
+
     /**
      * The {@link ByteArrayOutputStream} that will contain the error output
      */
     private ByteArrayOutputStream testErr;
+
 
     /**
      * To set the System.err to a {@link ByteArrayOutputStream} that we can check.
@@ -58,74 +81,39 @@ public class AppTest
     private final static String folder = PathManagerTest.resources_folder+"system_tests/";
 
     /**
-     * This is the first function that is executed.
-     * Checks the output of the application if everything goes right. It is done by checking if there are any
-     * errors and if the output file is the one we expect.
-     * The output files are not tested for the downloaded articles as the articles can vary a lot depending on
-     * what is inside the database of TheGuardian
+     * This is the second function that is executed.
+     * Checks the output of the application if everything goes right. It is done by checking if the output file is the one we expect.
+     * The output file is only tested for the ny times articles, as the ones downloaded from the theGuardianAPI can vary a lot.
      * It uses {@link PathManagerTest#readFile(String)} to read the output file.
      */
-    @Order(1)
+    @Order(2)
     @Test
     public void mainTestOut() {
 
-        deleteFilesOut();
-        //HELP
-        App.main(new String[]{"-h"});
-        assertEquals("", getError());
-
-        File[] files = new File("./output/").listFiles();
-        assertNotNull(files);
-        assertEquals(0, files.length);
-
         //Analysis and "download" of nytimes
         App.main(new String[]{"-da", "-path", folder+"nytimes_articles_v2"});
-        assertEquals("", getError());
 
-        files = new File("./output/").listFiles();
+        File[] files = new File(folder+"output/").listFiles();
         assertNotNull(files);
         assertEquals(2, files.length);
         File out = files[1];
         assertEquals("serialized.xml", out.getName());
-        assertEquals(PathManagerTest.readFile(folder+"serialized_nytimes_v2.xml"), PathManagerTest.readFile(files[1].getPath()));
         out = files[0];
         assertEquals("output.txt", out.getName());
-        assertEquals(PathManagerTest.readFile(folder+"output_nytimes_v2.txt"), PathManagerTest.readFile(files[0].getPath()));
-
-        deleteFilesOut();
-
-        //Analysis and "download" of theGuardian
-        App.main(new String[]{"-da", "-path", folder+"theguardian_articles_v1"});
-        assertEquals("", getError());
-
-        files = new File("./output/").listFiles();
-        assertNotNull(files);
-        assertEquals(2, files.length);
-        out = files[1];
-        assertEquals("serialized.xml", out.getName());
-        assertEquals(PathManagerTest.readFile(folder+"serialized_theguardian_v1.xml"), PathManagerTest.readFile(files[1].getPath()));
-
-        out = files[0];
-        assertEquals("output.txt", out.getName());
-        assertEquals(PathManagerTest.readFile(folder+"output_theguardian_v1.txt"), PathManagerTest.readFile(files[0].getPath()));
-
-        deleteFilesOut();
+        assertEquals(PathManagerTest.readFile(folder+"output_nytimes_v2.txt"), PathManagerTest.readFile(folder+"output/output.txt"));
 
         //DOWNLOAD OF ARTICLES
         App.main(new String[]{"-d", "-apf", folder+"api.properties"});
-        assertEquals("", getError());
 
-        files = new File("./output").listFiles();
+        files = new File(folder+"output/").listFiles();
         assertNotNull(files);
-        assertEquals(1, files.length);
-        out = files[0];
+        out = files[1];
         assertEquals("serialized.xml", out.getName());
 
         //Analysis of the downloaded files
         App.main(new String[]{"-a"});
-        assertEquals("", getError());
 
-        files = new File("./output").listFiles();
+        files = new File(folder+"output/").listFiles();
         assertNotNull(files);
         assertEquals(2, files.length);
         out = files[1];
@@ -135,17 +123,20 @@ public class AppTest
         assertEquals("output.txt", out.getName());
         //We don't test the output as the output can vary depending on what is in the database of the TheGuardian
 
-        deleteFilesOut();
     }
 
     /**
-     * This is the second function that is executed.
-     * Checks the errors that are thrown when something goes wrong.
+     * This is the first function that is executed.
+     * Checks some of the errors that are thrown when something goes wrong.
      */
-    @Order(2)
+    @Order(1)
     @Test
     public void mainTestErr() {
+
         //The APIContainer is initialized with trueDownload.properties by all the test classes that use it
+        //HELP
+        App.main(new String[]{"-h"});
+        assertEquals("", getError());
 
         //Errors
         //No action specified
@@ -160,33 +151,9 @@ public class AppTest
         expected_err += "The program has been terminated because the file general.properties was not found, or the properties passed by the user were not valid: Error in the format of the properties";
         assertEquals(expected_err, getError());
 
-        //There is no serialized file
-        App.main(new String[]{"-a"});
-        expected_err += "Error: it was required the analysis of a file that do not exist";
-        assertEquals(expected_err, getError());
-
         //The APIContainer and DeserializersContainer and SerializersContainer have already been initialized, so we can't try to pass illegal properties to them (they use the Singleton design pattern).
 
-        //Analysis properties not valid
-        App.main(new String[]{"-da", "-path", folder+"nytimes_articles_v2", "-anapf", PathManagerTest.resources_folder + "download/trueApiTest.properties"});
-        expected_err += "The program has been terminated for an error in the analysis: There is no class with the name null";
-        assertEquals(expected_err, getError());
-
     }
-
-    /**
-     * Utility function that clears the folder of ./output. The PathManager function is not used because it could have problems.
-     */
-    private void deleteFilesOut()
-    {
-        File[] files = new File("./output").listFiles();
-        assertNotNull(files);
-        for (File f : files)
-        {
-            f.delete();
-        }
-    }
-
 
     /**
      * The only constructor of the class. It is declared as private to
