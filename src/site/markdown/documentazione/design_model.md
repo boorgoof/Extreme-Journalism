@@ -1,4 +1,4 @@
-# DESIGN 
+# Design Model
 
 ## Design class model
 <img src="../images/General.jpg"/>

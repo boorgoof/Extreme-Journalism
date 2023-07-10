@@ -23,7 +23,7 @@ gestiti i problemi risultanti
 contemporaneamente
 ∙ descrizione dello stato del sistema al termine dello scenario
 
-# CASI D'USO
+# Use cases
 - Un utente vuole fare solo il download: viene svuotato il database, seleziona che vuole
   estrarre dal TheGuardian, inserisce la sua API key, inserisce un insieme di parole
   chiave tra cui cercare, aspetta il download di 1000 articoli e la loro trasformazione
@@ -37,10 +37,10 @@ contemporaneamente
   in un formato comune, chiede di estrarre i 50 termini con piu' peso
   e di salvarli in un file .txt di cui specifica il nome.
 
-# USE CASE DIAGRAM
+# Use case diagram
 <img src="../images/Use_cases_uml.jpg"/>
 
-# USE CASES TABLES
+# Use case tables
 <img src="../images/Use_cases_tables.jpg"/>
 
 # SPECIFICHE DELL'ANALISI DEI FILE 
