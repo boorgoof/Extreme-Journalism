@@ -142,14 +142,14 @@ public class DeserializationHandler {
         }
 
         // Print the message to inform the user about the available file formats for deserialization
-        System.out.println("Il programma, al momento, è in grado di deserializzare solo i seguenti formati: ");
+        System.out.println("The program, at the moment, is able to deserialize only the following formats: ");
         Set<String> formatsAvailable = container.getFormats();
         for (String format : formatsAvailable) {
             System.out.println("- " + format);
         }
 
         // Print the information about the rejected files
-        System.out.println("I file non disonibili per la deserializzazione sono: ");
+        System.out.println("Files not available for deserialization are: ");
         for(File file : rejectedFiles){
             System.out.print("NAME: ");
             System.out.print(file.getName());

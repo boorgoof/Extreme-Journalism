@@ -6,7 +6,7 @@ vedere [design model](../documentazione/design_model.html).
 
 Il codice è interamente in inglese, per una maggiore flessibilità riguardo possibili modifiche, che
 potrebbero essere fatte da chiunque.
-La classe principale, App, contiene diverse funzioni che demandano le chiamate all'handler sottostante, sfruttando
+La classe principale (App)  contiene diverse funzioni che demandano le chiamate all'handler sottostante, sfruttando
 il [facade design pattern](design_patterns.html). La suddivisione in funzioni aumenta anche la leggibilità del codice.
 All'interno del programma vengono utilizzati dei file di properties per aumentare la [flessibilità](flessibilita.html)
 del codice, in quanto diventa molto semplice andare a specificare una classe diversa da quella usata di default dal programma.
