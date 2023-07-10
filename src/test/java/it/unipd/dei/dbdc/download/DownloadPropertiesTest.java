@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -27,12 +28,12 @@ public class DownloadPropertiesTest {
 
         assertDoesNotThrow(() -> {
             //Tests with default properties
-            final HashMap<String, APIManager> obt2 = DownloadProperties.readProperties(null);
+            final Map<String, APIManager> obt2 = DownloadProperties.readProperties(null);
             assertEquals(1, obt2.size());
             assertEquals(guardianAPIManager, obt2.get("TheGuardianAPI"));
 
             //Tests with a valid download.properties
-            final HashMap<String, APIManager> obtained;
+            final Map<String, APIManager> obtained;
             obtained = DownloadProperties.readProperties(DownloadHandlerTest.resources_url+"defaultDownload.properties");
             assertEquals(1, obtained.size());
             assertEquals(guardianAPIManager, obtained.get("TheGuardianAPI"));
@@ -44,7 +45,7 @@ public class DownloadPropertiesTest {
 
         //Test with other properties, with TestManager
         assertDoesNotThrow( () -> {
-            final HashMap<String, APIManager> finalObt = DownloadProperties.readProperties(DownloadHandlerTest.resources_url + "trueDownload.properties");
+            final Map<String, APIManager> finalObt = DownloadProperties.readProperties(DownloadHandlerTest.resources_url + "trueDownload.properties");
             assertEquals(2, finalObt.size());
             assertEquals(guardianAPIManager, finalObt.get("TheGuardianAPI"));
             assertTrue(finalObt.get("Test") instanceof TestManager);

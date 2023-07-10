@@ -33,13 +33,13 @@ public class GeneralProperties {
      * The format to save the articles into.
      *
      */
-    private static String common_format;
+    private final String common_format;
 
     /**
      * The number of words to extract and save in the output file.
      *
      */
-    private static int words_count;
+    private final int words_count;
 
     /**
      * Constructor of the class: reads the properties file and saves the common format and number of words to

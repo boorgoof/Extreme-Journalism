@@ -1,6 +1,5 @@
 package it.unipd.dei.dbdc.download;
 
-import it.unipd.dei.dbdc.deserialization.DeserializersContainer;
 import it.unipd.dei.dbdc.download.interfaces.APIManager;
 
 import java.io.IOException;

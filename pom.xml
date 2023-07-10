@@ -116,32 +116,9 @@
         <version>3.5.0</version>
         <executions>
           <execution>
-            <id>javadoc-jar</id>
-            <phase>package</phase>
+            <id>attach-javadocs</id>
             <goals>
               <goal>jar</goal>
-            </goals>
-            <configuration>
-              <!-- switch on dependency-driven aggregation -->
-              <includeDependencySources>true</includeDependencySources>
-
-              <dependencySourceIncludes>
-              <!-- include ONLY dependencies I control -->
-              </dependencySourceIncludes>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
-        <version>3.3.0</version>
-        <executions>
-          <execution>
-            <id>bundle-sources</id>
-            <phase>package</phase>
-            <goals>
             </goals>
           </execution>
         </executions>
