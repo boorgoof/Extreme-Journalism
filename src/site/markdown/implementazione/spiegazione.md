@@ -97,7 +97,7 @@ alla parte di download da una API.
   Il file "deserializers.properties" contiene tutti i Deserializers di cui il programma può disporre per deserializzare i file.
   Ciascun Deserializers deve essere associato ad un nome, che convenzionalmente rappresenta il formato del file che è in grado di deserializzare.
   L'handler, infatti, per eseguire la deserializzazione di un file ne estrapola il formato per chiamare il Deserializer associato.
-  Segue dunque, che se un Deserializer non è associato ad un vero e proprio formato di un file, questi non potrà mai essere utilizzato, poichè l'handler 
+  Segue che se un Deserializer non è associato ad un vero e proprio formato di un file, questi non potrà mai essere utilizzato, poichè l'handler 
   non disporra mai del suo nome identificativo. 
   Esiste un file di properties di default contenuto dentro alle risorse ma, in caso non si avesse accesso al codice sorgente, è anche possibile passarne 
   uno dall'esterno. Se le properties che l'utente vuole utilizzare non sono corrette, il programma termina. 
@@ -107,16 +107,17 @@ alla parte di download da una API.
   passato dall'utente (se valido). Utilizza il [Singleton design pattern](design_patterns.html) in modo da leggere il file di
   properties una sola volta durante l'esecuzione del programma. Ciascun Deserializers è dunque associato ad un nome e contenuto all'interno di una mappa.
   L'handler estrapola il formato del file che deve deserializzare e chiama il Deserializers associato al formato stesso (in questo modo si riesce a selezionare 
-  il Deserializzore corretto per il file)
+  il Deserializzore corretto per il file).
 
-- **Deserializer:** Si tratta di un' interfaccia che definisce un oggetto in grado di deserializzare un file in una lista di oggetti Serializable.
-  Nello specifico, Serializable è  un' interfaccia Java che indica che gli oggetti di quella classe possono essere convertiti in una sequenza di byte (ossia, possono essere serializzati). 
+- **Deserializer:** Interfaccia che definisce un oggetto in grado di deserializzare un file in una lista di oggetti Serializable.
   Il programma attualmente dispone di tre classi che implementano l'interfaccia Deserializer fornendo una logica di deserializzazione specifica per un determinato formato di file.
-  I deserializzatori definiti nel programma ritornano una lista di Serializable che sono istanze della classe Article. Si tratta di CsvArticleDeserializer, JsonArticleDeserializer e XmlArticleDeserializer
-  In particolare queste classi sono responsabili di deserializzare i file in oggetti di tipo "Article", che implementano l'interfaccia "Serializable".
-  Dunque, se si desidera deserializzare oggetti di una classe differente da "Article", è possibile creare una nuova classe che implementa l'interfaccia "Deserializer" per quella classe specifica. 
+  Si tratta di CsvArticleDeserializer, JsonArticleDeserializer e XmlArticleDeserializer.
+  In particolare, queste classi sono responsabili di deserializzare i file in oggetti di tipo "Article", che implementano l'interfaccia "UnitOfSearch" che, a sua volta, estende "Serializable".
+  Se si desidera deserializzare oggetti di una classe differente da "Article", è possibile creare una nuova classe che implementa l'interfaccia "Deserializer" per quella classe specifica. Ovviamente bisognerà poi inserire tale classe nel file
+  "deserializers.properties" associandola al nome del formato del file per cui avviene la deserializzazione. 
   In questo modo, il programma può gestire la deserializzazione di diverse classi Serializable senza dover modificare il codice esistente.
 
+  
 ## SERIALIZZAZIONE
 
 - **SerializationHandler:** La serializzazione è gestita da un handler che seleziona correttamente il Serializer da 
