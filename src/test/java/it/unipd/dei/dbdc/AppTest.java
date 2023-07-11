@@ -20,13 +20,12 @@ public class AppTest
 {
 
     /**
-     * Initializes by setting the output and database folders to the ones that this class will access
+     * Initializes by setting the database folder to the one that this class will access
      *
      */
     @BeforeAll
     public static void initialize()
     {
-        PathManager.setOutputFolder(folder+"output/");
         PathManager.setDatabaseFolder(folder+"database/");
     }
 
@@ -85,37 +84,27 @@ public class AppTest
     /**
      * This is the second function that is executed.
      * Checks the output of the application if everything goes right. It is done by checking if the output file is the one we expect.
-     * The output file is only tested for the ny times articles, as the ones downloaded from the theGuardianAPI can vary a lot.
+     * The output file is only tested for the ny times articles, as the ones downloaded from the TheGuardianAPI can vary a lot.
      * It uses {@link PathManagerTest#readFile(String)} to read the output file.
      */
     @Order(2)
     @Test
     public void mainTestOut() {
 
-        //Analysis and "download" of nytimes
-        App.main(new String[]{"-da", "-path", folder+"nytimes_articles_v2"});
-
-        File[] files = new File(folder+"output/").listFiles();
-        assertNotNull(files);
-        assertEquals(2, files.length);
-        File out = files[1];
-        assertEquals("serialized.xml", out.getName());
-        out = files[0];
-        assertEquals("output.txt", out.getName());
-        assertEquals(PathManagerTest.readFile(folder+"output_nytimes_v2.txt"), PathManagerTest.readFile(folder+"output/output.txt"));
+        PathManager.setOutputFolder(folder+"output_theguardian/");
 
         //DOWNLOAD OF ARTICLES
         App.main(new String[]{"-d", "-apf", folder+"api.properties"});
 
-        files = new File(folder+"output/").listFiles();
+        File[] files = new File(folder+"output_theguardian/").listFiles();
         assertNotNull(files);
-        out = files[1];
+        File out = files[1];
         assertEquals("serialized.xml", out.getName());
 
         //Analysis of the downloaded files
         App.main(new String[]{"-a"});
 
-        files = new File(folder+"output/").listFiles();
+        files = new File(folder+"output_theguardian/").listFiles();
         assertNotNull(files);
         assertEquals(2, files.length);
         out = files[1];
@@ -124,6 +113,20 @@ public class AppTest
         out = files[0];
         assertEquals("output.txt", out.getName());
         //We don't test the output as the output can vary depending on what is in the database of the TheGuardian
+
+        PathManager.setOutputFolder(folder+"output_nytimes/");
+
+        //Analysis and "download" of nytimes
+        App.main(new String[]{"-da", "-path", folder+"nytimes_articles_v2"});
+
+        files = new File(folder+"output_nytimes/").listFiles();
+        assertNotNull(files);
+        assertEquals(2, files.length);
+        out = files[1];
+        assertEquals("serialized.xml", out.getName());
+        out = files[0];
+        assertEquals("output.txt", out.getName());
+        assertEquals(PathManagerTest.readFile(folder+"output_nytimes_v2.txt"), PathManagerTest.readFile(folder+"output_nytimes/output.txt"));
 
     }
 

@@ -3,6 +3,7 @@ package it.unipd.dei.dbdc.download.src_api_managers.TheGuardianAPI;
 import it.unipd.dei.dbdc.download.DownloadHandlerTest;
 import it.unipd.dei.dbdc.download.QueryParam;
 import it.unipd.dei.dbdc.download.src_callers.KongAPICaller;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
@@ -21,9 +22,9 @@ public class GuardianAPIManagerTest {
 
     /**
      * The key that is used to test the TheGuardianAPI. It should only be put here by the user, as all the other
-     * test classes takes this one. TODO svuota
+     * test classes takes this one.
      */
-    public static String key = "e824cbd7-23a5-4534-a2a0-b6b868dabd98";
+    public static String key = "";
 
     /**
      * The instance of {@link GuardianAPIManager} used for the tests.
