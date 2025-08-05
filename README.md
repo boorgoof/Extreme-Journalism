@@ -8,7 +8,7 @@ Il sistema determina le parole chiave più importanti analizzando quanto spesso 
 1. **Pre-elaborazione del testo**  
    Vengono analizzati il titolo e il corpo di ogni articolo. Il testo viene diviso in singole parole, convertito in minuscolo e ripulito dalla punteggiatura.
 
-2. **Filtraggio delle stop word**  
+2. **Stop word**  
    Le parole comuni e poco informative (come “il”, “e”, “di”, ecc.) vengono eliminate tramite una lista di stop word in inglese, che può essere modificata o disattivata.
 
 3. **Calcolo del peso dei termini**  
