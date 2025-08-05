@@ -1,6 +1,23 @@
 # PROGETTO EXTREME JOURNALISM
 L’obiettivo di questo sistema software è quello di raccogliere articoli di notizie da diverse fonti online e identificare i termini più "rilevanti" all’interno dei testi. Il sistema supporta più tipi di sorgenti dati (come file CSV o API online), permette di serializzare gli articoli in un formato uniforme, e analizza i contenuti per estrarre e mostrare le parole chiave più significative, ordinate per importanza.
 
+##  Come vengono identificate le parole più rilevanti
+
+Il sistema determina le parole chiave più importanti analizzando quanto spesso compaiono nei diversi articoli raccolti. Il procedimento avviene in questo modo:
+
+1. **Pre-elaborazione del testo**  
+   Vengono analizzati il titolo e il corpo di ogni articolo. Il testo viene diviso in singole parole, convertito in minuscolo e ripulito dalla punteggiatura.
+
+2. **Filtraggio delle stop word**  
+   Le parole comuni e poco informative (come “il”, “e”, “di”, ecc.) vengono eliminate tramite una lista di stop word in inglese, che può essere modificata o disattivata.
+
+3. **Calcolo del peso dei termini**  
+   Per ogni parola, il sistema conta in quanti articoli diversi essa compare. Questo valore rappresenta l’“importanza” o peso del termine.
+
+4. **Ordinamento e salvataggio**  
+   Le parole vengono ordinate in base alla loro importanza (frequenza nei documenti) e salvate in un file di testo. In caso di pari peso, si usa l’ordine alfabetico.
+
+
 ## Struttura delle directories del progetto
 * `src`: qui c'è il codice sorgente dell'applicazione e dei test;
 
