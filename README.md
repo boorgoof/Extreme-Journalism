@@ -1,5 +1,5 @@
 # PROGETTO EXTREME JOURNALISM
-Repository del progetto finale di "Elementi di Ingegneria del Software".
+L’obiettivo di questo sistema software è quello di raccogliere articoli di notizie da diverse fonti online e identificare i termini più "rilevanti" all’interno dei testi. Il sistema supporta più tipi di sorgenti dati (come file CSV o API online), permette di serializzare gli articoli in un formato uniforme, e analizza i contenuti per estrarre e mostrare le parole chiave più significative, ordinate per importanza.
 
 ## Struttura delle directories del progetto
 * `src`: qui c'è il codice sorgente dell'applicazione e dei test;
